@@ -18,7 +18,7 @@ The official GSoC website lists organizations but links out to external pages fo
 
 ## Website
 
-**[gsoc-2026.vercel.app](https://gsoc-2026.vercel.app)**
+**[gsoc-explorer.vercel.app](https://gsoc-explorer.vercel.app)**
 
 To run locally:
 
