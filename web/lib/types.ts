@@ -35,6 +35,8 @@ export interface SearchDocument {
   ideasSnippet: string;
   tech_tags: string[];
   topic_tags: string[];
+  subpageSlug?: string;
+  orgName?: string;
 }
 
 export interface TagCount {

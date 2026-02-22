@@ -27,6 +27,8 @@ interface SearchDocument {
   ideasSnippet: string;
   tech_tags: string[];
   topic_tags: string[];
+  subpageSlug?: string;
+  orgName?: string;
 }
 
 const DATA_DIR = path.join(__dirname, "..", "..", "data");
@@ -79,12 +81,31 @@ function main() {
     };
   });
 
+  // Add sub-page documents
+  let subpageCount = 0;
+  for (const org of orgs) {
+    for (const sp of org.ideas_subpages ?? []) {
+      index.push({
+        slug: org.slug,
+        subpageSlug: sp.slug,
+        orgName: org.name,
+        name: sp.title,
+        tagline: "",
+        description: cleanForSearch(sp.content, 500),
+        ideasSnippet: "",
+        tech_tags: [],
+        topic_tags: [],
+      });
+      subpageCount++;
+    }
+  }
+
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(index));
 
   const sizeKB = (Buffer.byteLength(JSON.stringify(index)) / 1024).toFixed(0);
   console.log(
-    `Search index generated: ${index.length} documents, ${sizeKB} KB`
+    `Search index generated: ${index.length} documents (${orgs.length} orgs, ${subpageCount} sub-pages), ${sizeKB} KB`
   );
   console.log(`Written to: ${OUTPUT_PATH}`);
 }
