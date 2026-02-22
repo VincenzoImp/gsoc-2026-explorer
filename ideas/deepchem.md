@@ -1,7 +1,7 @@
 # DeepChem — Project Ideas
 
 **Source:** https://github.com/deepchem/deepchem/discussions/4703
-**Scraped:** 2026-02-20T11:48:56.944523
+**Scraped:** 2026-02-22T23:28:47.606422
 
 ---
 
@@ -69,7 +69,7 @@ Beta
 Was this translation helpful?
 [Give feedback.](https://github.com)
 
-## Replies: 9 comments
+## Replies: 25 comments 1 reply
 
 -
 
@@ -153,6 +153,163 @@ Was this translation helpful?
 
 |
 Hi mentors , I’m Utkarsh, a student contributor interested in the LLM support for 7B models / OLMo in DeepChem GSoC 2026 project. I’ve already started contributing to DeepChem and recently opened this PR fixing HuggingFace checkpoint saving issues and HF tests: 👉 PR: I’m interested to work specifically on the OLMo + HuggingFaceModel integration project, and I’ve begun reading hf_models.py, ChemBERTa, and the TorchModel checkpoint flow to understand the current architecture. I’d really appreciate your guidance on: What would be the best first technical milestone for OLMo integration? Are there any existing design expectations or pitfalls I should be aware of? Would you recommend starting with inference support first, or classification/regression heads? |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hello mentors, I am Chiranjeevi, the project proposals seem very interesting. - Improve DFT support in DeepChem
+- Improve materials machine learning in DeepChem
+I have worked extensively with Graph Neural Networks (GNNs) and Physics-Informed Neural Networks (PINNs). Additionally, I currently have a paper lined up for submission to ICLR 2026, focusing on bias mitigation in vision models. Looking forward to contribute :) Best Regards, |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi Mentors, I’m really interested in the materials ML direction in DeepChem, especially the idea of implementing newer models like MACE and benchmarking them properly. The mix of geometric deep learning and real scientific datasets sounds like a great learning opportunity. I’m a second-year CSE student currently building my skills in PyTorch and ML, and I’m keen to explore how these models fit into DeepChem’s TorchModel framework. I’d love to learn how I can start contributing. Lookign forward to contributing |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi I’m very interested in the “Improve DFT support in DeepChem” project for GSoC 2026. I have completed my M.Sc chemistry from NIT Trichy and worked in a computational chemistry project for one year. I am skilled in machine learning and interested to learn and make contributions in scientific ML projects. I’ve begun exploring DeepChem’s differentiable DFT code along with PySCF/GPAW implementations to understand the current gaps. I’m particularly interested in extending the DFT module with a new XC-functional or improving SCF stability and scaling, followed by benchmarking against standard DFT tools. I have also started building small PyTorch-based experiments (toy SCF loops, basic LDA/GGA tests) to prepare for a well-scoped proposal if the org is selected. Looking forward to contributing and would appreciate any guidance on which direction would add the most value. Best regards, |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+My name is Tanishq Jain. I’m very interested in working on the Single Cell / DNA Foundation Model project in DeepChem. I have experience in Machine Learning, Deep Learning, and working with Large Language Models. I’ve used PyTorch and HuggingFace for building and fine-tuning transformer-based models, and I’m comfortable understanding and modifying existing codebases. This project interests me because it combines transformer architectures with biological sequence modeling and requires proper integration with DeepChem’s TorchModel and dataset infrastructure. I’m particularly interested in implementing the HuggingFace-backed model, handling tokenizer utilities, and benchmarking it on relevant datasets. I’d love to get guidance on how to get started and which parts of the DeepChem codebase I should explore first. If there are beginner-friendly issues or preparatory tasks related to this project, I’m happy to start contributing right away. Thanks! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi Bharath sir, I wanted to express my strong interest in the following GSoC Project idea: I have experience in Deep Learning and LLMs, particularly with Fine-tuning (SFT) and RAG. I have worked extensively with PyTorch and HuggingFace models for building and deploying open-source models in real-world applications. You can find more details about my work on my portfolio:
+- It is a Medium-length project, which gives ample time to deliver a robust and comprehensive solution.
+- The intersection of AI with biology and chemistry is a fascinating and highly impactful domain.
+- I have been studying Google's AlphaFold models and databases, and I am very passionate about bridging these two fields.
+I would love to hear more details about this project and any recommendations on where to start! To familiarize myself with the DeepChem architecture and codebase, I have already started tackling a few open issues and successfully submitted the following PRs today: **Added**(Resolves`summary()` visualization utility for TorchModel[Summary and visualization of the PyTorch models #2820](/ideas/deepchem/deepchem-deepchem-issues-2820)): [https://github.com/[Add PyTorch Model summary utility (#2820) #4754](https://github.com/deepchem/deepchem/pull/4754)]**Fixed**(Resolves`DiskDataset.select()` IndexError on empty array selections[DiskDataset select() call assumes all data fields populated #4059](/ideas/deepchem/deepchem-deepchem-issues-4059)): [https://github.com/[Fix DiskDataset select() IndexError when y or w metadata arrays are e… #4755](https://github.com/deepchem/deepchem/pull/4755)]**Implemented Model Configuration Serialization & Loading globally**(Resolves[Feature to store and load model configurations #3176](/ideas/deepchem/deepchem-deepchem-issues-3176)): [https://github.com/[feat: Auto-capture and serialize model configurations via Model.__new… #4756](https://github.com/deepchem/deepchem/pull/4756)]
+Looking forward to hearing your thoughts and contributing further! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi I’m very interested in the Differentiable FEM/FVM direction. I’m particularly drawn to the challenge of implementing an end-to-end differentiable solver in PyTorch while aligning cleanly with DeepChem’s TorchModel and dataset abstractions. I’m currently reviewing literature on differentiable PDE solvers and studying how automatic differentiation interacts with stiffness matrix assembly and mesh parameterization. My background in PyTorch and numerical methods makes this direction especially aligned with my interests. I’m comfortable with linear algebra, gradient-based optimization, and implementing mathematical formulations from first principles. I also have experience building structured ML systems beyond standard training pipelines, so designing clean abstractions within an existing framework is something I value. Over the coming weeks, I plan to prototype a small differentiable Poisson solver to better understand integration and benchmarking expectations. Would you recommend starting with a minimal 1D implementation within DeepChem, or focusing first on designing a robust mesh data structure abstraction? Looking forward to contributing! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi I have been working on generative models for materials closed-loop discovery for my MS thesis at CMU. I have worked on generative models like TransPolymer and finetuning of MoleculeChef. I am well aware of the databases required and have also created a 1.6M labeled synthetic Rdkit fingerprint database for polymers (for reference - I had also contributed to the open source repo of DeepChem this january for including SAscore metrics that I had found that could potentially be included in the repo. Best , |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi I’m Sakshi, a GSSoC’25 contributor with experience in PyTorch and HuggingFace-based ML systems. I’m particularly interested in the LLM support for 7B models (OLMo) direction for GSoC 2026. I’ve started reviewing DeepChem’s HuggingFaceModel, TorchModel, and existing ChemBERTa integrations to understand how generation, classification, and checkpointing are handled. As a next step, I plan to explore a small contribution around HF model integration or inference/generation support to get familiar with DeepChem’s CI and review process. I’d appreciate any guidance on whether starting with inference + generation support would be the preferred first milestone, or if there are other entry points you’d recommend. Looking forward to contributing. |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi sir This is Rishi. I am currently in my second year of my bachelor’s degree. I have gone through the list of projects, and as a science student up until 12th grade, I found all of them interesting. However, I am particularly drawn to the following three: - Implementing RFDiffusion and RFDiffusion2
+- Single-cell and DNA foundation models
+- Robust Bi-Directional Translation between SMILES and IUPAC nomenclature
+With a strong background in chemistry and biology, along with a deep interest in PyTorch and hands-on experience in deep learning especially CNNs I would be excited to work on any of the above projects. Since I can apply for only one project, I would prefer to focus on <- Robust Bi-Directional Translation between SMILES and IUPAC nomenclature ->. One reason this project resonates with me is that it reminds me of solving IUPAC nomenclature exercises from practice books like MS Chouhan and Himanshu Pandey during my 11th and 12th grades. It’s amusing to reflect on that experience now, but it genuinely sparked my interest in this area. Working on this project would allow me to fulfill my goal of integrating technology with chemistry and biology. I would love to hear more details about this project and any suggestions on where to begin or what resources I should study. In the meantime, I will continue exploring relevant concepts. I would be grateful for your guidance if possible sir. |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+I am Arnab, a computer science student. I contribute to open source projects. The project that really catches my attention is the "Robust Bi-directional Translation Between SMILES and IUPAC Nomenclature" project for GSoC 2026. My background is in natural language processing, data structures, algorithms and Python. I have also used artificial intelligence models with TensorFlow and Keras. After reading about the project, I think we can use a kind of vocabulary for chemical structures and a custom sequence to sequence transformer to solve the problems with large language models that you talked about. Now I am setting up my DeepChem environment and looking for a simple issue to start with so I can get used to your testing process. Before I make a plan for the project, I wanted to ask if I should start by making a custom tokenizer for SMILES and IUPAC or if I should first work on putting a basic sequence to sequence model into the TorchModel framework. Looking forward to contributing and working with you! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+I am Shreya Gupta, a recent Chemical Engineering graduate from IIT BHU, with proficiency in Python, Machine Learning, Deep Learning, and NLP. I am very interested in contributing to the project "Robust Bi-directional Translation Between SMILES and IUPAC Nomenclature." During my academic years, I studied Computational Drug Design and am very familiar with the relevant concepts. I have also built LLM-based and encoder-decoder models, and I believe this project aligns strongly with my skill set at the intersection of Chemistry and AI. I have already started exploring potential approaches for this project and would greatly appreciate your guidance. I am excited about the opportunity to contribute and learn. Thanks. |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+I'm Jyotiraditya Kuanar, a CS graduate now working in interdisclipinary(Chem+CS) research for my MSc. I’ve been going through the proposed GSoC ideas and I’m genuinely excited about the direction DeepChem is heading, especially around LLM integration and sequence-based modeling tasks like SMILES ↔ IUPAC translation. I’ll be upfront — I’m still in the process of building deeper hands-on experience with PyTorch. I’ve worked with ML before, but I’m currently focusing on strengthening my fundamentals in Torch and HuggingFace workflows. DeepChem feels like the right kind of challenge to push myself technically while contributing something meaningful. Over the next few weeks, I plan to set up the development environment, study how TorchModel and HuggingFaceModel are structured, and try reproducing some existing training workflows end-to-end. I’d also love to start with smaller contributions to understand the codebase properly before drafting any proposal. If there are recommended entry points or beginner-friendly issues for someone ramping up in PyTorch but committed to putting in serious effort, I’d really appreciate the guidance. Looking forward to learning and contributing. Thanks for maintaining such a thoughtful and technically ambitious project! With Regards, |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi I am specifically targeting the Single Cell and DNA Foundation Models (Large) project. Given my biotech background, I’m particularly interested in how we can optimize tokenization for non-coding regions and long-range genomic dependencies. I’ve been analyzing the HuggingFaceModel wrapper in DeepChem and would love to propose a benchmark comparing HyenaDNA and Nucleotide Transformer within the DeepChem fine-tuning pipeline. I will be sharing a small exploratory PoC soon! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi everyone, I'm Sakshi, currently pursuing MCA (AI & DS). I’m interested in contributing to DeepChem for GSoC 2026. I’m currently exploring open issues and would like to start contributing. Looking forward to contributing! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi I'm Selcuk Senturk, MSc Computer Science student and an AI/ML Engineer at IBM Expert Labs. I'm interested in contributing to DeepChem as part of
+Of the two, I'd lean toward whichever has more open scope for a 175-hour contribution, happy to discuss either direction. A few questions: - For symbolic ML, is the expectation a from-scratch PyTorch implementation or wrapping an existing differentiable symbolic framework?
+- For materials ML, is MACE the preferred target model, or is there flexibility based on what's most useful to DeepChem currently?
+I would like to discuss further if I'm a good candidate for these projects and how I plan to implement these above. Resume: [ |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi everyone! |
 
 Beta
 Was this translation helpful?

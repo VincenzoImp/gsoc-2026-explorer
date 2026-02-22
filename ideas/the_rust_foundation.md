@@ -1,7 +1,7 @@
 # The Rust Foundation — Project Ideas
 
 **Source:** https://github.com/rust-lang/google-summer-of-code
-**Scraped:** 2026-02-20T11:48:56.928602
+**Scraped:** 2026-02-22T23:28:47.594234
 
 ---
 
@@ -16,7 +16,7 @@ In the list below, you can find projects from past GSoC runs:
 
 We invite contributors that would like to participate in projects such as GSoC or that would just want to find a Rust project that they would like to work on to examine the project list and use it as an inspiration. Another source of inspiration can be the [Rust Project Goals](https://rust-lang.github.io/rust-project-goals/index.html), particularly the orphaned goals. However, you can also work on these projects outside GSoC or other similar projects! We welcome all contributions.
 
-If you would like to participate in GSoC, please read [this](https://github.com/rust-lang/google-summer-of-code/blob/main/gsoc/README.md), **in particular the guidance around AI usage!**
+If you would like to participate in GSoC, please read [this](/ideas/the-rust-foundation/blob-main-gsoc-readme), **in particular the guidance around AI usage!**
 If you would like to discuss project ideas or anything related to them, you can do so on our [Zulip](https://rust-lang.zulipchat.com/#narrow/channel/421156-gsoc).
 
 We use the GSoC project size parameters for estimating the expected time complexity of the project ideas. The individual project sizes have the following expected amounts of hours:

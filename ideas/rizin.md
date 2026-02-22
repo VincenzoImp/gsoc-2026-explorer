@@ -1,7 +1,7 @@
 # Rizin — Project Ideas
 
 **Source:** https://rizin.re/gsoc/2026/#project-ideas
-**Scraped:** 2026-02-20T11:48:56.927028
+**Scraped:** 2026-02-22T23:28:47.604468
 
 ---
 

@@ -1,7 +1,7 @@
 # Alaska — Project Ideas
 
 **Source:** https://github.com/uaanchorage/GSoC
-**Scraped:** 2026-02-20T11:48:56.912070
+**Scraped:** 2026-02-22T23:28:47.623045
 
 ---
 
@@ -13,9 +13,11 @@ We represent the 49th state, Alaska. Anchorage, the largest city in Alaska, has 
 
 **Please also refer to our**A
 
-[Acceptable and Ethical AI Use Policy](https://github.com/uaanchorage/GSoC/blob/main/Acceptable-and-Ethical-AI-Use-Policy.md)to make sure your use of AI/ML/LLM tools such as ChatGPT falls under the acceptable use.[rubrics](https://github.com/uaanchorage/GSoC/blob/main/Rubrics.md)is provided as reference material on being a competitive applicant for Alaska in GSoC.
+[Acceptable and Ethical AI Use Policy](/ideas/alaska/blob-main-acceptable-and-ethical-ai-use-policy)to make sure your use of AI/ML/LLM tools such as ChatGPT falls under the acceptable use.[rubrics](/ideas/alaska/blob-main-rubrics)is provided as reference material on being a competitive applicant for Alaska in GSoC.
 
-**Please avoid sending individual private emails (or social media messages!!) to mentors.** However, the mentors' emails with each project idea are listed below in case the mentor initiates or recommends an email communication later. If you are proposing your own idea, make sure that idea is relevant to Alaska and has a potential mentor from the list of mentors below.
+**Some**
+
+[helpful pointers on effective communication](/ideas/alaska/blob-main-effective-communication)are also provided.**Please avoid sending individual private emails (or social media messages!!) to mentors.** However, the mentors' emails with each project idea are listed below in case the mentor initiates or recommends an email communication later. If you are proposing your own idea, make sure that idea is relevant to Alaska and has a potential mentor from the list of mentors below.
 
 Many of the ideas proposed here have a research component. Contributors who work on these ideas have the potential to author a research paper (as the first author, working with the researchers from the University of Alaska) or become co-authors in our ongoing research papers. We strongly encourage those interested in higher studies or research careers to apply for their GSoC with us.
 
@@ -235,7 +237,7 @@ MATLAB [Medical Imaging Toolbox](https://www.mathworks.com/products/medical-imag
 
 **[8] Support for Logarithmic Number Systems in Large Language Models.**
 
-**Mentors:** Mark Arnold (markgarnold -at- yahoo.com), Alex Krentz (alexkrentz2 -at- gmail.com), and Ed Chester (ed.chester -at- gmail.com)
+**Mentors:** Mark Arnold (markgarnold -at- yahoo.com) and Alex Krentz (alexkrentz2 -at- gmail.com)
 
 **Overview:** The Logarithmic Number System (LNS) is an alternative to built-in Floating Point (FP), which makes multiplication and division easy at the expense of more difficult addition. Using overloaded operators, xlnscpp provides an open-source C++ library for both 16- and 32-bit LNS arithmetic. Interest in fabricating LNS hardware has grown since it may reduce power consumption for applications that tolerate approximate results, such as deep learning (see [1]-[5]). Although LNS has been studied extensively for feed-forward networks, only recently [6] has LNS been considered for Large Language Models (LLMs).
 

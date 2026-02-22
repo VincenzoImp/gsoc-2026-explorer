@@ -1,7 +1,7 @@
 # Open Science Labs — Project Ideas
 
 **Source:** https://opensciencelabs.org/opportunities/gsoc/project-ideas
-**Scraped:** 2026-02-20T11:48:56.953078
+**Scraped:** 2026-02-22T23:28:47.578897
 
 ---
 
@@ -16,7 +16,7 @@ At OSL, we've assembled a selection of project ideas that not only embody our mi
 
 This page details the sub-organizations available for GSoC 2026 participants.
 Applicants are welcome to reach out to us on our
-[Discord](https://opensciencelabs.org/discord).
+[Discord](/ideas/open-science-labs/discord).
 
 ## Sub-Organizations[ #](https://opensciencelabs.org#sub-organizations)
 
@@ -41,4 +41,4 @@ touch with them directly if you have any inquiries.*
 
 ### Sugar (swarm-external-secrets)[ #](https://opensciencelabs.org#sugar-swarm-external-secrets)
 
-**Description**: swarm-external-secrets is a Docker plugin that bridges external secrets management systems with Docker Swarm's native secrets infrastructure.**Project WEB Page**:[https://sugar-org.github.io/swarm-external-secrets/](https://sugar-org.github.io/swarm-external-secrets/)**Repository**:[https://github.com/sugar-org/swarm-external-secrets](https://github.com/sugar-org/swarm-external-secrets)**Communication channel**:[Discord](https://opensciencelabs.org/discord)**Project Ideas**:[link](https://github.com/sugar-org/swarm-external-secrets/wiki/Project-Ideas)
+**Description**: swarm-external-secrets is a Docker plugin that bridges external secrets management systems with Docker Swarm's native secrets infrastructure.**Project WEB Page**:[https://sugar-org.github.io/swarm-external-secrets/](https://sugar-org.github.io/swarm-external-secrets/)**Repository**:[https://github.com/sugar-org/swarm-external-secrets](https://github.com/sugar-org/swarm-external-secrets)**Communication channel**:[Discord](/ideas/open-science-labs/discord)**Project Ideas**:[link](https://github.com/sugar-org/swarm-external-secrets/wiki/Project-Ideas)

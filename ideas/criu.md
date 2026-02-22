@@ -1,7 +1,7 @@
 # CRIU — Project Ideas
 
 **Source:** https://criu.org/Google_Summer_of_Code_Ideas
-**Scraped:** 2026-02-20T11:48:56.931981
+**Scraped:** 2026-02-22T23:28:47.590723
 
 ---
 
@@ -17,7 +17,7 @@ This page contains project ideas for upcoming Google Summer of Code.
 
 ## Contact[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=1)]
 
-First, make sure to go through the [GSoC Students Recommendations](https://criu.org/GSoC_Students_Recommendations). Once you build CRIU locally and C/R a simple process successfully, please contact the respective mentor for the idea you are interested in. For general questions feel free to send an email to the [mailing list](mailto:criu@lists.linux.dev) or write in [gitter](https://gitter.im/save-restore/criu).
+First, make sure to go through the [GSoC Students Recommendations](/ideas/criu/gsoc_students_recommendations). Once you build CRIU locally and C/R a simple process successfully, please contact the respective mentor for the idea you are interested in. For general questions feel free to send an email to the [mailing list](mailto:criu@lists.linux.dev) or write in [gitter](https://gitter.im/save-restore/criu).
 
 ## Project ideas[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=2)]
 
@@ -214,7 +214,7 @@ NFS support is already implemented in Virtuozzo CRIU, but it's very beneficial t
 
 ### Anonymise image files[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=13)]
 
-**Summary:** Teach [CRIT](https://criu.org/CRIT) to remove sensitive information from images
+**Summary:** Teach [CRIT](/ideas/criu/crit) to remove sensitive information from images
 
 When reporting a BUG it may be not acceptable for the reporter to send us raw images, as they may contain sensitive data. Need to teach CRIT to "anonymise" images for publication.
 
@@ -231,7 +231,7 @@ List of data to shred:
 
 **Links:**
 
-[Anonymize image files](https://criu.org/Anonymize_image_files)[https://github.com/checkpoint-restore/criu/issues/360](https://github.com/checkpoint-restore/criu/issues/360)[CRIT](https://criu.org/CRIT),[Images](https://criu.org/Images)- External links to mailing lists or web sites
+[Anonymize image files](/ideas/criu/anonymize_image_files)[https://github.com/checkpoint-restore/criu/issues/360](https://github.com/checkpoint-restore/criu/issues/360)[CRIT](/ideas/criu/crit),[Images](/ideas/criu/images)- External links to mailing lists or web sites
 
 **Details:**
 
@@ -248,7 +248,7 @@ If this option is enabled, then all data output on this socket is accumulated in
 
 Currently criu refuses to dump this case, so it's effectively a bug. Supporting
 this will need extending the kernel API to allow criu read back the write queue
-of the socket (see [how it's done](https://criu.org/TCP_connection) for TCP sockets, for example). Then
+of the socket (see [how it's done](/ideas/criu/tcp_connection) for TCP sockets, for example). Then
 the queue is written into the image and is restored into the socket (with the CORK
 bit set too).
 
@@ -264,7 +264,7 @@ We still have one idea we didn't try, as UDP allows packets to be lost on the wa
 
 **Links:**
 
-[https://github.com/checkpoint-restore/criu/issues/409](https://github.com/checkpoint-restore/criu/issues/409)[https://github.com/criupatchwork/criu/commit/a532312](https://github.com/criupatchwork/criu/commit/a532312)[Sockets](https://criu.org/Sockets),[TCP connection](https://criu.org/TCP_connection)- [
+[https://github.com/checkpoint-restore/criu/issues/409](https://github.com/checkpoint-restore/criu/issues/409)[https://github.com/criupatchwork/criu/commit/a532312](https://github.com/criupatchwork/criu/commit/a532312)[Sockets](/ideas/criu/sockets),[TCP connection](/ideas/criu/tcp_connection)- [
 [UDP cork explained](https://groups.google.com/forum/#!topic/comp.os.linux.networking/Uz8PYiTCZSg)]
 
 **Details:**

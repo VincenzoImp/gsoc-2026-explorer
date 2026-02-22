@@ -1,7 +1,7 @@
 # Joplin — Project Ideas
 
 **Source:** https://github.com/joplin/gsoc/blob/master/ideas.md
-**Scraped:** 2026-02-20T11:48:56.941923
+**Scraped:** 2026-02-22T23:28:47.624835
 
 ---
 
@@ -164,6 +164,6 @@ Implement device-to-device synchronisation (LAN Sync). The applications can alre
 
 ## More info
 
-- Make sure you read the [Joplin Google Summer of Code Introduction](https://github.com/joplin/gsoc/blob/main/readme.md)
+- Make sure you read the [Joplin Google Summer of Code Introduction](/ideas/joplin/joplin-gsoc-blob-main-readme)
 - To build the application, please read [BUILD.md](https://github.com/laurent22/joplin/blob/dev/readme/dev/BUILD.md)
-- And before creating a pull request, please read the [pull request guidelines](https://github.com/joplin/gsoc/blob/main/pull_request_guidelines.md)
+- And before creating a pull request, please read the [pull request guidelines](/ideas/joplin/joplin-gsoc-blob-main-pull_request_guidelines)

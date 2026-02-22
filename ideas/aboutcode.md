@@ -1,20 +1,20 @@
 # AboutCode — Project Ideas
 
 **Source:** https://github.com/aboutcode-org/aboutcode/wiki/GSOC-2026-project-ideas
-**Scraped:** 2026-02-20T11:48:56.929785
+**Scraped:** 2026-02-22T23:28:47.606808
 
 ---
 
 -
 -
 [Notifications](https://github.com/login?return_to=%2Faboutcode-org%2Faboutcode)You must be signed in to change notification settings -
-[Fork 234](https://github.com/login?return_to=%2Faboutcode-org%2Faboutcode)
+[Fork 237](https://github.com/login?return_to=%2Faboutcode-org%2Faboutcode)
 
 # GSOC 2026 Project Ideas
 
 [1 revision](https://github.com/aboutcode-org/aboutcode/wiki/GSOC-2026-Project-Ideas/_history)
 
-See our page on applying for GSoC 2026: [https://github.com/aboutcode-org/aboutcode/wiki/GSOC-2026](https://github.com/aboutcode-org/aboutcode/wiki/GSOC-2026)
+See our page on applying for GSoC 2026: [https://github.com/aboutcode-org/aboutcode/wiki/GSOC-2026](/ideas/aboutcode/gsoc-2026)
 
 [Project Ideas Index](https://github.com#project-ideas-index)[PURLdb project ideas](https://github.com#purldb-project-ideas)[vulnerablecode project ideas](https://github.com#vulnerablecode-project-ideas)[scancode.io projects ideas](https://github.com#scancodeio-project-ideas)[scancode-toolkit project ideas](https://github.com#scancode-toolkit-project-ideas)[About our Project Ideas List](https://github.com#our-project-ideas)
 
@@ -22,7 +22,7 @@ Here is a list of candidate project ideas for your consideration. Your own ideas
 
 [scancode-toolkit](https://github.com/aboutcode-org/scancode-toolkit): [project ideas](https://github.com#scancode-toolkit-project-ideas)
 
-Archived Project Ideas: [https://github.com/aboutcode-org/aboutcode/wiki/Archived-GSoC-Project-Ideas](https://github.com/aboutcode-org/aboutcode/wiki/Archived-GSoC-Project-Ideas)
+Archived Project Ideas: [https://github.com/aboutcode-org/aboutcode/wiki/Archived-GSoC-Project-Ideas](/ideas/aboutcode/archived-gsoc-project-ideas)
 
 We use these now and then:
 
@@ -247,7 +247,7 @@ There are three project lengths:
 If you are proposing an idea from this ideas list, it should match what is listed here,
 and additionally please have a discussion with the mentors about your proposed length
 and timeline. Please also open a discussion about the same, if not already present,
-at [https://github.com/aboutcode-org/aboutcode/discussions/categories/gsoc](https://github.com/aboutcode-org/aboutcode/discussions/categories/gsoc) or discuss this in
+at [https://github.com/aboutcode-org/aboutcode/discussions/categories/gsoc](/ideas/aboutcode/aboutcode-org-aboutcode-discussions-categories-gsoc) or discuss this in
 the respective issues.
 
 We have marked our ideas with medium/large based on general estimates, but this could vary. In a few cases they are both used to mark a project as it can be both. We have made conscious effort to make sure projects are not too large, have clear deliverables and can be finished successfully, but still note that these are complex projects and you're likely underestimating the complexity (and how much we'll bug you to make sure everything is up to our standards).
@@ -274,7 +274,7 @@ Most other intermediate projects do not require this much domain knowledge and c
 
 There are also easy projects which only require honest time and effort from the participant, and decent knowledge about the tech stack/problem.
 
-Please feel free to chime in at [https://github.com/aboutcode-org/aboutcode/discussions/133](https://github.com/aboutcode-org/aboutcode/discussions/133)
+Please feel free to chime in at [https://github.com/aboutcode-org/aboutcode/discussions/133](/ideas/aboutcode/aboutcode-org-aboutcode-discussions-133)
 or in our GSoC 2026 chatroom at [https://matrix.to/#/#aboutcode-org_gsoc2026:gitter.im](https://matrix.to/#/#aboutcode-org_gsoc2026:gitter.im)
 if you have any questions related to AboutCode's participation in GSoC
 or anything in this page.

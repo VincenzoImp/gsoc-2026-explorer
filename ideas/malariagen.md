@@ -1,29 +1,29 @@
 # MalariaGEN — Project Ideas
 
 **Source:** https://docs.google.com/document/d/178LEZEsC0xbknHDId83k5XzIDRtnyVw243Ta0fhlvPM/edit?tab=t.0
-**Scraped:** 2026-02-20T12:04:22.485651
+**Scraped:** 2026-02-22T23:28:47.598069
 
 ---
 
-Main website: [https://summerofcode.withgoogle.com/](https://www.google.com/url?q=https://summerofcode.withgoogle.com/&sa=D&source=editors&ust=1771589062287563&usg=AOvVaw3nB9SfiolLaWFeD3yqeaNi)
+Main website: [https://summerofcode.withgoogle.com/](https://www.google.com/url?q=https://summerofcode.withgoogle.com/&sa=D&source=editors&ust=1771801764242197&usg=AOvVaw2DDwHovWDArbmkOQs7Tn6e)
 
 Terms and conditions:
 
-Rules: [https://summerofcode.withgoogle.com/rules](https://www.google.com/url?q=https://summerofcode.withgoogle.com/rules&sa=D&source=editors&ust=1771589062287907&usg=AOvVaw2l-Z469idHNc502YjaXf-X)
+Rules: [https://summerofcode.withgoogle.com/rules](https://www.google.com/url?q=https://summerofcode.withgoogle.com/rules&sa=D&source=editors&ust=1771801764242425&usg=AOvVaw0qZYzfscqeNNphMSStC9Ui)
 
-For organisations: [https://summerofcode.withgoogle.com/terms/org](https://www.google.com/url?q=https://summerofcode.withgoogle.com/terms/org&sa=D&source=editors&ust=1771589062288170&usg=AOvVaw06TRp7dzqqFFgdFPGQ58rX)
+For organisations: [https://summerofcode.withgoogle.com/terms/org](https://www.google.com/url?q=https://summerofcode.withgoogle.com/terms/org&sa=D&source=editors&ust=1771801764242581&usg=AOvVaw33VnUjUDDZBwUbomeTJR5q)
 
-For participants: [https://summerofcode.withgoogle.com/terms/member](https://www.google.com/url?q=https://summerofcode.withgoogle.com/terms/member&sa=D&source=editors&ust=1771589062288450&usg=AOvVaw2HF9sFlPcfd5RHSrfZBdO4)
+For participants: [https://summerofcode.withgoogle.com/terms/member](https://www.google.com/url?q=https://summerofcode.withgoogle.com/terms/member&sa=D&source=editors&ust=1771801764242791&usg=AOvVaw21n8KXIhNcCoIj4FbZLRNP)
 
-Timeline: [https://developers.google.com/open-source/gsoc/timeline](https://www.google.com/url?q=https://developers.google.com/open-source/gsoc/timeline&sa=D&source=editors&ust=1771589062288744&usg=AOvVaw3zdfsfXg8QDmlujjlByY5F)
+Timeline: [https://developers.google.com/open-source/gsoc/timeline](https://www.google.com/url?q=https://developers.google.com/open-source/gsoc/timeline&sa=D&source=editors&ust=1771801764242972&usg=AOvVaw3Fn6u-YvOKOpssyJH8oEKc)
 
-Contributor guides: [https://google.github.io/gsocguides/student/](https://www.google.com/url?q=https://google.github.io/gsocguides/student/&sa=D&source=editors&ust=1771589062289015&usg=AOvVaw3wPoC3wCuHAcIFZ6Bh7o4e)
+Contributor guides: [https://google.github.io/gsocguides/student/](https://www.google.com/url?q=https://google.github.io/gsocguides/student/&sa=D&source=editors&ust=1771801764243138&usg=AOvVaw33XtdApOR6phIwpBRIEH14)
 
 —
 
-Hi, thanks for your interest in working together on this year's GSoC! We encourage you to browse through the project ideas below and explore the linked resources to get a sense of what we do and some of the ideas we hope to develop together this summer. The main place to learn about the MalariaGEN Vector Observatory is our website: [https://www.malariagen.net/vobs](https://www.google.com/url?q=https://www.malariagen.net/vobs&sa=D&source=editors&ust=1771589062289920&usg=AOvVaw3aCXc_TurKAg6V41Glfl6o) which links all the resources that we have developed to access and analyse mosquito data – we encourage you to browse through our training resources as we have helpful documentation and additional details about the challenges that are important to our community, built around data sharing and lowering the barrier to technical analysis and use of genomic data relevant to reduce the burden of infectious diseases globally.
+Hi, thanks for your interest in working together on this year's GSoC! We encourage you to browse through the project ideas below and explore the linked resources to get a sense of what we do and some of the ideas we hope to develop together this summer. The main place to learn about the MalariaGEN Vector Observatory is our website: [https://www.malariagen.net/vobs](https://www.google.com/url?q=https://www.malariagen.net/vobs&sa=D&source=editors&ust=1771801764243825&usg=AOvVaw3vIDKnNQu2fUZ4__ajMVjZ) which links all the resources that we have developed to access and analyse mosquito data – we encourage you to browse through our training resources as we have helpful documentation and additional details about the challenges that are important to our community, built around data sharing and lowering the barrier to technical analysis and use of genomic data relevant to reduce the burden of infectious diseases globally.
 
-If you are interested in developing a proposal for any of the ideas below, we encourage you to look through our repository: [https://github.com/malariagen/malariagen-data-python](https://www.google.com/url?q=https://github.com/malariagen/malariagen-data-python&sa=D&source=editors&ust=1771589062291038&usg=AOvVaw1EJ4s4mHzo0UF6HlcSy1jO) which allows to access and analyse genomic data without the need to download locally or for dedicated compute resources, both of which are major barriers for analysts in malaria endemic settings. We ask you to browse through the code, and current open issues to familiarise yourself with the technical challenges within the package. To ensure you have a sense of our architecture, we ask for potential GSoC contributors to contribute to the package via a PR, this can be around anything that seems of value to you within the current architecture, on existing or newly identified issues and ideas.
+If you are interested in developing a proposal for any of the ideas below, we encourage you to look through our repository: [https://github.com/malariagen/malariagen-data-python](https://www.google.com/url?q=https://github.com/malariagen/malariagen-data-python&sa=D&source=editors&ust=1771801764244483&usg=AOvVaw3Ga1BVNoT8W-C4Px-2ztpD) which allows to access and analyse genomic data without the need to download locally or for dedicated compute resources, both of which are major barriers for analysts in malaria endemic settings. We ask you to browse through the code, and current open issues to familiarise yourself with the technical challenges within the package. To ensure you have a sense of our architecture, we ask for potential GSoC contributors to contribute to the package via a PR, this can be around anything that seems of value to you within the current architecture, on existing or newly identified issues and ideas.
 
 After you have contributed and started developing your idea on how you would like to tackle the project of your choice, please do get in touch via [support@malariagen.net](mailto:support@malariagen.net) (please include GSoC26 on the header of your email, your GitHub username with URL to the PR/PRs you have contributed, which project you are interested in and a skeleton of ideas/proposed approaches you have for this project), we will then put you in contact with one of the mentors who will be on hand to comment on your ideas and answer questions while you develop your proposal.
 
@@ -47,9 +47,9 @@ For this project, we are looking for contributors who have an interest in expand
 Further reading:
 
 - Source code:
-[https://github.com/malariagen/malariagen-data-python](https://www.google.com/url?q=https://github.com/malariagen/malariagen-data-python&sa=D&source=editors&ust=1771589062298555&usg=AOvVaw1Lk2gdgruxPNariI_y8rHP) - Malaria Vector Genome Observatory:
-[https://www.malariagen.net/vobs](https://www.google.com/url?q=https://www.malariagen.net/vobs&sa=D&source=editors&ust=1771589062298842&usg=AOvVaw0bo7UhbPDags2xODX4WJya) - Training course showcasing data analysis with the malariagen_data API:
-[https://anopheles-genomic-surveillance.github.io/home.html](https://www.google.com/url?q=https://anopheles-genomic-surveillance.github.io/home.html&sa=D&source=editors&ust=1771589062299230&usg=AOvVaw1Zm0G5CYhfCc_qnVtR3zMx)
+[https://github.com/malariagen/malariagen-data-python](https://www.google.com/url?q=https://github.com/malariagen/malariagen-data-python&sa=D&source=editors&ust=1771801764249148&usg=AOvVaw2k3yQce4yL5pnSpQX4c4hN) - Malaria Vector Genome Observatory:
+[https://www.malariagen.net/vobs](https://www.google.com/url?q=https://www.malariagen.net/vobs&sa=D&source=editors&ust=1771801764249317&usg=AOvVaw0CeU_kwUx7ozdobdRkROBk) - Training course showcasing data analysis with the malariagen_data API:
+[https://anopheles-genomic-surveillance.github.io/home.html](https://www.google.com/url?q=https://anopheles-genomic-surveillance.github.io/home.html&sa=D&source=editors&ust=1771801764249546&usg=AOvVaw1xJy3rwwdm_-wqLOLi1hsN)
 
 Mentors | Jon Brenas, Tristan Dennis |
 Size | Medium (175 hours) |
@@ -65,8 +65,8 @@ This project aims to develop a FASTQ-based taxon identification tool that operat
 Further reading:
 
 - Source code:
-[https://github.com/malariagen/malariagen-data-python](https://www.google.com/url?q=https://github.com/malariagen/malariagen-data-python&sa=D&source=editors&ust=1771589062304337&usg=AOvVaw0FcN2jf1gGeo-mOsyp80U5) - Malaria Genome Vector Observatory:
-[https://www.malariagen.net/vobs](https://www.google.com/url?q=https://www.malariagen.net/vobs&sa=D&source=editors&ust=1771589062304633&usg=AOvVaw0OOAnOamWafY4OG0cbzV7_)
+[https://github.com/malariagen/malariagen-data-python](https://www.google.com/url?q=https://github.com/malariagen/malariagen-data-python&sa=D&source=editors&ust=1771801764252727&usg=AOvVaw2nY2Pg9vOV8mvP1NxhJOrh) - Malaria Genome Vector Observatory:
+[https://www.malariagen.net/vobs](https://www.google.com/url?q=https://www.malariagen.net/vobs&sa=D&source=editors&ust=1771801764252898&usg=AOvVaw1UhhpiSHN9J32NMlyU0Itk)
 
 Mentors | Jon Brenas, Chris Clarkson, Anastasia Hernandez-Koutoucheva |
 Size | Medium (175 hours) |
@@ -82,5 +82,5 @@ This project aims to develop an intuitive, natural-language interface for queryi
 Further reading:
 
 - Source code:
-[https://github.com/malariagen/malariagen-data-python](https://www.google.com/url?q=https://github.com/malariagen/malariagen-data-python&sa=D&source=editors&ust=1771589062309503&usg=AOvVaw2QLmqFpqDfOrzOXugiqefA) - Malaria Genome Vector Observatory:
-[https://www.malariagen.net/vobs](https://www.google.com/url?q=https://www.malariagen.net/vobs&sa=D&source=editors&ust=1771589062309817&usg=AOvVaw3h12Kq2PkItaXK3--dqVQp)
+[https://github.com/malariagen/malariagen-data-python](https://www.google.com/url?q=https://github.com/malariagen/malariagen-data-python&sa=D&source=editors&ust=1771801764255813&usg=AOvVaw2B5JHuhzLZo7lVNl-qS-dS) - Malaria Genome Vector Observatory:
+[https://www.malariagen.net/vobs](https://www.google.com/url?q=https://www.malariagen.net/vobs&sa=D&source=editors&ust=1771801764255977&usg=AOvVaw3mEzsAo8ha1fV8R3wfc3Ae)

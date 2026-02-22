@@ -1,7 +1,7 @@
 # QEMU — Project Ideas
 
 **Source:** https://wiki.qemu.org/Google_Summer_of_Code_2026
-**Scraped:** 2026-02-20T12:08:41.274419
+**Scraped:** 2026-02-22T23:28:47.605772
 
 ---
 

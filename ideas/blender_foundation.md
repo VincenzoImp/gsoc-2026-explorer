@@ -1,7 +1,7 @@
 # Blender Foundation — Project Ideas
 
 **Source:** https://developer.blender.org/docs/programs/gsoc/ideas/
-**Scraped:** 2026-02-20T11:48:56.940054
+**Scraped:** 2026-02-22T23:28:47.628688
 
 ---
 
@@ -35,7 +35,7 @@ the current development direction, see:
 
 [Code Blog](https://code.blender.org/)- Design and todo tasks listed in the Workboards of
 [Blender modules](https://projects.blender.org/) - GSoC projects from previous years:
-[2025](https://developer.blender.org/2025/)-[2024](https://developer.blender.org/2024/)-[2023](https://developer.blender.org/2023/)-[2022](https://developer.blender.org/2022/)-[2021](https://developer.blender.org/2021/)-[2020](https://developer.blender.org/2020/)-[2019](https://developer.blender.org/2019/) [Release Notes](https://developer.blender.org/release_notes/)
+[2025](/ideas/blender-foundation/2025)-[2024](/ideas/blender-foundation/2024)-[2023](/ideas/blender-foundation/2023)-[2022](/ideas/blender-foundation/2022)-[2021](/ideas/blender-foundation/2021)-[2020](/ideas/blender-foundation/2020)-[2019](/ideas/blender-foundation/2019) [Release Notes](/ideas/blender-foundation/release_notes)
 
 ### Mentors[¶](https://developer.blender.org#mentors)
 
@@ -44,7 +44,7 @@ A mentor should be someone with Blender coding experience, who can guide a contr
 ### Contributors[¶](https://developer.blender.org#contributors)
 
 Contributors who wish to apply should first carefully read the [Getting
-Started page](https://developer.blender.org/getting_started/) and check if all the
+Started page](/ideas/blender-foundation/getting_started) and check if all the
 conditions to participate are met.
 
 If by some reason you can not participate, your contribution outside of the program is still welcome! Feel free to develop an idea from the page as long as no contributor chose it.

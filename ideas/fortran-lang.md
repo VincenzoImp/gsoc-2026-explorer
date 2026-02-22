@@ -1,7 +1,7 @@
 # Fortran-lang — Project Ideas
 
 **Source:** https://github.com/fortran-lang/webpage/wiki/GSoC-2026-Project-ideas
-**Scraped:** 2026-02-20T11:48:56.915876
+**Scraped:** 2026-02-22T23:28:47.580071
 
 ---
 
@@ -13,7 +13,7 @@ NOTE: Please update the Project Index if a project is added, removed or renamed.
 
 Welcome to the Fortran-Lang ideas page for contributors applying for Google Summer of Code (GSoC).
 If you are interested in applying for GSoC, see the
-[Contributor Instructions](https://github.com/fortran-lang/webpage/wiki/GSoC‐2026‐Contributor‐Instructions)
+[Contributor Instructions](/ideas/fortran-lang/gsoc-2026-contributor-instructions)
 for more information on how to apply.
 
 The list here is based on priorities identified by Fortran-Lang contributors and should inform you
@@ -28,7 +28,7 @@ Please familiarize yourself with each repository before exploring the ideas here
 We are not limited to the project ideas listed on this page.
 If you have your own project idea that is not listed here, let us know.
 
-Contacts for prospective mentors: [Mentors list](https://github.com/fortran-lang/webpage/wiki/GSoC-2026-Mentors)
+Contacts for prospective mentors: [Mentors list](/ideas/fortran-lang/gsoc-2026-mentors)
 
 ## Project Index
 

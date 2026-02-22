@@ -1,7 +1,7 @@
 # KolibriOS Project Team — Project Ideas
 
 **Source:** https://wiki.kolibrios.org/wiki/Ideas_Page
-**Scraped:** 2026-02-20T11:48:56.939908
+**Scraped:** 2026-02-22T23:28:47.588697
 
 ---
 
@@ -19,7 +19,7 @@ A general information about Google Summer of Code can be found here: [Google Sum
 
 ## Google Summer of Code'26 Contributor Requirements
 
-Prospective contributors are required to register [on our developers forum](https://board.kolibrios.org) and submit a small bugfix / improvement [to our Git](https://wiki.kolibrios.org/wiki/Get_source_code) in order for their application to be considered. Examples of such tasks can be obtained by asking on the developers forum or on our IRC channel (#kolibrios @ irc.libera.chat), [Discord server](https://discord.com/invite/FeB2NvE6bF) or [Telegram chat](https://t.me/kolibri_os). This requirement is only to show us that you are able to work with [our Git](https://wiki.kolibrios.org/wiki/Get_source_code) and interact with our developers if you are selected.
+Prospective contributors are required to register [on our developers forum](https://board.kolibrios.org) and submit a small bugfix / improvement [to our Git](/ideas/kolibrios-project-team/get_source_code) in order for their application to be considered. Examples of such tasks can be obtained by asking on the developers forum or on our IRC channel (#kolibrios @ irc.libera.chat), [Discord server](https://discord.com/invite/FeB2NvE6bF) or [Telegram chat](https://t.me/kolibri_os). This requirement is only to show us that you are able to work with [our Git](/ideas/kolibrios-project-team/get_source_code) and interact with our developers if you are selected.
 
 **This task has to be completed before contributor proposal deadline (8 April 18:00 UTC).**
 
@@ -52,7 +52,7 @@ Role
 | Ivan Baravy |
 |
 
-[hidnplayr](https://wiki.kolibrios.org/wiki/User:Hidnplayr)[Punk_Joker](https://wiki.kolibrios.org/wiki/User:Punk_Joker)[Leency](https://wiki.kolibrios.org/wiki/User:Leency)## Ideas
+[hidnplayr](/ideas/kolibrios-project-team/user-hidnplayr)[Punk_Joker](/ideas/kolibrios-project-team/user-punk_joker)[Leency](/ideas/kolibrios-project-team/user-leency)## Ideas
 
 | Idea Name | Area | Programming Language | Mentors |
 |---|---|---|---|
@@ -381,7 +381,7 @@ Below are examples of ideas successfully completed during KolibriOS's previous p
 
 [SDL2 library port](https://summerofcode.withgoogle.com/programs/2024/projects/U7cf4oma)was succesfully completed by[arnavbhatt288](https://board.kolibrios.org/memberlist.php?mode=viewprofile&u=14954).[NVMe driver implementation](https://summerofcode.withgoogle.com/programs/2024/projects/W1VYwf7j)was succesfully completed by[ramenu](https://board.kolibrios.org/memberlist.php?mode=viewprofile&u=15061).
 
-For more information see [GSoC 2024 Results](https://wiki.kolibrios.org/wiki/GSoC_2024_Results).
+For more information see [GSoC 2024 Results](/ideas/kolibrios-project-team/gsoc_2024_results).
 KolibriOS Project Team at [GSOC'2024](https://summerofcode.withgoogle.com/archive/2024/organizations/kolibrios-project-team).
 
 ### GSoC 2016
@@ -408,7 +408,7 @@ KolibriOS Project Team at [GSOC'2014](https://www.google-melange.com/archive/gso
 
 ## I'm a potential GSoC contributor. I'm scared of all the assembly and docs here! Where should I start?! :'(
 
-Start here : [http://wiki.kolibrios.org/wiki/HowTo](http://wiki.kolibrios.org/wiki/HowTo)
+Start here : [http://wiki.kolibrios.org/wiki/HowTo](/ideas/kolibrios-project-team/howto)
 This will help you set up KolibriOS. Easiest will be to use either Qemu or VirtualBox as most developers use it and thus will be able to help you with eventual problems. Feel free however to try something else and let us know how it goes!
 
 ## I'm a potential GSoC contributor. What is this test task?!

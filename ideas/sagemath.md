@@ -1,13 +1,13 @@
 # SageMath — Project Ideas
 
 **Source:** https://wiki.sagemath.org/GSoC/2026
-**Scraped:** 2026-02-20T17:49:44.999253
+**Scraped:** 2026-02-22T23:28:47.599784
 
 ---
 
 ## Introduction
 
-Welcome to [SageMath](https://wiki.sagemath.org/SageMath)'s Ideas Page for GSoC 2026! ([Last year 2025](https://wiki.sagemath.org/GSoC/2025))
+Welcome to [SageMath](/ideas/sagemath/sagemath)'s Ideas Page for GSoC 2026! ([Last year 2025](/ideas/sagemath/2025))
 
 The [Timeline](https://summerofcode.withgoogle.com/how-it-works/#timeline) for GSoC 2026.
 
@@ -15,9 +15,9 @@ Make sure you have gone through the ** information regarding application procedu
 
 [sage-gsoc](https://groups.google.com/forum/#!forum/sage-gsoc)mailing list and the Sage developer list. Archives of past GSoC project ideas can be found
 
-[here](https://wiki.sagemath.org/GSoC).
+[here](/ideas/sagemath/gsoc).
 
-We also **require** you to show us that you are able to execute actual development by submitting a relevant Pull Request and/or reviewing a Pull Request of the project you are interested in applying to. The [developer guide](http://doc.sagemath.org/html/en/developer/index.html) is a great comprehensive resource that can guide you through your first steps in contributing to [SageMath](https://wiki.sagemath.org/SageMath).
+We also **require** you to show us that you are able to execute actual development by submitting a relevant Pull Request and/or reviewing a Pull Request of the project you are interested in applying to. The [developer guide](http://doc.sagemath.org/html/en/developer/index.html) is a great comprehensive resource that can guide you through your first steps in contributing to [SageMath](/ideas/sagemath/sagemath).
 
 Apart from the project ideas listed below, there is also a wishlist for new features in our [open GitHub Issues](https://github.com/sagemath/sage/issues?q=sort%3Aupdated-desc+is%3Aopen). They might contain or inspire the perfect project idea for you that we didn't even think about! Note that projects can be one of three lengths:
 
@@ -47,7 +47,7 @@ Contents
 
 # Project Ideas
 
-Here is a list of project proposals with identified mentors. Other well-motivated proposals from prospective contributors involving [SageMath](https://wiki.sagemath.org/SageMath) in a substantial way will be gladly considered, as well.
+Here is a list of project proposals with identified mentors. Other well-motivated proposals from prospective contributors involving [SageMath](/ideas/sagemath/sagemath) in a substantial way will be gladly considered, as well.
 
 
 ## Coordinate the graded commutative algebra and exterior algebra implementations and Gröbner bases
@@ -63,7 +63,7 @@ Length |
 Difficulty |
 Medium-hard |
 
-A graded commutative algebra (GCA) is an algebra where the even generators commute and the odd generators skew-commute. The implementation currently relies on singular's library [plural](https://www.singular.uni-kl.de/Manual/4-0-2/sing_469.htm) as a quotient ring of a g-algebra. [SageMath](https://wiki.sagemath.org/SageMath) has a native implementation of the exterior algebra, but it does not interface well with the GCA implementation. The primary goal of this project would be to improve the interaction between the two implementations; likely with a native implementation of GCAs. A second goal would be to improve the implementation of [SageMath](https://wiki.sagemath.org/SageMath)'s implementation of Gröbner bases for the exterior algebra, which is currently quite slow (see, e.g., [#34437](https://github.com/sagemath/sage/issues/34437)). For the ambitious, these computations would be extracted to an independent C++ library for many common rings (implemented using other libraries).
+A graded commutative algebra (GCA) is an algebra where the even generators commute and the odd generators skew-commute. The implementation currently relies on singular's library [plural](https://www.singular.uni-kl.de/Manual/4-0-2/sing_469.htm) as a quotient ring of a g-algebra. [SageMath](/ideas/sagemath/sagemath) has a native implementation of the exterior algebra, but it does not interface well with the GCA implementation. The primary goal of this project would be to improve the interaction between the two implementations; likely with a native implementation of GCAs. A second goal would be to improve the implementation of [SageMath](/ideas/sagemath/sagemath)'s implementation of Gröbner bases for the exterior algebra, which is currently quite slow (see, e.g., [#34437](https://github.com/sagemath/sage/issues/34437)). For the ambitious, these computations would be extracted to an independent C++ library for many common rings (implemented using other libraries).
 
 
 ## Add additional combinatorial (Hopf) algebras and additional bases
@@ -79,7 +79,7 @@ Length |
 Difficulty |
 Medium |
 
-There are a number of combinatorial Hopf algebras (CHAs) currently implemented in [SageMath](https://wiki.sagemath.org/SageMath). However, there are a number of bases that are known and not yet implemented. For example, the double Schurs (as defined by Molev), and (weak) dual (canonical) Grothendiecks. There are also a number of related non-symmetric but still important polynomials that [SageMath](https://wiki.sagemath.org/SageMath) would benefit from providing. The goal of this project is to implement more of these bases and combinatorial (Hopf) algebras.
+There are a number of combinatorial Hopf algebras (CHAs) currently implemented in [SageMath](/ideas/sagemath/sagemath). However, there are a number of bases that are known and not yet implemented. For example, the double Schurs (as defined by Molev), and (weak) dual (canonical) Grothendiecks. There are also a number of related non-symmetric but still important polynomials that [SageMath](/ideas/sagemath/sagemath) would benefit from providing. The goal of this project is to implement more of these bases and combinatorial (Hopf) algebras.
 
 
 ## Refactor the diagram algebras/monoids and add new ones
@@ -111,7 +111,7 @@ Length |
 Difficulty |
 Medium-easy |
 
-[SageMath](https://wiki.sagemath.org/SageMath) has multiple implementations of free modules:
+[SageMath](/ideas/sagemath/sagemath) has multiple implementations of free modules:
 
 1. Finite dimensional coordinate representations in the "standard" basis using `FreeModule` that provides both a dense and sparse implementation. 2. Using `CombinatorialFreeModule` (CFM) as (possibly infinite dimensional) sparse vectors.
 
@@ -229,7 +229,7 @@ Length |
 Difficulty |
 Easy |
 
-FriCAS provides some routines that guess a formula for a sequence given its first few values. While this is currently accessible via, for example, `fricas.guessPRec`, the result is not as easy to manipulate as it could be. To fix this, you will provide a method that transforms the result of such a routine into its [SageMath](https://wiki.sagemath.org/SageMath) equivalent.
+FriCAS provides some routines that guess a formula for a sequence given its first few values. While this is currently accessible via, for example, `fricas.guessPRec`, the result is not as easy to manipulate as it could be. To fix this, you will provide a method that transforms the result of such a routine into its [SageMath](/ideas/sagemath/sagemath) equivalent.
 
 
 ## Provide a direct interface to FriCAS

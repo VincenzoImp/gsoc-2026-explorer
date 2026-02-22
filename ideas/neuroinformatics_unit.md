@@ -1,7 +1,7 @@
 # Neuroinformatics Unit — Project Ideas
 
 **Source:** https://neuroinformatics.dev/get-involved/gsoc/2026
-**Scraped:** 2026-02-20T11:48:56.958107
+**Scraped:** 2026-02-22T23:28:47.579184
 
 ---
 
@@ -14,7 +14,7 @@ NIU is offering a variety of projects for GSoC 2026, organized under different s
 A project can be one of three sizes: small (90 h), medium (175 h) or large (350 h). The standard coding period is 12 weeks for medium and large projects, and 8 weeks for small projects.
 
 However, GSoC contributors can request in their proposal up to a 22-week coding period, if they know they may have other commitments or certain weeks when they will not be able to work full time on their GSoC project. During the project preparation period (called “community bonding period”), both the GSoC contributor and the mentors will agree on a schedule and sign off on it.
-For more details please see our [main GSoC page](https://neuroinformatics.dev/index.html). Please also see our [application guidelines](https://neuroinformatics.dev/guidelines.html) and our [policy on the use of AI](https://neuroinformatics.dev/ai_policy.html).
+For more details please see our [main GSoC page](/ideas/neuroinformatics-unit/index). Please also see our [application guidelines](https://neuroinformatics.dev/guidelines.html) and our [policy on the use of AI](https://neuroinformatics.dev/ai_policy.html).
 
 Our GSoC ideas are based within specific, larger open source packages we develop. Some of these have specific project ideas associated with them.
 Others do not yet have specific project ideas, but all on this list welcome ideas developed by GSoC participants. Please reach out to us via our [GSoc Zulip channel](https://neuroinformatics.zulipchat.com/#narrow/channel/487898-Google-Summer-of-Code) to discuss.

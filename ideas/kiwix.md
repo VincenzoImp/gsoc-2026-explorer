@@ -1,7 +1,7 @@
 # Kiwix — Project Ideas
 
 **Source:** https://kiwix.org/en/google-summer-of-code/
-**Scraped:** 2026-02-20T11:48:56.938381
+**Scraped:** 2026-02-22T23:28:47.614968
 
 ---
 
@@ -53,7 +53,7 @@ We want to be clear upfront that
 
 **we will not select candidates who have never made at least**: we make our choice based on how candidates handle themselves (is the code clear, are there comments, how do they explain their choices when asked,*one*PR to our codebase*etc.*). PRs do not need to be related to the project submitted – we just need to know that you can work in a team. If we don’t know you, we can’t choose you! And if your project has “UI” in it, then it probably is a good idea to submit a mockup of what you plan to implement.(We also wrote a helpful
 
-[guide to Writing your Google Summer of Code](https://kiwix.org/en/writing-your-google-summer-of-code-application/)application)Last but not least: over the years about half the contributors who did GSoC with Kiwix came up with their own project rather than one from our list â be
+[guide to Writing your Google Summer of Code](/ideas/kiwix/writing-your-google-summer-of-code-application)application)Last but not least: over the years about half the contributors who did GSoC with Kiwix came up with their own project rather than one from our list â be
 
 **bold**!### Do you have questions?
 

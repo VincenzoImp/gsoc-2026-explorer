@@ -1,7 +1,7 @@
 # Git — Project Ideas
 
 **Source:** https://git.github.io/SoC-2026-Ideas/
-**Scraped:** 2026-02-20T11:48:56.940989
+**Scraped:** 2026-02-22T23:28:47.567458
 
 ---
 
@@ -14,7 +14,7 @@ page before reading the idea list below.*
 generating proposals. We are also more than happy to receive proposals
 for other ideas related to Git. Make sure you have read the “Note
 about refactoring projects versus projects that implement new
-features” in the [general application information](https://git.github.io/General-Application-Information)
+features” in the [general application information](/ideas/git/general-application-information)
 page though.
 
 Kindly note that considering the bandwidth of available mentors, the Git project would only mentor up to 3 or 4 contributors this year.
@@ -63,8 +63,7 @@ reducing global state.
 [karthik.188@gmail.com](mailto:karthik.188@gmail.com)> - Justin Tobler <
 [jltobler@gmail.com](mailto:jltobler@gmail.com)> - Ayush Chandekar <
 [ayu.chandekar@gmail.com](mailto:ayu.chandekar@gmail.com)> - Siddharth Asthana <
-[siddharthasthana31@gmail.com](mailto:siddharthasthana31@gmail.com)> - Lucas Seiki Oshiro <
-[lucasseikioshiro@gmail.com](mailto:lucasseikioshiro@gmail.com)>
+[siddharthasthana31@gmail.com](mailto:siddharthasthana31@gmail.com)>
 
 `git repo`
 
@@ -159,8 +158,7 @@ familiarity with the codebase.
 [karthik.188@gmail.com](mailto:karthik.188@gmail.com)> - Justin Tobler <
 [jltobler@gmail.com](mailto:jltobler@gmail.com)> - Ayush Chandekar <
 [ayu.chandekar@gmail.com](mailto:ayu.chandekar@gmail.com)> - Siddharth Asthana <
-[siddharthasthana31@gmail.com](mailto:siddharthasthana31@gmail.com)> - Lucas Seiki Oshiro <
-[lucasseikioshiro@gmail.com](mailto:lucasseikioshiro@gmail.com)>
+[siddharthasthana31@gmail.com](mailto:siddharthasthana31@gmail.com)>
 
 Git’s partial clone feature allows users to clone repositories without downloading all objects immediately, which is particularly useful for very large repositories. Objects are fetched on-demand from “promisor remotes” as needed. However, over time, clients may accumulate large local blobs that are no longer needed but remain on disk, and currently there’s no easy way to reclaim this space.
 
@@ -218,8 +216,7 @@ demonstrate familiarity with the codebase.
 [karthik.188@gmail.com](mailto:karthik.188@gmail.com)> - Justin Tobler <
 [jltobler@gmail.com](mailto:jltobler@gmail.com)> - Siddharth Asthana <
 [siddharthasthana31@gmail.com](mailto:siddharthasthana31@gmail.com)> - Ayush Chandekar <
-[ayu.chandekar@gmail.com](mailto:ayu.chandekar@gmail.com)> - Lucas Seiki Oshiro <
-[lucasseikioshiro@gmail.com](mailto:lucasseikioshiro@gmail.com)>
+[ayu.chandekar@gmail.com](mailto:ayu.chandekar@gmail.com)>
 
 When a Git repository is configured with multiple promisor remotes, there’s currently no mechanism to specify or optimize the order in which these remotes should be queried when fetching missing objects. Different remotes may have different performance characteristics, costs, or reliability, making fetch order an important consideration.
 
@@ -255,8 +252,7 @@ and submit a micro-patch to demonstrate familiarity with the codebase.
 [karthik.188@gmail.com](mailto:karthik.188@gmail.com)> - Justin Tobler <
 [jltobler@gmail.com](mailto:jltobler@gmail.com)> - Siddharth Asthana <
 [siddharthasthana31@gmail.com](mailto:siddharthasthana31@gmail.com)> - Ayush Chandekar <
-[ayu.chandekar@gmail.com](mailto:ayu.chandekar@gmail.com)> - Lucas Seiki Oshiro <
-[lucasseikioshiro@gmail.com](mailto:lucasseikioshiro@gmail.com)>
+[ayu.chandekar@gmail.com](mailto:ayu.chandekar@gmail.com)>
 
 Currently, the promisor-remote protocol allows servers to advertise remotes that the server itself uses as promisor remotes. However, as suggested by Junio Hamano, it would be useful in some cases if servers could advertise “better-connected” remotes - remotes that might not be promisor remotes for the server but would be good choices for the client.
 
@@ -295,8 +291,7 @@ demonstrate familiarity with the codebase.
 [karthik.188@gmail.com](mailto:karthik.188@gmail.com)> - Justin Tobler <
 [jltobler@gmail.com](mailto:jltobler@gmail.com)> - Siddharth Asthana <
 [siddharthasthana31@gmail.com](mailto:siddharthasthana31@gmail.com)> - Ayush Chandekar <
-[ayu.chandekar@gmail.com](mailto:ayu.chandekar@gmail.com)> - Lucas Seiki Oshiro <
-[lucasseikioshiro@gmail.com](mailto:lucasseikioshiro@gmail.com)>
+[ayu.chandekar@gmail.com](mailto:ayu.chandekar@gmail.com)>
 
 `remote-object-info`
 
@@ -360,5 +355,4 @@ demonstrate familiarity with the codebase.
 - Justin Tobler < jltobler@gmail.com >
 - Ayush Chandekar < ayu.chandekar@gmail.com >
 - Siddharth Asthana < siddharthasthana31@gmail.com >
-- Lucas Seiki Oshiro < lucasseikioshiro@gmail.com >
 - Chandra Pratap < chandrapratap3519@gmail.com >

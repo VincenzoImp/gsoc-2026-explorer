@@ -1,7 +1,7 @@
 # Django Software Foundation — Project Ideas
 
 **Source:** https://code.djangoproject.com/wiki/SummerOfCode2026
-**Scraped:** 2026-02-20T11:48:56.953600
+**Scraped:** 2026-02-22T23:28:47.630604
 
 ---
 
@@ -128,7 +128,15 @@ In no particular order:
 | Mentors | Andrew Miller |
 | Key Skills | Python, Django, Documentation |
 
-The current development process of Django is slow. This is in part due to our commitment to backwards compatibility. This means it is hard to test a new feature API directly in django/django because if we get it wrong we can't easily change it. An experimental feature flag would help us overcome this, possibly making Django development faster
+The current development process of Django is slow. This is in part due to our commitment to backwards compatibility. This means it is hard to test a new feature API directly in django/django because if we get it wrong we can't easily change it. We would like to define what it would mean to add features considered experimental to django/django that would possibly make development of Django faster.
+
+An outcome of this would be updated processes and documentation around feature development process, followed by any code to support enabling experimental support for new features and for extending existing features. It will start by refreshing DEP 2: [https://github.com/django/deps/blob/main/draft/0002-experimental-apis.rst](https://github.com/django/deps/blob/main/draft/0002-experimental-apis.rst)
+
+There are multiple extension points to this project:
+
+- Extending to refreshing the re-usable apps tutorial and possibly providing a django app template repository.
+- Picking a suitable proposed feature to test the new process and code
+- Extending this feature to provide a public feature flag API inside django/django
 
 Complete discussion here: [https://github.com/django/new-features/issues/3](https://github.com/django/new-features/issues/3)
 
@@ -201,7 +209,7 @@ Project description including the expected outcome of the project.
 
 We have around 900 accepted tickets on Django. Browse the issue tracker by
 component — here's an
-[example filter for contrib.staticfiles](https://code.djangoproject.com/query?status=assigned&status=new&component=contrib.staticfiles&col=id&col=summary&col=status&col=owner&col=type&col=component&col=version&desc=1&order=id). What's the bit of the framework that interests you?
+[example filter for contrib.staticfiles](/ideas/django-software-foundation-8o/query). What's the bit of the framework that interests you?
 What contribution do you want to make to it?
 
 Use the tickets as guides here. Remember the advice above, that your project needs to be both on Django itself here, and achievable in the timescale of GSoC.
@@ -210,10 +218,10 @@ Could be scoped as a 175hr or a 350hr project, depending on your idea.
 
 We're open to all good ideas!
 
-[Last modified](https://code.djangoproject.com/wiki/SummerOfCode2026?action=diff&version=5)
+[Last modified](https://code.djangoproject.com/wiki/SummerOfCode2026?action=diff&version=6)
 
-[12 days ago](https://code.djangoproject.com/timeline?from=2026-02-08T16%3A07%3A24-06%3A00&precision=second)Last modified on Feb 8, 2026, 4:07:24 PM
+[27 hours ago](/ideas/django-software-foundation-8o/timeline)Last modified on Feb 21, 2026, 1:36:21 PM
 
 **Note:**See
 
-[TracWiki](https://code.djangoproject.com/wiki/TracWiki)for help on using the wiki.
+[TracWiki](/ideas/django-software-foundation-8o/tracwiki)for help on using the wiki.

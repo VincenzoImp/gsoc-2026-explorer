@@ -1,7 +1,7 @@
 # OSGeo (Open Source Geospatial Foundation) — Project Ideas
 
 **Source:** https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2026_Ideas
-**Scraped:** 2026-02-20T11:48:56.923836
+**Scraped:** 2026-02-22T23:28:47.546119
 
 ---
 
@@ -12,10 +12,10 @@
 [Jump to search](https://wiki.osgeo.org#searchInput)
 
 - Back to the main OSGeo
-[Google Summer of Code 2026](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2026)wiki page.
+[Google Summer of Code 2026](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2026)wiki page.
 
 - See also ideas from
-[2025](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2025_Ideas),[2024](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2024_Ideas),[2023](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2023_Ideas),[2022](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2022_Ideas),[2021](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2021_Ideas),[2020](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2020_Ideas),[2019](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2019_Ideas),[2018](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2018_Ideas),[2017](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2017_Ideas),[2016](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2016_Ideas),[2015](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2015_Ideas),[2014](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2014_Ideas),[2013](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2013_Ideas),[2012](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2012_Ideas),[2011](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2011_Ideas),[2010](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2010_Ideas),[2009](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2009_Ideas),[2008](https://wiki.osgeo.org/wiki/2008_SoC_Merged_Ideas),[2007](https://wiki.osgeo.org/wiki/2007_SoC_Merged_Ideas).
+[2025](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2025_ideas),[2024](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2024_ideas),[2023](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2023_ideas),[2022](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2022_ideas),[2021](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2021_ideas),[2020](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2020_ideas),[2019](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2019_ideas),[2018](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2018_ideas),[2017](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2017_ideas),[2016](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2016_ideas),[2015](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2015_ideas),[2014](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2014_ideas),[2013](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2013_ideas),[2012](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2012_ideas),[2011](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2011_ideas),[2010](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2010_ideas),[2009](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2009_ideas),[2008](/ideas/osgeo-open-source-geospatial-foundation/2008_soc_merged_ideas),[2007](/ideas/osgeo-open-source-geospatial-foundation/2007_soc_merged_ideas).
 
 
 
@@ -25,7 +25,7 @@ The [Open Source Geospatial Foundation](http://www.osgeo.org) would like to exte
 
 These ideas are ***only*** to motivate you and serve as an example of the kind of hills we want to charge up. Your own ideas are more than welcome - they are encouraged. We view you as the next wave of open-source leaders and the future of the geospatial industry; show us what you've got!
 
-**Contributors: check out the**[Google Summer of Code Recommendations for Students](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_Recommendations_for_Students)page.- If you need more information on how to apply you can contact us on
+**Contributors: check out the**[Google Summer of Code Recommendations for Students](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_recommendations_for_students)page.- If you need more information on how to apply you can contact us on
 [OSGeo's discourse](https://discourse.osgeo.org/c/initiatives/soc) - Read the
 [GSoC Roles and Responsibilities](https://developers.google.com/open-source/gsoc/help/responsibilities)to understand successful teamwork and interplay of project, mentors, and students.
 
@@ -35,7 +35,7 @@ These ideas are ***only*** to motivate you and serve as an example of the kind o
 [OSGeo](http://www.osgeo.org)is involved in working with maps and things, but what kind of projects does it really do? Have a look at the[live blog feed](http://planet.osgeo.org/)to see what people are working on right now.
 
 - Mentors, there's an additional link providing some tips and specifying your responsibilities on the main OSGeo
-[Google Summer of Code Administrative](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_Administrative)wiki page.
+[Google Summer of Code Administrative](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_administrative)wiki page.
 
 ## Recent Modifications in GSoC (Must Read)
 
@@ -64,7 +64,7 @@ To add your page, **please contact the GSoC admin team** to let them know of you
 
 ## I want to apply as a student
 
-Before applying as a student, check out the [Google Summer of Code Recommendations for Students](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_Recommendations_for_Students) page.
+Before applying as a student, check out the [Google Summer of Code Recommendations for Students](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_recommendations_for_students) page.
 
 ### Which project do I choose?
 
@@ -75,4 +75,4 @@ Most of the software projects are available pre-built on our OSGeoLive { DVD | U
 
 ### Important dates
 
-[Back to [Google Summer of Code 2026](https://wiki.osgeo.org/wiki/Google_Summer_of_Code_2026) @ OSGeo]
+[Back to [Google Summer of Code 2026](/ideas/osgeo-open-source-geospatial-foundation/google_summer_of_code_2026) @ OSGeo]

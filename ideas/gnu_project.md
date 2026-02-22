@@ -1,7 +1,7 @@
 # GNU Project — Project Ideas
 
 **Source:** https://www.gnu.org/s/soc-projects/ideas.html
-**Scraped:** 2026-02-20T11:48:56.957454
+**Scraped:** 2026-02-22T23:28:47.632105
 
 ---
 
@@ -38,13 +38,13 @@ GnuCOBOL maintains a list of ideas here:
 
 **Project site:**[https://www.gnu.org/s/gnucobol](https://www.gnu.org/s/gnucobol)**Contact:**[gnucobol-dev@gnu.org](https://www.gnu.org/gnucobol-dev@gnu.org).
 
-[GNU Aris](https://www.gnu.org/software/aris)
+[GNU Aris](/ideas/gnu-project-av/software-aris)
 
 GNU Aris is a logical proof program that supports propositional and predicate logic, as well as Boolean algebra and arithmetical logic, in the form of abstract sequences.
 
 A logical proof program can prove mathematical statements by using strict reasoning steps, based on axioms and rewrite rules. GNU Aris supports manual creation of such proofs and it can verify if a proof is correct according to the axioms and rewrite rules. Therefore, it can give good support for undergraduate math courses like logic or abstract algebra.
 
-**Project site:**[https://www.gnu.org/s/aris](https://www.gnu.org/s/aris)**Contact:**[bug-aris@gnu.org](https://www.gnu.org/bug-aris@gnu.org).
+**Project site:**[https://www.gnu.org/s/aris](/ideas/gnu-project-av/s-aris)**Contact:**[bug-aris@gnu.org](https://www.gnu.org/bug-aris@gnu.org).
 
 #### UI and Feature Enhancements
 

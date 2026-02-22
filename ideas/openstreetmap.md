@@ -1,7 +1,7 @@
 # OpenStreetMap — Project Ideas
 
 **Source:** https://wiki.openstreetmap.org/wiki/Google_Summer_of_Code/2026/Project_ideas
-**Scraped:** 2026-02-20T11:48:56.952166
+**Scraped:** 2026-02-22T23:28:47.598891
 
 ---
 
@@ -13,7 +13,7 @@
 
 This page lists a number of ideas for **potential Google Summer of Code 2026 projects**. This page's primary purpose is to help to give potential applicants ideas that they can build on to turn into applications for the program. Members of the OSM developer community are encouraged to identify ideas for projects, and indicate whether they would be willing to act as a mentor for a GSoC contributor attempting the project, using the
 
-[GSoC idea template](https://wiki.openstreetmap.org/wiki/Template:GSoC_idea).
+[GSoC idea template](/ideas/openstreetmap/wiki-template-gsoc_idea).
 
 ## Note on using AI tools
 
@@ -102,14 +102,7 @@ challenging
 Possible Mentors
 Kevin Kreiser, Nils Nolde, Christian Beiwinkel
 Notes
-I'll write a lengthier issue about this in the upcoming days, in the meantime there is [this discussion](
-|
-
-|
-Suggested By
-Nils Nolde
-Summary
-We introduced a landmark/POI-based guidance concept (e.g. "Turn right after 50 m before the next Wells Fargo branch") in a previous GSoC. However, it's not ready yet to be hosted on the
+I'll write a lengthier issue about this in the upcoming days, in the meantime there is [this discussion](https://wiki.openstreetmap.org/wiki/Google_Summer_of_Code/2026/||Suggested ByNils NoldeSummaryWe introduced a landmark/POI-based guidance concept (e.g. "Turn right after 50 m before the next Wells Fargo branch") in a previous GSoC. However, it's not ready yet to be hosted on the
 Mandatory skills
 C++, basic sqlite
 Useful skills

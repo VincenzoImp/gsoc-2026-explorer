@@ -1,7 +1,7 @@
 # Apache Software Foundation — Project Ideas
 
 **Source:** https://s.apache.org/gsoc2026ideas
-**Scraped:** 2026-02-20T11:48:56.909312
+**Scraped:** 2026-02-22T23:28:47.597654
 
 ---
 
@@ -843,487 +843,6 @@ By the end of GSoC, Wayang will have its first robust DataFrame API — a major 
 *Zoi Kaoudi*, mail: zkaoudi (at) apache.org
 
 *Project Devs*, mail: dev (at) wayang.apache.org
-
-# Apache Fory
-
-[Apache Fory Implement Fory Python gRPC Integration](https://issues.apache.org/jira/browse/GSOC-319)
-
-**Description**:
-
-Apache Fory can generate high-performance Python model code from IDL, but Python gRPC stubs are not generated yet.
-
-This project will implement Python gRPC integration in the Fory compiler by generating *_service.py and *_grpc.py
-
-artifacts, using Fory serialization only (without protobuf runtime payload types).
-
-The implementation should align with Fory’s compiler conventions and keep runtime overhead low.**Potential Outcomes:**
-
-- Generate *_service.py base interfaces and *_grpc.py gRPC binding files from service definitions.
-- Generate servicer base classes and stub classes using gRPC unary/stream APIs.
-- Wire request/response serialization via generated Fory serializer/deserializer callables.
-- Implement zero-copy deserialization buffer support for inbound gRPC payloads, with a safe fallback path when zero-copy cannot be applied.
-- Add golden codegen tests for output file names and key signatures.
-- Provide a runnable Python server/client example with generated stubs and Fory codec.
-- Update compiler documentation for Python gRPC code generation usage and constraints.
-
-**Skills:**
-
-Python, gRPC (grpcio), compiler/code generation, serialization internals, testing, performance optimization.**Difficulty:** Medium**Project size:** 175 hours**Potential mentors:** Chaokun Yang, Weipeng Wang
-
-**Source links:**
-
-[https://github.com/apache/fory/issues/3273](https://github.com/apache/fory/issues/3273)[https://fory.apache.org/docs/next/compiler/compiler_guide](https://fory.apache.org/docs/next/compiler/compiler_guide)[https://github.com/apache/fory/tree/main/compiler](https://github.com/apache/fory/tree/main/compiler)[https://github.com/apache/fory/tree/main/python](https://github.com/apache/fory/tree/main/python)[https://fory.apache.org/docs/guide/python/](https://fory.apache.org/docs/guide/python/)
-
-**Difficulty:**Major
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*Chaokun Yang*, mail: chaokunyang (at) apache.org
-
-*Project Devs*, mail: dev (at) fory.apache.org
-
-[Apache Fory Implement Fory Java gRPC Integration](https://issues.apache.org/jira/browse/GSOC-318)
-
-**Description**
-
-Apache Fory can already generate high-performance Java model code from IDL, but Java gRPC stubs are not generated
-
-yet.
-
-This project will implement Java gRPC integration in the Fory compiler by generating *Service.java and *Grpc.java artifacts, using Fory serialization only (no protobuf runtime types for payload encoding).
-
-compiler conventions, and avoid adding gRPC runtime dependencies into Fory core.
-
-- Generate *Service.java interfaces and *Grpc.java binding classes from service definitions.
-- Generate gRPC MethodDescriptors, server binders, and client stubs (including unary/streaming modes supported by
-
-IR). - Implement generated Fory-based Marshaller logic for request/response types.
-- Add golden codegen tests for output file names and key method signatures.
-- Provide a runnable Java server/client example using generated stubs and Fory codec.
-- Update compiler documentation for Java gRPC code generation usage and limits.
-
-**Skills**
-
-Java, gRPC Java, compiler/code generation, serialization internals, testing.
-
-**Difficulty**:Medium**Project size:**175 hours
-
-**Potential mentors**: Chaokun Yang, Weipeng Wang
-
-**Source links:**
-
-**Difficulty:**Major
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*Chaokun Yang*, mail: chaokunyang (at) apache.org
-
-*Project Devs*, mail: dev (at) fory.apache.org
-
-[Apache Fory Implement Fory C++ gRPC integration](https://issues.apache.org/jira/browse/GSOC-321)
-
-**Description:**
-
-Apache Fory can generate high-performance C++ model code from IDL, but it does not yet generate C++ gRPC service
-
-bindings.
-
-This project will add C++ gRPC code generation to the Fory compiler. For each service definition, the compiler should
-
-generate service.h (service API), service.grpc.h (gRPC declarations), and service.grpc.cc (gRPC implementations),
-
-using a Fory codec instead of protobuf runtime payload types.
-
-The implementation should follow Fory compiler conventions and prioritize low-overhead, performance-first behavior.
-
-**Potential Outcomes:**
-
-- Parse service IR and generate C++ gRPC outputs for unary and streaming methods.
-- Generate service.h, service.grpc.h, and service.grpc.cc with clear separation between API abstractions and transport
-
-bindings. - Generate abstract service interfaces and client stub classes compatible with gRPC C++.
-- Implement Fory-based request/response serialization hooks for gRPC marshalling.
-- Implement zero-copy deserialization buffer support for inbound gRPC payloads, with a safe fallback path when zero-
-
-copy cannot be applied. - Add golden codegen tests for generated file names and key signatures.
-- Provide a runnable C++ server/client example using generated bindings and Fory codec.
-- Update compiler documentation for C++ gRPC code generation usage and constraints.
-
-**Skills:**
-
-C++ 17, gRPC, compiler/code generation, serialization internals, testing, performance optimization.
-
-**Difficulty**: Medium**Project size:** 175 hours**Potential mentors:** Chaokun Yang, Weipeng Wang
-
-**Source links:** * [https://github.com/apache/fory/issues/3276](https://github.com/apache/fory/issues/3276)
-
-**Difficulty:**Major
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*Chaokun Yang*, mail: chaokunyang (at) apache.org
-
-*Project Devs*, mail: dev (at) fory.apache.org
-
-[Apache Fory Implement Fory Rust gRPC Integration](https://issues.apache.org/jira/browse/GSOC-320)
-
-**Description:**
-
-Apache Fory can generate high-performance Rust model code from IDL, but it does not yet generate Rust gRPC service bindings.
-
-This project will add Rust gRPC code generation to the Fory compiler using tonic. For each service definition, the compiler should generate service.rs (service API traits/modules) and service_grpc.rs (tonic server/client transport
-
-The implementation should follow Fory compiler conventions and prioritize low-overhead, allocation-conscious runtime behavior.
-
-**Potential Outcomes:**
-
-- Generate service.rs and service_grpc.rs from service definitions, with clear separation between API traits and
-
-transport bindings. - Generate tonic-compatible async server/client wrappers.
-- Implement a custom tonic codec backed by Fory serialization/deserialization.
-- Implement zero-copy deserialization buffer support for inbound gRPC payloads, with a safe fallback path when zero-
-
-copy cannot be applied. - Add golden codegen tests for generated file names and key signatures.
-- Provide a runnable Rust server/client example using tonic + generated Fory codec bindings.
-- Update compiler documentation for Rust gRPC code generation usage and constraints.
-
-**Skills:**
-
-Rust, gRPC (tonic), compiler/code generation, serialization internals, async Rust, testing, performance optimization.**Difficulty:** Medium**Project size:** 175 hours**Potential mentors:** Chaokun Yang, Weipeng Wang**Source links:**
-
-**Difficulty:**Major
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*Chaokun Yang*, mail: chaokunyang (at) apache.org
-
-*Project Devs*, mail: dev (at) fory.apache.org
-
-[Apache Fory Implement Fory Go gRPC integration](https://issues.apache.org/jira/browse/GSOC-322)
-
-**Description:**
-
-Apache Fory can generate high-performance Go model code from IDL, but it does not yet generate Go gRPC service
-
-This project will add Go gRPC code generation to the Fory compiler. For each service definition, the compiler should
-
-generate *_service.go (service interfaces) and *_grpc.go (gRPC transport bindings), using a Fory codec instead of
-
-The implementation should follow Fory compiler conventions and prioritize low-overhead, performance-first behavior.
-
-**Potential Outcomes:**
-
-- Parse service IR and generate Go gRPC outputs for unary and streaming methods.
-- Generate ServiceDesc, server interfaces, and client wrappers compatible with grpc-go.
-- Register and use a custom Fory codec through grpc.CallOption for request/response serialization.
-- Implement zero-copy deserialization buffer support for inbound gRPC payloads, with a safe fallback path when zero-copy cannot be applied.
-- Add golden codegen tests for generated file names and key signatures.
-- Provide a runnable Go server/client example using generated bindings and Fory codec.
-- Update compiler documentation for Go gRPC code generation usage and constraints.
-
-**Skills:**
-
-Go, gRPC (grpc-go), compiler/code generation, serialization internals, testing, performance optimization.
-
-**Difficulty:** Medium**Project size:** 175 hours**Potential mentors:** Chaokun Yang, Weipeng Wang
-
-**Source links:**
-
-**Difficulty:**Major
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*Chaokun Yang*, mail: chaokunyang (at) apache.org
-
-*Project Devs*, mail: dev (at) fory.apache.org
-
-[Apache Fory Implement Fory JavaScript gRPC integration](https://issues.apache.org/jira/browse/GSOC-323)
-
-**Description:**
-
-Apache Fory currently lacks JavaScript/TypeScript gRPC service binding generation.
-
-The generated service interface and gRPC binding outputs should follow existing JS/TS generator naming and layout conventions, stay dependency-light in Fory runtime, and keep runtime overhead low.**Potential Outcomes:**
-
-- Generate JS/TS service interface and gRPC binding outputs from service definitions, aligned with existing generator
-
-layout conventions. - Wire request/response payload handling through generated Fory serializer/deserializer functions.
-
-copy cannot be applied. - Coordinate with JS/TS type generation so emitted message/enum/union types are directly usable by generated gRPC
-
-stubs. - Add golden codegen tests for generated file names and key signatures.
-- Provide a runnable JS/TS server-client example using generated bindings and Fory codec.
-- Update compiler documentation for JS/TS gRPC code generation usage and constraints.
-
-**Skills:**
-
-JavaScript/TypeScript, Node.js, gRPC (@grpc/grpc-js), compiler/code generation, serialization internals, testing, performance optimization.
-
-**Difficulty:** Medium**Project size:** 175 hours**Potential mentors:** Chaokun Yang, Weipeng Wang
-
-**Source links:**
-
-**Difficulty:**Major
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*Chaokun Yang*, mail: chaokunyang (at) apache.org
-
-*Project Devs*, mail: dev (at) fory.apache.org
-
-[Apache Fory Implement Fory Dart gRPC integration](https://issues.apache.org/jira/browse/GSOC-324)
-
-**Description**
-
-Apache Fory does not yet generate Dart gRPC service bindings.
-
-This project will add Dart gRPC code generation to the Fory compiler. For each service definition, the compiler should generate Dart service interfaces and gRPC transport bindings that follow the existing Dart generator layout and use a Fory codec instead of protobuf runtime payload types.
-
-The implementation must keep the Fory runtime free of gRPC dependencies. Any required gRPC glue should be emitted as generated helper code. Runtime behavior should remain low-overhead and allocation-conscious.
-
-**Potential Outcomes**
-
-- Generate Dart service interface and gRPC binding outputs from service definitions, aligned with current Dart generator conventions.
-- Generate Dart gRPC server and client stubs for unary and streaming RPCs using Dart gRPC APIs.
-- Wire request/response handling through generated Fory serializer and deserializer functions.
-- Implement zero-copy deserialization buffer support for inbound gRPC payloads, with a safe fallback path when zero-copy cannot be applied.
-- Coordinate with Dart type generation so emitted message, enum, and union types are directly usable by generated gRPC stubs.
-- Add golden codegen tests for generated file names and key signatures.
-- Provide a runnable Dart server/client example using generated bindings and the Fory codec.
-- Update compiler documentation for Dart gRPC code generation usage and constraints.
-
-**Skills：**Dart, gRPC (`grpc`), compiler/code generation, serialization internals, async programming, testing, performance optimization.
-
-**Difficulty：** Medium**Project size：**175 hours**Potential mentors：**Chaokun Yang, Weipeng Wang**Source links：**
-
-[https://github.com/apache/fory/issues/3279](https://github.com/apache/fory/issues/3279)[https://github.com/apache/fory/issues/3281](https://github.com/apache/fory/issues/3281)[https://fory.apache.org/docs/next/compiler/compiler_guide](https://fory.apache.org/docs/next/compiler/compiler_guide)[https://github.com/apache/fory/tree/main/compiler](https://github.com/apache/fory/tree/main/compiler)[https://github.com/apache/fory/tree/main/dart](https://github.com/apache/fory/tree/main/dart)[https://github.com/apache/fory/blob/main/dart/README.md](https://github.com/apache/fory/blob/main/dart/README.md)[https://github.com/apache/fory/tree/main/dart/packages/fory](https://github.com/apache/fory/tree/main/dart/packages/fory)
-
-**Difficulty:**Major
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*Chaokun Yang*, mail: chaokunyang (at) apache.org
-
-*Project Devs*, mail: dev (at) fory.apache.org
-
-[Apache Fory - Schema IDL Codegen and gRPC Integration for Apache Fory Swift](https://issues.apache.org/jira/browse/GSOC-326)
-
-Apache Fory has a mature compiler pipeline for FDL, Protocol Buffers, and FlatBuffers frontends, plus code generators for Java, Python, Go, Rust, and C++. The compiler also already includes service IR parsing and a `--grpc` generation path, but Swift code generation is not yet supported.
-
-This project adds end-to-end Swift support in two layers:
-
-1. Swift schema and model code generation from Fory IR.
-
-2. Swift gRPC generation from service definitions, including transport bindings and a Fory-backed codec.
-
-The implementation should follow existing compiler conventions and prioritize low-overhead, allocation-conscious runtime behavior.
-
-**Problem Statement**
-
-The repository already contains a Swift runtime (`swift/Sources/Fory`) but lacks compiler-generated Swift model code and Swift gRPC bindings from IDL files. This creates a gap:
-
-- Swift users cannot use `foryc` to generate model types from `.fdl`, `.proto`, or `.fbs`.
-- Service definitions parsed into compiler IR cannot yet target Swift transport code.
-- There is no official Fory codec integration for grpc-swift.
-
-**Why This Project Matters**
-
-- Completes the Swift developer workflow: IDL -> generated models -> generated service APIs -> runnable gRPC client and server.
-- Reuses existing multi-frontend service parsing support in compiler IR.
-- Aligns Swift with other language targets and improves cross-language consistency.
-- Enables high-performance Swift service communication using Fory serialization semantics.
-
-**Expected Outcomes**
-
-- Add Swift as a first-class compiler target (`
-~~{~~}lang swift`, `{-}-swift_out`). - Generate Swift model code from schema definitions (messages, enums, unions, nested types).
-- Generate `service_grpc.swift` from service definitions.
-- Generate grpc-swift compatible async server and client wrappers.
-- Implement a custom grpc-swift codec backed by Fory serialization and deserialization.
-- Implement inbound zero-copy decode support with a safe copy fallback path.
-- Add golden-style codegen tests for filenames and key generated signatures.
-- Add cross-frontend parity tests for FDL, proto, and fbs service definitions.
-- Provide runnable Swift server and client example(s) using generated code and codec.
-- Document compiler usage, constraints, and integration steps.
-
-**Detailed Scope**
-
-1) Compiler and CLI Integration
-
-- Add `SwiftGenerator` under `compiler/fory_compiler/generators/`.
-- Register generator in `compiler/fory_compiler/generators/
-*{*}init{*}*.py`. - Extend CLI output mapping and options to support `--swift_out`.
-- Ensure `--lang swift` works with existing recursive import compilation flow.
-
-2) Swift Model Code Generation
-
-Generate Swift for:
-
-- Enums
-- Messages
-- Unions
-- Nested types
-- Type registration helper APIs
-
-**Requirements:**
-
-- Follow Fory type ID behavior (explicit IDs, auto IDs, namespace/name registration fallback).
-- Match existing cross-language semantics where applicable.
-- Integrate with existing Swift runtime abstractions (`Serializer`, type resolver, registration APIs).
-
-3) Swift Service and gRPC Code Generation
-
-For each schema service:
-
-- Generate `service.swift` containing service protocol and method shape declarations.
-- Generate `service_grpc.swift` containing grpc-swift server and client transport bindings.
-
-Required RPC support:
-
-- Unary
-- Client streaming
-- Server streaming
-- Bidirectional streaming
-
-4) Fory Codec for grpc-swift
-
-- Implement codec encode and decode using Fory Swift runtime.
-- Ensure request and response types map correctly to generated Swift types.
-- Provide clear error mapping for decode and type mismatch failures.
-
-5) Zero-Copy Decode and Fallback
-
-- Add a zero-copy-friendly decode path for inbound payload handling when safe ownership and lifecycle constraints are satisfied.
-- Add a fallback path that copies payload bytes when zero-copy cannot be safely applied.
-- Ensure behavior is deterministic and memory-safe.
-
-6) Tests
-
-Compiler tests:
-
-- Add codegen tests validating generated Swift file names and key signatures.
-- Add service generation tests for all RPC modes.
-- Add cross-frontend equivalence tests for FDL/proto/fbs service definitions.
-
-Swift runtime and integration tests:
-
-- Codec round-trip tests.
-- Error-path tests (invalid payload, type mismatch, unsupported mode).
-- Zero-copy path and fallback path coverage.
-
-7) Examples and Documentation
-
-- Add runnable Swift gRPC server/client example using generated files.
-- Update `docs/compiler/compiler-guide.md` for Swift codegen options and usage.
-- Update `docs/compiler/generated-code.md` with Swift output layout and generated API shape.
-- Add concise Swift integration documentation for grpc-swift + Fory codec.
-
-**Performance and Quality Requirements**
-
-- Keep allocation count low on encode and decode paths.
-- Avoid unnecessary data copies in transport integration.
-- Keep generated code predictable and stable for golden-style testing.
-- Preserve compiler behavior for existing languages and frontends.
-
-**Milestones (Recommended)**
-
-1. Community Bonding
-
-- Finalize generated API naming and file layout.
-- Confirm Swift option strategy and dependency constraints.
-- Agree on test matrix and acceptance checklist.
-
-2. Phase 1
-
-- Implement Swift generator base and CLI wiring.
-- Generate core model types and registration helpers.
-- Add baseline model codegen tests.
-
-3. Phase 2
-
-- Implement service generation (`service.swift`, `service_grpc.swift`).
-- Support unary and all streaming RPC method shapes.
-- Add service signature and transport generation tests.
-
-4. Phase 3
-
-- Implement and validate Fory grpc-swift codec.
-- Implement zero-copy decode path and fallback path.
-- Add integration example and end-to-end tests.
-
-**Finalization**
-
-- Documentation updates.
-- Stability pass and cleanup.
-- Final validation across compiler and Swift test suites.
-
-**Acceptance Criteria**
-
-1. `foryc` supports Swift generation through `~~{~~}lang swift` and `{-}-swift_out`.
-
-2. Swift model code compiles and integrates with Fory Swift runtime.
-
-3. Service generation outputs `service.swift` and `service_grpc.swift` with correct signatures.
-
-4. Unary, client-streaming, server-streaming, and bidi-streaming methods are correctly generated.
-
-5. Fory-backed grpc-swift codec works for request and response round-trip.
-
-6. Zero-copy decode path exists with tested fallback behavior.
-
-7. Added tests pass and no regressions are introduced in existing compiler suites.
-
-8. Documentation and runnable Swift example are complete and usable.
-
-**Skills Required**
-
-- Swift
-- grpc-swift
-- Compiler and code generation
-- Serialization internals
-- Async and streaming APIs
-- Testing and performance profiling
-
-**Difficulty**
-
-Hard
-
-**Project Size**
-
-350 hours
-
-**Potential Mentors**
-
-- Chaokun Yang
-- Weipeng Wang
-
-**Source Links**
-
-[https://github.com/apache/fory/issues/3370](https://github.com/apache/fory/issues/3370)[https://fory.apache.org/docs/next/compiler/compiler_guide](https://fory.apache.org/docs/next/compiler/compiler_guide)[https://github.com/apache/fory/tree/main/compiler](https://github.com/apache/fory/tree/main/compiler)[https://github.com/apache/fory/tree/main/compiler/fory_compiler](https://github.com/apache/fory/tree/main/compiler/fory_compiler)[https://github.com/apache/fory/tree/main/compiler/fory_compiler/tests](https://github.com/apache/fory/tree/main/compiler/fory_compiler/tests)[https://github.com/apache/fory/tree/main/swift](https://github.com/apache/fory/tree/main/swift)[https://fory.apache.org/docs/guide/rust/](https://fory.apache.org/docs/guide/rust/)[https://github.com/grpc/grpc-swift](https://github.com/grpc/grpc-swift)
-
-**Difficulty:**Major
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*Chaokun Yang*, mail: chaokunyang (at) apache.org
-
-*Project Devs*, mail: dev (at) fory.apache.org
 
 # Mahout
 
@@ -2457,6 +1976,895 @@ If Grails is accepted for GSoC 2026, this would be an excellent intermediate pro
 *James Fredley*, mail: jamesfredley (at) apache.org
 
 *Project Devs*, mail: dev (at) grails.apache.org
+
+# Apache Fory
+
+[Apache Fory Ruby Serialization](https://issues.apache.org/jira/browse/GSOC-321)
+
+**Description:**
+
+Apache Fory currently has no Ruby runtime, so Ruby services cannot participate in Fory xlang object exchange. This project implements Ruby xlang serialization with full wire compatibility to existing language runtimes, following the xlang specifications and issue #3379.
+
+**Primary references:**
+
+1. docs/specification/xlang_serialization_spec.md
+
+2. docs/specification/xlang_implementation_guide.md
+
+3. [https://github.com/apache/fory/issues/3379](https://github.com/apache/fory/issues/3379)
+
+**Scope:**
+
+1. Implement xlang binary format in Ruby runtime.
+
+2. Support schema-consistent mode and compatible mode with meta share and TypeDef.
+
+3. Implement registration model for numeric and named user types.
+
+4. Implement deterministic struct serialization rules required by spec.
+
+5. Implement reference tracking and reference flags behavior exactly per protocol.
+
+6. Implement meta string encoding and dedup semantics needed by named types and TypeDef.
+
+7. Provide cross-language interoperability with Java in both encode and decode directions.
+
+**Expected outcomes:**
+
+1. Ruby runtime package under ruby/ with serializer and deserializer for xlang protocol.
+
+2. Public API centered on Fory entry point with configuration and registration APIs.
+
+3. Core runtime modules for buffer, type resolver, ref resolver, meta string, TypeDef context, and field skipper.
+
+4. Serializer coverage for primitives, temporal types, list, set, map, arrays, structs, and unions.
+
+5. Struct DSL and schema metadata model for deterministic field ordering and stable schema behavior.
+
+6. Compatibility handling for unknown fields and unknown union alternatives via safe skip logic.
+
+7. Documentation for Ruby API usage, registration, schema evolution behavior, and constraints.
+
+**Protocol requirements:**
+
+1. Little-endian encoding for all multi-byte values.
+
+2. Correct xlang header bitmap handling for null, xlang, and oob flags.
+
+3. Exact reference flags and sequential reference ID assignment.
+
+4. Correct type ID encoding and user type ID handling.
+
+5. Correct namespace and type name metadata behavior for named types.
+
+6. Deterministic struct field ordering exactly aligned with spec.
+
+7. Meta string encoding and per-stream dedup behavior aligned with spec.
+
+**Implementation phases:**
+
+1. Phase 0: Ruby project skeleton, CI bootstrap, minimal smoke serialization path.
+
+2. Phase 1: Buffer, varint and zigzag utilities, header handling, reference resolver core.
+
+3. Phase 2: Primitive and temporal type support.
+
+4. Phase 3: Collections and arrays support.
+
+5. Phase 4: Type registry and schema-consistent struct serialization.
+
+6. Phase 5: Meta string encoding and dedup.
+
+7. Phase 6: Compatible mode and shared TypeDef.
+
+8. Phase 7: Union and extension type support.
+
+9. Phase 8: Performance hardening and allocation reduction.
+
+**Testing and CI requirements:**
+
+1. Add Ruby unit tests for protocol primitives, headers, references, and error handling.
+
+2. Add golden vector tests for primitives, string encodings, list/set/map headers, TypeDef, and unions.
+
+3. Add bidirectional interoperability tests:
+
+- Ruby write to Java read.
+
+- Java write to Ruby read.
+
+4. Add compatibility tests for schema evolution in compatible mode, including add/remove/reorder and unknown field skipping.
+
+5. Add tests for shared references, circular references, and ref tracking disabled behavior.
+
+6. Add negative tests for invalid varint, unknown type ID, truncated payload, and malformed TypeDef.
+
+7. Integrate Ruby lint and all Ruby xlang tests into CI so regressions fail CI automatically.
+
+**Non-goals for initial delivery:**
+
+1. Ruby-native non-xlang serialization format.
+
+2. Decimal support.
+
+3. Advanced runtime code generation in first iteration.
+
+**Performance expectations:**
+
+1. Keep hot serialization and deserialization paths allocation-conscious.
+
+2. Add fast paths for homogeneous collections where safe.
+
+3. Preserve protocol correctness while improving throughput and reducing allocations.
+
+**Skills:**
+
+Ruby, binary protocol implementation, serialization internals, cross-language compatibility testing, CI integration, performance optimization.
+
+**Difficulty:**
+
+Hard.
+
+**Project size:**
+
+Preferred 350 hours.
+
+**Potential mentors:**
+
+Chaokun Yang, Weipeng Wang.
+
+**Source links:**[https://github.com/apache/fory/issues/3379](https://github.com/apache/fory/issues/3379)[https://github.com/apache/fory/blob/main/docs/specification/xlang_serialization_spec.md](https://github.com/apache/fory/blob/main/docs/specification/xlang_serialization_spec.md)[https://github.com/apache/fory/blob/main/docs/specification/xlang_implementation_guide.md](https://github.com/apache/fory/blob/main/docs/specification/xlang_implementation_guide.md)[https://github.com/apache/fory/tree/main/rust](https://github.com/apache/fory/tree/main/rust)[https://github.com/apache/fory/tree/main/java](https://github.com/apache/fory/tree/main/java)
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Chaokun Yang*, mail: chaokunyang (at) apache.org
+
+*Project Devs*, mail: dev (at) fory.apache.org
+
+[Apache Fory Row Format for Go, Swift, Dart, and JavaScript](https://issues.apache.org/jira/browse/GSOC-319)
+
+**Description**:
+
+Apache Fory already defines a cross-language row format and has standard row format implementations in Java, C++, and Python. This task adds standard row format support for Go, Swift, Dart, and JavaScript based on docs/specification/row_format_spec.md.
+
+The implementation must follow the standard row format rules exactly, including 8-byte alignment, null bitmap behavior, fixed 8-byte field slots, relative offset plus size encoding for variable-width fields, and deterministic padding behavior.
+
+Compact row format is explicitly out of scope for this task.
+
+**Primary specification:**
+
+docs/specification/row_format_spec.md
+
+**Expected outcomes:**
+
+1. Add standard row format read and write support in Go runtime.
+
+2. Add standard row format read and write support in Swift runtime.
+
+3. Add standard row format read and write support in Dart runtime.
+
+4. Add standard row format read and write support in JavaScript runtime.
+
+5. Implement standard row layout support for rows, arrays, maps, and nested structs according to the spec.
+
+6. Ensure random field access without full object deserialization for supported field types.
+
+7. Add clear API entry points for encoding typed data to row format and decoding or field-accessing from row format.
+
+8. Update language guides and developer docs for row format usage and constraints.
+
+**Required compatibility and test scope:**
+
+1. Add per-language unit tests for null bitmap handling, fixed-width fields, variable-width offset and size encoding, alignment, and padding.
+
+2. Add deterministic binary tests to verify encoded bytes for representative schemas.
+
+3. Add cross-language compatibility tests against existing standard row format implementations, with Java as required reference endpoint.
+
+4. Add interoperability tests for each new language reading rows produced by Java and writing rows that Java can read.
+
+5. Add map and nested struct compatibility cases, not only primitive fields.
+
+6. Add CI coverage for all new tests so regressions fail CI automatically.
+
+**Non-goals:**
+
+1. Compact row format implementation.
+
+2. Protocol or wire format changes outside current standard row format specification.
+
+3. Unrelated serialization runtime features not required for standard row format support.
+
+**Skills:**
+
+Go, Swift, Dart, JavaScript or TypeScript, binary format implementation, compiler or runtime internals, cross-language compatibility testing, performance-focused engineering.
+
+**Difficulty**:
+
+Hard.
+
+Project size:
+
+Preferred 350 hours.
+
+**Potential mentors:**
+
+Chaokun Yang, Weipeng Wang.
+
+**Source links:**[https://github.com/apache/fory/tree/main/docs/specification](https://github.com/apache/fory/tree/main/docs/specification)[https://github.com/apache/fory/blob/main/docs/specification/row_format_spec.md](https://github.com/apache/fory/blob/main/docs/specification/row_format_spec.md)[https://github.com/apache/fory/tree/main/go](https://github.com/apache/fory/tree/main/go)[https://github.com/apache/fory/tree/main/swift](https://github.com/apache/fory/tree/main/swift)[https://github.com/apache/fory/tree/main/dart](https://github.com/apache/fory/tree/main/dart)[https://github.com/apache/fory/tree/main/javascript](https://github.com/apache/fory/tree/main/javascript)
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Chaokun Yang*, mail: chaokunyang (at) apache.org
+
+*Project Devs*, mail: dev (at) fory.apache.org
+
+[Apache Fory Lua Serialization](https://issues.apache.org/jira/browse/GSOC-323)
+
+**Description:**
+
+Apache Fory currently lacks a Lua runtime for xlang serialization. This project will implement Lua xlang serialization with protocol-correct wire compatibility against existing Fory runtimes.
+
+**Primary references:**
+
+1. docs/specification/xlang_serialization_spec.md
+
+2. docs/specification/xlang_implementation_guide.md
+
+**Scope:**
+
+1. Implement Lua xlang encoder and decoder using little-endian binary format.
+
+2. Implement type registry for numeric and named user types.
+
+3. Implement serialization and deserialization for struct, enum, and union.
+
+4. Support schema-consistent mode and compatible mode with meta share and TypeDef.
+
+5. Implement metatable restoration for registered struct-like objects during deserialization.
+
+6. Deliver cross-language interoperability with existing runtimes, with Java and Python as mandatory interoperability targets.
+
+**Expected outcomes:**
+
+1. New Lua module with public API:
+
+- Fory.new(config)
+
+- serialize(value, declared_type)
+
+- deserialize(bytes, declared_type)
+
+2. Core runtime modules:
+
+- buffer and varint codecs
+
+- header handling
+
+- reference resolver
+
+- type registry and type metadata
+
+- meta string and TypeDef handling
+
+- serializers for primitive, collection, map, enum, struct, and union
+
+- skip-value support for unknown fields and union alternatives
+
+3. Protocol-correct handling for:
+
+- header bitmap flags
+
+- reference flags and reference ID assignment
+
+- type IDs and user_type_id encoding
+
+- meta string encoding and dedup
+
+- list and map headers
+
+- deterministic struct field ordering
+
+- union payload encoding
+
+4. Documentation for Lua usage, registration rules, compatible mode behavior, and interoperability constraints.
+
+**Implementation phases:**
+
+1. Phase 0: project bootstrap and API scaffold.
+
+2. Phase 1: core buffer, little-endian codecs, varints, and header read/write.
+
+3. Phase 2: reference tracking and type meta core.
+
+4. Phase 3: primitive and temporal serializers.
+
+5. Phase 4: collection and map protocol support.
+
+6. Phase 5: meta string and TypeDef support.
+
+7. Phase 6: enum, struct, and union.
+
+8. Phase 7: skip logic, compatibility hardening, malformed-input resilience.
+
+9. Phase 8: performance optimization with pure Lua baseline and optional LuaJIT fast paths.
+
+**Testing and CI requirements:**
+
+1. Add Lua unit tests for buffer, varint, zigzag, tagged64, header flags, ref resolver, type meta, and TypeDef.
+
+2. Add cross-language compatibility tests:
+
+- Lua serialize -> Java deserialize.
+
+- Java serialize -> Lua deserialize.
+
+- Lua serialize -> Python deserialize.
+
+- Python serialize -> Lua deserialize.
+
+3. Include protocol-critical cases:
+
+- primitives and boundary values
+
+- UTF8, LATIN1, and UTF16 string payloads
+
+- list, set, and map header combinations
+
+- schema-consistent and compatible struct behavior
+
+- known and unknown union cases
+
+- shared and circular references
+
+4. Add regression fixtures for deterministic protocol-critical payloads.
+
+5. Add negative tests for malformed varint, unknown type ID, truncated payload, and malformed TypeDef.
+
+6. Integrate Lua lint and all Lua xlang tests into CI so regressions fail automatically.
+
+**Non-goals for initial delivery:**
+
+1. Row format implementation.
+
+2. Decimal support.
+
+3. Native code generation or JIT-only dependency as a requirement.
+
+**Performance requirements:**
+
+1. Keep pure Lua path as canonical and fully compliant.
+
+2. Avoid unnecessary allocations in hot encode and decode paths.
+
+3. Ensure optimizations do not change protocol behavior.
+
+**Skills:**
+
+Lua 5.4 or 5.3, binary protocol implementation, serialization internals, cross-language compatibility testing, CI integration, performance optimization.
+
+**Difficulty:**
+
+Hard.
+
+**Project size:**
+
+Preferred 350 hours.
+
+**Potential mentors:**
+
+Chaokun Yang, Weipeng Wang.
+
+**Source links:**
+
+1. [https://github.com/apache/fory/issues/3380](https://github.com/apache/fory/issues/3380)
+
+2. [https://github.com/apache/fory/blob/main/docs/specification/xlang_serialization_spec.md](https://github.com/apache/fory/blob/main/docs/specification/xlang_serialization_spec.md)
+
+3. [https://github.com/apache/fory/blob/main/docs/specification/xlang_implementation_guide.md](https://github.com/apache/fory/blob/main/docs/specification/xlang_implementation_guide.md)
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Chaokun Yang*, mail: chaokunyang (at) apache.org
+
+*Project Devs*, mail: dev (at) fory.apache.org
+
+[Apache Fory Swift Schema IDL Codegen and gRPC Integration](https://issues.apache.org/jira/browse/GSOC-326)
+
+Apache Fory has a mature compiler pipeline for FDL, Protocol Buffers, and FlatBuffers frontends, plus code generators for Java, Python, Go, Rust, and C++. The compiler also already includes service IR parsing and a `--grpc` generation path, but Swift code generation is not yet supported.
+
+This project adds end-to-end Swift support in two layers:
+
+1. Swift schema and model code generation from Fory IR.
+
+2. Swift gRPC generation from service definitions, including transport bindings and a Fory-backed codec.
+
+The implementation should follow existing compiler conventions and prioritize low-overhead, allocation-conscious runtime behavior.
+
+**Problem Statement**
+
+The repository already contains a Swift runtime (`swift/Sources/Fory`) but lacks compiler-generated Swift model code and Swift gRPC bindings from IDL files. This creates a gap:
+
+- Swift users cannot use `foryc` to generate model types from `.fdl`, `.proto`, or `.fbs`.
+- Service definitions parsed into compiler IR cannot yet target Swift transport code.
+- There is no official Fory codec integration for grpc-swift.
+
+**Why This Project Matters**
+
+- Completes the Swift developer workflow: IDL -> generated models -> generated service APIs -> runnable gRPC client and server.
+- Reuses existing multi-frontend service parsing support in compiler IR.
+- Aligns Swift with other language targets and improves cross-language consistency.
+- Enables high-performance Swift service communication using Fory serialization semantics.
+
+**Expected Outcomes**
+
+- Add Swift as a first-class compiler target (`
+~~{~~}lang swift`, `{-}-swift_out`). - Generate Swift model code from schema definitions (messages, enums, unions, nested types).
+- Generate `service_grpc.swift` from service definitions.
+- Generate grpc-swift compatible async server and client wrappers.
+- Implement a custom grpc-swift codec backed by Fory serialization and deserialization.
+- Implement inbound zero-copy decode support with a safe copy fallback path.
+- Add golden-style codegen tests for filenames and key generated signatures.
+- Add cross-frontend parity tests for FDL, proto, and fbs service definitions.
+- Provide runnable Swift server and client example(s) using generated code and codec.
+- Document compiler usage, constraints, and integration steps.
+
+**Detailed Scope**
+
+1) Compiler and CLI Integration
+
+- Add `SwiftGenerator` under `compiler/fory_compiler/generators/`.
+- Register generator in `compiler/fory_compiler/generators/
+*{*}init{*}*.py`. - Extend CLI output mapping and options to support `--swift_out`.
+- Ensure `--lang swift` works with existing recursive import compilation flow.
+
+2) Swift Model Code Generation
+
+Generate Swift for:
+
+- Enums
+- Messages
+- Unions
+- Nested types
+- Type registration helper APIs
+
+**Requirements:**
+
+- Follow Fory type ID behavior (explicit IDs, auto IDs, namespace/name registration fallback).
+- Match existing cross-language semantics where applicable.
+- Integrate with existing Swift runtime abstractions (`Serializer`, type resolver, registration APIs).
+
+3) Swift Service and gRPC Code Generation
+
+For each schema service:
+
+- Generate `service.swift` containing service protocol and method shape declarations.
+- Generate `service_grpc.swift` containing grpc-swift server and client transport bindings.
+
+Required RPC support:
+
+- Unary
+- Client streaming
+- Server streaming
+- Bidirectional streaming
+
+4) Fory Codec for grpc-swift
+
+- Implement codec encode and decode using Fory Swift runtime.
+- Ensure request and response types map correctly to generated Swift types.
+- Provide clear error mapping for decode and type mismatch failures.
+
+5) Zero-Copy Decode and Fallback
+
+- Add a zero-copy-friendly decode path for inbound payload handling when safe ownership and lifecycle constraints are satisfied.
+- Add a fallback path that copies payload bytes when zero-copy cannot be safely applied.
+- Ensure behavior is deterministic and memory-safe.
+
+6) Tests
+
+Compiler tests:
+
+- Add codegen tests validating generated Swift file names and key signatures.
+- Add service generation tests for all RPC modes.
+- Add cross-frontend equivalence tests for FDL/proto/fbs service definitions.
+
+Swift runtime and integration tests:
+
+- Codec round-trip tests.
+- Error-path tests (invalid payload, type mismatch, unsupported mode).
+- Zero-copy path and fallback path coverage.
+
+7) Examples and Documentation
+
+- Add runnable Swift gRPC server/client example using generated files.
+- Update `docs/compiler/compiler-guide.md` for Swift codegen options and usage.
+- Update `docs/compiler/generated-code.md` with Swift output layout and generated API shape.
+- Add concise Swift integration documentation for grpc-swift + Fory codec.
+
+**Performance and Quality Requirements**
+
+- Keep allocation count low on encode and decode paths.
+- Avoid unnecessary data copies in transport integration.
+- Keep generated code predictable and stable for golden-style testing.
+- Preserve compiler behavior for existing languages and frontends.
+
+**Milestones (Recommended)**
+
+1. Community Bonding
+
+- Finalize generated API naming and file layout.
+- Confirm Swift option strategy and dependency constraints.
+- Agree on test matrix and acceptance checklist.
+
+2. Phase 1
+
+- Implement Swift generator base and CLI wiring.
+- Generate core model types and registration helpers.
+- Add baseline model codegen tests.
+
+3. Phase 2
+
+- Implement service generation (`service.swift`, `service_grpc.swift`).
+- Support unary and all streaming RPC method shapes.
+- Add service signature and transport generation tests.
+
+4. Phase 3
+
+- Implement and validate Fory grpc-swift codec.
+- Implement zero-copy decode path and fallback path.
+- Add integration example and end-to-end tests.
+
+**Finalization**
+
+- Documentation updates.
+- Stability pass and cleanup.
+- Final validation across compiler and Swift test suites.
+
+**Acceptance Criteria**
+
+1. `foryc` supports Swift generation through `~~{~~}lang swift` and `{-}-swift_out`.
+
+2. Swift model code compiles and integrates with Fory Swift runtime.
+
+3. Service generation outputs `service.swift` and `service_grpc.swift` with correct signatures.
+
+4. Unary, client-streaming, server-streaming, and bidi-streaming methods are correctly generated.
+
+5. Fory-backed grpc-swift codec works for request and response round-trip.
+
+6. Zero-copy decode path exists with tested fallback behavior.
+
+7. Added tests pass and no regressions are introduced in existing compiler suites.
+
+8. Documentation and runnable Swift example are complete and usable.
+
+**Skills Required**
+
+- Swift
+- grpc-swift
+- Compiler and code generation
+- Serialization internals
+- Async and streaming APIs
+- Testing and performance profiling
+
+**Difficulty**
+
+Hard
+
+**Project Size**
+
+350 hours
+
+**Potential Mentors**
+
+- Chaokun Yang
+- Weipeng Wang
+
+**Source Links**
+
+[https://github.com/apache/fory/issues/3370](https://github.com/apache/fory/issues/3370)[https://fory.apache.org/docs/next/compiler/compiler_guide](https://fory.apache.org/docs/next/compiler/compiler_guide)[https://github.com/apache/fory/tree/main/compiler](https://github.com/apache/fory/tree/main/compiler)[https://github.com/apache/fory/tree/main/compiler/fory_compiler](https://github.com/apache/fory/tree/main/compiler/fory_compiler)[https://github.com/apache/fory/tree/main/compiler/fory_compiler/tests](https://github.com/apache/fory/tree/main/compiler/fory_compiler/tests)[https://github.com/apache/fory/tree/main/swift](https://github.com/apache/fory/tree/main/swift)[https://fory.apache.org/docs/guide/rust/](https://fory.apache.org/docs/guide/rust/)[https://github.com/grpc/grpc-swift](https://github.com/grpc/grpc-swift)
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Chaokun Yang*, mail: chaokunyang (at) apache.org
+
+*Project Devs*, mail: dev (at) fory.apache.org
+
+[Apache Fory Java & Python gRPC Integration](https://issues.apache.org/jira/browse/GSOC-318)
+
+**Description:**
+
+Apache Fory can already generate high-performance Java and Python model code from IDL, but end-to-end Java/Python gRPC integration is not available as a unified workflow.
+
+This project will implement Java and Python gRPC integration in the Fory compiler by generating language-specific service and transport artifacts.
+
+Java output artifacts: *Service.java and *Grpc.java.
+
+Python output artifacts: *_service.py and *_grpc.py.
+
+The implementation must use Fory serialization only, without protobuf runtime payload types. It must follow compiler conventions and keep runtime overhead low.
+
+**Expected outcomes:**
+
+1. Generate Java and Python gRPC service and binding code from service definitions.
+
+2. Support unary and streaming RPC APIs based on Fory service IR.
+
+3. Generate Fory-based request and response marshalling for both languages.
+
+4. Implement zero-copy decode paths for inbound payloads in both Java and Python, with a safe fallback path when zero-copy cannot be applied.
+
+5. Add golden code generation tests for output file names and key method signatures in both Java and Python generators.
+
+6. Provide runnable Java and Python gRPC examples using generated stubs and Fory codec.
+
+7. Update compiler documentation for Java and Python gRPC code generation usage and constraints.
+
+**Required cross-language gRPC tests between Java and Python services:**
+
+1. Add integration tests for Java server with Python client.
+
+2. Add integration tests for Python server with Java client.
+
+3. Cover request and response round-trip correctness using Fory-serialized payloads.
+
+4. Include unary RPC coverage as required. Include streaming coverage when corresponding generated streaming APIs are in scope.
+
+5. Validate compatibility for normal cases and key error paths, including decode errors and type mismatch.
+
+6. Add coverage for zero-copy decode paths and fallback behavior in both Java and Python integrations.
+
+CI end-to-end test requirements:
+
+1. Add Java and Python gRPC end-to-end interoperability tests into CI.
+
+2. CI must execute both directions: Java server to Python client, and Python server to Java client.
+
+3. CI must fail on serialization compatibility regressions.
+
+4. CI should run deterministic test cases with stable assertions for payload correctness and error handling behavior.
+
+**Skills:**
+
+Java, Python, gRPC Java, grpcio, compiler and code generation, serialization internals, testing, performance optimization.
+
+**Difficulty:**
+
+Medium to Hard.
+
+**Project size:**
+
+Preferred 350 hours.
+
+**Potential mentors:**
+
+Chaokun Yang, Weipeng Wang.
+
+**Source links:**[https://github.com/apache/fory/issues/3272](https://github.com/apache/fory/issues/3272)[https://github.com/apache/fory/issues/3273](https://github.com/apache/fory/issues/3273)[https://fory.apache.org/docs/next/compiler/compiler_guide](https://fory.apache.org/docs/next/compiler/compiler_guide)[https://github.com/apache/fory/tree/main/compiler](https://github.com/apache/fory/tree/main/compiler)[https://github.com/apache/fory/tree/main/java](https://github.com/apache/fory/tree/main/java)[https://github.com/apache/fory/tree/main/python](https://github.com/apache/fory/tree/main/python)[https://fory.apache.org/docs/next/guide/java/](https://fory.apache.org/docs/next/guide/java/)[https://fory.apache.org/docs/guide/python/](https://fory.apache.org/docs/guide/python/)
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Chaokun Yang*, mail: chaokunyang (at) apache.org
+
+*Project Devs*, mail: dev (at) fory.apache.org
+
+[Apache Fory C++ & Rust gRPC Integration](https://issues.apache.org/jira/browse/GSOC-320)
+
+**Description:**
+
+Apache Fory can generate high-performance C++ and Rust model code from IDL, but it does not yet provide end-to-end gRPC service binding generation for both languages as one aligned workflow.
+
+This project will add C++ and Rust gRPC code generation in the Fory compiler using Fory serialization instead of protobuf runtime payload types.
+
+C++ generated outputs:
+
+- service.h for service API abstractions.
+- service.grpc.h for gRPC declarations.
+- service.grpc.cc for gRPC implementations.
+
+Rust generated outputs:
+
+- service.rs for service API traits/modules.
+- service_grpc.rs for tonic server/client transport bindings.
+
+The implementation should follow Fory compiler conventions and prioritize performance-first, low-overhead runtime behavior.
+
+**Expected outcomes:**
+
+1. Parse service IR and generate C++ and Rust gRPC outputs from service definitions.
+
+2. Support unary and streaming RPC method generation in both language targets.
+
+3. Generate clear separation between language-level API abstractions and transport bindings.
+
+4. Generate C++ abstract service interfaces and client stubs compatible with gRPC C++.
+
+5. Generate Rust tonic-compatible async server and client wrappers.
+
+6. Implement Fory-based request and response serialization hooks for both C++ and Rust generated bindings.
+
+7. Implement zero-copy deserialization buffer support for inbound gRPC payloads in both languages, with safe fallback when zero-copy cannot be applied.
+
+8. Add golden code generation tests for generated file names and key method signatures in both targets.
+
+9. Add runtime tests for codec round-trip behavior, error handling, and fallback behavior.
+
+10. Add interoperability tests for C++ and Rust generated services, including C++ server with Rust client and Rust server with C++ client.
+
+11. Provide runnable C++ and Rust server/client examples using generated bindings and Fory codec.
+
+12. Update compiler and language documentation for C++/Rust gRPC code generation usage and constraints.
+
+**CI requirements:**
+
+1. Add C++ and Rust gRPC code generation tests to CI.
+
+2. Add C++ and Rust runtime tests for generated codec and service bindings to CI.
+
+3. CI must fail on generated API signature regressions and serialization compatibility regressions.
+
+**Skills:**
+
+C++ 17, Rust, gRPC, tonic, compiler and code generation, serialization internals, async Rust, testing, performance optimization.
+
+**Difficulty:**
+
+Medium to Hard.
+
+**Project size:**
+
+Preferred 350 hours.
+
+**Potential mentors:**
+
+Chaokun Yang, Weipeng Wang.
+
+**Source links:**[https://github.com/apache/fory/issues/3276](https://github.com/apache/fory/issues/3276)[https://github.com/apache/fory/issues/3275](https://github.com/apache/fory/issues/3275)[https://fory.apache.org/docs/next/compiler/compiler_guide](https://fory.apache.org/docs/next/compiler/compiler_guide)[https://github.com/apache/fory/tree/main/compiler](https://github.com/apache/fory/tree/main/compiler)[https://github.com/apache/fory/tree/main/cpp](https://github.com/apache/fory/tree/main/cpp)[https://github.com/apache/fory/tree/main/rust](https://github.com/apache/fory/tree/main/rust)[https://fory.apache.org/docs/guide/cpp/](https://fory.apache.org/docs/guide/cpp/)[https://fory.apache.org/docs/guide/rust/](https://fory.apache.org/docs/guide/rust/)
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Chaokun Yang*, mail: chaokunyang (at) apache.org
+
+*Project Devs*, mail: dev (at) fory.apache.org
+
+[Apache Fory Go & JavaScript gRPC integration](https://issues.apache.org/jira/browse/GSOC-322)
+
+**Description:**
+
+Apache Fory can generate high-performance model code for Go and JavaScript/TypeScript from IDL, but end-to-end gRPC service binding generation across these two ecosystems is not yet complete as a unified workflow.
+
+This project will add Go and JavaScript/TypeScript gRPC code generation to the Fory compiler using Fory serialization instead of protobuf runtime payload types.
+
+The implementation should follow Fory compiler conventions, remain dependency-light in runtime layers, and prioritize low-overhead, performance-first behavior.
+
+**Potential Outcomes:**
+
+1. Parse service IR and generate Go and JavaScript/TypeScript gRPC outputs for unary and streaming methods.
+
+2. Generate Go outputs `**_service.go` and `**_grpc.go` with ServiceDesc, server interfaces, and client wrappers compatible with grpc-go.
+
+3. Generate JavaScript/TypeScript service interface and gRPC binding outputs compatible with @grpc/grpc-js and existing JS/TS generator layout conventions.
+
+4. Wire request/response payload handling through generated Fory serializer and deserializer functions in both targets.
+
+5. Implement zero-copy deserialization buffer support for inbound gRPC payloads in both Go and JavaScript runtimes, with safe fallback paths when zero-copy cannot be applied.
+
+6. Coordinate with JS/TS type generation so emitted message, enum, and union types are directly usable by generated gRPC stubs.
+
+7. Add golden codegen tests for generated file names and key signatures for both language targets.
+
+8. Add end-to-end interoperability tests between generated Go and JavaScript services, including Go server with JS client and JS server with Go client.
+
+9. Add CI coverage for codegen tests, runtime codec tests, and Go<->JavaScript gRPC interoperability tests.
+
+10. Provide runnable Go and JavaScript/TypeScript server-client examples using generated bindings and Fory codec.
+
+11. Update compiler documentation for Go and JavaScript/TypeScript gRPC code generation usage and constraints.
+
+**Skills:**
+
+Go, JavaScript/TypeScript, Node.js, gRPC (grpc-go and @grpc/grpc-js), compiler/code generation, serialization internals, testing, performance optimization.
+
+**Difficulty:**
+
+Medium to Hard
+
+**Project size:**
+
+350 hours
+
+**Potential mentors:**
+
+Chaokun Yang, Weipeng Wang
+
+**Source links:**
+
+1. [https://github.com/apache/fory/issues/3274](https://github.com/apache/fory/issues/3274)
+
+2. [https://github.com/apache/fory/issues/3278](https://github.com/apache/fory/issues/3278)
+
+3. [https://github.com/apache/fory/issues/3280](https://github.com/apache/fory/issues/3280)
+
+4. [https://fory.apache.org/docs/next/compiler/compiler_guide](https://fory.apache.org/docs/next/compiler/compiler_guide)
+
+5. [https://github.com/apache/fory/tree/main/compiler](https://github.com/apache/fory/tree/main/compiler)
+
+6. [https://github.com/apache/fory/tree/main/go](https://github.com/apache/fory/tree/main/go)
+
+7. [https://github.com/apache/fory/tree/main/javascript](https://github.com/apache/fory/tree/main/javascript)
+
+8. [https://fory.apache.org/docs/guide/go/](https://fory.apache.org/docs/guide/go/)
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Chaokun Yang*, mail: chaokunyang (at) apache.org
+
+*Project Devs*, mail: dev (at) fory.apache.org
+
+[Apache Fory Dart gRPC integration](https://issues.apache.org/jira/browse/GSOC-324)
+
+**Description**
+
+Apache Fory does not yet generate Dart gRPC service bindings.
+
+This project will add Dart gRPC code generation to the Fory compiler. For each service definition, the compiler should generate Dart service interfaces and gRPC transport bindings that follow the existing Dart generator layout and use a Fory codec instead of protobuf runtime payload types.
+
+The implementation must keep the Fory runtime free of gRPC dependencies. Any required gRPC glue should be emitted as generated helper code. Runtime behavior should remain low-overhead and allocation-conscious.
+
+**Potential Outcomes**
+
+- Generate Dart service interface and gRPC binding outputs from service definitions, aligned with current Dart generator conventions.
+- Generate Dart gRPC server and client stubs for unary and streaming RPCs using Dart gRPC APIs.
+- Wire request/response handling through generated Fory serializer and deserializer functions.
+- Implement zero-copy deserialization buffer support for inbound gRPC payloads, with a safe fallback path when zero-copy cannot be applied.
+- Coordinate with Dart type generation so emitted message, enum, and union types are directly usable by generated gRPC stubs.
+- Add golden codegen tests for generated file names and key signatures.
+- Provide a runnable Dart server/client example using generated bindings and the Fory codec.
+- Update compiler documentation for Dart gRPC code generation usage and constraints.
+
+**Skills：**Dart, gRPC (`grpc`), compiler/code generation, serialization internals, async programming, testing, performance optimization.
+
+**Difficulty：** Medium**Project size：**175 hours**Potential mentors：**Chaokun Yang, Weipeng Wang**Source links：**
+
+[https://github.com/apache/fory/issues/3279](https://github.com/apache/fory/issues/3279)[https://github.com/apache/fory/issues/3281](https://github.com/apache/fory/issues/3281)[https://fory.apache.org/docs/next/compiler/compiler_guide](https://fory.apache.org/docs/next/compiler/compiler_guide)[https://github.com/apache/fory/tree/main/compiler](https://github.com/apache/fory/tree/main/compiler)[https://github.com/apache/fory/tree/main/dart](https://github.com/apache/fory/tree/main/dart)[https://github.com/apache/fory/blob/main/dart/README.md](https://github.com/apache/fory/blob/main/dart/README.md)[https://github.com/apache/fory/tree/main/dart/packages/fory](https://github.com/apache/fory/tree/main/dart/packages/fory)
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Chaokun Yang*, mail: chaokunyang (at) apache.org
+
+*Project Devs*, mail: dev (at) fory.apache.org
 
 # Spark
 

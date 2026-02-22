@@ -1,11 +1,28 @@
 # Measurement Lab — Project Ideas
 
 **Source:** https://github.com/m-lab/gsoc
-**Scraped:** 2026-02-20T11:48:56.937248
+**Scraped:** 2026-02-22T23:28:47.601538
 
 ---
 
 Welcome to M-Lab's Google Summer of Code page! We're excited to have you here and look forward to working with talented contributors from around the world.
+
+**Important notice (2026-02-20)**: We have experienced a significant and
+growing volume of unsolicited pull requests and issues across our repositories
+coinciding with the GSoC 2026 application period. Many of these contributions
+appear to be automated or AI-generated, and the volume has become
+unsustainable for our small team of maintainers.
+
+**Effective immediately, we are pausing review of all unsolicited pull
+requests and issues** — that is, any PR or issue that was not coordinated
+with a maintainer in advance. We need time to catch up and to ensure that
+genuine contributors are not drowned out.
+
+If you are a prospective GSoC applicant, please read the updated
+[engagement requirements](https://github.com#2-engage-with-us) below carefully. Going forward,
+we require prior contact and coordination before any code contribution.
+Opening pull requests or issues without prior discussion is not a productive
+way to engage with us and will not strengthen your application.
 
 Measurement Lab (M-Lab) [https://www.measurementlab.net/](https://www.measurementlab.net/) is an open source project with contributors from civil society organizations, educational institutions, and private sector companies dedicated to:
 
@@ -25,28 +42,82 @@ Before applying, we strongly encourage you to:
 
 - Mailing list:
 
-We are looking for applicants who:
+**Quality of thinking matters far more than quantity of commits.** We select
+contributors, not proposals and not pull requests. We want to work with people
+who understand our project, can hold a technical conversation, and are
+genuinely interested in our mission.
 
-- Carefully study our project ideas
-- Develop an initial technical proposal or idea
-- Think critically about scope, feasibility, and implementation
-- Contact us with a structured, well-prepared message
+Before opening any pull request, issue, or submitting a GSoC proposal for
+M-Lab, you **must** complete the following steps:
 
-We strongly discourage:
+-
+**Email us first.**Write to[support@measurementlab.net](mailto:support@measurementlab.net)with the subject linefollowed by a concise project title. In your email, introduce yourself, describe the project idea you are interested in, and explain your relevant background. This email should demonstrate that you have studied our project ideas and documentation.`[GSoC2026]`
 
-- ❌ Contacting us just to “introduce yourself” without having done prior research
-- ❌ Submitting AI-generated or low-effort PRs
-- ❌ Submitting drive-by PRs just to “show activity”
+-
+**Be ready for a conversation.**Mentors may follow up with questions or a short call. You should be able to discuss the project in your own words, explain your technical approach, and answer questions about your background. We are evaluating whether we can work together productively for several months. -
+**Coordinate before contributing code.**Do not open pull requests or issues without prior agreement from a maintainer. When a maintainer confirms that a specific contribution would be welcome, they will tell you how to proceed. -
+**One-two focused contributions.**We expect at most 1-2 pull requests or issues per contributor during the application period, and only after coordination with a maintainer. Bulk submissions, drive-by PRs, and unsolicited “fix” contributions are counterproductive and will not be considered favorably.
 
-Quality of thinking matters far more than quantity of commits.
+-
+Opening pull requests or issues without prior discussion with a maintainer
 
-How to engage with us:
+-
+Submitting AI-generated or low-effort contributions
 
-- You may contact us at
-[support@measurementlab.net](mailto:support@measurementlab.net). Please begin your email subject withfollowed by a concise project title.`[GSoC2026]`
+-
+Opening multiple PRs or issues to “show activity”
 
-- Kindly
-**do not**post proposal ideas directly to the[mailing list](https://groups.google.com/a/measurementlab.net/g/discuss). - Please note that, due to limited mentor availability, we may not be able to respond to all inquiries—particularly those that do not demonstrate prior research or substantive preparation.
+-
+Contacting us just to “introduce yourself” without having done prior research
+
+-
+Posting proposal ideas directly to the
+
+[mailing list](https://groups.google.com/a/measurementlab.net/g/discuss)
+
+Flooding our repositories with unsolicited contributions does not demonstrate engagement — it creates work for our maintainers and takes time away from mentoring genuine applicants.
+
+We are not opposed to the thoughtful use of AI tools. However, the volume of unreviewed, AI-generated contributions we have received during this application period has made it necessary to set explicit expectations.
+
+**Disclosure requirement.** All code contributions and proposals must include
+an AI Assistance Disclosure if AI tools were used in any part of the work.
+State what was AI-generated, how AI was used, and confirm that you have
+reviewed and understand the output. Omitting disclosure when AI was used
+is grounds for immediate rejection.
+
+**Proposals.** Your proposal must reflect your own thinking. You may use AI
+tools for grammar and clarity improvements, but the substance of your
+proposal — the technical approach, the timeline, the design decisions — must
+be your own work. Proposals that read as raw AI output will be rejected
+without further review.
+
+**Communication with reviewers.** Do not, *under any circumstances*, use AI
+to respond to review comments or communicate with maintainers. We have
+received numerous AI-generated replies to code reviews and emails, and they
+are obvious. Genuine engagement with feedback is a core part of how we
+evaluate contributors. AI-generated replies to reviews are disrespectful to
+the review process and will be treated as grounds for rejection.
+
+**Quality standards.** Using AI does not lower our standards. We will reject
+contributions that exhibit signs of unreviewed AI output, including but not
+limited to:
+
+- Large auto-generated summaries or commit messages
+- Verbose, boilerplate documentation that adds no real value
+- Over-engineered code with unnecessary abstractions
+- Trivial or redundant tests
+- Unreviewed boilerplate that does not fit the project's conventions
+
+**Understanding requirement.** You must fully understand every line of code
+and every design decision in your contributions. During the program, we will
+have live discussions about your work. If you cannot explain what you
+submitted, it will be evident.
+
+**Enforcement.** Failure to disclose AI usage, submit reviewed work, or
+demonstrate understanding of your contributions may result in immediate
+rejection of your application or removal from the program.
+
+We may not be able to respond to all inquiries — particularly those that do not demonstrate prior research or substantive preparation.
 
 A strong proposal should include:
 
@@ -116,9 +187,15 @@ Users will be able to create accounts, run tests while logged in, and access a p
 
 You'll implement secure user authentication, design a database schema for storing user measurements, build a personal dashboard with rich visualizations, ensure privacy compliance (GDPR, data retention policies), and maintain the existing functionality for anonymous users who don't want to create accounts.
 
-We evaluate proposals based on:
+We evaluate applicants holistically. We choose the contributor, not the proposal, not the pull request. Our criteria, roughly in order of importance:
 
-**Prior engagement**: Contributions to our project, community participation**Proposal quality**: Clear goals, realistic timeline, technical soundness**Communication**: Clarity, responsiveness, professionalism**Relevant experience**: Skills and background relevant to the project
+-
+**Genuine engagement**: Did you communicate with us? Can you discuss the project knowledgeably? Do you understand what M-Lab does and why? -
+**Communication**: Clarity, responsiveness, professionalism, ability to hold a technical conversation, kindness, empathy. -
+**Relevant experience**: Skills and background relevant to the project. -
+**Proposal quality**: Clear goals, realistic timeline, technical soundness.
+
+We may conduct short interviews with shortlisted candidates to assess fit.
 
 No, GSoC allows you to work on only one project. However, you can submit proposals for up to 3 different projects across all organizations.
 
@@ -126,7 +203,9 @@ Absolutely! We have projects for all skill levels. Start with our "good first is
 
 This depends on the project. See individual project descriptions for required and preferred skills.
 
-While not mandatory, prior contributions significantly strengthen your application and help you understand our workflow.
+You must contact us at [support@measurementlab.net](mailto:support@measurementlab.net)
+before contributing code. See the [engagement requirements](https://github.com#2-engage-with-us) above. Coordinated
+contributions strengthen your application; unsolicited pull requests do not.
 
 Communication is key. If you face challenges, reach out to your mentors immediately. We're here to help you succeed.
 

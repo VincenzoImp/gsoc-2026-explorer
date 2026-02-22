@@ -1,7 +1,7 @@
 # Python Software Foundation — Project Ideas
 
 **Source:** https://python-gsoc.org/ideas.html
-**Scraped:** 2026-02-20T11:48:56.938511
+**Scraped:** 2026-02-22T23:28:47.562064
 
 ---
 
@@ -10,10 +10,10 @@
 
 ## Mentoring orgs for GSoC 2026 have not been announced!
 
-Students: It's too early to apply but any open source experience will make your application better so feel free to get some practice in while you wait. Here are the [Instructions on getting started](https://python-gsoc.org/index.html#gettingstarted).
+Students: It's too early to apply but any open source experience will make your application better so feel free to get some practice in while you wait. Here are the [Instructions on getting started](/ideas/python-software-foundation/index).
 
 Mentors: If you're a sub-org who wants to join, please
-[read the information for sub-orgs](https://python-gsoc.org/mentors.html#sub-orgs).
+[read the information for sub-orgs](/ideas/python-software-foundation/mentors).
 
 ## pocketpy
 

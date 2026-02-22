@@ -1,0 +1,94 @@
+# does not accept contributions generated using LLMs
+
+**Parent:** Haiku — Project Ideas
+**Source:** https://www.haiku-os.org/community/organization/policies/
+**Scraped:** 2026-02-22T23:28:47.590154
+
+---
+
+# Policies
+
+The standards that govern the Haiku community are similar to the *Unwritten Constitutions* that govern some countries, where their constitution simply acts as an aggregation of other laws, rather than a standalone constitution.
+
+These rules are not final, and subject to change over time as problems, potential improvements or issues arise.
+
+Our policies are listed below in a summarized manner:
+
+## Communication
+
+### General rules
+
+Users are to refrain from delving into discussions about religion, politics, and other similar subjects. Try to stick to vi vs. emacs for off-topic fun...
+
+Everyone can participate, regardless of their age, gender, ethnicity, etc. Keep this in mind and keep the community safe and welcoming to all.
+
+Be nice to other people. Avoid insults and personal attacks.
+
+Focus on the quality and value of the discussions and contributions.
+
+Respect the privacy of other people.
+
+Avoid advertising your non-Haiku related project or business.
+
+We reserve the right to moderate or remove posts of an aggravating nature, ban users from the forums and mailing lists, remove people from the development team, restrict their commit access, or take any other action that seems appropriate and fitting, on a case by case basis.
+
+This statement does not override locally applicable laws, for example, some countries have regulations preventing collection of personal data for children under 13 year old, which may prevent full usage of our infrastructure or of 3rd party services we rely on.
+
+### Mailing List Etiquette
+
+As with many other FOSS mailing lists, we at Haiku hold ourselves to a few rules when posting to mailing lists.
+For now most of the rules of [Mailing List Etiquette](https://www.haiku-os.org/community/ml/etiquette) are to ensure that all
+information is properly archived or to improve a message's readability.
+
+On the mailing lists, messages cannot be deleted or edited once they have been sent, and topics cannot be locked, so think twice before sending one.
+
+### Bug Tracker Etiquette
+
+There are a few [social rules](https://dev.haiku-os.org/wiki/BugTrackerEtiquette) that are expected to be observed by all contributors of Haiku's Bug Tracker.
+
+### Forum Etiquette
+
+The forum has more activity than the other communication channels. In order to allow everyone
+to benefit from it, please follow the rules from [the forum FAQ page](https://discuss.haiku-os.org/faq).
+
+### Reporting
+
+In case someone exhibits inappropriate behavior, you are advised to report them to members of the Haiku development team. As an exception to the usual rules, you are allowed to contact [individual members](https://review.haiku-os.org/admin/groups/23fa29f291e2dd5d41452202147d038f020fc8db,members) privately in this case.
+
+If the behavior you witnessed took place in the [Community Forums](https://discuss.haiku-os.org/), you are encouraged to simply report the offending user or users through the forum itself.
+
+As a last resort, please get in touch with:
+
+contact at[haiku-inc dot org]
+
+## Trademarks and Copyrights
+
+#### Trademark Policy
+
+Haiku, Inc. owns the 'Haiku'® name, HAIKU logo®, HAIKU Background Leaf™, and HAIKU Leaf™ (registered) trademarks. As an open source project, the name and brand that is associated with the Project is vital to the Project's reputation and the sense of familiarity that end-users expect from the Software. Anyone is able to freely use the code that comprises Haiku, however the trademarks of Haiku cannot freely be used in the same liberal manner.
+
+The [Trademark Policy](https://www.haiku-os.org/about/trademark_policy) page on the about section of this website contains the latest policy revision.
+
+#### Copyright Policy
+
+As an open-source project, all contributions to Haiku should be under an open-source license, preferably the MIT license (exceptions may be made on a case-by-case basis.) Copyright of contributions may also be assigned to "Haiku, Inc.", but this is not required.
+
+The Haiku project cannot accept contributions (e.g. code, documentation, translations, etc.) which are under ambiguous or incompatible licenses. (*This includes most content produced with the use of LLMs.*)
+
+#### Haiku Distro Guidelines
+
+The Haiku project believes that having one distribution (the one officially released by the project) is the best long term strategy to ensure success of the platform. Therefore anyone considering creating a new distribution should think long and hard before doing so. The project is very interested in working with anyone who feels they need a new distribution to add what they need to Haiku itself.
+
+The [Haiku Distro Guidelines](https://www.haiku-os.org/community/guidelines_creating_haiku_distribution) page on the about section of this website contains the latest policy revision regarding the creation of a Haiku distribution.
+
+## Software
+
+#### Nightly images of Haiku
+
+Nightly images of Haiku contain the latest enhancements, bug fixes, and hardware support. Please keep in mind that there may also be regressions and broken features in these builds which have not yet been identified or resolved. USE AT YOUR OWN RISK!
+
+#### Coding Guidelines
+
+The information in our [Coding Guidelines](https://www.haiku-os.org/development/coding-guidelines) is extremely important. If you will be contributing code or patches to Haiku, you will need to strictly follow the code style guidelines. Code which doesn't follow these guidelines will not be accepted.
+
+Some code doesn't match our guidelines in some places, this is mostly due to it being written before the guidelines were defined. Assistance with cleaning up incorrect code is very welcome as long as you notate in the commit that there are "no functional changes" in this patch (don't bury code changes in style fixes).

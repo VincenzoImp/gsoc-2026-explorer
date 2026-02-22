@@ -1,7 +1,7 @@
 # Haskell.org — Project Ideas
 
 **Source:** https://summer.haskell.org/ideas.html
-**Scraped:** 2026-02-20T11:48:56.941798
+**Scraped:** 2026-02-22T23:28:47.603569
 
 ---
 
@@ -19,7 +19,7 @@ You can contribute ideas by sending a pull request to our
 repository](https://github.com/haskell-org/summer-of-haskell)
 ([example from 2024](https://github.com/haskell-org/summer-of-haskell/commit/63f360ed17cb1a1c1aeee9a14804b337e5169d14)).
 If you just want to discuss a possible idea,
-[please contact us](https://summer.haskell.org/contact.html).
+[please contact us](/ideas/haskellorg/contact).
 
 What is a good idea? **Anything that improves the Haskell ecosystem is
 valid**. The GSoC rules state that it must involve writing code
@@ -41,7 +41,7 @@ Projects should benefit as many people as possible â e.g. an improvement to GHC
 
 ## For students/contributors
 
-[We have added some tips on writing a proposal here](https://summer.haskell.org/tips.html).
+[We have added some tips on writing a proposal here](/ideas/haskellorg/tips).
 Please be aware that:
 
 - This is not an all-inclusive list, so you can apply for projects not in this list and we will try our best to match you with a mentor.

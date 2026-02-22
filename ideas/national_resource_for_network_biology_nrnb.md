@@ -1,7 +1,7 @@
 # National Resource for Network Biology (NRNB) — Project Ideas
 
 **Source:** https://github.com/nrnb/GoogleSummerOfCode/issues
-**Scraped:** 2026-02-20T12:04:30.950537
+**Scraped:** 2026-02-22T23:28:47.582082
 
 ---
 
@@ -269,8 +269,8 @@ To modernize openPIP while preserving its ease of use, we will adopt current web
 [openPIP Paper](https://www.sciencedirect.com/science/article/pii/S0022283622001838)
 
 ### Potential Mentors
-[Mohamed Helmy, VIDO, University of Saskatchewan](mohamed.helmy@usask.ca)
-[Gary Bader, University of Toronto](gary.bader@utoronto.ca)
+[Mohamed Helmy, VIDO, University of Saskatchewan](https://github.com/nrnb/GoogleSummerOfCode/mohamed.helmy@usask.ca)
+[Gary Bader, University of Toronto](https://github.com/nrnb/GoogleSummerOfCode/gary.bader@utoronto.ca)
 
 ---
 
@@ -335,7 +335,7 @@ https://github.com/Murali-group/GraphSpace/
 ---
 
 ### IRC
-Discord for GSoC 2026: https://discord.gg/2KVaACb7
+Discord for GSoC 2026: https://discord.gg/AqjnwHndq8
 Gitter for community: https://gitter.im/graphspace/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link
 
 ---

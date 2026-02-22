@@ -1,7 +1,7 @@
 # Open HealthCare Network — Project Ideas
 
 **Source:** https://github.com/ohcnetwork/care_fe/issues?q=is%3Aissue%20state%3Aopen%20label%3AGSoC
-**Scraped:** 2026-02-20T12:04:31.899266
+**Scraped:** 2026-02-22T23:28:47.599478
 
 ---
 
@@ -94,7 +94,7 @@ The **SSO Support** project aims to integrate Single Sign-On (SSO) functionality
 
 #### Link to documentation for Product Set-Up
 
-1. For setting up the frontend, please refer to the readme file available at: [CARE Frontend](https://github.com/ohcnetwork/care_fe)  
+1. For setting up the frontend, please refer to the readme file available at: [CARE Frontend](/ideas/open-healthcare-network/ohcnetwork-care_fe)  
 2. For setting up the backend, please refer to the readme file available at: [CARE Backend](https://github.com/ohcnetwork/care)
 
 #### Acceptance Criteria
@@ -149,7 +149,7 @@ The **CARE HR Module** project aims to enhance the human resource management cap
 
 #### Link to Documentation for Product Set-Up
 
-1. For frontend setup, refer to: [CARE Frontend](https://github.com/ohcnetwork/care_fe)  
+1. For frontend setup, refer to: [CARE Frontend](/ideas/open-healthcare-network/ohcnetwork-care_fe)  
 2. For backend setup, refer to: [CARE Backend](https://github.com/ohcnetwork/care)
 
 #### Acceptance Criteria

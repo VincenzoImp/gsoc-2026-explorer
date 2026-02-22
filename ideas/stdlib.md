@@ -1,7 +1,7 @@
 # stdlib — Project Ideas
 
 **Source:** https://github.com/stdlib-js/google-summer-of-code/blob/main/ideas.md
-**Scraped:** 2026-02-20T11:48:56.926624
+**Scraped:** 2026-02-22T23:28:47.566468
 
 ---
 
@@ -27,11 +27,11 @@ If you'd like to submit your own idea, that is also welcome; just be sure to pro
 
 The best project for you is the one you are most interested in and knowledgeable about. Excitement and aptitude are two key ingredients of a successful project and help ensure your commitment and ability to see a project through to completion. So if there is something you are especially passionate about and that you believe aligns with the scope and goals of stdlib, we'd be happy to hear your pitch!
 
-After discussing with us in our [Zulip](https://stdlib.zulipchat.com) chat and receiving approval to submit your idea, please open an [issue](https://github.com/stdlib-js/google-summer-of-code/issues/new?assignees=&labels=idea&template=idea.yml&title=%5BIdea%5D%3A+) which describes your idea using the [**idea issue template**](https://github.com/stdlib-js/google-summer-of-code/issues/new?assignees=&labels=idea&template=idea.yml&title=%5BIdea%5D%3A+).
+After discussing with us in our [Zulip](https://stdlib.zulipchat.com) chat and receiving approval to submit your idea, please open an [issue](/ideas/stdlib/stdlib-js-google-summer-of-code-issues-new) which describes your idea using the [**idea issue template**](/ideas/stdlib/stdlib-js-google-summer-of-code-issues-new).
 
 ## Mentors
 
-To learn who might mentor one of the projects listed below, consult the list of potential project [mentors](https://github.com/stdlib-js/google-summer-of-code/blob/main/mentors.md). For each mentor, the list includes a mentor's preferred project(s) and/or general interest area.
+To learn who might mentor one of the projects listed below, consult the list of potential project [mentors](/ideas/stdlib/mentors). For each mentor, the list includes a mentor's preferred project(s) and/or general interest area.
 
 * * *
 

@@ -1,7 +1,7 @@
 # GeomScale — Project Ideas
 
 **Source:** https://github.com/GeomScale/gsoc26/wiki/table-of-proposed-coding-projects
-**Scraped:** 2026-02-20T11:48:56.948227
+**Scraped:** 2026-02-22T23:28:47.592531
 
 ---
 
@@ -9,7 +9,7 @@
 :warning:   **NOTE** 
 
 This year contributors will have to choose between a ~90 hours small-sized project, ~175 hours medium-sized project or ~350 hours large project.
-For more information please read the [official gsoc website](https://summerofcode.withgoogle.com/) as well as [GeomScale's introductory wiki for GSoC 2026](https://github.com/GeomScale/gsoc26/wiki).
+For more information please read the [official gsoc website](https://summerofcode.withgoogle.com/) as well as [GeomScale's introductory wiki for GSoC 2026](/ideas/geomscale/geomscale-gsoc26-wiki).
 
 ---
 
@@ -25,15 +25,15 @@ Contributors, please look for a project that interests you in the table below. B
 
  Proposal                        | Type                  | Languages | Size | Hours |
 ---------------------------------|--------------------------|-----------|------|------|
-[Non-convex sampling in dingo](https://github.com/GeomScale/gsoc26/wiki/non-convex-sampling) | R&D | C++ /Python| Large | 350 | 
-[Exclude Lpsolve from R and C++ interfaces of volesti](https://github.com/GeomScale/gsoc26/wiki/Exclude-Lpsolve) | Dev |  C++/R | Medium | 175 |  
-[Counting linear extensions with volume computation and applications in AI](https://github.com/GeomScale/gsoc26/wiki/Counting-linear-extensions-with-volume-computation-and-applications-in-AI) | R&D | C++ | Large | 350 |
-[Expose sampling and volume on spectrahedra to R interface of volesti](https://github.com/GeomScale/gsoc26/wiki/Spectrahedra-R-interface) | Dev | R/Rcpp | Medium | 175 |
-[Expose autodiff to R interface of volesti](https://github.com/GeomScale/gsoc26/wiki/Autodiff-R-interface) | Dev | R/Rcpp | Medium | 175 |
-[Geometric Inference of Convex Bodies from Random Sampling](https://github.com/GeomScale/gsoc26/wiki/Geometric-Inference-of-Convex-Bodies-from-Random-Sampling) | R&D | C++/Python | Large | 350|
-[Supporting Sparse Matrix Representation for H‐Polytopes in Rvolesti](https://github.com/GeomScale/gsoc26/wiki/Supporting-Sparse-Matrix-Representation-for-H%E2%80%90Polytopes-in-Rvolesti) | Dev | R/Rcpp | Small | 90 |
-[Enhancing Rvolesti: Integration of Advanced Rounding Routines](https://github.com/GeomScale/gsoc26/wiki/Enhancing-Rvolesti-%E2%80%93-Integration-of-Advanced-Rounding-Routines) | Dev | R/Rcpp | Small | 90 |
-[Benchmark Polytope Import Suite for volesti](https://github.com/GeomScale/gsoc26/wiki/Benchmark-Polytope-Import-Suite-for-volesti) | Dev | C++ | Medium | 175 |
+[Non-convex sampling in dingo](/ideas/geomscale/non-convex-sampling) | R&D | C++ /Python| Large | 350 | 
+[Exclude Lpsolve from R and C++ interfaces of volesti](/ideas/geomscale/exclude-lpsolve) | Dev |  C++/R | Medium | 175 |  
+[Counting linear extensions with volume computation and applications in AI](/ideas/geomscale/counting-linear-extensions-with-volume-computation-and-applications-in-ai) | R&D | C++ | Large | 350 |
+[Expose sampling and volume on spectrahedra to R interface of volesti](/ideas/geomscale/spectrahedra-r-interface) | Dev | R/Rcpp | Medium | 175 |
+[Expose autodiff to R interface of volesti](/ideas/geomscale/autodiff-r-interface) | Dev | R/Rcpp | Medium | 175 |
+[Geometric Inference of Convex Bodies from Random Sampling](/ideas/geomscale/geometric-inference-of-convex-bodies-from-random-sampling) | R&D | C++/Python | Large | 350|
+[Supporting Sparse Matrix Representation for H‐Polytopes in Rvolesti](/ideas/geomscale/supporting-sparse-matrix-representation-for-h-e2-80-90polytopes-in-rvolesti) | Dev | R/Rcpp | Small | 90 |
+[Enhancing Rvolesti: Integration of Advanced Rounding Routines](/ideas/geomscale/enhancing-rvolesti-e2-80-93-integration-of-advanced-rounding-routines) | Dev | R/Rcpp | Small | 90 |
+[Benchmark Polytope Import Suite for volesti](/ideas/geomscale/benchmark-polytope-import-suite-for-volesti) | Dev | C++ | Medium | 175 |
 
 All contributor applications will be discussed by the **GeomScale** mentor community, and proposals will be ranked considering factors such as quality, contributor's ability to successfully finish the project, and impact for the **GeomScale** project.  A finite number of slots will be granted to **GeomScale** by Google, thus, only the best proposals will get chosen. This implies that it is possible that some ideas will not become GSoC projects even if they are supported by a good contributor application. 
 

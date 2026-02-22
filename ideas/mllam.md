@@ -1,7 +1,7 @@
 # MLLAM — Project Ideas
 
 **Source:** https://github.com/mllam/neural-lam/wiki/GSoC-ideas
-**Scraped:** 2026-02-20T11:48:56.937027
+**Scraped:** 2026-02-22T23:28:47.631647
 
 ---
 
@@ -48,7 +48,7 @@ Neural-LAM supports already a variety of graphs like multi-scale and hierarchica
 - **Project length**: 350 hour
 - **Potential mentors**: Hauke Schulz ([@observingClouds](https://github.com/observingClouds)), Leif Denby ([@leifdenby](https://github.com/leifdenby)), Joel Oskarson ([@joeloskarsson](https://github.com/joeloskarsson))
 
-Related issues are: [#164](https://github.com/mllam/neural-lam/issues/164), [weather-model-graphs](https://github.com/mllam/weather-model-graphs/issues)
+Related issues are: [#164](/ideas/mllam/mllam-neural-lam-issues-164), [weather-model-graphs](https://github.com/mllam/weather-model-graphs/issues)
 
 ## 2. Automatic generation of documentation from source code files
 
@@ -76,7 +76,7 @@ Related issues are: https://github.com/mllam/neural-lam/issues/49 https://github
 
 Neural-lam was mainly designed with regional, limited-area, forecasting in mind, integrating boundary conditions around the region. However, global weather forecasting is really just a special case of this, where the region is the whole earth and there are no boundary conditions. Still, some changes are needed in the codebase in order to make this work frictionless. The major challenge with enabling global forecasting is the need to construct a global graph for the Graph Neural Network models to work on. There are multiple options for this, including writing code for such graph-generation ourselves or building in a connection to suitable third-party libraries.
 
-- **Skills**: Python, PyTorch, PyTorch Geometric and [xarray](xarray.pydata.org) are highly beneficial
+- **Skills**: Python, PyTorch, PyTorch Geometric and [xarray](/ideas/mllam/xarray-pydata-org) are highly beneficial
 - **Difficulty**: Medium
 - **Project length**: 175 hour
 - **Potential mentors**: Joel Oskarson ([@joeloskarsson](https://github.com/joeloskarsson)), Hauke Schulz ([@observingClouds](https://github.com/observingClouds)), Leif Denby ([@leifdenby](https://github.com/leifdenby))

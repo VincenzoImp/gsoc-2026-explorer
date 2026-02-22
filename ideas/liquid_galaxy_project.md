@@ -1,7 +1,7 @@
 # Liquid Galaxy project — Project Ideas
 
 **Source:** https://www.liquidgalaxy.eu/2026/01/gsoc-2026-project-ideas.html
-**Scraped:** 2026-02-20T11:48:56.941555
+**Scraped:** 2026-02-22T23:28:47.579707
 
 ---
 
@@ -33,7 +33,7 @@ At this time, we are not going to comment further on proposals; we all have to w
 
 **- Allow the use of AI in your code creation and more, as stated in the**
 
-[AI Clarification Policy note,](https://www.liquidgalaxy.eu/2025/11/GSoC2026.html#ai)but implementing a self-review code process, as the Artificial Intelligence wave makes us all to work harder to detect fake work and bad non-maintainable code. Always next the guidance and supervision of your mentor and admins.
+[AI Clarification Policy note,](/ideas/liquid-galaxy-project/2025-11-gsoc2026)but implementing a self-review code process, as the Artificial Intelligence wave makes us all to work harder to detect fake work and bad non-maintainable code. Always next the guidance and supervision of your mentor and admins.
 
 And some more that we'll communicate if successful on GSoC this year.
 

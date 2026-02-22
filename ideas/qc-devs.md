@@ -1,13 +1,13 @@
 # QC-Devs — Project Ideas
 
 **Source:** https://qcdevs.org/join/qcdevs_gsoc/
-**Scraped:** 2026-02-20T11:48:56.958354
+**Scraped:** 2026-02-22T23:28:47.627280
 
 ---
 
 #
 [Google Summer of Code 2026
-](https://qcdevs.org//join/qcdevs_gsoc/)
+](/ideas/qc-devs/qcdevs_gsoc)
 
 This document provides guidance for individuals interested in participating in the [Google Summer of Code (GSoC)](https://summerofcode.withgoogle.com/) program with QC-Devs. We are looking forward to your contributions.
 
@@ -52,4 +52,4 @@ package. See the`GBasis`
 package. See the`GBasis`
 
 [original issue](https://github.com/theochem/gbasis/issues/220)([Winter of Code](https://winter-of-code-5.devfolio.co/schedule)2026) - A full list of past projects can be found in the
-[QC-Devs Archive](https://qcdevs.org/internships/).
+[QC-Devs Archive](/ideas/qc-devs/internships).

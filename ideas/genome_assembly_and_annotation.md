@@ -1,7 +1,7 @@
 # Genome Assembly and Annotation — Project Ideas
 
 **Source:** https://www.ebi.ac.uk/about/events/events/public-event/2025/2026-google-summer-of-code/
-**Scraped:** 2026-02-20T11:48:56.937998
+**Scraped:** 2026-02-22T23:28:47.629579
 
 ---
 
@@ -570,7 +570,7 @@ The resulting module will shorten development cycles for new microbiome classifi
 
 In this project, we aim to develop a prototype method for the generation of [sequence similarity networks](https://pubs.acs.org/doi/full/10.1021/acs.biochem.8b00473) (SSNs) for the MGnify Proteins database to help enable graph-based analyses of its sequence space. Using tools like [MMseqs2](https://github.com/soedinglab/MMseqs2) to compute pairwise sequence similarities, and Python graph libraries like NetworkX, a collection of representative SSNs will be generated for a small subset of the database of ~10 million proteins. The nodes of these networks will then be annotated with relevant MGnify metadata, starting with biome of origin. Finally, we will generate visualisations of these annotated SSNs to be displayed on the MGnify Proteins website using modern graph rendering tools like [Cytoscape](https://cytoscape.org/) and [Cosmograph](https://cosmograph.app/).
 
-The latest release of the[ MGnify Proteins Database](https://www.ebi.ac.uk/metagenomics/proteins/) contains over 2.4 billion non-redundant protein records including relevant metagenomics metadata. The visualisation of sets of protein sequences using SSNs is a common approach for extracting novel insights about protein-protein relationships, including functional, structural, and evolutionary hypotheses. Facilitating the generation of SSNs for the MGnify Proteins database would therefore be a significant contribution to open metagenomics science.
+The latest release of the[ MGnify Proteins Database](/ideas/genome-assembly-and-annotation/metagenomics-proteins) contains over 2.4 billion non-redundant protein records including relevant metagenomics metadata. The visualisation of sets of protein sequences using SSNs is a common approach for extracting novel insights about protein-protein relationships, including functional, structural, and evolutionary hypotheses. Facilitating the generation of SSNs for the MGnify Proteins database would therefore be a significant contribution to open metagenomics science.
 
 **Expected results**
 
@@ -862,7 +862,7 @@ Good luck with your application. GSoC has consistently been a rewarding experien
 
 **EMBL-EBI resources and services**We develop and maintain a wide range of open biological data resources, including:
 
-[Ensembl](https://www.ensembl.org)and the[beta Ensembl website](https://beta.ensembl.org)[European Nucleotide Archive (ENA)](https://www.ebi.ac.uk/ena)[BioStudies](https://www.ebi.ac.uk/biostudies)[MGnify (Metagenomics)](https://www.ebi.ac.uk/metagenomics)
+[Ensembl](https://www.ensembl.org)and the[beta Ensembl website](https://beta.ensembl.org)[European Nucleotide Archive (ENA)](/ideas/genome-assembly-and-annotation/ena)[BioStudies](/ideas/genome-assembly-and-annotation/biostudies)[MGnify (Metagenomics)](https://www.ebi.ac.uk/metagenomics)
 
 **Code repositories**
 

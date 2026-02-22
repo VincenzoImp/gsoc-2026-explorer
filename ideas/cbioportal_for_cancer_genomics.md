@@ -1,7 +1,7 @@
 # cBioPortal for Cancer Genomics — Project Ideas
 
 **Source:** https://github.com/cBioPortal/GSoC/issues?q=is%3Aissue%20state%3Aopen%20label%3AGSoC-2026
-**Scraped:** 2026-02-20T12:04:32.473613
+**Scraped:** 2026-02-22T23:28:47.555860
 
 ---
 

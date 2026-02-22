@@ -1,7 +1,7 @@
 # JSON Schema — Project Ideas
 
 **Source:** https://github.com/json-schema-org/community/blob/main/programs/mentoring/gsoc/gsoc-2026.md
-**Scraped:** 2026-02-20T11:48:56.915366
+**Scraped:** 2026-02-22T23:28:47.585652
 
 ---
 
@@ -15,15 +15,15 @@ We are thrilled to announce that JSON Schema will be applying as a mentoring org
 
 The timeline is forthcoming, kindly check back after the official accepted organizations announcement from Google.
 
-## [Project Ideas](https://github.com/json-schema-org/community/issues?q=is%3Aopen+label%3Agsoc+sort%3Acreated-desc)
+## [Project Ideas](/ideas/json-schema/json-schema-org-community-issues)
 Here is the list of our 2026 project ideas:
-- [#991](https://github.com/json-schema-org/community/issues/991): **GSoC 2026: Replacement for vscode-json-languageservice**
-- [994](https://github.com/json-schema-org/community/issues/994): **GSoC 2026: Unify the test suite**
-- [965](https://github.com/json-schema-org/community/issues/965): **GSoC 2026: Comprehensive test suite for format validation** 
-- [984](https://github.com/json-schema-org/community/issues/984): **GSoC 2026: JSON Schema Compatibility Checker — Detect Breaking Changes Between Schema Versions**
-- [980](https://github.com/json-schema-org/community/issues/980): **GSoC 2026: Ecosystem Observability**
-- [977](https://github.com/json-schema-org/community/issues/977): **GSOC 2026: Add Support for Reporting on the Annotation Test Suite**
-- [983](https://github.com/json-schema-org/community/issues/983): **GSOC 2026: Enhanced Interaction and Navigation in JSON Schema Studio**
+- [#991](/ideas/json-schema/json-schema-org-community-issues-991): **GSoC 2026: Replacement for vscode-json-languageservice**
+- [994](/ideas/json-schema/json-schema-org-community-issues-994): **GSoC 2026: Unify the test suite**
+- [965](/ideas/json-schema/json-schema-org-community-issues-965): **GSoC 2026: Comprehensive test suite for format validation** 
+- [984](/ideas/json-schema/json-schema-org-community-issues-984): **GSoC 2026: JSON Schema Compatibility Checker — Detect Breaking Changes Between Schema Versions**
+- [980](/ideas/json-schema/json-schema-org-community-issues-980): **GSoC 2026: Ecosystem Observability**
+- [977](/ideas/json-schema/json-schema-org-community-issues-977): **GSOC 2026: Add Support for Reporting on the Annotation Test Suite**
+- [983](/ideas/json-schema/json-schema-org-community-issues-983): **GSOC 2026: Enhanced Interaction and Navigation in JSON Schema Studio**
 
 ## Why Choose a JSON Schema Project?
 
@@ -45,7 +45,7 @@ Details about our projects, qualification tasks, and application guidelines will
 
 ## Getting in Contact
 
-- **GitHub:** Please use [Issues](https://github.com/json-schema-org/community/issues?q=is%3Aopen+label%3Agsoc+sort%3Acreated-desc) to comment on project ideas, ask questions and collaborate.
+- **GitHub:** Please use [Issues](/ideas/json-schema/json-schema-org-community-issues) to comment on project ideas, ask questions and collaborate.
 - **Slack:** Please join us in our [slack workspace](https://json-schema.org/slack). All GSoC discussions are are hapenning in the [`#gsoc`](https://json-schema.slack.com/archives/C04MVQSRBRS) channel.
 
 Please see our [Code of Conduct](https://github.com/json-schema-org/.github/blob/main/CODE_OF_CONDUCT.md)
@@ -67,4 +67,4 @@ Please check out our [Contribution guidelines](https://github.com/json-schema-or
 
 ## 🏗 GSoC Contributor Guidance
 
-Please, check-out the [GSoC Contributior Guidance](CONTRIBUTOR-GUIDANCE.md)
+Please, check-out the [GSoC Contributior Guidance](/ideas/json-schema/contributor-guidance)

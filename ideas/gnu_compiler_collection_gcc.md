@@ -1,15 +1,15 @@
 # GNU Compiler Collection (GCC) — Project Ideas
 
 **Source:** https://gcc.gnu.org/wiki/SummerOfCode
-**Scraped:** 2026-02-20T12:11:40.790809
+**Scraped:** 2026-02-22T23:28:47.608468
 
 ---
 
 # Google Summer Of Code
 
-GCC has applied to be a GSoC mentoring organization in 2026. If successful, the primary org-admin is going to be [Martin Jambor](mailto:mjambor@suse.cz). However, it is always better to contact the whole community by emailing [mailing list](https://gcc.gnu.org/mailman/listinfo/gcc) [gcc@gcc.gnu.org](mailto:gcc@gcc.gnu.org) if you have any questions or requests - please put "GSoC" somewhere to the subject. If you are interested in gcc-rust topics, you can also reach out to the gcc-rust community via [Zulip](https://gcc-rust.zulipchat.com/).
+GCC has applied to be a GSoC mentoring organization in 2026. If successful, the primary org-admin is going to be [Martin Jambor](mailto:mjambor@suse.cz). However, it is always better to contact the whole community by emailing [mailing list](/ideas/gnu-compiler-collection-gcc/mailman-listinfo-gcc) [gcc@gcc.gnu.org](mailto:gcc@gcc.gnu.org) if you have any questions or requests - please put "GSoC" somewhere to the subject. If you are interested in gcc-rust topics, you can also reach out to the gcc-rust community via [Zulip](https://gcc-rust.zulipchat.com/).
 
-If you would like to be a GSoC contributor with GCC, first make sure you read the [Before you apply](https://gcc.gnu.org/wiki/SummerOfCode#Before_you_apply) and [Application](https://gcc.gnu.org/wiki/SummerOfCode#Application) sections on this page and then pick a project, possibly from the list below. After you made your selection or have a project idea of your own, please discuss it as soon as possible (way before the application) via the [gcc@gcc.gnu.org mailing list](https://gcc.gnu.org/mailman/listinfo/gcc) (put "GSoC" somewhere to the subject too) and feel free to raise it on [IRC](https://gcc.gnu.org/wiki/GCConIRC). Again, gcc-rust projects should be discussed via their [Zulip](https://gcc-rust.zulipchat.com/).
+If you would like to be a GSoC contributor with GCC, first make sure you read the [Before you apply](https://gcc.gnu.org/wiki/SummerOfCode#Before_you_apply) and [Application](https://gcc.gnu.org/wiki/SummerOfCode#Application) sections on this page and then pick a project, possibly from the list below. After you made your selection or have a project idea of your own, please discuss it as soon as possible (way before the application) via the [gcc@gcc.gnu.org mailing list](/ideas/gnu-compiler-collection-gcc/mailman-listinfo-gcc) (put "GSoC" somewhere to the subject too) and feel free to raise it on [IRC](https://gcc.gnu.org/wiki/GCConIRC). Again, gcc-rust projects should be discussed via their [Zulip](https://gcc-rust.zulipchat.com/).
 
 Contents
 
@@ -43,7 +43,7 @@ Extending the analyzer's support for C++. See
 
 This project would be mentored by David Malcolm. Required skills include C/C++ and finding a way through a large code-base. Applicants should familiarize themselves with GCC's GIMPLE representation, and the
 
-[internals of the static analyzer](https://gcc.gnu.org/onlinedocs/gccint/Static-Analyzer.html). The size of the project depends on its agreed scope, i.e. it**can be both a 175-hour (medium-sized) or a 350 hour (large) project**but it is probably easier to define a large one. Difficulty also depends on scope but is**likely to be hard**.**Ada - Compile-time data-race detection and global variable analysis**. Ada 2022 specifies a series of levels of checking for data races and global variable usage. We propose to implement the Global variable analysis specified in the Ada 2022 RM section 6.1.2, which checks that any use of global variables within a subprogram correspond to the usages specified by the "Global" aspect for the subprogram. We also propose to implement the compile-time parallel conflict checking specified in section 9.10.1 as "All_Parallel_Conflict_Checks" which verifies that a parallel construct only reads or updates global variables that are "synchronized" objects.- The expected outcome is that the compiler will recognize the Global aspect for subprograms, and detect uses of global variables that exceed the specification for a given subprogram. The compiler will recognize the Conflict_Check_Policy pragma, and will detect uses of non-synchronized global variables by parallel constructs.
+[internals of the static analyzer](/ideas/gnu-compiler-collection-gcc/onlinedocs-gccint-static-analyzer). The size of the project depends on its agreed scope, i.e. it**can be both a 175-hour (medium-sized) or a 350 hour (large) project**but it is probably easier to define a large one. Difficulty also depends on scope but is**likely to be hard**.**Ada - Compile-time data-race detection and global variable analysis**. Ada 2022 specifies a series of levels of checking for data races and global variable usage. We propose to implement the Global variable analysis specified in the Ada 2022 RM section 6.1.2, which checks that any use of global variables within a subprogram correspond to the usages specified by the "Global" aspect for the subprogram. We also propose to implement the compile-time parallel conflict checking specified in section 9.10.1 as "All_Parallel_Conflict_Checks" which verifies that a parallel construct only reads or updates global variables that are "synchronized" objects.- The expected outcome is that the compiler will recognize the Global aspect for subprograms, and detect uses of global variables that exceed the specification for a given subprogram. The compiler will recognize the Conflict_Check_Policy pragma, and will detect uses of non-synchronized global variables by parallel constructs.
 This could be a
 
 **medium or large**project (175 or 350 hours), depending on the applicant's familiarity with the GCC Ada front end (GNAT).**Medium difficulty**project, as this is only enforcing compile-time restrictions and has no effect on the generated code.- Expected Mentors: Tucker Taft and Richard Wai
@@ -64,7 +64,7 @@ The size and difficulty of the project depends on its agreed scope, i.e. it
 
 **can be both a 175-hour (medium-sized) or a 350 hour (large) project**,**can be both medium difficulty or hard**.Effort depends on which new feature(s) are implemented; requires some research about what's missing and about the effort. If interested, please ask via the fortran@ mailing list,
 
-[https://gcc.gnu.org/lists.html](https://gcc.gnu.org/lists.html)- The "what's new in 202x" document would be a starting point.
+[https://gcc.gnu.org/lists.html](/ideas/gnu-compiler-collection-gcc/lists)- The "what's new in 202x" document would be a starting point.
 
 **libgomp Optimizations for Scheduler Guided OpenMP Execution in Cloud VMs**
 
@@ -97,7 +97,7 @@ Mentors: Himadri CS, Tobias Burnus, Thomas Schwinge
 **Enhance OpenMP support.**OpenMP supports thread-based paralleliaztion and GPU offloading for C, C++, and Fortran.- There are several projects possible / project would be (mainly) mentored by Tobias Burnus.
 In particular, adding support for some more OpenMP 6.x features. See
 
-[https://gcc.gnu.org/projects/gomp/](https://gcc.gnu.org/projects/gomp/)for general information, links and, in particular, the current status. Some random picks and notes:- Changes to related to environment variables like OMP_DEFAULT_DEVICE, OMP_AVAILABLE_DEVICES, OMP_NUM_THREADS, OMP_PLACES is a runtime-library only work in C (simpler in scope and probably had to be combined with some other smaller feature)
+[https://gcc.gnu.org/projects/gomp/](/ideas/gnu-compiler-collection-gcc/projects-gomp)for general information, links and, in particular, the current status. Some random picks and notes:- Changes to related to environment variables like OMP_DEFAULT_DEVICE, OMP_AVAILABLE_DEVICES, OMP_NUM_THREADS, OMP_PLACES is a runtime-library only work in C (simpler in scope and probably had to be combined with some other smaller feature)
 - Atomic changes require some parser changes (mostly Fortran, some also C/C++) - this is compiler front-end work in C-ish C++ but using the existing parser infrastructure, testcases would be in the respective language. Also smaller-in-scope feature that should to be combined with some other smaller tasks
 - New loop transformation features: some front-end support, mostly early middle end code (C-ish C++). 'unroll'/'tile' are handled, 'fuse, interchange, reverse, split, stripe, flatten' are to be implemented - tricky part is to handle the corner cases. If not enough time has been burnt on this the new 'apply' clause and some other increase the required effort.
 - There are plenty of other features, some tiny, some huge and the list above is a random pick. - Besides OpenMP 6.x, there is some other work useful (quality of implementation related, performance, some missing gaps, known bugs); suggestions welcome, but picking 6.x features suggested.
@@ -144,13 +144,13 @@ The following links should help you:
 
 How to checkout our sources using Git is described at
 
-[https://gcc.gnu.org/git.html](https://gcc.gnu.org/git.html).Steps linked from
+[https://gcc.gnu.org/git.html](/ideas/gnu-compiler-collection-gcc/git).Steps linked from
 
-[https://gcc.gnu.org/install/](https://gcc.gnu.org/install/)show you how to configure, build and test GCC (look for`--disable-bootstrap`, among other things). The[Installing GCC](https://gcc.gnu.org/wiki/InstallingGCC)page shows an easy way to obtain the libraries required to build GCC which people often find most problematic and other advice related to building and installing GCC for the first time.Read through David Malcolm's guide
+[https://gcc.gnu.org/install/](/ideas/gnu-compiler-collection-gcc/install)show you how to configure, build and test GCC (look for`--disable-bootstrap`, among other things). The[Installing GCC](https://gcc.gnu.org/wiki/InstallingGCC)page shows an easy way to obtain the libraries required to build GCC which people often find most problematic and other advice related to building and installing GCC for the first time.Read through David Malcolm's guide
 
 [GCC for New Contributors](https://gcc-newbies-guide.readthedocs.io/en/latest/). David has also presented a[talk about this topic at FOSDEM'24](https://fosdem.org/2024/schedule/event/fosdem-2024-2569-gcc-for-new-contributors/), you can watch the recording. You can also check out[Getting Started](https://gcc.gnu.org/wiki/GettingStarted)wiki page.Wiki page
 
-[DebuggingGCC](https://gcc.gnu.org/wiki/DebuggingGCC)and the manual page about[Developer options](https://gcc.gnu.org/onlinedocs/gcc/Developer-Options.html)are of particular interest. Read through those, compile a simple but non-trivial program with
+[DebuggingGCC](https://gcc.gnu.org/wiki/DebuggingGCC)and the manual page about[Developer options](/ideas/gnu-compiler-collection-gcc/onlinedocs-gcc-developer-options)are of particular interest. Read through those, compile a simple but non-trivial program with
 
 -O3 -S -fdump-tree-all -fdump-ipa-all -fdump-rtl-all
 
@@ -172,12 +172,12 @@ If you intend to work in the area of
 
 *static analyzer*, some notes specifically about the analyzer's internals and debugging it can be seen here:
 
-If you have done all of the above, or at least most of it, and still find it all a little bit intimidating, do not despair. If you are facing any specific technical problem or if you have difficulties figuring out where to start looking for particular things, that is something the mentors and the community at large are willing to help you with. First, the mailing list you keep reading about here has an [archive](https://gcc.gnu.org/pipermail/gcc/), it is always a good idea to check if some other GSoC applicant has not asked your question recently. If not, send an email describing your situation to the [mailing list](https://gcc.gnu.org/mailman/listinfo/gcc) yourself. We will appreciate if in your email you will make it clear that you have read this section and briefly list the steps above you have managed to carry out successfully.
+If you have done all of the above, or at least most of it, and still find it all a little bit intimidating, do not despair. If you are facing any specific technical problem or if you have difficulties figuring out where to start looking for particular things, that is something the mentors and the community at large are willing to help you with. First, the mailing list you keep reading about here has an [archive](/ideas/gnu-compiler-collection-gcc/pipermail-gcc), it is always a good idea to check if some other GSoC applicant has not asked your question recently. If not, send an email describing your situation to the [mailing list](/ideas/gnu-compiler-collection-gcc/mailman-listinfo-gcc) yourself. We will appreciate if in your email you will make it clear that you have read this section and briefly list the steps above you have managed to carry out successfully.
 
 
 ## Legal requirements
 
-Any non-trivial contributions to GCC are accepted only if their author either formally assign their copyright for them to the Free Software Foundation or if the author certifies the "Developer Certificate of Origin" (DCO) by adding the Signed-off-by: tag to their submission. Both processes are described in the official page on [Contributing to GCC](http://gcc.gnu.org/contribute.html#legal). Accepted GSoC contributors will be expected to choose one and follow it.
+Any non-trivial contributions to GCC are accepted only if their author either formally assign their copyright for them to the Free Software Foundation or if the author certifies the "Developer Certificate of Origin" (DCO) by adding the Signed-off-by: tag to their submission. Both processes are described in the official page on [Contributing to GCC](/ideas/gnu-compiler-collection-gcc/contribute). Accepted GSoC contributors will be expected to choose one and follow it.
 
 
 ## Use of AI
@@ -189,9 +189,9 @@ Applications which look like that they have been generated by a Large Language M
 
 ## Application
 
-First, you need to select a project. If you have been following GCC development, you might have an idea of your own, otherwise look at the suggested projects above and try to pick one there. In the course of selecting a project or when researching it in order to write your application, do not hesitate to ask questions or request more details from the community by email to the [gcc@gcc.gnu.org](mailto:gcc@gcc.gnu.org) [mailing list](https://gcc.gnu.org/mailman/listinfo/gcc) with the string "GSoC" in the email subject or on our #gcc [IRC](https://gcc.gnu.org/wiki/GCConIRC) channel at irc.oftc.net. Please note that the mailing list does not accept HTML messages, you must set your email client to plain text. If you are interested in gcc-rust topics, you can also reach out to the community via [Zulip](https://gcc-rust.zulipchat.com/).
+First, you need to select a project. If you have been following GCC development, you might have an idea of your own, otherwise look at the suggested projects above and try to pick one there. In the course of selecting a project or when researching it in order to write your application, do not hesitate to ask questions or request more details from the community by email to the [gcc@gcc.gnu.org](mailto:gcc@gcc.gnu.org) [mailing list](/ideas/gnu-compiler-collection-gcc/mailman-listinfo-gcc) with the string "GSoC" in the email subject or on our #gcc [IRC](https://gcc.gnu.org/wiki/GCConIRC) channel at irc.oftc.net. Please note that the mailing list does not accept HTML messages, you must set your email client to plain text. If you are interested in gcc-rust topics, you can also reach out to the community via [Zulip](https://gcc-rust.zulipchat.com/).
 
-When you have a draft of your proposal ready, send it to the [gcc@gcc.gnu.org](mailto:gcc@gcc.gnu.org) [mailing list](https://gcc.gnu.org/mailman/listinfo/gcc) as a request for comments. First, it should help you come up with a much better final proposal. Second, when evaluating applicants, we look closely at how they responded to feedback and how they incorporated it in their application document. We are unlikely to accept an application from someone who has not interacted with the community before at all. Please remember to put the string "GSoC" in the email subject of all messages about GSoC or a GSoC project proposal.
+When you have a draft of your proposal ready, send it to the [gcc@gcc.gnu.org](mailto:gcc@gcc.gnu.org) [mailing list](/ideas/gnu-compiler-collection-gcc/mailman-listinfo-gcc) as a request for comments. First, it should help you come up with a much better final proposal. Second, when evaluating applicants, we look closely at how they responded to feedback and how they incorporated it in their application document. We are unlikely to accept an application from someone who has not interacted with the community before at all. Please remember to put the string "GSoC" in the email subject of all messages about GSoC or a GSoC project proposal.
 
 
 ### Formal application document
@@ -212,13 +212,13 @@ Starting with some small patch for the area you are interested in before the pro
 
 And let's stress again that you need to present your project on the
 
-[gcc@gcc.gnu.org](mailto:gcc@gcc.gnu.org)[mailing list](https://gcc.gnu.org/mailman/listinfo/gcc)because there is likely going to be a feedback that you should incorporate. Put "GSoC" somewhere into the email subject.
+[gcc@gcc.gnu.org](mailto:gcc@gcc.gnu.org)[mailing list](/ideas/gnu-compiler-collection-gcc/mailman-listinfo-gcc)because there is likely going to be a feedback that you should incorporate. Put "GSoC" somewhere into the email subject.
 
 
 
 ## Other Project Ideas
 
-Note that some of the ideas found below might be fully or partially obsolete. This is another reason why it is always a good idea to discuss the project of interest on the [mailing list](https://gcc.gnu.org/mailman/listinfo/gcc) and/or via [IRC](https://gcc.gnu.org/wiki/GCConIRC) before submitting a GSoC proposal.
+Note that some of the ideas found below might be fully or partially obsolete. This is another reason why it is always a good idea to discuss the project of interest on the [mailing list](/ideas/gnu-compiler-collection-gcc/mailman-listinfo-gcc) and/or via [IRC](https://gcc.gnu.org/wiki/GCConIRC) before submitting a GSoC proposal.
 
 
 ### Link-time and interprocedural optimization improvements
@@ -273,9 +273,9 @@ Make cp-demangle non-recursive. C++ mangled names use a recursive grammar, and n
 
 [TySan](https://gcc.gnu.org/wiki/TySan)). Goal of the task would be to investigate and prototype usage of type-based aliasing rules information provided by GCC in order to detect violations of strict aliasing rules.Replace
 
-[libiberty](http://gcc.gnu.org/onlinedocs/libiberty/)with[gnulib](http://www.gnu.org/software/gnulib/). See[http://gcc.gnu.org/ml/gcc-patches/2012-08/msg00362.html](http://gcc.gnu.org/ml/gcc-patches/2012-08/msg00362.html)Initial work was done in GSoC 2016 ([replacelibibertywithgnulib](https://gcc.gnu.org/wiki/replacelibibertywithgnulib)).Finish the
+[libiberty](/ideas/gnu-compiler-collection-gcc/onlinedocs-libiberty)with[gnulib](http://www.gnu.org/software/gnulib/). See[http://gcc.gnu.org/ml/gcc-patches/2012-08/msg00362.html](/ideas/gnu-compiler-collection-gcc/ml-gcc-patches-2012-08-msg00362)Initial work was done in GSoC 2016 ([replacelibibertywithgnulib](https://gcc.gnu.org/wiki/replacelibibertywithgnulib)).Finish the
 
-[implementation of a stable introspection plugin API](https://gcc.gnu.org/ml/gcc/2012-09/msg00074.html)(with the possibility of extending it to cover non-introspection cases)- Modify any GCC optimization decisions externally through plugins (see MILEPOST GCC, for example). -- G. Fursin, 2014.
+[implementation of a stable introspection plugin API](/ideas/gnu-compiler-collection-gcc/ml-gcc-2012-09-msg00074)(with the possibility of extending it to cover non-introspection cases)- Modify any GCC optimization decisions externally through plugins (see MILEPOST GCC, for example). -- G. Fursin, 2014.
 - Systematize learning of optimal optimization decisions for multiple benchmarks, data sets and architectures (see c-mind.org/repo, for example). -- G. Fursin, 2014.
 - Extend GCC plugin framework to enable code instrumentation (insert calls to external function after individual instructions) for dynamic code analysis. We need it to extend our TM/TLS models. -- G. Fursin, 2014.
 - Fix -ftrapv so that it works.

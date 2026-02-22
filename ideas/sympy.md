@@ -1,7 +1,7 @@
 # SymPy — Project Ideas
 
 **Source:** https://github.com/sympy/sympy/wiki/GSoC-Ideas
-**Scraped:** 2026-02-20T11:48:56.927851
+**Scraped:** 2026-02-22T23:28:47.570182
 
 ---
 
@@ -9,7 +9,7 @@
 
 This is the list of ideas for students wishing to apply for Google Summer of
 Code. For more information on how to apply, see the [GSoC Student
-Instructions](GSoC-Student-Instructions). This list is here for inspiration and to give students an idea
+Instructions](/ideas/sympy/gsoc-student-instructions). This list is here for inspiration and to give students an idea
 of what directions may be good for SymPy.
 
 If you want to pursue an idea listed here, you should contact us on our
@@ -93,6 +93,7 @@ have any questions about mentoring feel free to email me.)
 * Sidharth Mundhra - sidharthmundhra16@gmail.com (for 'sympy.series')
 * Smit Lunagariya - smitplunagariya@gmail.com
 * Sudeep Sidhu - sudeepmanilsidhu@gmail.com (physics.vector/mechanics)
+* Tilo Reneau-Cardoso - tiloreneau@gmail.com (for `sympy.assumptions`)
 * Timo Stienstra - timostienstra00@gmail.com (for `sympy.physics.mechanics`/`vector`/`biomechanics`)
 * Tom van Woudenberg - tom.van.woudenberg@gmail.com (for `sympy.physics.continuum_mechanics`)
 * Yathartha Joshi - yathartha32@gmail.com
@@ -301,10 +302,10 @@ Numerous related tasks are mentioned in the "Ideas" section.
 
 There has been a significant amount of merged and unmerged work on this topic. A
 list of detailed issues can be found at [this
-issue](https://github.com/sympy/sympy/issues/6730). You should take
+issue](/ideas/sympy/sympy-sympy-issues-6730). You should take
 a look at the work started at https://github.com/sympy/sympy/pull/2508.
 
-[This mailing list post](https://groups.google.com/d/msg/sympy/PHR136kdxc4/eW4pKFcWmzIJ) by Aaron Meurer outlines the status of the project and some ideas of what to do. It is from 2015 but most of what is written there is still true. The main thing that is new is that the new assumptions call the old assumptions (`ask(Q.real(Symbol('x', real=True)))`). See also the prior GSoC projects on assumptions, including [this one](https://github.com/sympy/sympy/wiki/GSoC-2015-Application-Sudhanshu-Mishra:-Assumptions), which was accepted, but there may be parts of it that were not completed, and https://github.com/sympy/sympy/wiki/GSoC-2013-Application-Tom-Bachmann:-Removing-the-old-assumptions-module, which was not accepted (the student chose to do another project), but contains some good ideas.
+[This mailing list post](https://groups.google.com/d/msg/sympy/PHR136kdxc4/eW4pKFcWmzIJ) by Aaron Meurer outlines the status of the project and some ideas of what to do. It is from 2015 but most of what is written there is still true. The main thing that is new is that the new assumptions call the old assumptions (`ask(Q.real(Symbol('x', real=True)))`). See also the prior GSoC projects on assumptions, including [this one](/ideas/sympy/gsoc-2015-application-sudhanshu-mishra-assumptions), which was accepted, but there may be parts of it that were not completed, and https://github.com/sympy/sympy/wiki/GSoC-2013-Application-Tom-Bachmann:-Removing-the-old-assumptions-module, which was not accepted (the student chose to do another project), but contains some good ideas.
 
 **Involved Software**
 
@@ -375,15 +376,15 @@ issues
 
 **Status**
 
-**[GSoC 2014 Project: Harsh Gupta](https://github.com/sympy/sympy/wiki/GSoC-2014-Application-Harsh-Gupta:-Solvers)**
+**[GSoC 2014 Project: Harsh Gupta](/ideas/sympy/gsoc-2014-application-harsh-gupta-solvers)**
 During the summer of 2014 Harsh Gupta worked to improve solvers as part of his
 GSoC project. Instead of making changes in the current `solve` function a new
 submodule named `solveset` was written.
 
-**[GSoC 2015 Project: Amit Kumar](https://github.com/sympy/sympy/wiki/GSoC-2015-Application-AMiT-Kumar--Solvers-:-Extending-Solveset)**
+**[GSoC 2015 Project: Amit Kumar](/ideas/sympy/gsoc-2015-application-amit-kumar-solvers-extending-solveset)**
 In the summer of 2015 Amit Kumar worked on this project to improve solveset, implement complex sets as a part of his GSoC project.
 
-**[GSoC 2016 Project: Kshitij SaraogiKshitij Saraogi](https://docs.google.com/document/d/1GljN3hj_qDzMvTAUW2X7idcsoDPhJ0uAqmMrqykSGGg/edit?usp=sharing) | [GSoC 2016 Project: Shekhar Rajak](https://github.com/sympy/sympy/wiki/GSoC-2016-Shekhar-Prasad-Rajak-Application:-Solvers:-Completing-Solveset)**
+**[GSoC 2016 Project: Kshitij SaraogiKshitij Saraogi](https://docs.google.com/document/d/1GljN3hj_qDzMvTAUW2X7idcsoDPhJ0uAqmMrqykSGGg/edit?usp=sharing) | [GSoC 2016 Project: Shekhar Rajak](/ideas/sympy/gsoc-2016-shekhar-prasad-rajak-application-solvers-completing-solveset)**
 In the summer of 2016, two projects were selected to participate in Google Summer of Code to work on the Solvers.
 New solver helper functions such as `solve_decomposition` and `nonlinsolve` were implemented to facilitate the porting from `solve` to `solveset`. Also, the inequality solver `solve_univariate_inequality` was refactored and added to `solveset`. Several methods related to functional analysis, such as `periodicty`, `continuous_domain` and `function_range` were implemented.
 
@@ -395,7 +396,7 @@ In the summer of 2018, Yathartha worked on the project to implement transcendent
 * Extending `transolve`:
 As part of the work done in the summer of 2018, `transolve` is fully designed and is now able to handle logarithmic and exponential equations for `solveset`. To make `solveset` fully fledged and replace `solve` completely we expect it to handle equations like:
      * Lambert type equations (PR [#14972](https://github.com/sympy/sympy/pull/14972))
-     * Handling modular equations ([#13178](https://github.com/sympy/sympy/issues/13178))
+     * Handling modular equations ([#13178](/ideas/sympy/sympy-sympy-issues-13178))
      * Solving transcendental equations in complex domain.
 
      There may be other types of equations that `transolve` can be made to handle. It's still under development!! Feel free to propose any of your ideas.
@@ -421,15 +422,15 @@ know why we did what we did. Here are some links:
 
 * [Discussion on the mailing list](https://groups.google.com/forum/#!searchin/sympy/solvers/sympy/Oyz8SkR2fRk/RMpooqwu3oMJ)
 * [Action Plan on solvers](https://github.com/sympy/sympy/pull/2948)
-* [Harsh Gupta's proposal for GSoC 2014](https://github.com/sympy/sympy/wiki/GSoC-2014-Application-Harsh-Gupta:-Solvers)
+* [Harsh Gupta's proposal for GSoC 2014](/ideas/sympy/gsoc-2014-application-harsh-gupta-solvers)
 * [Harsh's blog for GSoC](http://hargup.github.io/categories/sympy.html)
 * [solveset pull request](https://github.com/sympy/sympy/pull/7523)
 * [Amit's blog for GSoC](http://iamit.in/blog/)
-* [Solveset Documentation](https://github.com/sympy/sympy/blob/master/doc/src/modules/solvers/solveset.rst)
-* [GSoC 2016 Solvers Progress and blog links](https://github.com/sympy/sympy/wiki/GSoC-2016-Solvers-Progress)
+* [Solveset Documentation](/ideas/sympy/sympy-sympy-blob-master-doc-src-modules-solvers-solveset)
+* [GSoC 2016 Solvers Progress and blog links](/ideas/sympy/gsoc-2016-solvers-progress)
 * [Yathartha's blog for GSoC](https://yathartha22.github.io)
 * [transolve pull request](https://github.com/sympy/sympy/pull/14736)
-* [GSoC 2018 Solvers Progress](https://github.com/sympy/sympy/wiki/GSoC-2018-Solvers-Progress)
+* [GSoC 2018 Solvers Progress](/ideas/sympy/gsoc-2018-solvers-progress)
 
 **Involved Software**
 
@@ -442,7 +443,7 @@ application period. You should have a clear plan of most of what you plan to do
 in your application: waiting until the Summer to do the designing will not
 work.
 
-[#10006](https://github.com/sympy/sympy/issues/10006) and
+[#10006](/ideas/sympy/sympy-sympy-issues-10006) and
 [#8711](https://github.com/sympy/sympy/issues/8711) can be good entry points.
 
 **Prerequisite Knowledge**
@@ -505,11 +506,11 @@ Algorithms to think about implementing:
 
 Previous projects on the topic include:
 
-- [GSoC 2012 Aleksandar Makelov: Computational Group Theory](https://github.com/sympy/sympy/wiki/GSoC-2012-Report-Aleksandar-Makelov:-Computational-Group-Theory)
+- [GSoC 2012 Aleksandar Makelov: Computational Group Theory](/ideas/sympy/gsoc-2012-report-aleksandar-makelov-computational-group-theory)
 - [GSoC 2016 Gaurav Dhingra: Computational Group Theory](https://gxyd.github.io/blogs/Gsoc2016-project/)
-- [GSoC 2017 Valeriia Gladkova: Computational Group Theory](https://github.com/sympy/sympy/wiki/GSoC-2017-Report-Valeriia-Gladkova:-Group-Theory)
+- [GSoC 2017 Valeriia Gladkova: Computational Group Theory](/ideas/sympy/gsoc-2017-report-valeriia-gladkova-group-theory)
 - [GSoC 2018 Ravi Charan: Computational Group Theory](https://ravicharann.github.io/blog//final-report/)
-- [GSoC 2019 Divyanshu Thakur: Computational Group Theory](https://github.com/sympy/sympy/wiki/GSoC-2019-Report-Divyanshu-Thakur:-Group-Theory)
+- [GSoC 2019 Divyanshu Thakur: Computational Group Theory](/ideas/sympy/gsoc-2019-report-divyanshu-thakur-group-theory)
 
 A good amount of work has been done on polycyclic groups, polycyclic presentation with the base class collector were introduced in 2019 GSoC project but still there are a lot of things to be added for e.g. polycyclic orbit stabilizer and canonical polycyclic sequence to check if two polycylic subgroups are equal or not could be implemented. In addition, few other algorithms like abelian invariants and composition series implemented in 2019 GSoC project can be extended for infinite groups.
 
@@ -517,7 +518,7 @@ Some major algorithms for finitely presented groups include coset enumeration (t
 
 Additionally, the 2017 project implemented group homomorphisms and the 2018 project implemented the computation of the isomorphism between 2 groups, an automaton for word reduction and a few additional algorithms. Find the complete work done during 2018 in the project report in the link below.
 
-See the [2016](https://gxyd.github.io/blogs/Gsoc2016-project/), [2017](https://github.com/sympy/sympy/wiki/GSoC-2017-Report-Valeriia-Gladkova:-Group-Theory) and [2019](https://github.com/sympy/sympy/wiki/GSoC-2019-Report-Divyanshu-Thakur:-Group-Theory) reports for suggestions on where the work could continue.
+See the [2016](https://gxyd.github.io/blogs/Gsoc2016-project/), [2017](/ideas/sympy/gsoc-2017-report-valeriia-gladkova-group-theory) and [2019](/ideas/sympy/gsoc-2019-report-divyanshu-thakur-group-theory) reports for suggestions on where the work could continue.
 
 Quite a lot of work has been done on permutation groups, but still, some things remain (some of those mentioned in [GSoC 2012 Report by Aleksandar Makelov](https://github.com/sympy/sympy/wiki/GSoC-2012-Report-Aleksandar-Makelov:-Computational-Group-Theory#after-gsoc) are still relevant, e.g. subgroup intersection). Some work is already done on discrete groups. Nonetheless, there is still much that can be done both for discrete groups and for Lie groups.
 
@@ -602,7 +603,7 @@ See
 - [[GSoC-2017-Report-Abdullah-Javed-Nesar:-Rule-based-Integrator]]
 - [GSoC 2018 Rubi Final Report](https://github.com/ashishkg0022/Gsoc-proposal-Rubi/wiki/GSoC-2018-Rubi-Final-Report)
 - [[Improving-Rule-Based-Integrator]]
-- Tracking issue [#12233](https://github.com/sympy/sympy/issues/12233)
+- Tracking issue [#12233](/ideas/sympy/sympy-sympy-issues-12233)
 
 The RUBI code that has been written is now at https://github.com/sympy/rubi.
 The primary issue with it is that RUBI is very large and the Python
@@ -683,21 +684,21 @@ Differential equations
 This includes numerous smaller subprojects and is more of a bug burn down project than implementing things from scratch. Hence we should aim at solving as many bugs and possible issues having the label series or limits on them. There are around **146** open issues with the series label & around **26** open issues with the limits label with some overlap and the proposal should have a comprehensive list of ideas to fix a significant portion of these issues.
 
   * improve series expansions
-    * [relevant issues](https://github.com/sympy/sympy/labels/series)
+    * [relevant issues](/ideas/sympy/sympy-sympy-labels-series)
   * improve limit computations
-    * [relevant issues](https://github.com/sympy/sympy/labels/limits)
+    * [relevant issues](/ideas/sympy/sympy-sympy-labels-limits)
   * improve formal power series
   * asymptotic series (for instance aseries for gamma, bessel, error type functions)
-    * [issue 1](https://github.com/sympy/sympy/issues/26207), [issue 2](https://github.com/sympy/sympy/issues/26208), [issue 3](https://github.com/sympy/sympy/issues/26210), [issue 4](https://github.com/sympy/sympy/issues/26096)
+    * [issue 1](/ideas/sympy/sympy-sympy-issues-26207), [issue 2](/ideas/sympy/sympy-sympy-issues-26208), [issue 3](/ideas/sympy/sympy-sympy-issues-26210), [issue 4](/ideas/sympy/sympy-sympy-issues-26096)
   * Better support for Order term arithmetic (for example, expression of the
     order term of the series around a point that is not 0, like O((x - a)**3)).
-    * [issue 1](https://github.com/sympy/sympy/issues/22836)
-    * Read through [discussion](https://github.com/sympy/sympy/pull/22247#issuecomment-977811355) & comments for fixing [issue](https://github.com/sympy/sympy/issues/21315)
-    * Fix _eval_subs method to hanlde [issue 1](https://github.com/sympy/sympy/issues/19120), [issue 2](https://github.com/sympy/sympy/issues/10290), [issue 3](https://github.com/sympy/sympy/issues/7872), [issue 4](https://github.com/sympy/sympy/issues/15915)
+    * [issue 1](/ideas/sympy/sympy-sympy-issues-22836)
+    * Read through [discussion](https://github.com/sympy/sympy/pull/22247#issuecomment-977811355) & comments for fixing [issue](/ideas/sympy/sympy-sympy-issues-21315)
+    * Fix _eval_subs method to hanlde [issue 1](/ideas/sympy/sympy-sympy-issues-19120), [issue 2](/ideas/sympy/sympy-sympy-issues-10290), [issue 3](/ideas/sympy/sympy-sympy-issues-7872), [issue 4](/ideas/sympy/sympy-sympy-issues-15915)
   * Fix limit computations for piecewise functions
-    * revamp work on [PR](https://github.com/sympy/sympy/pull/22339) and test properly, [relevant issue](https://github.com/sympy/sympy/issues/24127)
-  * All other problems, which are described in wiki page about [series](UD-series) and
-    [current situation](UD-series-situation)
+    * revamp work on [PR](https://github.com/sympy/sympy/pull/22339) and test properly, [relevant issue](/ideas/sympy/sympy-sympy-issues-24127)
+  * All other problems, which are described in wiki page about [series](/ideas/sympy/ud-series) and
+    [current situation](/ideas/sympy/ud-series-situation)
 
 
 **Status**
@@ -957,16 +958,16 @@ Future Work (can be modified after discussion):
 
 * Refactor and complete plots:
     1. The plots namely **Pole Zero**, **Step Response**, **Impulse Response**, **Ramp Response**, **Bode Magnitude** and **Bode Phase** plots need to be refactored since they use `numpy` and `matplotlib`. The numerical methods were used for speed but they sacrifice on precision. Sympy's symbolic methods are used in the first place for the precision they provide, hence these numerical methods should be replaced by algebraic methods. \
-[Davide](https://github.com/Davide-sd), a fellow contributor has been revamping the plotting module. Check this [roadmap](https://github.com/sympy/sympy/issues/19263#issuecomment-1685859671), according to which `SymPy` will soon have its own `plot_list` function after which this refactoring could be done with ease.
+[Davide](https://github.com/Davide-sd), a fellow contributor has been revamping the plotting module. Check this [roadmap](/ideas/sympy/sympy-sympy-issues-19263), according to which `SymPy` will soon have its own `plot_list` function after which this refactoring could be done with ease.
     2. The plots namely **Root Locus**, **Nichols** and **Nyquist** plots are draft pull requests and need to be completed. They have clear ideas to follow and some comments which can be addressed once `SymPy` no longer depends upon `matplotlib` and `numpy`.
 
 * Implementations for the `StateSpace` class:
-    1. Solve examples mentioned in [#25502](https://github.com/sympy/sympy/issues/25502) and add them to the `control_problems` file . The required functionality is already supported in the pull request.
+    1. Solve examples mentioned in [#25502](/ideas/sympy/sympy-sympy-issues-25502) and add them to the `control_problems` file . The required functionality is already supported in the pull request.
 
 * Make the classes more feature rich:
     1. Read about Laub's or Horner's method to evaluate system transfer function at complex frequency. This will be the equivalent of `eval_frequency` for Transfer Functions.
     2. Other features can be picked up on comparison with `MATLAB` and `python-control`.
-    3. Implement the Z-Transform and its inverse. See [#28347](https://github.com/sympy/sympy/issues/28347#issuecomment-3225522105) for more information.
+    3. Implement the Z-Transform and its inverse. See [#28347](/ideas/sympy/sympy-sympy-issues-28347) for more information.
     4. Implement the DiscretePIDController.
     
 * Refactoring:
@@ -1268,7 +1269,7 @@ torques](https://moorepants.github.io/learn-multibody-dynamics/loads.html).
 **Status**
 
 - Timo Stienstra introduced a `Force` and `Torque` class, refer to
-  [#24258](https://github.com/sympy/sympy/issues/24240) and
+  [#24258](/ideas/sympy/sympy-sympy-issues-24240) and
   [#24641](https://github.com/sympy/sympy/pull/24641).
 - Sam Brockie implemented an abstract base class to define actuators and
   implemented several types of actuators, like a `LinearSpring` and
@@ -1285,7 +1286,7 @@ Some load types that could be worked on are:
 - Aerodynamic forces
 - Nonlinear springs and dampers
 - Models involving biomechanics, refer to
-  [#24240](https://github.com/sympy/sympy/issues/24240) for ideas.
+  [#24240](/ideas/sympy/sympy-sympy-issues-24240) for ideas.
 
 **Involved Software**
 
@@ -1451,7 +1452,7 @@ Another idea for codegen is to add more support for directly working with matric
 We have support for a number of backends and basic code gen classes in place.
 There is work on updating the system ongoing. Please ask on the mailing list.
 
-You can check out the work done by Ankit Pandey to extend codegen to support matrix operations at [Extending Codegen GSoC 2019](https://github.com/sympy/sympy/wiki/GSoC-2019-Report-Ankit-Pandey:-Extending-Codegen)
+You can check out the work done by Ankit Pandey to extend codegen to support matrix operations at [Extending Codegen GSoC 2019](/ideas/sympy/gsoc-2019-report-ankit-pandey-extending-codegen)
 
 **Involved Software**
 
@@ -1567,7 +1568,7 @@ but is not a full drop-in replacement yet.
 
 But the Lark-based parser is not complete, as it is not a drop-in replacement for the ANTLR-based parser. The current state of the parser can
 be found in [this blog post](https://wermos.github.io/blog/gsoc/sympy/gsoc-2-the-final-status-report/) that was written during the 2023 GSoC, and
-SymPy Issue [#25365](https://github.com/sympy/sympy/issues/25365).
+SymPy Issue [#25365](/ideas/sympy/sympy-sympy-issues-25365).
 
 **Involved Software**
 
@@ -1608,7 +1609,7 @@ ANTLR, C, and Fortran. The parsing module also supports a Python parser,
 with special extensions to support things like implicit multiplication (`2a` -> `2*a`)
 and implicit function application (`sin x` -> `sin(x)`), which uses the Python `tokenize` module.
 
-You can check out the work done on the C and Fortran parsers at [Creating a C and Fortran Parser GSoC 2019](https://github.com/sympy/sympy/wiki/GSoC-2019-Report-Nikhil-Maan:-Creating-a-C-and-Fortran-parser-for-SymPy)
+You can check out the work done on the C and Fortran parsers at [Creating a C and Fortran Parser GSoC 2019](/ideas/sympy/gsoc-2019-report-nikhil-maan-creating-a-c-and-fortran-parser-for-sympy)
 
 The existing parsers could be improved by adding support for more features of the programming languages, or new parsers could be added for other languages like Julia, Octave, MATLAB, etc.
 
@@ -1752,7 +1753,7 @@ implements a subset of the above ideas.
 for property-based testing. Hypothesis tests work by specifying properties
 that a function should satisfy, and automatically generating inputs to test
 it. There are more details of the idea of adding hypothesis to SymPy in [this
-issue](https://github.com/sympy/sympy/issues/20914).
+issue](/ideas/sympy/sympy-sympy-issues-20914).
 
 The idea is to explore adding hypothesis testing to SymPy. We should start
 small, ideally with a function that is already well tested and has relatively

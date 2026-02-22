@@ -1,7 +1,7 @@
 # Neovim — Project Ideas
 
 **Source:** https://github.com/neovim/neovim/wiki/Google-Summer-of-Code
-**Scraped:** 2026-02-20T11:48:56.921314
+**Scraped:** 2026-02-22T23:28:47.615798
 
 ---
 
@@ -9,7 +9,7 @@
 
 Neovim is a text editor based on Vim. One of the main [project goals](https://neovim.io/charter/) is to encourage hacking and collaboration.
 
-- Project proposals for [Google Summer of Code](https://summerofcode.withgoogle.com/) are tracked as [discussions](https://github.com/neovim/neovim/discussions?discussions_q=label%3Agsoc).
+- Project proposals for [Google Summer of Code](https://summerofcode.withgoogle.com/) are tracked as [discussions](/ideas/neovim/neovim-neovim-discussions).
 - These projects may require familiarity with C, Lua, and Vimscript.
 - Documentation for Neovim developers is here: https://neovim.io/doc/user/dev.html
 
@@ -17,12 +17,12 @@ The Neovim source has roots going back to 1987 which means libraries such as [li
 
 # Getting started
 
-Proposals (and the final "work submission") are tracked as [discussions with the "gsoc" label](https://github.com/neovim/neovim/discussions?discussions_q=label%3Agsoc). We are happy to hear other ideas you may have, just [create a new discussion](https://github.com/neovim/neovim/discussions/new?category=ideas&labels=gsoc) and mention that it's for GSoC. Because communication is a big part of open source development you are expected to get in touch with us before sending your proposal, see [Where to ask questions](#where-to-ask-questions).
+Proposals (and the final "work submission") are tracked as [discussions with the "gsoc" label](/ideas/neovim/neovim-neovim-discussions). We are happy to hear other ideas you may have, just [create a new discussion](/ideas/neovim/neovim-neovim-discussions-new) and mention that it's for GSoC. Because communication is a big part of open source development you are expected to get in touch with us before sending your proposal, see [Where to ask questions](#where-to-ask-questions).
 
 To get familiar with the project, 
 
-- read [CONTRIBUTING.md](https://github.com/neovim/neovim/blob/master/CONTRIBUTING.md)
-- try a small coding task (choose from [complexity:low](https://github.com/neovim/neovim/issues?q=is%3Aopen+is%3Aissue+label%3Acomplexity%3Alow) issues)
+- read [CONTRIBUTING.md](/ideas/neovim/neovim-neovim-blob-master-contributing)
+- try a small coding task (choose from [complexity:low](/ideas/neovim/neovim-neovim-issues) issues)
     - working on concrete tasks in the existing codebase, even if the tasks are unrelated to your proposal, gives us a valuable signal about your work style and communication. This is a key component of a successful proposal.
 
 To get familiar with GSoC, read their materials. Especially:
@@ -48,7 +48,7 @@ AI-assisted work is fine, but:
 - Ask questions and post your partial work frequently (every 1-2 days, if possible). It's OK if work is messy; just mark the pull request (PR) as "Draft".
 - Take advantage of the continuous integration (CI) systems which automatically run against your pull requests. When you send work to a PR, the full test-suite runs on the PR while you continue to work locally.
 - Only a text editor, `cmake`, and a compiler are needed to develop Neovim. LSP is very helpful also.
-- See `:help dev-tools` and [CONTRIBUTING.md](https://github.com/neovim/neovim/blob/master/CONTRIBUTING.md) for documentation on building, debugging, and development tips.
+- See `:help dev-tools` and [CONTRIBUTING.md](/ideas/neovim/neovim-neovim-blob-master-contributing) for documentation on building, debugging, and development tips.
 
 ## Where to ask questions
 
@@ -57,7 +57,7 @@ Ask questions here:
 - https://github.com/neovim/neovim/discussions
 - https://matrix.to/#/#neovim:matrix.org
 
-Do *not* ask general GSoC questions on [the issue tracker](https://github.com/neovim/neovim/issues); use [discussions](https://github.com/neovim/neovim/discussions) for that. **Do not ask "where do I start?"** on the issue tracker. *Do* comment on related issues to ask specific technical questions about an issue. If your question is not specific to an issue, open a [discussion](https://github.com/neovim/neovim/discussions).
+Do *not* ask general GSoC questions on [the issue tracker](/ideas/neovim/neovim-neovim-issues-2); use [discussions](/ideas/neovim/neovim-neovim-discussions-2) for that. **Do not ask "where do I start?"** on the issue tracker. *Do* comment on related issues to ask specific technical questions about an issue. If your question is not specific to an issue, open a [discussion](/ideas/neovim/neovim-neovim-discussions-2).
 
 # Making a proposal
 
@@ -82,13 +82,13 @@ Below are some suggested issues. These are starting points. If you have a great 
 
 # GSoC Ideas 2026
 
-## Proposals are [tracked as discussions](https://github.com/neovim/neovim/discussions)
+## Proposals are [tracked as discussions](/ideas/neovim/neovim-neovim-discussions-2)
 
-Proposals are tracked as [discussions](https://github.com/neovim/neovim/discussions) which implement features [tracked as issues](https://github.com/neovim/neovim/labels/gsoc).
+Proposals are tracked as [discussions](/ideas/neovim/neovim-neovim-discussions-2) which implement features [tracked as issues](/ideas/neovim/neovim-neovim-labels-gsoc).
 
-1. Choose an [existing issue](https://github.com/neovim/neovim/labels/gsoc), or [create a new issue](https://github.com/neovim/neovim/issues/new?template=feature_request.yml&labels=gsoc) to outline a feature/project proposal.
+1. Choose an [existing issue](/ideas/neovim/neovim-neovim-labels-gsoc), or [create a new issue](/ideas/neovim/neovim-neovim-issues-new) to outline a feature/project proposal.
     - Your proposal and work will not be discussed on the issue itself. Use discussions for that.
-2. Create a [discussion](https://github.com/neovim/neovim/discussions) to ask questions, talk about your idea(s), and (later) discuss your progress.
+2. Create a [discussion](/ideas/neovim/neovim-neovim-discussions-2) to ask questions, talk about your idea(s), and (later) discuss your progress.
 
 Below are some suggested issues. These are starting points. Your proposal should start with (1) a "Problem" section that describes the problem being solved, followed by (2) your proposed solution to the problem, including implementation details and constraints.
 
@@ -187,7 +187,7 @@ Visual-mode in Nvim becomes more intuitive and useful:
 
 **Description:**
 
-Nvim GUIs are implemented as processes communicating with Nvim. Originally the UI protocol exposed most functionality as a single, terminal-like screen grid. Work has been done to allow UIs (including embeddings in GUI editors, like VSCode) to render the screen layout themselves, based on semantic updates from Nvim. Some screen elements like the cmdline, popupmenu and message area has been externalized. As a result of a 2018 [GSOC project](https://github.com/neovim/neovim/issues/8320), windows can be drawn on separate grids.
+Nvim GUIs are implemented as processes communicating with Nvim. Originally the UI protocol exposed most functionality as a single, terminal-like screen grid. Work has been done to allow UIs (including embeddings in GUI editors, like VSCode) to render the screen layout themselves, based on semantic updates from Nvim. Some screen elements like the cmdline, popupmenu and message area has been externalized. As a result of a 2018 [GSOC project](/ideas/neovim/neovim-neovim-issues-8320), windows can be drawn on separate grids.
 
 **Expected Result:**
 
@@ -197,7 +197,7 @@ Some UIs want to render the buffer contents themselves. A solution would be a UI
 
 Another path is to improve the core Nvim grid model. We could allow the width and height of cells be different for each row. This would allow for heading text with different font size, and pictures rendered inside windows.
 
-Putting forward your own ideas of UI improvements is encouraged. Read the [docs](https://github.com/neovim/neovim/blob/master/runtime/doc/ui.txt) for the implemented extensions as well as the [tracking issue](https://github.com/neovim/neovim/issues/9421) for ongoing/planned work, as a starting point.
+Putting forward your own ideas of UI improvements is encouraged. Read the [docs](https://github.com/neovim/neovim/blob/master/runtime/doc/ui.txt) for the implemented extensions as well as the [tracking issue](/ideas/neovim/neovim-neovim-issues-9421) for ongoing/planned work, as a starting point.
 
 
 
@@ -334,9 +334,9 @@ Here's a picture of the potential workflow:
 
 **Description:**
 
-The built-in UI is called the TUI. It looks like Vim, but internally it is decoupled from the UI and "screen" layout subsystem. It was designed to be able to connect to other (remote) instances of Nvim, but this hasn't been implemented yet. [#7438](https://github.com/neovim/neovim/issues/7438)
+The built-in UI is called the TUI. It looks like Vim, but internally it is decoupled from the UI and "screen" layout subsystem. It was designed to be able to connect to other (remote) instances of Nvim, but this hasn't been implemented yet. [#7438](/ideas/neovim/neovim-neovim-issues-7438)
 
-Nvim is both a server and a client. Nvim (client) can connect to any other Nvim (server). And Nvim [GUIs](https://github.com/neovim/neovim/wiki/Related-projects#gui) can show the screen of a remote Nvim server.
+Nvim is both a server and a client. Nvim (client) can connect to any other Nvim (server). And Nvim [GUIs](/ideas/neovim/related-projects) can show the screen of a remote Nvim server.
 
 But the built-in Nvim TUI cannot show the screen of a remote Nvim server. That's the goal of this project.
 

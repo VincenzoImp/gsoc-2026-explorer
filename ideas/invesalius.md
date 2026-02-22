@@ -1,13 +1,13 @@
 # Invesalius — Project Ideas
 
 **Source:** https://github.com/invesalius/gsoc/blob/main/gsoc_2026_ideas.md
-**Scraped:** 2026-02-20T11:48:56.914880
+**Scraped:** 2026-02-22T23:28:47.588217
 
 ---
 
 # GSoC 2026 Ideas for InVesalius
 
-See also the instructions for applying [here](https://github.com/invesalius/gsoc/blob/main/gsoc_application.md).
+See also the instructions for applying [here](/ideas/invesalius/gsoc_application).
 
 All the current ideas for GSoC 2026 are listed bellow:
 

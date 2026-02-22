@@ -1,7 +1,7 @@
 # 52°North Spatial Information Research GmbH — Project Ideas
 
 **Source:** https://52north.org/outreach-dissemination/google-summer-of-code/project-ideas/
-**Scraped:** 2026-02-20T11:48:56.955777
+**Scraped:** 2026-02-22T23:28:47.619003
 
 ---
 
@@ -57,7 +57,7 @@ TBD
 
 ### Explanation
 
-The open-source 52°North [Weather Routing Tool (WRT)](https://github.com/52North/WeatherRoutingTool) was initially developed during the [MariData project](https://52north.org/solutions/marigeoroute/) and is currently being further developed and used in the [TwinShip project](https://twin-ship.eu/). It provides a way to find the optimal route for a ship that minimizes fuel consumption under varying weather conditions. Several constraints can be integrated into the optimization process, such as water depth and traffic separation zones. Currently, there are two algorithms available: an isofuel algorithm and a genetic algorithm. Details of the MariData project and example applications of the Weather Routing Tool can be found in the following publication “[MariData – Digital Twin for Optimal Vessel Operations Impacting Ship Design](https://proceedings.open.tudelft.nl/imdc24/article/view/875.)“.
+The open-source 52°North [Weather Routing Tool (WRT)](https://github.com/52North/WeatherRoutingTool) was initially developed during the [MariData project](/ideas/52north-spatial-information-research-gmbh/solutions-marigeoroute) and is currently being further developed and used in the [TwinShip project](https://twin-ship.eu/). It provides a way to find the optimal route for a ship that minimizes fuel consumption under varying weather conditions. Several constraints can be integrated into the optimization process, such as water depth and traffic separation zones. Currently, there are two algorithms available: an isofuel algorithm and a genetic algorithm. Details of the MariData project and example applications of the Weather Routing Tool can be found in the following publication “[MariData – Digital Twin for Optimal Vessel Operations Impacting Ship Design](https://proceedings.open.tudelft.nl/imdc24/article/view/875.)“.
 
 ### Expected Results
 
@@ -128,7 +128,7 @@ TBD
 
 ### Explanation
 
-The open-source 52°North [Weather Routing Tool (WRT)](https://github.com/52North/WeatherRoutingTool) was initially developed during the [MariData project](https://52north.org/solutions/marigeoroute/) and is currently being further developed and used in the [TwinShip project](https://twin-ship.eu/). It provides a way to find the optimal route for a ship that minimizes fuel consumption under varying weather conditions. Several constraints can be integrated into the optimization process, such as water depth and traffic separation zones. Currently, there are two algorithms available: an isofuel algorithm and a genetic algorithm. Details of the MariData project and example applications of the Weather Routing Tool can be found in the following publication “[MariData – Digital Twin for Optimal Vessel Operations Impacting Ship Design](https://proceedings.open.tudelft.nl/imdc24/article/view/875.)“.
+The open-source 52°North [Weather Routing Tool (WRT)](https://github.com/52North/WeatherRoutingTool) was initially developed during the [MariData project](/ideas/52north-spatial-information-research-gmbh/solutions-marigeoroute) and is currently being further developed and used in the [TwinShip project](https://twin-ship.eu/). It provides a way to find the optimal route for a ship that minimizes fuel consumption under varying weather conditions. Several constraints can be integrated into the optimization process, such as water depth and traffic separation zones. Currently, there are two algorithms available: an isofuel algorithm and a genetic algorithm. Details of the MariData project and example applications of the Weather Routing Tool can be found in the following publication “[MariData – Digital Twin for Optimal Vessel Operations Impacting Ship Design](https://proceedings.open.tudelft.nl/imdc24/article/view/875.)“.
 
 ### Expected Results
 
@@ -186,7 +186,7 @@ The duration of the project is estimated at **175** hours. An extension is possi
 
 ### Explanation
 
-The open-source 52°North [Weather Routing Tool (WRT)](https://github.com/52North/WeatherRoutingTool) was initially developed during the [MariData project](https://52north.org/solutions/marigeoroute/) and is currently being further developed and used in the [TwinShip project](https://twin-ship.eu/). It provides a way to find the optimal route for a ship that minimizes fuel consumption under varying weather conditions. Several constraints can be integrated into the optimization process, such as water depth and traffic separation zones. Currently, there are two algorithms available: an isofuel algorithm and a genetic algorithm. Details of the MariData project and example applications of the Weather Routing Tool can be found in the following publication “[MariData – Digital Twin for Optimal Vessel Operations Impacting Ship Design](https://proceedings.open.tudelft.nl/imdc24/article/view/875.)“.
+The open-source 52°North [Weather Routing Tool (WRT)](https://github.com/52North/WeatherRoutingTool) was initially developed during the [MariData project](/ideas/52north-spatial-information-research-gmbh/solutions-marigeoroute) and is currently being further developed and used in the [TwinShip project](https://twin-ship.eu/). It provides a way to find the optimal route for a ship that minimizes fuel consumption under varying weather conditions. Several constraints can be integrated into the optimization process, such as water depth and traffic separation zones. Currently, there are two algorithms available: an isofuel algorithm and a genetic algorithm. Details of the MariData project and example applications of the Weather Routing Tool can be found in the following publication “[MariData – Digital Twin for Optimal Vessel Operations Impacting Ship Design](https://proceedings.open.tudelft.nl/imdc24/article/view/875.)“.
 
 ### Expected Results
 

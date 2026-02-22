@@ -1,17 +1,17 @@
 # MariaDB — Project Ideas
 
 **Source:** https://mariadb.com/docs/general-resources/community/contributing-participating/google-summers-of-code/google-summer-of-code-2026
-**Scraped:** 2026-02-20T11:48:56.928272
+**Scraped:** 2026-02-22T23:28:47.610725
 
 ---
 
 # Google Summer of Code 2026
 
-In 2026, we are again participating in the [Google Summer of Code](https://summerofcode.withgoogle.com/). We, joined with the [MariaDB Foundation](https://www.mariadb.org), believe we are making a better database that remains application-compatible with MySQL. We also work on making LGPL connectors (currently [C](https://mariadb.com/docs/connectors/mariadb-connector-c), [C++](https://mariadb.com/docs/connectors/mariadb-connector-cpp), [ODBC](https://mariadb.com/docs/connectors/mariadb-connector-odbc), [Java](https://mariadb.com/docs/connectors/mariadb-connector-j), [Node.js](https://mariadb.com/docs/connectors/mariadb-connector-nodejs)) and on [MariaDB Galera Cluster](https://mariadb.com/docs/galera-cluster/), which allows you to scale your reads & writes. And we have [MariaDB ColumnStore](https://mariadb.com/docs/analytics/mariadb-columnstore), which is a columnar storage engine, designed to process petabytes of data with real-time response to analytical queries.
+In 2026, we are again participating in the [Google Summer of Code](https://summerofcode.withgoogle.com/). We, joined with the [MariaDB Foundation](https://www.mariadb.org), believe we are making a better database that remains application-compatible with MySQL. We also work on making LGPL connectors (currently [C](/ideas/mariadb/docs-connectors-mariadb-connector-c), [C++](/ideas/mariadb/docs-connectors-mariadb-connector-cpp), [ODBC](/ideas/mariadb/docs-connectors-mariadb-connector-odbc), [Java](/ideas/mariadb/docs-connectors-mariadb-connector-j), [Node.js](/ideas/mariadb/docs-connectors-mariadb-connector-nodejs)) and on [MariaDB Galera Cluster](/ideas/mariadb/docs-galera-cluster), which allows you to scale your reads & writes. And we have [MariaDB ColumnStore](/ideas/mariadb/docs-analytics-mariadb-columnstore), which is a columnar storage engine, designed to process petabytes of data with real-time response to analytical queries.
 
 ## Where to Start
 
-Please join us on [Zulip](https://mariadb.zulipchat.com/#narrow/channel/118760-New-Members/topic/GSoC.202026.3A.20welcome.20here!/) to mingle with the community. You should also subscribe to the [developers mailing list](https://lists.mariadb.org/postorius/lists/developers.lists.mariadb.org) (this is the main list where we discuss development - there are also [other mailing lists](https://mariadb.com/docs/general-resources/community/joining-the-community#mailing-lists)).
+Please join us on [Zulip](https://mariadb.zulipchat.com/#narrow/channel/118760-New-Members/topic/GSoC.202026.3A.20welcome.20here!/) to mingle with the community. You should also subscribe to the [developers mailing list](https://lists.mariadb.org/postorius/lists/developers.lists.mariadb.org) (this is the main list where we discuss development - there are also [other mailing lists](/ideas/mariadb/docs-general-resources-community-joining-the-community)).
 
 To improve your chances of being accepted, it is a good idea to submit a pull request with a bug fix to the server.
 
@@ -48,7 +48,7 @@ This project is to implement support for LOAD plugins and refactor the current L
 
 **Part-time project 175h**
 
-Users can control a point at which a replica will automatically stop applying events from the primary via [START REPLICA UNTIL](https://mariadb.com/docs/server/reference/sql-statements/administrative-sql-statements/replication-statements/start-replica#start-replica-until). Currently, this only allows [GTIDs](https://mariadb.com/docs/server/ha-and-performance/standard-replication/gtid) and log-offsets (file-name, binlog offset), which usually requires users to manually examine the binary log on the master to find the exact transaction one wants to stop at. Often, users won't care about the specifics on the exact transaction to stop at, but rather the goal is to create a known/consistent state, e.g. across multiple different slaves (possibly of different masters). That is, it currently requires users to use [mariadb-binlog](https://mariadb.com/docs/server/clients-and-utilities/logging-tools/mariadb-binlog/using-mariadb-binlog) to manually analyze the binary log files in the master server's binlog directory, find the transaction identifier (GTID or log-offset) of some transaction at the timestamp they want to stop the slaves at, and input that into their `STOP SLAVE UNTIL`
+Users can control a point at which a replica will automatically stop applying events from the primary via [START REPLICA UNTIL](/ideas/mariadb/docs-server-reference-sql-statements-administrative-sql-statements-replication-s). Currently, this only allows [GTIDs](/ideas/mariadb/docs-server-ha-and-performance-standard-replication-gtid) and log-offsets (file-name, binlog offset), which usually requires users to manually examine the binary log on the master to find the exact transaction one wants to stop at. Often, users won't care about the specifics on the exact transaction to stop at, but rather the goal is to create a known/consistent state, e.g. across multiple different slaves (possibly of different masters). That is, it currently requires users to use [mariadb-binlog](/ideas/mariadb/docs-server-clients-and-utilities-logging-tools-mariadb-binlog-using-mariadb-bin) to manually analyze the binary log files in the master server's binlog directory, find the transaction identifier (GTID or log-offset) of some transaction at the timestamp they want to stop the slaves at, and input that into their `STOP SLAVE UNTIL`
 
 statement. With multiple masters, this process would need to be repeated for each master.
 

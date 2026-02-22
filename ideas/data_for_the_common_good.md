@@ -1,11 +1,11 @@
 # Data for the Common Good — Project Ideas
 
 **Source:** https://chicagopcdc.github.io/GSoC/ideas
-**Scraped:** 2026-02-20T11:48:56.946531
+**Scraped:** 2026-02-22T23:28:47.621586
 
 ---
 
-Instructions [here](https://chicagopcdc.github.io/GSoC/proposal).
+Instructions [here](/ideas/data-for-the-common-good/proposal).
 
 Title |
 Enhancing the SMART on FHIR Backend for Patient-Controlled Data Sharing |

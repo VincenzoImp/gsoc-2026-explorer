@@ -1,7 +1,7 @@
 # JBoss Community — Project Ideas
 
 **Source:** https://spaces.redhat.com/spaces/GSOC/pages/750884772/Google+Summer+of+Code+2026+Ideas
-**Scraped:** 2026-02-20T11:48:56.917264
+**Scraped:** 2026-02-22T23:28:47.564977
 
 ---
 
@@ -14,11 +14,11 @@ If you are a contributor looking forward to participating in the GSoC 2026 with 
 - Feel free to browse the growing idea list below.
 - Please don't hesitate to contact the mentor(s) indicated in the proposal for any related clarification and to discuss proposals.
 - You can have a look at
-[ideas list of previous years](https://spaces.redhat.com/display/GSOC/GSOC+-+Google+Summer+Of+Code)for inspiration. - Please see our
-[contributor guide](https://spaces.redhat.com/display/GSOC/Google+Summer+of+Code+-+contributor+guide). - You may find a sample GSoC proposal document
-[here](https://spaces.redhat.com/display/GSOC/Google+Summer+of+Code+2021+Ideas?preview=/81428506/84871584/Sample%20GSoC%20proposal%20document.pdf)which was for[this](https://docs.jboss.org/display/GSOC/Google+Summer+of+Code+2020+ideas#GoogleSummerofCode2020ideas-Knative-AlternativeKnativeBrokerImplementationbasedonApacheKafka)idea.
+[ideas list of previous years](/ideas/jboss-community/display-gsoc-gsoc-google-summer-of-code)for inspiration. - Please see our
+[contributor guide](/ideas/jboss-community/display-gsoc-google-summer-of-code-contributor-guide). - You may find a sample GSoC proposal document
+[here](/ideas/jboss-community/display-gsoc-google-summer-of-code-2021-ideas)which was for[this](https://docs.jboss.org/display/GSOC/Google+Summer+of+Code+2020+ideas#GoogleSummerofCode2020ideas-Knative-AlternativeKnativeBrokerImplementationbasedonApacheKafka)idea.
 
-Contributors: Please read the list above and also read our [contributor guide](https://spaces.redhat.com/display/GSOC/Google+Summer+of+Code+-+contributor+guide).
+Contributors: Please read the list above and also read our [contributor guide](/ideas/jboss-community/display-gsoc-google-summer-of-code-contributor-guide).
 
 A note to mentors
 
@@ -360,6 +360,13 @@ The purpose of this project is to build jws-diag, a read-only diagnostic CLI tha
 **Project Koku ideas**
 
 [Project Koku](https://github.com/project-koku) is a 100% open source FinOps tool that does cloud and Kubernetes costs. It is the upstream of Red Hat Lightspeed cost management. For the first time, we are participating in Google Summer of Code. Keep reading for our ideas!
+
+Technical note on running Koku:
+
+- You do not need actual AWS credentials to run Koku. For data ingestion, Nise can generate fake AWS, Azure, GCP and OpenShift data for you. For running the server-side, note there's two flavors of Koku: SaaS version (which requires AWS and Trino; you typically don't need this one) and self-hosted version (which can run on vanilla OpenShift/OKD/Kubernetes; typically you want this for GSoC development).
+- In the koku repository (
+[https://github.com/project-koku/koku](https://github.com/project-koku/koku)) you will notice there's [Trino](https://github.com/project-koku/koku/tree/main/koku/masu/database/trino_sql)+[PostgreSQL](https://github.com/project-koku/koku/tree/main/koku/masu/database/sql)version (which is what we use in the SaaS that we run on AWS, hence the dependency on AWS credentials; but you don't want this) and there's a[pure-PostgreSQL](https://github.com/project-koku/koku/tree/main/koku/masu/database/self_hosted_sql/openshift)version (meant to run fully self-hosted, so no AWS or Trino dependencies):[https://github.com/project-koku/koku/tree/main/koku/masu/database](https://github.com/project-koku/koku/tree/main/koku/masu/database)- The easiest way to install the self-hosted version for testing is to use this Helm chart. It's in a different repository because it's work in progress:
+[https://github.com/insights-onprem/cost-onprem-chart](https://github.com/insights-onprem/cost-onprem-chart) - So far, the self-hosted version only calculates OpenShift costs. You will need to create a custom Red Hat OpenShift Container Platform cost model (in the Settings page in Koku) and add a price list with custom costs (eg. CPU = 100 INR/core-hour, RAM = 30 INR/core-hour, node = 10,000 INR/core-month, etc; you don't need to use all the metrics). If you don't create a price list, you will see usage information but no costs. Work is in progress to support AWS, Azure and GCP costs in the self-hosted version. Supporting third-party Kubernetes is 100% doable and is in fact one of the GSoC ideas.
 
 **Per-pod data**
 

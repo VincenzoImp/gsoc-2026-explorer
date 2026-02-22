@@ -1,7 +1,7 @@
 # Wikimedia Foundation — Project Ideas
 
 **Source:** https://www.mediawiki.org/wiki/Google_Summer_of_Code/2026#Projects
-**Scraped:** 2026-02-20T11:48:56.957865
+**Scraped:** 2026-02-22T23:28:47.556167
 
 ---
 
@@ -152,7 +152,7 @@ Wikifile-Transfer is a Toolforge web application that helps Wikimedia contributo
 
 [[edit](https://www.mediawiki.org/w/index.php?title=Google_Summer_of_Code/2026&action=edit§ion=13)]
 
-See [Google Summer of Code/Participants#Accepted participants](https://www.mediawiki.org/wiki/Google_Summer_of_Code/Participants#Accepted_participants).
+See [Google Summer of Code/Participants#Accepted participants](/ideas/wikimedia-foundation-nd/participants).
 
 ## Contact
 
@@ -160,8 +160,8 @@ See [Google Summer of Code/Participants#Accepted participants](https://www.media
 
 - Support forum:
 [https://wikimedia.zulipchat.com/#narrow/channel/561533-GSoC2026](https://wikimedia.zulipchat.com/#narrow/channel/561533-GSoC2026) - Organization administrators for this round are:
-[Lani Goto](https://meta.wikimedia.org/wiki/User:LGoto_(WMF)),[Gopa Vasanth](https://www.mediawiki.org/wiki/User:Gopavasanth),[Mahfuza Mohona](https://www.mediawiki.org/wiki/User:Mhmohona) - Read how to
-[communicate effectively](https://www.mediawiki.org/wiki/New_Developers/Communication_tips)and[get help on technical questions](https://developer.wikimedia.org/get-help/).We encourage applicants to communicate in the public streams and refrain from sending private emails/messages whenever possible. Open communication allows fellow applicants to learn from your questions. It also gives all community members a chance to answer your queries. This way, queries get answered sooner and the administrators do not become a bottleneck. Also see our[communication tips](https://www.mediawiki.org/wiki/New_Developers/Communication_tips).
+[Lani Goto](https://meta.wikimedia.org/wiki/User:LGoto_(WMF)),[Gopa Vasanth](/ideas/wikimedia-foundation-nd/wiki-user-gopavasanth),[Mahfuza Mohona](/ideas/wikimedia-foundation-nd/wiki-user-mhmohona) - Read how to
+[communicate effectively](/ideas/wikimedia-foundation-nd/wiki-new_developers-communication_tips)and[get help on technical questions](https://developer.wikimedia.org/get-help/).We encourage applicants to communicate in the public streams and refrain from sending private emails/messages whenever possible. Open communication allows fellow applicants to learn from your questions. It also gives all community members a chance to answer your queries. This way, queries get answered sooner and the administrators do not become a bottleneck. Also see our[communication tips](/ideas/wikimedia-foundation-nd/wiki-new_developers-communication_tips).
 
 ## External links
 

@@ -1,16 +1,18 @@
 # Tiled — Project Ideas
 
 **Source:** https://github.com/mapeditor/tiled/wiki/GSoC-2026#project-ideas
-**Scraped:** 2026-02-20T11:48:56.940846
+**Scraped:** 2026-02-22T23:28:47.582758
 
 ---
 
 # Google Summer of Code 2026
-Tiled has been accepted as mentoring organization in the [Google Summer of Code](https://summerofcode.withgoogle.com/how-it-works) 2026!
+Tiled has been accepted as mentoring organization in the [Google Summer of Code](https://summerofcode.withgoogle.com/how-it-works) 2026! 
 
-This page contains the list of projects we'd suggest, but we're also open to other proposals!
+This page contains the list of projects we'd suggest, but we're also open to other proposals! Applications will be open from 16th - 31st of March.
 
 **Please note that Google Summer of Code projects are a full (day-) time job.**
+
+> **Our policy on AI:** In your own best interest we ask you not to use AI to write your code. You will learn much better when you do it yourself and we'd much rather deal with your human mistakes than to point out the mistakes the AI has made for you. Thank you!
 
 ### Contents
 
@@ -18,6 +20,7 @@ This page contains the list of projects we'd suggest, but we're also open to oth
     * [New Hardware Renderer](#new-hardware-renderer)
     * [Enhanced World Editing](#enhanced-world-editing)
     * [glTF Export for Maps](#gltf-export-for-maps)
+    * [Next-generation Tiled Extensions](#next-generation-tiled-extensions)
 * [Application Process](#application-process)
 * [Organization](#organization)
 
@@ -35,7 +38,7 @@ Modernize the rendering engine to use the [Qt Scene Graph](https://doc.qt.io/qt-
 **Expected size:** 350 hours\
 **Difficulty:** Medium
 
-Full project description: [New Hardware Renderer](https://github.com/mapeditor/tiled/wiki/New-Hardware-Renderer)
+Full project description: [New Hardware Renderer](/ideas/tiled/new-hardware-renderer)
 
 ## Enhanced World Editing
 
@@ -47,7 +50,7 @@ Tiled 1.2 added displaying multiple maps within the same view by [setting up a W
 **Expected size:** 350 hours (or 175 hours, by selecting a sub-set of listed improvements)\
 **Difficulty:** Medium
 
-Full project description: [Enhanced World Editing](https://github.com/mapeditor/tiled/wiki/Enhanced-World-Editing)
+Full project description: [Enhanced World Editing](/ideas/tiled/enhanced-world-editing)
 
 ## glTF Export for Maps
 
@@ -65,7 +68,21 @@ With the growing support for glTF in many engines and frameworks, all this appli
 
 Special considerations include how to handle tile animations, logic-related layers and in general dynamic changes to the glTF scene when used in a game. In addition, for optimal rendering performance we'll probably want to look into texture packing and creating an optimized tileset.
 
-Related issue: [#2741](https://github.com/mapeditor/tiled/issues/2741)
+Related issue: [#2741](/ideas/tiled/mapeditor-tiled-issues-2741)
+
+## Next-generation Tiled Extensions
+
+> _This project is currently being worked on as part of [Winter of Code](https://winter-of-code.tech/) 5.0, but there will likely be plenty of work remaining._
+
+Tiled can be extended by using JavaScript, using either plain .js files or JavaScript modules (.mjs). However, Qt provides [QML](https://doc.qt.io/qt-6/qmlapplications.html), a powerful declarative language. It would be great if we could use it to declare custom actions, file formats, tools, etc. Additionally, we could ship the necessary QML modules to enable extensions to implement custom UI.
+
+**Expected outcome:** Tiled extensions can be written in a convenient declarative language and can define custom UI.\
+**Required skills:** Qt, C++ (preferred: JavaScript, Qt Quick)\
+**Possible mentors:** bjorn, dogboydog\
+**Expected size:** 175 hours when excluding UI work, or 350 hours for the full project\
+**Difficulty:** Medium
+
+[Read more...](/ideas/tiled/next-generation-tiled-extensions)
 
 # Application Process
 

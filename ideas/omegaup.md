@@ -1,7 +1,7 @@
 # omegaUp — Project Ideas
 
 **Source:** https://github.com/omegaup/omegaup/blob/main/frontend/www/docs/Google-Summer-of-Code-2026.md
-**Scraped:** 2026-02-20T11:48:56.947962
+**Scraped:** 2026-02-22T23:28:47.622493
 
 ---
 
@@ -229,9 +229,9 @@ High
 
 # How to Ramp Up
 
-If you are interested spending this summer collaborating with us, first of all, we're honored that you are interested in our organization and we want to make the application process as smooth and enjoyable as possible for you. In order to familiarize yourself with [omegaUp.com](omegaup.com) and start collaborating with us please follow these steps:
+If you are interested spending this summer collaborating with us, first of all, we're honored that you are interested in our organization and we want to make the application process as smooth and enjoyable as possible for you. In order to familiarize yourself with [omegaUp.com](https://github.com/omegaup/omegaup/blob/main/frontend/www/docs/omegaup.com) and start collaborating with us please follow these steps:
 
- - Visit [omegaup.org](omegaup.org) to learn more about our work, our vision, and the people who are being benefited by our work.
+ - Visit [omegaup.org](https://github.com/omegaup/omegaup/blob/main/frontend/www/docs/omegaup.org) to learn more about our work, our vision, and the people who are being benefited by our work.
  - Read [this article](http://www.ioinformatics.org/oi/pdf/v8_2014_169_178.pdf) published by our co-founders to learn about the architecture and overall design of our platform.
  - Read [this follow-up article](https://ioinformatics.org/journal/v18_2024_167_174_Duenas.pdf) to learn about the work done in more recent years in omegaUp.
  - Read our [technical documentation](https://github.com/omegaup/omegaup/tree/main/frontend/www/docs).
@@ -244,13 +244,14 @@ If you are interested spending this summer collaborating with us, first of all, 
 
  - First, create an account at [omegaUp.com](https://omegaUp.com).
  - Join to our GSoC 2026 [omegaUp Test](https://omegaup.com/contest/gsoc2026). The test consists of 3 problems, you have to solve at least 2 of them in order to pass. **In the case of plagiarism, we will disqualify those applicants involved**, so please don't share your solutions with your fellow applicants.
+#### note: alternative url for the test: [omegaUp Test](https://omegaup.com/arena/gsoc2026)
 
 ### Phase Two: Familiarize yourself with our codebase
 
 We ask that you complete phase one before you start working with our codebase.
 
- - Follow these [instructions](https://github.com/omegaup/omegaup/blob/main/frontend/www/docs/Development-Environment-Setup-Process.md) to set up your development environment.
- - Find yourself an interesting bug to solve from our [issue tracker](https://github.com/omegaup/omegaup/issues) (specially from our list of ["Good first issues"](https://github.com/omegaup/omegaup/labels/Good%20first%20issue), or reach out to the [Discord channel](https://discord.gg/gMEMX7Mrwe) asking for one and we will be happy to find a good fit for you. Most of the conversations in the issue tracker are in Spanish but feel free to switch the conversation to English on any issue. Alternatively, you can go and find bugs on omegaup.com yourself, then report them in our issue tracker, and then fix them.
+ - Follow these [instructions](/ideas/omegaup/development-environment-setup-process) to set up your development environment.
+ - Find yourself an interesting bug to solve from our [issue tracker](https://github.com/omegaup/omegaup/issues) (specially from our list of ["Good first issues"](/ideas/omegaup/omegaup-omegaup-labels-good-20first-20issue), or reach out to the [Discord channel](https://discord.gg/gMEMX7Mrwe) asking for one and we will be happy to find a good fit for you. Most of the conversations in the issue tracker are in Spanish but feel free to switch the conversation to English on any issue. Alternatively, you can go and find bugs on omegaup.com yourself, then report them in our issue tracker, and then fix them.
  - Implement your fix and submit it for review. Once it's merged you can move onto the third phase.
 
 ### Phase Three: Writing your proposal
@@ -268,12 +269,12 @@ After design documents are submitted, we will select a short list of candidates 
 We will only consider candidates that completed all 4 phases of the application.
 
 # Communications
-## If you have questions about the [development environment](https://github.com/omegaup/omegaup/blob/main/frontend/www/docs/Quiero-desarrollar-en-omegaUp.md) or the [codebase](https://github.com/omegaup/omegaup) or how the GSoC application process works at omegaUp, please follow our [Getting Help page](https://github.com/omegaup/omegaup/blob/main/frontend/www/docs/How-to-Get-Help.md) to effectively getting your question answered.
+## If you have questions about the [development environment](https://github.com/omegaup/omegaup/blob/main/frontend/www/docs/Quiero-desarrollar-en-omegaUp.md) or the [codebase](/ideas/omegaup/omegaup-omegaup) or how the GSoC application process works at omegaUp, please follow our [Getting Help page](/ideas/omegaup/how-to-get-help) to effectively getting your question answered.
 
 **Our main communication medium with GSoC candidates is our [Discord channel](https://discord.gg/gMEMX7Mrwe). We invited you to join!**
 
 # Frequently Asked Questions #
-   * **The development environment installation script is throwing me an error.** Please follow our [Getting Help page](https://github.com/omegaup/omegaup/blob/main/frontend/www/docs/How-to-Get-Help.md) to effectively getting your issue resolved.
+   * **The development environment installation script is throwing me an error.** Please follow our [Getting Help page](/ideas/omegaup/how-to-get-help) to effectively getting your issue resolved.
    * **Am I expected to speak Spanish?** Of course not. We try our best to be as inclusive as possible to non-Spanish volunteers. Please feel free to use English throughout our communication channels and in your code. We have also found Google Translate to do a decent job in translating the Spanish contents of our GitHub page, we advise you to use it to navigate our issue tracker, wiki, etc.
   * **How many spots will your organization have for GSoC 2026?** We will ask for 4 students this year, but there is no guarantee yet, we will know for sure until around mid-May 2026.
   * **How do you choose your students?** We will review each application that we receive and will choose our candidates based on three things:

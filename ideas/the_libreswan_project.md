@@ -1,7 +1,7 @@
 # The Libreswan Project — Project Ideas
 
 **Source:** https://github.com/libreswan/libreswan/wiki/GSoC-2026-Code-Project-Ideas
-**Scraped:** 2026-02-20T11:48:56.945372
+**Scraped:** 2026-02-22T23:28:47.597232
 
 ---
 
@@ -15,7 +15,7 @@ drives the continuous evolution of these standards.  New features,
 such as hybrid post-quantum key exchange, are being added; while old
 features, such as support for weak cryptographic algorithms are been
 removed.  For more background on Libreswan see the [History
-Page](./History).
+Page](/ideas/the-libreswan-project/history).
 
 The Project Ideas listed below have been selected by Libreswan's core
 developers with this evolution in mind.  They provide both a technical
@@ -24,12 +24,11 @@ The mentors also have a personal interest in seeing these projects
 through to completion.
 
 If you see a project that looks interesting then see the [Contributor
-Guidance](./GSoC-Contributor-Guidance) for next steps.  If you just
-have questions, then please feel free to contact us; either on the
-[developer mailing
-list](https://lists.libreswan.org/mailman/listinfo/swan-dev) or the
-**\#libreswan** channel on the **LiberaChat IRC** network.  You can
-also email **gsoc at libreswan.org** which is not public.
+Guidance](/ideas/the-libreswan-project/gsoc-contributor-guidance) for next steps.
+
+If you just have questions, then please feel free to contact us; either on the
+[developer mailing list](https://lists.libreswan.org/mailman/listinfo/swan-dev) or [IRC](/ideas/the-libreswan-project/irc).  You can
+also email **gsoc at libreswan.org** which is not publicly archived.
 
 It isn't a requirement at you pick one of the ideas below - we also
 welcome new ideas.  For instance, additional draft RFCs that could
@@ -91,7 +90,7 @@ The proposal should address each of these areas.
 
 **Difficulty:** Medium
 
-**Draft RFC:** [Downgrade Prevention for the Internet Key Exchange Protocol Version 2 (IKEv2)](./https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention)
+**Draft RFC:** [Downgrade Prevention for the Internet Key Exchange Protocol Version 2 (IKEv2)](/ideas/the-libreswan-project/https-datatracker-ietf-org-doc-draft-ietf-ipsecme-ikev2-downgrade-prevention)
 
 ### Description
 

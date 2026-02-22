@@ -1,13 +1,13 @@
 # Typelevel — Project Ideas
 
 **Source:** https://typelevel.org/gsoc/ideas.html
-**Scraped:** 2026-02-20T11:48:56.950865
+**Scraped:** 2026-02-22T23:28:47.582290
 
 ---
 
 # Google Summer of Code
 
-Our community has identified project ideas that we believe will significantly enhance the Typelevel ecosystem. Nothing is set in stone: we may be able to adjust a project’s length and difficulty to make it the right fit for you. So if you see something here that interests you or have an idea of your own, please [get in touch](https://typelevel.org/cdn-cgi/l/email-protection#0562766a6645717c756069607360692b6a7762)!
+Our community has identified project ideas that we believe will significantly enhance the Typelevel ecosystem. Nothing is set in stone: we may be able to adjust a project’s length and difficulty to make it the right fit for you. So if you see something here that interests you or have an idea of your own, please [get in touch](https://typelevel.org/cdn-cgi/l/email-protection#6e091d010d2e1a171e0b020b180b0240011c09)!
 
 Serverless integrations for Feral
 
@@ -225,6 +225,54 @@ Long (~ 350 hours)
 
 [Cats Collections](https://github.com/typelevel/cats-collections)
 
+Doodle Immediate Mode Algebra
+
+Design and implement an API for Doodle that allows low-level bitmap based operations.
+
+**Prerequisites**
+
+Proficient with Scala and some understanding of computer graphics.
+
+**Expected Difficulty**
+
+Medium
+
+**Expected Length**
+
+Medium (~ 175 hours)
+
+**Mentors**
+
+[@noelwelsh](https://github.com/noelwelsh)
+
+**Related Repositories**
+
+[Doodle](https://github.com/creativescala/doodle/issues/93)
+
+Doodle Skia Backend
+
+Add a Skia backend to Doodle, greatly improving the performance and expressivity available on the JVM.
+
+**Prerequisites**
+
+Proficient with Scala and some understanding of computer graphics. This involves working with a library (Skija) that is not well documented and itself wraps a C++ library with patchy documentation. Hence a willingness to dive into foreign code bases is necessary.
+
+**Expected Difficulty**
+
+Medium
+
+**Expected Length**
+
+Medium (~ 175 hours)
+
+**Mentors**
+
+[@noelwelsh](https://github.com/noelwelsh)
+
+**Related Repositories**
+
+[Doodle](https://github.com/creativescala/doodle/issues/175)
+
 Are you interested in working on a GSoC project with mentorship from Typelevel maintainers?
 
-[Submit Proposal](https://typelevel.org/cdn-cgi/l/email-protection#6304100c0023171a13060f0615060f4d0c1104)
+[Submit Proposal](https://typelevel.org/cdn-cgi/l/email-protection#9ff8ecf0fcdfebe6effaf3fae9faf3b1f0edf8)

@@ -1,7 +1,7 @@
 # libssh — Project Ideas
 
 **Source:** https://www.libssh.org/development/google-summer-of-code/
-**Scraped:** 2026-02-20T11:48:56.953213
+**Scraped:** 2026-02-22T23:28:47.565877
 
 ---
 
@@ -12,13 +12,13 @@
 - Become acquainted with application process for GSoC.
 - Join to gsoc mailing list:
 [https://groups.google.com/group/google-summer-of-code-announce](https://groups.google.com/group/google-summer-of-code-announce) - Join libssh mailing list:
-[https://www.libssh.org/communication/](https://www.libssh.org/communication/) - Search mentor for chosen project in mailing list discuss or propose your own project and find a mentor for it.
+[https://www.libssh.org/communication/](/ideas/libssh/communication) - Search mentor for chosen project in mailing list discuss or propose your own project and find a mentor for it.
 - Submit the application/proposal including all requirements at the Google Summer of Code Site.
 
 ### Requirements before starting search for mentor:
 
 - Clone and build libssh sources:
-[https://www.libssh.org/development/](https://www.libssh.org/development/) - Review existing issues in bug tracker and try to solve some simpler one, providing a merge request on gitlab mirror
+[https://www.libssh.org/development/](/ideas/libssh/development) - Review existing issues in bug tracker and try to solve some simpler one, providing a merge request on gitlab mirror
 [https://gitlab.com/libssh/libssh-mirror/-/issues](https://gitlab.com/libssh/libssh-mirror/-/issues). This is REQUIRED and project proposals without any prior interactions and non-trivial MR will not be considered. - Prepare answers to questions about own participation in project.
 
 ### Application requirements/recommendations:

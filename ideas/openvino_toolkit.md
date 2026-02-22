@@ -1,7 +1,7 @@
 # OpenVINO Toolkit — Project Ideas
 
 **Source:** https://github.com/openvinotoolkit/openvino/wiki/Google-Summer-Of-Code#project-ideas-for-2026
-**Scraped:** 2026-02-20T12:04:28.477620
+**Scraped:** 2026-02-22T23:28:47.632506
 
 ---
 
@@ -9,11 +9,13 @@ Spend your summer doing something exciting and valuable for the open-source comm
 
 OpenVINO Toolkit has been [a mentoring organization](https://www.youtube.com/watch?v=XEYysqPhX3s) since 2022!
 
+<!---
 Take a look at our other organization ([Open Edge Platform](https://github.com/open-edge-platform/edge-ai-resources/wiki/Google-Summer-of-Code)) for more exciting projects - it was spun off from the OpenVINO Toolkit in 2026.
+--->
 
 ## Announcements
 
-Please subscribe [this discussion](https://github.com/openvinotoolkit/openvino/discussions/33737) and check it regularly for important announcements. 
+Please subscribe [this discussion](/ideas/openvino-toolkit/openvinotoolkit-openvino-discussions-33737) and check it regularly for important announcements. 
 
 ## Prerequisite task
 
@@ -22,7 +24,7 @@ We require one pull request sent to our OpenVINO repository from each potential 
 1. Visit the [OpenVINO Good First Issues board](https://github.com/orgs/openvinotoolkit/projects/3).
 2. Select one of the unassigned tickets ("Contributors Needed" column) and ask for the assignment.
 3. Discuss the solution with the OpenVINO developers.
-4. Implement it according to the [OpenVINO contribution guide](https://github.com/openvinotoolkit/openvino/blob/master/CONTRIBUTING.md).
+4. Implement it according to the [OpenVINO contribution guide](/ideas/openvino-toolkit/openvinotoolkit-openvino-blob-master-contributing).
 5. If you encounter any issues talk to our developers on [Discord](https://discord.com/invite/7pVRxUwdWG).
 5. Create a new pull request with your work.
 6. Wait for the review and eventual merge.
@@ -74,7 +76,7 @@ Projects implemented in the past can be found [[here|OpenVINO at Google Summer O
 
 ## Contribution guidelines
 
-Contribution guidelines can be found [here](https://github.com/openvinotoolkit/openvino/blob/master/CONTRIBUTING.md).
+Contribution guidelines can be found [here](/ideas/openvino-toolkit/openvinotoolkit-openvino-blob-master-contributing).
 
 ### AI Usage Policy for Google Summer of Code Contributions
 
@@ -105,8 +107,8 @@ Core Rules
 
 ## Contact us
 
-1. Open OpenVINO [discussions tab](https://github.com/openvinotoolkit/openvino/discussions)
-2. Start [a new discussion](https://github.com/openvinotoolkit/openvino/discussions/new/choose) by pushing the green button (if you cannot see the button, it means you're not logged in)
+1. Open OpenVINO [discussions tab](/ideas/openvino-toolkit/openvinotoolkit-openvino-discussions)
+2. Start [a new discussion](/ideas/openvino-toolkit/openvinotoolkit-openvino-discussions-new-choose) by pushing the green button (if you cannot see the button, it means you're not logged in)
 3. Select a "Google Summer of Code" category and add the "gsoc" label
 4. Ask your question (please be aware everything you post there is publicly available)
 5. Tag the mentor to whom you address your question (the mentors are specified for all project ideas)

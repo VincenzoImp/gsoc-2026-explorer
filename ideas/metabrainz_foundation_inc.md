@@ -1,7 +1,7 @@
 # MetaBrainz Foundation Inc — Project Ideas
 
 **Source:** https://wiki.musicbrainz.org/Development/Summer_of_Code/2026
-**Scraped:** 2026-02-20T11:48:56.912516
+**Scraped:** 2026-02-22T23:28:47.629960
 
 ---
 
@@ -18,7 +18,7 @@ Are you interested in working with MetaBrainz in Google Summer of Code 2026? You
 - New to MetaBrainz?
 - The MetaBrainz Foundation has been set up to build community maintained databases and make them available in the public domain or under Creative Commons licenses.
 - New to MetaBrainz development and/or GSoC?
-[Getting started with GSoC](https://wiki.musicbrainz.org/Development/Summer_of_Code/Getting_started)
+[Getting started with GSoC](/ideas/metabrainz-foundation-inc/getting_started)
 
 ## About AI/Large Language models
 
@@ -33,7 +33,7 @@ However, if you do use any AI or LLMs, you must disclose their use in your PRs a
 ## Application template
 
 When you're ready to write your application, please use this
-[Development/Summer_of_Code/Application_Template](https://wiki.musicbrainz.org/Development/Summer_of_Code/Application_Template) as the basis of your application.
+[Development/Summer_of_Code/Application_Template](/ideas/metabrainz-foundation-inc/application_template) as the basis of your application.
 
 ## Projects
 
@@ -41,12 +41,12 @@ When you're ready to write your application, please use this
 
 We're interested in projects that help us reach our roadmap, and that add major functionalities to the website.
 
-Please see our [ideas page](https://wiki.musicbrainz.org/Development/Summer_of_Code/2026/BookBrainz) for more details and information on getting started.
+Please see our [ideas page](/ideas/metabrainz-foundation-inc/bookbrainz) for more details and information on getting started.
 
-**Top 3 Desired Skills**: Node.js, React, PostgreSQL[Ideas page](https://wiki.musicbrainz.org/Development/Summer_of_Code/2026/BookBrainz)|[Main page](https://bookbrainz.org/)|[Forums](https://community.metabrainz.org/c/bookbrainz)
+**Top 3 Desired Skills**: Node.js, React, PostgreSQL[Ideas page](/ideas/metabrainz-foundation-inc/bookbrainz)|[Main page](https://bookbrainz.org/)|[Forums](https://community.metabrainz.org/c/bookbrainz)
 |
 
-**Languages/skills**: Python, Flask, PostgreSQL, Spark, React, Android[Ideas page](https://wiki.musicbrainz.org/Development/Summer_of_Code/2026/ListenBrainz)|[Main page](https://listenbrainz.org/)|[Forums](https://community.metabrainz.org/c/listenbrainz/)
+**Languages/skills**: Python, Flask, PostgreSQL, Spark, React, Android[Ideas page](/ideas/metabrainz-foundation-inc/listenbrainz)|[Main page](https://listenbrainz.org/)|[Forums](https://community.metabrainz.org/c/listenbrainz/)
 |
 
 **Languages/skills**: JavaScript (React), PostgreSQL, Rust

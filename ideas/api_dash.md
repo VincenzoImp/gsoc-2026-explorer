@@ -1,7 +1,7 @@
 # API Dash — Project Ideas
 
 **Source:** https://github.com/foss42/apidash/discussions/1054
-**Scraped:** 2026-02-20T11:48:56.934492
+**Scraped:** 2026-02-22T23:28:47.568641
 
 ---
 
@@ -9,7 +9,7 @@
 
 [animator](https://github.com/animator)started this conversation in
 
-[Ideas & Features](https://github.com/foss42/apidash/discussions/categories/ideas-features)
+[Ideas & Features](/ideas/api-dash/categories-ideas-features)
 
 -
 
@@ -21,14 +21,14 @@
 | Learn about GSoC |
 |
 
-[Link](https://github.com/foss42/apidash/discussions/1048)[Link](https://luma.com/embed/calendar/cal-ZTW02O2EsWRs6V4/events)[Link](https://discord.com/invite/bBeSdtJ6Ue)#### Resources you must go-through to better understand the project
+[Link](/ideas/api-dash/1048)[Link](https://luma.com/embed/calendar/cal-ZTW02O2EsWRs6V4/events)[Link](https://discord.com/invite/bBeSdtJ6Ue)#### Resources you must go-through to better understand the project
 
 | Link | |
 |---|---|
 | API Dash Contribution Guidelines |
 |
 
-[Video](https://www.youtube.com/live/rIlwCTKNz-A?si=iMxTxzkpY_ySo4Ow&t=339)[Read](https://github.com/foss42/apidash/blob/main/doc/dev_guide/README.md)[Read](https://github.com/foss42/apidash/tree/main/doc/user_guide)[Video](https://www.youtube.com/watch?v=8K2gV1P6ZHI)This season some of our core objectives are:
+[Video](https://www.youtube.com/live/rIlwCTKNz-A?si=iMxTxzkpY_ySo4Ow&t=339)[Read](/ideas/api-dash/foss42-apidash-blob-main-doc-dev_guide-readme)[Read](https://github.com/foss42/apidash/tree/main/doc/user_guide)[Video](https://www.youtube.com/watch?v=8K2gV1P6ZHI)This season some of our core objectives are:
 
 - To help test MCP tools/endpoints that have become the defacto interface or APIs for AI communication.
 - To push the boundaries of Multimodal AI API evaluations.
@@ -37,11 +37,11 @@
 
 ### AI Usage Policy
 
-You must read and agree to the [AI Usage Policy](https://github.com/foss42/apidash/discussions/1055). As it is a discussion thread, contributors can feel free to discuss and ask their doubts in the same.
+You must read and agree to the [AI Usage Policy](/ideas/api-dash/1055). As it is a discussion thread, contributors can feel free to discuss and ask their doubts in the same.
 
 ### Mentors for GSoC 2026
 
-[Ashita Prasad](https://github.com/ashitaprasad)(Org Admin)[Ankit Mahato](https://github.com/animator)(Org Admin, GSoC 2013)[Ragul Raj M](https://github.com/DenserMeerkat)([GSoC 2024](https://github.com/foss42/apidash/blob/main/doc/gsoc/2024/ragul_raj_m.md))[Manas Hejmadi](https://github.com/synapsecode)([GSoC 2025](https://github.com/foss42/apidash/blob/main/doc/gsoc/2025/manas_hejmadi.md))
+[Ankit Mahato](https://github.com/animator)(GSoC 2013)[Ashita Prasad](https://github.com/ashitaprasad)(GDE)[Ragul Raj M](https://github.com/DenserMeerkat)([GSoC 2024](/ideas/api-dash/foss42-apidash-blob-main-doc-gsoc-2024-ragul_raj_m))[Manas Hejmadi](https://github.com/synapsecode)([GSoC 2025](/ideas/api-dash/foss42-apidash-blob-main-doc-gsoc-2025-manas_hejmadi))
 
 ### Tech Stack for Projects
 
@@ -49,7 +49,7 @@ This year, we're offering projects across multiple tech stacks (React/Node/TypeS
 
 ### Final words
 
-The list of ideas provided below are not restrictive. In case you have any other innovative idea in mind which can help fellow developers in tackling the various problems of the API Lifecycle, please feel free to [open a new issue for discussion](https://github.com/foss42/apidash/issues/new/choose) and comment it below.
+The list of ideas provided below are not restrictive. In case you have any other innovative idea in mind which can help fellow developers in tackling the various problems of the API Lifecycle, please feel free to [open a new issue for discussion](/ideas/api-dash/foss42-apidash-issues-new-choose) and comment it below.
 
 If a project is successfully selected you will be allocated a primary mentor and supported by the entire team. If you are interested in learning more about a particular idea please communicate in the corresponding "related issue" thread or feel free to drop by our [Discord server](https://discord.com/invite/bBeSdtJ6Ue) and we can have a chat.
 
@@ -61,7 +61,7 @@ If a project is successfully selected you will be allocated a primary mentor and
 
 ### 1. MCP Testing
 
-The [Model Context Protocol (MCP)](https://modelcontextprotocol.io) acts as the API layer of the AI world, defining a standard way for AI agents to discover, understand, and interact with tools, data, and software systems—much like REST or GraphQL do for traditional applications.
+The [Model Context Protocol (MCP)](https://modelcontextprotocol.io) acts as the API layer of the AI world, defining a standard way for AI agents to discover, understand, and interact with tools, data, and software systems - much like REST or GraphQL do for traditional applications.
 
 In this project, your task is to strengthen the MCP Developer ecosystem by designing and building the capability to create & test MCP servers and clients.
 
@@ -153,13 +153,13 @@ You are required to develop the entire process backend in the form of an automat
 
 **Length**: 90 hours
 
-Related Issue(s) - [#619](https://github.com/foss42/apidash/issues/619)
+Related Issue(s) - [#619](/ideas/api-dash/foss42-apidash-issues-619)
 
 Beta
 Was this translation helpful?
 [Give feedback.](https://github.com)
 
-## Replies: 3 comments 3 replies
+## Replies: 12 comments 13 replies
 
 -
 
@@ -183,6 +183,87 @@ Was this translation helpful?
 
 |
 Hey everyone I’m very excited to contribute this year, especially to API Explorer and Idea The CLI & MCP Support project really interests me because it focuses on: Building a CLI tool to run API Dash from the terminal Exposing API Dash as an MCP Server, so it can be used with agent-based tools like VS Code and other AI apps I have worked on projects with a similar idea, for example: I also wanted to ask: I’m excited to learn more, contribute consistently, and start working on a PoC with the right guidance. Thanks! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hello everyone, |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi everyone ,I’m interested in contributing to API Dash. I have some experience with Python and React, and I’m excited to learn more by working on real issues here.I’d love to start and get familiar with the codebase and contribution process. If you have any recommendations, I’d really appreciate it.Looking forward to contributing. |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi everyone 👋 I’m Aniket, a final-year CS student, and I’m very interested in contributing to API Dash for GSoC 2026, especially Idea I have experience building AI agents, RAG pipelines, and LLM integrations using Python, Node.js, and React, and I’m excited to contribute to MCP tooling and the evaluation framework. I’m currently exploring the repository and contribution guidelines and would love to know if there are specific MCP or eval-related issues recommended for new contributors. Looking forward to contributing! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+I am Nasrulla, a final-year CSE student specialising in the Artifitial Intelligence, and I’m very interested in contributing to API Dash for GSoC 2026, especially Idea I’m currently exploring the repository and contribution guidelines and would love to know if there are specific MCP or eval-related issues recommended for new contributors. Excited to contribute and add value to the project! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi 👋 |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi everyone 👋 I'm Bhavya, a final-year B.Tech student interested in API Dash for GSoC 2026. I work primarily with Python, Node.js, and React, and I'm going through the codebase and contribution guidelines. Would love to know if there are any MCP-related or testing/automation issues I can start with. Looking forward to collaborating. |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi everyone 👋 I’m Sanjay, a final-year Computer Science student with experience in React, Node.js, and working with APIs. I’m very interested in contributing to Idea |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+“Hi, I’m Tanishq, a CSE student with experience in Python and web development (React/Node). I’m very interested in the MCP Testing idea because it combines AI tooling with developer experience. Build a minimal MCP server/client prototype to understand the protocol better, and Experiment with a small React UI for configuring and running test scenarios. I’ll start with small contributions to APIDash and then share a prototype once I have something working. Does this direction align with how you envision the project?” |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi everyone! I've been going through the GSOC 2026 ideas and have been particularly drawn to both Idea From what I understand, MCP is shaping up to be a foundational layer for AI agent interoperability and strengthening the testing ecosystem around MCP servers/clients feels like an investment in long-term infrastructure reliability. The protocol-level standardization aspect is especially interesting to me. On the other hand, the Multimodal Eval Framework presents a very compelling systems challenge: designing a unified benchmarking interface that can orchestrate evaluations across text, vision, voice, and agent APIs while remaining extensible and developer-friendly. The combination of evaluation harness integration, dataset handling, and UI-driven experiment configuration makes this a fascinating end-to-end architecture problem. Before drafting a detailed proposal, I’d love to better understand the long-term architectural direction for these initiatives: For the Eval Framework, is the intent to build it as a standalone evaluation dashboard/service that could later integrate into API Dash, or is deep integration with the core Flutter client expected from the start? For MCP Testing, is the focus more on protocol validation tooling, developer DX, or on building reusable test harness abstractions? I’m currently exploring the codebase to understand how these components could fit into the broader ecosystem and I want to make sure any 175/350-hour proposal aligns with the project’s long-term roadmap rather than just delivering an isolated feature. Looking forward to contributing and refining the architecture further! |
 
 Beta
 Was this translation helpful?

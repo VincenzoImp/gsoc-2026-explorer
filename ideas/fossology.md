@@ -1,7 +1,7 @@
 # FOSSology — Project Ideas
 
 **Source:** https://github.com/fossology/fossology/discussions/3267
-**Scraped:** 2026-02-20T11:48:56.944069
+**Scraped:** 2026-02-22T23:28:47.598212
 
 ---
 
@@ -9,7 +9,7 @@
 
 [shaheemazmalmmd](https://github.com/shaheemazmalmmd)started this conversation in
 
-[Ideas](https://github.com/fossology/fossology/discussions/categories/ideas)
+[Ideas](/ideas/fossology/categories-ideas)
 
 -
 
@@ -43,15 +43,15 @@ Beta
 Was this translation helpful?
 [Give feedback.](https://github.com)
 
-## Replies: 13 comments 13 replies
+## Replies: 13 comments 18 replies
 
 -
 
 |
 Some useful links for contributors who Are first time here : - Basic workflow -
 [https://www.youtube.com/watch?v=TZqU5ZALI7U](https://www.youtube.com/watch?v=TZqU5ZALI7U) - Installation -
-[https://github.com/fossology/fossology/wiki/Install-from-Source](https://github.com/fossology/fossology/wiki/Install-from-Source) - Good first issues -
-[https://github.com/fossology/fossology/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22](https://github.com/fossology/fossology/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) - Slack channel -
+[https://github.com/fossology/fossology/wiki/Install-from-Source](/ideas/fossology/fossology-fossology-wiki-install-from-source) - Good first issues -
+[https://github.com/fossology/fossology/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22](/ideas/fossology/fossology-fossology-issues) - Slack channel -
 [https://fossology.slack.com/](https://fossology.slack.com/)
 |
 

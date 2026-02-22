@@ -1,7 +1,7 @@
 # JdeRobot — Project Ideas
 
 **Source:** https://jderobot.github.io/activities/gsoc/2026#ideas-list
-**Scraped:** 2026-02-20T11:48:56.926145
+**Scraped:** 2026-02-22T23:28:47.557419
 
 ---
 
@@ -14,13 +14,13 @@ Our community mainly works on three development areas:
 -
 Education in Robotics.
 
-[RoboticsAcademy](https://jderobot.github.io/RoboticsAcademy/)is our main project. It is a ROS-based framework to learn robotics and computer vision with drones, autonomous cars…. It is a collection of Python programmed exercises and challenges for engineering students. -
+[RoboticsAcademy](/ideas/jderobot/roboticsacademy)is our main project. It is a ROS-based framework to learn robotics and computer vision with drones, autonomous cars…. It is a collection of Python programmed exercises and challenges for engineering students. -
 Robot Programming Tools. For instance,
 
-[BT-Studio](https://github.com/JdeRobot/bt-studio), for robot programming with Behavior Trees;[VisualCircuit](https://jderobot.github.io/VisualCircuit/)for robot programming with connected blocks, as in electronic circuits, in a visual way. -
+[BT-Studio](https://github.com/JdeRobot/bt-studio), for robot programming with Behavior Trees;[VisualCircuit](/ideas/jderobot/visualcircuit)for robot programming with connected blocks, as in electronic circuits, in a visual way. -
 Machine Learning in Robotics. For instance, the
 
-[BehaviorMetrics tool](https://jderobot.github.io/BehaviorMetrics/)for assessment of neural networks in end-to-end autonomous driving. Another example is[PerceptionMetrics tool](https://github.com/JdeRobot/PerceptionMetrics)for unified evaluation of 2D and 3D perception models.
+[BehaviorMetrics tool](/ideas/jderobot/behaviormetrics)for assessment of neural networks in end-to-end autonomous driving. Another example is[PerceptionMetrics tool](https://github.com/JdeRobot/PerceptionMetrics)for unified evaluation of 2D and 3D perception models.
 
 # Ideas list
 
@@ -28,7 +28,7 @@ This open source organization welcomes contributors in these topics:
 
 ## Project #1: PerceptionMetrics: GUI extension and support for standard datasets and models
 
-**Brief explanation**: [PerceptionMetrics](https://jderobot.github.io/PerceptionMetrics/) is a toolkit for evaluating perception models across frameworks and datasets. Past GSoC projects ([Vinay Sharma, 2017](https://github.com/TheRoboticsClub/2017-colab-vinay_sharma), [Jeevan Kumar, 2019](https://theroboticsclub.github.io/colab-gsoc2019-Jeevan_Kumar/)) contributed to its first stable release, published in *Sensors* ([Paniego et al., 2022](https://doi.org/10.3390/s22124575)). Recently, the tool has been revamped to support LiDAR, image segmentation, and object detection ([Sakhineti Praveena, 2025](https://github.com/TheRoboticsClub/gsoc2025-Sakhineti_Praveena)).
+**Brief explanation**: [PerceptionMetrics](/ideas/jderobot/perceptionmetrics) is a toolkit for evaluating perception models across frameworks and datasets. Past GSoC projects ([Vinay Sharma, 2017](https://github.com/TheRoboticsClub/2017-colab-vinay_sharma), [Jeevan Kumar, 2019](https://theroboticsclub.github.io/colab-gsoc2019-Jeevan_Kumar/)) contributed to its first stable release, published in *Sensors* ([Paniego et al., 2022](https://doi.org/10.3390/s22124575)). Recently, the tool has been revamped to support LiDAR, image segmentation, and object detection ([Sakhineti Praveena, 2025](https://github.com/TheRoboticsClub/gsoc2025-Sakhineti_Praveena)).
 
 Moving beyond our current focus on off-road navigation, this project aims to scale *PerceptionMetrics* for industry-standard benchmarks. The main goals are:
 
@@ -41,7 +41,7 @@ Moving beyond our current focus on off-road navigation, this project aims to sca
 
 ## Project #2: Robotics Academy: extend C++ support for more exercises
 
-**Brief explanation**: [Robotics-Academy](https://jderobot.github.io/RoboticsAcademy) is a framework for learning robotics and computer vision. It consists of a collection of robot programming exercises. The students have to code in Python the behavior of a given (either simulated or real) robot to fit some task related to robotics or computer vision. It uses standard middleware and libraries such as ROS 2 or OpenCV.
+**Brief explanation**: [Robotics-Academy](/ideas/jderobot/roboticsacademy-2) is a framework for learning robotics and computer vision. It consists of a collection of robot programming exercises. The students have to code in Python the behavior of a given (either simulated or real) robot to fit some task related to robotics or computer vision. It uses standard middleware and libraries such as ROS 2 or OpenCV.
 
 Nowadays, Robotics Academy offers the student up to 26 exercises. All of them come ready to use in the RoboticsAcademy docker image (RADI). The only requirement for the students its to download the docker image, all the dependencies are installed inside the RADI.
 
@@ -51,10 +51,10 @@ Currently, exercises can be solved using Python with our Hardware Abstraction La
 
 ## Project #3: Robotics Academy: New power tower inspection using deep learning
 
-**Brief explanation**: The goal of this project is to develop a new deep learning based challenge in [RoboticsAcademy](https://jderobot.github.io/RoboticsAcademy/) for power tower inspection. In addition to the existing [classical power inspection](https://jderobot.github.io/RoboticsAcademy/exercises/Drones/power_tower_inspection) exercise, this project will introduce a new challenge where defect detection and classification are performed using a deep learning model trained and provided by the student, instead of relying on traditional image processing techniques. The expected work for this project includes:
+**Brief explanation**: The goal of this project is to develop a new deep learning based challenge in [RoboticsAcademy](/ideas/jderobot/roboticsacademy) for power tower inspection. In addition to the existing [classical power inspection](/ideas/jderobot/roboticsacademy-exercises-drones-power_tower_inspection) exercise, this project will introduce a new challenge where defect detection and classification are performed using a deep learning model trained and provided by the student, instead of relying on traditional image processing techniques. The expected work for this project includes:
 
 - Create new exercise, following the example of previous deep learning based exercises such as
-[end-to-end visual control](https://jderobot.github.io/RoboticsAcademy/exercises/AutonomousCars/end_to_end_visual_control/). - Extend or create simulated power tower environments and record and label datasets for students to train their models on.
+[end-to-end visual control](/ideas/jderobot/roboticsacademy-exercises-autonomouscars-end_to_end_visual_control). - Extend or create simulated power tower environments and record and label datasets for students to train their models on.
 - Build comprehensive documentation, upload datasets to accessible repositories, and provide Jupyter Notebooks or similar materials to guide students.
 - Extend the
 *Simple API*used by deep learning exercises to define a structured way of setting results such as classification logits, bounding boxes for detection, and confidence scores.
@@ -63,7 +63,7 @@ Currently, exercises can be solved using Python with our Hardware Abstraction La
 
 ## Project #4: RoboticsAcademy: drone-cat-mouse chase exercise, two controlled robots at the same time
 
-**Brief explanation**: The goal of this project is to recover the drone-cat-mouse chase challenge in the new [RoboticsAcademy](https://jderobot.github.io/RoboticsAcademy/) architecture. This exercise requires the support for two robotics applications connected to the corresponding drones, one connected to the mouse-drone (which may fly autonomously following a 3D position pattern) and the second connected to the cat-drone. The RoboticsAcademy user has to program the cat-drone so it successfully chases the drone-mouse. This challenge should work in Gazebo Harmonic and use Aerostack2 middleware for drones, as all current available drone exercises at RoboticsAcademy. Additional exercises involving two concurrent agents in the same robotic world may also be designed using this plumbing.
+**Brief explanation**: The goal of this project is to recover the drone-cat-mouse chase challenge in the new [RoboticsAcademy](/ideas/jderobot/roboticsacademy) architecture. This exercise requires the support for two robotics applications connected to the corresponding drones, one connected to the mouse-drone (which may fly autonomously following a 3D position pattern) and the second connected to the cat-drone. The RoboticsAcademy user has to program the cat-drone so it successfully chases the drone-mouse. This challenge should work in Gazebo Harmonic and use Aerostack2 middleware for drones, as all current available drone exercises at RoboticsAcademy. Additional exercises involving two concurrent agents in the same robotic world may also be designed using this plumbing.
 
 **Skills required/preferred**: Python, Gazebo, Linux processes**Difficulty rating**: Medium**Expected results**: A new drone-cat-mouse chase exercise, new internal architecture supporting two simultanous agents in RoboticsAcademy challenges and comprehensive technical documentation.**Expected size**: Long (~350h)**Mentors**: José María Cañas (josemaria.plaza AT gmail.com) and Prajyot (prajyotj04 AT gmail.com)
 
@@ -80,13 +80,13 @@ Currently, exercises can be solved using Python with our Hardware Abstraction La
 Over the past few years, we have focused on making VisualCircuit more robust by resolving Nested Blocks (multi-level blocks) with the Block Composition feature, developing a working prototype for dockerized execution of robotics applications directly from the browser, migrating the old POSIX IPC implementation to a cross-platform compatible Python Shared Memory implementation, and more.
 
 For GSoC 2026, this project aims to improve and expand the VisualCircuit block library, enabling contributors to publish reusable blocks in a structured and validated manner. Each block will include metadata, execution logic, and visual assets, while automated CI pipelines will validate contributions. Alongside this infrastructure, the project will focus on developing high-quality reusable blocks and complete end-to-end robotics applications using VisualCircuit. The VisualCircuit frontend will integrate the block library as a built-in marketplace, allowing users to browse, install, and reuse blocks with minimal effort, while ensuring offline usability and seamless execution identical to native blocks.
-You can read further about the tool on the [website](https://jderobot.github.io/VisualCircuit/).
+You can read further about the tool on the [website](/ideas/jderobot/visualcircuit).
 
 **Skills required/preferred**: ROS2, Gazebo, Python, TypeScript**Difficulty rating**: Medium**Expected results**: Expanding Block library for VisualCircuit, improving automated testing using GitHub Actions and creating real world robotics applications developed with latest functionalities of VC and resolving other major issues.**Expected size**: 175h**Mentors**: Toshan Luktuke (toshan1603 AT gmail.com) and Pankaj Borade (borade.pankaj825 AT gmail.com).
 
 ## Project #7: Robotics Academy: Exploring optimization strategies for RoboticsBackend container
 
-**Brief explanation**: Our [Robotics Academy](https://jderobot.github.io/RoboticsAcademy) platform relies on a containerized environment that encapsulates robotics middleware, simulators, libraries, and the application management stack: the **RoboticsBackend**. This approach significantly lowers the technical entry barrier for students, allowing them to start learning robotics without dealing with complex environment setup. However, the large number of coexisting dependencies causes the container image to grow substantially in size, negatively affecting maintainability and increasing download times for first time users.
+**Brief explanation**: Our [Robotics Academy](/ideas/jderobot/roboticsacademy-2) platform relies on a containerized environment that encapsulates robotics middleware, simulators, libraries, and the application management stack: the **RoboticsBackend**. This approach significantly lowers the technical entry barrier for students, allowing them to start learning robotics without dealing with complex environment setup. However, the large number of coexisting dependencies causes the container image to grow substantially in size, negatively affecting maintainability and increasing download times for first time users.
 
 This project has a twofold objective. First, it aims to identify bottlenecks in the current container build and propose concrete strategies to reduce image size and build time. Potential approaches include layer optimization, dependency pruning, replacing heavy libraries such as OMPL when viable, and providing minimal installation variants for components like Aerostack2. Second, the project will explore alternative container technologies, such as Podman, as a replacement for Docker in the build pipeline. Podman offers a daemonless and rootless execution model while maintaining compatibility with existing container workflows, potentially improving security, portability, and maintainability.
 
@@ -98,9 +98,39 @@ This project has a twofold objective. First, it aims to identify bottlenecks in 
 
 **Skills required/preferred**: C++ programming, Python, ROS, MoveIt**Difficulty rating**: Medium**Expected results**: A new robotics exercise in RoboticsAcademy using an industrial robot for palletizing application**Expected size**: 350h**Repository Link**-[RoboticsAcademy](https://github.com/JdeRobot/RoboticsAcademy),[RoboticsInfrastructure](https://github.com/JdeRobot/RoboticsInfrastructure)**Mentors**: José M. Cañas (josemaria.plaza AT gmail.com) and Shu Xiao (shuxiao19980101 AT gmail.com)
 
-# Application instructions for GSoC-2026
+# Application Instructions for GSoC 2026
 
-Accepted mentoring organizations for GSoC 2026 have not been announced yet. In the meantime, we invite you to explore our list of tentative projects above and begin contributing to the organization. If you are interested in our flagship project, [RoboticsAcademy](https://jderobot.github.io/RoboticsAcademy/), please visit [this GitHub Discussion thread](https://github.com/JdeRobot/RoboticsAcademy/discussions/3381) for guidance on how to get started.
+If you are interested in applying for GSoC with our organization, we highly encourage you to start contributing and engaging with the relevant repositories early on. This helps you become familiar with the codebase and development workflow while allowing mentors to get to know you and your technical skills.
+
+## Getting Started
+
+First, explore the specific project(s) you are interested in:
+
+Check[RoboticsAcademy](/ideas/jderobot/roboticsacademy):[this GitHub Discussion thread](https://github.com/JdeRobot/RoboticsAcademy/discussions/3381)for initial setup and guidance.Check[PerceptionMetrics](/ideas/jderobot/perceptionmetrics):[this GitHub Discussion thread](https://github.com/JdeRobot/PerceptionMetrics/discussions/124)for initial setup and guidance.Read the[VisualCircuit](/ideas/jderobot/visualcircuit):[official documentation](https://jderobot.github.io/VisualCircuit/docs/), explore the[repository](https://github.com/JdeRobot/VisualCircuit), and reach out to the mentors.
+
+## Communication & Proposals
+
+Once you have a feel for the workflow and have identified your preferred project(s), we recommend reaching out to the project mentors directly. If you decide to apply, **sharing your proposal via Google Docs** with the mentors is highly recommended. This allows us to provide feedback and suggestions before the final submission deadline, significantly improving your chances of success.
+
+## Technical Demo Challenge
+
+As part of your application, you must provide a short screen recording (1–2 minutes) demonstrating your proficiency with our ecosystem. This verifies that your development environment is functional and that you can successfully use our core tools.
+
+Please choose the task that **most closely aligns with the project(s) you are applying for**:
+
+**RoboticsAcademy:**Record a working solution for at least one challenge (e.g., Follow Line, Drone Cat and Mouse).**⚠️ IMPORTANT:**To protect your work, you**must blur or hide your code**in the recording. Focus the video on the robot’s behavior and the simulation results.**PerceptionMetrics:**Walk through at least one tutorial notebook in our repository and demonstrate interaction with our GUI.**VisualCircuit:**Demonstrate a simple, functional circuit built using the tool.
+
+### Submission & Sharing
+
+Upload your video to YouTube (set to **Unlisted** or **Public**) or Google Drive (ensure permissions are set to **“Anyone with the link can view”**). You will need to provide this link in the application form.
+
+### Showcase Your Work!
+
+We love seeing our community grow. We encourage you to share your progress on social media! Tag us **@jderobot** on X and LinkedIn—we’d love to see what you’ve built.
+
+## Application Form
+
+After you have engaged with the codebase, contacted your mentors, and completed your technical demo, you are ready to apply! Filling out the application form is a **mandatory** step in our process. You can find the form [here](https://forms.gle/fwtDfbMngSppqDad7).
 
 # Previous GSoC students
 

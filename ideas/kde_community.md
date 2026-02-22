@@ -1,13 +1,13 @@
 # KDE Community — Project Ideas
 
 **Source:** https://community.kde.org/GSoC/2026/Ideas
-**Scraped:** 2026-02-20T11:48:56.929409
+**Scraped:** 2026-02-22T23:28:47.569708
 
 ---
 
 # GSoC/2026/Ideas
 
-See also: [GSoC Instructions](https://community.kde.org/GSoC), [Last year ideas](https://community.kde.org/GSoC/2025/Ideas)
+See also: [GSoC Instructions](/ideas/kde-community/gsoc), [Last year ideas](/ideas/kde-community/gsoc-2025-ideas)
 
 ## Guidelines
 

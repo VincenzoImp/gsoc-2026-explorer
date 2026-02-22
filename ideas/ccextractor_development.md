@@ -1,7 +1,7 @@
 # CCExtractor Development — Project Ideas
 
 **Source:** https://ccextractor.org/docs/ideas_page_for_summer_of_code_2026/
-**Scraped:** 2026-02-20T11:48:56.925664
+**Scraped:** 2026-02-22T23:28:47.611731
 
 ---
 
@@ -9,9 +9,9 @@
 
 **Important:**Please read our
 
-[AI Policy](https://ccextractor.org/public/gsoc/ai_policy/)before submitting any PRs.
+[AI Policy](/ideas/ccextractor-development/public-gsoc-ai_policy)before submitting any PRs.
 
-For classic, niche project ideas, check out the [Classic Projects page](https://ccextractor.org/docs/classic_ideas/).
+For classic, niche project ideas, check out the [Classic Projects page](/ideas/ccextractor-development/classic_ideas).
 
 **NEW: Office Hours**
 
@@ -50,7 +50,7 @@ After you check out our ideas please continue reading to the bottom of the page 
 
 #### Niche ideas
 
-We've moved the less mainstream ideas to their [own page](https://ccextractor.org/docs/classic_ideas/)
+We've moved the less mainstream ideas to their [own page](/ideas/ccextractor-development/classic_ideas)
 These ideas are not less important, but because they require more specialized skills (or mindsets) we've decided to
 give them a place of their own :-) Please take a look after you are done with this page; maybe something there will
 pick your interest.
@@ -63,19 +63,19 @@ Since we are now feature complete, and the subtitles work have changed a lot (We
 |---|---|---|---|---|---|
 |
 
-[Sample Platform NG](https://ccextractor.org/public/gsoc/2026/sample_platform_ng)#### Flutter
+[Sample Platform NG](/ideas/ccextractor-development/public-gsoc-2026-sample_platform_ng)#### Flutter
 
 | Name | Description | Tech you need to know | Tech you will learn | Difficulty | Size |
 |---|---|---|---|---|---|
 |
 
-[support more torrent clients](https://ccextractor.org/public/gsoc/flutter-more-clients)[Flood](https://flood.js.org)and[Deluge](https://deluge-torrent.org).[TaskWarrior](https://ccextractor.org/public/gsoc/2026/taskwarrior)#### Systems
+[support more torrent clients](/ideas/ccextractor-development/public-gsoc-flutter-more-clients)[Flood](https://flood.js.org)and[Deluge](https://deluge-torrent.org).[TaskWarrior](/ideas/ccextractor-development/public-gsoc-2026-taskwarrior)#### Systems
 
 | Name | Description | Tech you need to know | Tech you will learn | Difficulty | Size |
 |---|---|---|---|---|---|
 |
 
-[Add complex layouts to sway](https://ccextractor.org/public/gsoc/2026/sway_complex)[Task Server III](https://ccextractor.org/public/gsoc/2026/taskserver)#### New things we're currently interested on
+[Add complex layouts to sway](/ideas/ccextractor-development/public-gsoc-2026-sway_complex)[Task Server III](/ideas/ccextractor-development/public-gsoc-2026-taskserver)#### New things we're currently interested on
 
 | Name | Description | Tech you need to know | Tech you will learn | Difficulty | Size |
 |---|---|---|---|---|---|
@@ -96,7 +96,7 @@ October.
 
 We have *mentors all over the world* (North America, Europe, Asia and
 Australia), so time zones are never a problem. Our main channel of
-communication is a [Zulip instance](https://ccextractor.org/public/general/support) to
+communication is a [Zulip instance](/ideas/ccextractor-development/public-general-support) to
 which everyone is welcome. We expect all accepted students to be
 available on Zulip very often, even if you don't need to talk to your
 mentor. This will help you ask questions when necessary, and you might
@@ -197,7 +197,7 @@ The sample platform's issues are tagged with "gsoc-proposal-task", so you can ea
 ### Take home qualification tasks
 
 If instead of working on existing code you'd prefer to show us your
-skills working on something new, you can pick one of [these projects](https://ccextractor.org/public/gsoc/takehome).
+skills working on something new, you can pick one of [these projects](/ideas/ccextractor-development/public-gsoc-takehome).
 
 #### Community etiquette
 

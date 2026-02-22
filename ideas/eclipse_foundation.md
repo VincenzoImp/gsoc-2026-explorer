@@ -1,7 +1,64 @@
 # Eclipse Foundation — Project Ideas
 
 **Source:** https://gitlab.eclipse.org/eclipsefdn/emo-team/gsoc-at-the-ef/-/issues/?sort=created_date&state=opened&label_name%5B%5D=GSoC%202026&first_page_size=100
-**Scraped:** 2026-02-20T12:04:33.855027
+**Scraped:** 2026-02-22T23:28:47.613250
+
+---
+
+## #28: [Eclipse Thingweb] Nodejs on embedded boards in Web of Things
+
+**Labels:** GSoC 2026, Project Idea
+
+## Description
+
+The [Web of Things](https://www.w3.org/WoT/) (WoT) aims to enhance interoperability and usability across diverse Internet of Things (IoT) platforms by leveraging standard web technologies. Central to this is the [Thing Description](https://www.w3.org/TR/wot-thing-description11/) (TD), a standardized metadata model that describes the capabilities and interfaces of IoT devices, enabling seamless integration and interaction.
+
+The Eclipse Thingweb project provides open-source tools and libraries for WoT development. In particular, the node-wot project is a powerful NodeJs-based Web of Things (WoT) runtime, allowing applications to consume (use) and expose (create) IoT devices using standardized Thing Descriptions (TDs). However, its current implementation is designed for regular server/edge devices and is not optimized for resource-constrained microcontrollers like the Raspberry Pi Pico.
+
+This project aims to port node-wot to the [Raspberry Pi Pico 2 ](https://www.raspberrypi.com/products/raspberry-pi-pico-2/) by adapting its execution model to run efficiently on constrained hardware. The project will also explore performance optimizations and implement a UDP-based socket to enhance support for CoAP-based protocols, commonly used in low-power IoT scenarios.
+
+Students will not need to re-write the whole runtime but they can use off-shelf solutions like: [Kalumajs](https://kalumajs.org/). 
+
+#### Practical goals
+
+1. Deploy a simple node-wot application to Pico 2
+    - Implement an IoT sensor in Javascript, expose a Thing Description using Node-wot 
+    - Verify that everything works using a node-wot desktop application. 
+2. Reduce node-wot bundle size by removing the dependency from AJV. 
+    - Find innovative ways to support JSONSchema validation in the embedded board (pre-compile schemas or implement a lightweight validation library).
+3. Support CoAP:
+    - Introduce a UDP-based transport layer to support CoAP interactions
+4. Port node-wot to other JS-enabled boards:
+    - As an optional step students can decide to evaluate other boards
+
+## Links to Eclipse Project
+
+- [Thingweb - EF](https://projects.eclipse.org/projects/iot.thingweb)
+- [Thingweb - node-wot](https://github.com/eclipse-thingweb/node-wot)
+- [Thingweb - website](https://thingweb.io/)
+
+## Expected Outcomes
+- Updates to node-wot code base to make it more friendly for the embedded world.
+- Documentation and tutorials about how to develop node-wot applications for Raspberry Pico and possibly other boards.
+
+## Skills required/preferred
+
+This project is ideal for embedded systems and IoT enthusiasts with experience in:
+
+- JavaScript/TypeScript (Node.js)
+- Microcontroller programming (C/C++ for RP2040, MicroPython, or Espruino)
+- Networking (CoAP, UDP, MQTT, HTTP on embedded devices)
+
+## Project Size
+
+175 hours
+
+## Possible Mentors
+
+- [Ege Korkan](https://projects.eclipse.org/projects/iot.thingweb/PL/ekorkan)
+- [Cristiano Aguzzi](https://projects.eclipse.org/projects/iot.thingwe
+
+*[truncated]*
 
 ---
 
@@ -140,7 +197,7 @@ Our td-code extension for VS Code allows developers to access basic tooling for 
 * [Eclipse Project Page](https://projects.eclipse.org/projects/iot.thingweb)
 * [td-code](https://github.com/eclipse-thingweb/td-code)
 * [EdiTDor](https://github.com/eclipse-editdor/editdor)
-* [Playground Tooling](github.com/eclipse-thingweb/playground)
+* [Playground Tooling](/ideas/eclipse-foundation/github-com-eclipse-thingweb-playground)
 * [TD Tools ](https://github.com/eclipse-thingweb/td-tools/tree/main/node)
 
 ### **Expected outcomes** 
@@ -402,7 +459,7 @@ Medium to hard
 
 - [Link to the GitLab GSoC for EF project](https://gitlab.eclipse.org/eclipsefdn/emo-team/gsoc-at-the-ef) 
 
-- [Link to submit a new project idea](https://gitlab.eclipse.org/eclipsefdn/emo-team/gsoc-at-the-ef/-/issues/new?issuable_template=GSoC_projectidea)
+- [Link to submit a new project idea](/ideas/eclipse-foundation/new)
 
 ### **Expected outcomes** 
 
@@ -418,7 +475,7 @@ Medium to hard
 
 ### **Possible mentors:** 
 
-  [EMO](emo@Ecipse-foundation.org)
+  [EMO](https://gitlab.eclipse.org/eclipsefdn/emo-team/gsoc-at-the-ef/-/issues/emo@Ecipse-foundation.org)
 
 ### **Rating** 
 

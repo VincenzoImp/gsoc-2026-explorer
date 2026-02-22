@@ -1,7 +1,7 @@
 # MetaCall — Project Ideas
 
 **Source:** https://github.com/metacall/gsoc-2026
-**Scraped:** 2026-02-20T11:48:56.943515
+**Scraped:** 2026-02-22T23:28:47.583731
 
 ---
 
@@ -26,7 +26,7 @@ You can send the proposal link to any readable format you wish: Google Docs, pla
 
 We **highly recommend you to ask for a review** anytime to the community or mentor candidates before the contributor application deadline. It's much easier if you get feedback early than to wait for the last moment.
 
-In order to fit properly our organization standards of how to use AI, [you can check here our policy](https://github.com/metacall/gsoc-2026/blob/main/AI-USAGE-POLICY.md).
+In order to fit properly our organization standards of how to use AI, [you can check here our policy](/ideas/metacall/blob-main-ai-usage-policy).
 
 You can also propose your own.
 

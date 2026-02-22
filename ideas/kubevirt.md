@@ -1,7 +1,7 @@
 # KubeVirt — Project Ideas
 
 **Source:** https://github.com/kubevirt/community/wiki/Google-Summer-of-Code-2026
-**Scraped:** 2026-02-20T11:48:56.942844
+**Scraped:** 2026-02-22T23:28:47.544003
 
 ---
 
@@ -53,7 +53,7 @@ Required skills: GoLang <br />
 Desired skills: Testing, Kubernetes  <br />
 Mentors: <Felix Matouschek [fmatouschek@redhat.com](mailto:fmatouschek@redhat.com)>, <Ľuboslav Pivarč [lpivarc@redhat.com](mailto:lpivarc@redhat.com)>, <Victor Toso [victortoso@redhat.com](mailto:victortoso@redhat.com)>
 
-**See the [GitHub issue](https://github.com/kubevirt/community/issues/) for more information on the project, how to get started, and to ask questions.**
+**See the [GitHub issue](/ideas/kubevirt/kubevirt-community-issues) for more information on the project, how to get started, and to ask questions.**
 
 
 ### 2. Adapting [k8s.io/apiserver](http://k8s.io/apiserver) in KubeVirt
@@ -78,7 +78,7 @@ Required skills: GoLang <br />
 Desirable skills: Testing, Kubernetes <br />
 Mentors: <Ľuboslav Pivarč [lpivarc@redhat.com](mailto:lpivarc@redhat.com)>, <Felix Matouschek [fmatouschek@redhat.com](mailto:fmatouschek@redhat.com)>
 
-**See the [GitHub issue](https://github.com/kubevirt/community/issues/) for more information on the project, how to get started, and to ask questions.**
+**See the [GitHub issue](/ideas/kubevirt/kubevirt-community-issues) for more information on the project, how to get started, and to ask questions.**
 
 ### 3. Component base testing framework
 <!-- **GitHub issue**: https://github.com/kubevirt/community/issues/ -->
@@ -101,7 +101,7 @@ Required skills: Golang <br />
 Desirable skills: Testing, Kubernetes <br />
 Mentor: <Felix Matouschek [fmatouschek@redhat.com](mailto:fmatouschek@redhat.com)>, <Ľuboslav Pivarč [lpivarc@redhat.com](mailto:lpivarc@redhat.com)> 
 
-**See the [GitHub issue](https://github.com/kubevirt/community/issues/) for more information on the project, how to get started, and to ask questions.**
+**See the [GitHub issue](/ideas/kubevirt/kubevirt-community-issues) for more information on the project, how to get started, and to ask questions.**
 
 ### 4. Declarative validation
 <!-- **GitHub issue**: https://github.com/kubevirt/community/issues/ -->
@@ -125,7 +125,7 @@ Required skills: Golang <br />
 Desirable skills: Testing, Kubernetes <br />
 Mentor: <Ľuboslav Pivarč [lpivarc@redhat.com](mailto:lpivarc@redhat.com)>, <Felix Matouschek [fmatouschek@redhat.com](mailto:fmatouschek@redhat.com)>
 
-**See the [GitHub issue](https://github.com/kubevirt/community/issues/) for more information on the project, how to get started, and to ask questions.**
+**See the [GitHub issue](/ideas/kubevirt/kubevirt-community-issues) for more information on the project, how to get started, and to ask questions.**
 
 ### 5. Build System Evaluation
 <!-- **GitHub issue**: https://github.com/kubevirt/community/issues/ -->
@@ -150,7 +150,7 @@ Required skills: Golang, Bash <br />
 Desirable skills: Build systems, Kubernetes <br />
 Mentor: <Felix Matouschek [fmatouschek@redhat.com](mailto:fmatouschek@redhat.com)>, <Adi Aloni [aaloni@redhat.com](mailto:aaloni@redhat.com)>
 
-**See the [GitHub issue](https://github.com/kubevirt/community/issues/) for more information on the project, how to get started, and to ask questions.**
+**See the [GitHub issue](/ideas/kubevirt/kubevirt-community-issues) for more information on the project, how to get started, and to ask questions.**
 
 <!--  ### 6. 
 **GitHub issue**: https://github.com/kubevirt/community/issues/
@@ -171,7 +171,7 @@ Required skills: Golang, Bash <br />
 Desirable skills: Build systems, Kubernetes <br />
 Mentor: Ľuboslav Pivarč lpivarc@redhat.com, 
 
-**See the [GitHub issue](https://github.com/kubevirt/community/issues/) for more information on the project, how to get started, and to ask questions.** -->
+**See the [GitHub issue](/ideas/kubevirt/kubevirt-community-issues) for more information on the project, how to get started, and to ask questions.** -->
 
 ### Custom project proposals
 
@@ -180,7 +180,7 @@ You can submit your own project idea by emailing the [kubevirt-dev Google Group]
 If a mentor from the KubeVirt community supports the proposed project idea, we can add it to the KubeVirt project ideas list.
 
 ## Our stance on using AI for submissions
-Before submitting, please read and understand the [KubeVirt AI Contribution Policy](https://github.com/kubevirt/community/blob/main/ai-contribution-policy.md). 
+Before submitting, please read and understand the [KubeVirt AI Contribution Policy](/ideas/kubevirt/kubevirt-community-blob-main-ai-contribution-policy). 
 
 AI assistance is becoming part of our ecosystem and we understand how it can be used for helping improve written submissions and assist in project work, however we have a strong requirement for the human to always be involved and in control. As the author, you need to completely understand and be able to verify the code you are submitting for review. If your project application is thought to be mostly AI-generated, it will likely not be considered. 
 

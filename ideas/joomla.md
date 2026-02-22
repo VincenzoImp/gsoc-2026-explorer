@@ -1,7 +1,7 @@
 # Joomla! — Project Ideas
 
 **Source:** https://community.joomla.org/gsoc/projects-2026.html
-**Scraped:** 2026-02-20T11:48:56.950433
+**Scraped:** 2026-02-22T23:28:47.618177
 
 ---
 
@@ -38,7 +38,7 @@ Enhance the list filter function to support searching/filtering by custom fields
 
 **Difficulty:** Hard | **Project Hours:** 350 Hrs
 
-**Mentors: **Benjamin, Shivam
+**Mentors: ** Shivam
 
 **Project II: Automated Workflow**
 
@@ -103,6 +103,6 @@ We are going to use automatic translations for documentation. Every language has
 - Per language a translator's interface for feedback. The core of this application is language independent, and must work for multiple languages.
 - The most important part of this system is the processing of the translator's feedback, so the (Joomla specific) translations will improve over time.
 
-**Difficulty:** Hard | **Project Hours:** 175 Hrs
+**Difficulty:** Hard | **Project Hours:** 350 Hrs
 
 **Mentors: **Herman, Charvi

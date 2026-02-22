@@ -1,7 +1,7 @@
 # LabLua — Project Ideas
 
 **Source:** https://github.com/labluapucrio/gsoc
-**Scraped:** 2026-02-20T11:48:56.936181
+**Scraped:** 2026-02-22T23:28:47.582454
 
 ---
 
@@ -9,11 +9,11 @@ In this page we introduce some of the projects that are are working with us this
 
 If you are a contributor candidate, feel free to get in touch with us via our [Matrix](https://matrix.to/#/#lablua:matrix.org), [mailing list](mailto:labluagsoc@googlegroups.com) or by sending an email to one of our mentors. You can apply using one of the ideas in the list or you can bring your own idea. Either way, don't leave it to the last minute =).
 
-Please use our [application template](https://github.com/labluapucrio/gsoc/blob/main/apply.md) to prepare your proposal and take a look at our [successful projects](http://www.lua.inf.puc-rio.br/gsoc/blog2025.html) from last year.
+Please use our [application template](/ideas/lablua/blob-main-apply) to prepare your proposal and take a look at our [successful projects](http://www.lua.inf.puc-rio.br/gsoc/blog2025.html) from last year.
 
 | ❗ Important note on AI usage |
 |---|
-| GSoC is about learning and growing your personal skills. Using AI to code for you will not help you reach that goal. If you are eager to learn, then don't use AI to write your code. AI is improving quickly and provides great opportunities for research and learning, but you should write your own code. As mentors we're here to mentor you, not your bot. |
+| GSoC is about learning and growing your personal skills. Using AI to code for you will not help you reach that goal. If you are eager to learn, then don't use AI to write your code. AI is improving quickly and provides great opportunities for research and learning, but you should write your own code. We further ask you not to use an AI to create a "smart" looking application for any of the proposed projects. Instead do your homework, look at the prerequisites and starting points we provided you with. Get familiar with the code base and only then write your application, in your words, using your skills. Use the application template we provided. As mentors we're here to mentor you, not your bot. |
 
 [Evaluating Structured Reactive Patterns in Atmos](https://github.com#evaluating-structured-reactive-patterns-in-atmos)[Add Video Support to pico-sdl and pico-lua](https://github.com#add-video-support-to-pico-sdl-and-pico-lua)[Prepared Statements for LuaSQL](https://github.com#add-support-for-prepared-statements-for-luasql)
 
@@ -24,6 +24,8 @@ Lua integration means to integrate Lua into an existing program written in C/C++
 Lunatik is a project that brings Lua to the Linux kernel to make it possible to script the Linux kernel in Lua.
 
 [Conntrack and NAT support for Lunatik](https://github.com#conntrack-and-nat-support-for-lunatik)[Port The Lua Test Suite to Lunatik](https://github.com#port-the-lua-test-suite-to-lunatik)[Lunatik Binding for Linux Traffic Control (TC) and eBPF Maps](https://github.com#lunatik-binding-for-linux-traffic-control-tc-and-ebpf-maps)[Lunatik Binding for Netlink](https://github.com#lunatik-binding-for-netlink)[Lunatik Binding for OpenWrt UBUS](https://github.com#lunatik-binding-for-openwrt-ubus)[Lunatik Binding for sched-ext](https://github.com#lunatik-binding-for-sched-ext)
+
+Pallene is a typed dialect of Lua, designed to write performant code that is interoperable with Lua.
 
 [Atmos](https://github.com/atmos-lang/atmos/) is an experimental
 programming language that compiles to Lua 5.4 and reconciles structured
@@ -286,7 +288,7 @@ Making OpenRTX scriptable pursues several goals: First it is another showcase of
 
 - Large (350 hours)
 
-[Marc Balmer](mailto:mhbalmer@gmail.com)HB9SSB
+[Marc Balmer](mailto:mhbalmer@gmail.com)HB9SSB[Silvano Seva](mailto:silseva@fastwebnet.it)IU2KWO, OpenRTX project leader
 
 This project aims to create **Lunatik bindings for the Linux Traffic Control (TC) subsystem and eBPF maps** to enable efficient and programmable network traffic control. These bindings will allow **Lua scripts** to manipulate TC and interact with **eBPF maps**, providing a flexible interface for traffic shaping, filtering, and monitoring.
 
@@ -430,3 +432,16 @@ The expected outcome is a new binding, luasched, along with example scheduling p
 - Intermediate
 
 - Small (90 hours) or Medium (175 hours)
+
+Pallene is a typed dialect of Lua designed to write code that is fast and interoperable with Lua. Because Pallene modifies the Lua runtime, Pallene can't run on top of a stock Lua installation. It needs a patched version of the Lua interpreter and a handful of runtime libraries written in C. This means that installing Pallene isn't as simple as running "luarocks install", as is the case with many other Lua projects.
+
+The goal of this GSOC project is to design a simpler, more accessible, and more portable process for building and installing Pallene. This may involve vendoring dependencies that are currently spread over multiple Git repositories and developing new installation scripts.
+
+Due to the nature of this project, it is important that we develop a solid plan before the implementation period starts. We expect that proposals should include an itemized list of planned tasks, together with a timeline and expected milestones. You should get in touch with the project mentors early and get acquainted with Pallene and its build system.
+
+- Lua and C programming languages
+- Experience with Unix shell (Bash, Make, C compilers)
+- Nice to have: experience with Luarocks packaging
+- Nice to have: experience with CMake, Scons, xmake, or similar
+
+- Medium (175)

@@ -1,7 +1,7 @@
 # The P4 Language Consortium — Project Ideas
 
 **Source:** https://github.com/p4lang/gsoc/blob/main/2026/ideas_list.md
-**Scraped:** 2026-02-20T11:48:56.945223
+**Scraped:** 2026-02-22T23:28:47.605956
 
 ---
 
@@ -9,7 +9,7 @@
 
 ## Application process
 
-Please check our [Contributor Guidance](/materials/contributor_guidance.md) for detailed instructions.
+Please check our [Contributor Guidance](https://github.com/materials/contributor_guidance.md) for detailed instructions.
 
 ## Potential mentors
 
@@ -91,7 +91,7 @@ It means we expect you to have made relevant contributions in order to demonstra
 
 **Note**
 
-This project proposal is [under review](https://github.com/p4lang/gsoc/issues/87). Project description changes are expected.
+This project proposal is [under review](/ideas/the-p4-language-consortium/p4lang-gsoc-issues-87). Project description changes are expected.
 
 **Basic info**
 
@@ -126,7 +126,7 @@ There are many different enhancements to the repository that can be made includi
     * Flatten the directory structure
     * Deprecating unused features
 * Converting textual logs that manually track the packet through the pipeline into a structured and programmatic form (e.g. .proto) 
-    * Can read more information [here](https://github.com/p4lang/gsoc/blob/main/2025/ideas_list.md#project-2). 
+    * Can read more information [here](/ideas/the-p4-language-consortium/p4lang-gsoc-blob-main-2025-ideas_list). 
 
 
 **Expected outcomes**

@@ -1,7 +1,7 @@
 # Gambit: The package for computation in game theory — Project Ideas
 
 **Source:** https://www.gambit-project.org/gsoc_2026/
-**Scraped:** 2026-02-20T11:48:56.910221
+**Scraped:** 2026-02-22T23:28:47.544846
 
 ---
 
@@ -187,5 +187,30 @@ All three sizes of project are possible with this idea, depending on how many an
 Medium/Hard.
 
 While some algorithms themselves can be quite involved, there are also potentially easier algorithms a student might choose to implement. Also, this project idea is only minimally constrained by the existing Gambit code base, and thus the challenge is really on picking, understanding, and then implementing an equilibrium computation method or methods, which can give rise to easy or hard projects, depending on the methods chosen.
+
+[OpenSpiel](https://github.com/google-deepmind/open_spiel) is a collection of environments and algorithms for research in general reinforcement learning and search/planning in games created and maintained by Google DeepMind.
+
+OpenSpiel already supports export to Gambit’s two primary game formats, namely the strategic, aka normal, form games (NFGs) and the extensive-form games (EFGs). However, these exporters a) have restrictions and b) are not well documented. In particular, even though OpenSpiel (and Gambit) supports payoffs at non-terminal nodes, the OpenSpiel exporters only work if all payoffs (aka rewards) are at terminal nodes.
+
+The idea here is to develop the existing exporters to make them more general, covering non-terminal payoffs, and also better documented.
+
+Here are pointers to the existing exporters (two for each type of game format):
+
+[EFG exporter in python](https://github.com/google-deepmind/open_spiel/blob/master/open_spiel/python/algorithms/gambit.py)[Independent EFG exporter in C++](https://github.com/google-deepmind/open_spiel/blob/master/open_spiel/game_transforms/efg_writer)[NFG exporter written in C++](https://github.com/google-deepmind/open_spiel/blob/master/open_spiel/algorithms/nfg_writer.cc), exposed to Python and[tested](https://github.com/google-deepmind/open_spiel/blob/master/open_spiel/python/tests/nfg_writer_test.py)
+
+As a stretch goal, a student could work on an .efg importer after finishing the exporter. Again
+there is [one](https://github.com/google-deepmind/open_spiel/tree/master/open_spiel/games/efg_game/games) in OpenSpiel
+but it does not support as many games as we would like.
+
+The expected outcome of this project is a pull request to OpenSpiel that provides more general exporters. The new exporters should be well tested, including of course, on games with non-terminal payoffs.
+
+Ideally the exporter would be written in C++ for speed, but extending the Python exporter would also be useful. So a student should be comfortable with C++ and/or Python.
+
+It will be helpful if a student already knows what EFGs and NFGs are, which they would have learnt in any basic Game Theory course.
+
+
+90 hours – that should be enough for both EFG/NFG exporters, and ideally also importers for both, along with documentation and tests.
+
+Easy.
 
 On this page
