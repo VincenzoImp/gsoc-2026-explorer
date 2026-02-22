@@ -1,13 +1,13 @@
 # Haiku — Project Ideas
 
 **Source:** https://www.haiku-os.org/community/gsoc/2026/ideas
-**Scraped:** 2026-02-20T11:48:56.930076
+**Scraped:** 2026-02-22T23:28:47.589953
 
 ---
 
 # GSoC project ideas
 
-For information about Haiku's participation in GSoC this year, please see [this page](https://www.haiku-os.org/community/gsoc/2026).
+For information about Haiku's participation in GSoC this year, please see [this page](/ideas/haiku/community-gsoc-2026).
 
 Qualifying students can apply for a Haiku project (see the list of *suggested* projects below).
 For details about how to apply, please check out [How to Apply for a Haiku Idea](https://www.haiku-os.org/community/gsoc/2026/contributors).
@@ -18,6 +18,9 @@ The following list represents some of our ideas and wishes for the project. Howe
 Be aware: API design and kernel-related work requires a higher level of skill, and user interface design usually involves a lot more thought than other work. A significantly more convincing proposal is required for tasks involving those. Getting started with the design early (before the application period ends) is recommended, to maximize your chances of being selected, and allow a larger part of the coding period dedicated to coding tasks.
 
 If you find one of the "big"/"hard" ideas interesting, but feel that you cannot complete it within the allotted coding time, feel free to suggest splitting it into smaller parts for your proposal.
+
+Note that Haiku currently [does not accept contributions generated using LLMs](/ideas/haiku/community-organization-policies) due to concerns
+over copyright and licensing.
 
 ### Project Areas
 
@@ -64,7 +67,7 @@ The web browser is an important part of the operating system today. It is diffic
 - Project size: 175 or 350 hours, as there is always more things to do in WebKit
 - Difficulty: medium
 - Expected outcome: stabilization of WebKit2, better web browsing experience with the MiniBrowser test application, more tests passing.
-[Sourcecode of WebKit2 work in progress](https://github.com/haiku/haikuwebkit/tree/haiku-webkit2)[GSoC 2024 blog](https://www.haiku-os.org/blog/zardshard)[Opened tickets](https://dev.haiku-os.org/query?status=assigned&status=in-progress&status=new&status=reopened&component=%5EApplications%2FWebPositive)
+[Sourcecode of WebKit2 work in progress](https://github.com/haiku/haikuwebkit/tree/haiku-webkit2)[GSoC 2024 blog](/ideas/haiku/blog-zardshard)[Opened tickets](https://dev.haiku-os.org/query?status=assigned&status=in-progress&status=new&status=reopened&component=%5EApplications%2FWebPositive)
 
 #### Better XMPP instant messaging client for Haiku
 
@@ -176,7 +179,7 @@ The goal of this project is to adjust the FreeBSD compatibility layer for at lea
 - Project size: 175 hours for basic support, extensible for porting more drivers, finalization of USB compatibility layer support, or other tasks related to ARM support
 - Difficulty: medium
 - Expected outcome: Haiku can use an FDT network interface (tested for example by
-[network booting](https://www.haiku-os.org/guides/network_booting)).
+[network booting](/ideas/haiku/guides-network_booting)).
 
 #### Universal Flash Storage support
 
@@ -215,7 +218,7 @@ After completion of this project, it should be possible to read and write files 
 
 - Skill set: kernel, and driver development
 - Possible mentors/knowledgeable people: PulkoMandy, Sean Healy, Hy Che
-[Sourcecode](https://git.haiku-os.org/haiku/tree/src/add-ons/kernel/file_systems/btrfs)[GSoC 2017 log](https://www.haiku-os.org/blog/hyche)[GSoC 2018 log](https://www.haiku-os.org/blog/brj)[Existing btrfs patches to start from](https://review.haiku-os.org/q/status:open+btrfs)- Project size: 175 or 350 hours depending on the number of features planned to implement
+[Sourcecode](https://git.haiku-os.org/haiku/tree/src/add-ons/kernel/file_systems/btrfs)[GSoC 2017 log](/ideas/haiku/blog-hyche)[GSoC 2018 log](/ideas/haiku/blog-brj)[Existing btrfs patches to start from](https://review.haiku-os.org/q/status:open+btrfs)- Project size: 175 or 350 hours depending on the number of features planned to implement
 - Difficulty: medium
 - Expected outcome: write support for the btrfs filesystem.
 
@@ -299,7 +302,7 @@ starting point for this work.
 
 #### Improvements to Haiku-format coding style checker
 
-Haiku has its own [coding guidelines](https://www.haiku-os.org/development/coding-guidelines/)
+Haiku has its own [coding guidelines](/ideas/haiku/development-coding-guidelines)
 which describe how the code should be formatted. There is [a tool](https://github.com/owenca/haiku-format) (based on clang-format) for reformatting
 or checking if code follows these guidelines, used in the continuous integration and code review process.
 

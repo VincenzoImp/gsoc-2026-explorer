@@ -1,7 +1,7 @@
 # Konflux — Project Ideas
 
 **Source:** https://github.com/konflux-ci/community/wiki/Google-Summer-of-Code-&-Outreachy-Project-Ideas-%E2%80%90-2026
-**Scraped:** 2026-02-20T11:48:56.949367
+**Scraped:** 2026-02-22T23:28:47.581266
 
 ---
 
@@ -139,4 +139,4 @@ Additionally to the above, a prototype manifest generator tool will need to be d
   - Provide user documentation following the style of existing Hermeto package manager guides
   - Create integration tests validating the complete fetch → inject → offline-install workflow
 
-**Return to [Home Page](Home)**
+**Return to [Home Page](/ideas/konflux/home)**

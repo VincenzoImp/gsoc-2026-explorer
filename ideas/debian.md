@@ -1,7 +1,7 @@
 # Debian — Project Ideas
 
 **Source:** https://wiki.debian.org/SummerOfCode2026/Projects
-**Scraped:** 2026-02-20T11:48:56.954444
+**Scraped:** 2026-02-22T23:28:47.577886
 
 ---
 
@@ -23,7 +23,7 @@ Contents
 -
 [Unapproved Projects with confirmed mentors](https://wiki.debian.org#Unapproved_Projects_with_confirmed_mentors)
 
-The main page is at [SummerOfCode2026](https://wiki.debian.org/SummerOfCode2026).
+The main page is at [SummerOfCode2026](/ideas/debian/summerofcode2026).
 
 
 # Approved Projects
@@ -80,7 +80,7 @@ The goal of this project is to automate the detection of code duplication in the
 
 ## Debusine: git-first development
 
-**Description of the project:** Many people are much more familiar with git than with Debian source package tools; even Debian developers often find the latter to be a bit of a maze. The [dgit](https://manpages.debian.org/testing/dgit/dgit.1.en.html) maintainers have been working for some time on allowing contributors to use git directly for their uploads, and [tag2upload](https://wiki.debian.org/tag2upload) allows people to upload simply by pushing the right kind of signed tag.
+**Description of the project:** Many people are much more familiar with git than with Debian source package tools; even Debian developers often find the latter to be a bit of a maze. The [dgit](https://manpages.debian.org/testing/dgit/dgit.1.en.html) maintainers have been working for some time on allowing contributors to use git directly for their uploads, and [tag2upload](/ideas/debian/tag2upload) allows people to upload simply by pushing the right kind of signed tag.
 
 However, Debusine doesn’t integrate well with this yet. Members of the Debusine and dgit teams have had some [productive design discussions](https://salsa.debian.org/freexian-team/debusine/-/issues/815), and we would like to turn some of those into reality.
 
@@ -157,7 +157,7 @@ We would not expect a student to replace all the uses of external workers in UDD
 
 **Confirmed Mentor**: Santiago Ruano Rincón**How to contact the mentor:**[santiago@debian.org](mailto:santiago@debian.org)/ santiago @ irc.oftc.net**Confirmed co-mentors:**Emmanuel Arias <[eamanu@debian.org](mailto:eamanu@debian.org)>**Difficulty level**: Medium**Project size:**175 (medium) or 350 (large), depending on student's availability**Deliverables of the project**: Fix issues reported against Salsa CI (see below). Specially issues labeled as "Nice-to-have", "Accepting MRs".**Desirable skills**: Awareness of the Gitlab CI/CD support. Collaborative work relying on 'git' and asynchronous-remote tools. Basic knowledge of Debian packaging.**What the intern will learn:**Debian Release process, Debian package building, Debian CI process, Basic QA of Debian packages. Development on a collaborative small team, inside a large community (Debian).**Application tasks:**Pick issues from here (
 
-[https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/?sort=created_asc&state=opened&first_page_size=20=](https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/?sort=created_asc&state=opened&first_page_size=20=), discuss with the team and aim to fix them. Example of priority issues:[https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/318](https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/318)(to minimise the changes of introducing regressions when doing a MR against the pipeline)[https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/498](https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/498)(to make it possible to have runners different to the instance shared runner) More resources:
+[https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/?sort=created_asc&state=opened&first_page_size=20=](https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/?sort=created_asc&state=opened&first_page_size=20=), discuss with the team and aim to fix them. Example of priority issues:[https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/318](https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/318)(to minimise the changes of introducing regressions when doing a MR against the pipeline)[https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/498](https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/498)(to make it possible to have runners different to the instance shared runner) More resources:[https://salsa.debian.org/salsa-ci-team/pipeline/](https://salsa.debian.org/salsa-ci-team/pipeline/)[https://about.gitlab.com/blog/2023/09/19/debian-customizes-ci-tooling-with-gitlab/](https://about.gitlab.com/blog/2023/09/19/debian-customizes-ci-tooling-with-gitlab/)
 
 **AI usage policy:**We will not accept applications written using LLMs, and we expect accepted students to write code themselves, not via an LLM.
 

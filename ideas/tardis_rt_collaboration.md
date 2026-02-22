@@ -1,7 +1,7 @@
 # TARDIS RT Collaboration — Project Ideas
 
 **Source:** https://tardis-sn.github.io/summer_of_code/ideas/
-**Scraped:** 2026-02-20T11:48:56.956364
+**Scraped:** 2026-02-22T23:28:47.627806
 
 ---
 
@@ -15,7 +15,7 @@ With sophisticated computer simulations astronomers try to reproduce the observe
 
 ### The TARDIS Project
 
-As mentioned in the background information above, TARDIS is a scientific tool (more specifically a Monte Carlo radiative transfer code) whose primary goal is the calculation of theoretical spectra for supernovae. Below, you find the typical result of a TARDIS calculation. It shows the calculated synthetic spectra for a simple supernova model. This particular setup (tardis_example) is officially provided by the TARDIS collaboration on the [documentation](https://tardis-sn.github.io/tardis/).
+As mentioned in the background information above, TARDIS is a scientific tool (more specifically a Monte Carlo radiative transfer code) whose primary goal is the calculation of theoretical spectra for supernovae. Below, you find the typical result of a TARDIS calculation. It shows the calculated synthetic spectra for a simple supernova model. This particular setup (tardis_example) is officially provided by the TARDIS collaboration on the [documentation](/ideas/tardis-rt-collaboration/tardis).
 
 ### List of GSoC 2026 Project Ideas
 
@@ -35,10 +35,10 @@ Please also read our
 **Project Length:** 350 Hours**Difficulty:** Hard**Mentors:** Andrew Fullard, Atharva Arya, James Gillanders, Jaladh Singhal**Description:** TARDIS has a collection of visualisation tools and widgets to interactively explore TARDIS simulations which run inside Jupyter Notebooks. A lot of these modules currently depend on dependencies like ipywidgets which do not work well with our Sphinx documentation. Some of these tools have already been migrated but we want to migrate the rest of our widgets to panel too. For this project, you will be working on migrating the custom abundance widget to Panel.
 
 Visualisation Module:
-[https://tardis-sn.github.io/tardis/analyzing_tardis/visualization/index.html#tardis-widgets-graphical-user-interfaces](https://tardis-sn.github.io/tardis/analyzing_tardis/visualization/index.html#tardis-widgets-graphical-user-interfaces)
+[https://tardis-sn.github.io/tardis/analyzing_tardis/visualization/index.html#tardis-widgets-graphical-user-interfaces](/ideas/tardis-rt-collaboration/tardis-analyzing_tardis-visualization-index)
 
 **First Objective:** The line info and shell info widgets are already migrated to panel but they are not fully interactive on the documentation. For instance, in shell info widget, switching the first table does not switch the other ones unlike in a live notebook. As the first objective of this project, your task is to make the widget fully interactive so that the widget mimics its behaviour as if it were in a notebook.
-See [documentation here](https://tardis-sn.github.io/tardis/analyzing_tardis/visualization/how_to_generating_widgets.html#How-to-Generate-Data-Exploration-Widgets).
+See [documentation here](/ideas/tardis-rt-collaboration/tardis-analyzing_tardis-visualization-how_to_generating_widgets).
 
 **Expected Outcomes:**
 
@@ -62,7 +62,7 @@ This project could be extended to include a web development component, where the
 
 #### Continuum Opacity Source Reader
 
-**Project Length:** 350 Hours**Difficulty:** Medium**Mentors:** Andrew Fullard, Josh Shields**Description:** There’s a lot of literature with useful tables for the TARDIS codebase and other scientific codes in pdfs (e.g. [this paper](https://academic.oup.com/mnras/article/266/4/805/982644)), or often in dataproducts. [Carsus](https://tardis-sn.github.io/carsus/) currently reads in data from standard sources and archives ([Chianti](https://www.chiantidatabase.org/), [CMFGEN](https://sites.pitt.edu/~hillier/web/CMFGEN.htm)), but does not flexibly read data from sources in the literature. The goal of this project is to expand Carsus to read datatables like ones in this work, with potential expansion for a future-proof workflow (new opacity tables). These could all go in a new tardis repository called “carsus-literature-tables” or something along those lines. You can look at [carsus-data-molecules-barklem2016](https://github.com/tardis-sn/carsus-data-molecules-barklem2016) for a preprocessed datatables ready to be ingested by Carsus might look.
+**Project Length:** 350 Hours**Difficulty:** Medium**Mentors:** Andrew Fullard, Josh Shields**Description:** There’s a lot of literature with useful tables for the TARDIS codebase and other scientific codes in pdfs (e.g. [this paper](https://academic.oup.com/mnras/article/266/4/805/982644)), or often in dataproducts. [Carsus](/ideas/tardis-rt-collaboration/carsus) currently reads in data from standard sources and archives ([Chianti](https://www.chiantidatabase.org/), [CMFGEN](https://sites.pitt.edu/~hillier/web/CMFGEN.htm)), but does not flexibly read data from sources in the literature. The goal of this project is to expand Carsus to read datatables like ones in this work, with potential expansion for a future-proof workflow (new opacity tables). These could all go in a new tardis repository called “carsus-literature-tables” or something along those lines. You can look at [carsus-data-molecules-barklem2016](https://github.com/tardis-sn/carsus-data-molecules-barklem2016) for a preprocessed datatables ready to be ingested by Carsus might look.
 
 **First Objective:** Read one of the datatables from [this archive](https://cdsarc.cds.unistra.fr/viz-bin/cat/VI/80#/browse) (try s92.201.gz, under ftp) and process it into a pandas dataframe. Look to do this in a programmatic way that could be reused for similar files, like the other tables found here. See section 6.4 of [this paper](https://articles.adsabs.harvard.edu/pdf/1994MNRAS.266..805S) for more details on table contents and formatting if desired.
 
@@ -75,7 +75,7 @@ This project could be extended to include a web development component, where the
 
 **Project Length:** 350 Hours**Difficulty:** Hard**Mentors:** Andrew Fullard, Atharva Arya**Description:** TARDIS commits are monitored by a benchmarking framework to detect performance regressions. But the current framework only tests 5 commits at a time and not with much detail. The goal of this project is to improve the benchmarking framework by adding more benchmarks. This project will also add more benchmarks to STARDIS, a related code. The second stage of the project will use the benchmarks to investigate possible performance improvements to TARDIS and STARDIS.
 
-[TARDIS Benchmarks](https://tardis-sn.github.io/tardis-benchmarks/) | [STARDIS Benchmarks](https://tardis-sn.github.io/stardis-benchmarks/)
+[TARDIS Benchmarks](/ideas/tardis-rt-collaboration/tardis-benchmarks) | [STARDIS Benchmarks](/ideas/tardis-rt-collaboration/stardis-benchmarks)
 
 **First Objective:** Benchmark the Plasma solver factory: [base.py](https://github.com/tardis-sn/tardis/blob/master/tardis/plasma/assembly/base.py) and share the ASV results for the last 5 commits along with the code in a pull request.
 

@@ -1,7 +1,7 @@
 # Dart — Project Ideas
 
 **Source:** https://github.com/dart-lang/sdk/blob/main/docs/gsoc/Dart-GSoC-2026-Project-Ideas.md
-**Scraped:** 2026-02-20T11:48:56.930371
+**Scraped:** 2026-02-22T23:28:47.564139
 
 ---
 
@@ -28,7 +28,7 @@ For GSoC related discussions please use the [dart-gsoc group](https://groups.goo
 ## Project Application Process
 All projects assume familiarity with Dart (and sometimes Flutter). Aspiring applicants are encouraged to [learn Dart](https://dart.dev/guides/language/language-tour) and try to write some code.
 
-Applicants are welcome to find and fix bugs in [Dart](https://github.com/dart-lang/sdk) or some of the [packages written by the Dart team](https://pub.dev/publishers/dart.dev/packages). However, getting reviews can take a long time as code owners may be busy working on new features. So instead of requiring applicants to fix a _good first bug_, we
+Applicants are welcome to find and fix bugs in [Dart](/ideas/dart/dart-lang-sdk) or some of the [packages written by the Dart team](https://pub.dev/publishers/dart.dev/packages). However, getting reviews can take a long time as code owners may be busy working on new features. So instead of requiring applicants to fix a _good first bug_, we
 suggest that applicants write a working code sample relevant for the proposed project.
 
 The code sample can be attached to the application as a [**secret** gist](https://gist.github.com/) (please use _secret gists_, and do not share these with other applicants). Suggested ideas below includes proposed "Good Sample Projects".
@@ -94,8 +94,8 @@ developers to inspect the contents of `Pointer`s safely during debugging.
 
 **Further reading**:
 
-* [Dart VM Service Protocol](https://github.com/dart-lang/sdk/blob/main/runtime/vm/service/service.md)
-* [Dart Debug Adapter Protocol](https://github.com/dart-lang/sdk/blob/main/third_party/pkg/dap/tool/README.md)
+* [Dart VM Service Protocol](/ideas/dart/dart-lang-sdk-blob-main-runtime-vm-service-service)
+* [Dart Debug Adapter Protocol](/ideas/dart/dart-lang-sdk-blob-main-third_party-pkg-dap-tool-readme)
 * [Dart DevTools source code](https://github.com/flutter/devtools)
 * https://github.com/dart-lang/sdk/issues/48882
 * https://github.com/dart-lang/native/issues/1034
@@ -181,7 +181,7 @@ Part 2: Create a Dart CLI app that uses `ProfileableWebSocket`. It should connec
 
 * [Design and Sizing for WebSocket Support](https://github.com/flutter/devtools/issues/9507)
 * [`dart:io` documentation](https://dart.dev/libraries/dart-io)
-* [Dart VM Service Protocol](https://github.com/dart-lang/sdk/blob/main/runtime/vm/service/service.md)
+* [Dart VM Service Protocol](/ideas/dart/dart-lang-sdk-blob-main-runtime-vm-service-service)
 * [DevTools Network Panel documentation](https://docs.flutter.dev/tools/devtools/network)
 * [Dart DevTools source code](https://github.com/flutter/devtools)
 

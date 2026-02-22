@@ -1,7 +1,7 @@
 # Machine Learning for Science (ML4SCI) — Project Ideas
 
 **Source:** https://ml4sci.org/activities/gsoc2026.html
-**Scraped:** 2026-02-20T11:48:56.920504
+**Scraped:** 2026-02-22T23:28:47.568460
 
 ---
 

@@ -1,7 +1,7 @@
 # OpenMRS — Project Ideas
 
 **Source:** https://openmrs.atlassian.net/wiki/spaces/RES/pages/752844801/Summer+of+Code+2026
-**Scraped:** 2026-02-20T11:48:56.925463
+**Scraped:** 2026-02-22T23:28:47.607342
 
 ---
 
@@ -11,7 +11,7 @@
 
 [OpenMRS](http://openmrs.org/) is hoping to be a mentoring organization for [Google Summer of Code™](http://g.co/gsoc) 2026! Since 2007, we've enjoyed participating in this great program and we're extremely excited about the projects and mentorship opportunities available this year. Coding for OpenMRS is a great way to practice your coding skills and, at the same time, help benefit people in developing countries who are on the front lines of public health challenges.
 
-If you are new to **OpenMRS**, we recommend starting with our [Guide to the New & Curious](https://openmrs.atlassian.net/wiki/spaces/docs/pages/25477628). It will introduce you to our community, the tools and spaces we use, and help you get to know the different squads and teams working on various community projects. For a more detailed history of who we are and what we do, please see [here](http://guide.openmrs.org/en/Introduction/a-brief-history.html). If you’re new to OpenMRS or wondering how to get started with your GSoC application, this video should help answer a lot of your questions:
+If you are new to **OpenMRS**, we recommend starting with our [Guide to the New & Curious](/ideas/openmrs/wiki-spaces-docs-pages-25477628). It will introduce you to our community, the tools and spaces we use, and help you get to know the different squads and teams working on various community projects. For a more detailed history of who we are and what we do, please see [here](http://guide.openmrs.org/en/Introduction/a-brief-history.html). If you’re new to OpenMRS or wondering how to get started with your GSoC application, this video should help answer a lot of your questions:
 
 **On this page ....**
 
@@ -32,7 +32,7 @@ on**#gsoc**[OpenMRS Slack](https://slack.openmrs.org/)GSOC Topics on the
 
 @beryl @Jayasanka Weerasinghe
 
-Please see [GSoC Admin Guidelines](https://openmrs.atlassian.net/wiki/spaces/RES/pages/26270205) for more information, or [ Org Admin Tips](https://developers.google.com/open-source/gsoc/help/oa-tips) and
+Please see [GSoC Admin Guidelines](/ideas/openmrs/wiki-spaces-res-pages-26270205) for more information, or [ Org Admin Tips](https://developers.google.com/open-source/gsoc/help/oa-tips) and
 
 [.](https://summerofcode.withgoogle.com/rules)
 
@@ -101,7 +101,7 @@ Postgres support? |
 | @Wikum Weerakutti |
 |
 |
-Patient Visit Summary Printing | Medium | Requested by the Uganda team, the DRC team, and Palladium [Requirements](https://openmrs.atlassian.net/wiki/spaces/projects/pages/edit-v2/473333762)are documented and readyBuilds on the recently completed printing support Addresses real implementation needs
+Patient Visit Summary Printing | Medium | Requested by the Uganda team, the DRC team, and Palladium [Requirements](/ideas/openmrs/wiki-spaces-projects-pages-edit-v2-473333762)are documented and readyBuilds on the recently completed printing support Addresses real implementation needs
 | Java, Hibernate, Spring
 | @Veronica Muthee |
 |

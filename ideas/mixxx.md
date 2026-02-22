@@ -1,7 +1,7 @@
 # Mixxx — Project Ideas
 
 **Source:** https://github.com/mixxxdj/mixxx/wiki/GSOC-2026-Ideas
-**Scraped:** 2026-02-20T11:48:56.921884
+**Scraped:** 2026-02-22T23:28:47.631039
 
 ---
 
@@ -9,7 +9,7 @@
 
 This page lists the suggested tasks to build a 90 hour (small sized) a 175 hour (medium sized) or 350 hour (large) project for [Google Summer of Code 2026](https://summerofcode.withgoogle.com/). The ideas are already assigned to example projects, but you are encouraged to use them for building your own project adding your own ideas and make it suit perfectly to you, your skills and your time line.
 
-If you are interested in applying to GSoC, read [GSoC Advice](gsocadvice)
+If you are interested in applying to GSoC, read [GSoC Advice](/ideas/mixxx/gsocadvice)
 before applying or getting involved. Only beginner contributors that are active members
 of the Mixxx community are accepted. If this is not the case yet, just
 say hello at <https://mixxx.zulipchat.com> and discuss your Ideas and
@@ -24,7 +24,7 @@ As cross-platform software, Mixxx must be able to do this on:
 * Linux with various NPU and GPU solutions from different manufacturers
 * Windows with various NPU and GPU solutions from different manufacturers
 
-Today, there is only one AI framework that supports full hardware acceleration across all these platforms, which is ONNX Runtime ([onnxruntime.ai](onnxruntime.ai)).
+Today, there is only one AI framework that supports full hardware acceleration across all these platforms, which is ONNX Runtime ([onnxruntime.ai](/ideas/mixxx/onnxruntime-ai)).
 In GSoC 2025, our student Anmol Mishra not only converted the widely recognized best STEM separation model DEMUCS to ONNX, but also benchmarked the achievable performance on different hardware: https://mixxx.org/news/2025-10-27-gsoc2025-demucs-to-onnx-dhunstack/ 
 As successor, this project is about the integration of ONNX Runtime with ExecutionProviders for CPU (all operating systems), as well as at least one NPU or GPU acceleration solution into Mixxx.
 This project explicitly includes contributions to third-party projects, in particular to the package managers VCPKG and the Linux distribution Debian/Ubuntu, which Mixxx uses to integrate dependencies.
@@ -114,7 +114,7 @@ The project may feature
 
 It is up to the contributor to focus on one ore more topic that the project scope is kept small and the goal code get merged.  
 
-[Last years project description](https://github.com/mixxxdj/mixxx/issues/14897) 
+[Last years project description](/ideas/mixxx/mixxxdj-mixxx-issues-14897) 
 
 * **Expected Outcome:** A new auto completer for the Genre edit box
 * **Skills:** Basic SQLite, Good C++
@@ -169,11 +169,11 @@ we've made here. If you've got a great idea for a project involving
 Mixxx then we're looking forward to hearing about it. We recommend
 spending more than a few days using Mixxx and participating in the
 community to develop a better understanding of areas where Mixxx could
-use improvement. Our issue tracker is full of [feature requests](https://github.com/mixxxdj/mixxx/issues?q=is%3Aopen+is%3Aissue+label%3Afeature) and other
+use improvement. Our issue tracker is full of [feature requests](/ideas/mixxx/mixxxdj-mixxx-issues) and other
 ideas scattered throughout, so if you browse through it, you may find
 many more ideas for GSoC projects.
 
-**IMPORTANT: You should [contact us](gsocadvice) first to get feedback
+**IMPORTANT: You should [contact us](/ideas/mixxx/gsocadvice) first to get feedback
 if you're going to submit a proposal for your own project idea\!** We
 very rarely approve ideas students propose. If you're not already
 experienced with DJ equipment, we recommend sticking with one of the

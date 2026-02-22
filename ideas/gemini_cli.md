@@ -1,7 +1,7 @@
 # Gemini CLI — Project Ideas
 
 **Source:** https://docs.google.com/document/d/1iaMZliqwUn-ACyZAbgzdXmDiQZ7l5gp8UQIIY2BnPO8/edit?usp=sharing
-**Scraped:** 2026-02-20T12:04:23.677157
+**Scraped:** 2026-02-22T23:28:47.631927
 
 ---
 
@@ -54,6 +54,8 @@ Expected Outcomes
 - Required: TypeScript/Node.js, networking fundamentals (TCP/IP, HTTP, proxies)
 - Preferred: Experience with proxy servers (mitmproxy, squid), TLS/SSL, network security
 
+- Gaurav Ghosh
+
 Difficulty: Medium | Size: 175 hours | Area: Quality/Testing
 
 Develop a comprehensive behavioral evaluation framework for testing Gemini CLI's agent capabilities against real-world coding scenarios. This includes creating a benchmark suite of coding tasks, measuring success rates across different task categories, and providing regression detection for agent behavior changes. The framework will help maintain quality as the agent evolves and enable contributors to validate their changes.
@@ -68,6 +70,8 @@ Develop a comprehensive behavioral evaluation framework for testing Gemini CLI's
 
 - Required: TypeScript/Node.js, testing methodologies, CI/CD pipelines
 - Preferred: Experience with LLM evaluation, benchmarking, statistical analysis
+
+- Christian Gunderman
 
 Difficulty: Medium | Size: 175 hours | Area: Platform/Quality
 
@@ -84,6 +88,8 @@ Improve the Gemini CLI experience for Windows developers by addressing platform-
 - Required: TypeScript/Node.js, Windows development, PowerShell
 - Preferred: Windows terminal APIs, cross-platform development experience
 
+- Tommaso Sciortino
+
 Difficulty: Medium | Size: 175 hours | Area: IDE/Tooling
 
 Expand Gemini CLI's IDE integration beyond VS Code to provide first-class support for additional popular editors including JetBrains IDEs (IntelliJ, PyCharm, WebStorm), Neovim, and Zed. This includes implementing editor-specific plugins/extensions, establishing a common IDE context protocol, and enabling features like synchronized file state, cursor position awareness, and real-time collaboration between the CLI and editor.
@@ -98,6 +104,8 @@ Expand Gemini CLI's IDE integration beyond VS Code to provide first-class suppor
 
 - Required: TypeScript/Node.js, at least one IDE plugin development experience
 - Preferred: JetBrains plugin SDK, Neovim Lua, Zed extension API
+
+- Shreya Keshive
 
 Difficulty: Easy-Medium | Size: 90 hours | Area: Observability/DX
 
@@ -115,6 +123,8 @@ Build an in-CLI performance monitoring dashboard that provides developers and co
 - Required: TypeScript/Node.js, CLI/TUI development, performance profiling
 - Preferred: React/Ink, data visualization, OpenTelemetry
 
+- Sehoon Shon
+
 Difficulty: Medium | Size: 175 hours | Area: UX/UI
 
 Enhance the Ink-based terminal UI to provide deep visibility into the agent's internal reasoning and tool execution chains. Currently, complex multi-step tasks can be a "black box" for users. This project involves building an interactive visualization that shows the hierarchy of tasks, tool calls, and model decisions in real-time, allowing users to "step through" execution like a debugger.
@@ -128,6 +138,8 @@ Enhance the Ink-based terminal UI to provide deep visibility into the agent's in
 - Required: React (Ink), TypeScript, State Management
 - Preferred: CLI UX design, experience with asynchronous UI updates, terminal rendering optimizations
 
+- Jacob Richman
+
 Difficulty: Hard | Size: 175 hours | Area: Integration/DX
 
 Integrate Gemini CLI with standard debugging protocols (DAP) to provide an interactive debugging companion. The agent should be able to attach to running processes (Node.js, Python, Go, etc.), set breakpoints, inspect stack traces, and query variable states to assist in root-cause analysis of bugs directly within the terminal interface.
@@ -140,6 +152,8 @@ Integrate Gemini CLI with standard debugging protocols (DAP) to provide an inter
 
 - Required: Node.js, Debugger Internals (DAP), TypeScript
 - Preferred: Experience with VS Code debugger extensions or LLM-driven debugging
+
+- Keith Schaab
 
 Difficulty: Hard | Size: 350 hours | Area: Security
 
@@ -155,6 +169,8 @@ Implement a native Windows sandboxing driver using Windows AppContainer or the W
 - Required: C#, Windows APIs (AppContainer, Win32), Node-API/TypeScript
 - Preferred: Security-focused Windows development, experience with Windows Sandbox
 
+- Gaurav Ghosh
+
 Difficulty: Easy | Size: 90 hours | Area: Security/UX
 
 Build a guided configuration "Wizard" to help users set up and manage security policies for different projects. The wizard will simplify the creation of Seatbelt profiles and Docker mount configurations, providing a user-friendly way to define "safe zones" and network permissions for the agent, ensuring that security is accessible even to non-experts.
@@ -167,6 +183,8 @@ Build a guided configuration "Wizard" to help users set up and manage security p
 
 - Required: React (Ink), TypeScript, Security concepts
 - Preferred: CLI design, experience with security configuration or policy-as-code
+
+- Gal Zahavi
 
 Difficulty: Medium | Size: 175 hours | Area: Architecture/Security
 
@@ -182,6 +200,8 @@ Refactor the Gemini CLI's sandboxing logic into a modular, plugin-based driver a
 - Required: TypeScript, Software Architecture (SOLID principles), Node.js.
 - Preferred: Experience with plugin systems or abstraction layers, cross-platform development, systems programming concepts.
 
+- Taylor Mullen
+
 Difficulty: Hard | Size: 350 hours | Area: Innovation/Multimodal
 
 Transform Gemini CLI into a hands-free, conversational coding partner—your personal J.A.R.V.I.S. for software development. This project builds a real-time, bidirectional voice interface where developers can speak naturally to the agent and hear responses read aloud. Unlike basic speech-to-text wrappers, this leverages Gemini's native multimodal audio capabilities for a fluid, continuous conversation with minimal latency.
@@ -196,6 +216,8 @@ Transform Gemini CLI into a hands-free, conversational coding partner—your per
 
 - Required: TypeScript/Node.js, Audio processing (PCM, WAV, WebAudio), Real-time streaming
 - Preferred: Gemini Multimodal API, Voice Activity Detection, Whisper integration, accessibility engineering
+
+- Bryan Morgan
 
 Difficulty: Medium | Size: 175 hours | Area: Innovation/UX
 
@@ -219,3 +241,5 @@ Imagine asking "explain the authentication flow" and seeing a beautifully render
 
 - Required: TypeScript/Node.js, Image processing (Sharp, node-canvas), streaming I/O
 - Preferred: Terminal graphics protocols (Sixel, iTerm2), Mermaid.js/Graphviz, Puppeteer for HTML rendering
+
+- Dmitry Lyalin

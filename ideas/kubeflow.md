@@ -1,7 +1,7 @@
 # Kubeflow — Project Ideas
 
 **Source:** https://www.kubeflow.org/events/upcoming-events/gsoc-2026/
-**Scraped:** 2026-02-20T11:48:56.949910
+**Scraped:** 2026-02-22T23:28:47.580428
 
 ---
 
@@ -51,14 +51,14 @@ To participate in GSoC with Kubeflow, you **must** meet the GSoC [eligibility re
 
 - Sign up as a student on the
 [GSoC website](https://summerofcode.withgoogle.com/). - Join the
-[Kubeflow Slack](https://www.kubeflow.org/docs/about/community/#kubeflow-slack-channels):**NOTE:**please**do not**reach out privately to mentors, instead, start a thread in thechannel so others can see the response.`#kubeflow-contributors`
+[Kubeflow Slack](/ideas/kubeflow/docs-about-community):**NOTE:**please**do not**reach out privately to mentors, instead, start a thread in thechannel so others can see the response.`#kubeflow-contributors`
 
 
 - Learn about Kubeflow:
 - Read the
-[Introduction to Kubeflow](https://www.kubeflow.org/docs/started/introduction/) - Review the
-[Architecture Overview](https://www.kubeflow.org/docs/started/architecture/) - Consider
-[trying out Kubeflow](https://www.kubeflow.org/docs/started/installing-kubeflow/)(not required, can be challenging)
+[Introduction to Kubeflow](/ideas/kubeflow/docs-started-introduction) - Review the
+[Architecture Overview](/ideas/kubeflow/docs-started-architecture) - Consider
+[trying out Kubeflow](/ideas/kubeflow/docs-started-installing-kubeflow)(not required, can be challenging)
 
 - Read the
 - Review the
@@ -105,7 +105,7 @@ The GSoC contributor is building the bedrock layer that these future innovations
 
 - Current Repo:
 [kubeflow/docs-agent](https://github.com/kubeflow/docs-agent) - Platform Standards:
-[Kubeflow Platform Docs](https://www.kubeflow.org/docs/kubeflow-platform/) - Infrastructure:
+[Kubeflow Platform Docs](/ideas/kubeflow/docs-kubeflow-platform) - Infrastructure:
 [Terraform OCI Provider Docs](https://registry.terraform.io/providers/oracle/oci/latest/docs)
 
 **Difficulty:** Hard

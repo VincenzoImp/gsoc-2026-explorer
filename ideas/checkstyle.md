@@ -1,7 +1,7 @@
 # checkstyle — Project Ideas
 
 **Source:** https://github.com/checkstyle/checkstyle/wiki/Checkstyle-GSoC-2026-Project-Ideas
-**Scraped:** 2026-02-20T11:48:56.934007
+**Scraped:** 2026-02-22T23:28:47.591367
 
 ---
 
@@ -74,7 +74,7 @@ ensure thorough coverage of Java 25 syntax and conventions proposed by the JEPs 
 advancements. The objective is to deliver comprehensive support for the new language features through revising check
 modules, exhaustive testing, and detailed documentation updates. This effort not only aligns Checkstyle with
 cutting-edge best practices in the Java community but also contributes to the project's ongoing evolution.
-Users sharing big interest in [module-info.java support](https://github.com/checkstyle/checkstyle/issues/8240) that was introduced long time ago in Java but Checkstyle never had chance to add support of it.
+Users sharing big interest in [module-info.java support](/ideas/checkstyle/checkstyle-checkstyle-issues-8240) that was introduced long time ago in Java but Checkstyle never had chance to add support of it.
 
 
 **Deliverables**:
@@ -83,7 +83,7 @@ Users sharing big interest in [module-info.java support](https://github.com/chec
 - Analysis of possible static analysis coverage (new Checks) for new language features
 - Updates in existing Checks to ensure no false positives and negatives for new language features
 - Update build process to support compilation and all Continuous Integration jobs on jdk25
-- Cleanup our parsing [issues](https://github.com/checkstyle/checkstyle/issues?q=is%3Aissue%20state%3Aopen%20label%3Aantlr).
+- Cleanup our parsing [issues](/ideas/checkstyle/checkstyle-checkstyle-issues).
 
 **QnA**: https://discord.com/channels/845645228467159061/1469487812226056354 ([invite](https://discord.gg/ZsJhmBGy8e))
 
@@ -118,10 +118,10 @@ We see a rise of Checkstyle usage in the education process, so having all docume
 
 **Deliverables**:
 
-- Add missed examples for all Check/Modules, [issue](https://github.com/checkstyle/checkstyle/issues/17449).
-- Make consistent all examples of Check/Modules, [issue](https://github.com/checkstyle/checkstyle/issues/18435).
-- HTML Enhancements for our website to ease navigation and user experience by [search toolbar](https://github.com/checkstyle/checkstyle/discussions/16214)
-- Fix users' complaints about our web-site, [issues](https://github.com/checkstyle/checkstyle/issues?q=is%3Aissue%20state%3Aopen%20label%3Awebsite).  
+- Add missed examples for all Check/Modules, [issue](/ideas/checkstyle/checkstyle-checkstyle-issues-17449).
+- Make consistent all examples of Check/Modules, [issue](/ideas/checkstyle/checkstyle-checkstyle-issues-18435).
+- HTML Enhancements for our website to ease navigation and user experience by [search toolbar](/ideas/checkstyle/checkstyle-checkstyle-discussions-16214)
+- Fix users' complaints about our web-site, [issues](/ideas/checkstyle/checkstyle-checkstyle-issues-2).  
 
 **QnA**: https://discord.com/channels/845645228467159061/1214574452021530686 ([invite](https://discord.gg/F6MkcwvZT8))
 
@@ -144,16 +144,16 @@ We see a rise of Checkstyle usage in the education process, so having all docume
 
 During GSoC'25, we successfully updated our implementation of google style guide to the latest version of Apr 25, 2025.
 [google_checks.xml](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml) is the configuration file where our google java style guide is implemented.
-Though we have covered almost all rules of the google style guide, users have reported bunch of issues pointing out flaws in our implementation, these issues are labeled as [google style](https://github.com/checkstyle/checkstyle/labels/google%20style) issues, we need to solve them, majority of such issues are "false-negatives" (supposed to be violation, but not happening).
+Though we have covered almost all rules of the google style guide, users have reported bunch of issues pointing out flaws in our implementation, these issues are labeled as [google style](/ideas/checkstyle/checkstyle-checkstyle-labels-google-20style) issues, we need to solve them, majority of such issues are "false-negatives" (supposed to be violation, but not happening).
 On top of this, Google Style Guide is [updated in September 2025](https://github.com/google/styleguide/commits/gh-pages/javaguide.html), we need to update our [coverage page](https://checkstyle.org/google_style.html#Coverage_table) to match latest requirements.
 
 **Deliverables:**
 
-- Resolve all issues labeled as [google style](https://github.com/checkstyle/checkstyle/labels/google%20style)
+- Resolve all issues labeled as [google style](/ideas/checkstyle/checkstyle-checkstyle-labels-google-20style)
 - Reduce "Blue Tick" rules by analyzing the rule and our coverage for that rule and provide solutions for them.
 - Investigate the issues related to Modules/Checks in issue tracker of Checkstyle repository which are used in [google_checks.xml](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml),
 if the Module/Check configuration found in the issue is same as present in [google_checks.xml](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml) then that issue is qualified for the project,
-it should be reported to us and marked by [google style](https://github.com/checkstyle/checkstyle/labels/google%20style) label.
+it should be reported to us and marked by [google style](/ideas/checkstyle/checkstyle-checkstyle-labels-google-20style) label.
 
 **QnA**: https://discord.com/channels/845645228467159061/1338510140277522442 ([invite](https://discord.gg/EqbuAmZA3q))
 
@@ -329,7 +329,7 @@ OpenJdk Code Convention is already partly covered by Checkstyle, known as Sun Co
 During the project it is required to review both documents in detail and prove publicly that Checkstyle covers all guideline rules. Missed functionality needs to be created, blocking bugs need to be fixed. Page [OpenJdk Java Style Checkstyle Coverage](http://checkstyle.sourceforge.net/sun_style.html) needs to be updated. New page "New OpenJDK's Java Style Checkstyle Coverage" need to be created. Both pages need to be formatted in the same way as it is done for [Google's Java Style Checkstyle Coverage](http://checkstyle.sourceforge.net/reports/google-style/guava/).
 
 
-**Prove of necessity**: [javadoc issues on github](https://github.com/checkstyle/checkstyle/issues?labels=javadoc&page=1&state=open);  [request from users for Openjdk coverage support](https://github.com/checkstyle/checkstyle/issues/6490).
+**Prove of necessity**: [javadoc issues on github](/ideas/checkstyle/checkstyle-checkstyle-issues-3);  [request from users for Openjdk coverage support](/ideas/checkstyle/checkstyle-checkstyle-issues-6490).
 Big projects (Apache Spark) use this style guide , search for "Code style guide" in https://spark.apache.org/contributing.html
 
 **Deliverables**:
@@ -367,7 +367,7 @@ The result of this project will be a configuration file with the maximum possibl
 Performance improvements of javadoc parsing.
 If there will be time left we can focus on coverage of guidelines from https://blog.joda.org/2012/11/javadoc-coding-standards.html
 
-**Prove of necessity**: [javadoc issues on github](https://github.com/checkstyle/checkstyle/issues?labels=javadoc&page=1&state=open).
+**Prove of necessity**: [javadoc issues on github](/ideas/checkstyle/checkstyle-checkstyle-issues-3).
 
 **QnA**: https://discord.com/channels/845645228467159061/1214571282776064130 ([invite](https://discord.gg/F6MkcwvZT8))
 
@@ -440,10 +440,10 @@ facilitate this transition.
 
 **Connected Issues**:
  - [Launch/Diff Groovy should remove use of maven-checkstyle-plugin](https://github.com/checkstyle/contribution/issues/273)
- - [Convert sevntu-checkstyle-check to ant run](https://github.com/checkstyle/checkstyle/issues/5385)
- - [Convert regressions that use maven-checkstyle-plugin to CLI based](https://github.com/checkstyle/checkstyle/issues/11602)
+ - [Convert sevntu-checkstyle-check to ant run](/ideas/checkstyle/checkstyle-checkstyle-issues-5385)
+ - [Convert regressions that use maven-checkstyle-plugin to CLI based](/ideas/checkstyle/checkstyle-checkstyle-issues-11602)
 
-**Example of Plugin Issue**: [Upgrade XML logger to XML 1.1](https://github.com/checkstyle/checkstyle/issues/5168)
+**Example of Plugin Issue**: [Upgrade XML logger to XML 1.1](/ideas/checkstyle/checkstyle-checkstyle-issues-5168)
 
 **QnA**: https://discord.com/channels/845645228467159061/1214574180591214592 ([invite](https://discord.gg/F6MkcwvZT8))
 
@@ -471,7 +471,7 @@ For example [Guava is not following google style](https://github.com/google/guav
 
 Better approach is to let existing code be as is and validate only new code. Checkstyle already has a wide array of filter functionality that could suppress certain violations if user classify a violation as “won’t fix”. Just getting started with setting up the initial suppressions still requires a huge effort to review all the violations, or organize a team on special cleanup process.
 
-This project was originally done at [GSOC 2020](https://github.com/checkstyle/checkstyle/wiki/Checkstyle-GSoC-2020-Project-Ideas#project-name-patch-suppression), but during usage of this [project](https://github.com/checkstyle/patch-filters) we found problems that 
+This project was originally done at [GSOC 2020](/ideas/checkstyle/checkstyle-gsoc-2020-project-ideas), but during usage of this [project](https://github.com/checkstyle/patch-filters) we found problems that 
 checkstyle violations are still going beyond changed code that creates avalanche of change so it complicate usage of it in real project. 
 
 We need to invest focus on parsing of patch files to get more precise location of changes and be able skip violation if fix for it goes outside of changed lines. For example: user changing line wrapping of long signature of method and we should not demand decreasing of amount of parameters or fixing names, as this will trigger changes in other part of code.

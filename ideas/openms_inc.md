@@ -1,7 +1,7 @@
 # OpenMS Inc — Project Ideas
 
 **Source:** https://openms.de/news/gsoc2026/
-**Scraped:** 2026-02-20T11:48:56.918567
+**Scraped:** 2026-02-22T23:28:47.594695
 
 ---
 
@@ -43,7 +43,7 @@ We believe that the primary goal of your participation in GSoC should be learnin
 ### You must do your best to make sure that code produced with AI help uses consistant naming conventions and coding style.
 
 - This doesn’t need to be hard. Have your agent load
-[https://openms.de/doxygen/nightly/html/coding_conventions.html](https://openms.de/doxygen/nightly/html/coding_conventions.html)before writing any code, and ask it to check that it complied with all the coding conventions before code submission.
+[https://openms.de/doxygen/nightly/html/coding_conventions.html](/ideas/openms-inc/doxygen-nightly-html-coding_conventions)before writing any code, and ask it to check that it complied with all the coding conventions before code submission.
 
 ### Suggestions for using AI effectively:
 

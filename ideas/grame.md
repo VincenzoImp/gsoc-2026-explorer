@@ -1,7 +1,7 @@
 # GRAME — Project Ideas
 
 **Source:** https://github.com/grame-cncm/faustideas/blob/master/GSOC.md
-**Scraped:** 2026-02-20T11:48:56.923594
+**Scraped:** 2026-02-22T23:28:47.618660
 
 ---
 
@@ -324,7 +324,7 @@ The project would be to integrate the [Faust Web Audio Library](https://github.c
 
 ### PluginGuiMagic architecture 
 
-**Mentor:** [Stéphane Letz](mailto:letz@grame.fr) and [Daniel Walz](daniel@foleysfinest.com)
+**Mentor:** [Stéphane Letz](mailto:letz@grame.fr) and [Daniel Walz](https://github.com/grame-cncm/faustideas/blob/master/daniel@foleysfinest.com)
 
 **Expected size of project:** 175 hours
 

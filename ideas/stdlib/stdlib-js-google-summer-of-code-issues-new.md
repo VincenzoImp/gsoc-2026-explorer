@@ -1,0 +1,1590 @@
+# issue
+
+**Parent:** stdlib — Project Ideas
+**Source:** https://github.com/stdlib-js/google-summer-of-code/issues/new?assignees=&labels=idea&template=idea.yml&title=%5BIdea%5D%3A+
+**Scraped:** 2026-02-22T23:28:47.566719
+
+---
+
+## #179: [Idea]: add strided implementations of statistical hypothesis tests
+
+**Labels:** idea, priority: high, difficulty: 3, tech: javascript, tech: c
+
+### Idea
+
+In the [`@stdlib/stats`](https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/stats) namespace, we implement a number of hypothesis tests (e.g., z-test, t-test, chi-square test, Bartlett test, and more). Recently, we began work to create lower-level strided array implementations (e.g., see [`@stdlib/stats/strided/dztest`](https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/stats/strided/dztest)). These strided APIs allow us to create type-specialized implementations which can be implemented in both JavaScript and C, and they allow us to create higher-level ndarray APIs which can operate on one or more ndarray dimensions.
+
+The goal of this idea is to build on the work implementing strided APIs for `ztest` and `ztest2` to implement strided APIs for the remainder of the statistical hypothesis test APIs.
+
+For those interested in this idea, you should
+
+- study https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/stats/strided/dztest, https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/stats/strided/sztest, https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/stats/strided/ztest, etc, along with their dependency trees, in order to understand how these packages are put together.
+- create a list of currently supported hypothesis tests (e.g., in a Google spreadsheet)
+- find which ones we have already implemented lower-level strided array APIs
+- identify which APIs have not already been implemented
+- identify the prerequisite packages, such as dependencies, which are not currently available (e.g., C APIs) and will need to be implemented
+- describe a plan for implementing the missing functions
+
+### Expected Outcomes
+
+Users will be able to use strided implemented APIs to operate on one-dimensional strided arrays.
+
+### Involved Software
+
+No other software is necessary.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js.
+
+### Difficulty
+
+Intermediate. There may be some instances where we will need to ensure implementation of certain functions in C (e.g., certain `stats/base/dists/*` packages) and those may vary in difficulty (e.g., beta functions).
+
+### Project Length
+
+90/175/350 hours. Can be scoped accordingly. Scope can be expanded to implement additional statistical hypothesis tests which are not currently available in stdlib.
+
+---
+
+## #178: [Idea]: integrate stdlib in jstat
+
+**Labels:** idea, priority: high, difficulty: 3, tech: javascript
+
+### Idea
+
+[jstat](https://jstat.github.io/all.html) is a collection of statistical APIs. While stdlib has surpassed jstat in terms of breadth and depth of functionality, scijs still includes a good bit of widely used functionality. One of the points of friction within the JavaScript ecosystem is the lack of interoperability between stdlib and jstat.
+
+The goal of this idea is to integrate stdlib into jstat, and, where appropriate, to implement jstat operations in stdlib which are not currently present. This effort will entail updating jstat to leverage stdlib functionality. An initial exploration of this idea can be found in https://github.com/jstat/jstat/pull/260, but that effort likely needs to be scrapped, as stdlib has grown quite a bit since that time.
+
+For those interested in this idea, you should
+
+- study https://github.com/jstat/jstat
+- create a list of APIs present in jstat (e.g., in a Google spreadsheet)
+- find equivalent APIs already present in stdlib
+- identify which APIs have not already been implemented
+- identify which APIs are amenable to stdlib integration (note: not all APIs can be delegated to stdlib!)
+- describe a plan for achieving integration
+
+### Expected Outcomes
+
+Users will be able to use jstat whose APIs will delegate to stdlib functionality.
+
+### Involved Software
+
+No other software is necessary.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js.
+
+### Difficulty
+
+Intermediate. Some care will need to be made to prevent jstat's bundle size from growing too large due to stdlib incorporation. This may require a specialized vendored bundle or the ability to only support select stdlib data types (e.g., no boolean or complex number arrays).
+
+### Project Length
+
+90/175/350 hours. Can be scoped accordingly.
+
+---
+
+## #177: [Idea]: integrate stdlib into scijs packages
+
+**Labels:** idea, priority: high, difficulty: 3, tech: javascript
+
+### Idea
+
+[scijs](https://github.com/orgs/scijs/repositories?type=source) is a collection of numerical and scientific computing packages and utilities for working with multi-dimensional array data. While stdlib has surpassed scijs in terms of breadth and depth of functionality, scijs still includes a good bit of widely used functionality. One of the points of friction within the JavaScript ecosystem is the lack of interoperability between stdlib and scijs.
+
+The goal of this idea is to integrate stdlib into applicable scijs packages, and, where appropriate, to implement scijs operations in stdlib which are not currently present. This effort will entail updating various scijs packages to accept and operate on stdlib ndarrays, and where stdlib equivalents already exist, updating the current scijs implementations to delegate to stdlib implementations (e.g., see https://github.com/scijs/ndarray-fill, which, after standardizing input arguments, could delegate to `@stdlib/ndarray/fill`).
+
+For those interested in this idea, you should
+
+- study https://github.com/orgs/scijs/repositories?type=source
+- create a list of APIs present in scijs (e.g., in a Google spreadsheet)
+- find equivalent APIs already present in stdlib
+- identify which APIs have not already been implemented
+- identify which APIs are amenable to stdlib integration (note: not all APIs can be delegated to stdlib!)
+- describe a plan for achieving integration
+
+### Expected Outcomes
+
+Users will be able to use scijs APIs with stdlib ndarrays and, where appropriate, scijs APIs will delegate to stdlib functionality.
+
+### Involved Software
+
+No other software is necessary.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js.
+
+### Difficulty
+
+Intermediate.
+
+### Project Length
+
+90/175/350 hours. Can be scoped accordingly.
+
+---
+
+## #176: [Idea]: implement ndarray APIs to achieve compliance with the Array API specification
+
+**Labels:** idea, priority: high, difficulty: 3, tech: javascript
+
+### Idea
+
+The [Array API standard](https://data-apis.org/array-api/latest/) is a specification describing a set of array operations for array libraries within the Python ecosystem. These operations including those for creating, transforming, and manipulating array contents and provide a common substrate upon which higher order libraries, such as those for machine learning, AI, statistical analysis, and data processing, can build. The Array API standard has seen rapid adoption within the Scientific Python ecosystem, with NumPy, CuPy, JAX, PyTorch, and others providing implementations, and downstream libraries, such as SciPy and scikit-learn, moving to adopt.
+
+The goal of this idea is to implement the functions described in the Array API standard for use with stdlib's [ndarrays](https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/ndarray/ctor), which are efficient data structures for operating on multi-dimensional data. A principle difficulty in implementing these functions is ensuring efficient iteration of non-contiguous data. The main patterns for such iteration have been established in stdlib, but work remains to apply such patterns for top-level APIs. Having these functions would be a significant improvement for usability, as users from the Python ecosystem would benefit from a common vocabulary and set of building blocks, thus reducing the learning curve and facilitating stdlib adoption.
+
+For those interested in this idea, you should
+
+- study https://data-apis.org/array-api/latest/
+- create a list of APIs present in the standard (e.g., in a Google spreadsheet)
+- find equivalent APIs already present in stdlib
+- identify which APIs have not already been implemented
+- survey libraries within the Python ecosystem (e.g., NumPy) to determine how the missing libraries are implemented
+- describe a plan for implementing the missing functions
+
+### Expected Outcomes
+
+Users will be able to use implemented APIs (exposed as part of individual packages) for operating on ndarrays and will be able to implement various operations found in SciPy and sklearn using only the developed API primitives.
+
+### Involved Software
+
+No other software is necessary.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js.
+
+For APIs not accepting callbacks, certain kernels can be implemented in C, as time and scope allow.
+
+### Difficulty
+
+Intermediate. Writing the loop kernels can be involved, but, once understood, are straightforward to apply.
+
+### Project Length
+
+90/175/350 hours. Can be scoped accordingly. Scope can be expanded to implement additional ndarray kernels outside of the Array API standard.
+
+---
+
+## #102: [Idea]: improve project supply chain security by bringing production dependencies in-house
+
+**Labels:** idea, priority: high, difficulty: 3, tech: javascript, tech: nodejs
+
+### Idea
+
+stdlib currently depends on [`14`](https://github.com/stdlib-js/stdlib/blob/develop/package.json#L55) external packages. Ideally, we'd reduce this number to `0` in order to (a) reduce the risk of supply-chain security vulnerabilities and (b) ensure that all production code used within stdlib follows the "stdlib way" (i.e., docs, tests, examples, benchmarks, backward-compatibility guarantees, etc).
+
+Accordingly, this project seeks to bring external packages "in-house" by implementing stdlib equivalents which can replace their usage within stdlib. Immediate targets are dependencies such as `debug`, `glob`, `resolve`, and `minimist` which we'd like to bring in-house for their own sake.
+
+Bringing `acorn` and friends in-house would likely require more work and impose an increased maintenance burden, so we'd want to be careful in determining whether we want to prioritize a stdlib implementation. That said, having a stdlib suite of JavaScript AST manipulators would be useful. The main concern is simply keeping up with yearly ECMAScript versions. If we stayed close enough to `acorn`, we could potentially just mirror changes into stdlib. Regardless, some thought would be required to determine whether we want to model any stdlib implementation after acorn or some other high-quality and performant AST parser third-party package.
+
+For `d3-*` and friends, these would likely go away once we migrated our plot functionality to use `vega`. So their priority is lower.
+
+For `vdom-to-html` and `virtual-dom`, these have been useful in the past; however, it is not clear whether these deserve inclusion in stdlib. They are currently used in the stdlib plot API. Similar to the `d3-*` packages, they might just naturally go away after migrating plot functionality to `vega`.
+
+`readable-stream` is a harder package to migrate. First and foremost, one should evaluate how much we actually need `readable-stream` and whether we can still retain desired backward compatible behavior with built-in Node.js streams. It is possible that the answer is yes; however, historically, using `readable-stream` has been critical in ensuring consistent behavior across Node.js versions.
+
+### Expected outcomes
+
+Third-party party production dependencies would have equivalent stdlib implementations, and we can remove them as dependencies in the project `package.json`.
+
+### Status
+
+No work has begun on this.
+
+### Involved software
+
+None.
+
+### Technology
+
+JavaScript, nodejs
+
+### Other technology
+
+None.
+
+### Difficulty
+
+4
+
+### Difficulty justification
+
+It depends on which dependencies are prioritized. Some, such as `acorn`, could be quite involved and require extensive testing. Others, such as `resolve` should be more straightforward. `glob` is likely to require significant R&D in order to understand and determine an ideal API.
+
+### Prerequisite knowledge
+
+Experience and a high degree of comfort with JavaScript and Node.js.
+
+### Project length
+
+90/175/350. Scope can be tailored accordingly.
+
+#
+
+*[truncated]*
+
+---
+
+## #101: [Idea]: add support for working with arrays backed by memory-mapped files
+
+**Labels:** idea, priority: normal, difficulty: 5, tech: javascript, tech: c, tech: nodejs, tech: native addons
+
+### Idea
+
+Memory-mapped files allow accessing small segments of large disks stored on disk, without reading the entire file into memory. Not only can this be advantageous for memory performance, but it also facilitates shared memory between processes (e.g., operating on the same array in both Node.js and Python running in two separate processes).
+
+The goal of this project is to add support for working with typed arrays backed by memory-mapped files. Memory-mapped-backed typed arrays should support all the APIs of built-in typed arrays, with the exceptions that the constructors will need to support `mmap`-related arguments (e.g., filename, mode, offset) and indexing will require accessors, not square bracket syntax. The project is well-prepared to support accessors (see `array/bool`, `array/complex128`, etc), such that, provided a memory-mapped typed array supports the accessor protocol, passing to downstream utilities should just work.
+
+Similar to how we've approached fixed-endian typed arrays (see [`array/fixed-endian-factory`](https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/array/fixed-endian-factory)), we can likely create a package exposing a constructor factory and then create lightweight wrappers for type-specific constructors (e.g., [`array/little-endian-float64`](https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/array/little-endian-float64)).
+
+This project may require figuring out a strategy for C-JS iterop which can be used across constructors.
+
+### Expected outcomes
+
+Ideally, we would have the following constructors:
+
+- `Float64ArrayMMap`
+- `Float32ArrayMMap`
+- `Int32ArrayMMap`
+- `Int16ArrayMMap`
+- `Int8ArrayMMap`
+- `Uint32ArrayMMap`
+- `Uint16ArrayMMap`
+- `Uint8ArrayMMap`
+- `Uint8ClampedArrayMMap`
+- `BooleanArrayMMap`
+- `Complex128ArrayMMap`
+- `Complex64ArrayMMap`
+
+Additionally, the following constructors would also be useful:
+
+- `DataViewMMap`
+
+### Status
+
+None.
+
+### Involved software
+
+C compiler such as GCC or Clang.
+
+### Technology
+
+C, JavaScript, nodejs, native addons
+
+### Other technology
+
+None
+
+### Difficulty
+
+5
+
+### Difficulty justification
+
+Figuring out an effective bridge between JavaScript and C for working with memory-mapped files will likely require some R&D. It is not clear whether we'd need to first develop separate dedicated `mmap(2)`-like functionality in JavaScript or whether we can directly interface into C. Once the lower-level details are determined, the next steps will be implementing all the user-facing APIs expected from typed arrays. This should be straightforward; however, there may be some unexpected challenges and constraints surrounding read-only access, etc.
+
+### Prerequisite knowledge
+
+C, JavaScript, and Node.js experience will be useful.
+
+### Project length
+
+350
+
+### Checklist
+
+- [x] I have read and understood the [Code of Conduct](https://github.com/stdlib-js/stdlib/blob/develop/CODE_OF_CONDUCT.md).
+- [x] I have read and understood the application mate
+
+*[truncated]*
+
+---
+
+## #100: [Idea]: add matrix format parsers and data loaders
+
+**Labels:** idea, priority: normal, difficulty: 3, tech: javascript, tech: nodejs
+
+### Idea
+
+The goal of this project would be to implement various matrix and multi-dimensional format parsers and data loaders. E.g.,
+
+- [Matrix Market](https://math.nist.gov/MatrixMarket/formats.html#MMformat)
+- [NumPy `npy`](https://numpy.org/doc/stable/reference/generated/numpy.lib.format.html#module-numpy.lib.format)
+- [DLPack](https://dmlc.github.io/dlpack/latest/)
+- [MATLAB `mat`](https://www.mathworks.com/help/pdf_doc/matlab/matfile_format.pdf)
+- others?
+
+Implementing these parsers and loaders would facilitate array data interchange with other numerical computing ecosystems.
+
+### Expected outcomes
+
+Users will be able to load multi-dimensional array data saved in other numerical computing environments into stdlib's `ndarray` data structure.
+
+### Status
+
+No work has begun on this.
+
+### Involved software
+
+Access to MATLAB/Octave would be useful for implementing the MAT-file parser. One would likely need to use Python and NumPy in order to save and work with `npy` files.
+
+### Technology
+
+JavaScript
+
+### Other technology
+
+None.
+
+### Difficulty
+
+4
+
+### Difficulty justification
+
+Some of the file format specifications can be quite involved. It is also likely that we may encounter situations in which we cannot support particular formats in full due to dtype incompatibility, etc.
+
+### Prerequisite knowledge
+
+Familiarity with JavaScript, Python, and MATLAB would be useful. Experience writing parsers and performing IO will also be beneficial.
+
+### Project length
+
+90/175/350. Can be scoped accordingly.
+
+### Checklist
+
+- [x] I have read and understood the [Code of Conduct](https://github.com/stdlib-js/stdlib/blob/develop/CODE_OF_CONDUCT.md).
+- [x] I have read and understood the application materials found in this repository.
+- [x] The issue name begins with `[Idea]:` and succinctly describes your idea.
+- [x] I understand that, in order to apply to be a GSoC contributor, I must submit my final application to <https://summerofcode.withgoogle.com/> **before** the submission deadline.
+
+---
+
+## #99: [Idea]: create a prototype for transpiling a subset of TypeScript to C with automatic add-on generation
+
+**Labels:** idea, priority: normal, tech: javascript, tech: c, tech: nodejs, tech: native addons, difficulty: 4, tech: typescript
+
+### Idea
+
+Drawing on some of the recent innovations in the numerical Python ecosystem (e.g., see [`pyccel`](https://github.com/pyccel/pyccel/tree/devel)), the goal of this project would be to see if we can define a restricted subset of TypeScript which can be transpiled to C for faster execution in Node.js and other server runtimes.
+
+There is some prior art here; namely, [AssemblyScript](https://www.assemblyscript.org), which provides a TypeScript-like language which compiles to WebAssembly. However, we should be able to go farther here, especially in leveraging stdlib's richer collection of types (in particular, complex number dtypes). From this restricted subset, we can then automate transpilation of TypeScript to C, with the ability to automatically generate Node.js native add-ons bindings similar to what can be found in, e.g., https://github.com/stdlib-js/stdlib/blob/954e7c1e1716bfdd15903b4be7039741396927eb/lib/node_modules/%40stdlib/blas/base/dcopy/src/addon.c.
+
+There would be some puzzle pieces to put together here. Namely,
+
+- defining a richer set of numeric types. Currently, stdlib uses `number`, `boolean`, `Float64Array`, and other built-in types, along with a couple of custom types, such as `Complex128` and `Complex64`. We'd like want to create named aliases for specific numeric types, such as `int64`, `int32`, etc (similar to AssemblyScript). These would not impact consumption of project type declarations in TypeScript; although, they would have the benefit of signaling expected types.
+- updating the TypeScript declarations for various packages (e.g., `blas/ext/base`) to use the newly defined types.
+- creating tooling which can resolve and read a TypeScript declaration for an exported function and then automatically generate an `addon.c` file. If we can reproduce the [`addon.c`](https://github.com/stdlib-js/stdlib/blob/954e7c1e1716bfdd15903b4be7039741396927eb/lib/node_modules/%40stdlib/blas/base/dcopy/src/addon.c) file in `blas/base/dcopy`, that would be a win.
+- potentially porting a subset of JavaScript implementations to TypeScript using the aliases defined above.
+- from the ports, creating tooling which can, with high fidelity, generate one or more JavaScript implementations.
+- from the ports, creating tooling which can, with high fidelity, generate one or more C implementations.
+
+Note that, when transpiling from TypeScript to C, we'd need to properly determine appropriate stdlib includes and dependencies. If we could auto-generate a basic `manifest.json` file, that could also be useful.
+
+We could also explore a TypeScript to Fortran transpiler.
+
+### Expected outcomes
+
+A working end-to-end prototype which is capable of transpiling stdlib-flavored TypeScript to C and which can reproduce hand-authored C and JavaScript code.
+
+### Status
+
+No work has begun on this.
+
+### Involved software
+
+TypeScript and C/Fortran compilers.
+
+### Technology
+
+C, JavaScript, native addons, Fortran
+
+### Other technology
+
+None.
+
+### Difficulty
+
+4
+
+### Diffi
+
+*[truncated]*
+
+---
+
+## #98: [Idea]: add WebAssembly implementations for `stats/strided` routines
+
+**Labels:** idea, priority: normal, difficulty: 3, tech: javascript, tech: c
+
+### Idea
+
+We've worked toward compiling BLAS routines to WebAssembly and offering ergonomic APIs for interfacing between JavaScript and WebAssembly binaries (see https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/blas/base/wasm). The goal of this project would be to extend these efforts to the `stats/strided` namespace, such that, for each typed interface in `stats/strided/(d|s|c|z|)*`, there would be a corresponding WebAssembly package in `stats/strided/wasm/*`.
+
+### Expected outcomes
+
+Users wanting to potentially accelerate computation of strided statistics routines will be able to consume a corresponding WebAssembly API.
+
+### Status
+
+Work has primarily happened in https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/blas/base/wasm. The efforts there would need to be replicated for the `stats/strided/*` namespace.
+
+### Involved software
+
+Emscripten, which is necessary for compiling C to WebAssembly. stdlib already offers tooling for automatically installing the emsdk and getting things up and running.
+
+### Technology
+
+C, JavaScript
+
+### Other technology
+
+None.
+
+### Difficulty
+
+3
+
+### Difficulty justification
+
+Given that most `stats/strided/*` routines are straightforward one-dimensional strided array interfaces, developing the wasm packages should be similarly straightforward. The main time-consuming task will be writing tests and documentation.
+
+### Prerequisite knowledge
+
+Some familiarity with WebAssembly will be helpful. Experience with JavaScript.
+
+### Project length
+
+90/175/350. Can be scoped accordingly.
+
+### Checklist
+
+- [x] I have read and understood the [Code of Conduct](https://github.com/stdlib-js/stdlib/blob/develop/CODE_OF_CONDUCT.md).
+- [x] I have read and understood the application materials found in this repository.
+- [x] The issue name begins with `[Idea]:` and succinctly describes your idea.
+- [x] I understand that, in order to apply to be a GSoC contributor, I must submit my final application to <https://summerofcode.withgoogle.com/> **before** the submission deadline.
+
+---
+
+## #97: [Idea]: add WebAssembly implementations for extended BLAS routines
+
+**Labels:** idea, priority: normal, difficulty: 3, tech: javascript, tech: c, tech: nodejs
+
+### Idea
+
+We've worked toward compiling BLAS routines to WebAssembly and offering ergonomic APIs for interfacing between JavaScript and WebAssembly binaries (see https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/blas/base/wasm). The goal of this project would be to extend these efforts to the `blas/ext/base` namespace, such that, for each typed interface in `blas/ext/base/(d|s|c|z|)*`, there would be a corresponding WebAssembly package in `blas/ext/base/wasm/*`.
+
+### Expected outcomes
+
+Users wanting to potentially accelerate computation of extended BLAS routines will be able to consume a corresponding WebAssembly API.
+
+### Status
+
+Work has primarily happened in https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/blas/base/wasm. The efforts there would need to be replicated for the `blas/ext/base/wasm/*` namespace.
+
+### Involved software
+
+Emscripten, which is necessary for compiling C to WebAssembly. stdlib already offers tooling for automatically installing the emsdk and getting things up and running.
+
+### Technology
+
+C, JavaScript
+
+### Other technology
+
+None.
+
+### Difficulty
+
+3
+
+### Difficulty justification
+
+Given that most `blas/ext/base/*` routines are straightforward one-dimensional strided array interfaces, developing the wasm packages should be similarly straightforward. The main time-consuming task will be writing tests and documentation.
+
+### Prerequisite knowledge
+
+Some familiarity with WebAssembly will be helpful. Experience with JavaScript.
+
+### Project length
+
+90/175/350. Can be scoped accordingly.
+
+### Checklist
+
+- [x] I have read and understood the [Code of Conduct](https://github.com/stdlib-js/stdlib/blob/develop/CODE_OF_CONDUCT.md).
+- [x] I have read and understood the application materials found in this repository.
+- [x] The issue name begins with `[Idea]:` and succinctly describes your idea.
+- [x] I understand that, in order to apply to be a GSoC contributor, I must submit my final application to <https://summerofcode.withgoogle.com/> **before** the submission deadline.
+
+---
+
+## #96: [Idea]: extend stdlib's doctesting approach to C examples
+
+**Labels:** idea, priority: high, difficulty: 5, tech: c
+
+### Idea
+
+We heavily rely on doctesting (see https://github.com/stdlib-js/stdlib/blob/develop/docs/doctest.md) to ensure that our Markdown and JSDoc examples are correct and do not become out-of-date. However, we currently have no such framework for ensuring that our C source code and Markdown examples are correct.
+
+The goal of this project would be to implement doctesting for C source code and associated Markdown examples. While the approach is likely to be similar (e.g., parsing source code in scripts, Markdown code blocks, and in DOXYGEN examples), the technology stack is likely to be different and will require some R&D, especially as we won't be able to rely on things like ESLint. Instead, we'll need other tooling for identifying `// returns` annotations, instrumenting examples to collect return values, resolving source files to compile, compiling source files, executing scripts, and asserting that the output results match expectation.
+
+### Expected outcomes
+
+As part of our CI workflows and in local development, developers will be able to test that their C examples are correct.
+
+### Status
+
+stdlib has its own doctesting framework for checking JavaScript examples. This should serve as inspiration and provide an idea of what we are looking for.
+
+### Involved software
+
+C compilers, AST generators, and stdlib tooling.
+
+### Technology
+
+C
+
+### Other technology
+
+None.
+
+### Difficulty
+
+5
+
+### Difficulty justification
+
+There is likely a need for R&D to determine the best tools and approach. For JavaScript examples, we are able to rely on the fact that we can lint and execute within the same JavaScript runtime. In this case, there will be additional steps needed to separately instrument, create temporary files, compile, execute, and collect.
+
+### Prerequisite knowledge
+
+Experience with C and creating tooling will be beneficial.
+
+### Project length
+
+350
+
+### Checklist
+
+- [x] I have read and understood the [Code of Conduct](https://github.com/stdlib-js/stdlib/blob/develop/CODE_OF_CONDUCT.md).
+- [x] I have read and understood the application materials found in this repository.
+- [x] The issue name begins with `[Idea]:` and succinctly describes your idea.
+- [x] I understand that, in order to apply to be a GSoC contributor, I must submit my final application to <https://summerofcode.withgoogle.com/> **before** the submission deadline.
+
+---
+
+## #95: [Idea]: add LAPACK bindings and implementations for linear algebra
+
+**Labels:** idea, priority: high, tech: javascript, tech: c, tech: fortran, tech: nodejs, tech: native addons, difficulty: 4
+
+### Idea
+
+[LAPACK](https://netlib.org/lapack/) routines are standard building blocks for performing basic vector and matrix operations. These building blocks are leveraged by most modern numerical programming languages and libraries, including NumPy, SciPy, Julia, MATLAB, R, and others.
+
+The goal of this idea is to
+
+- reimplement reference LAPACK routines in free-form Fortran 95
+- port reference LAPACK routines to pure C
+- port reference LAPACK routines to pure JavaScript
+- write Node.js bindings to allow calling LAPACK routines in compiled C/ Fortran from JavaScript
+
+### Expected outcomes
+
+Users will be able to call LAPACK routines from JavaScript. In web browsers, LAPACK routines will be in JavaScript. In Node.js, provided native bindings have been compiled, LAPACK routines will either be ported reference implementations or hardware optimized system libraries.
+
+### Status
+
+Some work has begun toward this effort. See https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/lapack/base.
+
+### Involved software
+
+No other software is necessary apart from standard compilers (GCC, gfortran).
+
+### Technology
+
+C, JavaScript, Fortran, nodejs, native addons
+
+### Other technology
+
+None.
+
+### Difficulty
+
+4
+
+### Difficulty justification
+
+Familiarity with C and Fortran will be beneficial. This idea mainly involves porting existing implementations and doing so in a manner which conforms with stdlib conventions. Some of the reference implementations are likely to be quite involved and testing the correct output can be tricky, especially for lower-level helper routines.
+
+### Prerequisite knowledge
+
+C, Fortran, JavaScript, Node.js.
+
+### Project length
+
+350
+
+### Checklist
+
+- [x] I have read and understood the [Code of Conduct](https://github.com/stdlib-js/stdlib/blob/develop/CODE_OF_CONDUCT.md).
+- [x] I have read and understood the application materials found in this repository.
+- [x] The issue name begins with `[Idea]:` and succinctly describes your idea.
+- [x] I understand that, in order to apply to be a GSoC contributor, I must submit my final application to <https://summerofcode.withgoogle.com/> **before** the submission deadline.
+
+---
+
+## #94: [Idea]: add support for `Float16Array`
+
+**Labels:** idea, priority: normal, tech: javascript, tech: c, tech: nodejs, tech: native addons, difficulty: 4
+
+### Idea
+
+With `Float16Array` now on track for stage 4 approval in JavaScript (see https://github.com/tc39/proposal-float16array/issues/7), it is time we start thinking about adding support for `Float16Array` in stdlib. We have prior experience adding new array types, such as `array/bool`, `array/complex128`, and `array/complex64`, and this idea is a continuation of those efforts.
+
+The expected roadmap is as follows:
+
+- add a new `array/float16` package which includes a polyfill for backward compatibility support. The polyfill should expose all common methods and properties as found on other typed array constructors. This package should contain complete tests, documentation, and benchmarks, as found in other typed array packages (e.g., `array/bool`).
+- add support for `float16` array dtypes throughout the `array/*` namespace.
+- add support for `float16` array dtypes throughout the `strided/*` namespace.
+- add support for `float16` array dtypes throughout the `ndarray/*` namespace.
+
+### Expected outcomes
+
+stdlib users will be able to create and operate on `Float16Array` instances the same way they do throughout the project, with `Float16Array` on equal footing with all other typed array classes.
+
+### Status
+
+No work has been done on this idea; however, we expect that this should follow as similar path to `array/bool` and its integration throughout the project.
+
+Related: https://github.com/stdlib-js/google-summer-of-code/issues/43
+
+### Involved software
+
+No special software for initial work. Once work has progressed to ndarray support, will need access to a C compiler, as documented in the project development guide.
+
+### Technology
+
+JavaScript, C, nodejs, native addons
+
+### Other technology
+
+None.
+
+### Difficulty
+
+4
+
+### Difficulty justification
+
+Implementing the polyfill will likely take some time, with the need for adding additional functionality to support the implementation (e.g., bit manipulation utilities, math utils, etc).
+
+This project is ambitious, as arrays are fundamental to a lot of stdlib functionality; however, many of the more difficult integration aspects have already addressed given the widespread support for other array types throughout the project. The main project difficulty beyond the creation of a new `Float16Array` class will be finding all the various bits of code throughout the project which need to be updated.
+
+### Prerequisite knowledge
+
+Familiarity and comfort with JavaScript would be highly recommended, given that this project will require considerable programming in JavaScript. Some familiarity with C would also be good, especially for float16 array integration with ndarrays.
+
+### Project length
+
+350
+
+### Checklist
+
+- [x] I have read and understood the [Code of Conduct](https://github.com/stdlib-js/stdlib/blob/develop/CODE_OF_CONDUCT.md).
+- [x] I have read and understood the application materials found in this repository.
+- [x] The issue name begins with `[Idea]:` and succinctly describes your idea.
+- [x] I understand 
+
+*[truncated]*
+
+---
+
+## #44: [Idea]: add support for string arrays in stdlib
+
+**Labels:** idea, priority: normal, difficulty: 5, tech: javascript, tech: c, tech: nodejs, tech: native addons
+
+### Idea
+
+Similar to what's described in https://github.com/stdlib-js/google-summer-of-code/issues/43, a need exists to expand array data type support beyond numeric data types. One such data type is a `string` data type. The rationale for having a dedicated string data type is for better interoperation between JavaScript and C, and this is particularly paramount for supporting ndarrays having a string data type, as much of ndarray iteration machinery is written in C.
+
+Accordingly, the goal of this project is to add a dedicated string typed array called a `StringArray`, which will support variable-length strings. This new array type should follow a similar path to that of [@stdlib/array/complex64](https://github.com/stdlib-js/stdlib/tree/5dbb01dba2b1b305c6a11b66652ee2e4ccac15e2/lib/node_modules/%40stdlib/array/complex64), which provides a typed array dedicated to single-precision complex floating-point numbers; namely, `StringArray` should support standard typed array methods, as well as provide accessors for getting and setting array elements.
+
+Note, however, that a `StringArray` should be a typed array. A `StringArray` should not wrap a "generic" array. Instead, the array should be backed by fixed length memory, similar to how [@stdlib/array/complex64](https://github.com/stdlib-js/stdlib/tree/5dbb01dba2b1b305c6a11b66652ee2e4ccac15e2/lib/node_modules/%40stdlib/array/complex64) is backed by a `Float32Array`. One possibility is backing `StringArray` instances with Node.js `Buffer` objects, which are, in turn, `Uint8Array`s.
+
+There are, however, some design considerations; namely, how to handle setting of array elements. In particular, what happens when a user attempts to update a `StringArray` element with a larger string? Does that lead to a new memory allocation and data copy? Or should elements have a fixed allocation to allow for elements to grow until some maximum size?
+
+As part of this project, not only will a new `StringArray` be added to the project, but it will be integrated throughout stdlib. This will entail adding support for `StringArray`s wherever arrays are accepted/used, following the same precedent established by [@stdlib/array/complex64](https://github.com/stdlib-js/stdlib/tree/5dbb01dba2b1b305c6a11b66652ee2e4ccac15e2/lib/node_modules/%40stdlib/array/complex64) and other custom array types in stdlib. This includes adding support for string arrays in ndarray APIs.
+
+**Prior Art**
+
+- Recent work in NumPy adding UTF-8 variable length string support: https://numpy.org/neps/nep-0055-string_dtype.html
+
+### Expected outcomes
+
+The expected outcomes of this idea should be (1) creation of a new `@stdlib/array/string` package exposing a new typed array constructor, (2) support for `StringArray` instances throughout `@stdlib/array/*`, (3) support for `StringArray` instances as backing arrays for ndarrays (which may involve working with various C APIs), and (4) any other integration opportunities.
+
+### Status
+
+While no wo
+
+*[truncated]*
+
+---
+
+## #37: [Idea]: implement incremental (online) machine learning algorithms
+
+**Labels:** idea, priority: low, difficulty: 3, tech: javascript, tech: nodejs
+
+### Idea
+
+The goal of this idea is to implement incremental machine learning algorithms to allow for real-time regression and classification. Such online algorithms would allow for point-by-point data processing and avoid the sometimes costly overhead of batch processing. Online algorithms are particularly useful in data streaming contexts (e.g., user clicks, photon collection, etc).
+
+While stdlib includes some incremental algorithms ([binary classification](https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/ml/incr/binary-classification), [k-means](https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/ml/incr/kmeans), and [stochastic gradient descent regression](https://github.com/stdlib-js/stdlib/tree/develop/lib/node_modules/%40stdlib/ml/incr/sgd-regression)), the project would benefit from additional algorithms.
+
+Individuals interested in pursuing this idea should be prepared to research possible algorithms and propose specific APIs.
+
+### Expected Outcomes
+
+stdlib will expose one or more additional APIs for incremental machine learning.
+
+### Involved Software
+
+No other software is necessary.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js.
+
+### Difficulty
+
+Intermediate. In order to implement ML algorithms, individuals will likely need to consult reference implementations written in other languages. Porting from these implementations may not be straightforward depending on the features involved.
+
+### Project Length
+
+90/175/350 hours. Can be scoped accordingly.
+
+### Potential Mentors
+
+@kgryte @Planeshifter
+
+---
+
+## #36: [Idea]: add BLAS bindings and implementations for linear algebra
+
+**Labels:** idea, priority: high, difficulty: 3, tech: javascript, tech: c, tech: fortran, tech: nodejs, tech: native addons
+
+### Idea
+
+[BLAS](https://netlib.org/blas/) routines are standard building blocks for performing basic vector and matrix operations. These building blocks are leveraged by most modern numerical programming languages and libraries, including NumPy, SciPy, Julia, MATLAB, R, and others.
+
+The goal of this idea is to 
+
+- reimplement reference BLAS routines in free-form Fortran 95
+- port reference BLAS routines to C
+- port reference BLAS routines to JavaScript
+- write Node.js bindings to allow calling BLAS routines in compiled C/ Fortran from JavaScript
+
+### Expected Outcomes
+
+Users will be able to call BLAS routines from JavaScript. In web browsers, BLAS routines will be in JavaScript. In Node.js, provided native bindings have been compiled, BLAS routines will either be ported reference implementations or hardware optimized system libraries.
+
+### Involved Software
+
+No other software is necessary apart from standard compilers (GCC, gfortran).
+
+### Prerequisite Knowledge
+
+C, Fortran, JavaScript, Node.js.
+
+### Difficulty
+
+Intermediate. Familiarity with C and Fortran will be beneficial. This idea mainly involves porting existing implementations and doing so in a manner which conforms with stdlib conventions.
+
+### Project Length
+
+90/175/350 hours. Can be scoped accordingly.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @steff456 @rreusser @Pranavchiku @czgdp1807
+
+---
+
+## #35: [Idea]: develop an Excel add-on which exposes stdlib functionality
+
+**Labels:** idea, priority: low, tech: javascript, tech: nodejs, difficulty: 2
+
+### Idea
+
+The goal of this idea is to allow users to call stdlib APIs from within Excel. This will allow users to perform linear algebra and various machine learning operations directly on spreadsheet data and all within the browser.
+
+In order to execute on this idea, we'll want to support
+
+- two-dimensional array broadcasting semantics
+- performant element-wise iteration APIs
+- input argument validation tailored to the Sheets context
+- Fused operations to avoid unnecessary network calls
+- documentation and tutorials demonstrating API usage
+- good generation and automation for creating extension builds
+- testing and performance measurement to guard against regressions
+
+This idea is the Excel version of https://github.com/stdlib-js/google-summer-of-code/issues/13.
+
+### Expected Outcomes
+
+Excel users will be able to install an extension which exposes stdlib functionality, run statistical tests, evaluate mathematical functions, and perform linear algebra operations using stdlib.
+
+### Involved Software
+
+No other software is necessary; however, access to a local copy of Excel will be beneficial. While Microsoft 360 can be used, debugging is more difficult and less stable.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js.
+
+### Difficulty
+
+Beginner/Intermediate. 
+
+### Project Length
+
+175/350 hours. Can be scoped accordingly. A skilled contributor can work on a strategy for performant fused operations.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @steff456
+
+---
+
+## #34: [Idea]: develop C implementations for base special mathematical functions
+
+**Labels:** idea, priority: high, difficulty: 3, tech: javascript, tech: c, tech: nodejs, tech: native addons
+
+### Idea
+
+This idea builds on the work outlined in https://github.com/stdlib-js/stdlib/issues/649. Namely, implementing base special mathematical functions in C. Currently, all special mathematical functions have JavaScript implementations, which are often ports from other languages.
+
+The goal of this idea is to port all JavaScript implementations to C. Having such implementations will allow stdlib to provide Node.js native add-ons for higher performance ndarray computation and is more generally necessary for achieving NumPy/SciPy parity.
+
+### Expected Outcomes
+
+Users will be able to leverage C implementations for use in Node.js native add-ons, and stdlib will be able to expose element-wise APIs for evaluating base special math functions over ndarrays.
+
+### Involved Software
+
+No other software is necessary.
+
+### Prerequisite Knowledge
+
+C, JavaScript, Node.js.
+
+### Difficulty
+
+Intermediate. Familiarity with C is beneficial. This idea mainly involves porting existing implementations (many of which are written in C/C++) and doing so in a manner which conforms with stdlib conventions.
+
+### Project Length
+
+90/175/350 hours. Can be scoped accordingly. Scope can be expanded to implement new special mathematical functions.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @steff456 @rreusser @Pranavchiku @czgdp1807
+
+---
+
+## #28: [Idea]: Linear Algebra Functionality
+
+**Labels:** idea, priority: normal, difficulty: 5, tech: javascript, tech: c, tech: fortran, tech: nodejs
+
+### Idea
+
+Currently, support for linear algebra operations in stdlib is limited. The goal of this idea would be to implement algorithms for linear algebra operations such as matrix multiplication, calculating the matrix inverse, eigenvalue calculation, singular value decomposition, Cholesky & LU Decomposition, and the like. This overlaps with the goal of increasing the amount of BLAS and LAPACK that is available in stdlib.
+
+### Expected Outcomes
+
+stdlib will have extended support for linear algebra operations which can be used to solve problems involving matrices and vectors.
+
+### Involved Software
+
+No other software should be necessary. However, we will need to do a needs analysis to determine which prerequisite packages/functionality is necessary in order to allow these operations to be implemented (e.g., BLAS, ndarray slicing, etc).
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js. C, Fortran. Familiarity with linear algebra would be very useful, as will need to consult and understand reference implementations.
+
+### Difficulty
+
+Hard. Depends on the reference implementation requirements and algorithmic difficulty.
+
+### Project Length
+
+350 hours.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @Pranavchiku @czgdp1807 @rreusser
+
+---
+
+## #27: [Idea]: Optimization Algorithms
+
+**Labels:** idea, priority: normal, tech: javascript, tech: nodejs, difficulty: 4
+
+### Idea
+
+We currently do not have optimization algorithms in stdlib. Having support for Linear Programming, Convex Optimization, Quadratic Programming, and/or Non-Linear Optimization algorithms would be a great addition.
+
+### Expected Outcomes
+
+stdlib will have a broad array of optimization algorithms for solving problems.
+
+### Involved Software
+
+No other software should be necessary. However, we will need to do a needs analysis to determine which prerequisite packages/functionality is necessary in order to allow these algorithms to be implemented (e.g., BLAS).
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js. Familiarity with R, Python, C/C++ would be very useful, as will need to consult reference implementations.
+
+### Difficulty
+
+Hard. Depends on the reference implementation requirements and algorithmic difficulty.
+
+### Project Length
+
+350 hours.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @rreusser @Pranavchiku @czgdp1807
+
+---
+
+## #25: [Idea]: Symbolic Math
+
+**Labels:** idea, priority: low, difficulty: 3, tech: javascript, tech: nodejs
+
+### Idea
+
+The goal of this idea is to add basic support for symbolic math operations in stdlib.
+
+### Expected Outcome
+
+Users have the ability to perform basic symbolic math operations in JavaScript, such as solving equations, simplifying expressions, and using mathematical functions.
+
+### Involved Software
+
+No other software should be necessary.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js, and an understanding of mathematics and calculus.
+
+### Difficulty
+
+Intermediate
+
+### Project Length
+
+350 hours.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @rreusser
+
+---
+
+## #24: [Idea]: Functions for numerical integration and differentiation
+
+**Labels:** idea, tech: javascript, tech: nodejs, difficulty: 2
+
+### Idea
+
+The goal of this idea is to add functions for numerical integration or differentiation to stdlib as building blocks for downstream algorithms. The functions could be ported from permissively licensed open-source libraries in other languages such as C or Fortran or alternatively be implemented from scratch by consulting the literature and reference implementations from various languages.
+
+Some work along these lines has been started in the scijs ecosystem, which can be used for initial inspiration (e.g., https://github.com/scijs/ode45-cash-karp), and more generally in SciPy (e.g., https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.ode.html).
+
+### Expected Outcomes
+
+stdlib will have a range of robust functions for performing numerical integration or differentiation
+
+### Involved Software
+
+No other software is necessary.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js.
+
+### Difficulty
+
+Intermediate.
+
+### Project Length
+
+350 hours.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @rreusser @Pranavchiku @czgdp1807
+
+---
+
+## #23: [Idea]: improve the REPL presentation framework
+
+**Labels:** idea, priority: low, difficulty: 3, tech: javascript, tech: nodejs
+
+### Idea
+
+stdlib currently offers a REPL presentation framework for authoring presentations for use directly in the REPL. This is particularly useful for creating interactive tutorials illustrating how to use stdlib functionality for data analysis and visualization from the terminal. Some functionality is missing which would be quite useful. E.g.,
+
+- ASCII plotting
+- ASCII animations
+- syntax highlighting
+- pretty printing tables
+- speaker notes
+- multiplexing
+- theming
+
+### Expected Outcomes
+
+The REPL presentation framework will have additional features similar to those in WYSIWYG presentation applications.
+
+### Involved Software
+
+No other software is necessary.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js.
+
+### Difficulty
+
+Intermediate.
+
+### Project Length
+
+175/350 hours. Can be scoped according to project length.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @steff456
+
+---
+
+## #21: [Idea]: use ES6 modules for running unit tests and benchmarks in web browsers
+
+**Labels:** idea, priority: low, difficulty: 3, tech: javascript, tech: nodejs, tech: html/css, tech: jsx/react
+
+### Idea
+
+Currently, when generating stdlib API documentation, we generate UMD bundles for unit tests and benchmarks. When a user navigates to our package documentation, they can load unit tests and benchmarks and have those run without needing to setup a local environment. The pain point here is that creating separate bundles for each package is time consuming and adds significant heft to the `www` repo.
+
+The goal of this idea is to refactor the way we support unit tests and benchmarks to use ES6 modules and potentially skip bundling altogether. This has the downside of not supporting older browsers which don't support the `<module>` tag, but is probably fine considering that running package unit tests and benchmarks is likely a forward looking concern.
+
+### Expected Outcomes
+
+Users will be able to run unit tests and benchmarks directly in their web browsers by navigating to project API documentation and what is loaded are ES6 modules, not UMD bundles.
+
+### Involved Software
+
+No other software is necessary.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js, HTML/CSS, JSX/React.
+
+### Difficulty
+
+Intermediate.
+
+### Project Length
+
+350 hours.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @steff456
+
+---
+
+## #18: Idea brainstorm
+
+The purpose of this issue is to provide a single place for documenting potential GSoC project ideas. The ideas may be ill-defined or even wishful thinking, but they may serve as inspiration for more concrete GSoC project proposals given some R&D and careful consideration.
+
+---
+
+## #17: [Idea]: implement additional statistical tests
+
+**Labels:** idea, priority: normal, difficulty: 5, tech: javascript, tech: nodejs
+
+### Idea
+
+Implement various statistical tests which are not currently implemented in stdlib, but are implemented in other envs such as R, Python (SciPy, statsmodels), Julia, and MATLAB.
+
+### Expected Outcomes
+
+stdlib will have a broader array of statistical tests which can operate on ndarrays.
+
+### Involved Software
+
+No other software should be necessary. However, we will need to do a needs analysis to determine which prerequisite packages/functionality is necessary in order to allow these tests to be implemented (e.g., BLAS, ndarray slicing, etc).
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js. Familiarity with R, Python, C/C++ would be very useful, as will need to consult reference implementations.
+
+### Difficulty
+
+Hard. Depends on the reference implementation requirements and algorithmic difficulty.
+
+### Project Length
+
+350 hours.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @Pranavchiku
+
+---
+
+## #16: [Idea]: develop a Jupyter backend for interfacing with the stdlib REPL
+
+**Labels:** idea, priority: low, difficulty: 5, tech: javascript, tech: nodejs
+
+### Idea
+
+Jupyter is a dominate force in scientific computing. While some effort has been done to expose JavaScript kernels to Jupyter/JupyterLab, most of these kernels are under-developed or lack numerical functionality.
+
+The goal of this idea would be to develop a Jupyter backend based on stdlib.
+
+### Expected Outcomes
+
+A JupyterLab user will be able to connect to a stdlib kernel and invoke stdlib operations.
+
+### Involved Software
+
+This goal will require interfacing with the Jupyter technology stack, including ZeroMQ and implementing messaging protocols.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js. Experience with Python would be very helpful.
+
+### Difficulty
+
+Hard.
+
+### Project Length
+
+350 hours. This idea has many unknowns and will be hard to scope.
+
+### Potential Mentors
+
+@kgryte @Planeshifter
+
+---
+
+## #15: [Idea]: add support for bootstrap and jackknife resampling
+
+**Labels:** idea, priority: normal, tech: javascript, tech: nodejs, difficulty: 2
+
+### Idea
+
+Manually constructing confidence intervals and other statistical properties can be useful when no analytic solution exists. The goal of this idea to implement APIs for bootstrap and jackknife resampling.
+
+### Expected Outcomes
+
+Users will be to resample provided datasets.
+
+### Involved Software
+
+No other software is necessary.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js.
+
+### Difficulty
+
+Beginner/Intermediate. 
+
+### Project Length
+
+175/350 hours. Can be scoped accordingly. Scope can be expanded to implement different bootstrap algorithms.
+
+---
+
+## #13: [Idea]: develop a Google Sheets extension which exposes stdlib functionality
+
+**Labels:** idea, priority: high, tech: javascript, tech: nodejs, difficulty: 2
+
+### Idea
+
+The goal of this idea is to allow users to call stdlib APIs from within Google Sheets. This will allow users to perform linear algebra and various machine learning operations directly on spreadsheet data and all within the browser.
+
+In order to execute on this idea, we'll want to support
+
+- two-dimensional array broadcasting semantics
+- performant element-wise iteration APIs
+- input argument validation tailored to the Sheets context
+- Fused operations to avoid unnecessary network calls
+- documentation and tutorials demonstrating API usage
+- good generation and automation for creating extension builds
+- testing and performance measurement to guard against regressions
+
+### Expected Outcomes
+
+Google Sheets users will be able to install an extension which exposes stdlib functionality, run statistical tests, evaluate mathematical functions, and perform linear algebra operations using stdlib.
+
+### Involved Software
+
+No other software is necessary.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js.
+
+### Difficulty
+
+Beginner/Intermediate. 
+
+### Project Length
+
+175/350 hours. Can be scoped accordingly. A skilled contributor can work on a strategy for performant fused operations.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @steff456
+
+---
+
+## #11: [Idea]: add support for the multivariate normal distribution
+
+**Labels:** idea, priority: high, difficulty: 3, tech: javascript, tech: nodejs
+
+### Idea
+
+The goal of this idea is to implement the multivariate normal distribution. This distribution is fundamental in a wide variety of statistical applications and will help unblock stdlib in offering additional statistics APIs.
+
+As a starting point, SciPy's multivariate normal distribution API and implementation could provide a suitable point of reference:
+
+- https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.multivariate_normal.html
+
+### Expected Outcomes
+
+Users will be able to evaluate the PDF, CDF, logPDF, and logCDF and be able to draw random variates from a specified distribution.
+
+### Involved Software
+
+No other software is necessary. Will require reading reference implementations written in Python, R, and Julia.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js.
+
+### Difficulty
+
+Intermediate.
+
+### Project Length
+
+175/350 hours. Can be scoped accordingly. A skilled contributor should be able to complete in 175 hours with the potential of using their implementation to implement higher order statistics APIs.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @Pranavchiku
+
+---
+
+## #10: [Idea]: achieve feature parity with builtin Node.js `fs` module
+
+**Labels:** idea, priority: low, difficulty: 3, tech: javascript, tech: nodejs
+
+### Idea
+
+Achieve feature parity with Node.js `fs` package. We currently only support a limited selection of `fs` methods. Would be useful to support more.
+
+Part of this work involves providing an abstraction layer of Node.js built-ins in order to support newer functionality (e.g., options and/or behavior) not present in older Node.js versions. This is similar in concept to the userland `readable-stream` package.
+
+### Expected Outcomes
+
+stdlib will have complete feature parity with Node.js built-ins.
+
+### Involved Software
+
+No other software is necessary.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js.
+
+### Difficulty
+
+Intermediate. Could require some creative solutions to ensure that abstractions work for older Node.js versions.
+
+### Project Length
+
+175/350 hours. Can be scoped accordingly.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @steff456
+
+---
+
+## #9: [Idea]: achieve feature parity with async.js
+
+**Labels:** idea, priority: low, tech: javascript, tech: nodejs, difficulty: 2
+
+### Idea
+
+Currently, stdlib has a limited set of dedicated "async" APIs for performing various utility operations. The goal of this idea is to achieve feature parity with [`async.js`](https://caolan.github.io/async/v3/), a popular library providing callback-based async APIs.
+
+Motivation for this idea stems from certain advantages afforded by callback-based asynchronous programming. Notable among them is superior performance and the ability to more readily return and inspect status objects.
+
+### Expected Outcomes
+
+stdlib will have more or less 1:1 feature parity with `async.js` APIs.
+
+### Involved Software
+
+`async.js` will serve as a reference implementation for API design. Will want to modify to match stdlib conventions.
+
+### Prerequisite Knowledge
+
+JavaScript.
+
+### Difficulty
+
+Beginner. Would benefit from someone with JavaScript experience.
+
+### Project Length
+
+175/350 hours. Can be scoped accordingly.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @steff456
+
+---
+
+## #8: [Idea]: reimagine the stdlib plot API and implementation
+
+**Labels:** idea, priority: normal, difficulty: 5, tech: javascript, tech: nodejs
+
+### Idea
+
+Currently, stdlib has a bespoke plot API which is useful for fast static rendering. However, our implementation is quite limited in the types of plots it can produce. The goal of this idea is to refactor our plot API to build atop of `vega` (or its specifications). For this, we'd need to migrate to an async plot generation API, which is probably necessary regardless if we want to support WebGL or some other async rendering engine.
+
+Ideally, we would retain the same plot API and internally generate a vega specification.
+
+### Expected Outcomes
+
+We can generate simple plots using the new plot implementation.
+
+### Involved Software
+
+This will involve using `vega` (or something similar depending on whether `vega` is sufficiently maintained). We will want to transpile to ES5 and vendor in order to ensure that we can support our supported Node.js versions.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js.
+
+### Difficulty
+
+Intermediate/Hard.
+
+### Project Length
+
+350 hours. This project has the potential to spiral out of control, as there are many unknowns we'd need to answer. Mentor would likely need to be actively involved in order to perform R&D and properly scope.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @rreusser
+
+---
+
+## #7: [Idea]: develop a project test runner
+
+**Labels:** idea, priority: high, difficulty: 3, tech: javascript, tech: nodejs
+
+### Idea
+
+Currently, stdlib uses `tape`. The goal of this idea is to migrate away from `tape` and develop a test runner in-house, similar to `@stdlib/bench/harness`. This has long been on our TODO list and would allow us to have a simple test runner which is oriented toward stdlib conventions (e.g., we don't use most of the assertion methods in `tape`).
+
+Bonus points if we can migrate away from `istanbul` to `nyc` or `c8`; however, this may be tricky if we want to support older Node.js versions.
+
+### Expected Outcomes
+
+All unit tests have migrated to the in-house runner.
+
+### Involved Software
+
+No additional runtime deps. Will need to consult `tape` as a reference implementation, along with our existing `@stdlib/bench/harness` implementation.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js.
+
+### Difficulty
+
+Intermediate.
+
+### Project Length
+
+175/350 hours. The scope of this idea can be adjusted depending on availability.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @steff456
+
+---
+
+## #6: [Idea]: add support for visualizing benchmark results
+
+**Labels:** idea, priority: normal, difficulty: 3, tech: javascript, tech: nodejs
+
+### Idea
+
+While we currently support running benchmarks, we have yet to provide a means for easily visualizing and comparing benchmark results. Previously, when wanting to visualize and compare benchmark results, one has needed to manually parse TAP results and then plug into some other software (e.g., vega or Plotly).
+
+The idea for this project would be to 1) implement a TAP parser with support for the latest TAP specification and 2) provide a plot frontend for consuming parsed TAP results. The plot frontend could be as simple as a Unicode bar chart plotter, which would be in line with our existing Unicode plotting facilities.
+
+### Expected Outcomes
+
+Developers will be able to run benchmarks and visually compare benchmark results based on the namespace and parameterization. Ideally, the plot would include small multiple/facet visualizations.
+
+### Involved Software
+
+No other software or dependencies should be necessary. Will need to consult a reference TAP parser implementation (e.g., `node-tap`).
+
+### Prerequisite Knowledge
+
+JavaScript and Node.js.
+
+### Difficulty
+
+Intermediate.
+
+### Project Length
+
+350 hours.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @steff456
+
+---
+
+## #5: [Idea]: expand support for additional pseudorandom number generators
+
+**Labels:** idea, priority: normal, tech: javascript, tech: nodejs, difficulty: 4
+
+### Idea
+
+The goal of this idea is to implement a variety of PRNGs for use within stdlib to generate pseudorandom numbers. The project currently uses Mersenne Twister as its default PRNG; however, this PRNG, while common, is not ideal given its comparatively large internal state. Would be great to have a collection of PRNGs, such as PCG, Philox, Xorshift, and more.
+
+### Expected Outcomes
+
+stdlib users will have a wide selection of PRNGs from which to choose from based on their individual needs and considerations. Having a large selection of PRNGs will useful when replicating the results of numerical simulations which may use a PRNG which is not one of the currently supported stdlib PRNGs. Additionally, a desired outcome would be if we could replace MT19937 with a new default PRNG.
+
+### Involved Software
+
+No other software should be necessary. We may be a bit constrained based on 32-bit limitations in JS. This would not, however, stop us from implementing in C for use in generating arrays of random numbers.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js. Familiarity with C/C++/Fortran would help.
+
+### Difficulty
+
+Intermediate/Hard. Depends. Some PRNGs may be straightforward to implement. Others, not so much.
+
+### Project Length
+
+175/350 hours. This idea can be adjusted according to needs and availability.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @Pranavchiku
+
+---
+
+## #3: [Idea]: provide APIs for computing Fast Fourier Transforms
+
+**Labels:** idea, priority: normal, difficulty: 5, tech: javascript, tech: c, tech: fortran, tech: nodejs, tech: native addons
+
+### Idea
+
+The goal of this idea is to expose a set of Fast Fourier Transform (FFT) interfaces similar to those available in NumPy and as documented in the [Data APIs Array API specification](https://data-apis.org/array-api/latest/extensions/fourier_transform_functions.html). Similar to stdlib's BLAS interfaces, we may want to allow switching out the FFT backend.
+
+One potential reference implementation which could form the basis of this idea is pocketfft, as done in NumPy:
+
+- https://github.com/mreineck/pocketfft
+- https://gitlab.mpcdf.mpg.de/mtr/pocketfft
+
+### Expected Outcomes
+
+stdlib users would be able to evaluate FFT operations on stdlib ndarrays. Ideally, we'd also provide a set of C APIs.
+
+### Involved Software
+
+Will need to consult reference implementations in C/Fortran.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js, C/C++/Fortran
+
+### Difficulty
+
+Hard. This may be a straightforward port, or it may not be. More R&D is needed.
+
+### Project Length
+
+350 hours.
+
+### Potential Mentors
+
+@kgryte @Planeshifter @rreusser @Pranavchiku @czgdp1807
+
+---
+
+## #2: [Idea]: implement a broader range of statistical distributions
+
+**Labels:** idea, priority: normal, difficulty: 3, tech: javascript, tech: nodejs
+
+### Idea
+
+The goal of this idea is to implement all distributions found in SciPy [stats](https://docs.scipy.org/doc/scipy/reference/stats.html#statsrefmanual). Distribution support will entail implementing APIs for computing PDFs, CDFs, quantiles, and other distribution properties. Additionally, stdlib should support APIs for drawing random variates from any implemented distributions.
+
+### Expected Outcomes
+
+stdlib users will be able to construct, and compute various properties of, every statistical distribution present in SciPy in JavaScript.
+
+### Involved Software
+
+No runtime dependencies should be necessary. SciPy will be necessary in order to provide reference test results.
+
+### Prerequisite Knowledge
+
+JavaScript, Node.js. Familiarity with C/C++/Fortran would help.
+
+### Difficulty
+
+Intermediate. Difficulties may arise for distributions whose properties and moments have complicated formulations. Developing JavaScript implementations will likely require consulting C/C++ and possibly Fortran code.
+
+### Project Length
+
+350 hours.
+
+---

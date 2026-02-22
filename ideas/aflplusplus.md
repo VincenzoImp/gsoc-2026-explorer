@@ -1,16 +1,16 @@
 # AFLplusplus — Project Ideas
 
 **Source:** https://github.com/AFLplusplus/LibAFL/issues/3706
-**Scraped:** 2026-02-20T17:49:45.000207
+**Scraped:** 2026-02-22T23:28:47.605447
 
 ---
 
 -
 -
 [Notifications](https://github.com/login?return_to=%2FAFLplusplus%2FLibAFL)You must be signed in to change notification settings -
-[Fork 447](https://github.com/login?return_to=%2FAFLplusplus%2FLibAFL)
+[Fork 450](https://github.com/login?return_to=%2FAFLplusplus%2FLibAFL)
 
-[GSoCGoogle Summer of Code](https://github.com/AFLplusplus/LibAFL/issues?q=state%3Aopen%20label%3A%22GSoC%22)Google Summer of Code
+[GSoCGoogle Summer of Code](/ideas/aflplusplus/aflplusplus-libafl-issues)Google Summer of Code
 
 ## Description
 
@@ -211,7 +211,7 @@ on Feb 3, 2026
 
 early pull requests should demonstrate technical skills and ability to solve real problems, not documentation fixes or typo corrections or etc..
 
-Early pull requests should not include AI-generated code, which we clearly stated in: [https://github.com/AFLplusplus/LibAFL/blob/main/CONTRIBUTING.md](https://github.com/AFLplusplus/LibAFL/blob/main/CONTRIBUTING.md)
+Early pull requests should not include AI-generated code, which we clearly stated in: [https://github.com/AFLplusplus/LibAFL/blob/main/CONTRIBUTING.md](/ideas/aflplusplus/aflplusplus-libafl-blob-main-contributing)
 
 We want to see how well *you* understand the codebase and how well *you* can solve the problems with your code;
 
@@ -225,4 +225,4 @@ NOT how well you can ask *your chatbot* to solve the problem
 
 ### Labels
 
-[GSoCGoogle Summer of Code](https://github.com/AFLplusplus/LibAFL/issues?q=state%3Aopen%20label%3A%22GSoC%22)Google Summer of Code
+[GSoCGoogle Summer of Code](/ideas/aflplusplus/aflplusplus-libafl-issues)Google Summer of Code

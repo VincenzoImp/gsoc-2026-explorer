@@ -1,7 +1,7 @@
 # GNU Image Manipulation Program — Project Ideas
 
 **Source:** https://developer.gimp.org/core/internship/ideas/
-**Scraped:** 2026-02-20T11:48:56.927212
+**Scraped:** 2026-02-22T23:28:47.565468
 
 ---
 
@@ -13,13 +13,15 @@ for participants.
 You may choose to implement exactly one of the proposed ideas, propose new ideas
 inspired from this list, or suggest completely new projects (which is perfectly
 fine if your proposition makes sense). Our
-[roadmaps](https://developer.gimp.org/core/roadmap/) may also be a good source
+[roadmaps](/ideas/gnu-image-manipulation-program/core-roadmap) may also be a good source
 of inspiration.
 
 You will be selected on the quality of the proposal and on your attitude within the context of a Free Software Community. Also we prefer smaller projects which end up in our main codebase, rather than over-ambitious projects which you won’t have time to finish and might end bitrotting for years.
 
 Please also read the [main page on internship programs with
-GIMP](https://developer.gimp.org/core/internship/).
+GIMP](/ideas/gnu-image-manipulation-program/core-internship). You will want to make sure you follow the
+basic requirements (such as having good communication, not using any AI
+tools…) to have your project accepted and not failing.
 
 ##
 [Implement a Shape Tool

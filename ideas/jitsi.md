@@ -1,7 +1,7 @@
 # Jitsi — Project Ideas
 
 **Source:** https://github.com/jitsi/gsoc-ideas/blob/master/2026/README.md
-**Scraped:** 2026-02-20T11:48:56.940626
+**Scraped:** 2026-02-22T23:28:47.584565
 
 ---
 
@@ -9,18 +9,18 @@
 
 Here's the list of project ideas for GSoC 2026! Click on the title for a more detailed description.
 
-* [Chat Moderation & Editing](chat-moderation-editing.md)
-* [Jitsi Videobridge JavaScript client](jvb-js.md)
-* [Virtual Backgrounds, take 2](virtual-backgrounds-ng.md)
-* [E2EE: Replace olm with vodozemac](e2ee-vodozemac.md)
-* [Tracing calls through backend components](tracing-backend.md)
-* [External API without iframe](external-api-no-iframe.md)
-* [External API with non-serialized postMessages](external-api-structured-clone.md)
-* [Inject external streams via iframe API](inject-external-streams.md)
-* [PTZ camera support via WebRTC constraints](ptz-camera-support.md)
-* [Ultrasound experiments with ggwave (part 2)](ultrasound-ggwave.md)
-* [Rewrite Jibri to use iframe API](jibri-iframe-api.md)
-* [Document Picture-in-Picture for browser meetings](document-pip-browser.md)
+* [Chat Moderation & Editing](/ideas/jitsi/chat-moderation-editing)
+* [Jitsi Videobridge JavaScript client](/ideas/jitsi/jvb-js)
+* [Virtual Backgrounds, take 2](/ideas/jitsi/virtual-backgrounds-ng)
+* [E2EE: Replace olm with vodozemac](/ideas/jitsi/e2ee-vodozemac)
+* [Tracing calls through backend components](/ideas/jitsi/tracing-backend)
+* [External API without iframe](/ideas/jitsi/external-api-no-iframe)
+* [External API with non-serialized postMessages](/ideas/jitsi/external-api-structured-clone)
+* [Inject external streams via iframe API](/ideas/jitsi/inject-external-streams)
+* [PTZ camera support via WebRTC constraints](/ideas/jitsi/ptz-camera-support)
+* [Ultrasound experiments with ggwave (part 2)](/ideas/jitsi/ultrasound-ggwave)
+* [Rewrite Jibri to use iframe API](/ideas/jitsi/jibri-iframe-api)
+* [Document Picture-in-Picture for browser meetings](/ideas/jitsi/document-pip-browser)
 
 # Interested in applying for a project?
 

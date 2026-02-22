@@ -1,7 +1,7 @@
 # OWASP Foundation — Project Ideas
 
 **Source:** https://owasp.org/www-community/initiatives/gsoc/gsoc2026ideas
-**Scraped:** 2026-02-20T11:48:56.920292
+**Scraped:** 2026-02-22T23:28:47.558386
 
 ---
 
@@ -17,7 +17,7 @@ Tips to get you started in no particular order:
 
 ## List of Project Ideas
 
-[Bug Logging Tool (BLT)](https://owasp.org/www-project-bug-logging-tool/)
+[Bug Logging Tool (BLT)](/ideas/owasp-foundation/www-project-bug-logging-tool)
 
 OWASP BLT (Bug Logging Tool) is a community-driven OWASP Foundation project that develops and maintains open-source tools for structured vulnerability reporting, bug tracking, security automation, contributor engagement, and related infrastructure. The BLT ecosystem includes modular services, APIs, dashboards, browser and mobile applications, automation bots, and research initiatives, all developed transparently under OWASP governance and open-source licensing.
 
@@ -104,7 +104,7 @@ Primary Objectives:
 
 Reach out to us on Slack to discuss these and other ideas!
 
-[OWASP Nettacker](https://owasp.org/www-project-nettacker/)
+[OWASP Nettacker](/ideas/owasp-foundation/www-project-nettacker)
 
 OWASP Nettacker is a Modular Automated Penetration Testing/ Information gathering Framework and Vulnerability Scanner fully written in Python. Nettacker can run a variety of scans discovering subdomains, open ports, services, vulnerabilities, misconfigurations, default credentials.
 
@@ -234,9 +234,9 @@ Juice Shop codebase. Check our
 
 ##### Mentors
 
-[Bjoern Kimminich](https://owasp.org/cdn-cgi/l/email-protection#0c6e6663697e6222676561616562656f644c637b6d7f7c22637e6b)- OWASP Juice Shop Project Leader ([bkimminich](https://owasp.slack.com/team/U1S23SNE7)on Slack)[Jannik Hollenbach](https://owasp.org/cdn-cgi/l/email-protection#82e8e3ececebe9aceaedeeeee7ece0e3e1eac2edf5e3f1f2acedf0e5)- OWASP Juice Shop Project Leader ([Jannik](https://owasp.slack.com/team/UAM6MBY30)on Slack)
+[Bjoern Kimminich](https://owasp.org/cdn-cgi/l/email-protection#6301090c06110d4d080a0e0e0a0d0a000b230c140210134d0c1104)- OWASP Juice Shop Project Leader ([bkimminich](https://owasp.slack.com/team/U1S23SNE7)on Slack)[Jannik Hollenbach](https://owasp.org/cdn-cgi/l/email-protection#066c6768686f6d286e696a6a63686467656e46697167757628697461)- OWASP Juice Shop Project Leader ([Jannik](https://owasp.slack.com/team/UAM6MBY30)on Slack)
 
-[PyGoat](https://owasp.org/www-project-pygoat/)
+[PyGoat](/ideas/owasp-foundation/www-project-pygoat)
 
 PyGoat is an open-source, intentionally vulnerable Python web application designed to help developers and security enthusiasts learn about web application security. It provides hands-on experience in identifying and mitigating common security vulnerabilities, making it a valuable resource for practicing secure coding and penetration testing techniques.
 
@@ -253,8 +253,8 @@ PyGoat is an open-source, intentionally vulnerable Python web application design
 ##### Getting started
 
 - Check
-[GitHub project](https://github.com/adeyosemanputra/pygoat)and[Website](https://owasp.org/www-project-pygoat/). - Join
-[OWASP Slack](https://owasp.org/slack/invite)and contact us on channel #project-pygoat
+[GitHub project](https://github.com/adeyosemanputra/pygoat)and[Website](/ideas/owasp-foundation/www-project-pygoat). - Join
+[OWASP Slack](/ideas/owasp-foundation/slack-invite)and contact us on channel #project-pygoat
 
 #### Projects / Ideas
 
@@ -273,7 +273,7 @@ section
 
 #### Mentors
 
-[ardiansyah](https://owasp.org/cdn-cgi/l/email-protection#334352585756405244525d54525d73545e525a5f1d505c5e)[Rupak Biswas](https://github.com/RupakBiswas-2304)([Rupak](https://owasp.slack.com/team/U036WSR1684)on slack)[Garvita Kataria](https://github.com/Garvita-k)([Slack](https://owasp.slack.com/team/U08BJEKS5KQ))
+[ardiansyah](https://owasp.org/cdn-cgi/l/email-protection#abdbcac0cfced8cadccac5cccac5ebccc6cac2c785c8c4c6)[Rupak Biswas](https://github.com/RupakBiswas-2304)([Rupak](https://owasp.slack.com/team/U036WSR1684)on slack)[Garvita Kataria](https://github.com/Garvita-k)([Slack](https://owasp.slack.com/team/U08BJEKS5KQ))
 
 [OpenCRE](https://opencre.org/)
 
@@ -298,7 +298,7 @@ OpenCRE is the world’s largest Cybersecurity knowledge graph. It semantically 
 or`GSOC`
 
 - Join
-[OWASP Slack](https://owasp.org/slack/invite)and contact us on channel #project-opencre
+[OWASP Slack](/ideas/owasp-foundation/slack-invite)and contact us on channel #project-opencre
 
 #### Projects / Ideas
 
@@ -480,7 +480,7 @@ This is an **Easy** difficulty project suitable for:
 
 **For OpenCRE Scraper & Indexer (Project OIE) Module Projects (A, B, C, D):**
 
-[OWTF](https://owasp.org/www-project-owtf/)
+[OWTF](/ideas/owasp-foundation/www-project-owtf)
 
 OWTF attempts to solve the “penetration testers are never given enough time to test properly” problem, or in other words, OWTF = Test/Exploit ASAP, with this in mind, as of right now, the priorities are:
 
@@ -567,7 +567,7 @@ OWTF’s proxy was written almost 10 years ago based on the Tornado Web Framewor
 - Check
 [GitHub project](https://owasp.org/[https:/github.com/adeyosemanputra/pygoat](https:/github.com/owasp/cornucopia?tab=readme-ov-file#building-and-deploying-the-cornucopia-website)) - Get in touch with one of the project leaders
 [Sydseter](https://www.linkedin.com/in/sydseter/) - Join
-[OWASP Slack](https://owasp.org/slack/invite)and contact us on channel #cornucopia-project
+[OWASP Slack](/ideas/owasp-foundation/slack-invite)and contact us on channel #cornucopia-project
 
 #### Projects / Ideas
 

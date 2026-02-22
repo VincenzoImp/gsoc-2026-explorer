@@ -1,7 +1,7 @@
 # RTEMS Project — Project Ideas
 
 **Source:** https://projects.rtems.org/gsoc/
-**Scraped:** 2026-02-20T12:08:41.276348
+**Scraped:** 2026-02-22T23:28:47.589831
 
 ---
 
@@ -52,10 +52,15 @@ The Git tracking repository is on our GitLab [https://gitlab.rtems.org/rtems/pro
 
 # Large Projects (350 hours)
 
+| Project name | Created | Updated | Language | Architecture | Loading... |
+|---|
+
 # Medium Projects (175 hours)
+
+| Project name | Created | Updated | Language | Architecture | Loading... |
+|---|
 
 # Small Projects (90 hours)
 
-| Project name | Created | Updated | Language | Architecture |
-|---|---|---|---|---|
-|
+| Project name | Created | Updated | Language | Architecture | Loading... |
+|---|

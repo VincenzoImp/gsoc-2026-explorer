@@ -1,7 +1,7 @@
 # MDAnalysis — Project Ideas
 
 **Source:** https://github.com/MDAnalysis/mdanalysis/wiki/GSoC-2026-Project-Ideas
-**Scraped:** 2026-02-20T11:48:56.926873
+**Scraped:** 2026-02-22T23:28:47.550050
 
 ---
 
@@ -11,7 +11,7 @@
 
 ----
 
-**IMPORTANT:** THIS PAGE IS ONLY A DRAFT. Given that there is an application process for organizations — such as MDAnalysis — to participate in the [GSoC](https://summerofcode.withgoogle.com/) program, there is no guarantee that MDAnalysis will be selected by Google as a participating GSoC organization. Once we know more, we will share updates on our [public communication channels](https://www.mdanalysis.org/pages/community/), in particular in the [Announcement](https://github.com/MDAnalysis/mdanalysis/discussions/categories/announcements) discussion.
+**IMPORTANT:** THIS PAGE IS ONLY A DRAFT. Given that there is an application process for organizations — such as MDAnalysis — to participate in the [GSoC](https://summerofcode.withgoogle.com/) program, there is no guarantee that MDAnalysis will be selected by Google as a participating GSoC organization. Once we know more, we will share updates on our [public communication channels](https://www.mdanalysis.org/pages/community/), in particular in the [Announcement](/ideas/mdanalysis/mdanalysis-mdanalysis-discussions-categories-announcements) discussion.
 
 ----
 
@@ -30,10 +30,10 @@ If you just found out about the MDAnalysis Python package from the GSoC website,
 MDAnalysis is a Python library for the analysis of computer simulations of many-body systems at the molecular scale, spanning use cases from interactions of drugs with proteins to novel materials. For Google Summer of Code, [we are also collaborating](#collaborations) with other organizations and software projects that use MDAnalysis. Our GSoC projects generally require a basic knowledge and hands-on experience in specific areas, so *for our suggested projects, please check carefully the project descriptions to see the associated desirable skills*. Broadly speaking, we found that applicants with experience in molecular dynamics (MD) simulations and the associated analyses — or equivalent experience in simulations and modeling of molecular systems (physics, biophysics, chemistry, or materials) — are very successful.
 
 ### To Prospective Applicants
-If you are interested in taking part, please get in touch on the [GSoC with MDAnalysis Discussion Forum](https://github.com/MDAnalysis/mdanalysis/discussions/categories/gsoc-discussions). Given the GSoC program structure (small, medium, and large projects), letting us know of your intentions to apply and getting acquainted with the project early will be very helpful.
+If you are interested in taking part, please get in touch on the [GSoC with MDAnalysis Discussion Forum](/ideas/mdanalysis/mdanalysis-mdanalysis-discussions-categories-gsoc-discussions). Given the GSoC program structure (small, medium, and large projects), letting us know of your intentions to apply and getting acquainted with the project early will be very helpful.
 
 ### To Prospective Mentors
-MDAnalysis welcomes new mentors; please get in touch on the [developer forum](https://github.com/MDAnalysis/mdanalysis/discussions/categories/development) if you are interested in taking part. We typically expect mentors to be familiar with our development process, as evidenced by contributions to the code base and interactions on the developer forum.
+MDAnalysis welcomes new mentors; please get in touch on the [developer forum](/ideas/mdanalysis/mdanalysis-mdanalysis-discussions-categories-development) if you are interested in taking part. We typically expect mentors to be familiar with our development process, as evidenced by contributions to the code base and interactions on the developer forum.
 
 # Overview
 
@@ -48,9 +48,9 @@ The currently proposed projects are:
 5. Dashboard for tracking WESTPA simulation progress
 6. Interface for post-simulation analysis ("crawling") of WESTPA simulations
 
-**Or work on your own idea!** Get in contact with us to propose an idea and we will work with you to flesh it out into a full project. Contact us via the [GSoC with MDAnalysis Discussion Forum](https://github.com/MDAnalysis/mdanalysis/discussions/categories/gsoc-discussions) (or if your project is a specific feature you'd want to add, raise an issue in the [Issue Tracker](/MDAnalysis/mdanalysis/issues)).
+**Or work on your own idea!** Get in contact with us to propose an idea and we will work with you to flesh it out into a full project. Contact us via the [GSoC with MDAnalysis Discussion Forum](/ideas/mdanalysis/mdanalysis-mdanalysis-discussions-categories-gsoc-discussions) (or if your project is a specific feature you'd want to add, raise an issue in the [Issue Tracker](/ideas/mdanalysis/mdanalysis-mdanalysis-issues)).
 
-Look at the [list of all available mentors for MDAnalysis](https://github.com/MDAnalysis/mdanalysis/wiki/Google-Summer-Of-Code#available-mentors) for potential mentors for your project. Please send all communications to the [discussion forum](https://github.com/MDAnalysis/mdanalysis/discussions/categories/gsoc-discussions) (and don't contact mentors privately). You can certainly ask for the opinion of a specific mentor if you know that their expertise is particularly suitable for your project.
+Look at the [list of all available mentors for MDAnalysis](/ideas/mdanalysis/google-summer-of-code) for potential mentors for your project. Please send all communications to the [discussion forum](/ideas/mdanalysis/mdanalysis-mdanalysis-discussions-categories-gsoc-discussions) (and don't contact mentors privately). You can certainly ask for the opinion of a specific mentor if you know that their expertise is particularly suitable for your project.
 
 ## Collaborations
 

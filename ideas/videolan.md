@@ -1,7 +1,7 @@
 # VideoLAN — Project Ideas
 
 **Source:** https://wiki.videolan.org/SoC_2026/
-**Scraped:** 2026-02-20T11:48:56.943751
+**Scraped:** 2026-02-22T23:28:47.573931
 
 ---
 
@@ -23,7 +23,7 @@ The list is long, but it is not exhaustive, and not limitative. Feel free to app
 
 ## Introduction & Information
 
-This page covers the [VideoLAN](https://wiki.videolan.org/VideoLAN/) program as a mentoring organization for [Google Summer of Code](http://code.google.com/soc/), in order to improve [VLC](https://wiki.videolan.org/VLC/), [VLMC](https://wiki.videolan.org/VLMC/) and [dav1d](https://code.videolan.org/videolan/dav1d) (or the [libVLC](https://wiki.videolan.org/LibVLC/) engine), but also the VideoLAN infrastructure and some other related projects.
+This page covers the [VideoLAN](/ideas/videolan/videolan) program as a mentoring organization for [Google Summer of Code](http://code.google.com/soc/), in order to improve [VLC](/ideas/videolan/vlc), [VLMC](/ideas/videolan/vlmc) and [dav1d](https://code.videolan.org/videolan/dav1d) (or the [libVLC](/ideas/videolan/libvlc) engine), but also the VideoLAN infrastructure and some other related projects.
 
 We have projects in **C**, **C++**, **Rust**, **ASM**, **JS**, **Wasm**, **Go**, **Obj-C**, **GPU Shaders**, **C#**, **Java/Kotlin** and **Swift**.
 
@@ -31,19 +31,19 @@ We have projects in **C**, **C++**, **Rust**, **ASM**, **JS**, **Wasm**, **Go**,
 
 Google Summer of Code is a way for anyone to work on open source projects and become top developers, while being paid by Google.
 
-[VideoLAN](https://wiki.videolan.org/VideoLAN/) was a *Google Summer of Code* mentoring organization in [2007](https://wiki.videolan.org/SoC_2007/), [2008](https://wiki.videolan.org/SoC_2008/), [2009](https://wiki.videolan.org/SoC_2009/), [2010](https://wiki.videolan.org/SoC_2010/), [2011](https://wiki.videolan.org/SoC_2011/), [2013](https://wiki.videolan.org/SoC_2013/), [2016](https://wiki.videolan.org/SoC_2016/), [2017](https://wiki.videolan.org/SoC_2017/), [2018](https://wiki.videolan.org/SoC_2018/), [2019](https://wiki.videolan.org/SoC_2019/), [2020](https://wiki.videolan.org/SoC_2020/), [2021](https://wiki.videolan.org/SoC_2021/), [2022](https://wiki.videolan.org/SoC_2022/), [2023](https://wiki.videolan.org/SoC_2023/), [2024](https://wiki.videolan.org/SoC_2024/) and [2025](https://wiki.videolan.org/SoC_2025/).
+[VideoLAN](/ideas/videolan/videolan) was a *Google Summer of Code* mentoring organization in [2007](/ideas/videolan/soc_2007), [2008](/ideas/videolan/soc_2008), [2009](/ideas/videolan/soc_2009), [2010](/ideas/videolan/soc_2010), [2011](/ideas/videolan/soc_2011), [2013](/ideas/videolan/soc_2013), [2016](/ideas/videolan/soc_2016), [2017](/ideas/videolan/soc_2017), [2018](/ideas/videolan/soc_2018), [2019](/ideas/videolan/soc_2019), [2020](/ideas/videolan/soc_2020), [2021](/ideas/videolan/soc_2021), [2022](/ideas/videolan/soc_2022), [2023](/ideas/videolan/soc_2023), [2024](/ideas/videolan/soc_2024) and [2025](/ideas/videolan/soc_2025).
 
-This page lists some ideas for Summer of Code projects on **dav1d**, **dav2d**, **libVLC** and [VLC media player](https://wiki.videolan.org/VLC_media_player/), but also on *VLC infrastructure* projects.
+This page lists some ideas for Summer of Code projects on **dav1d**, **dav2d**, **libVLC** and [VLC media player](/ideas/videolan/vlc_media_player), but also on *VLC infrastructure* projects.
 
-We accept ideas also on other multimedia projects related to [VLC media player](https://wiki.videolan.org/VLC_media_player/).
+We accept ideas also on other multimedia projects related to [VLC media player](/ideas/videolan/vlc_media_player).
 
 ### VLC & libVLC
 
-[VLC media player](https://wiki.videolan.org/VLC_media_player/) is a cross-platform multimedia player, encoder and streamer application. It is one of the most successful open-source projects worldwide.
+[VLC media player](/ideas/videolan/vlc_media_player) is a cross-platform multimedia player, encoder and streamer application. It is one of the most successful open-source projects worldwide.
 
-[VLC media player](https://wiki.videolan.org/VLC_media_player/) is downloaded at an approximate monthly rate of 25 millions from the main website and that's not including third-party distributions (Linux)!
+[VLC media player](/ideas/videolan/vlc_media_player) is downloaded at an approximate monthly rate of 25 millions from the main website and that's not including third-party distributions (Linux)!
 
-You can find more information on [VLC on Wikipedia](http://en.wikipedia.org/wiki/VLC_media_player) or on this [wiki](https://wiki.videolan.org/Main_Page/).
+You can find more information on [VLC on Wikipedia](http://en.wikipedia.org/wiki/VLC_media_player) or on this [wiki](/ideas/videolan/main_page).
 
 The engine of VLC is **libVLC**, and is used by **VLMC** and mobile versions of VLC.
 
@@ -61,7 +61,7 @@ If selected and developed, SoC projects for dav1d and VLC will be included in la
 
 All projects are covered by the GPL (v2+) or LGPL (v2.1+) licenses depending on the module. Projects on dav1d and dav2d are BSD licensed.
 
-The VideoLAN [Code of Conducts](https://wiki.videolan.org/CoC/) applies to all Summer projects.
+The VideoLAN [Code of Conducts](/ideas/videolan/coc) applies to all Summer projects.
 
 ## How to Start
 
@@ -85,13 +85,13 @@ You should do so, very quickly, even before having finished compilation and the 
 
 This may sound trivial, but it's harder than many expect. You must compile the project you want to work on.
 
-See [https://wiki.videolan.org/Category:Building/](https://wiki.videolan.org/Category:Building/) for more informations.
+See [https://wiki.videolan.org/Category:Building/](/ideas/videolan/category-building) for more informations.
 
-You should come on [IRC](https://wiki.videolan.org/IRC/) to get help to compile.
+You should come on [IRC](/ideas/videolan/irc) to get help to compile.
 
 ### Provide a small patch
 
-To demonstrate your skills, share a small patch with us. This will let you become familiar with [Git](https://wiki.videolan.org/Git/), in case you don't know it already and our process on [our gitlab](https://code.videolan.org).
+To demonstrate your skills, share a small patch with us. This will let you become familiar with [Git](/ideas/videolan/git), in case you don't know it already and our process on [our gitlab](https://code.videolan.org).
 
 ### Let's get in touch
 
@@ -776,7 +776,7 @@ Contact 'haasn'
 
 **Project Description**
 
-Your goal is to develop GPU shaders for motion-adaptive frame interpolation in the style of [mvtools]([https://github.com/dubhater/vapoursynth-mvtools](https://github.com/dubhater/vapoursynth-mvtools)).
+Your goal is to develop GPU shaders for motion-adaptive frame interpolation in the style of [mvtools](https://wiki.videolan.org/SoC_2026/[https:/github.com/dubhater/vapoursynth-mvtools](https:/github.com/dubhater/vapoursynth-mvtools)).
 
 This is an open-ended project. If not completed, any progress towards this goal is good enough.
 

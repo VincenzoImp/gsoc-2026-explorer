@@ -1,7 +1,7 @@
 # Cuneiform Digital Library Initiative (CDLI) — Project Ideas
 
 **Source:** https://gitlab.com/cdli/framework/-/wikis/Google-Summer-of-Code-GSoC-2026-Cuneiform-Digital-Library-Initiative-(CDLI)-ideas-list
-**Scraped:** 2026-02-20T11:48:56.945536
+**Scraped:** 2026-02-22T23:28:47.613008
 
 ---
 

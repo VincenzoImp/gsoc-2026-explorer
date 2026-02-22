@@ -1,7 +1,7 @@
 # Ste||ar group — Project Ideas
 
 **Source:** https://github.com/STEllAR-GROUP/hpx/wiki/Google-Summer-of-Code-(GSoC)-2026#2026-hpx-project-ideas
-**Scraped:** 2026-02-20T11:48:56.930751
+**Scraped:** 2026-02-22T23:28:47.613994
 
 ---
 
@@ -32,8 +32,8 @@ Some of our former GSoC students that still contribute to our projects have put 
  4. At this point, try building and playing with the [examples](https://github.com/STEllAR-GROUP/hpx/tree/master/examples) in HPX. Furthermore, we have a [basic tutorial](https://hpx-docs.stellar-group.org/latest/html/examples.html) that takes you through the features and their usage with code examples.
  5. Going through the examples may be an overwhelming experience, so we suggest you become familiar with our way of writing code through our [summer lecture series](https://www.diehlpk.de/blog/cpp-lectures/). (Hint: Pay attention to *Lecture #4*)
  6. The C++ style used in HPX might not seem intuitive at first, but [this guide](https://wenke-d.github.io/CPP-for-HPX/) will help you build an intuition for why it is used.
- 7. When you're familiar with basic usage, we suggest you try writing demo HPX programs (e.g., matrix-matrix multiplication). Go through our [Issue tracker](https://github.com/STEllAR-GROUP/hpx/issues) and see if you can find an issue you would like to investigate. Working on bugs is the easiest way to dive into the code base and contribute to HPX.
- 8. Dig into our currently active [GSoC issues](https://github.com/STEllAR-GROUP/hpx/issues?q=is%3Aissue+is%3Aopen+label%3A%22project%3A+GSoC%22) and Pull Requests relevant to them. Furthermore, leave comments and discuss with the corresponding authors.
+ 7. When you're familiar with basic usage, we suggest you try writing demo HPX programs (e.g., matrix-matrix multiplication). Go through our [Issue tracker](/ideas/stear-group/stellar-group-hpx-issues) and see if you can find an issue you would like to investigate. Working on bugs is the easiest way to dive into the code base and contribute to HPX.
+ 8. Dig into our currently active [GSoC issues](/ideas/stear-group/stellar-group-hpx-issues-2) and Pull Requests relevant to them. Furthermore, leave comments and discuss with the corresponding authors.
  9. We **highly recommend** joining our channel, on [Discord](https://discord.gg/eh4HTXVuWg), where you can ask questions, discuss issues, pull requests, and your potential GSoC project. Remember, questions are the key to start contributing!
 
 ## Usage of AI tooling
@@ -250,7 +250,7 @@ Propose one of the following or it's sub idea to improve chplx's individual comp
 
 ### HPX distributed algorithms 
 * **Abstract:** Along with the [standard parallel algorithms](https://en.cppreference.com/w/cpp/algorithm) provided by the C++ standard, HPX extends its infrastructure by providing (some of) the corresponding distributed versions of those algorithms that run on multiple nodes and on top of that they take care of communication. We currently miss distributed versions of some of the algorithms, notably distributed sorting should be implemented. This project is about working on implementing one or more of the missing algorithms.
-The set of the implemented algorithms can be found [here](https://github.com/STEllAR-GROUP/hpx/tree/master/libs/full/segmented_algorithms/include/hpx/parallel/segmented_algorithms). [Here](https://github.com/STEllAR-GROUP/hpx/issues/1338) you can find the corresponding ticket.
+The set of the implemented algorithms can be found [here](https://github.com/STEllAR-GROUP/hpx/tree/master/libs/full/segmented_algorithms/include/hpx/parallel/segmented_algorithms). [Here](/ideas/stear-group/stellar-group-hpx-issues-1338) you can find the corresponding ticket.
 * **Difficulty:** Medium/hard
 * **Expected result:** Implement segmented (distributed) sorting and/or additional algorithms.
 * **Knowledge Prerequisite:** C++, CMake
@@ -264,7 +264,7 @@ The set of the implemented algorithms can be found [here](https://github.com/STE
 * **Expected result:** The result should be functioning executor customization points built upon senders/receivers.
 * **Knowledge Prerequisite:** Parallel algorithms.
 * **Mentor:** Hartmut Kaiser (![hartmut%20kaiser](https://raw.githubusercontent.com/wiki/STEllAR-GROUP/hpx/pics/hartmut%20kaiser.png)) and Giannis Gonidelis (gonidelis *[at]* hotmail.com)
-* See [issue #5219 on HPX bug tracker](https://github.com/STEllAR-GROUP/hpx/issues/5219) and the corresponding [Pull Request](https://github.com/STEllAR-GROUP/hpx/pull/5758) that's on the works already.
+* See [issue #5219 on HPX bug tracker](/ideas/stear-group/stellar-group-hpx-issues-5219) and the corresponding [Pull Request](https://github.com/STEllAR-GROUP/hpx/pull/5758) that's on the works already.
 * **Project Size:** 350 hour (large project)
 
 
@@ -369,7 +369,7 @@ These are projects that were worked on in previous years of Google Summer of Cod
   `par_unseq` execution policy. The loop body should end up being vectorized.
 * **Knowledge Prerequisite:** Vectorization, parallel algorithms.
 * **Mentor:**  Hartmut Kaiser (![hartmut%20kaiser](https://raw.githubusercontent.com/wiki/STEllAR-GROUP/hpx/pics/hartmut%20kaiser.png)), Srinivas Yadav (vasu.srinivasvasu.14 *[at]* gmail.com), Nikunj Gupta (nikunj *[at]* illinois.edu), Giannis Gonidelis (gonidelis *[at]* hotmail.com)
-* See [issue #2271 on HPX bug tracker](https://github.com/STEllAR-GROUP/hpx/issues/2271)
+* See [issue #2271 on HPX bug tracker](/ideas/stear-group/stellar-group-hpx-issues-2271)
 * **Project Size:** 350 hour (large project)
 
 ### Conflict (Range-Based) Locks
@@ -419,7 +419,7 @@ These are projects that were worked on in previous years of Google Summer of Cod
   other given performance counter as collected at given time intervals.
 * **Knowledge Prerequisite:** Minimal knowledge of statistical analysis is required.
 * **Mentor:** Hartmut Kaiser (![hartmut%20kaiser](https://raw.githubusercontent.com/wiki/STEllAR-GROUP/hpx/pics/hartmut%20kaiser.png)) and Mikael Simberg (![mikael%20simberg](https://raw.githubusercontent.com/wiki/STEllAR-GROUP/hpx/pics/mikael%20simberg.png))
-* See [issue #2237 on HPX bug tracker](https://github.com/STEllAR-GROUP/hpx/issues/2327)
+* See [issue #2237 on HPX bug tracker](/ideas/stear-group/stellar-group-hpx-issues-2327)
 * **Project Size:** 350 hour (large project)
 
 ### Fix libCDS broken dependency
@@ -576,7 +576,7 @@ This project requires modifying the existing OpenMPI implementation to include H
 * **Mentor:** Chris Taylor
 
 ### Bug Hunter
-* **Abstract:** In addition to our extensive ideas list, several active tickets are listed in our [issue tracker](https://github.com/STEllAR-GROUP/hpx/issues) which are worth tackling as a separate project. Feel free to talk to us if you find something interesting. A prospective student should pick at least one ticket with medium to hard difficulty and discuss how to resolve it.
+* **Abstract:** In addition to our extensive ideas list, several active tickets are listed in our [issue tracker](/ideas/stear-group/stellar-group-hpx-issues) which are worth tackling as a separate project. Feel free to talk to us if you find something interesting. A prospective student should pick at least one ticket with medium to hard difficulty and discuss how to resolve it.
 * **Difficulty:** Medium-Hard
 * **Expected result:** The selected issues need to be fixed
 * **Knowledge Prerequisite:** C++

@@ -1,7 +1,7 @@
 # Processing Foundation — Project Ideas
 
 **Source:** https://github.com/processing/Processing-Foundation-GSoC/wiki/Project-Ideas-List-(GSoC-2026)#project-ideas-list
-**Scraped:** 2026-02-20T11:48:56.955037
+**Scraped:** 2026-02-22T23:28:47.567922
 
 ---
 
@@ -28,7 +28,7 @@ Interested? Great! We're excited to read all this year's projects. Below are som
 
 Whether your proposals focuses on one of the below ideas or a custom project, please keep the following in mind.
 
-* Do not rely on AI in your proposal or PRs: AI use in your proposal should be clearly disclosed based on our [GSoC AI usage guideline](https://github.com/processing/Processing-Foundation-GSoC?tab=readme-ov-file#ai-text-generation-policy). Fully or largely AI-generated PRs may be closed, and are not in line with our [AI usage policy](https://github.com/processing/p5.js/blob/main/AI_USAGE_POLICY.md).
+* Do not rely on AI in your proposal or PRs: AI use in your proposal should be clearly disclosed based on our [GSoC AI usage guideline](/ideas/processing-foundation/processing-processing-foundation-gsoc). Fully or largely AI-generated PRs may be closed, and are not in line with our [AI usage policy](https://github.com/processing/p5.js/blob/main/AI_USAGE_POLICY.md).
 
 * PRs are not required, and PRs (and other activity in online community spaces) that consistently ignore contribution and community guidelines can actually make your proposal less likely to succeed. Before making any PR, please be sure to [read the contributor guidelines](https://p5js.org/contribute/contributor_guidelines/) carefully.
 

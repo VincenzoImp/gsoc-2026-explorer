@@ -1,7 +1,7 @@
 # CNCF — Project Ideas
 
 **Source:** https://github.com/cncf/mentoring/blob/main/programs/summerofcode/2026.md
-**Scraped:** 2026-02-20T11:48:56.948671
+**Scraped:** 2026-02-22T23:28:47.602008
 
 ---
 
@@ -17,7 +17,7 @@ Key GSoC 2026 dates:
 * CNCF Project proposals submissions recommendation: Wednesday Jan 14, 2026
   **Note**, proposals can still be submitted after this recommended date, but the Mentorship team needs time to evaluate the proposals and package our application. The more proposals we have, the stronger our org application will be.
 
-You can find the project ideas from previous year [here](./2025.md).
+You can find the project ideas from previous year [here](/ideas/cncf/2025).
 
 > **NOTE:** Please note that GSoC is a program known for its strict deadlines. In addition to responding to your mentee on time, you will be required to submit evaluations on time. Failures to meet the deadlines might affect CNCF's future participation in GSoC.
 

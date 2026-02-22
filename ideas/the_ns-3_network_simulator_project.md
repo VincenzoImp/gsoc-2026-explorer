@@ -1,7 +1,7 @@
 # The ns-3 Network Simulator Project — Project Ideas
 
 **Source:** https://www.nsnam.org/wiki/GSOC2026Projects
-**Scraped:** 2026-02-20T11:48:56.954911
+**Scraped:** 2026-02-22T23:28:47.552705
 
 ---
 
@@ -11,13 +11,13 @@
 
 [Jump to search](https://www.nsnam.org#searchInput)
 
-[Main Page](https://www.nsnam.org/wiki/Main_Page) - [Roadmap](https://www.nsnam.org/wiki/Roadmap) - [Summer Projects](https://www.nsnam.org/wiki/Summer_Projects) - [Project Ideas](https://www.nsnam.org/wiki/Project_Ideas) - [Developer FAQ](https://www.nsnam.org/wiki/Developer_FAQ) - [Tools](https://www.nsnam.org/wiki/Tools) - [Related Projects](https://www.nsnam.org/wiki/Related_Projects)
+[Main Page](/ideas/the-ns-3-network-simulator-project/main_page) - [Roadmap](/ideas/the-ns-3-network-simulator-project/roadmap) - [Summer Projects](/ideas/the-ns-3-network-simulator-project/summer_projects) - [Project Ideas](/ideas/the-ns-3-network-simulator-project/project_ideas) - [Developer FAQ](/ideas/the-ns-3-network-simulator-project/developer_faq) - [Tools](/ideas/the-ns-3-network-simulator-project/tools) - [Related Projects](/ideas/the-ns-3-network-simulator-project/related_projects)
 
-[HOWTOs](https://www.nsnam.org/wiki/HOWTOs) - [Installation](https://www.nsnam.org/wiki/Installation) - [Troubleshooting](https://www.nsnam.org/wiki/Troubleshooting) - [User FAQ](https://www.nsnam.org/wiki/User_FAQ) - [Samples](https://www.nsnam.org/wiki/Category:Samples) - [Models](https://www.nsnam.org/wiki/Category:Models) - [Education](https://www.nsnam.org/wiki/Education) - [Contributed Code](https://www.nsnam.org/wiki/Contributed_Code) - [Papers](https://www.nsnam.org/wiki/Papers)
+[HOWTOs](/ideas/the-ns-3-network-simulator-project/howtos) - [Installation](/ideas/the-ns-3-network-simulator-project/installation) - [Troubleshooting](/ideas/the-ns-3-network-simulator-project/troubleshooting) - [User FAQ](/ideas/the-ns-3-network-simulator-project/user_faq) - [Samples](/ideas/the-ns-3-network-simulator-project/category-samples) - [Models](/ideas/the-ns-3-network-simulator-project/category-models) - [Education](/ideas/the-ns-3-network-simulator-project/education) - [Contributed Code](/ideas/the-ns-3-network-simulator-project/contributed_code) - [Papers](/ideas/the-ns-3-network-simulator-project/papers)
 
 This page contains 2026 Google Summer of Code project ideas for ns-3.
 
-[GSoC Frequently Asked Questions](https://developers.google.com/open-source/gsoc/faq)[ns-3's 2026 GSoC Contributor guide](https://www.nsnam.org/wiki/GSOC2026ContributorGuide)[GSoC contributor/student guide (not ns-3 specific)](https://developers.google.com/open-source/gsoc/resources/guide)[2026 GSoC Contributor application template](https://www.nsnam.org/wiki/GSOC2025ApplicationTemplate)[ns-3's GSoC Mentor guide](https://www.nsnam.org/wiki/GSOCMentorGuide)[GSoC Mentor guide (not ns-3 specific)](https://archive.flossmanuals.net/gsocmentoring/index.html)[GSoC Contributor Selection Process](https://www.nsnam.org/wiki/GSOCSelectionProcess)*Get in contact with the ns-3 team*:[ns-developers mailing list](https://groups.google.com/g/ns-developers)|*chat*[https://ns-3.zulipchat.com/](https://ns-3.zulipchat.com/)
+[GSoC Frequently Asked Questions](https://developers.google.com/open-source/gsoc/faq)[ns-3's 2026 GSoC Contributor guide](/ideas/the-ns-3-network-simulator-project/gsoc2026contributorguide)[GSoC contributor/student guide (not ns-3 specific)](https://developers.google.com/open-source/gsoc/resources/guide)[2026 GSoC Contributor application template](/ideas/the-ns-3-network-simulator-project/gsoc2025applicationtemplate)[ns-3's GSoC Mentor guide](/ideas/the-ns-3-network-simulator-project/gsocmentorguide)[GSoC Mentor guide (not ns-3 specific)](https://archive.flossmanuals.net/gsocmentoring/index.html)[GSoC Contributor Selection Process](/ideas/the-ns-3-network-simulator-project/gsocselectionprocess)*Get in contact with the ns-3 team*:[ns-developers mailing list](https://groups.google.com/g/ns-developers)|*chat*[https://ns-3.zulipchat.com/](https://ns-3.zulipchat.com/)
 
 ### About the ns-3 project
 
@@ -43,10 +43,10 @@ For students or contributors interested in applying to ns-3 for GSoC, please go 
 
 - Read the official
 [GSoC contributor guide](https://developers.google.com/open-source/gsoc/resources/guide). - Read
-[ns-3's 2026 GSoC contributor guide](https://www.nsnam.org/wiki/GSOC2026ContributorGuide) - Look through our
+[ns-3's 2026 GSoC contributor guide](/ideas/the-ns-3-network-simulator-project/gsoc2026contributorguide) - Look through our
 [#Project Ideas](https://www.nsnam.org#Project_Ideas)below to see if you find a project that interests you. - Review the
-[tutorial and contributing guide](https://www.nsnam.org/documentation/development-tree/)thoroughly, if you have not already done so. - Once it is posted, look through the
-[GSoC application template](https://www.nsnam.org/wiki/GSOC2024ApplicationTemplate)to start preparing your proposal. We will wait to see whether we are actually part of GSoC before updating the above link for 2026, but it will be similar to last year's application. - Next, proceed to get in touch with the developers on the mailing list or Zulip chat room and refine your proposal.
+[tutorial and contributing guide](/ideas/the-ns-3-network-simulator-project/documentation-development-tree)thoroughly, if you have not already done so. - Once it is posted, look through the
+[GSoC application template](/ideas/the-ns-3-network-simulator-project/gsoc2024applicationtemplate)to start preparing your proposal. We will wait to see whether we are actually part of GSoC before updating the above link for 2026, but it will be similar to last year's application. - Next, proceed to get in touch with the developers on the mailing list or Zulip chat room and refine your proposal.
 - In parallel, make sure you prepare a patch as per the patch requirement guidelines. Your application to ns-3 will not be considered if you do not fulfill this requirement.
 
 Below is a list of [#Project Ideas](https://www.nsnam.org#Project_Ideas) proposed by the ns-3 team for Google Summer of Code 2026. Please note that these ideas are not limited to GSoC; anyone is welcome to work on them. Please email the [ns-developers list](https://groups.google.com/g/ns-developers) if you have a different idea that you'd like to work on, to see if a mentor may be interested. Applicants are encouraged to look over this list, pick one that especially interests them, think about it, and discuss potential approaches on the [ns-developers list](https://groups.google.com/g/ns-developers). Previous experience with the Google Summer of Code programs suggests that the more you discuss and refine your proposal on the mailing list beforehand, the stronger the proposal it will develop into, and the higher your chances of being accepted into the program.
@@ -97,7 +97,7 @@ Mentors: [Mohit P. Tahiliani](mailto:tahiliani.nitk@gmail.com)
 Flexible Network Tester (Flent) is a network benchmarking tool. It is written in Python and wraps well-known network benchmarking tools (such as netperf and iperf) into aggregate, repeatable tests, such as a number of tests for Bufferbloat. A basic structure for Flent Application API in ns-3 has been developed. It is a wrapper around existing ns-3 applications. This project has four main goals: (1) update this implementation to match the current ns-3-dev, (2) integrate a JSON library properly (for Flent-style result handling) (3) validate correctness of Flent results produced by ns-3, and (4) Add more Flent-style test examples useful for ns-3 users. The goal of this project is to merge the Flent Application API into ns-3 mainline, not the app store.
 
 *Required Experience:*Familiarity with Flent and C++ programming.*Bonus Experience:*Familiarity with applications supported in ns-3.*Interests:*Bufferbloat, TCP, AQM algorithms and ECN.*Difficulty:*Medium.*Recommended Reading:*- Flexible Network Tester [
-[Paper](https://flent.org/flent-the-flexible-network-tester.pdf)] [[Tool](https://flent.org/)] [Existing Applications in ns-3](https://www.nsnam.org/doxygen/d9/dc9/group__applications.html#details)[Prior work on Flent application API in ns-3](https://gitlab.com/tomhenderson/ns-3-dev/-/commits/flent?ref_type=heads)
+[Paper](https://flent.org/flent-the-flexible-network-tester.pdf)] [[Tool](https://flent.org/)] [Existing Applications in ns-3](/ideas/the-ns-3-network-simulator-project/doxygen-d9-dc9-group__applications)[Prior work on Flent application API in ns-3](https://gitlab.com/tomhenderson/ns-3-dev/-/commits/flent?ref_type=heads)
 
 - Flexible Network Tester [
 
@@ -145,7 +145,7 @@ The 6LoWPAN module offers a simple option to implement a multi-hop topology by u
 
 The candidate should outline the proposed approach, what parts of code are going to be affected, and how they can be enhanced.
 
-*Required Experience:*Fundamentals of IPv6 addressing, C++ programming.*Bonus Experience:*Familiarity with mesh routing and 6LoWPAN ns-3*Interests:*IPv6 mesh routing*Difficulty:*Easy.*Recommended reading:*[Mesh-under in ns-3 6LoWPAN](https://www.nsnam.org/docs/models/html/sixlowpan.html#mesh-under-routing)[RFC 7731](https://datatracker.ietf.org/doc/html/rfc7731)[Meshtastic controlled flooding](https://meshtastic.org/docs/overview/mesh-algo/)[Routing by controlled flooding in communication networks](https://ieeexplore.ieee.org/document/91339)(if the document can not be accessed, PM the mentors)
+*Required Experience:*Fundamentals of IPv6 addressing, C++ programming.*Bonus Experience:*Familiarity with mesh routing and 6LoWPAN ns-3*Interests:*IPv6 mesh routing*Difficulty:*Easy.*Recommended reading:*[Mesh-under in ns-3 6LoWPAN](/ideas/the-ns-3-network-simulator-project/docs-models-html-sixlowpan)[RFC 7731](https://datatracker.ietf.org/doc/html/rfc7731)[Meshtastic controlled flooding](https://meshtastic.org/docs/overview/mesh-algo/)[Routing by controlled flooding in communication networks](https://ieeexplore.ieee.org/document/91339)(if the document can not be accessed, PM the mentors)
 
 
 Possible tasks to fulfill the patch requirement:
@@ -166,7 +166,7 @@ The candidate should outline in the proposal the features that are planned to be
 
 ### OLLA Link Adaptation and Spec-Compliant TBS Calculation for 5G-LENA
 
-Mentors: [Sandra Lagen](mailto:slagen@cttc.es), [Biljana Bojovic](mailto:bbojovic@cttc.es), [Gabriel Ferreira](mailto:gcarvalho@cttc.es), [Katerina Koutlia](mailto:kkoutlia@cttc.es)
+Mentors: [Sandra Lagen](mailto:slagen@cttc.es), [Tom Henderson](mailto:tomh@tomh.org), [Biljana Bojovic](mailto:bbojovic@cttc.es), [Gabriel Ferreira](mailto:gcarvalho@cttc.es), [Katerina Koutlia](mailto:kkoutlia@cttc.es)
 
 This project would focus on improving the realism and correctness of the CTTC 5G-LENA (NR module) by implementing Outer Loop Link Adaptation (OLLA) in the scheduling/link adaptation workflow, and by improving the Transport Block Size (TBS) calculation to be aligned with the 5G NR specification. OLLA is commonly used to track a target BLER by updating an SINR (or CQI) offset based on HARQ ACK/NACK feedback, leading to more stable and realistic link adaptation behavior. In addition, the project would include a performance evaluation comparing the new OLLA-enabled behavior against the current baseline and across multiple existing NR schedulers. The evaluation should consider throughput, latency, achieved BLER, convergence behavior, and fairness.
 
@@ -177,7 +177,7 @@ For starters, we would suggest adding the CTTC 5G-LENA (nr module) to ns-3 (as a
 - Difficulty: Medium
 - Project size: Medium
 - Patch requirement: See the
-[description](https://www.nsnam.org/wiki/GSOC2024PatchRequirement). You can also consider some of the[nr good to start issues](https://gitlab.com/cttc-lena/nr/-/issues/?label_name%5B%5D=good%20first%20issue). Or, you can start writing some APIs for the selected project proposal. Also, if you have some previous MRs to ns-3 or the nr module, you can contact us to check whether it is enough for the patch requirement.
+[description](/ideas/the-ns-3-network-simulator-project/gsoc2024patchrequirement). You can also consider some of the[nr good to start issues](https://gitlab.com/cttc-lena/nr/-/issues/?label_name%5B%5D=good%20first%20issue). Or, you can start writing some APIs for the selected project proposal. Also, if you have some previous MRs to ns-3 or the nr module, you can contact us to check whether it is enough for the patch requirement.
 
 ### Enabling 5G NR examples visualization
 
@@ -185,14 +185,14 @@ Mentors: [Amir Ashtari Gargari](mailto:aashtari@cttc.es), [Gabriel Ferreira](mai
 
 The main idea of this project is to allow easier visualization of 5G NR examples by integrating the NR module with some ns-3 visualization tools like NetAnim, or by implementing a kind of web-based visualization, e.g., through Jupyter notebook. The new feature should allow the visualization of already existing traces, visualization of topology, or even some new relevant simulation aspects could be considered. The idea is that users better understand how the metrics collection works, and how changing parameters can affect simulation results. In this project, we are open to other ideas on how to implement visualizations.
 
-For starters, we would suggest adding the CTTC 5G-LENA (nr module) to ns-3, in the typical way (as a module in the contrib/ directory), then building and running the examples. After getting used to C++, then proceed to use the Python bindings, as described by the documentation: [https://www.nsnam.org/docs/manual/html/python.html#using-the-bindings-from-the-ns-3-source](https://www.nsnam.org/docs/manual/html/python.html#using-the-bindings-from-the-ns-3-source).
+For starters, we would suggest adding the CTTC 5G-LENA (nr module) to ns-3, in the typical way (as a module in the contrib/ directory), then building and running the examples. After getting used to C++, then proceed to use the Python bindings, as described by the documentation: [https://www.nsnam.org/docs/manual/html/python.html#using-the-bindings-from-the-ns-3-source](/ideas/the-ns-3-network-simulator-project/docs-manual-html-python).
 Documentation is available here: [https://5g-lena.cttc.es/](https://5g-lena.cttc.es/). There is an overview tutorial video available here: [https://acmse.net/2021/tutorials-offered/#tut-work03](https://acmse.net/2021/tutorials-offered/#tut-work03). That is the background information. For more specific guidelines, please view this [Google document](https://docs.google.com/document/d/1cQLIF1cdft1yj3vyWrjrxN2xDJMx8PuWaa9NP_nKf64/edit?usp=sharing).
 
 - Required Experience: C++ and Python programming, understanding of 5G NR, LTE, and wireless networks
 - Interests: 5G NR simulations
 - Difficulty: Medium.
 - Patch requirement: See the
-[description](https://www.nsnam.org/wiki/GSOC2024PatchRequirement). You can also consider some of the[nr good to start issues](https://gitlab.com/cttc-lena/nr/-/issues/?label_name%5B%5D=good%20first%20issue). Or, you can start writing some APIs for the selected project proposal. Also, if you have some previous MRs to ns-3 or the nr module, you can contact us to check whether it is enough for the patch requirement.
+[description](/ideas/the-ns-3-network-simulator-project/gsoc2024patchrequirement). You can also consider some of the[nr good to start issues](https://gitlab.com/cttc-lena/nr/-/issues/?label_name%5B%5D=good%20first%20issue). Or, you can start writing some APIs for the selected project proposal. Also, if you have some previous MRs to ns-3 or the nr module, you can contact us to check whether it is enough for the patch requirement.
 
 ### AODVv2 Protocol enhancements
 
@@ -255,13 +255,13 @@ Optional (time permitting): a simple energy-aware scheduling extension to explor
 - Difficulty: Medium
 - Project size: Medium
 - Patch requirement: See the
-[description](https://www.nsnam.org/wiki/GSOC2024PatchRequirement). You can also consider some of the[nr good to start issues](https://gitlab.com/cttc-lena/nr/-/issues/?label_name%5B%5D=good%20first%20issue). Or, you can start writing some APIs for the selected project proposal. Also, if you have some previous MRs to ns-3 or the nr module, you can contact us to check whether it is enough for the patch requirement.
+[description](/ideas/the-ns-3-network-simulator-project/gsoc2024patchrequirement). You can also consider some of the[nr good to start issues](https://gitlab.com/cttc-lena/nr/-/issues/?label_name%5B%5D=good%20first%20issue). Or, you can start writing some APIs for the selected project proposal. Also, if you have some previous MRs to ns-3 or the nr module, you can contact us to check whether it is enough for the patch requirement.
 
 ### 5G NR module integration with ns-3-ai
 
 Mentors: [Katerina Koutlia](mailto:kkoutlia@cttc.es), [Gabriel Ferreira](mailto:gcarvalho@cttc.es), [Amir Ashtari Gargari](mailto:aashtari@cttc.es) and [Biljana Bojovic](mailto:bbojovic@cttc.es)
 
-The objective of this project is to integrate the ns-3 5G NR module with [ns-3-ai](https://apps.nsnam.org/app/ns3-ai/). In GSoC 2024 we had a project in which 5G NR was integrated with [ns-3 gym](https://www.nsnam.org/wiki/GSOC2024RLUsability5G). While ns-3 gym is a popular ns-3 module for AI, it is limited to the application of reinforcement learning techniques in networking research. On the other hand, ns-3-ai module provides a more general solution that enables the data interaction between ns-3 and other Python-based AI frameworks, like [Tensorflow C++ APIs](https://www.tensorflow.org/api_docs/cc) and [PyTorch C++ APIs](https://pytorch.org/cppdocs/), which opens the door to use different machine learning-based techniques in 5G NR models. The correct functioning of the integration should be tested, and documented, and a fully working example using ns-3-ai should be provided. The contributor can propose a use-case scenario for matching learning. One option is to use it for MAC scheduling, but it could be used for other 5G related research problems, and the contributor is encouraged to propose the use case of his/her interest.
+The objective of this project is to integrate the ns-3 5G NR module with [ns-3-ai](https://apps.nsnam.org/app/ns3-ai/). In GSoC 2024 we had a project in which 5G NR was integrated with [ns-3 gym](/ideas/the-ns-3-network-simulator-project/gsoc2024rlusability5g). While ns-3 gym is a popular ns-3 module for AI, it is limited to the application of reinforcement learning techniques in networking research. On the other hand, ns-3-ai module provides a more general solution that enables the data interaction between ns-3 and other Python-based AI frameworks, like [Tensorflow C++ APIs](https://www.tensorflow.org/api_docs/cc) and [PyTorch C++ APIs](https://pytorch.org/cppdocs/), which opens the door to use different machine learning-based techniques in 5G NR models. The correct functioning of the integration should be tested, and documented, and a fully working example using ns-3-ai should be provided. The contributor can propose a use-case scenario for matching learning. One option is to use it for MAC scheduling, but it could be used for other 5G related research problems, and the contributor is encouraged to propose the use case of his/her interest.
 
 For starters, we would suggest adding the CTTC 5G-LENA (nr module) to ns-3, in the typical way (as a module in the contrib/ directory), and building and running the examples. Documentation is available from here: [https://5g-lena.cttc.es/](https://5g-lena.cttc.es/). There is an overview tutorial video available here: [https://acmse.net/2021/tutorials-offered/#tut-work03](https://acmse.net/2021/tutorials-offered/#tut-work03). That is the background information.
 For more specific guidelines, please view this [Google document](https://docs.google.com/document/d/1cQLIF1cdft1yj3vyWrjrxN2xDJMx8PuWaa9NP_nKf64/edit?usp=sharing).
@@ -270,7 +270,7 @@ For more specific guidelines, please view this [Google document](https://docs.go
 - Interests: 5G NR simulations
 - Difficulty: Medium.
 - Patch requirement: See the
-[description](https://www.nsnam.org/wiki/GSOC2024PatchRequirement). You can also consider some of the[nr good to start issues](https://gitlab.com/cttc-lena/nr/-/issues/?label_name%5B%5D=good%20first%20issue). Or, you can start writing some APIs for the selected project proposal. Also, if you have some previous MRs to ns-3 or the nr module, you can contact us to check whether it is enough for the patch requirement.
+[description](/ideas/the-ns-3-network-simulator-project/gsoc2024patchrequirement). You can also consider some of the[nr good to start issues](https://gitlab.com/cttc-lena/nr/-/issues/?label_name%5B%5D=good%20first%20issue). Or, you can start writing some APIs for the selected project proposal. Also, if you have some previous MRs to ns-3 or the nr module, you can contact us to check whether it is enough for the patch requirement.
 
 ### Linux-like CAKE queue discipline for ns-3
 

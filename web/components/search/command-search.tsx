@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Building2, Lightbulb, Loader2 } from "lucide-react";
+import { Building2, FileText, Lightbulb, Loader2 } from "lucide-react";
 import {
   CommandDialog,
   CommandEmpty,
@@ -29,11 +29,19 @@ function extractSnippet(
 }
 
 function getMatchContext(result: FuseResult<SearchDocument>): {
-  type: "org" | "ideas";
+  type: "org" | "ideas" | "subpage";
   contextLine: string;
 } {
+  const doc = result.item;
+
+  // Sub-page documents always link to the sub-page
+  if (doc.subpageSlug) {
+    const contextLine = doc.description || doc.orgName || "";
+    return { type: "subpage", contextLine };
+  }
+
   const matches = result.matches || [];
-  const hasIdeas = !!result.item.ideasSnippet;
+  const hasIdeas = !!doc.ideasSnippet;
 
   const findMatch = (key: string): FuseResultMatch | undefined =>
     matches.find((m) => m.key === key);
@@ -47,14 +55,14 @@ function getMatchContext(result: FuseResult<SearchDocument>): {
 
   // Name/tagline match → show tagline, link to org
   if (nameMatch || taglineMatch) {
-    return { type: "org", contextLine: result.item.tagline };
+    return { type: "org", contextLine: doc.tagline };
   }
 
   // Tech tag match → show tags, link to org
   if (techMatch) {
     return {
       type: "org",
-      contextLine: `Technologies: ${result.item.tech_tags.join(", ")}`,
+      contextLine: `Technologies: ${doc.tech_tags.join(", ")}`,
     };
   }
 
@@ -62,7 +70,7 @@ function getMatchContext(result: FuseResult<SearchDocument>): {
   if (topicMatch) {
     return {
       type: "org",
-      contextLine: `Topics: ${result.item.topic_tags.join(", ")}`,
+      contextLine: `Topics: ${doc.topic_tags.join(", ")}`,
     };
   }
 
@@ -83,7 +91,7 @@ function getMatchContext(result: FuseResult<SearchDocument>): {
   }
 
   // Fallback
-  return { type: "org", contextLine: result.item.tagline };
+  return { type: "org", contextLine: doc.tagline };
 }
 
 export function CommandSearch({
@@ -125,13 +133,15 @@ export function CommandSearch({
   }, [query, searcher]);
 
   const handleSelect = useCallback(
-    (slug: string, type: "org" | "ideas") => {
+    (doc: SearchDocument, type: "org" | "ideas" | "subpage") => {
       onOpenChange(false);
       setQuery("");
-      if (type === "ideas") {
-        router.push(`/ideas/${slug}`);
+      if (type === "subpage") {
+        router.push(`/ideas/${doc.slug}/${doc.subpageSlug}`);
+      } else if (type === "ideas") {
+        router.push(`/ideas/${doc.slug}`);
       } else {
-        router.push(`/organizations/${slug}`);
+        router.push(`/organizations/${doc.slug}`);
       }
     },
     [router, onOpenChange]
@@ -185,17 +195,28 @@ export function CommandSearch({
           <CommandGroup heading="Results">
             {results.map((r) => {
               const { type, contextLine } = getMatchContext(r);
-              const Icon = type === "ideas" ? Lightbulb : Building2;
+              const Icon =
+                type === "subpage"
+                  ? FileText
+                  : type === "ideas"
+                    ? Lightbulb
+                    : Building2;
               const label =
-                type === "ideas"
-                  ? `${r.item.name} — Ideas`
-                  : r.item.name;
+                type === "subpage"
+                  ? `${r.item.name} — ${r.item.orgName}`
+                  : type === "ideas"
+                    ? `${r.item.name} — Ideas`
+                    : r.item.name;
+              const itemKey =
+                type === "subpage"
+                  ? `subpage-${r.item.slug}-${r.item.subpageSlug}`
+                  : `${type}-${r.item.slug}`;
 
               return (
                 <CommandItem
-                  key={`${type}-${r.item.slug}`}
-                  value={`${type}-${r.item.slug}`}
-                  onSelect={() => handleSelect(r.item.slug, type)}
+                  key={itemKey}
+                  value={itemKey}
+                  onSelect={() => handleSelect(r.item, type)}
                   className="flex items-center gap-2"
                 >
                   <Icon className="h-4 w-4 shrink-0 text-muted-foreground" />

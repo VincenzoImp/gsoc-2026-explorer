@@ -1,0 +1,119 @@
+# here
+
+**Parent:** Invesalius — Project Ideas
+**Source:** https://github.com/invesalius/gsoc/blob/main/gsoc_application.md
+**Scraped:** 2026-02-22T23:28:47.588461
+
+---
+
+# InVesalius GSoC 2026: Guidelines and instructions #
+# Before you apply #
+
+* All projects assume familiarity with Python (and several packages). Aspiring applicants are encouraged to learn it and try to write some code.
+
+* Carefully read the GSoC eligibility rules (see [section 7.1 of the GSoC rules](https://summerofcode.withgoogle.com/rules)).
+
+* Choose one of the [project ideas](https://github.com/invesalius/gsoc/blob/main/gsoc_2026_ideas.md). We are also open to new ideas. In this case write to us at [paulojamorim@gmail.com](mailto:paulojamorim@gmail.com) with the subject "GSoC 2026: New Idea".
+
+* IMPORTANT 1: We understand that everyone has a fairly high workload and study load, but **we do not recommend the use of text or source code generated entirely by AI**. There is no issue with using AI for queries or tips to help solve a problem, but we do not encourage the use of AI without first thoroughly understanding the problem to be solved (in the case of code) or without having written the text yourself (in the case of the proposal).
+
+* IMPORTANT 2: In order to apply, contact the mentors and follow the steps below. **Remember to submit your final proposal before the deadline on March 31st, 18:00 (UTC).**
+
+
+# Applying #
+
+If you are interested in applying, follow these steps ASAP:
+
+### 1. InVesalius development environment ###
+
+1.1 - Fork the InVesalius source code from GitHub;
+
+1.2 - Install and run InVesalius from its source code in your PC;
+
+1.3 - Record a short video running InVesalius from its source code.
+
+* In your video, make sure to show the terminal/command prompt by calling InVesalius and loading a sample image (there are some DICOM images at [https://invesalius.github.io/download.html](https://invesalius.github.io/download.html))
+
+* Save your video file in the MP4 format to upload it to Google Drive (step 3).
+
+
+### 2. Write a working code sample relevant for the proposed project ###
+
+Applicants are welcome to find and fix bugs in InVesalius core or related to some of the proposed projects. However, getting reviews can take a long time as code owners may be busy working on new features. So, instead of requiring applicants to fix a good first bug, **we suggest that applicants write a working code sample relevant for the proposed project**.
+
+The code sample can be attached to the application as a [secret gist](https://gist.github.com/) (please use secret gists, and do not share these with other applicants). Suggested ideas below include proposed "Good Sample Projects":
+
+* Create unit tests to some methods or functions;
+
+* Add type information to some methods or functions;
+
+* Create a simple plugin to apply (example: [erosion](https://en.wikipedia.org/wiki/Erosion_(morphology)) or [dilation](https://en.wikipedia.org/wiki/Dilation_(morphology)) to the current mask):
+
+    * [Sample plugins](https://github.com/tfmoraes/inv3_plugins_examples)
+
+    * [Slides](https://github.com/tfmoraes/inv3_plugins_examples/blob/main/slides.html)
+
+
+We want to see you can code something relevant -- and that this sample code can run and do something non-trivial. Be aware that we have a limited number of mentors available, and will only be able to accept a few applicants.
+
+
+
+### 3. Write and share the draft proposal and other files ###
+
+Applicants are encouraged to submit draft proposals, linking to Google Drive with permission for mentors to comment.
+
+Introduce yourself and send the link to the mentor's email. Use "GSoC 2026: Application" as the message subject. Use this email topic for future discussions during the application. 
+
+
+The Google Drive folder must be named with the following pattern "GSoC2026_LastName_FirstName" and must contain the following files:
+
+* **proposal:** A Google doc with the draft proposal.
+
+* **resume.pdf:** A PDF file with your resume.
+
+* **screenshot.mp4:** The screenshot video from item 1.
+
+* **gist.txt:** A text file with a link to your secret gist from item 2.
+
+The draft proposal must contain the topics below. Try to detail as much as possible.
+
+
+* **Name and Contact Information**
+
+* **Project Title**
+
+* **Synopsis**
+
+* **Benefits to Community**
+
+* **Technical Proposal**: Provide a proposal of a technical solution with your methodology.
+
+* **Schedule / Deliverables**: Create a schedule that you are sure you will be able to accomplish. Set checkpoints each two weeks.
+
+* **Related Work**
+
+* **Biographical Information**
+
+* **Expectations after the end of GSoC 2026** 
+
+**IMPORTANT:** Use [this template](https://docs.google.com/document/d/1F6y3brsEIHcQB-BxpDD8LxyKV7qHUycSY7titupEhx0). Make a copy for your Google Drive.
+
+See also the [contributor guide](https://google.github.io/gsocguides/student/writing-a-proposal) on writing a proposal.
+
+
+### 4. Final submission ###
+
+After following steps 1, 2 and 3 with your potential mentor, applications can be submitted through the [summerofcode.withgoogle.com](https://summerofcode.withgoogle.com) website starting on March 18th until [April 8th at 18:00 (UTC).](https://developers.google.com/open-source/gsoc/timeline?hl=en)
+
+
+### 5. Cross your fingers ###
+
+According to the [calendar](https://developers.google.com/open-source/gsoc/timeline?hl=en), the result will be announced on April 30th 18:00 (UTC).
+
+Good luck!
+
+# Questions? #
+
+* Technical questions about running InVesalius must be asked via [GitHub discussions](https://github.com/invesalius/invesalius3/discussions). Please, remember to check the previous comments and issues before starting a discussion.
+
+* Specific questions about your project must be addressed by email to your potential mentor.

@@ -1,13 +1,13 @@
 # Wagtail — Project Ideas
 
 **Source:** https://github.com/wagtail/gsoc/blob/main/project-ideas.md
-**Scraped:** 2026-02-20T11:48:56.919887
+**Scraped:** 2026-02-22T23:28:47.586907
 
 ---
 
 # Project ideas
 
-🚧 please refer to our [AI policy](./ai-policy.md) to understand what generative AI use is acceptable when taking part in Google Summer of Code with Wagtail
+🚧 please refer to our [AI policy](/ideas/wagtail/ai-policy) to understand what generative AI use is acceptable when taking part in Google Summer of Code with Wagtail
 
 ## Multilingual support improvements
 

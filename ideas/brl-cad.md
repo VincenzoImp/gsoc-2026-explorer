@@ -1,7 +1,7 @@
 # BRL-CAD — Project Ideas
 
 **Source:** https://github.com/opencax/GSoC/issues?q=is%3Aissue+is%3Aopen+label%3A%22GSoC+2026%22
-**Scraped:** 2026-02-20T12:04:30.422958
+**Scraped:** 2026-02-22T23:28:47.616972
 
 ---
 
@@ -1221,7 +1221,7 @@ long (350h)
 
 ### Additional Information
 
-* Potential mentor(s): [Sean Morrison](devs@brlcad.org)
+* Potential mentor(s): [Sean Morrison](https://github.com/opencax/GSoC/devs@brlcad.org)
 * Organization website: https://brlcad.org
 * Communication channels: https://brlcad.zulipchat.com
 

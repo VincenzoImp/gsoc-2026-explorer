@@ -1,7 +1,7 @@
 # LLVM Compiler Infrastructure — Project Ideas
 
 **Source:** https://llvm.org/OpenProjects.html
-**Scraped:** 2026-02-20T11:48:56.920952
+**Scraped:** 2026-02-22T23:28:47.577179
 
 ---
 
@@ -74,6 +74,7 @@ API notes are a YAML-based "sidecar" file mechanism in Clang that allows users t
 The -fbounds-safety extension for C adds bounds annotations and compiler-enforced bounds checking to prevent buffer overflow vulnerabilities. Developed by Apple and maintained in a The student will contribute to upstreaming by: - Taking a subset of features identified by the mentor
 - Extracting a relevant downstream feature and refactoring to meet upstream LLVM standards, writing tests and documentation
 - Backporting to the downstream fork to validate correctness in the full -fbounds-safety context
+The newly introduced -fmodules-driver mode enables explicit module builds directly from Clangâs driver, supporting both Clang modules discovered via module map files and C++20 named modules. Currently, these modules are precompiled from scratch on every invocation because the modules driver does not provide any caching. This is especially costly for large modules (e.g., the Standard library modules), adding substantial overhead to each compilation. This project aims to add compilation-job-level caching across the entire modules-driver build graph to enable incremental compilation. Using the dependency-scan results, the driver should track header and module dependencies for each input and determine which jobs must be rebuilt and which can be safely reused from the cache.
 The LLVM libc project aims to provide a complete, correct, and high-performance C23 standard library. A key differentiator is its focus on correctly rounded math functions for all floating-point types, including float, double, long double, and float128 (IEEE 754 quad precision). However, not all compilers or architectures support these types natively. For example: - MSVC on Windows treats long double as 64-bit double and lacks a native __float128 type.
 - AArch64 targets typically use 128-bit long double, but lack the 80-bit extended precision format.
 - Clang on certain non-x86 targets may not enable __float128 by default.

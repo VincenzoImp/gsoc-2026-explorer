@@ -1,7 +1,7 @@
 # GNU Octave — Project Ideas
 
 **Source:** https://wiki.octave.org/wiki/index.php?title=Summer_of_Code_-_Getting_Started#Suggested_projects
-**Scraped:** 2026-02-20T11:48:56.920113
+**Scraped:** 2026-02-22T23:28:47.623775
 
 ---
 
@@ -11,11 +11,11 @@
 
 [Jump to search](https://wiki.octave.org#searchInput)
 
-[mentoring organization for GSoC 2025](https://summerofcode.withgoogle.com/programs/2025/organizations/gnu-octave).
+[mentoring organization for GSoC 2026](https://summerofcode.withgoogle.com/programs/2026/organizations/gnu-octave).
 
 Since 2011 the GNU Octave project has successfully mentored:
 
-in [Summer of Code](https://wiki.octave.org/Summer_of_Code) (SoC) programs by [Google](https://summerofcode.withgoogle.com/) and [ESA](https://esa.int/).
+in [Summer of Code](/ideas/gnu-octave/summer_of_code) (SoC) programs by [Google](https://summerofcode.withgoogle.com/) and [ESA](https://esa.int/).
 
 Those SoC programs aim to advertise open-source software development and to attract potential new Octave developers.
 
@@ -23,7 +23,7 @@ Those SoC programs aim to advertise open-source software development and to attr
 
 - 😉💬
 **We want to get to know you (before the deadline). Communicate with us.**- Join
-or**Octave Discourse**[IRC](https://wiki.octave.org/IRC)for general discussion and to ask questions (Please do not use the bug tracker for general GSOC inquiries unrelated to specific bugs found with Octave.) Using a nickname is fine. - Show us that you're motivated to work on Octave 💻. There is no need to present an overwhelming CV 🏆; evidence of involvement with Octave is more important.
+or**Octave Discourse**[IRC](/ideas/gnu-octave/irc)for general discussion and to ask questions (Please do not use the bug tracker for general GSOC inquiries unrelated to specific bugs found with Octave.) Using a nickname is fine. - Show us that you're motivated to work on Octave 💻. There is no need to present an overwhelming CV 🏆; evidence of involvement with Octave is more important.
 **If you never talked to us, we will likely reject your proposal**, even it looks good 🚮
 
 - Join
@@ -31,7 +31,7 @@ or**Octave Discourse**[IRC](https://wiki.octave.org/IRC)for general discussion a
 **Get your hands dirty.**- We are curious about your programming skills 🚀
 - Your application will be much stronger if you
 [fix Octave bugs](https://savannah.gnu.org/bugs/?group=octave)or[submit patches](https://savannah.gnu.org/patch/?group=octave)before or during the application period. - You can take a look at the
-[short projects](https://wiki.octave.org/Short_projects)for some simple bugs to start with.
+[short projects](/ideas/gnu-octave/short_projects)for some simple bugs to start with.
 
 - Your application will be much stronger if you
 **Use Octave!**- If you come across something that does not work the way you like ➡️ try to fix that 🔧
@@ -74,20 +74,20 @@ You should know:
 
 - How to build Octave from its source code using
 [the GNU build system](http://en.wikipedia.org/wiki/GNU_build_system).- Read in this wiki:
-[Developer FAQ](https://wiki.octave.org/Developer_FAQ),[Building](https://wiki.octave.org/Building) - Tools to know:
+[Developer FAQ](/ideas/gnu-octave/developer_faq),[Building](/ideas/gnu-octave/building) - Tools to know:
 [gcc](https://en.wikipedia.org/wiki/GNU_Compiler_Collection),[make](https://en.wikipedia.org/wiki/Make_(software))
 
 - Read in this wiki:
 - How to submit patches (changesets).
 - Read in this wiki:
-[Contribution guidelines](https://wiki.octave.org/Contribution_guidelines),[Mercurial](https://wiki.octave.org/Mercurial) - Tools to know:
+[Contribution guidelines](/ideas/gnu-octave/contribution_guidelines),[Mercurial](/ideas/gnu-octave/mercurial) - Tools to know:
 [Mercurial (hg)](https://en.wikipedia.org/wiki/Mercurial),[git](https://en.wikipedia.org/wiki/Git)
 
 - Read in this wiki:
 
 # Suggested projects
 
-The following suggested projects are distilled from the [Projects](https://wiki.octave.org/Projects) page for the benefit of potential SoC participants. You can also look at our [completed past projects](https://wiki.octave.org/Summer_of_Code), or the current [| Octave Development Roadmap](https://hg.savannah.gnu.org/hgweb/octave/file/tip/etc/ROADMAP.md) for more inspiration.
+The following suggested projects are distilled from the [Projects](/ideas/gnu-octave/projects) page for the benefit of potential SoC participants. You can also look at our [completed past projects](/ideas/gnu-octave/summer_of_code), or the current [| Octave Development Roadmap](https://hg.savannah.gnu.org/hgweb/octave/file/tip/etc/ROADMAP.md) for more inspiration.
 
 **propose your own projects**. If you are passionate about your project, it will be easy to find an Octave developer to mentor and guide you. Please note that for such a proposal to be successful it will almost certainly involve initiating pre-proposal discussion over at the
 

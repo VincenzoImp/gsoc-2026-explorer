@@ -1,7 +1,7 @@
 # Jenkins — Project Ideas
 
 **Source:** https://www.jenkins.io/projects/gsoc/2026/project-ideas/
-**Scraped:** 2026-02-20T11:48:56.921181
+**Scraped:** 2026-02-22T23:28:47.604784
 
 ---
 
@@ -10,7 +10,7 @@ This page aggregates project ideas for Google Summer of Code
 Refer to the Jenkins Google Summer of Code page
 [
 for more information about this project and applications..
-](https://www.jenkins.io/projects/gsoc/)
+](/ideas/jenkins-wp/projects-gsoc)
 
 Below you can find project ideas that have been proposed for this year.
 New ideas may be proposed by interested mentors or GSoC contributors, such as new features in the core or "write a plugin for MY_TOOL_OR_SERVICE".
@@ -18,7 +18,7 @@ Project ideas without potential mentors will be considered, though applicants ma
 To add a new project idea, see:
 [
 proposing project ideas
-](https://www.jenkins.io/projects/gsoc/proposing-project-ideas/).
+](/ideas/jenkins-wp/projects-gsoc-proposing-project-ideas).
 
 The following list contains the project ideas that fully match the Jenkins project idea standard. The scope of these ideas is understood and we don't normally expect deep changes. All ideas have quick-start guidelines and newbie-friendly issues referenced. We welcome contributors to join the mentor teams and invite GSoC contributors to submit project proposal applications related to these ideas.
 

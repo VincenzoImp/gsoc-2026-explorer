@@ -1,7 +1,7 @@
 # GNU Radio — Project Ideas
 
 **Source:** https://wiki.gnuradio.org/index.php/GSoCIdeas
-**Scraped:** 2026-02-20T11:48:56.926435
+**Scraped:** 2026-02-22T23:28:47.624537
 
 ---
 
@@ -213,31 +213,6 @@ Easy - Medium
 Andrej Rode, Håkon Vågsether
 
 
-
-### CI for maintenance branches and select OOT modules
-
-It would be useful to have nightly builds for GNU Radio's maintenance branches (3.8, 3.9, 3.10) and some select OOTs.
-
-**Prerequisites**
-
-- Experience with Docker?
-- ?
-
-**Outcome**
-
-- Automated PPAs, Snaps, Flatpak apps
-
-**Project length**
-
-175 hours
-
-**Difficulty**
-
-Easy
-
-**Mentor(s)**
-
-Håkon Vågsether, ?
 
 ### Hardware in the loop CI
 

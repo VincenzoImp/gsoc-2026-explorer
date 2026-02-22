@@ -1,7 +1,7 @@
 # NumFOCUS — Project Ideas
 
 **Source:** https://github.com/numfocus/gsoc/blob/master/2026/ideas-list.md
-**Scraped:** 2026-02-20T11:48:56.951669
+**Scraped:** 2026-02-22T23:28:47.615544
 
 ---
 
@@ -51,4 +51,4 @@ page of each organization under the NumFOCUS umbrella at this page.
 
 -->
 
-See the [README](https://github.com/numfocus/gsoc/blob/master/README.md#organizations-confirmed-under-numfocus-umbrella) for contact information of each org.
+See the [README](/ideas/numfocus/numfocus-gsoc-blob-master-readme) for contact information of each org.

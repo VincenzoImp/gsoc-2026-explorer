@@ -1,7 +1,7 @@
 # PostgreSQL — Project Ideas
 
 **Source:** https://wiki.postgresql.org/wiki/GSoC_2026
-**Scraped:** 2026-02-20T11:48:56.955511
+**Scraped:** 2026-02-22T23:28:47.569554
 
 ---
 
@@ -26,6 +26,10 @@ Please be aware that the list of ideas below is a starting point. Due to the com
 - Be Selective: We encourage you to check our communication channels (e.g., Slack) to see if many other contributors are already targeting a specific idea
 
 **Mentors mailing list for proposals**: gsoc-mentors@lists.postgresql.org
+
+## Status
+
+PostgreSQL has been accepted for Google Summer of Code 2026
 
 ## Admins
 
@@ -57,9 +61,6 @@ The following individuals have been listed as mentors on the below projects:
 
 ## Timeline
 
-- January 19 - Mentoring organizations can begin submitting applications to Google
-- February 3 - Mentoring organization application deadline
-- February 19 - List of accepted mentoring organizations published
 - March 16 - GSoC contributor application period begins
 - March 31 - GSoC contributor application deadline
 - April 21 - GSoC contributor proposal rankings due from Org Admins

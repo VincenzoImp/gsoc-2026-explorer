@@ -1,6 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { Organization, OrganizationWithIdeas, TagCount } from "./types";
+import type {
+  Organization,
+  OrganizationWithIdeas,
+  IdeaSubpage,
+  TagCount,
+} from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "..", "data");
 
@@ -47,6 +52,25 @@ export function getIdeasSlugs(): string[] {
   return getOrganizationsWithIdeas()
     .filter((o) => o.ideas_content && o.ideas_content !== "None")
     .map((o) => o.slug);
+}
+
+export function getSubpageSlugs(): Array<{ slug: string; subpage: string }> {
+  return getOrganizationsWithIdeas()
+    .filter((o) => o.ideas_subpages?.length > 0)
+    .flatMap((o) =>
+      o.ideas_subpages.map((sp) => ({ slug: o.slug, subpage: sp.slug }))
+    );
+}
+
+export function getSubpage(
+  orgSlug: string,
+  subpageSlug: string
+): { org: OrganizationWithIdeas; subpage: IdeaSubpage } | undefined {
+  const org = getOrganizationWithIdeas(orgSlug);
+  if (!org) return undefined;
+  const subpage = org.ideas_subpages?.find((sp) => sp.slug === subpageSlug);
+  if (!subpage) return undefined;
+  return { org, subpage };
 }
 
 export function getTagStats(

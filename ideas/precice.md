@@ -1,13 +1,13 @@
 # preCICE — Project Ideas
 
 **Source:** https://precice.org/community-contribute-open-projects.html
-**Scraped:** 2026-02-20T11:48:56.944218
+**Scraped:** 2026-02-22T23:28:47.560973
 
 ---
 
 ## Context
 
-In case you skipped the [home page](https://precice.org/index.html),
+In case you skipped the [home page](/ideas/precice/index),
 preCICE is a *coupling library* for **numerical simulations** (think meshes, iterative solution, FEM, CFD)
 and an *ecosystem* of related components.
 Scientists take independent numerical simulation codes and make them work together on a more complex simulation,
@@ -17,7 +17,7 @@ While the latter is written in **C++**, more languages are relevant (**Python, J
 preCICE is primarily used on **Linux** systems, with a growing user-base on macOS and Windows.
 
 Most of the preCICE development has been happening in a university context,
-and student projects have played a vital role: Just look at the [list of contributors](https://precice.org/community-contributors.html).
+and student projects have played a vital role: Just look at the [list of contributors](/ideas/precice/community-contributors).
 We are working on [GitHub](https://github.com/precice/), and we accept contributions by everyone.
 We review pull requests trying to improve their quality together and bring them in line with the current project needs,
 which can sometimes be a long but rewarding experience.
@@ -25,7 +25,7 @@ In the university context, we also closely mentor students,
 we encourage participation in team events such as our coding days,
 and several students have so far participated in workshops, conferences, and publications, or even done their PhD in the team.
 
-If you want to contribute with a student project (typically a thesis), see the [university groups behind preCICE](https://precice.org/about.html).
+If you want to contribute with a student project (typically a thesis), see the [university groups behind preCICE](/ideas/precice/about).
 This page highlights a few specific projects that are not directly suitable for a thesis ([thesis-suitable issues in the core library](https://github.com/precice/precice/issues?q=is%3Aissue%20state%3Aopen%20label%3Athesis)), but are also a bit more than a [good first issue](https://github.com/precice/precice/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22).
 Some of these projects we advertise publicly, in programs such as the Google Summer of Code.
 
@@ -82,7 +82,7 @@ Be creative!
 
 While the core library has several unit and integration tests,
 some issues only show up when running complete simulations.
-For this reason, preCICE has [system tests](https://precice.org/dev-docs-system-tests.html),
+For this reason, preCICE has [system tests](/ideas/precice/dev-docs-system-tests),
 which choose and install components from the ecosystem in Docker containers,
 run complete simulations, and compare the numerical results against references.
 These tests are integrated into the [GitHub Actions](https://docs.github.com/en/actions) CI infrastructure of preCICE.
@@ -99,7 +99,7 @@ running (much) faster test cases, running multiple test cases in parallel, bette
 
 ### Project: Error messages with configuration context
 
-The core library needs a [preCICE configuration file](https://precice.org/configuration-overview.html),
+The core library needs a [preCICE configuration file](/ideas/precice/configuration-overview),
 which currently needs to be written manually (we are working on higher-level configuration tools as well).
 When one configures something wrong, preCICE throws an error message with details and recommendations (think git).
 In this project, we want to attach context to these error messages,
@@ -107,8 +107,8 @@ referring to specific lines in the configuration file
 (similarly to how a compiler would refer to code lines with errors):
 see the [related issue](https://github.com/precice/precice/issues/751).
 
-**Entry test:** To figure out if this is for you, try [building preCICE from source](https://precice.org/installation-source-preparation.html),
-running the [elastic tube 1D tutorial](https://precice.org/tutorials-elastic-tube-1d.html),
+**Entry test:** To figure out if this is for you, try [building preCICE from source](/ideas/precice/installation-source-preparation),
+running the [elastic tube 1D tutorial](/ideas/precice/tutorials-elastic-tube-1d),
 and modifying the [configuration file](https://github.com/precice/tutorials/blob/master/elastic-tube-1d/precice-config.xml)
 to trigger an error (e.g., remove one of the `<data>`
 
@@ -123,7 +123,7 @@ Then, locate and modify the error message in the source code, to provide more in
 
 ### Project: Clean multi-step configuration
 
-The core library parses its [configuration file](https://precice.org/configuration-overview.html) using the [libxml2 library](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home).
+The core library parses its [configuration file](/ideas/precice/configuration-overview) using the [libxml2 library](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home).
 The way this currently works is a bit rigid and the configuration of objects is directly tied to this parsing.
 Instead, we could do this in multiple stages, introducing an additional abstract syntax tree, which we could then use as a layer for additional checks,
 or to parse the configuration in a predefined order.

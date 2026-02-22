@@ -1,0 +1,78 @@
+# mariadb-binlog
+
+**Parent:** MariaDB — Project Ideas
+**Source:** https://mariadb.com/docs/server/clients-and-utilities/logging-tools/mariadb-binlog/using-mariadb-binlog
+**Scraped:** 2026-02-22T23:28:47.611608
+
+---
+
+# Using mariadb-binlog
+
+Previously, the client was called `mysqlbinlog`
+
+. It can still be accessed under this name, via a symlink in Linux, or an alternate binary in Windows.
+
+## Overview
+
+The MariaDB server's [binary log](https://mariadb.com/docs/server/server-management/server-monitoring-logs/binary-log) is a set of files containing "events" which represent modifications to the contents of a MariaDB database.
+
+Events are written in a binary (that is, non-human-readable) format. The `mariadb-binlog`
+
+utility is used to view these events in plain text.
+
+Run [mariadb-binlog](https://mariadb.com/docs/server/clients-and-utilities/logging-tools/mariadb-binlog) from a command line:
+
+`mariadb-binlog [options] binlog-filename [binlog-filename ...]`
+
+
+See [mariadb-binlog Options](https://mariadb.com/docs/server/clients-and-utilities/logging-tools/mariadb-binlog/mariadb-binlog-options) for details on the available options.
+
+## Usage
+
+Display the contents of a [binary log](https://mariadb.com/docs/server/server-management/server-monitoring-logs/binary-log) file named `mariadb-bin.000152`
+
+like this:
+
+`mariadb-binlog mariadb-bin.000152`
+
+
+### Processing a Single Log File
+
+The logging format is determined by the value of the [binlog_format](https://mariadb.com/docs/server/ha-and-performance/standard-replication/replication-and-binary-log-system-variables#binlog_format) system variable. If you are using statement-based logging, the output includes the SQL statement, the ID of the server the statement was executed on, a timestamp, and how much time the statement took to execute. If you are using row-based logging, the output of an event will not include an SQL statement, but will instead output how individual rows were changed.
+
+The output from `mariadb-binlog`
+
+can be used as input to the `mariadb`
+
+client to redo the statements contained in a [binary log](https://mariadb.com/docs/server/server-management/server-monitoring-logs/binary-log). This is useful for recovering after a server crash (replace *binlog-filename* with the name of a binary log file):
+
+`mariadb-binlog binlog-filename | mysql -u root -p`
+
+
+If you would like to view and possibly edit the file before applying it to your database, use the `-r`
+
+flag to redirect the output to a file (replace *outputfile* with the name of a file to store the output, and *binlog-filename* with the name of a binary log file):
+
+In the output file, delete any statements you don't want executed (such as an accidental `DROP DATABASE`
+
+). Once you are satisfied with the contents, you can execute it:
+
+Be careful to process multiple log files in a single connection, especially if one or more of them have any `CREATE TEMPORARY TABLE ...`
+
+statements. Temporary tables are dropped when the mariadb client terminates, so if you are processing multiple log files one at a time (i.e. multiple connections), and one log file creates a temporary table and then a subsequent log file refers to the table, you get an 'unknown table' error.
+
+### Processing Multiple Log Files
+
+To execute multiple log files using a single connection, list them all on the `mariadb-binlog`
+
+command line:
+
+If you need to manually edit the binlogs before executing them, combine them all into a single file before processing:
+
+## See Also
+
+*This page is licensed: GPLv2, originally from**fill_help_tables.sql*
+
+Last updated
+
+Was this helpful?

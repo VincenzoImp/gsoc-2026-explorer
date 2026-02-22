@@ -1,7 +1,7 @@
 # Project Mesa — Project Ideas
 
 **Source:** https://github.com/mesa/mesa/wiki/GSoC-2026-Project-Ideas
-**Scraped:** 2026-02-20T11:48:56.936447
+**Scraped:** 2026-02-22T23:28:47.626539
 
 ---
 
@@ -14,8 +14,8 @@ Tentative Projects & Mentors
 * [Mesa Examples Revival](#reviving-mesa-examples) Size: Small/Medium Mentors: @jackiekazil/@EwoutH
 
 More info:
-- [Mesa's Google Summer of Code 2026 guide](https://github.com/mesa/mesa/wiki/Google-Summer-of-Code-2026)
-- [GSoC 2026 ideas discussion](https://github.com/mesa/mesa/discussions/2927)
+- [Mesa's Google Summer of Code 2026 guide](/ideas/project-mesa/google-summer-of-code-2026)
+- [GSoC 2026 ideas discussion](/ideas/project-mesa/mesa-mesa-discussions-2927)
 
 # Extended descriptions
 ## Behavioral framework
@@ -156,7 +156,7 @@ Mesa-LLM integrates Large Language Models (LLMs) into the Mesa framework, allowi
 Generative Agents represent a paradigm shift in ABM. However, implementing them currently requires significant  coding to handle API connections, prompt history, and parsing text outputs into simulation actions. Mesa-LLM needs to bridge the gap between LLM text generation and the deterministic logic required to obtain reliable results in an ABM simulation.
 
 ### Historical Context
-Mesa-LLM was created as a 2025 GSoC project to address the growing demand for "smart" agents within Mesa. Initial ideas were initiated in [Discussion #2773](https://github.com/mesa/mesa/discussions/2773) and [Discussion #2775](https://github.com/mesa/mesa/discussions/2775) after GSoC selection process. The project has since seen contributions from various developers, but it remains in an experimental state with open issues and areas for improvement.
+Mesa-LLM was created as a 2025 GSoC project to address the growing demand for "smart" agents within Mesa. Initial ideas were initiated in [Discussion #2773](/ideas/project-mesa/mesa-mesa-discussions-2773) and [Discussion #2775](/ideas/project-mesa/mesa-mesa-discussions-2775) after GSoC selection process. The project has since seen contributions from various developers, but it remains in an experimental state with open issues and areas for improvement.
 
 
 ### Overall Goal
@@ -286,4 +286,4 @@ _Large might also be possible in consultation mentors_
 - Jackie Kazil (@jackiekazil) & Ewout ter Hoeven (@EwoutH)
 
 Archive: 
-Discussions: [Discussion #2927](https://github.com/mesa/mesa/discussions/2927) | [Matrix chat](https://matrix.to/#/#GSoC:matrix.org)
+Discussions: [Discussion #2927](/ideas/project-mesa/mesa-mesa-discussions-2927) | [Matrix chat](https://matrix.to/#/#GSoC:matrix.org)

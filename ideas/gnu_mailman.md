@@ -1,7 +1,7 @@
 # GNU Mailman — Project Ideas
 
 **Source:** https://wiki.list.org/DEV/Google%20Summer%20of%20Code%202026
-**Scraped:** 2026-02-20T11:48:56.927612
+**Scraped:** 2026-02-22T23:28:47.587565
 
 ---
 
@@ -43,7 +43,7 @@ Contents
 
 The [GSoC Contributor Guide](https://google.github.io/gsocguides/student/) has some great general GSoC information. Read it first!
 
-Before you ask any questions about how to do anything in git or initialize your repository please read through the [git howto](https://wiki.list.org/DEV/HowToContributeGit) and see if that answers your questions.
+Before you ask any questions about how to do anything in git or initialize your repository please read through the [git howto](/ideas/gnu-mailman/howtocontributegit) and see if that answers your questions.
 
 
 ## Recommended Skills
@@ -102,7 +102,7 @@ Mailing list to use for GSoC discussions:
 
 The
 
-[GSoC student Guide](https://google.github.io/gsocguides/student/)has some great information[Tips for Prospective Google Summer of Code Students](https://wiki.list.org/DEV/Tips%20for%20Prospective%20Google%20Summer%20of%20Code%20Students)(general good advice)[Tips for writing a good GSoC proposal](https://wiki.list.org/DEV/SPAM)(advice on structuring and composing the document; now several years old but mostly valid)
+[GSoC student Guide](https://google.github.io/gsocguides/student/)has some great information[Tips for Prospective Google Summer of Code Students](/ideas/gnu-mailman/tips-20for-20prospective-20google-20summer-20of-20code-20students)(general good advice)[Tips for writing a good GSoC proposal](/ideas/gnu-mailman/spam)(advice on structuring and composing the document; now several years old but mostly valid)
 
 
 
@@ -110,7 +110,7 @@ The
 
 - I am interested to contribute to Mailman and participate in GSOC, how do I start?
 
-[This page](http://wiki.list.org/DEV/Tips%20for%20Prospective%20Google%20Summer%20of%20Code%20Students) might be of some help.
+[This page](/ideas/gnu-mailman/tips-20for-20prospective-20google-20summer-20of-20code-20students-2) might be of some help.
 
 This question has been asked tons of times on the mailing list (mentioned above) and IRC Channel (again, mentioned above). Both of them are logged publicly and are searchable. It would be really nice to go through them once before you ask the same question again. More specific questions are encouraged and receive more attention than "How do I start?". Mentors do try hard to reply to each and every email to the developers list, but in case you don't get any replies on trivial questions, don't be discouraged. Also, in case you are a student, helping others with small problems for which you know answers is also a great way to get noticed. Don't worry too much about giving wrong answers, list is constantly monitored by the core developers and any mistakes would be corrected.
 
@@ -129,7 +129,7 @@ In most of the cases the reason for a MR to be pending is that there is either s
 
 This is the list of project ideas. Do communicate with the developers before writing a proposal based on any of these ideas. The developers work individually on issues that catch their eye either as a feature they want, or at a user's request. So somebody may already be working on an idea, and you may be wasting your time to propose it.
 
-If you have an idea not listed here that you'd like to propose , please send it to [mailman-developers@python.org](mailto:mailman-developers@python.org) for discussion! You can also look at the to-do lists for Mailman 3 [here](https://wiki.list.org/DEV#Version-specific_resources), and see if anything is interesting enough that you would like to work on it through the summer.
+If you have an idea not listed here that you'd like to propose , please send it to [mailman-developers@python.org](mailto:mailman-developers@python.org) for discussion! You can also look at the to-do lists for Mailman 3 [here](/ideas/gnu-mailman/dev), and see if anything is interesting enough that you would like to work on it through the summer.
 
 If you saw an idea on an earlier year's page and thought it would be a good project, but it isn't here, most likely it has been implemented and is in the current distribution. Sorry!
 
@@ -243,7 +243,7 @@ Tags: *postorius*
 
 ## Dynamic Sublists (aka Conversations)
 
-Dynamic sublists are a feature of the Systers fork of Mailman which was never integrated upstream due to entanglement with other, very Systers-specific, features of their fork. The idea is that only the thread root is distributed to all users, and by replying to a special address, a reader can "subscribe" to that thread. Because of divergence of the code bases integration will likely involve some amount of new code. Also, the original feature was controlled entirely by email, but integration with Postorius and [HyperKitty](https://wiki.list.org/HyperKitty) is desirable. Also see [Topics](https://wiki.list.org/DEV/Google%20Summer%20of%20Code%202026#Topics) for a similar feature, but user-controlled.
+Dynamic sublists are a feature of the Systers fork of Mailman which was never integrated upstream due to entanglement with other, very Systers-specific, features of their fork. The idea is that only the thread root is distributed to all users, and by replying to a special address, a reader can "subscribe" to that thread. Because of divergence of the code bases integration will likely involve some amount of new code. Also, the original feature was controlled entirely by email, but integration with Postorius and [HyperKitty](/ideas/gnu-mailman/hyperkitty) is desirable. Also see [Topics](https://wiki.list.org/DEV/Google%20Summer%20of%20Code%202026#Topics) for a similar feature, but user-controlled.
 
 Tags: *core*
 
@@ -385,7 +385,7 @@ Victoriano Giralt
 
 ## Shell Completions
 
-Mailman has (at least) two command-line utilities: *mailman*, for list creation, deletion, and querying, as well as starting and stopping the core daemon, and *mailmanweb*, which handles configuration and maintenance of the Django applications Postorius and [HyperKitty](https://wiki.list.org/HyperKitty), as well as starting and stopping them. Both have long, complex lists of subcommands, so it is desirable to have shell completion for these commands. Completion functions for at least *bash* and *zsh* are required, *csh* is desirable, and other shells with completion hooks may be added.
+Mailman has (at least) two command-line utilities: *mailman*, for list creation, deletion, and querying, as well as starting and stopping the core daemon, and *mailmanweb*, which handles configuration and maintenance of the Django applications Postorius and [HyperKitty](/ideas/gnu-mailman/hyperkitty), as well as starting and stopping them. Both have long, complex lists of subcommands, so it is desirable to have shell completion for these commands. Completion functions for at least *bash* and *zsh* are required, *csh* is desirable, and other shells with completion hooks may be added.
 
 **Note:** *This task may not require a full summer's effort, so additional subtasks may be added.*
 

@@ -1,7 +1,7 @@
 # JabRef e.V. — Project Ideas
 
 **Source:** https://jabref.github.io/GSoC/projects/
-**Scraped:** 2026-02-20T11:48:56.955908
+**Scraped:** 2026-02-22T23:28:47.605262
 
 ---
 

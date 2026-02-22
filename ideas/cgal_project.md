@@ -1,7 +1,7 @@
 # CGAL Project — Project Ideas
 
 **Source:** https://github.com/CGAL/cgal/wiki/Project-Ideas
-**Scraped:** 2026-02-20T11:48:56.914588
+**Scraped:** 2026-02-22T23:28:47.589291
 
 ---
 
@@ -88,8 +88,7 @@ The project is to implement an existing method described [here](https://arxiv.or
 
 Resources:
 
-[The publication](https://arxiv.org/pdf/2205.02961)- [The implementation of the publication]((
-[https://github.com/SarahWeiii/CoACD](https://github.com/SarahWeiii/CoACD))
+[The publication](https://arxiv.org/pdf/2205.02961)- [The implementation of the publication](/ideas/cgal-project/https-github-com-sarahweiii-coacd-https-github-com-sarahweiii-coacd))
 
 **Required Skills:** C++17, Mesh Processing
 

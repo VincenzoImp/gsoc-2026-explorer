@@ -1,0 +1,24 @@
+# We have added some tips on writing a proposal here
+
+**Parent:** Haskell.org — Project Ideas
+**Source:** https://summer.haskell.org/tips.html
+**Scraped:** 2026-02-22T23:28:47.603758
+
+---
+
+# Tips for writing a good proposal[ð](https://summer.haskell.org#tips-for-writing-a-good-proposal)
+
+Some general tips on writing a proposal are discussed
+[in Googleâs official guide](https://google.github.io/gsocguides/student/writing-a-proposal).
+
+**The most important thing**that we look for in proposals is that you understand the project. You can show this by describing how you would approach the implementation. Quality is more important than quantity, this doesnât need to be longer than a page.What interests you in the project?
+
+Please include a tentative plan or schedule with some milestones. If you have existing commitments, such as university deadlines, please communicate this clearly! We can usually work around these, but we donât want you disapearing without a word for two weeks.
+
+Feel free to provide a brief CV, but please keep it limited to the experience that is relevant for GSoC. If you have contributed to Haskell projects in the past, please include this!
+
+
+If you donât fully understand the project yet â **no problem**! We welcome
+new people, and mentors are happy to answer questions or give you feedback on
+proposal drafts. [Let us know](https://summer.haskell.org/contact.html) if you want us to put you in
+touch with the relevant mentors.

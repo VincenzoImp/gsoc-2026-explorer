@@ -1,13 +1,13 @@
 # FOSSASIA — Project Ideas
 
 **Source:** https://docs.google.com/document/d/1Tz1KxYefreKzBr98C4vbCv9UwnchZoyTwO8rBrz_lmg/edit?tab=t.0#heading=h.9sjk3ie7l2o2
-**Scraped:** 2026-02-20T12:04:25.571236
+**Scraped:** 2026-02-22T23:28:47.543466
 
 ---
 
 FOSSASIA GSoC 2026 Ideas List
 
-Please submit your proposal on the GSoC website: [https://summerofcode.withgoogle.com](https://www.google.com/url?q=https://summerofcode.withgoogle.com&sa=D&source=editors&ust=1771589065013697&usg=AOvVaw140ZNoMVuQh-AZLjESzuKE)
+Please submit your proposal on the GSoC website: [https://summerofcode.withgoogle.com](https://www.google.com/url?q=https://summerofcode.withgoogle.com&sa=D&source=editors&ust=1771800528786399&usg=AOvVaw1gbnNncExfJsKWQ9LTF6BY)
 
 Ideas Overview
 
@@ -59,9 +59,9 @@ Required Skills: Python, React/JavaScript, LaTeX, Scientific Computing
 
 Preferred Skills: Experience with academic research workflows, Plotly.js, Export libraries
 
-Possilbe Mentors:[ ](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771589065017673&usg=AOvVaw1FXN3d88Djd_m0Ms2UGTqi)[marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771589065017757&usg=AOvVaw2t4cGHzY17OUlRw67bobw5),[ ](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771589065017807&usg=AOvVaw0hnpKzEd2p00f2-hdj8EDz)[norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771589065017849&usg=AOvVaw3kJlHzm7MeYNvC-yzSL0R1), [mariobehling](https://www.google.com/url?q=https://github.com/mariobehling&sa=D&source=editors&ust=1771589065017909&usg=AOvVaw0NdfQVQDee7HzdkvQYK3hU)
+Possilbe Mentors:[ ](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771800528791071&usg=AOvVaw1EiPKtyftoshBl2HojmTB0)[marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771800528791147&usg=AOvVaw06xxACerRgx2b_XUC9VE4U),[ ](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771800528791207&usg=AOvVaw2E8j7nXMdiJmj156WTGyUN)[norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771800528791286&usg=AOvVaw2Fb8DcnSyjgQceupb1v-mM), [mariobehling](https://www.google.com/url?q=https://github.com/mariobehling&sa=D&source=editors&ust=1771800528791414&usg=AOvVaw231V9sh7hhoPwlXl-XA9tG)
 
-Repository: [https://github.com/fossasia/visdom](https://www.google.com/url?q=https://github.com/fossasia/visdom&sa=D&source=editors&ust=1771589065018022&usg=AOvVaw0vMixbVSTYn-3ySb-VOhzP)
+Repository: [https://github.com/fossasia/visdom](https://www.google.com/url?q=https://github.com/fossasia/visdom&sa=D&source=editors&ust=1771800528791575&usg=AOvVaw2P9VyrRy34sQ8Nob0dNLm2)
 
 Description: Modern machine learning research relies heavily on interactive visualization tools during model training and experimentation. While Visdom is widely used for real-time monitoring and exploration, researchers must still rely on external tools and manual workflows to turn these visualizations into publication-quality figures and reproducible research artifacts.
 
@@ -112,9 +112,9 @@ Required Skills: Python, PyTorch, Deep Learning, Tornado
 
 Preferred Skills: PyTorch Lightning, Hooks/Callbacks, Performance optimization
 
-Possilbe Mentors: [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771589065024485&usg=AOvVaw0YqsFPNl4Hp3PmINwSY1yr), [norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771589065024568&usg=AOvVaw3uF7mKmJ7iekISKWRuszm7), [mariobehling](https://www.google.com/url?q=https://github.com/mariobehling&sa=D&source=editors&ust=1771589065024632&usg=AOvVaw0DgAMr2PuHnKvSUfTlRRRb)
+Possilbe Mentors: [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771800528800078&usg=AOvVaw3aukjP6itRWV3VYPhCf1LH), [norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771800528800172&usg=AOvVaw12VV8aa-M98zkP6bVViInv), [mariobehling](https://www.google.com/url?q=https://github.com/mariobehling&sa=D&source=editors&ust=1771800528800243&usg=AOvVaw2sGCSi7ZH0L5cio20XrSOb)
 
-Repository: [https://github.com/fossasia/visdom](https://www.google.com/url?q=https://github.com/fossasia/visdom&sa=D&source=editors&ust=1771589065024742&usg=AOvVaw0XUZQcPqDqXVCDINEpfOL3)
+Repository: [https://github.com/fossasia/visdom](https://www.google.com/url?q=https://github.com/fossasia/visdom&sa=D&source=editors&ust=1771800528800368&usg=AOvVaw18weEEPmzHQ3UpaJ1stDyR)
 
 Description: Visdom is widely used for visualizing training progress, its current usage requires significant manual instrumentation. Users must explicitly log each metric, resulting in repetitive boilerplate code. For example, tracking even basic metrics such as loss and accuracy requires manual calls at every iteration:
 
@@ -168,9 +168,9 @@ Required Skills: Python, React/JavaScript, LaTeX, Scientific Computing
 
 Preferred Skills: Experience with academic research workflows, Plotly.js, Export libraries
 
-Possilbe Mentors:[ ](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771589065033277&usg=AOvVaw2QTyq3koIp7qPuLb0TvVsM)[marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771589065033349&usg=AOvVaw2WBX1TAR8asyrtwQ53AEDG),[ ](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771589065033398&usg=AOvVaw0R0gJ8xW-RwkJENWE4UcZA)[norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771589065033441&usg=AOvVaw3s1BGcDxFMCj248PK6aS5R), [mariobehling](https://www.google.com/url?q=https://github.com/mariobehling&sa=D&source=editors&ust=1771589065033500&usg=AOvVaw1Fec2rx8YEqbGQF1wGHKqx)
+Possilbe Mentors:[ ](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771800528815214&usg=AOvVaw3i7D5ijOvEW9Mx6ygUrC5C)[marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771800528815294&usg=AOvVaw3dXk2Ju5CT_vg6LSoPavHz),[ ](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771800528815352&usg=AOvVaw35EwPFLFmalt5R-dEbNNXf)[norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771800528815400&usg=AOvVaw1TaF__f3zzP8aiN47CXbrp), [mariobehling](https://www.google.com/url?q=https://github.com/mariobehling&sa=D&source=editors&ust=1771800528815475&usg=AOvVaw2hJTGlXPHwKix6zPuPP8ps)
 
-Repository: [https://github.com/fossasia/visdom](https://www.google.com/url?q=https://github.com/fossasia/visdom&sa=D&source=editors&ust=1771589065033600&usg=AOvVaw0ees3yzuLgQyZ6kSmgxTc7)
+Repository: [https://github.com/fossasia/visdom](https://www.google.com/url?q=https://github.com/fossasia/visdom&sa=D&source=editors&ust=1771800528815618&usg=AOvVaw2_PzHrRThKOFOEkp8DBzw1)
 
 Description: Academic research labs often have 5–20 students sharing GPU servers to train models. Visdom is designed as a single-user tool and does not scale well to collaborative lab environments. Current limitations include:
 
@@ -229,9 +229,9 @@ Required Skills: Python, React, Authentication, Docker, Web Development
 
 Preferred Skills: DevOps, Security, Multi-user systems, Nginx
 
-Possilbe Mentors:[ ](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771589065039672&usg=AOvVaw3N6PwSZdeIBkIxn3KgnTiE)[hongquan](https://www.google.com/url?q=https://github.com/hongquan/&sa=D&source=editors&ust=1771589065039745&usg=AOvVaw1E69n0Dsflf3g0e34aTYag), [mariobehling](https://www.google.com/url?q=https://github.com/mariobehling&sa=D&source=editors&ust=1771589065039807&usg=AOvVaw2dQwVS12l4ZDoXatb0OQ8o), [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771589065039871&usg=AOvVaw3ORop8rCGE_PO3zkGRF_ma),[ ](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771589065039919&usg=AOvVaw3_9OgR_L4WYt36zCbG1B94)[norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771589065039960&usg=AOvVaw2wfE3CFjCG4tunp_LSnoO2)
+Possilbe Mentors:[ ](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771800528823716&usg=AOvVaw2BOup479Lauxy9Pi5Q59sV)[hongquan](https://www.google.com/url?q=https://github.com/hongquan/&sa=D&source=editors&ust=1771800528823807&usg=AOvVaw3F2gP_wxP6NNJrJpICUoJ6), [mariobehling](https://www.google.com/url?q=https://github.com/mariobehling&sa=D&source=editors&ust=1771800528823881&usg=AOvVaw3T685Rgw4-GAke7osLVo85), [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771800528823947&usg=AOvVaw1nz7smh2XnRTOtXo_0Q57B),[ ](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771800528824004&usg=AOvVaw0L9g0Ec3V3x9VOq1zcLRA8)[norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771800528824053&usg=AOvVaw3lBQUms41l6jP37BABLcCU)
 
-Repository: [https://github.com/fossasia/visdom](https://www.google.com/url?q=https://github.com/fossasia/visdom&sa=D&source=editors&ust=1771589065040065&usg=AOvVaw2jSi1c87-niGqi7m9fcZtS)
+Repository: [https://github.com/fossasia/visdom](https://www.google.com/url?q=https://github.com/fossasia/visdom&sa=D&source=editors&ust=1771800528824214&usg=AOvVaw0K2av1cbO8K4j7PXy5eB9H)
 
 Description: Machine learning researchers routinely run hundreds of experiments with different hyperparameter settings. However, Visdom currently provides limited support for managing and analyzing these runs at scale. As a result, researchers face several challenges:
 
@@ -290,9 +290,9 @@ Description: The goal of this project is to streamline the process of generating
 
 Repository URLs:
 
-1. [https://github.com/fossasia/eventyay-tickets](https://www.google.com/url?q=https://github.com/fossasia/eventyay-tickets&sa=D&source=editors&ust=1771589065046887&usg=AOvVaw1FS0sxCIk91HEETasCglx_)
+1. [https://github.com/fossasia/eventyay-tickets](https://www.google.com/url?q=https://github.com/fossasia/eventyay-tickets&sa=D&source=editors&ust=1771800528833405&usg=AOvVaw3JPzexfjiOHdutg1dhSOIz)
 
-2.[https://github.com/fossasia/eventyay-tickets-exhibitors](https://www.google.com/url?q=https://github.com/fossasia/eventyay-tickets-exhibitors&sa=D&source=editors&ust=1771589065047055&usg=AOvVaw3TqdaAb9jjwKi4fM4LClab)
+2.[https://github.com/fossasia/eventyay-tickets-exhibitors](https://www.google.com/url?q=https://github.com/fossasia/eventyay-tickets-exhibitors&sa=D&source=editors&ust=1771800528833634&usg=AOvVaw3bBJQwfA_byQARQ-cfg45U)
 
 Expected outcome:
 
@@ -309,7 +309,7 @@ Skills required/preferred:
 - CI/CD (to automate builds, tests, and deployments)
 - Familiarity with printing workflows and/or label printing software (preferred)
 
-Possible mentors: [hongquan](https://www.google.com/url?q=https://github.com/hongquan/&sa=D&source=editors&ust=1771589065048237&usg=AOvVaw1yzd9QpwJ5goSJHsR3y1RF), [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771589065048296&usg=AOvVaw3tAZPG-bXDuK2rmjHFRUDh), [norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771589065048363&usg=AOvVaw2u3K9fwDY15P_gzP2EJJqC), [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771589065048420&usg=AOvVaw0w2rXXqTEqi-Fk8ONw2OhO), [DonChiaQE](https://www.google.com/url?q=https://github.com/DonChiaQE&sa=D&source=editors&ust=1771589065048476&usg=AOvVaw0-nG3gtW-H8F5e8iChfCTA), [shaunBoahCodes](https://www.google.com/url?q=https://github.com/shaunBoahCodes&sa=D&source=editors&ust=1771589065048538&usg=AOvVaw2Nmax1BuQC9nwARrn__bg-)
+Possible mentors: [hongquan](https://www.google.com/url?q=https://github.com/hongquan/&sa=D&source=editors&ust=1771800528835111&usg=AOvVaw09DwSnORNQVQHfVQpcSkEQ), [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771800528835191&usg=AOvVaw3gKIl8FjxT5x8_lmxwmAmy), [norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771800528835261&usg=AOvVaw2Ja6tH3fhNeuieYG9Yya6W), [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771800528835331&usg=AOvVaw32TLB2XUIK1VKeY0xFsw1n), [DonChiaQE](https://www.google.com/url?q=https://github.com/DonChiaQE&sa=D&source=editors&ust=1771800528835401&usg=AOvVaw3dy_yFaLbEdhWL_vLBv-yZ), [shaunBoahCodes](https://www.google.com/url?q=https://github.com/shaunBoahCodes&sa=D&source=editors&ust=1771800528835488&usg=AOvVaw1UN-Y70QD3Lqsj4E3PmkdV)
 
 Project Size: 350 hours
 
@@ -368,7 +368,7 @@ Skills Required/Preferred
 - API Integration: Familiarity with RESTful APIs and efficient data handling in client-side applications.
 - UI/UX Design: Ability to create intuitive and responsive interfaces, with attention to detail for user experience improvements.
 
-Possible mentors: [hongquan](https://www.google.com/url?q=https://github.com/hongquan/&sa=D&source=editors&ust=1771589065052943&usg=AOvVaw185MYXpyCSe-_LVtVM0UZL), [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771589065053028&usg=AOvVaw2Kofb7jlzJbdH1ziHfe1RW), [norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771589065053084&usg=AOvVaw1CqRTk8zZgI8FFx2NAO4tB), [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771589065053138&usg=AOvVaw0xO5qb4aciLo6uwgmGhZAh), [mohit](https://www.google.com/url?q=https://github.com/mohitk05&sa=D&source=editors&ust=1771589065053191&usg=AOvVaw2TFWiBRZYymBQsEZN6W5Vh)
+Possible mentors: [hongquan](https://www.google.com/url?q=https://github.com/hongquan/&sa=D&source=editors&ust=1771800528841251&usg=AOvVaw3ulSqRWH5v3Lv-8Lk_NE4-), [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771800528841338&usg=AOvVaw1a6W9O0QHNiPb7IDt_jd4n), [norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771800528841408&usg=AOvVaw1SFpw_i6dzyprTgdeHMrE0), [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771800528841476&usg=AOvVaw3GUllRJ1E9SaND32bu2Sqo), [mohit](https://www.google.com/url?q=https://github.com/mohitk05&sa=D&source=editors&ust=1771800528841542&usg=AOvVaw314_fuOh6M488c7EelqtQp)
 
 Project Size: 350 hours
 
@@ -416,7 +416,7 @@ Skills Required/Preferred:
 - UI/UX Design: Ability to enhance user interfaces for better usability and consistency across platforms.
 - DevOps: Familiarity with Docker, CI/CD, and automated testing to ensure reliable deployment and maintenance.
 
-Possible mentors: [hongquan](https://www.google.com/url?q=https://github.com/hongquan/&sa=D&source=editors&ust=1771589065057390&usg=AOvVaw3qS_KpbbK56Xjk76Z9ikd7), [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771589065057451&usg=AOvVaw0nuPK0JQ-KZjSfgxPqsxnk), [norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771589065057503&usg=AOvVaw2CQUh6Gm_4dYL-RGj3BcD8), [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771589065057556&usg=AOvVaw13TxyXaE7WlkFqvVit6QbX), [mohit](https://www.google.com/url?q=https://github.com/mohitk05&sa=D&source=editors&ust=1771589065057606&usg=AOvVaw0rkBB1Dfe4AwF-FAVJFFcS)
+Possible mentors: [hongquan](https://www.google.com/url?q=https://github.com/hongquan/&sa=D&source=editors&ust=1771800528846944&usg=AOvVaw1mBZTXdeXk1U9PCV595xXY), [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771800528847021&usg=AOvVaw2vPgUuwa3wTsq4zcxPNe4y), [norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771800528847089&usg=AOvVaw3eCOyeR9HK_Ji3W4y_wfgy), [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771800528847157&usg=AOvVaw1NB3985SnDXVJddl7Iswvw), [mohit](https://www.google.com/url?q=https://github.com/mohitk05&sa=D&source=editors&ust=1771800528847215&usg=AOvVaw1VqCZpElxI1b_4eQwCf1es)
 
 Project Size: 175 hours
 
@@ -472,7 +472,7 @@ Skills Required/Preferred:
 - DevOps & CI/CD: Knowledge of Docker, Kubernetes, and continuous integration/deployment pipelines.
 - Testing & Documentation: Experience writing comprehensive tests (unit, integration, e2e) and maintaining technical documentation.
 
-Possible mentors: [hongquan](https://www.google.com/url?q=https://github.com/hongquan/&sa=D&source=editors&ust=1771589065062253&usg=AOvVaw3BmEDEJbiGtqg6003sdt-m), [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771589065062318&usg=AOvVaw0xQZGvfTqHQixSDDpyYKOo), [norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771589065062376&usg=AOvVaw3iqryaHaDRQP0wR5mX0tQA), [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771589065062428&usg=AOvVaw0qFOGABkTznXf4Tnkk7ey1), [mohit](https://www.google.com/url?q=https://github.com/mohitk05&sa=D&source=editors&ust=1771589065062479&usg=AOvVaw2cZ7Yb9uJhvR0QqEQlFEB8)
+Possible mentors: [hongquan](https://www.google.com/url?q=https://github.com/hongquan/&sa=D&source=editors&ust=1771800528852856&usg=AOvVaw0XSLhTdfbz_PQ8kCCfOh_j), [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771800528852930&usg=AOvVaw0yA6zAnjC26myjKB4WJR60), [norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771800528853001&usg=AOvVaw2XeNz0uZf5xxI0TsD0KeAr), [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771800528853060&usg=AOvVaw0bTaxuvPGTslwEtykxgyOZ), [mohit](https://www.google.com/url?q=https://github.com/mohitk05&sa=D&source=editors&ust=1771800528853119&usg=AOvVaw0G6GDp8I4RH4H7p64OpKSK)
 
 Project Size: 350 hours
 
@@ -531,7 +531,7 @@ Skills Required/Preferred:
 - UI/UX Design: Strong skills in creating intuitive, responsive, and consistent user interfaces.
 - Testing & Documentation: Ability to write comprehensive tests (unit, integration, and end-to-end) and maintain clear technical documentation.
 
-Possible mentors: [hongquan](https://www.google.com/url?q=https://github.com/hongquan/&sa=D&source=editors&ust=1771589065067296&usg=AOvVaw2UUWXO6DKrnF2cd0J2fu7j), [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771589065067369&usg=AOvVaw3hXp35LMSrBJi0F-qT84SD), [norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771589065067424&usg=AOvVaw1nX5tmeG0lVRfD5-c4hwzr), [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771589065067477&usg=AOvVaw1THW0bhE6AcrDP0WqQBmuQ), [mohit](https://www.google.com/url?q=https://github.com/mohitk05&sa=D&source=editors&ust=1771589065067531&usg=AOvVaw3_UU7KtFBthJIbC5i_NcR7)
+Possible mentors: [hongquan](https://www.google.com/url?q=https://github.com/hongquan/&sa=D&source=editors&ust=1771800528858716&usg=AOvVaw1S2wBGZAt8I3I02yvKOp_2), [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771800528858791&usg=AOvVaw3F15KZ6i6obnPY57dxEADw), [norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771800528858864&usg=AOvVaw3AMy5mv6EqiwOpQnRsiDDs), [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771800528858931&usg=AOvVaw0B6G_NEQaCrzPwJ5BgPVN5), [mohit](https://www.google.com/url?q=https://github.com/mohitk05&sa=D&source=editors&ust=1771800528859004&usg=AOvVaw27ItZytRFOhutohhVIS5vY)
 
 Project Size: 175 hours (medium project)
 
@@ -592,7 +592,7 @@ Skills Required/Preferred:
 - UI/UX Design: Ability to create intuitive and responsive interfaces.
 - Testing & Documentation: Experience with writing unit, integration, and end-to-end tests as well as technical documentation.
 
-Possible mentors: [hongquan](https://www.google.com/url?q=https://github.com/hongquan/&sa=D&source=editors&ust=1771589065072640&usg=AOvVaw39Oh5wG_i-5PpU0q-u3HAW), [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771589065072711&usg=AOvVaw3NCC_Y1PiOnxO-DHzdoPpv), [norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771589065072767&usg=AOvVaw3Q7EL-zXNQ-QYXcp-FjDu5), [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771589065072821&usg=AOvVaw358oPeA5Pv7EMBAuouTYFs), [mohit](https://www.google.com/url?q=https://github.com/mohitk05&sa=D&source=editors&ust=1771589065072871&usg=AOvVaw3xIbsIo9njnemE7AubuMrl)
+Possible mentors: [hongquan](https://www.google.com/url?q=https://github.com/hongquan/&sa=D&source=editors&ust=1771800528865292&usg=AOvVaw2ynUd1bErgYBhvcqH_CwHx), [marcoag](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771800528865370&usg=AOvVaw3VIGOf8nayuJMjO9l028ZQ), [norbusan](https://www.google.com/url?q=https://github.com/norbusan&sa=D&source=editors&ust=1771800528865433&usg=AOvVaw0biDxxLigEOxemcMJrtYnN), [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771800528865502&usg=AOvVaw0Xgm_lP-EMy_rO7MzGfPb1), [mohit](https://www.google.com/url?q=https://github.com/mohitk05&sa=D&source=editors&ust=1771800528865569&usg=AOvVaw0YIamW0Aq697xl4JEBsr2w)
 
 Project Size: 175 hours (medium size)
 
@@ -604,9 +604,9 @@ Required Skills: Python, JavaScript, APIs, AI/LLM
 
 Preferred Skills: WebRTC, SRT
 
-Possilbe Mentors:[ ](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771589065073985&usg=AOvVaw1_zdTVFpPb4YQoM__PxytM)[Orbiter](https://www.google.com/url?q=https://github.com/Orbiter&sa=D&source=editors&ust=1771589065074035&usg=AOvVaw0SkYnaRa1J0BaLLHV81A-d)
+Possilbe Mentors:[ ](https://www.google.com/url?q=https://github.com/marcoag&sa=D&source=editors&ust=1771800528866926&usg=AOvVaw0PUGh7WvcPFr-AmT1Oe2tk)[Orbiter](https://www.google.com/url?q=https://github.com/Orbiter&sa=D&source=editors&ust=1771800528867017&usg=AOvVaw0LuXL5B8sG8cmd5mdVEBHQ)
 
-Repository: [SUSI Translator Repository](https://www.google.com/url?q=https://github.com/susiai/susi_translator&sa=D&source=editors&ust=1771589065074134&usg=AOvVaw04xsY0chouv4eC1BFOJG2-)
+Repository: [SUSI Translator Repository](https://www.google.com/url?q=https://github.com/susiai/susi_translator&sa=D&source=editors&ust=1771800528867141&usg=AOvVaw2iBh1LOQm9pbpMavkIdASX)
 
 Description: The SUSI AI Translator project aims to build an interpretation assistant that leverages large language models (LLMs) to enable automated, real-time live interpretation on top of the eventyay video component. The system integrates advanced speech-to-text technology with AI-powered language translation, allowing for the seamless display of interpreted text (e.g., translated subtitles) during live event video sessions. By bridging the gap between live audio streams and real-time translation, this project will significantly enhance accessibility and engagement for multilingual audiences at events.
 
@@ -649,7 +649,7 @@ Objectives:
 
 Repositories:
 
-[SUSI Translator Repository](https://www.google.com/url?q=https://github.com/susiai/susi_translator&sa=D&source=editors&ust=1771589065077517&usg=AOvVaw0tO3vwBctmBRWvB_1Z3BAL)[eventyay-video Repository](https://www.google.com/url?q=https://github.com/fossasia/eventyay-video&sa=D&source=editors&ust=1771589065077643&usg=AOvVaw0x3aH-HIt8o6BDDLx7k_nM)- (Additional modules or repositories may be created as the project evolves.)
+[SUSI Translator Repository](https://www.google.com/url?q=https://github.com/susiai/susi_translator&sa=D&source=editors&ust=1771800528871244&usg=AOvVaw0uuioXnYgPrXgt7VREh-Qt)[eventyay-video Repository](https://www.google.com/url?q=https://github.com/fossasia/eventyay-video&sa=D&source=editors&ust=1771800528871384&usg=AOvVaw2_XAHXF7cDJJpfk7EqthmY)- (Additional modules or repositories may be created as the project evolves.)
 
 Expected Outcome:
 
@@ -678,9 +678,9 @@ Required Skills: Flutter/Dart, CI/CD
 
 Preferred Skills: UI/UX Design, Bluetooth Communication
 
-Possilbe Mentors: [Jhalakupadhyay](https://www.google.com/url?q=https://github.com/Jhalakupadhyay&sa=D&source=editors&ust=1771589065080371&usg=AOvVaw1-TSHvrpKGocHr5dVhER3A), [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771589065080443&usg=AOvVaw0OIsDTnNCWDYLS_1jraOT7)
+Possilbe Mentors: [Jhalakupadhyay](https://www.google.com/url?q=https://github.com/Jhalakupadhyay&sa=D&source=editors&ust=1771800528874595&usg=AOvVaw07RJWyn6_KO7MoyKrgW19E), [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771800528874681&usg=AOvVaw3soc-fDfVT4Rp0q5EU2NKM)
 
-Repository: [https://github.com/fossasia/badgemagic-app](https://www.google.com/url?q=https://github.com/fossasia/badgemagic-app&sa=D&source=editors&ust=1771589065080587&usg=AOvVaw1t_BVxK_IDq17WzU2J-dpF)
+Repository: [https://github.com/fossasia/badgemagic-app](https://www.google.com/url?q=https://github.com/fossasia/badgemagic-app&sa=D&source=editors&ust=1771800528874949&usg=AOvVaw1NHRLOxf66rk2ndUEGmHk-)
 
 Badge Magic is a Flutter based application that controls LED name badges via Bluetooth, allowing users to upload text, graphics, and animations. Users report reliability issues (transfer errors), inconsistent or non-functional animations, and gaps in the overall viewing and editing experience.
 
@@ -736,9 +736,9 @@ Required Skills: Embedded C / C++
 
 Preferred Skills: Basic electronics and PCB design
 
-Possilbe Mentors: [weberval](https://www.google.com/url?q=https://github.com/weberval&sa=D&source=editors&ust=1771589065085019&usg=AOvVaw0WBhgCTd_DaMzFA_fo24zx), [padmal](https://www.google.com/url?q=https://github.com/CloudyPadmal&sa=D&source=editors&ust=1771589065085098&usg=AOvVaw1CI-dz0cx3MPabQ6AEQZDf)
+Possilbe Mentors: [weberval](https://www.google.com/url?q=https://github.com/weberval&sa=D&source=editors&ust=1771800528880421&usg=AOvVaw1ub27uR7uhh-vdPiw7NO9M), [padmal](https://www.google.com/url?q=https://github.com/CloudyPadmal&sa=D&source=editors&ust=1771800528880504&usg=AOvVaw0VhylynZaQRj49isvILek4)
 
-Repository: [https://github.com/fossasia/badgemagic-firmware](https://www.google.com/url?q=https://github.com/fossasia/badgemagic-firmware&sa=D&source=editors&ust=1771589065085214&usg=AOvVaw2ClkY0WMqK_9S6nbViPdKk)
+Repository: [https://github.com/fossasia/badgemagic-firmware](https://www.google.com/url?q=https://github.com/fossasia/badgemagic-firmware&sa=D&source=editors&ust=1771800528880645&usg=AOvVaw3u_plNJiWLdOcxhvAvAfDX)
 
 Description: Entering bootloader (ISP) mode on LED Badge Magic devices is quite complex and error-prone, especially for beginners and workshop participants. There are currently two ways to do this:
 
@@ -801,7 +801,7 @@ Required Skills: Embedded C / C++
 
 Preferred Skills: Basic electronics and PCB design
 
-Possilbe Mentors: [padmal](https://www.google.com/url?q=https://github.com/CloudyPadmal&sa=D&source=editors&ust=1771589065089817&usg=AOvVaw3mAgl_1654gVv2_wAJXa3n), [weberval](https://www.google.com/url?q=https://github.com/weberval&sa=D&source=editors&ust=1771589065089902&usg=AOvVaw0pNb23ymkW5CIG_UF6WjMM)
+Possilbe Mentors: [padmal](https://www.google.com/url?q=https://github.com/CloudyPadmal&sa=D&source=editors&ust=1771800528886328&usg=AOvVaw1jNtR0l6wByZk_Z_-gWzXn), [weberval](https://www.google.com/url?q=https://github.com/weberval&sa=D&source=editors&ust=1771800528886408&usg=AOvVaw1WcXRNwf4ufDEhrXDTtgtw)
 
 
 Repository:
@@ -895,7 +895,7 @@ Skills Required/Preferred:
 - Electronics & ePaper Displays: Basic knowledge of ePaper technology and hardware integration is a plus.
 - Testing & Documentation: Proven ability to write comprehensive tests and maintain clear, detailed documentation.
 
-Possible mentors: Aditya, MarioB, [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771589065098074&usg=AOvVaw1f0WXP8U39ABHaCrHFLxS5)
+Possible mentors: Aditya, MarioB, [cweitat](https://www.google.com/url?q=https://github.com/cweitat&sa=D&source=editors&ust=1771800528896163&usg=AOvVaw2IuN-K_w-ofig-Fa9hJPbA)
 
 Project Size: 350 hours (large project)
 
@@ -954,7 +954,7 @@ Skills Required/Preferred:
 - Optimization & Debugging: Skills in debugging firmware and optimizing performance for resource-constrained devices.
 - Documentation & Open-Source Collaboration: Ability to write clear technical documentation and collaborate with a global open-source community.
 
-Possible mentors: [fcartegnie](https://www.google.com/url?q=https://github.com/fcartegnie&sa=D&source=editors&ust=1771589065102849&usg=AOvVaw0J5nW3ZXEPj8QPd9UVPM3X), [Benjamin Henrion](https://www.google.com/url?q=https://github.com/zoobab&sa=D&source=editors&ust=1771589065102931&usg=AOvVaw37MilObTkdEE6QODVwhcCl), [Simon Budig](https://www.google.com/url?q=https://github.com/simon-budig&sa=D&source=editors&ust=1771589065102995&usg=AOvVaw276X8q_1TcpiPxKF_QOCed), [danielm](https://www.google.com/url?q=https://github.com/orangecms&sa=D&source=editors&ust=1771589065103055&usg=AOvVaw0-TcTzLWt_a5vnNvM1X5GD)
+Possible mentors: [fcartegnie](https://www.google.com/url?q=https://github.com/fcartegnie&sa=D&source=editors&ust=1771800528901781&usg=AOvVaw2KV5kFZdS0Kb2M6tr7RJ0D), [Benjamin Henrion](https://www.google.com/url?q=https://github.com/zoobab&sa=D&source=editors&ust=1771800528901858&usg=AOvVaw2e5VETAbiyQxKnzDN-GZq8), [Simon Budig](https://www.google.com/url?q=https://github.com/simon-budig&sa=D&source=editors&ust=1771800528901926&usg=AOvVaw2T8fjeAFYcaHMwMS1Fy9rY), [danielm](https://www.google.com/url?q=https://github.com/orangecms&sa=D&source=editors&ust=1771800528901994&usg=AOvVaw0fQ4y1LJcm0mHMx3utcVkZ)
 
 Project Size: 350 hours
 
@@ -972,9 +972,9 @@ Required Skills: Embedded C / C++
 
 Preferred Skills: Hardware & IoT Integration
 
-Possilbe Mentors: [marcnause](https://www.google.com/url?q=https://github.com/marcnause&sa=D&source=editors&ust=1771589065104736&usg=AOvVaw0gHhsY6u_vg4ICpTFQG9HF), [padmal](https://www.google.com/url?q=https://github.com/CloudyPadmal&sa=D&source=editors&ust=1771589065104806&usg=AOvVaw0Ut6_d-Ud32ivZM8hmCOvd), [bessman](https://www.google.com/url?q=https://github.com/bessman&sa=D&source=editors&ust=1771589065104863&usg=AOvVaw31pYiAc0OFzRgeaCr2BgVU)
+Possilbe Mentors: [marcnause](https://www.google.com/url?q=https://github.com/marcnause&sa=D&source=editors&ust=1771800528903921&usg=AOvVaw0DHg_jTMcYkOdX6KuDXBA5), [padmal](https://www.google.com/url?q=https://github.com/CloudyPadmal&sa=D&source=editors&ust=1771800528903997&usg=AOvVaw00aexda90Hsq7s4jA8zh9c), [bessman](https://www.google.com/url?q=https://github.com/bessman&sa=D&source=editors&ust=1771800528904060&usg=AOvVaw3JoyvjSwN7A6S8zsS-wCqZ)
 
-Repository: [https://github.com/fossasia/pslab-firmware](https://www.google.com/url?q=https://github.com/fossasia/pslab-firmware&sa=D&source=editors&ust=1771589065104975&usg=AOvVaw30xzCK70d85YK1JfiXnw5p)
+Repository: [https://github.com/fossasia/pslab-firmware](https://www.google.com/url?q=https://github.com/fossasia/pslab-firmware&sa=D&source=editors&ust=1771800528904191&usg=AOvVaw1cMQtgZwLawxvchIPC3G4Z)
 
 Description: The PSLab v6 hardware includes an onboard SD card slot that enables local data storage, but the current firmware does not yet support SD card access. This project aims to extend the PSLab firmware to support SD card based data logging and enable a true standalone operating mode, where the device can continue collecting and publishing data even when disconnected from a host computer.
 
@@ -1002,9 +1002,9 @@ Required Skills: Embedded C / C++
 
 Preferred Skills: Hardware & IoT Integration
 
-Possilbe Mentors: [padmal](https://www.google.com/url?q=https://github.com/CloudyPadmal&sa=D&source=editors&ust=1771589065107665&usg=AOvVaw2UOr6t9i_EXVy1IipvBFvG), [bessman](https://www.google.com/url?q=https://github.com/bessman&sa=D&source=editors&ust=1771589065107753&usg=AOvVaw0iQQkvwJVKmvmxKeSbQRIn), [marcnause](https://www.google.com/url?q=https://github.com/marcnause&sa=D&source=editors&ust=1771589065107810&usg=AOvVaw2kJE2JtLSY5OYPm8J3dBGF)
+Possilbe Mentors: [padmal](https://www.google.com/url?q=https://github.com/CloudyPadmal&sa=D&source=editors&ust=1771800528907484&usg=AOvVaw3i6nLXpxyzMCpB36G_zdvU), [bessman](https://www.google.com/url?q=https://github.com/bessman&sa=D&source=editors&ust=1771800528907555&usg=AOvVaw0f3EPc7AiyLvG-O7VPzC1o), [marcnause](https://www.google.com/url?q=https://github.com/marcnause&sa=D&source=editors&ust=1771800528907624&usg=AOvVaw2E3EFZAbPe3Nj7oOD1U7_W)
 
-Repository: [https://github.com/fossasia/pslab-firmware](https://www.google.com/url?q=https://github.com/fossasia/pslab-firmware&sa=D&source=editors&ust=1771589065107920&usg=AOvVaw2EfNm_gnzpaXazdd2p9oZu)
+Repository: [https://github.com/fossasia/pslab-firmware](https://www.google.com/url?q=https://github.com/fossasia/pslab-firmware&sa=D&source=editors&ust=1771800528907759&usg=AOvVaw3TXd5f-wBoaCrGYk6lUBRI)
 
 Description: Currently, the PSLab has separate firmware images depending on whether USB or WiFi is used as command interface. Which image is built is controlled by a compile-time switch. The goal of the project is to make the control interface runtime-settable, possibly automatically by monitoring both interfaces and using whichever first receives a valid command.
 
@@ -1033,9 +1033,9 @@ Required Skills: Flutter/Dart,Testing & CI/CD
 
 Preferred Skills: Hardware & IoT Integration
 
-Possilbe Mentors: [padmal](https://www.google.com/url?q=https://github.com/CloudyPadmal&sa=D&source=editors&ust=1771589065110514&usg=AOvVaw2giJQZ4f-DEdV4vkQdZ2xl), [bessman](https://www.google.com/url?q=https://github.com/bessman&sa=D&source=editors&ust=1771589065110589&usg=AOvVaw1miIJ_oM_WQyfleDLW0NSI), [marcnause](https://www.google.com/url?q=https://github.com/marcnause&sa=D&source=editors&ust=1771589065110647&usg=AOvVaw0jbSrAd08X_21BJW8uMW0u)
+Possilbe Mentors: [padmal](https://www.google.com/url?q=https://github.com/CloudyPadmal&sa=D&source=editors&ust=1771800528911044&usg=AOvVaw0nvDx3v2KPAEZ5W9OJacaW), [bessman](https://www.google.com/url?q=https://github.com/bessman&sa=D&source=editors&ust=1771800528911131&usg=AOvVaw15Z7xtv_WGJpNGpJTcqZl-), [marcnause](https://www.google.com/url?q=https://github.com/marcnause&sa=D&source=editors&ust=1771800528911211&usg=AOvVaw0tArHs-LR50UIRyUX1l3bw)
 
-Repository: [PSLab Android Repository](https://www.google.com/url?q=https://github.com/fossasia/pslab-android&sa=D&source=editors&ust=1771589065110758&usg=AOvVaw3N5E5Y8HYe_ZPtD8NKeBla) (Check the flutter branch)
+Repository: [PSLab Android Repository](https://www.google.com/url?q=https://github.com/fossasia/pslab-android&sa=D&source=editors&ust=1771800528911338&usg=AOvVaw0-GiwbB0dCs8vyaln93VNI) (Check the flutter branch)
 
 Description: The PSLab application is implemented using Flutter, which allows it to target not only Android and iOS, but also Linux, Windows, macOS, and the web (Chromium-based browsers). While the mobile versions are actively used, the desktop and web variants have not yet been thoroughly tested or polished, and currently suffer from usability and compatibility issues.
 
@@ -1079,9 +1079,9 @@ Required Skills: Dart/Flutter
 
 Preferred Skills: CD (Value Change Dump), GTKWave, Sigrok,
 
-Possilbe Mentors: [padmal](https://www.google.com/url?q=https://github.com/CloudyPadmal&sa=D&source=editors&ust=1771589065114243&usg=AOvVaw1YGJFq-nHRAxuoHZdfJftg), [bessman](https://www.google.com/url?q=https://github.com/bessman&sa=D&source=editors&ust=1771589065114319&usg=AOvVaw0XIN0BjE5s2ApfJNJHlCLv), [marcnause](https://www.google.com/url?q=https://github.com/marcnause&sa=D&source=editors&ust=1771589065114383&usg=AOvVaw200Pu32S_EMBqrsdLqQPyK)
+Possilbe Mentors: [padmal](https://www.google.com/url?q=https://github.com/CloudyPadmal&sa=D&source=editors&ust=1771800528915404&usg=AOvVaw3XYW8oDlo9eoje4up7tle7), [bessman](https://www.google.com/url?q=https://github.com/bessman&sa=D&source=editors&ust=1771800528915491&usg=AOvVaw3nU8lKR_-LiVMEDM8gxPw0), [marcnause](https://www.google.com/url?q=https://github.com/marcnause&sa=D&source=editors&ust=1771800528915562&usg=AOvVaw3asntoaymvOjT-7uAgyq9V)
 
-Repository: [PSLab Android Repository](https://www.google.com/url?q=https://github.com/fossasia/pslab-android&sa=D&source=editors&ust=1771589065114474&usg=AOvVaw22BjrQyE399hEAr1j_kQkN) (Check the flutter branch)
+Repository: [PSLab Android Repository](https://www.google.com/url?q=https://github.com/fossasia/pslab-android&sa=D&source=editors&ust=1771800528915712&usg=AOvVaw0Y2ZMK0HSpnOg3buOMCsrl) (Check the flutter branch)
 
 Description: The PSLab app allows to write data to text and CSV files. VCD (Value Change Dump) is a rather old ASCII based format (~ 30 years) which is supported by several tools like Sigrok and GTKWave.
 
@@ -1106,9 +1106,9 @@ Required Skills: Flutter/Dart,Testing & CI/CD
 
 Preferred Skills: Hardware & IoT Integration
 
-Possilbe Mentors: [padmal](https://www.google.com/url?q=https://github.com/CloudyPadmal&sa=D&source=editors&ust=1771589065116575&usg=AOvVaw2Js2TCK-amko3eQS9oMgvs), [bessman](https://www.google.com/url?q=https://github.com/bessman&sa=D&source=editors&ust=1771589065116640&usg=AOvVaw1o5LGFe7a8TSGwk10FQ880)
+Possilbe Mentors: [padmal](https://www.google.com/url?q=https://github.com/CloudyPadmal&sa=D&source=editors&ust=1771800528918366&usg=AOvVaw3wji-pK3z4VRpQtlE-cVWe), [bessman](https://www.google.com/url?q=https://github.com/bessman&sa=D&source=editors&ust=1771800528918440&usg=AOvVaw2d-gGtdhV0PHPkVPTYgHHQ)
 
-Repository: [PSLab Android Repository](https://www.google.com/url?q=https://github.com/fossasia/pslab-android&sa=D&source=editors&ust=1771589065116751&usg=AOvVaw1g5tvSMXUryTmZa5KQuPuE) (Check the flutter branch)
+Repository: [PSLab Android Repository](https://www.google.com/url?q=https://github.com/fossasia/pslab-android&sa=D&source=editors&ust=1771800528918646&usg=AOvVaw2K8R7_8sV4tjBBD4T2CHoU) (Check the flutter branch)
 
 Description: The PSLab Flutter app provides a cross-platform interface to control PSLab hardware and access measurement features, but not all functions have been thoroughly tested across devices and platforms. Users reported bugs, inconsistent behavior, and usability friction that makes it harder to use PSLab effectively especially for first-time users. This project focuses on improving the app as a reliable daily driver by systematically testing and fixing issues across core workflows, refining the user experience, extending support for additional sensors and capabilities exposed by the PSLab hardware/firmware, and implementing interactive in-app guided tutorials that walk users through each major function directly inside the UI.
 
@@ -1153,9 +1153,9 @@ Project Size: 175 hours
 
 Required Skills: JavaScript / TypeScript
 
-Possilbe Mentors: [rolandturner](https://www.google.com/url?q=https://github.com/rolandturner&sa=D&source=editors&ust=1771589065120792&usg=AOvVaw3tvK0abdX2yblRkv-974uQ), [hpdang](https://www.google.com/url?q=https://github.com/hpdang&sa=D&source=editors&ust=1771589065120868&usg=AOvVaw1zFY0RLCEgDofuS9OgpMHL), [mohit](https://www.google.com/url?q=https://github.com/mohitk05&sa=D&source=editors&ust=1771589065120924&usg=AOvVaw0B7OITZEo75lCSlvxbnfd9)
+Possilbe Mentors: [rolandturner](https://www.google.com/url?q=https://github.com/rolandturner&sa=D&source=editors&ust=1771800528926039&usg=AOvVaw067oO01FKBVKfc3JrvKdgO), [hpdang](https://www.google.com/url?q=https://github.com/hpdang&sa=D&source=editors&ust=1771800528926235&usg=AOvVaw3NXj7ojZDWjWLYojnJcCEA), [mohit](https://www.google.com/url?q=https://github.com/mohitk05&sa=D&source=editors&ust=1771800528926395&usg=AOvVaw0yXw2aRQaThruyrZHhDuFY)
 
-Repository: [Scrum Helper Repository](https://www.google.com/url?q=https://github.com/fossasia/scrum_helper&sa=D&source=editors&ust=1771589065121032&usg=AOvVaw1m12wcvTD5znR0nmkoiCnE)
+Repository: [Scrum Helper Repository](https://www.google.com/url?q=https://github.com/fossasia/scrum_helper&sa=D&source=editors&ust=1771800528926610&usg=AOvVaw0CMc2DtqOTnrkE6XOoB3x5)
 
 Description: Scrum Helper currently works well with GitHub. We want to extend it other source code management (SCM) platforms such as GitLab, Gitea, or Bitbucket.
 
@@ -1178,9 +1178,9 @@ Project Size: 175 hours
 
 Required Skills: JavaScript / TypeScript
 
-Possilbe Mentors: [rolandturne](https://www.google.com/url?q=https://github.com/rolandturner&sa=D&source=editors&ust=1771589065122751&usg=AOvVaw2_ZztElb3rgrkuyiSrTZ8F)[r](https://www.google.com/url?q=https://github.com/rolandturner&sa=D&source=editors&ust=1771589065122801&usg=AOvVaw0ATIYQqfAr6xXmWCQBUZSR) [hpdang](https://www.google.com/url?q=https://github.com/hpdang&sa=D&source=editors&ust=1771589065122856&usg=AOvVaw2KRZ_O6VkJQFLKP-dVM2c2), [mohit](https://www.google.com/url?q=https://github.com/mohitk05&sa=D&source=editors&ust=1771589065122910&usg=AOvVaw1rHBtv1bVi3wADZV1DZNW0),
+Possilbe Mentors: [rolandturne](https://www.google.com/url?q=https://github.com/rolandturner&sa=D&source=editors&ust=1771800528930410&usg=AOvVaw1ApXpdaFpNN7Fg-FwjOyiI)[r](https://www.google.com/url?q=https://github.com/rolandturner&sa=D&source=editors&ust=1771800528930496&usg=AOvVaw1yDAxba_32gla-WhG00Iuc) [hpdang](https://www.google.com/url?q=https://github.com/hpdang&sa=D&source=editors&ust=1771800528930573&usg=AOvVaw0Co6UqKWCO6iYssv4XBYRJ), [mohit](https://www.google.com/url?q=https://github.com/mohitk05&sa=D&source=editors&ust=1771800528930646&usg=AOvVaw1JxvT3B5D090JkUsv6q69N),
 
-Repository: [Scrum Helper Repository](https://www.google.com/url?q=https://github.com/fossasia/scrum_helper&sa=D&source=editors&ust=1771589065123005&usg=AOvVaw1vctUDWozVm1_CLTS4q_oZ)
+Repository: [Scrum Helper Repository](https://www.google.com/url?q=https://github.com/fossasia/scrum_helper&sa=D&source=editors&ust=1771800528930773&usg=AOvVaw2JF6Z0QRKuYWTftuhr9oZD)
 
 Description: Scrum Helper can generate activity based reports but it does not help teams assess whether their work is aligned with sprint goals. Scope creep and off-goal work often go unnoticed until the sprint review.
 

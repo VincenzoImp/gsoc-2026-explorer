@@ -1,14 +1,14 @@
 # UC OSPO — Project Ideas
 
 **Source:** https://ucsc-ospo.github.io/osre26/#projects
-**Scraped:** 2026-02-20T11:48:56.924278
+**Scraped:** 2026-02-22T23:28:47.600465
 
 ---
 
 Matching summer students with research mentors and sponsors.
 
-The Open Source Research Experience (OSRE) program provides support for undergraduate and graduate students contributing to open source projects and reproducible research efforts. With its dual focus on both increasing open source communities and making computational research efforts reproducible, the OSRE supports a wide variety of projects. In connection with the OSRE, the UCSC OSPO has taken part in the [Google Summer of Code](https://summerofcode.withgoogle.com) as a mentor organization. Information from past OSRE years can be found here: [2025](https://ucsc-ospo.github.io/osre25), [2024](https://ucsc-ospo.github.io/osre24), [2023](https://ucsc-ospo.github.io/osre23) and [2022](https://cross.ucsc.edu/2022-osre/index.html) ([final 2022 reports](https://ucsc-ospo.github.io/post/20220929)).
-Mentors interested in participating in the OSRE (including for projects relevant to GSoC and the SoR) can [post their project ideas](https://ucsc-ospo.github.io/osredocs/formentors/) for students to review. [Project ideas](https://ucsc-ospo.github.io#projects) are short abstracts that provide an overview of the tasks students will accomplish over the summer. See [mentor page](https://ucsc-ospo.github.io#formentors) for more details.
+The Open Source Research Experience (OSRE) program provides support for undergraduate and graduate students contributing to open source projects and reproducible research efforts. With its dual focus on both increasing open source communities and making computational research efforts reproducible, the OSRE supports a wide variety of projects. In connection with the OSRE, the UCSC OSPO has taken part in the [Google Summer of Code](https://summerofcode.withgoogle.com) as a mentor organization. Information from past OSRE years can be found here: [2025](/ideas/uc-ospo/osre25), [2024](/ideas/uc-ospo/osre24), [2023](/ideas/uc-ospo/osre23) and [2022](https://cross.ucsc.edu/2022-osre/index.html) ([final 2022 reports](/ideas/uc-ospo/post-20220929)).
+Mentors interested in participating in the OSRE (including for projects relevant to GSoC and the SoR) can [post their project ideas](/ideas/uc-ospo/osredocs-formentors) for students to review. [Project ideas](https://ucsc-ospo.github.io#projects) are short abstracts that provide an overview of the tasks students will accomplish over the summer. See [mentor page](https://ucsc-ospo.github.io#formentors) for more details.
 Interested Students or other newcomers to open source or reproducibility should review these project ideas and work with mentors to develop a full proposal. Student projects are due by April. See [student information page](https://ucsc-ospo.github.io#forstudents) for more details.
 
 **Table of Content**: [OSRE News](https://ucsc-ospo.github.io#news) | [OSRE 2026](https://ucsc-ospo.github.io#osre26) | [For students](https://ucsc-ospo.github.io#forstudents) | [Student pages](https://ucsc-ospo.github.io#studentpages) | [For mentors](https://ucsc-ospo.github.io#formentors) | [For sponsors](https://ucsc-ospo.github.io#forsponsors) | [Timeline](https://ucsc-ospo.github.io#timeline) | [Projects](https://ucsc-ospo.github.io#projects) | [Tag cloud](https://ucsc-ospo.github.io#tags) | [Mentors and Contributors](https://ucsc-ospo.github.io#mentors)
@@ -17,7 +17,7 @@ Open Source Research Experience
 
 As last year OSRE 2026 will include mentors across multiple University of California campuses. Project ideas are listed [below](https://ucsc-ospo.github.io#projects).
 
-If you are interested, have a look at our [guidelines for students](https://ucsc-ospo.github.io/osredocs/forstudents), which includes timelines on when to contact mentors and proposal guidelines and expectations. Students may begin reaching out to mentors **after February 19, 2026**.
+If you are interested, have a look at our [guidelines for students](/ideas/uc-ospo/osredocs-forstudents), which includes timelines on when to contact mentors and proposal guidelines and expectations. Students may begin reaching out to mentors **after February 19, 2026**.
 
 **Students interested in applying to any of our projects must join our Slack channel before March 16, 2026 to be considered elgibile.** Email [ospo-info-group@ucsc.edu](mailto:ospo-info-group@ucsc.edu) to be added to our slack channel.
 
@@ -27,11 +27,11 @@ Due to the open source nature of all OSRE projects, contributions are welcome fr
 
 We typically support the work of undergraduate students; however graduate students may also apply to work on more advanced project ideas. Please check out the project ideas page and contact the mentor if you have questions.
 
-Go to [2025 student pages](https://ucsc-ospo.github.io/osre25/#studentpages)
+Go to [2025 student pages](/ideas/uc-ospo/osre25-2)
 
-We are asking OSRE 2026 students and contributors to share their progress on a regular basis. We are excited to be able to highlight their work on this website and in events such as our Open Source Symposium. This [blog post](https://ucsc-ospo.github.io/report/osre26/ucsc/admin/20241021-admin/) contains instructions on how to start highlighting contributor work with blog posts, also known as “student pages”. And here they are:
+We are asking OSRE 2026 students and contributors to share their progress on a regular basis. We are excited to be able to highlight their work on this website and in events such as our Open Source Symposium. This [blog post](/ideas/uc-ospo/report-osre26-ucsc-admin-20241021-admin) contains instructions on how to start highlighting contributor work with blog posts, also known as “student pages”. And here they are:
 
-The UCSC OSPO is looking for mentors to be part of our 2026 Open Source Research Experience Program (OSRE). Please read the [FAQ for Mentors](https://ucsc-ospo.github.io/osredocs/mentorfaq) and, if interested in participating, [the instructions](https://ucsc-ospo.github.io/osredocs/formentors) for posting projects.
+The UCSC OSPO is looking for mentors to be part of our 2026 Open Source Research Experience Program (OSRE). Please read the [FAQ for Mentors](/ideas/uc-ospo/osredocs-mentorfaq) and, if interested in participating, [the instructions](/ideas/uc-ospo/osredocs-formentors-2) for posting projects.
 
 While typical OSRE supported projects require mentors who are connected to University of California-based open source projects, the Summer of Reproducibility allows us to also support mentors interested in research projects related to the creation and usage of reproducibilty artifacts.
 
@@ -49,7 +49,7 @@ Your project needs to have at least one mentor affiliated with the University of
 
 All software created as part of an OSRE project must be released as free and open source under a license that is both approved by the Open Source Initiative (OSI) and recognized as free by the Free Software Foundation (FSF).
 
-For more details, please see the [FAQ for Mentors](https://ucsc-ospo.github.io/osredocs/mentorfaq) and [the instructions](https://ucsc-ospo.github.io/osredocs/formentors) for posting projects.
+For more details, please see the [FAQ for Mentors](/ideas/uc-ospo/osredocs-mentorfaq) and [the instructions](/ideas/uc-ospo/osredocs-formentors-2) for posting projects.
 
 **Is your organization looking to use open source more effectively and want to support projects that directly benefit your business or industry?**
 

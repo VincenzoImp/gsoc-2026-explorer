@@ -1,13 +1,13 @@
 # LibreCube Initiative — Project Ideas
 
 **Source:** https://librecube.org/google-summer-of-code/
-**Scraped:** 2026-02-20T11:48:56.953477
+**Scraped:** 2026-02-22T23:28:47.621369
 
 ---
 
 LibreCube is applying for the [Google Summer of Code](https://summerofcode.withgoogle.com) (GSoC) program this year!
 
-GSoC is a vital opportunity for attracting new members to the LibreCube community and the open source world in general. We heavily rely on contributors to extend our open source ecosystem for semi-autonomous exploration systems and technology. Listed below are the project ideas for this year. Please send us an email ([info@librecube.org](mailto:info@librecube.org)) with a short text about yourself (your skills and interests) and what of the project(s) you find interesting to work on. You may want to structure your project application according to [this template](https://librecube.org/google-summer-of-code-proposal/).
+GSoC is a vital opportunity for attracting new members to the LibreCube community and the open source world in general. We heavily rely on contributors to extend our open source ecosystem for semi-autonomous exploration systems and technology. Listed below are the project ideas for this year. Please send us an email ([info@librecube.org](mailto:info@librecube.org)) with a short text about yourself (your skills and interests) and what of the project(s) you find interesting to work on. You may want to structure your project application according to [this template](/ideas/librecube-initiative/google-summer-of-code-proposal).
 
 **Notes:**
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { IdeasRenderer } from "@/components/ideas/ideas-renderer";
@@ -62,7 +62,30 @@ export default async function IdeasPage({ params }: PageProps) {
       {/* Content with TOC */}
       <div className="flex gap-8">
         <article className="min-w-0 flex-1">
-          <IdeasRenderer content={org.ideas_content} />
+          <IdeasRenderer content={org.ideas_content} ideasUrl={org.ideas_url} />
+
+          {/* Related sub-pages */}
+          {org.ideas_subpages?.length > 0 && (
+            <>
+              <Separator className="my-8" />
+              <section>
+                <h2 className="mb-4 text-xl font-semibold">Related Pages</h2>
+                <ul className="space-y-2">
+                  {org.ideas_subpages.map((sp) => (
+                    <li key={sp.slug}>
+                      <Link
+                        href={`/ideas/${org.slug}/${sp.slug}`}
+                        className="inline-flex items-center gap-2 text-primary hover:underline"
+                      >
+                        <FileText className="h-4 w-4 shrink-0" />
+                        {sp.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            </>
+          )}
         </article>
         <aside className="hidden w-56 shrink-0 xl:block">
           <IdeasToc content={org.ideas_content} />

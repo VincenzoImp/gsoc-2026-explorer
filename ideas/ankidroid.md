@@ -1,7 +1,7 @@
 # AnkiDroid — Project Ideas
 
 **Source:** https://docs.google.com/document/d/1ygIJl-Tp5_wJDKkSXrCC8h5K3WUG8D4BcJa_j70F0Zo
-**Scraped:** 2026-02-20T12:04:21.010944
+**Scraped:** 2026-02-22T23:28:47.567224
 
 ---
 
@@ -9,7 +9,7 @@ AnkiDroid’s GSoC 2026 Ideas List
 
 [>> Direct Link to Ideas List <<](https://docs.google.com#h.sjaldbuk114s)
 
-[AnkiDroid](https://www.google.com/url?q=https://github.com/ankidroid/Anki-Android/&sa=D&source=editors&ust=1771589060864639&usg=AOvVaw2t_NWbzFXc9SCN15lqx4c0) is a free Android flashcard app which makes remembering things easy [1] via use of spaced repetition. Because it's a lot more efficient than traditional study methods, you can either greatly decrease your time spent studying, or greatly increase the amount you learn.
+[AnkiDroid](https://www.google.com/url?q=https://github.com/ankidroid/Anki-Android/&sa=D&source=editors&ust=1771801024477976&usg=AOvVaw2jaDa93oIxPl81aBLEkFeZ) is a free Android flashcard app which makes remembering things easy [1] via use of spaced repetition. Because it's a lot more efficient than traditional study methods, you can either greatly decrease your time spent studying, or greatly increase the amount you learn.
 
 Anyone who needs to remember things in their daily life can benefit from AnkiDroid. Since it is content-agnostic and supports images, audio, videos and scientific markup (via LaTeX), the possibilities are endless.
 
@@ -22,25 +22,25 @@ For example:
 - Mastering long poems
 - Even practicing guitar chords!
 
-We are proud to have 4.8 stars on the [Play Store](https://www.google.com/url?q=https://play.google.com/store/apps/details?id%3Dcom.ichi2.anki&sa=D&source=editors&ust=1771589060865632&usg=AOvVaw30iIn-4D1j1fjQCwz1htB2), and an installed audience of 4 million (as of January 2026). We have an active community of developers, with many new contributors joining every year and even new localizations. Many of the contributors discovered Android programming with AnkiDroid and we are always happy to help people contribute, independently of Google Summer of Code.
+We are proud to have 4.8 stars on the [Play Store](https://www.google.com/url?q=https://play.google.com/store/apps/details?id%3Dcom.ichi2.anki&sa=D&source=editors&ust=1771801024479007&usg=AOvVaw0BgbkwbhLFL871nDBJ9QS7), and an installed audience of 4 million (as of January 2026). We have an active community of developers, with many new contributors joining every year and even new localizations. Many of the contributors discovered Android programming with AnkiDroid and we are always happy to help people contribute, independently of Google Summer of Code.
 
-You can reach us on the [Anki Discord](https://www.google.com/url?q=https://discord.gg/qjzcRTx&sa=D&source=editors&ust=1771589060866118&usg=AOvVaw2OeCZRq7F7rmPT3SEdRcT0) (#ankidroid-gsoc & #ankidroid-dev) or our [mailing list](https://www.google.com/url?q=https://groups.google.com/forum/?pli%3D1%23!forum/anki-android&sa=D&source=editors&ust=1771589060866233&usg=AOvVaw36rrgfNBFYX4b7HpDE9_DF).
+You can reach us on the [Anki Discord](https://www.google.com/url?q=https://discord.gg/qjzcRTx&sa=D&source=editors&ust=1771801024479487&usg=AOvVaw1jJsxzvFZGac9ERwhtfD5J) (#ankidroid-gsoc & #ankidroid-dev) or our [mailing list](https://www.google.com/url?q=https://groups.google.com/forum/?pli%3D1%23!forum/anki-android&sa=D&source=editors&ust=1771801024479588&usg=AOvVaw3iB3ZYUzCj5hcjYNcoQeW_).
 
 We primarily use Discord for real-time communication, and GitHub issues for context on issues that would be useful for future contributors.
 
 Our GSoC Mentors are:
 
 - CriticalAY
-[https://github.com/criticalAY](https://www.google.com/url?q=https://github.com/criticalAY&sa=D&source=editors&ust=1771589060866563&usg=AOvVaw3qIeECpA2kX9LuBYX3hZrp) - Sanjay Sargam
-[https://github.com/SanjaySargam](https://www.google.com/url?q=https://github.com/SanjaySargam&sa=D&source=editors&ust=1771589060866696&usg=AOvVaw1m5c5A-WFDbd7c1qDPwGrd)
+[https://github.com/criticalAY](https://www.google.com/url?q=https://github.com/criticalAY&sa=D&source=editors&ust=1771801024479913&usg=AOvVaw2V148kU3MGR08Reylrk6Cq) - Sanjay Sargam
+[https://github.com/SanjaySargam](https://www.google.com/url?q=https://github.com/SanjaySargam&sa=D&source=editors&ust=1771801024480039&usg=AOvVaw1r0it4dfNJw5snQbMmy24m)
 
 Our Org Admins are:
 
-Mike Hardy [https://github.com/mikehardy](https://www.google.com/url?q=https://github.com/mikehardy&sa=D&source=editors&ust=1771589060866880&usg=AOvVaw15Q1-Id82uJ3A4SnTe-QWH)
+Mike Hardy [https://github.com/mikehardy](https://www.google.com/url?q=https://github.com/mikehardy&sa=D&source=editors&ust=1771801024480252&usg=AOvVaw3IX1l7yrTIfNW1zSv7CPPj)
 
-David Allison [https://github.com/david-allison](https://www.google.com/url?q=https://github.com/david-allison&sa=D&source=editors&ust=1771589060866997&usg=AOvVaw0ktbs47jpGV4aA0mhwh8QX)
+David Allison [https://github.com/david-allison](https://www.google.com/url?q=https://github.com/david-allison&sa=D&source=editors&ust=1771801024480369&usg=AOvVaw2bAamTlNE05pgzpMFoNhrT)
 
-Our GitHub repository is: [https://github.com/ankidroid/Anki-Android/](https://www.google.com/url?q=https://github.com/ankidroid/Anki-Android/&sa=D&source=editors&ust=1771589060867181&usg=AOvVaw1uCQTTR851crLfMDg2FKfS) and our Wiki contains a lot of useful information, including our [Getting Started page](https://www.google.com/url?q=https://github.com/ankidroid/Anki-Android/wiki/Development-Guide%23getting-started&sa=D&source=editors&ust=1771589060867322&usg=AOvVaw2XFWb9soEybj_qc_EDSU3I).
+Our GitHub repository is: [https://github.com/ankidroid/Anki-Android/](https://www.google.com/url?q=https://github.com/ankidroid/Anki-Android/&sa=D&source=editors&ust=1771801024480529&usg=AOvVaw2e4lGRpKV3Tsvz_47hVUlo) and our Wiki contains a lot of useful information, including our [Getting Started page](https://www.google.com/url?q=https://github.com/ankidroid/Anki-Android/wiki/Development-Guide%23getting-started&sa=D&source=editors&ust=1771801024480665&usg=AOvVaw23Jh6hmxVE1slQfZPQfWVv).
 
 In this document, you’ll find a list of projects that AnkiDroid would offer to mentor for if we are selected for GSoC in 2026.
 
@@ -79,7 +79,7 @@ Build an external Wear OS application that integrates with AnkiDroid. Design int
 
 Widgets were introduced to AnkiDroid in 2010. These provide significant benefit to our power users and we started using them through GSoC 24, but there are still areas where stability,
 
-usability, and functionality can be improved. I invite you to read last year’s contributor’s [report](https://www.google.com/url?q=https://github.com/xenonnn4w/GSoC-Report/blob/main/README.md&sa=D&source=editors&ust=1771589060873331&usg=AOvVaw24FBA4q88Dls1HJa5H1bks) to see what was done.
+usability, and functionality can be improved. I invite you to read last year’s contributor’s [report](https://www.google.com/url?q=https://github.com/xenonnn4w/GSoC-Report/blob/main/README.md&sa=D&source=editors&ust=1771801024486469&usg=AOvVaw1NSptcGhlzLYc57Iv-R0LG) to see what was done.
 
 
 Review and improve the stability and performance of existing widgets

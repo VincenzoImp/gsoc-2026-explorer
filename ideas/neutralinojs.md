@@ -1,7 +1,7 @@
 # Neutralinojs — Project Ideas
 
 **Source:** https://github.com/neutralinojs/gsoc2026/blob/main/project-ideas.md
-**Scraped:** 2026-02-20T11:48:56.925265
+**Scraped:** 2026-02-22T23:28:47.604102
 
 ---
 
@@ -12,7 +12,7 @@ your own ideas with us via [Discord](https://discord.gg/cybpp4guTJ) or email (`n
 
 Thank you for contributing to open-source 🎉
 
- _[Click here](./README.md) to go back to the GSoC getting started guide._
+ _[Click here](/ideas/neutralinojs/readme) to go back to the GSoC getting started guide._
 
 ### Neutralinojs builder: a CLI plugin to generate platform-specific app installers
 

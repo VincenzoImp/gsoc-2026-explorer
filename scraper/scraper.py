@@ -30,19 +30,24 @@ Usage:
     python scraper.py --max-orgs 5         # test with 5 orgs
     python scraper.py --tech python        # only Python orgs
     python scraper.py --org jenkins        # only scrape matching org(s)
+
+    # Sub-page options:
+    python scraper.py --no-subpages        # skip fetching linked sub-pages
+    python scraper.py --max-subpages 10    # limit sub-pages per org (0 = unlimited)
 """
 
 import argparse
 import asyncio
 import json
 import re
+import shutil
 import subprocess
 import sys
 import time
 from pathlib import Path
 from datetime import datetime
 from typing import Optional
-from urllib.parse import urlparse, quote
+from urllib.parse import urlparse, urljoin, quote, parse_qs
 
 import requests
 import trafilatura
@@ -56,7 +61,7 @@ except ImportError:
 
 # ─── Config ───────────────────────────────────────────────────────────────
 GSOC_API_URL = "https://summerofcode.withgoogle.com/api/program/2026/organizations/"
-OUTPUT_DIR = Path(".")
+OUTPUT_DIR = Path(__file__).resolve().parent.parent
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
                   "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
@@ -151,6 +156,390 @@ def classify_url(url: str) -> tuple:
             return ("gitlab_issues", url)
 
     return ("generic", url)
+
+
+# ─── Content quality validation ──────────────────────────────────────────
+
+# Patterns that indicate the scraped content is not real page content.
+# Each tuple is (pattern, label) — label is used for logging.
+_GARBAGE_PATTERNS: list[tuple[re.Pattern, str]] = [
+    # Anti-bot / challenge pages
+    (re.compile(r"making sure you.re not a bot", re.I), "anti-bot challenge"),
+    (re.compile(r"please wait.*while we (ensure|verify)", re.I), "anti-bot challenge"),
+    (re.compile(r"checking (if the site connection is secure|your browser)", re.I), "anti-bot challenge"),
+    (re.compile(r"proof.of.work", re.I), "anti-bot challenge"),
+    (re.compile(r"please (enable|allow) (javascript|cookies)", re.I), "anti-bot challenge"),
+    (re.compile(r"anubis.*protect the server", re.I), "anti-bot challenge"),
+    (re.compile(r"verify you are human", re.I), "anti-bot challenge"),
+    (re.compile(r"cloudflare.*ray id", re.I), "cloudflare challenge"),
+    (re.compile(r"just a moment\.\.\.", re.I), "cloudflare challenge"),
+    # Auth walls (allow whitespace/newlines between words)
+    (re.compile(r"sign\s+in\s+to\s+continue", re.I | re.S), "auth wall"),
+    (re.compile(r"log\s+in\s+to\s+(continue|access|your account)", re.I | re.S), "auth wall"),
+    (re.compile(r"you need to (sign in|log in)", re.I), "auth wall"),
+    (re.compile(r"^#?\s*sign in\s*$", re.I | re.M), "auth wall"),
+    # CMS UI chrome (scraped toolbar/menu instead of content)
+    (re.compile(r"(Bearbeiten|Bedienungshilfen|Dokumentenstruktur)", re.I), "CMS UI chrome"),
+    (re.compile(r"Druckvorschau.*Seiteneinrichtung", re.I | re.S), "CMS UI chrome"),
+    # Generic error pages
+    (re.compile(r"^404\s*[-–—]?\s*(page|file)?\s*not found", re.I | re.M), "404 page"),
+]
+
+
+def is_valid_content(text: str, min_chars: int = 100) -> tuple[bool, str]:
+    """Check if scraped content is real page content, not garbage.
+
+    Returns (is_valid, reason). If invalid, reason describes why.
+    """
+    if not text or len(text.strip()) < min_chars:
+        return False, "too short"
+
+    for pattern, label in _GARBAGE_PATTERNS:
+        if pattern.search(text[:2000]):  # only check the beginning
+            return False, label
+
+    return True, "ok"
+
+
+# ─── Markdown link resolution & sub-page helpers ─────────────────────────
+
+# Regex matching markdown links [text](url) but not images ![text](url)
+_MD_LINK_RE = re.compile(r"(?<!!)\[([^\]]*)\]\(([^)]+)\)")
+
+# File extensions for non-content resources (skip during sub-page fetch)
+_NON_CONTENT_EXTENSIONS = frozenset({
+    # Images
+    ".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".ico", ".bmp", ".tiff",
+    # Media
+    ".mp4", ".webm", ".mp3", ".wav", ".ogg", ".avi", ".mov",
+    # Archives / binaries
+    ".pdf", ".zip", ".tar", ".gz", ".bz2", ".xz", ".7z", ".rar",
+    ".exe", ".dmg", ".deb", ".rpm", ".msi", ".appimage",
+    # Source code (not documentation)
+    ".c", ".h", ".cpp", ".hpp", ".cc", ".cxx", ".hh",
+    ".py", ".pyc", ".pyo", ".pyx",
+    ".js", ".ts", ".jsx", ".tsx", ".mjs", ".cjs",
+    ".java", ".kt", ".kts", ".scala", ".groovy",
+    ".go", ".rs", ".swift", ".m", ".mm",
+    ".rb", ".php", ".pl", ".pm", ".lua", ".r",
+    ".cs", ".fs", ".vb",
+    ".sh", ".bash", ".zsh", ".fish", ".bat", ".ps1", ".cmd",
+    ".sql", ".graphql", ".proto",
+    ".css", ".scss", ".sass", ".less", ".styl",
+    # Config / data files
+    ".xml", ".xsl", ".xsd", ".dtd",
+    ".yaml", ".yml", ".toml", ".ini", ".cfg", ".conf",
+    ".cmake", ".makefile", ".gradle", ".sbt",
+    ".lock", ".sum", ".mod",
+    # Patches / diffs
+    ".patch", ".diff",
+})
+
+# Filename patterns that are not documentation even without extensions
+_NON_CONTENT_FILENAMES = frozenset({
+    "cmakelists.txt", "makefile", "dockerfile", "vagrantfile",
+    "gemfile", "rakefile", "procfile", ".gitignore", ".gitattributes",
+    ".editorconfig", ".eslintrc", ".prettierrc",
+})
+
+# Query-string actions that indicate CMS admin/edit pages, not content
+_SKIP_QUERY_ACTIONS = frozenset({
+    "edit", "delete", "history", "raw", "submit", "purge", "protect",
+    "unprotect", "watch", "unwatch", "render", "markpatrolled",
+})
+
+# Path segments that indicate non-content pages
+_SKIP_PATH_SEGMENTS = frozenset({
+    # Auth / account
+    "login", "signin", "sign_in", "signup", "sign_up", "register",
+    "logout", "sign_out", "oauth", "auth", "sso",
+    "settings", "profile", "account",
+    # Infra
+    "cdn-cgi", "api", "raw", "assets", "static",
+    # VCS internals
+    "commit", "commits", "compare", "blame", "graphs", "network",
+    "stargazers", "watchers", "forks", "contributors",
+    # CI/CD
+    "actions", "workflows", "runs", "checks", "pipelines",
+    # Releases / packages
+    "releases", "tags", "packages",
+})
+
+# Trailing path patterns that indicate non-content pages (e.g. wiki _history)
+_SKIP_PATH_SUFFIXES = frozenset({
+    "_history", "_edit", "_new", "_delete",
+})
+
+
+def is_relative_link(href: str) -> bool:
+    """Check if a link is a relative path (not absolute, not anchor, not mailto)."""
+    if not href:
+        return False
+    if href.startswith(("#", "http://", "https://", "//", "mailto:")):
+        return False
+    if re.match(r"^\./https?://", href):
+        return False
+    return True
+
+
+def generate_subpage_slug(href: str, base_url: str = "") -> str:
+    """Generate a URL-safe slug from a link path.
+
+    For relative links, uses the href directly. For absolute links,
+    extracts the path portion relative to the base URL.
+    """
+    if href.startswith(("http://", "https://", "//")):
+        href_path = urlparse(href).path.strip("/")
+        if base_url:
+            base_path = urlparse(base_url).path.strip("/")
+            if href_path.startswith(base_path + "/"):
+                href_path = href_path[len(base_path) + 1:]
+            elif "/" in base_path:
+                parent = base_path.rsplit("/", 1)[0]
+                if href_path.startswith(parent + "/"):
+                    href_path = href_path[len(parent) + 1:]
+        raw = href_path or urlparse(href).path.strip("/").split("/")[-1]
+    else:
+        raw = re.sub(r"^\./", "", href)
+
+    raw = raw.split("#")[0].split("?")[0]
+    raw = re.sub(r"\.(md|html|htm|txt|rst|wiki)$", "", raw, flags=re.IGNORECASE)
+    slug = re.sub(r"[^\w]+", "-", raw).strip("-").lower()
+    return slug[:80] or "subpage"
+
+
+def deduplicate_slug(slug: str, seen: dict[str, int]) -> str:
+    """Return a unique slug, appending -2, -3, etc. on collision."""
+    if slug not in seen:
+        seen[slug] = 1
+        return slug
+    seen[slug] += 1
+    return f"{slug}-{seen[slug]}"
+
+
+def resolve_markdown_links(content: str, base_url: str) -> str:
+    """Resolve relative URLs in markdown links [text](url) against a base URL.
+
+    Skips anchors (#...), already-absolute URLs, and mailto: links.
+    Handles the malformed ./https:// pattern.
+    """
+    def _resolve(match: re.Match) -> str:
+        text = match.group(1)
+        href = match.group(2)
+
+        if href.startswith(("#", "http://", "https://", "//", "mailto:")):
+            return match.group(0)
+
+        # Handle malformed ./https://... or ./http://... pattern
+        cleaned = re.sub(r"^\./https?://", lambda m: m.group(0)[2:], href)
+        if cleaned != href:
+            return f"[{text}]({cleaned})"
+
+        resolved = urljoin(base_url, href)
+        return f"[{text}]({resolved})"
+
+    return _MD_LINK_RE.sub(_resolve, content)
+
+
+def extract_markdown_links(content: str) -> list[tuple[str, str]]:
+    """Extract all markdown links as (text, url) pairs, excluding images."""
+    return _MD_LINK_RE.findall(content)
+
+
+def is_fetchable_subpage(href: str, base_url: str) -> bool:
+    """Check if a link is a fetchable documentation sub-page on the same domain."""
+    if not href or href.startswith(("#", "mailto:")):
+        return False
+
+    base_parsed = urlparse(base_url)
+    resolved = urljoin(base_url, href)
+    resolved_parsed = urlparse(resolved)
+
+    # Must be same domain
+    if resolved_parsed.netloc != base_parsed.netloc:
+        return False
+
+    # Skip root/homepage links (path is "/" or empty)
+    if resolved_parsed.path.strip("/") == "":
+        return False
+
+    # Skip self-links
+    if resolved_parsed.path == base_parsed.path:
+        return False
+
+    path_lower = resolved_parsed.path.lower()
+    path_segments = [s for s in path_lower.split("/") if s]
+
+    # Skip URLs with email addresses in path (e.g. misresolved mailto:)
+    if "@" in resolved_parsed.path:
+        return False
+
+    # Skip non-content path segments (login, auth, VCS, CI, etc.)
+    if _SKIP_PATH_SEGMENTS & set(path_segments):
+        return False
+
+    # Skip trailing path patterns (wiki _history, _edit, etc.)
+    last_segment = path_segments[-1] if path_segments else ""
+    if any(last_segment.endswith(suffix) for suffix in _SKIP_PATH_SUFFIXES):
+        return False
+
+    # Skip CMS action pages (edit, delete, history, etc.)
+    query_params = parse_qs(resolved_parsed.query)
+    action_values = {v.lower() for vals in query_params.get("action", []) for v in vals.split(",")}
+    if action_values & _SKIP_QUERY_ACTIONS:
+        return False
+
+    # Skip non-content file extensions
+    if any(path_lower.endswith(ext) for ext in _NON_CONTENT_EXTENSIONS):
+        return False
+
+    # Skip known non-documentation filenames
+    if last_segment.lower() in _NON_CONTENT_FILENAMES:
+        return False
+
+    # ── Git forge heuristics (GitHub, GitLab, Gitea, etc.) ──
+
+    is_github = base_parsed.netloc == "github.com"
+    is_gitlab = "gitlab" in base_parsed.netloc
+
+    if is_github or is_gitlab:
+        # Must be same owner/repo (at least 2 common path segments)
+        base_parts = base_parsed.path.strip("/").split("/")
+        resolved_parts = resolved_parsed.path.strip("/").split("/")
+        if len(base_parts) >= 2 and len(resolved_parts) >= 2:
+            if base_parts[:2] != resolved_parts[:2]:
+                return False
+
+        # Skip user/org profile pages (github.com/username — only 1 segment)
+        if len(resolved_parts) < 2:
+            return False
+
+        # Skip directory listings (/tree/) — they return just file names
+        if "tree" in resolved_parts:
+            return False
+
+        # Skip pull requests (often huge diffs)
+        if "pull" in resolved_parts or "pulls" in resolved_parts:
+            return False
+
+        # Skip source code blobs unless they are documentation files
+        if "blob" in resolved_parts:
+            doc_extensions = {".md", ".rst", ".txt", ".adoc", ".wiki", ".html", ".htm"}
+            if not any(path_lower.endswith(ext) for ext in doc_extensions):
+                return False
+
+    return True
+
+
+def extract_and_fetch_subpages(
+    content: str,
+    base_url: str,
+    org_slug: str,
+    max_subpages: int = 0,
+) -> tuple[str, list[dict]]:
+    """Extract same-domain links, fetch sub-pages, rewrite links in main content.
+
+    Fetches both relative links and absolute same-domain links (indicating
+    related content within the same site). Returns the rewritten main content
+    and a list of sub-page dicts with keys: slug, title, source_url, content.
+
+    Set max_subpages to 0 for unlimited (default).
+    """
+    links = extract_markdown_links(content)
+
+    # Identify same-domain links that are fetchable
+    seen_urls: set[str] = set()
+    seen_slugs: dict[str, int] = {}
+    # Maps original href -> (slug, title, resolved_url)
+    subpage_map: dict[str, tuple[str, str, str]] = {}
+
+    for text, href in links:
+        if not href or href.startswith(("#", "mailto:")):
+            continue
+        resolved = urljoin(base_url, href)
+        if not is_fetchable_subpage(resolved, base_url):
+            continue
+        normalized = urlparse(resolved)._replace(fragment="").geturl()
+        if normalized in seen_urls:
+            continue
+        seen_urls.add(normalized)
+
+        slug = deduplicate_slug(generate_subpage_slug(href, base_url), seen_slugs)
+        title = text.strip() or slug
+        subpage_map[href] = (slug, title, normalized)
+
+    if not subpage_map:
+        # No sub-pages found, still resolve remaining relative links
+        rewritten = resolve_markdown_links(content, base_url)
+        return rewritten, []
+
+    items = list(subpage_map.values())
+    if max_subpages > 0 and len(items) > max_subpages:
+        print(f"    Limiting sub-pages from {len(items)} to {max_subpages}")
+        items = items[:max_subpages]
+        # Trim subpage_map to match
+        allowed_slugs = {slug for slug, _, _ in items}
+        subpage_map = {
+            href: v for href, v in subpage_map.items() if v[0] in allowed_slugs
+        }
+
+    print(f"    Found {len(items)} relative sub-pages to fetch")
+
+    # Fetch sub-pages
+    subpages: list[dict] = []
+    fetched_count = 0
+
+    for slug, title, sub_url in items:
+        print(f"      Sub-page: {title} ({sub_url})")
+
+        sub_content = fetch_ideas_simple(sub_url)
+        if sub_content:
+            sub_content = resolve_markdown_links(sub_content, sub_url)
+            subpages.append({
+                "slug": slug,
+                "title": title,
+                "source_url": sub_url,
+                "content": sub_content,
+            })
+            fetched_count += 1
+            print(f"      OK ({len(sub_content)} chars)")
+        else:
+            # Remove from map so link won't be rewritten to internal route
+            for href, v in list(subpage_map.items()):
+                if v[0] == slug:
+                    del subpage_map[href]
+                    break
+            print(f"      FAILED: no content extracted")
+
+        time.sleep(REQUEST_DELAY)
+
+    print(f"    Sub-pages: {fetched_count}/{len(items)} fetched")
+
+    # Build set of successfully fetched slugs
+    fetched_slugs = {sp["slug"] for sp in subpages}
+
+    # Rewrite main content: relative links to sub-pages become internal routes,
+    # other relative links become absolute
+    def _rewrite(match: re.Match) -> str:
+        text = match.group(1)
+        href = match.group(2)
+
+        if href in subpage_map and subpage_map[href][0] in fetched_slugs:
+            slug = subpage_map[href][0]
+            return f"[{text}](/ideas/{org_slug}/{slug})"
+
+        if href.startswith(("#", "http://", "https://", "//", "mailto:")):
+            return match.group(0)
+
+        cleaned = re.sub(r"^\./https?://", lambda m: m.group(0)[2:], href)
+        if cleaned != href:
+            return f"[{text}]({cleaned})"
+
+        resolved = urljoin(base_url, href)
+        return f"[{text}]({resolved})"
+
+    rewritten = _MD_LINK_RE.sub(_rewrite, content)
+    return rewritten, subpages
 
 
 def fetch_raw_markdown(url: str) -> Optional[str]:
@@ -449,6 +838,8 @@ def fetch_ideas_simple(url: str) -> Optional[str]:
     # ── Strategy-specific fetchers ──
 
     # Raw markdown (GitHub blob/wiki/gist, GitLab blob)
+    # NOTE: links are NOT resolved here — extract_and_fetch_subpages() handles
+    # both sub-page detection (on raw relative links) and link resolution.
     if strategy in ("github_raw", "github_wiki_raw", "gist_raw", "gitlab_raw"):
         content = fetch_raw_markdown(target_url)
         if content:
@@ -481,71 +872,131 @@ def fetch_ideas_simple(url: str) -> Optional[str]:
     if not resp:
         return None
 
+    # Early check: reject garbage HTML before expensive extraction
+    # (trafilatura can strip anti-bot markers, so check raw HTML first)
+    valid, reason = is_valid_content(resp.text)
+    if not valid:
+        print(f"    Content rejected ({reason})")
+        return None
+
     # Try trafilatura + markdownify
     result = html_to_markdown(resp.text, url=url)
-    if result:
-        return result
+    if not result:
+        # Final fallback: plain text extraction
+        soup = BeautifulSoup(resp.text, "html.parser")
+        for tag in soup(["script", "style", "nav", "footer", "header", "aside", "noscript"]):
+            tag.decompose()
+        main = (
+            soup.find("main")
+            or soup.find("article")
+            or soup.find('[role="main"]')
+            or soup.find("div", class_=re.compile(r"content|main|post|entry|wiki", re.I))
+            or soup.find("div", id=re.compile(r"content|main|post|entry|wiki", re.I))
+        )
+        if main and len(main.get_text(strip=True)) > 200:
+            result = main.get_text(separator="\n", strip=True)
+        else:
+            body = soup.find("body")
+            result = (body or soup).get_text(separator="\n", strip=True)
+        result = re.sub(r"\n{3,}", "\n\n", result).strip()
 
-    # Final fallback: plain text extraction
-    soup = BeautifulSoup(resp.text, "html.parser")
-    for tag in soup(["script", "style", "nav", "footer", "header", "aside", "noscript"]):
-        tag.decompose()
-    main = (
-        soup.find("main")
-        or soup.find("article")
-        or soup.find('[role="main"]')
-        or soup.find("div", class_=re.compile(r"content|main|post|entry|wiki", re.I))
-        or soup.find("div", id=re.compile(r"content|main|post|entry|wiki", re.I))
-    )
-    if main and len(main.get_text(strip=True)) > 200:
-        text = main.get_text(separator="\n", strip=True)
-    else:
-        body = soup.find("body")
-        text = (body or soup).get_text(separator="\n", strip=True)
-    text = re.sub(r"\n{3,}", "\n\n", text)
-
-    if len(text.strip()) < 100:
+    # Validate content quality — reject garbage (challenge pages, auth walls, etc.)
+    valid, reason = is_valid_content(result)
+    if not valid:
+        print(f"    Content rejected ({reason})")
         return None
-    return text.strip()
+
+    return result
+
+
+async def _extract_page_content(page, url: str) -> Optional[str]:
+    """Extract markdown/text content from a loaded browser page."""
+    html_content = await page.content()
+
+    result = html_to_markdown(html_content, url=url)
+    if not result:
+        soup = BeautifulSoup(html_content, "html.parser")
+        for tag in soup(["script", "style", "nav", "footer", "header", "aside"]):
+            tag.decompose()
+        main = (
+            soup.find("main") or soup.find("article") or soup.find('[role="main"]')
+        )
+        text = (main or soup.find("body") or soup).get_text(separator="\n", strip=True)
+        text = re.sub(r"\n{3,}", "\n\n", text)
+        if len(text.strip()) > 100:
+            result = text.strip()
+
+    return result
 
 
 async def _fetch_one_browser(context, name: str, url: str) -> tuple:
     """Fetch a single URL in a browser tab. Returns (name, result_or_None)."""
     page = await context.new_page()
     try:
-        # Use domcontentloaded for Google Docs (networkidle never fires)
+        # For Google Docs, use the published/preview version instead of the editor
+        if "docs.google.com" in url and "/document/d/" in url:
+            m = re.search(r"/document/d/([a-zA-Z0-9_-]+)", url)
+            if m:
+                doc_id = m.group(1)
+                url = f"https://docs.google.com/document/d/{doc_id}/preview"
+
         wait_until = "domcontentloaded" if "docs.google.com" in url else "networkidle"
-        await page.goto(url, wait_until=wait_until, timeout=25000)
+        await page.goto(url, wait_until=wait_until, timeout=30000)
         await asyncio.sleep(2)
+
+        # First extraction attempt
+        result = await _extract_page_content(page, url)
+
+        # If content looks like a challenge/interstitial page, wait for it to resolve
+        if result:
+            valid, reason = is_valid_content(result)
+            if not valid and reason in ("anti-bot challenge", "cloudflare challenge"):
+                print(f"    Challenge page detected, waiting for resolution...")
+                # Wait up to 20 seconds for the challenge to complete,
+                # polling every 2 seconds for a URL change or new content
+                original_url = page.url
+                for attempt in range(10):
+                    await asyncio.sleep(2)
+                    current_url = page.url
+                    if current_url != original_url:
+                        # Page redirected after challenge — re-extract
+                        await asyncio.sleep(1)
+                        result = await _extract_page_content(page, current_url)
+                        break
+                    # Check if content changed (challenge resolved in-place)
+                    new_result = await _extract_page_content(page, url)
+                    if new_result:
+                        new_valid, _ = is_valid_content(new_result)
+                        if new_valid:
+                            result = new_result
+                            break
 
         # Scroll to load lazy content
         for _ in range(12):
-            prev = await page.evaluate("document.body.scrollHeight")
-            await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-            await asyncio.sleep(0.4)
-            curr = await page.evaluate("document.body.scrollHeight")
-            if curr == prev:
+            try:
+                prev = await page.evaluate("document.body.scrollHeight")
+                await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                await asyncio.sleep(0.4)
+                curr = await page.evaluate("document.body.scrollHeight")
+                if curr == prev:
+                    break
+            except Exception:
                 break
 
-        html_content = await page.content()
+        # Final extraction after scrolling (may have loaded more content)
+        final_result = await _extract_page_content(page, url)
+        if final_result and len(final_result) > len(result or ""):
+            result = final_result
 
-        result = html_to_markdown(html_content, url=url)
-        if not result:
-            # Fallback to plain text
-            soup = BeautifulSoup(html_content, "html.parser")
-            for tag in soup(["script", "style", "nav", "footer", "header", "aside"]):
-                tag.decompose()
-            main = (
-                soup.find("main") or soup.find("article") or soup.find('[role="main"]')
-            )
-            text = (main or soup.find("body") or soup).get_text(separator="\n", strip=True)
-            text = re.sub(r"\n{3,}", "\n\n", text)
-            if len(text.strip()) > 100:
-                result = text.strip()
-
+        # Final validation
         if result:
-            print(f"    OK ({len(result)} chars)")
-            return (name, result)
+            valid, reason = is_valid_content(result)
+            if valid:
+                print(f"    OK ({len(result)} chars)")
+                return (name, result)
+            else:
+                print(f"    FAILED: content rejected ({reason})")
+                return (name, None)
         else:
             print(f"    FAILED: no content extracted")
             return (name, None)
@@ -602,7 +1053,12 @@ async def fetch_ideas_browser(urls: list) -> dict:
 SHORT_CONTENT_THRESHOLD = 100
 
 
-def fetch_all_ideas(orgs: list, use_browser: bool = False) -> list:
+def fetch_all_ideas(
+    orgs: list,
+    use_browser: bool = False,
+    fetch_subpages: bool = True,
+    max_subpages: int = 0,
+) -> list:
     """Fetch project ideas for all organizations."""
     total = len(orgs)
     print(f"Fetching project ideas pages for {total} organizations...\n")
@@ -613,9 +1069,11 @@ def fetch_all_ideas(orgs: list, use_browser: bool = False) -> list:
 
     for i, org in enumerate(orgs):
         url = org.get("ideas_url", "")
+        org_slug = org.get("slug", sanitize_filename(org["name"]))
         if not url:
             print(f"  [{i+1}/{total}] {org['name']}: — no ideas URL")
             org["ideas_content"] = None
+            org["ideas_subpages"] = []
             skipped += 1
             continue
 
@@ -626,10 +1084,22 @@ def fetch_all_ideas(orgs: list, use_browser: bool = False) -> list:
         content = fetch_ideas_simple(url)
 
         if content:
-            org["ideas_content"] = content
             fetched += 1
             lines = content.count("\n") + 1
             print(f"    OK ({len(content)} chars, {lines} lines)")
+
+            # Extract and fetch relative sub-pages
+            if fetch_subpages:
+                rewritten, subpages = extract_and_fetch_subpages(
+                    content, url, org_slug, max_subpages
+                )
+                org["ideas_content"] = rewritten
+                org["ideas_subpages"] = subpages
+                if subpages:
+                    print(f"    Extracted {len(subpages)} sub-pages")
+            else:
+                org["ideas_content"] = resolve_markdown_links(content, url)
+                org["ideas_subpages"] = []
 
             # If content is short and browser is available, queue for retry
             if use_browser and lines < SHORT_CONTENT_THRESHOLD:
@@ -637,6 +1107,7 @@ def fetch_all_ideas(orgs: list, use_browser: bool = False) -> list:
                 print(f"    -> short content, queued for browser retry")
         else:
             org["ideas_content"] = None
+            org["ideas_subpages"] = []
             if use_browser:
                 browser_needed.append((org["name"], url))
                 print(f"    -> queued for browser")
@@ -661,9 +1132,20 @@ def fetch_all_ideas(orgs: list, use_browser: bool = False) -> list:
                 if new_lines > old_lines:
                     if old_content:
                         print(f"  UPGRADED {org['name']}: {old_lines} -> {new_lines} lines")
-                    org["ideas_content"] = new_content
                     if not old_content:
                         fetched += 1
+                    # Extract sub-pages for browser-upgraded content
+                    browser_url = org.get("ideas_url", "")
+                    org_slug = org.get("slug", sanitize_filename(org["name"]))
+                    if fetch_subpages and browser_url:
+                        rewritten, subpages = extract_and_fetch_subpages(
+                            new_content, browser_url, org_slug, max_subpages
+                        )
+                        org["ideas_content"] = rewritten
+                        org["ideas_subpages"] = subpages
+                    else:
+                        org["ideas_content"] = new_content
+                        org["ideas_subpages"] = org.get("ideas_subpages", [])
 
     print(f"\n  Summary: {fetched} fetched, {skipped} no URL, {total - fetched - skipped} failed")
     return orgs
@@ -711,6 +1193,9 @@ def save_results(orgs: list, output_dir: Path):
     orgs_dir = output_dir / "organizations"
     orgs_dir.mkdir(exist_ok=True)
     ideas_dir = output_dir / "ideas"
+    # Clean stale ideas files from previous runs
+    if ideas_dir.exists():
+        shutil.rmtree(ideas_dir)
     ideas_dir.mkdir(exist_ok=True)
     data_dir = output_dir / "data"
     data_dir.mkdir(exist_ok=True)
@@ -720,7 +1205,8 @@ def save_results(orgs: list, output_dir: Path):
     # 1. Master JSON (metadata only, no content blobs)
     master = []
     for org in orgs:
-        entry = {k: v for k, v in org.items() if k != "ideas_content"}
+        entry = {k: v for k, v in org.items()
+                 if k not in ("ideas_content", "ideas_subpages")}
         entry["has_ideas"] = bool(org.get("ideas_content"))
         master.append(entry)
 
@@ -756,7 +1242,7 @@ def save_results(orgs: list, output_dir: Path):
             if org.get("description"):
                 f.write(f"## Description\n\n{org['description']}\n\n")
 
-        # Ideas dump (separate file)
+        # Ideas dump (main content)
         if org.get("ideas_content"):
             with open(ideas_dir / f"{fname}.md", "w", encoding="utf-8") as f:
                 f.write(f"# {org['name']} — Project Ideas\n\n")
@@ -765,9 +1251,25 @@ def save_results(orgs: list, output_dir: Path):
                 f.write(org["ideas_content"])
                 f.write("\n")
 
+            # Sub-page files in ideas/{org_slug}/ directory
+            subpages = org.get("ideas_subpages", [])
+            if subpages:
+                subpages_dir = ideas_dir / fname
+                subpages_dir.mkdir(exist_ok=True)
+                for sp in subpages:
+                    sp_path = subpages_dir / f"{sp['slug']}.md"
+                    with open(sp_path, "w", encoding="utf-8") as f:
+                        f.write(f"# {sp['title']}\n\n")
+                        f.write(f"**Parent:** {org['name']} — Project Ideas\n")
+                        f.write(f"**Source:** {sp['source_url']}\n")
+                        f.write(f"**Scraped:** {datetime.now().isoformat()}\n\n---\n\n")
+                        f.write(sp["content"])
+                        f.write("\n")
+
     ideas_count = sum(1 for o in orgs if o.get("ideas_content"))
+    subpages_count = sum(len(o.get("ideas_subpages", [])) for o in orgs)
     print(f"  {orgs_dir}/ ({len(orgs)} files)")
-    print(f"  {ideas_dir}/ ({ideas_count} files)")
+    print(f"  {ideas_dir}/ ({ideas_count} files, {subpages_count} sub-pages)")
 
     # 4. README with inline summary table
     readme_path = output_dir / "README.md"
@@ -828,6 +1330,8 @@ Examples:
   python scraper.py --max-orgs 5              # test with 5
   python scraper.py --step orgs               # only fetch org list
   python scraper.py --step ideas              # only fetch ideas (needs cached orgs)
+  python scraper.py --no-subpages             # skip linked sub-pages
+  python scraper.py --max-subpages 10         # limit sub-pages per org
         """,
     )
     parser.add_argument("--output-dir", default=str(OUTPUT_DIR), help="Output directory")
@@ -841,6 +1345,10 @@ Examples:
     parser.add_argument("--orgs-file", type=str, help="Load orgs from file (skip API)")
     parser.add_argument("--url", type=str,
                         help="Scrape a single URL and print markdown (no GSoC API needed)")
+    parser.add_argument("--no-subpages", action="store_true",
+                        help="Skip fetching linked sub-pages (faster runs)")
+    parser.add_argument("--max-subpages", type=int, default=0,
+                        help="Max sub-pages to fetch per org (0 = unlimited, default: 0)")
     args = parser.parse_args()
 
     # ── Single URL mode ──
@@ -919,7 +1427,12 @@ Examples:
 
     # ── Fetch ideas ──
     if args.step in ("ideas", "all"):
-        orgs = fetch_all_ideas(orgs, use_browser=args.use_browser)
+        orgs = fetch_all_ideas(
+            orgs,
+            use_browser=args.use_browser,
+            fetch_subpages=not args.no_subpages,
+            max_subpages=args.max_subpages,
+        )
 
     # ── Save ──
     save_results(orgs, output_dir)

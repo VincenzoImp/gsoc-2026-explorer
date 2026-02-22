@@ -1,7 +1,7 @@
 # FFmpeg — Project Ideas
 
 **Source:** https://trac.ffmpeg.org/wiki/SponsoringPrograms/GSoC/2026
-**Scraped:** 2026-02-20T12:08:41.275202
+**Scraped:** 2026-02-22T23:28:47.584214
 
 ---
 
@@ -213,7 +213,7 @@ Students can discuss an idea with the community via the [ffmpeg-devel](https://f
 
 [Last modified](https://trac.ffmpeg.org/wiki/SponsoringPrograms/GSoC/2026?action=diff&version=12)
 
-[8 days ago](https://trac.ffmpeg.org/timeline?from=2026-02-12T01%3A05%3A11Z&precision=second)Last modified on Feb 12, 2026, 1:05:11 AM
+[11 days ago](https://trac.ffmpeg.org/timeline?from=2026-02-12T01%3A05%3A11Z&precision=second)Last modified on Feb 12, 2026, 1:05:11 AM
 
 **Note:**See
 
