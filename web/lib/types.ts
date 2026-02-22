@@ -15,8 +15,16 @@ export interface Organization {
   has_ideas: boolean;
 }
 
+export interface IdeaSubpage {
+  slug: string;
+  title: string;
+  source_url: string;
+  content: string;
+}
+
 export interface OrganizationWithIdeas extends Omit<Organization, "has_ideas"> {
   ideas_content: string | null;
+  ideas_subpages: IdeaSubpage[];
 }
 
 export interface SearchDocument {
