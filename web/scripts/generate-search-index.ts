@@ -1,12 +1,20 @@
 import fs from "node:fs";
 import path from "node:path";
 
+interface IdeaSubpage {
+  slug: string;
+  title: string;
+  source_url: string;
+  content: string;
+}
+
 interface OrgWithIdeas {
   name: string;
   slug: string;
   tagline: string;
   description: string;
   ideas_content: string | null;
+  ideas_subpages: IdeaSubpage[];
   tech_tags: string[];
   topic_tags: string[];
 }
@@ -48,18 +56,28 @@ function main() {
   );
   const orgs: OrgWithIdeas[] = JSON.parse(raw);
 
-  const index: SearchDocument[] = orgs.map((org) => ({
-    slug: org.slug,
-    name: org.name,
-    tagline: org.tagline,
-    description: cleanForSearch(org.description, 500),
-    ideasSnippet:
+  const index: SearchDocument[] = orgs.map((org) => {
+    const mainSnippet =
       org.ideas_content && org.ideas_content !== "None"
         ? cleanForSearch(org.ideas_content, 1500)
-        : "",
-    tech_tags: org.tech_tags,
-    topic_tags: org.topic_tags,
-  }));
+        : "";
+    const subpageTitles = (org.ideas_subpages ?? [])
+      .map((sp) => sp.title)
+      .join(" ");
+    const ideasSnippet = subpageTitles
+      ? `${mainSnippet} ${subpageTitles}`.trim()
+      : mainSnippet;
+
+    return {
+      slug: org.slug,
+      name: org.name,
+      tagline: org.tagline,
+      description: cleanForSearch(org.description, 500),
+      ideasSnippet,
+      tech_tags: org.tech_tags,
+      topic_tags: org.topic_tags,
+    };
+  });
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(index));
