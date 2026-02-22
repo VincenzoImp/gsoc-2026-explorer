@@ -5,7 +5,7 @@
 **Technologies:** machine learning, julia, data science, compilers, garbage-collection
 **Topics:** math, artificial intelligence, science, data science, graphs
 **Website:** https://julialang.org
-**Ideas:** https://julialang.org/jsoc/project
+**Ideas:** https://julialang.org/jsoc/projects/
 **GSoC Page:** https://summerofcode.withgoogle.com/programs/2026/organizations/the-julia-language
 
 ## Description

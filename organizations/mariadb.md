@@ -2,7 +2,7 @@
 
 > The fastest growing Open Source Database
 
-**Technologies:** python, javascript, c/c++, perl, databases
+**Technologies:** python, c/c++, perl, databases
 **Topics:** Database Engines, SQL Features
 **Website:** https://mariadb.org
 **Ideas:** https://mariadb.com/docs/general-resources/community/contributing-participating/google-summers-of-code/google-summer-of-code-2026
