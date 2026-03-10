@@ -201,6 +201,42 @@ def is_valid_content(text: str, min_chars: int = 100) -> tuple[bool, str]:
     return True, "ok"
 
 
+# ─── Markdown content sanitization ───────────────────────────────────────
+
+# Regex patterns for dangerous HTML that can appear inside markdown content.
+_DANGEROUS_TAGS_RE = re.compile(
+    r"<\s*/?\s*(script|iframe|object|embed|applet|form|input|button|textarea|select)\b[^>]*>",
+    re.I | re.S,
+)
+_EVENT_HANDLER_RE = re.compile(
+    r"\s+on\w+\s*=\s*[\"'][^\"']*[\"']",
+    re.I,
+)
+_JS_URL_RE = re.compile(
+    r"(href|src|action)\s*=\s*[\"']\s*javascript\s*:[^\"']*[\"']",
+    re.I,
+)
+_DATA_URL_RE = re.compile(
+    r"(href|src)\s*=\s*[\"']\s*data\s*:[^\"']*[\"']",
+    re.I,
+)
+
+
+def sanitize_markdown(text: str) -> str:
+    """Remove dangerous HTML constructs from markdown content.
+
+    Strips <script>, <iframe>, <object>, <embed>, <form> and related tags,
+    inline event handlers (onclick, onerror, ...), and javascript:/data: URLs.
+    Preserves all other HTML that may be legitimately embedded in markdown
+    (e.g. <details>, <summary>, <div>, <table>, etc.).
+    """
+    text = _DANGEROUS_TAGS_RE.sub("", text)
+    text = _EVENT_HANDLER_RE.sub("", text)
+    text = _JS_URL_RE.sub("", text)
+    text = _DATA_URL_RE.sub("", text)
+    return text
+
+
 # ─── Markdown link resolution & sub-page helpers ─────────────────────────
 
 # Regex matching markdown links [text](url) but not images ![text](url)
@@ -494,7 +530,7 @@ def extract_and_fetch_subpages(
 
         sub_content = fetch_ideas_simple(sub_url)
         if sub_content:
-            sub_content = resolve_markdown_links(sub_content, sub_url)
+            sub_content = sanitize_markdown(resolve_markdown_links(sub_content, sub_url))
             subpages.append({
                 "slug": slug,
                 "title": title,
@@ -1093,12 +1129,12 @@ def fetch_all_ideas(
                 rewritten, subpages = extract_and_fetch_subpages(
                     content, url, org_slug, max_subpages
                 )
-                org["ideas_content"] = rewritten
+                org["ideas_content"] = sanitize_markdown(rewritten)
                 org["ideas_subpages"] = subpages
                 if subpages:
                     print(f"    Extracted {len(subpages)} sub-pages")
             else:
-                org["ideas_content"] = resolve_markdown_links(content, url)
+                org["ideas_content"] = sanitize_markdown(resolve_markdown_links(content, url))
                 org["ideas_subpages"] = []
 
             # If content is short and browser is available, queue for retry
@@ -1141,10 +1177,10 @@ def fetch_all_ideas(
                         rewritten, subpages = extract_and_fetch_subpages(
                             new_content, browser_url, org_slug, max_subpages
                         )
-                        org["ideas_content"] = rewritten
+                        org["ideas_content"] = sanitize_markdown(rewritten)
                         org["ideas_subpages"] = subpages
                     else:
-                        org["ideas_content"] = new_content
+                        org["ideas_content"] = sanitize_markdown(new_content)
                         org["ideas_subpages"] = org.get("ideas_subpages", [])
 
     print(f"\n  Summary: {fetched} fetched, {skipped} no URL, {total - fetched - skipped} failed")
