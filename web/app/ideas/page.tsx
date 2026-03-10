@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { getOrganizations, getTagStats } from "@/lib/data";
 import { IdeasList } from "./ideas-list";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export const metadata: Metadata = {
   title: "Project Ideas",
@@ -8,13 +10,19 @@ export const metadata: Metadata = {
     "Browse all GSoC 2026 project ideas across 184 organizations.",
 };
 
-export default function IdeasIndexPage() {
+function IdeasContent() {
   const orgs = getOrganizations()
     .filter((o) => o.has_ideas)
     .sort((a, b) => a.name.localeCompare(b.name));
 
   const techTags = getTagStats("tech");
   const topicTags = getTagStats("topic");
+
+  return <IdeasList orgs={orgs} techTags={techTags} topicTags={topicTags} />;
+}
+
+export default function IdeasIndexPage() {
+  const orgs = getOrganizations().filter((o) => o.has_ideas);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
@@ -26,7 +34,17 @@ export default function IdeasIndexPage() {
         </p>
       </div>
 
-      <IdeasList orgs={orgs} techTags={techTags} topicTags={topicTags} />
+      <Suspense
+        fallback={
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 9 }).map((_, i) => (
+              <Skeleton key={i} className="h-36 rounded-lg" />
+            ))}
+          </div>
+        }
+      >
+        <IdeasContent />
+      </Suspense>
     </div>
   );
 }
