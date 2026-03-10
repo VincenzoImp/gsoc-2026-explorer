@@ -1,35 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-
-interface IdeaSubpage {
-  slug: string;
-  title: string;
-  source_url: string;
-  content: string;
-}
-
-interface OrgWithIdeas {
-  name: string;
-  slug: string;
-  tagline: string;
-  description: string;
-  ideas_content: string | null;
-  ideas_subpages: IdeaSubpage[];
-  tech_tags: string[];
-  topic_tags: string[];
-}
-
-interface SearchDocument {
-  slug: string;
-  name: string;
-  tagline: string;
-  description: string;
-  ideasSnippet: string;
-  tech_tags: string[];
-  topic_tags: string[];
-  subpageSlug?: string;
-  orgName?: string;
-}
+import type { OrganizationWithIdeas, SearchDocument } from "../lib/types";
 
 const DATA_DIR = path.join(__dirname, "..", "..", "data");
 const OUTPUT_PATH = path.join(__dirname, "..", "public", "search-index.json");
@@ -56,7 +27,7 @@ function main() {
     path.join(DATA_DIR, "organizations_with_ideas.json"),
     "utf-8"
   );
-  const orgs: OrgWithIdeas[] = JSON.parse(raw);
+  const orgs: OrganizationWithIdeas[] = JSON.parse(raw);
 
   const index: SearchDocument[] = orgs.map((org) => {
     const mainSnippet =
