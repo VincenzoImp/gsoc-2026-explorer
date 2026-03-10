@@ -4,7 +4,21 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
+import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
+import rehypeHighlight from "rehype-highlight";
 import { ExternalLink } from "lucide-react";
+
+// Extend default sanitize schema to allow id attributes (needed for heading anchors)
+// and class attributes (needed for syntax highlighting)
+const sanitizeSchema = {
+  ...defaultSchema,
+  attributes: {
+    ...defaultSchema.attributes,
+    "*": [...(defaultSchema.attributes?.["*"] || []), "id", "className"],
+    code: [...(defaultSchema.attributes?.["code"] || []), "className"],
+    span: [...(defaultSchema.attributes?.["span"] || []), "className"],
+  },
+};
 
 interface IdeasRendererProps {
   content: string;
@@ -56,7 +70,11 @@ export function IdeasRenderer({ content, ideasUrl }: IdeasRendererProps) {
     <div className="prose prose-neutral max-w-none dark:prose-invert prose-headings:scroll-mt-20 prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg prose-pre:bg-muted">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeSlug]}
+        rehypePlugins={[
+          rehypeSlug,
+          [rehypeSanitize, sanitizeSchema],
+          rehypeHighlight,
+        ]}
         components={{
           a: ({ href, children, ...props }) => {
             if (!href) {
