@@ -108,19 +108,24 @@ export function CommandSearch({
     null
   );
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   // Lazy load the search index on first open
   useEffect(() => {
-    if (open && !searcher) {
+    if (open && !searcher && !error) {
       setLoading(true);
-      import("@/lib/search").then(({ getSearcher }) => {
-        getSearcher().then((s) => {
+      import("@/lib/search")
+        .then(({ getSearcher }) => getSearcher())
+        .then((s) => {
           setSearcher(s);
           setLoading(false);
+        })
+        .catch(() => {
+          setLoading(false);
+          setError(true);
         });
-      });
     }
-  }, [open, searcher]);
+  }, [open, searcher, error]);
 
   // Search when query changes
   useEffect(() => {
@@ -186,6 +191,10 @@ export function CommandSearch({
               <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
               <span className="text-sm text-muted-foreground">Loading...</span>
             </div>
+          ) : error ? (
+            <span className="text-sm text-destructive">
+              Failed to load search index. Try refreshing the page.
+            </span>
           ) : (
             "No results found."
           )}

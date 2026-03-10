@@ -6,6 +6,9 @@ let indexPromise: Promise<SearchDocument[]> | null = null;
 
 async function loadIndex(): Promise<SearchDocument[]> {
   const resp = await fetch("/search-index.json");
+  if (!resp.ok) {
+    throw new Error(`Failed to load search index: ${resp.status}`);
+  }
   return resp.json();
 }
 
