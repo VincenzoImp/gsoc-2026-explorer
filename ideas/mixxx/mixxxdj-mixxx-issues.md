@@ -2,7 +2,443 @@
 
 **Parent:** Mixxx — Project Ideas
 **Source:** https://github.com/mixxxdj/mixxx/issues?q=is%3Aopen+is%3Aissue+label%3Afeature
-**Scraped:** 2026-02-22T23:28:47.631497
+**Scraped:** 2026-03-10T16:58:40.258009
+
+---
+
+## #16128: Absolute mode Needle Drop at Beginning of Vinyl
+
+**Labels:** vinylcontrol
+
+If "Vinyl" mode Absolute is the setting, a needle drop at the beginning of media should toggle back to Vinyl Mode Absolute. "period".  The keyboard short cut (Ctrl+Shift+[Y][U]) to toggle Vinyl Absolute mode is clunky.  
+
+Almost all DJ software will fall back to Vinyl Mode Absolute when a needle is dropped at the beginning of a song.  
+
+Yes, looping or cue points will knock off Vinyl Absolute Mode but a needle drop at the start of media should fall back to Vinyl Absolute Mode.
+
+I using 2.5.4 and 2.7 Beta Mixxx.
+
+---
+
+## #16126: ARM64: Audio thread missing flush-to-zero (FPCR FZ bit) causes full-volume digital noise with stacked effects
+
+### Bug Description
+
+## Description
+
+### Summary
+
+On ARM64, Mixxx's audio processing thread runs without the FPCR flush-to-zero (FZ) bit set. This causes denormal float operations in effects with feedback loops to stall the CPU, leading to buffer underruns that produce full-volume digital noise. The issue triggers when two or more effects are active simultaneously.
+
+### Environment
+
+- **Mixxx version**: 2.5.4+dfsg-1+b1 (Debian arm64)
+- **Platform**: Raspberry Pi 4 (Cortex-A72), Debian 13 Trixie, PREEMPT_RT kernel
+- **Audio**: Traktor Kontrol S4 MK2 (USB Audio), ALSA backend, 44100 Hz
+- **Build flags**: `-ffast-math -funroll-loops -O3`
+
+### Steps to Reproduce
+
+1. Run Mixxx on any ARM64/aarch64 system
+2. Load a track on a deck
+3. Enable two or more effects on that deck's effect unit (e.g., echo + reverb, or any chain with feedback-based effects)
+4. Play the track and engage the effects
+
+**Result**: Intermittent blasts of full-volume digital noise (max-amplitude samples sent to DAC).
+
+**Expected**: Clean effect processing, same as on x86.
+
+### Root Cause
+
+On ARM64, the FPCR (Floating Point Control Register) is per-thread and not inherited by child threads. This is a key difference from x86, where the SSE MXCSR register (containing FTZ/DAZ flags) IS inherited via `pthread_create`.
+
+Mixxx is compiled with `-ffast-math`, which causes GCC to link `crtfastmath.o`. This CRT object contains a constructor that sets `FPCR.FZ = 1` but only for the main thread. The audio engine thread, created later via `pthread_create`, starts with `FPCR = 0x0` (FZ bit off, denormals active).
+
+Effects with feedback loops (echo, reverb, phaser, flanger, Moog ladder filter) produce signal tails that decay to denormal float values (~10^-38). Without FTZ, each denormal operation takes 10-100x longer on ARM. When multiple effects are stacked, these accumulated stalls cause audio buffer processing to exceed the real-time deadline, resulting in buffer underruns. The DAC interprets the stale/uninitialized buffer contents as maximum-amplitude output.
+
+#### `-ffast-math` verification bypass
+
+Issue #16053 addressed the denormal-to-zero assertion failing under Valgrind. The runtime check in `callbackProcessClkRef()` verifies FTZ by testing `DBL_MIN / 2 == 0.0`. However, on ARM64 hardware (outside Valgrind), this check likely never catches the problem because:
+
+1. Mixxx is compiled with `-ffast-math`, which tells GCC it can assume denormals are flushed to zero
+2. GCC then optimizes `DBL_MIN / 2 == 0.0` to always-true at compile time (since under `-ffast-math` semantics, denormals "don't exist")
+3. The runtime verification passes without ever reading the actual FPCR register
+4. No warning is logged even though FPCR.FZ is actually 0 on the audio thread
+
+The binary does contain ARM64 FPCR code (`mrs/msr fpcr` instructions and the string `"aarch64 FPCR: setting bit 24 to 1"`), but the "Denormals to zero mode is working/not working" messages never appear in `mixxx.log`. This is consistent with
+
+*[truncated]*
+
+---
+
+## #16123: Remove libmp4v2 as a dependency
+
+### Feature Description
+
+Not sure if this should be a bug or a feature, but the request is to remove `libmp4v2` as a dependency since it no longer appears to be needed.
+
+https://github.com/mixxxdj/mixxx/issues/10019#issuecomment-1225429593 and https://mixxx.discourse.group/t/compiling-mixxx-on-linux-ubuntu-20-04-2-lts/21227/2 suggests that the use of `ffmpeg` replaced `libmp4v2` a while ago. AFAICT the only build script that still uses `libmp4v2` is [`rpm_buildenv.sh`](https://github.com/mixxxdj/mixxx/blob/67fbbfcdc8eab04ff1a70e644969f442b9302ddd/tools/rpm_buildenv.sh#L49), but that script also installs `ffmpeg-devel` so the build should support the `ffmpeg` approach?
+
+Also on the RPM/Fedora side of things, [the wiki](https://github.com/mixxxdj/mixxx/wiki/Mixxx-On-Fedora) states that Mixxx isn't available directly but the source it quotes now says that it's OK and [it is available in the repos](https://packages.fedoraproject.org/pkgs/mixxx/mixxx/). The fusion repo [linked from here](https://github.com/mixxxdj/mixxx/wiki/Ubuntu-and-Fedora-Support-Policy) is also retired/orphaned. It's also stated that [Arch requires libmp4v2](https://github.com/mixxxdj/mixxx/wiki/Compiling%20on%20Linux#arch--derivatives) but they have [dropped it as a dependency too](https://gitlab.archlinux.org/archlinux/packaging/packages/mixxx/-/commit/9aae05131a99cbbc5fa41db531c115bbe9d7785f).
+
+---
+
+## #16121: Rekordbox formated USB appears blank in Mixxx
+
+**Labels:** rekordbox
+
+### Bug Description
+
+Hey there,
+
+I've been trying to read my playlists that I have exported with rekordbox onto my USB hard drive. The hard drive shows up under the rekordbox tab, but is unfortunately blank. If I go through the file browser the tracks are found but do not have my memory cues and loops. I used Rekordbox 7.2.11 to create the USB hard drive.
+
+I've tried everything (formatting in FAT32, exFAT, HFS, using different Mixxx version) but the result is always the same.
+
+Is this a bug or am I too stupid?
+
+<img width="1063" height="302" alt="Image" src="https://github.com/user-attachments/assets/88b506fc-608f-40b9-a0de-6056c95d1e1d" />
+<img width="1321" height="304" alt="Image" src="https://github.com/user-attachments/assets/dc24623e-df72-4361-a362-1df4c3ac06db" />
+
+### Version
+
+2.5.2, 2.6
+
+### OS
+
+MacOS Tahoe 26.2 (25C56)
+
+---
+
+## #16120: STEM loading cuases a cpu spike and a small drop-out
+
+**Labels:** engine, stems
+
+### Bug Description
+
+Noticed today when playing a set that someimes when I loaded a song mixxx had a little dropout...
+
+It happens everytime I load a stam file (I don't have many).
+
+The CPU meter goes red for an instant and there is the dropout
+
+I'm on windows 11 with the numark party mix mk2 at 5ms latency
+
+### Version
+
+2.6-beta-216-g3c0399d5cd
+
+### OS
+
+windows 11
+
+---
+
+## #16114: Do not zip GitHub action artifacts twice
+
+**Labels:** developer experience, github_actions
+
+In former times GitHub required every artifact to be compressed as zip file, this is no longer the case:
+https://github.blog/changelog/2026-02-26-github-actions-now-supports-uploading-and-downloading-non-zipped-artifacts/
+
+It would simplify to use patch files, Mixxx installers and VCPKG buildenvs, if we don't use this second compression - and probably reduce CI CPU time.
+
+---
+
+## #16110: create option to disable recording splitting
+
+**Labels:** preferences, easy, confirmed, recording
+
+### Feature Description
+
+Right now there is no option to disable recording splitting even though there's no reason modern OSes can't write huge files.  We should add this.
+
+---
+
+## #16101: library scanning
+
+**Labels:** scanner
+
+### Bug Description
+
+The Scan Dialog jumps up and down while scanning the library.
+
+https://github.com/user-attachments/assets/348b0a0b-7295-408c-a28e-ec36e97f0132
+
+### Version
+
+2.6 Beta newest version
+
+### OS
+
+Windows 11
+
+---
+
+## #16090: Linux desktop file: wrong StartupWMClass for x11
+
+**Labels:** linux
+
+### Bug Description
+
+PR https://github.com/mixxxdj/mixxx/pull/12424 added this line to the desktop file: `StartupWMClass=org.mixxx.mixxx`
+
+This is fine for Wayland, i guess, but very wrong for x11. Xprop shows: `WM_CLASS(STRING) = "mixxx.bin", "Mixxx"`
+Because of that wrong ID i cannot add Mixxx to Plank-Reloaded, for example.
+But if i change it to: `StartupWMClass=Mixxx` - everything works like a charm.
+
+OS: Linux Mint 22.3
+DE: Cinnamon, Mate
+Installation: repo (mixxx 2.4.0), flatpak (mixxx 2.5.2)
+
+### Version
+
+2.5.4
+
+### OS
+
+Linux
+
+---
+
+## #16077: Support Lower Latency Setting of Audio Interfaces
+
+**Labels:** engine, preferences
+
+### Feature Description
+
+First of all Mixxx 2.5.4 improvements with DVS is a blessing.  Thank You.  Let's take the responsiveness of Mixxx further by including lower latency setting of the software beyond the 96KHz sample rate and 1.3ms Audio Buffer setting in the ASIO Preferences.  Mixxx is getting closer to "feeling" like vinyl but is not there yet. I need software that "feels" like vinyl to beat match, cue, scratch all the things that DJ do while never missing a beat.  Latency has crept into software, Mixxx needs to keep lowering latency.
+
+I used a software utility RTL (Round Trip Latency Utility) which gives me the loop-back time of the audio signal output-input.  With the Mixxx setting of 96KHz, 1.3ms the RTL is 2.865msec (~ 1.3ms X 2) but my audio interface with a fast CPU can support even faster, i.e. lower latency, settings.  
+
+Here's results from my Lynx Audio E44 audio interface
+Sample Rate   Audio Buffer size (msec)   RTL(msec)
+96KHz             128 Samples (1.3ms)         2.865
+96KHz               64 Samples (0.7ms)         1.531
+96KHz                32 Samples (0.3ms)         0.865
+
+192kHz             256 Samples (1.3ms)          2.755
+192kHz             128 Samples (0.7ms)          1.422
+192kHz               64 Samples (0.3ms)          0.755
+192kHz                32 Samples (0.2ms)         0.422
+
+Btw, I was able to use DJ software with settings below 1ms but this other software (VDJ) is full of bugs when it comes to DVS. 
+
+A desktop CPU, e.g. Ryzen 7800 X3D, I'm able to easily go beyond the 96KHz 1.3msec setting of Mixxx.
+
+---
+
+## #16075: Overview cue upate regression after #15968
+
+**Labels:** blocker, waveform, overview
+
+### Bug Description
+
+_filing this in addition to my comment in the PR so we have a blocker bug_
+
+Unfortunately #15968 introduces some update regressions in the overview.
+Hotcues:
+* set hotcue1 -> no update in overview
+* set hotcue2 -> hotcue1 pops up in overview
+
+Loop cues:
+* updated/shown after seek in the overview (repaint?)
+
+Same delay after clearing hotcues: they're removed only after forced repaint (hover overview)
+
+[mixxx-overview-hotcues-delayed-update.webm](https://github.com/user-attachments/assets/c148a54c-f87e-4dc1-be04-3587e56b64e4)
+
+
+
+### Version
+
+_No response_
+
+### OS
+
+_No response_
+
+---
+
+## #16070: allow to join History playlists of two Mixxx computers
+
+**Labels:** history
+
+### Feature Description
+
+Let's say two (or more) Mixxx DJs play a back-to-back session, each on his PC.
+It would be cool if we could somehow merge the two+ session playlists.
+
+on computer A:
+1. export a History playlist with timestamps as well as the tracks (to one new directory)
+2. copy that dir onto a USB drive, SD card, whatever
+
+on computer B:
+1. attach USB, copy the History directory to the music dir
+2. in Mixxx, right-click History root item, "Import external session"
+   * select a dir
+   * import the track files, insert them into a new History playlist, use timestamp from playlist
+(map tracks from m3u to new track ids, pick first track's timestamp as "created" date)
+3. allow to "Merge playlist with ..."
+-> insert imported tracks according to their timestamp
+-> this probably has to be different than the existing "Join with previous" as both playlist are not necessarily
+
+---
+
+## #16069: Add shortcuts for addition to last used crates/playlists
+
+### Feature Description
+
+The current system of manually going through submenus to select which crates/playlists one wants to add selected tracks is great for general multi crate/playlist tiding and organizing. 
+
+However, when it comes to creating a specific crate/playlist from a messy list (like a set for a gig), its obnoxious af, since one has to repeat the same "right click>add to crate/playlist>select crate/playlist" over and over with each track or selection. 
+
+If there's a hotkey one could just press to add the selected tracks to the last used (or maybe a preselected "default" for the session) crate/playlist, that would make the job soooo much easier and streamlined. :)
+
+I dunno, maybe having a QuickSetBuild mode or something where it automatically offers to send all selected tracks to the crate/playlist that was used by pressing something like CTRL+1 (maybe all numbers could be prefconfigured with a playlist/crate for example).
+Or having a "Current Session New Crate/playlist" created when the hotkeys are pressed where all the tracks go, and then one can just rename that or whatever.
+
+---
+
+## #16067: macOS 12 AudioUnit crash on startup
+
+**Labels:** effects, crash, macos
+
+### Bug Description
+
+Hi all, I'm getting this crash on Mixxx startup on macOS Monterey (see detailed log below). I've tried installing the app via mixxx.org and using brew but both give the same result. When starting Mixxx, I just see the loading indicator with the logo for a split second, then it crashes instantly.
+
+I've also tried launching with `--safeMode` option but the issue persists, though I do see some linking error printed out in the console as well as some warnings tied to loading Audio Units.
+
+<details>
+
+<summary>Terminal output</summary>
+
+```
+/Applications/Mixxx.app/Contents/MacOS/Mixxx --safeMode
+dlopen error : dlopen(libjack.0.dylib, 0x0001): tried: 'libjack.0.dylib' (no such file), '/usr/local/lib/libjack.0.dylib' (no such file), '/usr/lib/libjack.0.dylib' (no such file), '/Users/tonell_m/Library/Containers/org.mixxx.mixxx/Data/libjack.0.dylib' (no such file)
+dlopen error : dlopen(/usr/local/lib/libjack.0.dylib, 0x0001): tried: '/usr/local/lib/libjack.0.dylib' (no such file)
+Using preferences ScaleFactor 1
+Selected Qt style: "macos"
+Setting Qt plugin search path to: "/Applications/Mixxx.app/Contents"
+Loading resources from  "/Applications/Mixxx.app/Contents/Resources/"
+Configuration file is now at the current version "2.5.4"
+BroadcastSettings - Found 1 profile(s)
+warning [Main] Audio Unit "TAL-Reverb-2" could not be instantiated: -3000 (Check https://www.osstatus.com for a description)
+warning [Main] Instantiated Audio Unit "TAL-Reverb-2"  is null, despite not erroring on initialization, something's wrong
+warning [Main] Audio Unit "Eos 2" could not be instantiated: -3000 (Check https://www.osstatus.com for a description)
+warning [Main] Instantiated Audio Unit "Eos 2"  is null, despite not erroring on initialization, something's wrong
+warning [Main] Audio Unit "Digitalis" could not be instantiated: -3000 (Check https://www.osstatus.com for a description)
+warning [Main] Instantiated Audio Unit "Digitalis"  is null, despite not erroring on initialization, something's wrong
+warning [Main] Audio Unit "ValhallaFreqEcho" could not be instantiated: -3000 (Check https://www.osstatus.com for a description)
+warning [Main] Instantiated Audio Unit "ValhallaFreqEcho"  is null, despite not erroring on initialization, something's wrong
+warning [Main] Audio Unit "Supercharger" could not be instantiated: -3000 (Check https://www.osstatus.com for a description)
+warning [Main] Instantiated Audio Unit "Supercharger"  is null, despite not erroring on initialization, something's wrong
+warning [Main] Audio Unit "Phasis" could not be instantiated: -3000 (Check https://www.osstatus.com for a description)
+warning [Main] Instantiated Audio Unit "Phasis"  is null, despite not erroring on initialization, something's wrong
+[1]    73050 bus error  /Applications/Mixxx.app/Contents/MacOS/Mixxx --safeMode
+```
+
+</details>
+
+<details>
+
+<summary>Crash report</summary>
+
+```
+-------------------------------------
+Translated Report (Full Report Below)
+---------------------
+
+*[truncated]*
+
+---
+
+## #16060: Feature request: support for Matroska (mka) files
+
+**Labels:** confirmed
+
+### Feature Description
+
+Today I went to load a track I wanted to play and was surprised to find that it wasn't already in my library and that manually trying to add it failed! I looked up the [supported formats ](https://manual.mixxx.org/2.7/en/chapters/library.html#compatible-file-formats) for 2.7 and searched the issue tracker and couldn't find any mention of it (I did find some old forum posts asking the question, but no actual issue), so I'm filing this issue to request support for [Matroska](https://www.rfc-editor.org/rfc/rfc9559) files.
+
+Matroska (more commonly known by the file extension used for video, mkv, or audio, mka) is a wrapper format that is already widely used and supported for audio, particularly among archivists. In particular I would like to request support for Matroska containing FLAC or Opus audio (which is what the files I have use as the underlying codec), but other formats already supported by Mixxx could also be put into Matroska files (See [draft-ietf-cellar-codec](https://datatracker.ietf.org/doc/draft-ietf-cellar-codec/)).
+
+As a stretch goal it would be nice if the file metadata could be read from the Matroska metadata (as opposed to the Vorbis comment embedded in the underlying FLAC or Opus stream), I've seen MKA files which encode metadata in both ways, unfortunately (the container native way and the underlying codec way). For information on standard Matroska tag mappings, see [draft-ietf-cellar-tags](https://datatracker.ietf.org/doc/draft-ietf-cellar-tags/).
+
+This would potentially also give us free support for WEBM files (which use a profile of Matroska), see #12832.
+
+Thank you for your consideration.
+
+**EDIT:** I should mention that, for now, I have just converted the file to FLAC, which is an easy enough work around. This is not a blocker or anything. It would still be nice to have native Matroska support though!
+
+---
+
+## #16057: Unable to find HERCULES MK4 mapping
+
+**Labels:** incomplete
+
+### Bug Description
+
+Bonjour , J'ai un contrôleur HERCULES MK4 et le mapping a disparu , il n'existe plus dans les propositions offertes dans les paramètres  du logiciel . Du coup je ne peux plus utiliser ce contrôleur .
+Pouvez vous m'aider ???
+Merci beaucoup 
+
+### Version
+
+{1B2848C0-65D0-44BC-9298-8905E6CA9C82}
+
+### OS
+
+Windows 11
+
+---
+
+## #16055: column deleagtes not deletd on exit
+
+**Labels:** easy, confirmed
+
+### Bug Description
+
+We use "QAbstractItemView::setItemDelegateForColumn()" which does not take ownership of the delegate. 
+When Mixxx is closed these delegates are not deleted and left behind. This is not an issue in this case but bad practice. Instead we should use uniqe_ptr to have a dedicated owner a std::vector member variable in WTrackTableView.
+ 
+This has been caught by valgrind: 
+```
+==12711== 8 bytes in 1 blocks are indirectly lost in loss record 365 of 9,758
+==12711==    at 0x60B3F95: operator new(unsigned long) (vg_replace_malloc.c:488)
+==12711==    by 0x4A86800: BPMDelegate::BPMDelegate(QTableView*) (bpmdelegate.cpp:39)
+==12711==    by 0x499CAE7: BaseTrackTableModel::delegateForColumn(int, QObject*) (basetracktablemodel.cpp:360)
+==12711==    by 0x4738FF3: WTrackTableView::loadTrackModel(QAbstractItemModel*, bool) (wtracktableview.cpp:278)
+==12711==    by 0x4A3FDD4: DlgHidden::DlgHidden(WLibrary*, QSharedPointer<ConfigObject<ConfigValue> >, Library*, KeyboardEventFilter*) (dlghidden.cpp:39)
+==12711==    by 0x4451525: MixxxLibraryFeature::bindLibraryWidget(WLibrary*, KeyboardEventFilter*) (mixxxlibraryfeature.cpp:145)
+==12711==    by 0x4438EF2: Library::bindLibraryWidget(WLibrary*, KeyboardEventFilter*) (library.cpp:469)
+==12711==    by 0x4AFA242: LegacySkinParser::parseLibrary(QDomElement const&) (legacyskinparser.cpp:1706)
+==12711==    by 0x4AFE518: LegacySkinParser::parseNode(QDomElement const&) (legacyskinparser.cpp:638)
+==12711==    by 0x4B001DA: LegacySkinParser::parseSplitter(QDomElement const&) (legacyskinparser.cpp:682)
+==12711==    by 0x4AFE55E: LegacySkinParser::parseNode(QDomElement const&) (legacyskinparser.cpp:634)
+==12711==    by 0x4B009F9: LegacySkinParser::parseChildren(QDomElement const&, WWidgetGroup*) (legacyskinparser.cpp:747)
+```
+
+
+
+
+
+### Version
+
+2.5.4
+
+### OS
+
+_No response_
+
+---
+
+## #16045: Print metadata to textfile
+
+### Feature Description
+
+I'm a streamer, and I'd like to use Mixxx for my music player, but I'd like a 'now playing' option. All I need is an option that prints the same format that goes into the title bar at the same time into a textfile, and I can call that in stream for a text element.
 
 ---
 
@@ -86,40 +522,6 @@ Windows 11
 
 ---
 
-## #16008: Heap corruption crash with main
-
-### Bug Description
-
-This happens with current main 
-
-double free or corruption (out)
-```
-#0  __pthread_kill_implementation (no_tid=0, signo=6, threadid=140728814523968) at ./nptl/pthread_kill.c:44
-#1  __pthread_kill_internal (signo=6, threadid=140728814523968) at ./nptl/pthread_kill.c:78
-#2  __GI___pthread_kill (threadid=140728814523968, signo=signo@entry=6) at ./nptl/pthread_kill.c:89
-#3  0x00007ffff1e42476 in __GI_raise (sig=sig@entry=6) at ../sysdeps/posix/raise.c:26
-#4  0x00007ffff1e287f3 in __GI_abort () at ./stdlib/abort.c:79
-#5  0x00007ffff1e89677 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff1fdbb77 "%s\n") at ../sysdeps/posix/libc_fatal.c:156
-#6  0x00007ffff1ea0cfc in malloc_printerr (str=str@entry=0x7ffff1fde790 "double free or corruption (out)") at ./malloc/malloc.c:5666
-#7  0x00007ffff1ea2e70 in _int_free (av=0x7ffff201ac80 <main_arena>, p=0x7ffde0015110, have_lock=<optimized out>) at ./malloc/malloc.c:4588
-#8  0x00007ffff1ea56ad in __GI___libc_free (mem=<optimized out>) at ./malloc/malloc.c:3391
-#9  tcache_thread_shutdown () at ./malloc/malloc.c:3227
-#10 __malloc_arena_thread_freeres () at ./malloc/arena.c:1003
-#11 0x00007ffff1ea81ca in __libc_thread_freeres () at ./malloc/thread-freeres.c:44
-#12 0x00007ffff1e9494f in start_thread (arg=<optimized out>) at ./nptl/pthread_create.c:456
-#13 0x00007ffff1f268d0 in clone3 () at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:81
-``` 
-
-### Version
-
-main 
-
-### OS
-
-Ubuntu Jammy
-
----
-
 ## #16007: Auto-DJ is not running
 
 ### Bug Description
@@ -145,30 +547,6 @@ when I activate the Auto-DJ
 ### OS
 
 Ubuntu Studio 25.10
-
----
-
-## #15998: DDJ-FLX4: SHIFT+CUE should jump to track start and pause
-
-### Bug Description
-
-On DDJ-FLX4, pressing SHIFT+CUE jumps to beginning of the track and starts playing (see code [here](https://github.com/mixxxdj/mixxx/blob/a3a4bc4efae4f6064203b735b0123cf17366ad31/res/controllers/Pioneer-DDJ-FLX4.midi.xml#L160) and [here](https://github.com/mixxxdj/mixxx/blob/a3a4bc4efae4f6064203b735b0123cf17366ad31/res/controllers/Pioneer-DDJ-FLX4.midi.xml#L180)). This behavior is:
-
-* mildly inconvenient - at least to me, jumping to start is a preparatory action so it seems more useful/expected _not_ to play automatically
-* inconsistent with regular CUE (without SHIFT) - pressing CUE jumps to main cue point and _pauses_ playing
-* inconsistent with virtually all other controller mappings where SHIFT+CUE jumps to track start and pauses (indeed, jumping to track start and pausing is the default action of SHIFT+CUE in the Components library, so any mapping based on it will behave this way unless modified explicitly)
-
-I suggest mapping SHIFT+CUE to `start_stop` rather than `start_play`. It's a trivial modification, so I can submit a PR, but I'm fairly new to mixxx, so I'd like to have someone confirm first that my suggestion is sensible.
-
-I don't use Windows, so I did not check how Rekordbox or Serato behave, but I did test it on Rekordbox Android app. In that one, SHIFT+CUE jumps to track start but does not affect the playing status: if the track was playing before, it resumes playing; if it was paused, it remains paused. However, given that most mixxx mappings map to `start_stop` (which also sounds the most logical to me), I'm still strongly leaning towards sticking to such behavior with DDJ-FLX4 as well.
-
-### Version
-
-2.5.4
-
-### OS
-
-Linux (Gentoo)
 
 ---
 
@@ -297,7 +675,7 @@ The volume of Deck 1 does not change, the deck stays muted.
         <status>0x90</status>
         <midino>0x11</midino>
         <options>
-          <script-binding/>
+          
         </options>
       </control>
       <control>
@@ -845,22 +1223,6 @@ Linux Ubuntu 22.04 LTS
 
 ---
 
-## #15896: Sample deck/Jingles
-
-### Bug Description
-
- Volume is resetting every time, the first 2 row only and the rest stay's steady
-
-### Version
-
-_No response_
-
-### OS
-
-Windows 11
-
----
-
 ## #15892: Echoing when playing music on live broadcast
 
 ### Bug Description
@@ -875,440 +1237,5 @@ _No response_
 ### OS
 
 _No response_
-
----
-
-## #15886: Stopping and starting with long audio buffer causes a waveform shake
-
-### Bug Description
-
-When pressing pause, the waveform jumps one bugger size ahead. When starting again it jumps back the same amount. This is only a visual issue, probably cause by the anti waveform jerking filter. that predicts future waveform positions. 
-
-### Version
-
-2.5.4
-
-### OS
-
-All
-
----
-
-## #15882: Cover art is not shown
-
-### Bug Description
-
-<img width="2880" height="1920" alt="Image" src="https://github.com/user-attachments/assets/feed37f2-67c4-434a-896f-a7392378d5cf" />
-
-As you see this happened in Auto-DJ mode. I have this issue like once every two weeks. 
-When I load the file again the cover is shown
-
-### Version
-
-2.6 beta
-
-### OS
-
-Ubuntu Studio 25.10
-
----
-
-## #15879: Please add SHOUTcast Version 2 Streaming
-
-### Feature Description
-
-Greetings, I have not been able to connect to my SHOUTcast Server on Mixxx with the SHOUTcast v1. The stream has no Login/Username, so why does it have a field for "Login" ? Only the Server login on the server website has a username.  Why doesn't Mixxx have the V2.x mode option? Also why does it have a "Mount" field instead of a "Stream ID" field ?
-
-<img width="382" height="262" alt="Image" src="https://github.com/user-attachments/assets/f832f4cc-7547-4f6e-992f-db5d8253cbd6" />
-
-Streaming on WinAmp with the SHOUTcast Source DSP actually works. Although WinAmp does keep building up RAM usage indefinitely and eventually crashes. 
-<img width="322" height="521" alt="Image" src="https://github.com/user-attachments/assets/c580efdf-29b2-4c7a-8a82-faaf34871faa" />
-
-By the way, can both the Feature and Bug tags be added to the same issue post? 
-
-Thank you, Shalom.
-
----
-
-## #15873: Test failure on ARM 64 Windows 11: SoundSourceProxyTest.regressionTestCachingReaderChunkJumpForward
-
-**Labels:** windows, crash, soundsource
-
-### Bug Description
-
-https://github.com/mixxxdj/mixxx/actions/runs/21100430613/job/60683840310
-```
-2026-01-17T20:48:05.7963259Z info [Qt mainThread] Opened file "C:/a/mixxx/mixxx/src/test/id3-test-data/cover-test-itunes-12.3.0-aac.m4a" using provider "Microsoft Media Foundation 10.0.26100.7309"
-2026-01-17T20:48:05.7964779Z unknown file: error: SEH exception with code 0xc0000005 thrown in the test body.
-```
-
-
-
-### Version
-
-_No response_
-
-### OS
-
-_No response_
-
----
-
-## #15871: BPM-normalized keys
-
-**Labels:** confirmed
-
-### Context  
-
-The context is about using the keys information to select the next track. It's sometimes called "mixing in key", but this is confusing a method with the desired result.  
-
-I have noticed that I can sometimes wonder "chat about this track?", and see that its key does not match with the playing key, but once decelerated/accelerated to the playing BPM,  it does.
-
-So now I have in mind that:  
-
-- accelerating a tracks changes the key by +7 or -5
-- decelerating a tracks changes the key by +5 or -7
-
-and I sometimes check if I can find a track in these extra BPM ranges.
-
-I wondered if it was possible to bring this idea in Mixxx and… 
-
-### (Potential) solution
-
-It might be a good idea to create a "BPM-normalized key".  
-So something like `KEY_100 = key(freq(KEY) * 100 / BPM)`.
-Where:
-
-- `KEY` and `BPM` are the track values (from the library)
-- `KEY_100`  is the BPM-normalized key (on 100 BPM for example)  
-- `key` and `freq` are conversion functions
-
-So this is information is computed only once, right after the BPM and KEY analysis, and can be therefore be stored in the library.
-
-### (Potential) use
-
-I have considered two search option:
-
-1. ordering the library by `BPM`/`KEY` so it's easy to find potential track to mix by simply navigating 
-2. using the "similar track" search (right lick on the track)
-
-In both case we could use `KEY_100` instead of the `KEY`.
-
-This would allow to find this extra tracks that are at the proper key once adjusted to the mix BPM.
-
-### Final
-
-Note that I might be able to edit the code myself, but first I need to be sure this idea is good, and then I need clear instructions (especially which files needs to be edited).
-
-Cheers!
-
----
-
-## #15869: Feature Request: Configurable metadata broadcast volume threshold for live streaming
-
-**Labels:** easy, confirmed, broadcast
-
-### Feature Description
-
-**Problem:**
-When live streaming/broadcasting, Mixxx updates metadata based on which deck has the highest volume every second. The current hardcoded threshold is 20% volume before a track is considered "audible."
-
-For techno/minimal mixing styles that use long blends with extended drum layering at 70-80% volume, this causes metadata to flip back and forth repeatedly between tracks during transitions, spamming incorrect track names to the stream/chat.
-
-**Current Behavior:**
-- Track metadata updates based on highest volume deck
-- 20% volume threshold is hardcoded
-- Updates happen every second
-- No user control over when metadata broadcasts
-
-**Requested Feature:**
-Add a preference setting under Preferences → Live Broadcasting to control metadata updates:
-
-1: Adjustable volume threshold slider (20% - 90%)
-2: Manual metadata update control (button/hotkey to trigger metadata change)
- 3: Delay timer (e.g., "only update if track stays loudest for X seconds")
-
-**Use Case:**
-I DJ techno /house live in virtual worlds (Open Simulator) where track metadata displays in nearby chat. During long blends or mashups where I layer drums from the next track at 70-80% (or full) volume, the current system causes track names to spam back and forth in chat every time I adjust faders, which is confusing for listeners.
-
-**Additional Context:**
-This primarily affects DJs who:
-- Don't use crossfaders
-- Do extended blends and mashups with channel faders
-- Layer elements at high volume before full transitions
-- Stream to platforms that display "now playing" metadata
-
----
-
-## #15868: repetetive track lookup when opening track menu
-
-### Bug Description
-
-When I right-click a track in the library (Tracks) to open the track menu I see 7 failed attempts to resolve the track, the 8th succeeds
-
-I see this 7 times, note `Evicting track` and `Deleting Track`
-```
-debug [Main] GlobalTrackCache - Resolving track by id 134620
-debug [Main] GlobalTrackCache - Resolving track by canonical location "/media/tracks/mid-side-mix-demo.flac"
-debug [Main] GlobalTrackCache - Cache miss - allocating track  TrackRef {"/media/tracks/mid-side-mix-demo.flac","/media/tracks/mid-side-mix-demo.flac",134620}
-debug [Main] GlobalTrackCache - Cache miss - inserting new track into cache  TrackRef {"/media/tracks/mid-side-mix-demo.flac","/media/tracks/mid-side-mix-demo.flac",134620} QObject(0x0)
-debug [Main] Successfully deserialized Beats ("BeatGrid-2.0")
-debug [Main] Successfully deserialized KeyMap
-debug [Main] SoundSourceProxy - SoundSourceProvider "Xiph.org libFLAC" created a SoundSource for file "/media/tracks/mid-side-mix-demo.flac" of type "flac"
-debug [Main] BaseTrackCache(0x55bb8a740470) updateIndexWithQuery took 1 ms
-debug [Main] GlobalTrackCache - Evicting track  TrackRef {"/media/tracks/mid-side-mix-demo.flac","/media/tracks/mid-side-mix-demo.flac",134620} Track(0x55bb84ec5680)
-debug [Main] GlobalTrackCache - Deleting Track(0x55bb84ec5680)
-```
-then it succeeds
-```
-debug [Main] GlobalTrackCache - Resolving track by id 134620
-debug [Main] GlobalTrackCache - Resolving track by canonical location "/media/tracks/mid-side-mix-demo.flac"
-```
-
-When I double-click to load I see the resolve part only once 🤷‍♂️ 
-
-What's happening here?
-
-### Version
-
-2.6, didn't check 2.5
-
-### OS
-
-_No response_
-
----
-
-## #15867: Peak detect
-
-### Feature Description
-
-Hi mixxx people,
-
-I searched around this topic and didn't find, sorry if this was discussed earlier.
-One nice and helpful feature for me would be mixxx being able to point out and/or highlight the loudest seconds in a track.
-How should this happen ? Something visual or just a mm:ss hint or a marker or something else, idk.
-If you don't like this because you think it would make mixxxers even more lazy, I'll take it  :D 
-
-Thanks !
-
----
-
-## #15866: Metadata corruption om MP4?
-
-### Bug Description
-
-I am not entirely sure if this is an issue with Mixxx, but thought I will open this to see if this has been happening to other users.
-
-I have playlists with stems, with all of them correctly working when this playlist was created. However, it seems they are slowly stopping to function.
-
-After investigation, it looks like the `stem` MP4 atom is getting some additional blank space added to it. 
-
-For some context, every time you appends new metadata to an MP4, these will be added under the `udta` box. Because MP4 atoms contains offset to other atoms, this will require updating all offset, and may sometime lead to the creation of padding boxes (called `free`) to prevent doing this all the time. 
-So in short, this could be an issue with TagLib.
-
-I should also add that apart from Mixxx, I am not reading or editing these files with any other software (not audio library or tag editor) 
-
-For reference, here is a valid STEM file, which loads in Mixxx:
-
-<img width="1506" height="535" alt="Image" src="https://github.com/user-attachments/assets/5e63284a-4710-4521-9ffa-e21ac18bd767" />
-
-Here is a corrupted one which used to load and now has this blank padding:
-
-<img width="1506" height="594" alt="Image" src="https://github.com/user-attachments/assets/d16a7aa7-9452-4625-8187-7a6432248bec" />
-
-## Note on workaround
-
-To get them back working, I have added [a trim](https://doc.qt.io/qt-6/qstring.html#trimmed) to the box content to allow me continue using these stems. Not sure we want this workaround in `main``/2.6` as it would simply obfuscate a potentially larger issue we have with MP4 and tags.  
-
-### Version
-
-2.6
-
-### OS
-
-Fedora
-
----
-
-## #15863: MIxxx crashes on OpenGLES2 only system, run directly on DRM/KMS (linux)
-
-**Labels:** waveform
-
-### Bug Description
-
-Given a previous conversation about graphics acceleration in zulip, I compiled and tried to start Mixxx (latest master) on aarch64 with OpenGLES(-only) support via the DRM/KMS backend.
-
-Qt environment was set to:
-```
-QT_QPA_PLATFORM=eglfs
-QT_QPA_EGLFS_INTEGRATION=eglfs_kms
-```
-
-GDB backtrace on the (hopefully correct) current thread:
-```
-#0  __pthread_kill_implementation (threadid=281474805223456, signo=signo@entry=6, no_tid=no_tid@entry=0)
-    at ./nptl/pthread_kill.c:44
-#1  0x0000fffff22b7e64 in __pthread_kill_internal (threadid=<optimized out>, signo=6) at ./nptl/pthread_kill.c:89
-#2  0x0000fffff2266980 in __GI_raise (sig=sig@entry=6) at ../sysdeps/posix/raise.c:26
-#3  0x0000fffff2251ac4 in __GI_abort () at ./stdlib/abort.c:73
-#4  0x0000fffff289c2d0 in ??? () at /lib/aarch64-linux-gnu/libQt6Core.so.6
-#5  0x0000fffff287aae8 in QMessageLogger::fatal(char const*, ...) const () at /lib/aarch64-linux-gnu/libQt6Core.so.6
-#6  0x0000ffffeb1dfef4 in QEglFSWindow::create() () at /lib/aarch64-linux-gnu/libQt6EglFSDeviceIntegration.so.6
-#7  0x0000ffffeb1dff98 in QEglFSIntegration::createPlatformWindow(QWindow*) const ()
-    at /lib/aarch64-linux-gnu/libQt6EglFSDeviceIntegration.so.6
-#8  0x0000fffff30e3a8c in QWindowPrivate::create(bool) () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
-#9  0x0000fffff30e3eb0 in QWindowPrivate::setVisible(bool) () at /lib/aarch64-linux-gnu/libQt6Gui.so.6
-#10 0x0000fffff4ceb6c4 in QWindowContainer::event(QEvent*) () at /lib/aarch64-linux-gnu/libQt6Widgets.so.6
-#11 0x0000fffff4c82058 in QApplicationPrivate::notify_helper(QObject*, QEvent*) ()
-    at /lib/aarch64-linux-gnu/libQt6Widgets.so.6
-#12 0x0000aaaaab564718 in MixxxApplication::notify (this=0xfffffffff160, pTarget=0xaaaab6ee5910, pEvent=0xffffffffe9f8)
-    at /home/mirko/src/mixxx/src/mixxxapplication.cpp:217
-#13 0x0000fffff290e394 in QCoreApplication::notifyInternal2(QObject*, QEvent*) () at /lib/aarch64-linux-gnu/libQt6Core.so.6
-#14 0x0000fffff4ccb040 in QWidgetPrivate::show_helper() () at /lib/aarch64-linux-gnu/libQt6Widgets.so.6
-#15 0x0000fffff4ccc41c in QWidgetPrivate::setVisible(bool) () at /lib/aarch64-linux-gnu/libQt6Widgets.so.6
-#16 0x0000aaaaab98284c in WGLWidget::showEvent (this=0xaaaab6d19ab0, event=0xffffffffede8)
-    at /home/mirko/src/mixxx/src/widget/wglwidgetqopengl.cpp:44
-#17 0x0000fffff4cce760 in QWidget::event(QEvent*) () at /lib/aarch64-linux-gnu/libQt6Widgets.so.6
-#18 0x0000fffff4c82058 in QApplicationPrivate::notify_helper(QObject*, QEvent*) ()
-    at /lib/aarch64-linux-gnu/libQt6Widgets.so.6
-#19 0x0000aaaaab564718 in MixxxApplication::notify (this=0xfffffffff160, pTarget=0xaaaab6d19ab0, pEvent=0xffffffffede8)
-    at /home/mirko/src/mixxx/src/mixxxapplication.cpp:217
-#20 0x0000fffff290e394 in QCoreApplication::notifyInternal2(QObject*, QEvent*) () at /lib/aarch64-linux-gnu/libQt6Core.so.6
-#21 0x0000fffff4ccb040 in QWidgetPrivate::show_helper() () at /lib/aarch64-linux-gnu/libQt6Widgets.so.6
-#22 0x0000fffff4ccc41c in QWidgetPrivate:
-
-*[truncated]*
-
----
-
-## #15859: Loops: allow growing/shrinking by 1 beat
-
-**Labels:** looping
-
-### Feature Description
-
-Uneven loop lengths allows some fun transitions (for tempo changes) but this is currently only possible with script functions afaik (or by typing sizes in beatloop size box of course)
-
-Would be great to have `[ChannelN],beatloop_size_minus_one/_plus_one`.
-Or make `beatloop_size` a ControlPotmeter with step size 1?
-
----
-
-## #15858: Mixxx 2.5.4 (.deb/ppa) crashes on integrated Intel Graphics under Linux Mint 22.3
-
-**Labels:** linux, crash
-
-### Bug Description
-
-Mixxx 2.5.4 (.deb/ppa) crashes on integrated Intel Graphics under Linux Mint 22.3.
-
-The Problem occurs when starting AutoDJ Function. Another Notebook with integrated Radeon Graphics doesn't crash. Both have Linux Mint 22.3 installed. The affected Notebook has a Intel i5 - the Notebook without Crashes has a Ryzen 5. I can provide more Details if the Problem is not reproducable.
-
-### Version
-
-2.5.4
-
-### OS
-
-Linux Mint 22.3 x64
-
----
-
-## #15857: need some explanation for the GUI freeze when closing multi-track properties dialog
-
-### Bug Description
-
-I know the GUI lag when updating tracks is currently inevitable.
-However I don't understand when this happens.
-I hope someone can explain it -- and maybe even propose a workaround.
-Not sure if the issue is caused by DlgTrackInfoMulti..
-It's created via WTrackTableView -> [WTrackMenu](https://github.com/mixxxdj/mixxx/blob/9c10a05ea775104700c9ae1b613d793cac87ee3c/src/widget/wtrackmenu.cpp#L2732)-L2743 -> DlgTrackInfoMulti
-
-* select many tracks
-* open Track Properties
-* move dialog so you can see the tag column you're about to change
-* change eg. Genre, Apply
-  -> table view is updated quickly, freeze for ~.5 sec
-* hit Cancel or Okay
-  -> GUI freeze for 2-3 sec
-
-Happens even if I don't have "Syncronize library track metadata from/to file tags" enabled.
--> delay is much longer when this is enabled
-
-Furthermore I see _almost (!)_ all track rows being updated twice, at least according to calls of `WLibraryTableView::dataChanged`.
-
-Log ===============================================
-
-when applying, this is logged for each track:
-```
-debug [Main] BaseTrackCache(0x5614346d6090) updateIndexWithQuery took 0 ms
-```
-
-when clicking Cancel or Okay or Esc (hiding/closing DlgTrackInfoMulti), this is logged for each track:
-```
-debug [Main] GlobalTrackCache - Evicting track  TrackRef {"/media/das/some-track.mp3","/media/das/some-track.mp3",134550} Track(0x56145af5d430)
-debug [Main] TrackCollectionManager - Saving track "/media/das/some-track.mp3" in internal collection
-debug [Main] TrackDAO - TrackDAO: Saving track 134550 "/media/das/some-track.mp3"
-debug [Main] TrackDAO - TrackDAO: Updating track in database 134550 "/media/das/some-track.mp3"
-debug [Main] SqlTransaction - Started new SQL database transaction on "MIXXX-1"
-debug [Main] SqlTransaction - Committed SQL database transaction on "MIXXX-1"
-debug [Main] BaseTrackCache(0x5614346d6090) updateIndexWithQuery took 0 ms
-debug [Main] GlobalTrackCache - Deleting Track(0x56145af5d430)
-```
-plus this one:
-```
-debug [Main] Processing QEvent::DeferredDelete for object 0x56145b048f90 took 2823 ms
-```
-
-### Version
-
-_No response_
-
-### OS
-
-_No response_
-
----
-
-## #15856: NS6 DJ Controller Mapping not Found
-
-### Bug Description
-
-Numark NS6II is there but not the NS6. Is there reason why?
-
-Oh and I installed a Windows 10 driver of Numark NS6 for a Windows 11. Is there a more recent driver for my dj controller? Is this a windows 11 fault?
-
-### Version
-
-2.5.4
-
-### OS
-
-Windows 11
-
----
-
-## #15855: CPU load indicated, when instead the soundsystem is causing lag
-
-### Bug Description
-
-<img width="3200" height="1080" alt="Image" src="https://github.com/user-attachments/assets/b402af8b-fbe0-4dcf-9321-eab24f51398b" />
-
-mixxx goes into yellow "CPU LOAD" mode, without any cpu load at all.
-
-The sound-sub-system, in this case pipewire, seem to be the real cause if the used output device has congestion.
-
-This is of course very hard to determine on user and dev side, so i took a some screenshots who all show no load on the cores. I observed the issue with pw-top ( pipewire-top) showing some lag on the output device ( bluetooth in this case ). 
-
-No idea if you can decide between cpu lag and audio sys lag. If you can, the indicator should be changed.
-
-### Version
-
-2.5.4
-
-### OS
-
-Fedora42
 
 ---

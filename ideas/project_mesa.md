@@ -1,7 +1,7 @@
 # Project Mesa — Project Ideas
 
 **Source:** https://github.com/mesa/mesa/wiki/GSoC-2026-Project-Ideas
-**Scraped:** 2026-02-22T23:28:47.626539
+**Scraped:** 2026-03-10T16:58:40.256596
 
 ---
 
@@ -61,11 +61,11 @@ Read the linked discussions ([#2529](https://github.com/projectmesa/mesa/discuss
 
 ### Summary
 
-Mesa‑Geo is Mesa's geospatial extension, providing CRS‑aware agents, raster and vector layers and geometry queries. Its current design predates Mesa's modern discrete‑space architecture and stores raster values as per‑cell Python attributes. This project will refactor Mesa‑Geo to follow Mesa's new `PropertyLayer` abstraction for raster data, expose a fluent API for aggregation and random sampling, clarify cell coordinate semantics, and upgrade the visualisation pipeline to Mesa ≥ 3.3. The goal is a faster, more intuitive framework that aligns with Mesa's evolving space model and prepares Mesa‑Geo for future integration.
+Mesa‑Geo is Mesa's geospatial extension, providing CRS‑aware agents, raster and vector layers and geometry queries. Its current design predates Mesa's modern discrete‑space architecture and stores raster values as per‑cell Python attributes. This project will refactor Mesa‑Geo to follow Mesa's new `PropertyLayer` abstraction for raster data, expose a fluent API for aggregation and random sampling, and upgrade the visualisation pipeline to Mesa ≥ 3.3. The goal is a faster, more intuitive framework that aligns with Mesa's evolving space model and prepares Mesa‑Geo for future integration.
 
 ### Motivation
 
-Mesa‑Geo carries technical debt from its early implementation. Raster data are stored as individual Python attributes rather than vectorised arrays, neighbourhood aggregation is ad‑hoc, and the package duplicates grid logic that Mesa's core has since generalised. Issues [#201](https://github.com/mesa/mesa-geo/issues/201), [#91](https://github.com/mesa/mesa-geo/issues/91) and [#81](https://github.com/mesa/mesa-geo/issues/81) highlight the need for a `PropertyLayer`‑based `RasterLayer` with file I/O helpers and random point sampling; issue [#295](https://github.com/mesa/mesa-geo/issues/295) shows that GeoSpace's visualisation should be updated for Mesa 3.3; and PR [#299](https://github.com/mesa/mesa-geo/pull/299) underscores confusion around coordinate property names. Addressing these themes will align Mesa‑Geo with Mesa’s modern space model, simplify user code and improve performance.
+Mesa‑Geo carries technical debt from its early implementation. Raster data are stored as individual Python attributes rather than vectorised arrays, neighbourhood aggregation is ad‑hoc, and the package duplicates grid logic that Mesa's core has since generalised. Issues [#201](https://github.com/mesa/mesa-geo/issues/201) and [#81](https://github.com/mesa/mesa-geo/issues/81) highlight the need for a `PropertyLayer`‑based `RasterLayer`; issue [#295](https://github.com/mesa/mesa-geo/issues/295) shows that GeoSpace's visualisation should be updated for Mesa 3.3; and PR [#299](https://github.com/mesa/mesa-geo/pull/299) underscores confusion around coordinate property names. Addressing these themes will align Mesa‑Geo with Mesa’s modern space model, simplify user code and improve performance.
 
 ### Historical Context
 
@@ -76,9 +76,7 @@ Mesa‑Geo was first released in 2018 and later expanded in 2022 to provide GI
 Deliver a Mesa‑Geo release that is intuitive and aligned with Mesa's modern space architecture. The project will:
 
 - Replace per‑cell Python attributes with `PropertyLayer` arrays for raster storage, keeping CRS and affine metadata intact.
-- Provide convenient APIs for loading and saving raster bands, and for sampling random coordinates within cells.
 - Introduce a fluent aggregation API for per‑cell operations, filtering, mapping and neighbourhood statistics on raster data.
-- Clarify coordinate semantics by introducing explicit properties such as `cell.xy`, `cell.grid_pos` and `cell.rowcol`, and emitting deprecation warnings for legacy names.
 - Migrate GeoSpace and raster rendering to Mesa's `SpaceRenderer`/Solara backend to ensure compatibility with Mesa 3.3 and later.
 - Explore, as time permits, how Mesa‑Geo can plug into Mesa's upcoming multi‑space design and position/index translation hooks.
 
@@ -88,11 +86,7 @@ Deliver a Mesa‑Geo release that is intuitive and aligned with Mesa's modern sp
 
 - **Property‑Layer RasterLayer:** Refactor `RasterLayer` to store each band as a `PropertyLayer`, with methods to add/remove bands and convert existing raster cells into property descriptors.
 
-- **Raster I/O & Sampling:** Provide `RasterLayer.from_file` and `RasterLayer.to_file` using rasterio or rioxarray (optional dependency) and implement `get_random_coord(cell)` for random sampling within a cell's geometry.
-
 - **Aggregation API:** Extend Mesa's `CellCollection` patterns to raster layers, with functions such as `do(fn)` for per‑cell operations, `select(predicate)`, `map(fn)` and `aggregate(func, by=None)` to compute statistics over groups or neighbourhoods.
-
-- **Coordinate Semantics:** Add Cell properties such as `cell.xy`, `cell.grid_pos` and `cell.rowcol`, emit deprecation warnings for `cell.pos` and `cell.indices`, and document the migration path.
 
 - **Visualisation Overhaul:** Update Mesa-Geo visualization to work reliably with Mesa's SolaraViz environment and current rendering expectations. Applicants are encouraged to propose a good GeoSpace visualization architecture and API. The proposal should ideally specify (1) the public API exposed to users, (2) how it plugs into `SolaraViz`, and (3) how raster + vector layers and agents are rendered.
 
@@ -108,11 +102,11 @@ Deliver a Mesa‑Geo release that is intuitive and aligned with Mesa's modern sp
 
 - Update Mesa‑Geo documentation to describe the new raster API, aggregation methods and coordinate properties.
 
-- Provide tutorials showing how to load raster bands from files, visualise them with `SpaceRenderer`, and implement a simple cellular automaton using the aggregation API.
+- Provide tutorials showing how to visualise layers with `SpaceRenderer`, and implement a simple cellular automaton using the aggregation API.
 
 #### Testing & Quality Assurance
 
-- Create unit tests for the refactored `RasterLayer`, including property‑layer creation, coordinate conversions, file I/O and deprecation warnings.
+- Create unit tests for the refactored `RasterLayer`, including property‑layer creation, coordinate conversions, and deprecation warnings.
 - Add tests for aggregation and random sampling functions to ensure correctness and reproducibility.
 - Integrate visualisation tests into Mesa‑Geo's CI to verify compatibility with Mesa ≥ 3.3 and maintain performance benchmarks.
 
@@ -142,7 +136,7 @@ Medium/Large
 
 ### **Getting Started**
 
-1. Review issues [#201](https://github.com/mesa/mesa-geo/issues/201), [#91](https://github.com/mesa/mesa-geo/issues/91) and [#81](https://github.com/mesa/mesa-geo/issues/81) and PR [#299](https://github.com/mesa/mesa-geo/pull/299) to understand the motivations.
+1. Review issues [#201](https://github.com/mesa/mesa-geo/issues/201) and [#81](https://github.com/mesa/mesa-geo/issues/81), and PR [#299](https://github.com/mesa/mesa-geo/pull/299) to understand the motivations.
 2. Study Mesa's discrete space and `PropertyLayer` implementations (`mesa.discrete_space`, `CellCollection`, `AgentSet`) to inform the aggregation API design.
 3. Experiment with `SpaceRenderer` using Mesa's tutorials to understand how property layers are rendered.
 4. Refactor a small raster model (e.g. a land‑use cellular automaton) to use `PropertyLayer` manually; note challenges and open questions.

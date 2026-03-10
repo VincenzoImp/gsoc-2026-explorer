@@ -1,8 +1,8 @@
 # Machine learning
 
 **Parent:** The Julia Language — Project Ideas
-**Source:** https://julialang.org/jsoc/gsoc/machine-learning
-**Scraped:** 2026-02-22T23:28:47.596487
+**Source:** https://julialang.org/jsoc/gsoc/machine-learning/
+**Scraped:** 2026-03-10T16:58:40.262511
 
 ---
 

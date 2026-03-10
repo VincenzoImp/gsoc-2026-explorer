@@ -2,7 +2,7 @@
 
 **Parent:** LabLua — Project Ideas
 **Source:** https://github.com/labluapucrio/gsoc/blob/main/apply.md
-**Scraped:** 2026-02-22T23:28:47.582619
+**Scraped:** 2026-03-10T16:58:40.258684
 
 ---
 
@@ -14,6 +14,10 @@ Contributor Application - GSoC 2026
 -----------------------------------
 
 Please use the template below to help prepare your GSoC project proposal. We highly recommend discussing the project with your mentor before you submit the application to Google.
+
+| :exclamation:  Important |
+|:---------------------------|
+| proposals without any prior communication, or AI generated proposals will NOT be evaluated! |
 
 The following links contain helpful information about GSOC:
 

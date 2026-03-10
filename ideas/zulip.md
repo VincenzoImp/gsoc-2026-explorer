@@ -1,7 +1,7 @@
 # Zulip — Project Ideas
 
 **Source:** https://zulip.readthedocs.io/en/latest/outreach/gsoc.html
-**Scraped:** 2026-02-22T23:28:47.605067
+**Scraped:** 2026-03-10T16:58:40.255148
 
 ---
 
@@ -63,9 +63,9 @@ Zulip’s
 
 , which is an important resource for any organization integrating with Zulip, as well as the developers of our API clients. Zulip has a**REST API documentation**[nice framework](https://zulip.readthedocs.io/documentation/api.html)for writing API documentation built by past GSoC students based on the OpenAPI standard with built-in automated tests of the data both the Python and curl examples. However, the documentation isn’t yet what we’re hoping for: there are a few dozen endpoints that are missing, several of which are quite important, the visual design isn’t perfect (especially for, e.g.,`GET /events`
 
-), many templates could be deleted with a bit of framework effort, etc. See the[API docs area label](https://github.com/zulip/zulip/issues?q=is%3Aopen+is%3Aissue+label%3A%22area%3A+documentation+%28api+and+integrations%29%22)for some specific projects in the area; and`git grep pending_endpoints`
+), many templates could be deleted with a bit of framework effort, etc. See the[API docs area label](https://github.com/zulip/zulip/issues?q=is%3Aopen%20is%3Aissue%20label%3A%22area%3A%20documentation%20(api)%22)for some specific projects in the area, and[this api documentation discussion](https://chat.zulip.org/#narrow/channel/412-api-documentation/topic/Undocumented.20endpoint.20priorities/with/2397881)for current priorities on API endpoints to document (`git grep pending_endpoints`
 
-to find the list of endpoints that need documentation and their priorities. Our goal for the summer is for 1-2 students to resolve all open issues related to the REST API documentation. 175 or 350 hours; difficulty easy or medium.**Skills required**: Python programming. Expertise with reading documentation and English writing are valuable, and product thinking about the experience of using third-party APIs is very helpful.Expert: Lauryn Menard
+). Our goal for the summer is for 1-2 students to resolve all open issues related to the REST API documentation. 175 or 350 hours; difficulty easy or medium.**Skills required**: Python programming. Expertise with reading documentation and English writing are valuable, and product thinking about the experience of using third-party APIs is very helpful.Expert: Lauryn Menard
 
 
 **Improve the UI and visual design**of the Zulip web app. We are working on a major redesign for the core surfaces of the Zulip web app – see the[redesign label](https://github.com/zulip/zulip/issues?q=is%3Aopen+is%3Aissue+label%3Aredesign)for specced out work, with more to come. We’re particularly excited about students who are interested in making our CSS clean and readable as part of working on the UI. 175 or 350 hours; medium to difficult.**Skills required**: Design, HTML and CSS skills; most important is the ability to carefully verify that one’s changes are correct and will not break other parts of the app; design changes are very rewarding since they are highly user-facing, but that also means there is a higher bar for correctness and reviewability for one’s work. A great application would include PRs making small, clean improvements to the Zulip UI (whether logged-in or logged-out pages).Experts: Aman Agrawal, Karl Stolley, Alya Abbott

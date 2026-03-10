@@ -1,7 +1,7 @@
 # OpenStreetMap — Project Ideas
 
 **Source:** https://wiki.openstreetmap.org/wiki/Google_Summer_of_Code/2026/Project_ideas
-**Scraped:** 2026-02-22T23:28:47.598891
+**Scraped:** 2026-03-10T16:58:40.227345
 
 ---
 
@@ -88,7 +88,26 @@ Only applications that fulfill our minimum requirements will be accepted.
 
 |
 Suggested By
-Christian Beiwinkel / Valhalla Community
+Summary
+Currently we're lacking a scalable testing system which automates medium to large scale regression tests for the vast majority of our supported OSM tags, costing options & guidance instructions. That needs at least (multiple of) 10k different test routes on real world data which is representative for the rest of the world, e.g. more or less all routing-related OSM tags should be covered.
+Mandatory skills
+ReactJS
+Useful skills
+geospatial & CI/CD experience
+Length
+350 hours
+Difficulty
+easy - medium (for someone with decent ReactJS skills)
+Possible Mentors
+Kevin Kreiser, Nils Nolde, Christian Beiwinkel, Mustafa Turhan
+Notes
+We expect pre-application PRs to be submitted to
+Comments
+Read our
+|
+
+|
+Suggested By
 Summary
 We are currently introducing a multi-modal costing called "auto_walk" which combines vehicle and pedestrian routing: directions for driving to the nearest parking lot, followed by walking directions to the destination. This project aims to parse, store and use parking lot data in OSM to mark parking opportunities in the graph.
 Mandatory skills
@@ -102,7 +121,15 @@ challenging
 Possible Mentors
 Kevin Kreiser, Nils Nolde, Christian Beiwinkel
 Notes
-I'll write a lengthier issue about this in the upcoming days, in the meantime there is [this discussion](https://wiki.openstreetmap.org/wiki/Google_Summer_of_Code/2026/||Suggested ByNils NoldeSummaryWe introduced a landmark/POI-based guidance concept (e.g. "Turn right after 50 m before the next Wells Fargo branch") in a previous GSoC. However, it's not ready yet to be hosted on the
+See
+Comments
+Read our
+|
+
+|
+Suggested By
+Summary
+We introduced a landmark/POI-based guidance concept (e.g. "Turn right after 50 m before the next Wells Fargo branch") in a previous GSoC. However, it's not ready yet to be hosted on the
 Mandatory skills
 C++, basic sqlite
 Useful skills
@@ -115,11 +142,12 @@ Possible Mentors
 Kevin Kreiser, Nils Nolde, Christian Beiwinkel
 Notes
 Profiling the current POI ingestion performance to pinpoint improvable performance sinks and debugging the code will be part of the project.
+Comments
+Read our
 |
 
 |
 Suggested By
-Nils Nolde
 Summary
 We (re-)introduced public transit routing based on GTFS (only for now) in a previous GSoC. However, it's not ready yet to be hosted on the
 Skills
@@ -132,11 +160,12 @@ Possible Mentors
 Kevin Kreiser, Nils Nolde, Christian Beiwinkel
 Notes
 This project needs a pretty strong and curious C++ developer.
+Comments
+Read our
 |
 
 |
 Suggested By
-Kevin Kreiser
 Summary
 Pedestrian routing is becoming increasingly important in modern applications with the tendency toward walkable cities and the rise of alternative navigation modalities such as wearables. This project aims to improve a user's ability to follow a given pedestrian route by enhancing the metadata attached to it. One of the main challenges that arises in pedestrian navigation is the lack attribution for pedestrian only ways. Sidewalks don't have names, park pathways, similarly, don't have names. While we can still give guidance in these situation it is more ambiguous, eg. "turn left". Landmark routing can certainly mitigate these scenarios but its coverage can also be lacking. This project focuses on improving the situation by enhancing the data in the graph by spatially joining metadata from nearby OSM features to the part of the graph where pedestrian attribution is lacking. This may be done by eg. copying road names to unnamed sidewalks that abut them, or by eg. marking nodes as park entrances where area features intersect.
 Mandatory skills
@@ -151,6 +180,8 @@ Possible Mentors
 Kevin Kreiser, Nils Nolde, Christian Beiwinkel
 Notes
 This is an open ended project in the sense that we may discover better opportunities for improvement during investigation and pivot to working on those instead of those already mentioned examples above.
+Comments
+Read our
 |
 
 ## Rendering

@@ -2,7 +2,7 @@
 
 **Parent:** Tiled — Project Ideas
 **Source:** https://github.com/mapeditor/tiled/issues/2741
-**Scraped:** 2026-02-22T23:28:47.583038
+**Scraped:** 2026-03-10T16:58:40.244892
 
 ---
 

@@ -1,7 +1,7 @@
 # CNCF — Project Ideas
 
 **Source:** https://github.com/cncf/mentoring/blob/main/programs/summerofcode/2026.md
-**Scraped:** 2026-02-22T23:28:47.602008
+**Scraped:** 2026-03-10T16:58:40.316223
 
 ---
 
@@ -60,7 +60,7 @@ Linux Foundation [Guidance Regarding Use of Generative AI Tools for Open Source 
   * [Enrich KitOps Integration Guides with Kubeflow Model Registry, Argo Workflows, Kyverno](#enrich-kitops-integration-guides-with-kubeflow-model-registry-argo-workflows-kyverno)
 * [Kmesh](#kmesh)
   * [Kmesh Dashboard for Simplified Service Mesh Management](#kmesh-dashboard-for-simplified-service-mesh-management)
-* [[kpt](https://kpt.dev/)](#kpt)
+* [kpt](#kpt)
   * [Build e-commerce example kpt package](#build-e-commerce-example-kpt-package)
 * [ModelPack](#modelpack)
   * [Unified transformer specification and its auto-generation method for the existing models](#unified-transformer-specification-and-its-auto-generation-method-for-the-existing-models)
@@ -236,24 +236,24 @@ Linux Foundation [Guidance Regarding Use of Generative AI Tools for Open Source 
   - Built-in authentication support with role-based access control (RBAC) for secure dashboard access
   - Comprehensive documentation and user guides for all dashboard features
 - Recommended Skills: TypeScript, React, Kubernetes, Service Mesh concepts, UX/UI design principles
-  TypeScript, React, Kubernetes, Service Mesh concepts, UX/UI design principles
 - Expected project size: medium
-  - ZhenCheng Li(@LiZhenCheng9527, leezhencheng6@gmail.com) - primary,
-  - Zhonghu Xu (@hzxuzhonghu, zhhxu2011@gmail.com),
-  - Zengzeng Yao(@yaozengzeng, yaozengzeng@huawei.com)
+- Mentor(s):
+  - ZhenCheng Li (@LiZhenCheng9527, leezhencheng6@gmail.com) - primary
+  - Zhonghu Xu (@hzxuzhonghu, zhhxu2011@gmail.com)
+  - Zengzeng Yao (@yaozengzeng, yaozengzeng@huawei.com)
 - Upstream Issue (URL): https://github.com/kmesh-net/kmesh/issues/1552
 
 
 #### [kpt](https://kpt.dev/)
 
-[kpt](https://kpt.dev/) is a toolchain that allows users to cutomize kubernets packages declaratively. kpt uses a
+[kpt](https://kpt.dev/) is a toolchain that allows users to customize kubernetes packages declaratively. kpt uses a
 [configuration as data](https://cloud.google.com/blog/products/containers-kubernetes/understanding-configuration-as-data-in-kubernetes)
 approach for customization. The user specifies their customization changes as data in yaml files and kpt updates
 the source package by applying the customization to the kubernetes package. Unlike templating tools such as helm,
-there are no costomization directives in the source package itself.
+there are no customization directives in the source package itself.
 
 Currently, complete examples for using kpt are in specialized domains such as telecommunication management, which 
-are difficult to understand without familiarity with that domain. Other examples such as those int eh documentation 
+are difficult to understand without familiarity with that domain. Other examples such as those in the documentation 
 are rather piecemeal and don't give a complete picture of the power of kpt. The purpose of this project is to 
 provide a complete example that demonstrates the power of kpt in a domain that is more widely understood.
 
@@ -325,6 +325,10 @@ toolchain in a number of ways such as:
 ##### OTTL stabilization and 1.0 offering
 
 - Description: This project focuses on the stabilization and creation of a 1.0 offering for the OpenTelemetry Transformation Language (OTTL) within the OpenTelemetry Collector. OTTL is a domain-specific language used to transform telemetry data as it passes through the collector. The goal is to bring OTTL to a stable 1.0 state by addressing a series of identified improvements and feature gaps. This includes enhancing the language's expressiveness with features like looping support (e.g., iterating over maps and slices) and refining the type system to ensure robustness and ease of use. The mentee will work on language implementation in Go, participate in design discussions, and contribute to the stabilization of the language. This is a great opportunity to learn about language design, compilers, and the internals of a high-performance observability tool.
+
+Please submit your resume with an introduction to the following mailing list to
+be considered: gsoc-otel-ottl-project-2026@googlegroups.com
+
 - Expected Outcome:
   - Implementation of key features such as looping support and type system enhancements.
   - Resolution of stabilization issues identified in the path to 1.0.

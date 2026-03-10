@@ -1,24 +1,24 @@
 # CGAL Project — Project Ideas
 
 **Source:** https://github.com/CGAL/cgal/wiki/Project-Ideas
-**Scraped:** 2026-02-22T23:28:47.589291
+**Scraped:** 2026-03-10T16:58:40.280835
 
 ---
 
 -
 [Notifications](https://github.com/login?return_to=%2FCGAL%2Fcgal)You must be signed in to change notification settings -
-[Fork 1.5k](https://github.com/login?return_to=%2FCGAL%2Fcgal)
+[Fork 1.6k](https://github.com/login?return_to=%2FCGAL%2Fcgal)
 
 # Project Ideas
 
-[68 revisions](https://github.com/CGAL/cgal/wiki/Project-Ideas/_history)
+[69 revisions](https://github.com/CGAL/cgal/wiki/Project-Ideas/_history)
 
 -
 [GSoC 2026 Projects](https://github.com#gsoc-2026-projects)[Topological Filtering of Features in Triangle Meshes](https://github.com#topological-filtering-of-features-in-triangle-meshes)[Adding Support for New File Formats for Meshes](https://github.com#adding-support-for-new-file-formats-for-meshes)[Efficient k-DOPs](https://github.com#efficient-k-dops)[Approximate Convex Decomposition of Meshes with Collision-Aware Concavity and Tree Search](https://github.com#approximate-convex-decomposition-of-meshes-with-collision-aware-concavity-and-tree-search)[Ray Marching for Mesh Generation](https://github.com#ray-marching-for-mesh-generation)[Optimizing Geometric Operations](https://github.com#optimizing-geometric-operations)[Enhancing the 2D Regularized Boolean Operation Demo](https://github.com#enhancing-the-2d-regularized-boolean-operation-demo)[Enhancing CGAL Python Bindings](https://github.com#enhancing-cgal-python-bindings)[Implementing a 3D Arrangement of Planes Data Structure](https://github.com#implementing-a-3d-arrangement-of-planes-data-structure)[Isotropic Remeshing of Surface Triangle Meshes](https://github.com#isotropic-remeshing-of-surface-triangle-meshes)[Intersection of a Cellular Complex with a Plane](https://github.com#intersection-of-a-cellular-complex-with-a-plane)[Robust Discrete Differential Operators for Wild Geometry](https://github.com#robust-discrete-differential-operators-for-wild-geometry)[Shaders for Basic Viewer](https://github.com#shaders-for-basic-viewer)[Spatial Searching on GPU](https://github.com#spatial-searching-on-gpu)
 
 [Information Candidates Should Supply](https://github.com#information-candidates-should-supply)[Previous Project Ideas and Successful Projects](https://github.com#previous-project-ideas-and-successful-projects)
 
-The CGAL Project is a candidate mentoring organization of the [Google Summer of Code](https://summerofcode.withgoogle.com) 2026.
+The CGAL Project is a mentoring organization of the [Google Summer of Code](https://summerofcode.withgoogle.com) 2026.
 On this page we present some project ideas as well the [information](https://github.com#information-candidates-should-supply) applicants have to provide us.
 **GSoC applicants are welcome to propose other ideas and check if a mentor is interested in supervising it**. For new project
 proposals, contact us at [gsoc-cgal@inria.fr](mailto:gsoc-cgal@inria.fr).
@@ -87,8 +87,6 @@ Approximate convex decomposition aims to partition a 3D shape into a set of near
 The project is to implement an existing method described [here](https://arxiv.org/pdf/2205.02961) within CGAL. The algorithm relies on a plane-based decomposition strategy combined with a concavity metric that measures deviation from convexity using approximate symmetric Hausdorff distance between the surface and its convex hull. The algorithm iteratively cuts the mesh by planes to minimize global concavity. The algorithm selects the cutting planes using a Monte-Carlo Tree Search startegy.
 
 Resources:
-
-[The publication](https://arxiv.org/pdf/2205.02961)- [The implementation of the publication](/ideas/cgal-project/https-github-com-sarahweiii-coacd-https-github-com-sarahweiii-coacd))
 
 **Required Skills:** C++17, Mesh Processing
 

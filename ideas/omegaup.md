@@ -1,7 +1,7 @@
 # omegaUp — Project Ideas
 
 **Source:** https://github.com/omegaup/omegaup/blob/main/frontend/www/docs/Google-Summer-of-Code-2026.md
-**Scraped:** 2026-02-22T23:28:47.622493
+**Scraped:** 2026-03-10T16:58:40.249512
 
 ---
 
@@ -27,12 +27,14 @@ This project aims to improve the platform’s performance by optimizing SQL quer
 * One Integration test that analyzes the EXPLAIN of all queries to determine if it's efficient or not.
 * One integration test that analyzes the performance of all queries by running them on a synthetic dataset with dimensions comparable to those of production. 
 
-The goal is to ensure quick response times for frequent operations and ensure scalability under high-load scenarios. More details about the requirements can be found in [this doc](https://docs.google.com/document/d/1X_fAm97L6_v9P8_R0S_Lp7X6e7x7j7z-X5z5-x5z5z5).
+The goal is to ensure quick response times for frequent operations and ensure scalability under high-load scenarios. More details about the requirements can be found in this doc:
+https://docs.google.com/document/d/1kEOL3HoJT-dYeguU315jju1nkQLC2ew9o5-bm5iiwkQ/edit
+
 
 **Current status**:
 
 * Slow queries have been identified and documented in a [query tracker](https://docs.google.com/spreadsheets/d/1z5EZlGRY5MXUBYn5VoSX3c7Wqt14mI_iH-IY266bf_Y/edit?gid=0#gid=0).
-* Progress is tracked in the master issue [#8277](https://github.com/omegaup/omegaup/issues/8277), which lists created and merged PRs.
+* Progress is tracked in the master issue [#8277](/ideas/omegaup/omegaup-omegaup-issues-8277), which lists created and merged PRs.
 * Key PRs: [#8450](https://github.com/omegaup/omegaup/pull/8450) (Script to populate database) and [#8423](https://github.com/omegaup/omegaup/pull/8423) (Inefficient query detection script).
 
 **Expected results**:
@@ -193,16 +195,16 @@ A project from last year's GSoC introduced the Problem Creator, a visual editor 
 
 * A technical [pdesign doc](https://docs.google.com/document/d/1qpBwJQ6QIiIXgWpb_qa6OJ8KpJPcd11x3qKiefdgPAw/edit?tab=t.0) has been written for this project. 
 * Completed backend changes:
-  * #8470 CDP classes and validations, added core CDP classes and validation logic.
-  * #8479 New method in ProblemDeployer to modify problem ZIPs, enables updating problem ZIP contents during deployment.
-  * #8554 CDPBuilder fixes and unit test coverage, fixed issues in CdpBuilder and added a unit test to ensure correctness.
-  * #8606 Language support in CDPBuilder, added multi-language support with priority based on languagePreference
-  * #8613 Backend logic for editing cases and CDP, added server-side logic to support case editing and CDP updates.
-  * Initial UI change completed: #8593 CasesForm and DeleteConfirmationForm components, introduced the base UI forms required for managing cases 
+  * [#8470](https://github.com/omegaup/omegaup/pull/8470) CDP classes and validations, added core CDP classes and validation logic.
+  * [#8479](https://github.com/omegaup/omegaup/pull/8479) New method in ProblemDeployer to modify problem ZIPs, enables updating problem ZIP contents during deployment.
+  * [#8554](https://github.com/omegaup/omegaup/pull/8554) CDPBuilder fixes and unit test coverage, fixed issues in CdpBuilder and added a unit test to ensure correctness.
+  * [#8606](https://github.com/omegaup/omegaup/pull/8606) Language support in CDPBuilder, added multi-language support with priority based on languagePreference
+  * [#8613](https://github.com/omegaup/omegaup/pull/8613) Backend logic for editing cases and CDP, added server-side logic to support case editing and CDP updates.
+  * Initial UI change completed: [#8593](https://github.com/omegaup/omegaup/pull/8593) CasesForm and DeleteConfirmationForm components, introduced the base UI forms required for managing cases
 * Pending work (mostly UI-related)
-  * #8471 Integrate CDP into the problem form and handle external ZIPs
-  * #8492 UI implementation for the editing interface
-  * #8595 UI integration: Edit view, CaseEdit, and Sidebar
+  * [#8471](https://github.com/omegaup/omegaup/pull/8471) Integrate CDP into the problem form and handle external ZIPs
+  * [#8492](https://github.com/omegaup/omegaup/pull/8492) UI implementation for the editing interface
+  * [#8595](https://github.com/omegaup/omegaup/pull/8595) UI integration: Edit view, CaseEdit, and Sidebar
 
 **Expected results**:
 
@@ -243,15 +245,14 @@ If you are interested spending this summer collaborating with us, first of all, 
 ### Phase One: Complete our test 
 
  - First, create an account at [omegaUp.com](https://omegaUp.com).
- - Join to our GSoC 2026 [omegaUp Test](https://omegaup.com/contest/gsoc2026). The test consists of 3 problems, you have to solve at least 2 of them in order to pass. **In the case of plagiarism, we will disqualify those applicants involved**, so please don't share your solutions with your fellow applicants.
-#### note: alternative url for the test: [omegaUp Test](https://omegaup.com/arena/gsoc2026)
+ - Join to our GSoC 2026 [omegaUp Test](https://omegaup.com/arena/gsoc2026). The test consists of 3 problems, you have to solve at least 2 of them in order to pass. **In the case of plagiarism, we will disqualify those applicants involved**, so please don't share your solutions with your fellow applicants.
 
 ### Phase Two: Familiarize yourself with our codebase
 
 We ask that you complete phase one before you start working with our codebase.
 
  - Follow these [instructions](/ideas/omegaup/development-environment-setup-process) to set up your development environment.
- - Find yourself an interesting bug to solve from our [issue tracker](https://github.com/omegaup/omegaup/issues) (specially from our list of ["Good first issues"](/ideas/omegaup/omegaup-omegaup-labels-good-20first-20issue), or reach out to the [Discord channel](https://discord.gg/gMEMX7Mrwe) asking for one and we will be happy to find a good fit for you. Most of the conversations in the issue tracker are in Spanish but feel free to switch the conversation to English on any issue. Alternatively, you can go and find bugs on omegaup.com yourself, then report them in our issue tracker, and then fix them.
+ - Find yourself an interesting bug to solve from our [issue tracker](/ideas/omegaup/omegaup-omegaup-issues) (specially from our list of ["Good first issues"](/ideas/omegaup/omegaup-omegaup-labels-good-20first-20issue), or reach out to the [Discord channel](https://discord.gg/gMEMX7Mrwe) asking for one and we will be happy to find a good fit for you. Most of the conversations in the issue tracker are in Spanish but feel free to switch the conversation to English on any issue. Alternatively, you can go and find bugs on omegaup.com yourself, then report them in our issue tracker, and then fix them.
  - Implement your fix and submit it for review. Once it's merged you can move onto the third phase.
 
 ### Phase Three: Writing your proposal

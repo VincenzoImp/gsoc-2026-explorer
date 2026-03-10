@@ -2,11 +2,13 @@
 
 **Parent:** UC OSPO — Project Ideas
 **Source:** https://ucsc-ospo.github.io/osredocs/forstudents
-**Scraped:** 2026-02-22T23:28:47.601066
+**Scraped:** 2026-03-10T16:58:40.318578
 
 ---
 
 # Guidelines for Summer Students
+
+[AI USAGE POLICY](https://ucsc-ospo.github.io/osredocs/aipolicy/)
 
 ## How to apply to the be a contributor in our summer programs
 

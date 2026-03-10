@@ -2,7 +2,7 @@
 
 **Parent:** AOSSIE — Project Ideas
 **Source:** https://github.com/AOSSIE-Org/Info/blob/main/GSoC-Ideas/2026/Rein.md
-**Scraped:** 2026-02-22T23:28:47.634225
+**Scraped:** 2026-03-10T16:58:40.239566
 
 ---
 
@@ -16,23 +16,35 @@ While the core functionality is already implemented, several areas require impro
 
 ---
 
-## Overview of Tasks
+## Pre-Evaluation Task
 
-* **Improve cursor handling on Wayland** *(Highest Priority)*
+It is mandatory to create PoCs for the following issues, as described in them:
+
+* https://github.com/AOSSIE-Org/Rein/issues/130
+* https://github.com/AOSSIE-Org/Rein/issues/208
+
+Add the PoC links to your proposal so they can be tested and evaluated.
+
+Check all open issues labeled **GSoC 2026**. Your proposal should primarily revolve around them. However, only include what you genuinely believe you can deliver. Do not rely on AI to judge your capabilities.
+
+## Overview of Tasks During GSoC period
+
+* **Evaluate and Replace NutJS with Better Options** *(Highest Priority)*
 
   * Resolve cursor position desynchronization on Wayland (e.g., KDE).
   * Investigate virtual input devices or alternative input injection methods.
+  * Ensure native OS handling of cursor movement, scrolling, and gestures.
   * Ensure the cursor position is either correctly synced or reliably indicated.
 
 <!-- Already done
 * **Improve keyboard input handling**
 
   * Ensure consistent multi-character input (e.g., glide typing, voice input).
--->
 
 * **Complete and normalize key mappings**
 
   * Modifier keys, navigation keys, function keys, and media keys.
+-->
 
 * **Ensure cross-platform compatibility**
 
@@ -40,7 +52,8 @@ While the core functionality is already implemented, several areas require impro
   * Automate creation of distributables for all supported platforms
     (Linux must be distributed as a Flatpak).
   * Document platform-specific limitations and behavior.
- 
+
+<!-- Already done
 * **Authentication**
 
   * Use an authentication token passed via URL (link and QR code).
@@ -48,14 +61,22 @@ While the core functionality is already implemented, several areas require impro
   * Persist tokens on the server after successful connection.
 
   * Expire tokens after a defined period of inactivity.
- 
-* **Screen mirror**
+-->
 
-  * Explore possibility of screen mirroring on the trackpad region.
+* **Low Latency Audio & Screen mirror**
+
+  * Explore possibility of screen mirroring on the trackpad region, i.e. cursor movement should be possible over the mirror itself.
 
 * **Improve UI/UX**
 
   * Make the interface more intuitive and easier to use.
+
+* **Propose Significant Improvements (Beyond LLM-Generated Suggestions)**
+
+  * Identify areas where unnecessary complexity can be reduced.
+  * Suggest simpler, more maintainable implementations where applicable.
+  * Highlight sections that would benefit from using well-suited libraries instead of custom logic.
+
 
 <!-- Added complexity might not be worth it, will reconsider this in future
 * **Improve LAN accessibility**
@@ -64,7 +85,7 @@ While the core functionality is already implemented, several areas require impro
   * This'll help when system input fails and the app is configured to auto-start.
 -->
 
-Candidates are expected to refine these tasks in their GSoC proposals.
+Candidates are expected to refine these tasks in their GSoC proposals and discuss their approaches with peers instead of directly raising PRs.
 
 ---
 
@@ -81,12 +102,12 @@ Candidates are expected to refine these tasks in their GSoC proposals.
 
 ### Proposal Expectations
 
-* Clear, concise, and easy to understand.
-* Demonstrates understanding of current limitations and the **end-to-end flow** of proposed solutions.
-* Includes decision points and actions, ideally supported with **diagrams**.
-* Identifies where alternative libraries could improve reliability or compatibility.
-* Justifies the planned work, utilizing the entire GSoC period
-* Discusses potential future improvements and scope.
+* Shows strong understanding of current limitations and the **end-to-end solution flow**.
+* Defines decision points and trade-offs, ideally with **diagrams**.
+* Evaluates alternative libraries or approaches for better reliability and compatibility.
+* Provides timeline utilizing the full GSoC period.
+* Outlines future scope and long-term direction.
+* Preferably include link to a video (e.g., on YouTube or any public platform) showcasing the app, its features, overall vision, and a brief explanation of its internal workings.
 
 ### General Abilities
 
@@ -119,5 +140,5 @@ Candidates are expected to refine these tasks in their GSoC proposals.
 
 ## Communication Channel
 
-Join our Discord server ([https://discord.gg/xnmAPS7zqB](https://discord.gg/xnmAPS7zqB) and discuss this idea in
+Join our Discord server ([https://discord.gg/xnmAPS7zqB](https://discord.gg/xnmAPS7zqB)) and discuss this idea in
 **AOSSIE-Discord → Projects → Rein**.

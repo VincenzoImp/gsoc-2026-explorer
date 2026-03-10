@@ -1,7 +1,7 @@
 # SageMath — Project Ideas
 
 **Source:** https://wiki.sagemath.org/GSoC/2026
-**Scraped:** 2026-02-22T23:28:47.599784
+**Scraped:** 2026-03-10T16:58:40.317272
 
 ---
 
@@ -39,8 +39,13 @@ Contents
 [Implement a solver for the Killing equations](https://wiki.sagemath.org#Implement_a_solver_for_the_Killing_equations) -
 [Provide an implementation of q- and qt-characters](https://wiki.sagemath.org#Provide_an_implementation_of_q-_and_qt-characters) -
 [Interface combinatorial species and Usain-Boltz](https://wiki.sagemath.org#Interface_combinatorial_species_and_Usain-Boltz) -
+[Improve and polish the generation of structures of combinatorial species](https://wiki.sagemath.org#Improve_and_polish_the_generation_of_structures_of_combinatorial_species) -
 [Interface FriCAS guessing routines with the lazy power series ring](https://wiki.sagemath.org#Interface_FriCAS_guessing_routines_with_the_lazy_power_series_ring) -
-[Provide a direct interface to FriCAS](https://wiki.sagemath.org#Provide_a_direct_interface_to_FriCAS)
+[Provide a direct interface to FriCAS](https://wiki.sagemath.org#Provide_a_direct_interface_to_FriCAS) -
+[Improve integration with Mathics](https://wiki.sagemath.org#Improve_integration_with_Mathics) -
+[Speed up the construction of immutable (di)graphs](https://wiki.sagemath.org#Speed_up_the_construction_of_immutable_.28di.29graphs) -
+[Implement AA and QQbar based on Calcium](https://wiki.sagemath.org#Implement_AA_and_QQbar_based_on_Calcium) -
+[Implement generalizations of matroids](https://wiki.sagemath.org#Implement_generalizations_of_matroids)
 
 -
 
@@ -85,7 +90,7 @@ There are a number of combinatorial Hopf algebras (CHAs) currently implemented i
 ## Refactor the diagram algebras/monoids and add new ones
 
 Mentor |
-TBD |
+Martin Rubey |
 Area |
 Algebra, Combinatorics |
 Skills |
@@ -101,7 +106,7 @@ The diagram algebras (i.e., subalgebras of the partition algebra) are implemente
 ## Improve (free) module implementations
 
 Mentor |
-TBD |
+Martin Rubey |
 Area |
 Linear Algebra, Performance, Refactoring |
 Skills |
@@ -165,7 +170,7 @@ Length |
 Difficulty |
 Medium-Hard |
 
-KLR algebras, also known as quiver Hecke algebras, categorify representations of quantum groups through their representations. The goal of this project is to implement these algebras in different bases, the modules of the KLR algebras, and their corresponding crystal structure. For a shorter variant, one can only implement the modules.
+KLR algebras, also known as quiver Hecke algebras, categorify representations of quantum groups through their representations. The goal of this project is to implement these algebras in different bases, the modules of the KLR algebras, and their corresponding crystal structure.
 
 
 ## Implement a solver for the Killing equations
@@ -216,6 +221,24 @@ Easy-Medium |
 We want to be able to create large random structures of a family of combinatorial objects ("species") given by a recursive definition. Standard examples are various families of rooted trees. In this project you will achieve this by providing an interface to [Usain-Boltz](https://gitlab.com/ParComb/usain-boltz). The first and probably hardest step is to implement a method that computes a grammar for species. The interfacing to Usain-Boltz will then be comparatively easy.
 
 
+## Improve and polish the generation of structures of combinatorial species
+
+Mentor |
+Martin Rubey |
+Area |
+Combinatorics |
+Skills |
+familiarity with combinatorial species or group actions |
+Length |
+175 hours |
+Difficulty |
+Easy-Medium |
+
+Currently, there is a generic implementation that generates structures and isomorphism types of a combinatorial species, and there are specialised implementations for the most important operations, such as sum, product and composition. In this project, we will implement specialised implementations for the remaining operations, such as the Hadamard product, the functorial composition and the arithmetic product. Additionally, the multivariate ("multisort") versions of these operations will be implemented.
+
+Finally, we will polish the existing code: streamlining implementations, providing documentation, increasing performance, etc. For this part, basic knowledge of finite group actions will be necessary.
+
+
 ## Interface FriCAS guessing routines with the lazy power series ring
 
 Mentor |
@@ -237,7 +260,7 @@ FriCAS provides some routines that guess a formula for a sequence given its firs
 Mentor |
 Martin Rubey |
 Area |
-external packages |
+External packages |
 Skills |
 familiarity with interfacing python and SBCL or ECL |
 Length |
@@ -246,3 +269,67 @@ Difficulty |
 Hard |
 
 The current interface to FriCAS is based on pexpect, and therefore slow, especially when large lists should be transferred. The goal of this project is to provide an interface similar to what is done for Maxima. This is most likely a very hard project, and you will be mostly on your own. Some proof of concept hacks can be found at [https://groups.google.com/g/fricas-devel/c/qYzrY-92Q2A/m/P49CneVKAQAJ](https://groups.google.com/g/fricas-devel/c/qYzrY-92Q2A/m/P49CneVKAQAJ) and [https://groups.google.com/g/fricas-devel/c/ds7aqEd-lj4/m/IvUXk3ZCAgAJ](https://groups.google.com/g/fricas-devel/c/ds7aqEd-lj4/m/IvUXk3ZCAgAJ)
+
+
+## Improve integration with Mathics
+
+Mentor |
+Rocky Bernstein |
+Area |
+External packages |
+Skills |
+Familiarity with interfacing Python libraries |
+Length |
+350 hours |
+Difficulty |
+Medium |
+
+[Mathics3](https://mathics.org/) ([github page](https://github.com/Mathics3)) is an open source implementation of Mathematica implemented in Python, where there is already a [basic interface in SageMath](https://doc.sagemath.org/html/en/reference/interfaces/sage/interfaces/mathics.html). The goal of this project would be to improve this interface and to have further integration within the [SageMath](/ideas/sagemath/sagemath) code, such as better communication of objects between the libraries or adding an algorithm option in different places in the symbolic functions.
+
+
+## Speed up the construction of immutable (di)graphs
+
+Mentor |
+David Coudert |
+Area |
+Graph theory |
+Skills |
+Familiarity with |
+Length |
+175 hours |
+Difficulty |
+Medium |
+
+Currently, constructing an immutable (di)graph involves building a mutable graph and then converting it to an immutable graph (by calling the correct backend and providing the mutable (di)graph as input). The goal of this project is to implement methods that construct the graph directly from the lists of edges or any other valid input data format. Improvements to the backends to speed up the process are also welcome.
+
+
+## Implement AA and QQbar based on Calcium
+
+Mentor |
+Michael Orlitzky |
+Area |
+External packages |
+Skills |
+Familiarity with |
+Length |
+175 or 350 hours |
+Difficulty |
+Medium |
+
+The algebraic closure of all rational numbers and the corresponding subfield of algebraic real numbers (that is the real numbers in QQbar) are important exact arithmetic fields implemented in [SageMath](/ideas/sagemath/sagemath). One implementation of each of these is provided by the Calcium library (which is part of Flint), and the goal of this project is to provide an interface to these implementations. (An old ticket with some more details can be found [https://github.com/sagemath/sage/issues/30222](https://github.com/sagemath/sage/issues/30222).) An important aspect of this is figuring out how to provide a natural API within [SageMath](/ideas/sagemath/sagemath), including how to give the user the option to utilize the two different Calcium implementations of QQbar. An extended version of this project would be to work with an even larger field of exact arithmetic that includes expressions like `sqrt(exp(2) + sqrt(5))`.
+
+
+## Implement generalizations of matroids
+
+Mentor |
+TBD |
+Area |
+Combinatorics |
+Skills |
+Strong understanding of linear algebra, familiarity with matroids in |
+Length |
+175 or 350 hours |
+Difficulty |
+Medium |
+
+The goal of this project is to implement two generalizations of matroids such as greedoids, independence systems, and polymatroids. Part of any such addition would be to integrate them into the matroid implementation class hierarchy, likely requiring new abstract base classes. Things like greedy algorithm implementations should be a focus to take advantage of the theory, beyond implementing the generalities.

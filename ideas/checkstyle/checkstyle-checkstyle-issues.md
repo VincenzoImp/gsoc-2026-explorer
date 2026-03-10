@@ -2,29 +2,7 @@
 
 **Parent:** checkstyle — Project Ideas
 **Source:** https://github.com/checkstyle/checkstyle/issues?q=is%3Aissue%20state%3Aopen%20label%3Aantlr
-**Scraped:** 2026-02-22T23:28:47.591567
-
----
-
-## #18146: Clean up grammar for discontinued preview feature (pattern matching for switch)
-
-**Labels:** approved, antlr, breaking compatibility
-
-Follow-up from issue
-- https://github.com/checkstyle/checkstyle/issues/18104
-
----
-
-[JEP 406](https://openjdk.org/jeps/406) introduced a new preview feature in Java 17 called `Pattern Matching for switch`. Checkstyle added support for this in Issue #10848 and PR #11100. Since then, however, the feature got refined multiple times in:
-
-- [JEP 420: Pattern Matching for switch (Second Preview)](https://openjdk.org/jeps/420)
-- [JEP 427: Pattern Matching for switch (Third Preview)](https://openjdk.org/jeps/427)
-- [JEP 433: Pattern Matching for switch (Fourth Preview)](https://openjdk.org/jeps/427)
-
-In those refinements, some syntax was dropped and it is no longer compilable with Java 21. Checkstyle still supports this outdated grammar.
-
-The goal of this issue is to remove ANTLR grammar for `Pattern Matching for switch`. The grammar was added in PR
-- #11100
+**Scraped:** 2026-03-10T16:58:40.259909
 
 ---
 

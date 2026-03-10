@@ -1,11 +1,13 @@
 # Wikimedia Foundation — Project Ideas
 
 **Source:** https://www.mediawiki.org/wiki/Google_Summer_of_Code/2026#Projects
-**Scraped:** 2026-02-22T23:28:47.556167
+**Scraped:** 2026-03-10T16:58:40.289009
 
 ---
 
 # Google Summer of Code/2026
+
+Wikimedia will be taking part as a mentoring organization for [Google Summer of Code](/ideas/wikimedia-foundation-nd/wiki-google_summer_of_code) 2026.
 
 ## Program timeline
 
@@ -160,7 +162,7 @@ See [Google Summer of Code/Participants#Accepted participants](/ideas/wikimedia-
 
 - Support forum:
 [https://wikimedia.zulipchat.com/#narrow/channel/561533-GSoC2026](https://wikimedia.zulipchat.com/#narrow/channel/561533-GSoC2026) - Organization administrators for this round are:
-[Lani Goto](https://meta.wikimedia.org/wiki/User:LGoto_(WMF)),[Gopa Vasanth](/ideas/wikimedia-foundation-nd/wiki-user-gopavasanth),[Mahfuza Mohona](/ideas/wikimedia-foundation-nd/wiki-user-mhmohona) - Read how to
+[Lani Goto](https://meta.wikimedia.org/wiki/User:LGoto_(WMF)),[Gopa Vasanth](/ideas/wikimedia-foundation-nd/wiki-user-gopavasanth),[Mahfuza Mohona](/ideas/wikimedia-foundation-nd/wiki-user-mhmohona),[Osuolale Marv](/ideas/wikimedia-foundation-nd/wiki-user-stormy_chamber) - Read how to
 [communicate effectively](/ideas/wikimedia-foundation-nd/wiki-new_developers-communication_tips)and[get help on technical questions](https://developer.wikimedia.org/get-help/).We encourage applicants to communicate in the public streams and refrain from sending private emails/messages whenever possible. Open communication allows fellow applicants to learn from your questions. It also gives all community members a chance to answer your queries. This way, queries get answered sooner and the administrators do not become a bottleneck. Also see our[communication tips](/ideas/wikimedia-foundation-nd/wiki-new_developers-communication_tips).
 
 ## External links

@@ -1,7 +1,80 @@
 # National Resource for Network Biology (NRNB) — Project Ideas
 
 **Source:** https://github.com/nrnb/GoogleSummerOfCode/issues
-**Scraped:** 2026-02-22T23:28:47.582082
+**Scraped:** 2026-03-10T16:58:40.315906
+
+---
+
+## #285: Unified App Discovery for Cytoscape Desktop, Cytoscape Web, and Service Apps in Cytoscape App Store
+
+**Labels:** Cytoscape, Python, Difficulty: Medium, Django, Size: 175h, GitHub
+
+## Unified App Discovery for Cytoscape Desktop, Cytoscape Web, and Service Apps
+
+---
+
+### Background
+
+The Cytoscape App Store ([https://apps.cytoscape.org/](https://apps.cytoscape.org)) is the official registry for extensions to **Cytoscape Desktop**, allowing users to discover and install Java-based apps that extend network analysis and visualization functionality.
+
+Over the past few years, the Cytoscape ecosystem has expanded beyond the desktop platform:
+
+* **Cytoscape Desktop Apps** – Java-based extensions for the desktop application.
+* **Cytoscape Web Apps** – Browser-based extensions that enhance Cytoscape Web.
+* **Cytoscape Web Service Apps** – Web services that conform to the Service App Specification (draft v2) and integrate dynamically into Cytoscape Web.
+
+Relevant repositories and references:
+
+* Cytoscape App Store (Django):
+  [https://github.com/cytoscape/appstore](https://github.com/cytoscape/appstore)
+
+* Cytoscape Web:
+  [https://github.com/cytoscape/cytoscape-web](https://github.com/cytoscape/cytoscape-web)
+
+* Service App Specification (draft v2):
+  [https://github.com/cytoscape/cytoscape-web/wiki/Specification-for-Service-App-in-Cytoscape-Web-(draft-v2)](https://github.com/cytoscape/cytoscape-web/wiki/Specification-for-Service-App-in-Cytoscape-Web-%28draft-v2%29)
+
+Currently, the App Store is primarily designed for Desktop apps. There is no unified discovery experience across platforms, and Web/Service Apps are not first-class citizens within the App Store.
+
+This results in:
+
+* Fragmented app discovery
+* No centralized registry for Cytoscape Web extensions
+* No health monitoring for Service Apps
+* No unified search/filtering across platforms
+
+As Cytoscape evolves into a multi-platform ecosystem, the App Store should serve as a **single unified catalog** for all Cytoscape extensions.
+
+---
+
+### Goal
+
+The goal of this project is to augment the existing Cytoscape App Store (Django-based) to provide unified support for:
+
+* Cytoscape Desktop Apps
+* Cytoscape Web Apps
+* Cytoscape Web Service Apps
+
+By the end of the project, the App Store should:
+
+1. Support multiple app types with clear platform designation (Desktop, Web, Service).
+2. Provide unified browsing, filtering, and search across platforms.
+3. Support registration and display of Cytoscape Web Apps.
+4. Support submission, validation, and health monitoring of Service Apps.
+5. Provide a machine-readable API endpoint for Cytoscape Web to retrieve approved and healthy Service Apps.
+6. Maintain backward compatibility with the existing Desktop app infrastructure.
+
+The end result will be a cohesive App Store experience where users can easily find the correct app for the Cytoscape platform they are using.
+
+---
+
+### Difficulty Level: Medium
+
+This project requires full-stack Django development, careful integration into an existing production system, backward compatibility considerations, and external service validation. The work is well-scoped but requires thoughtful design and testing.
+
+---
+
+*[truncated]*
 
 ---
 
@@ -434,68 +507,6 @@ This is a more open-ended project; it will require a proposal that is focused en
 
 ---
 
-## #254: Refactor Cytosnap to use Playwright
-
-**Labels:** JavaScript, Cytoscape.js, Canvas, Difficulty: Easy, Size: 175h
-
-### Background
-Describe the current state of the project and the main problem or issue being addressed by the proposed idea. Details should include links and references. 
-
-- [Cytosnap](https://github.com/cytoscape/cytosnap) is a package to render and export [Cytoscape.js](https://js.cytoscape.org) graphs as various image formats.
-- Cytosnap currently uses [Puppeteer](https://pptr.dev) to do this, and Puppeteer has several maintenance and compatibility issues.
-- [Playwright](https://playwright.dev) is a newer alternative to Puppeteer, which would address these issues.
-- [Skia Canvas](https://skia-canvas.org) is a lighter-weight alternative to Puppeteer and Playwright, which could simplify deployment.  Skia Canvas only supports rendering the HTML5 `<canvas>` API as an exported image, whereas Playwright includes a full browser environment.
-
-### Goal
-Describe what the end result of the GSoC project should be.
-
-1. Refactor Cytosnap to use Playwright instead of Puppeteer.
-2. Add [Playwright tests](https://playwright.dev/docs/intro) to ensure that the refactored Cytosnap project is working properly according to [the Cytosnap public API](https://github.com/cytoscape/cytosnap).
-3. [Configure GitHub Actions](https://docs.github.com/en/actions) to automatically run the new Playwright tests on new commits and pull requests.
-4. Add support for using Skia Canvas.
-  1. This would be enabled with an option like `engine: 'skia'`.
-  2. Use Playwright if the user specifies `engine: 'playwright'`.  Cytosnap should support both.
-  3. Mark Skia Canvas and Playwright as optional dependencies.  The user can decide which to install based on which he wants to use in his project.
-5. Add automated tests using Mocha for `engine: 'skia'`.
-
-### Difficulty Level: Easy/Medium/Hard
-Give a difficulty level, either Easy, Medium or Hard. Make sure to tag the issue with this difficulty.
-Describe with a sentence or two why the project is this difficulty level.
-
-Easy if:
-
-- The applicant has prior experience with JS and Node.js.
-- The applicant has experience with JS build systems, like Webpack or Vite.
-
-### Size and Length of Project
-Define the project commitment as either “small: 90 hours", "medium: 175 hours" or "large: 350 hours" and the timeline between 10 and 22 weeks, for example: 
-- **medium: 175 hours**
-- **12 weeks**
-
-Note that the project length for small projects should be 10-12 weeks.
-
-### Skills
-List skills/technologies that the student should be familiar with. Also tag the issue with these.
-
-Essential skills: 
-
-- JS (significant experience with the language & modern tooling)
-
-
-Nice to have skills, from most to least important: 
-
-- The HTML5 canvas API
-- Headless browsers / rendering: Puppeteer, Playwright, Skia Canvas, Selenium, etc.
-- Build systems like Webpack or Vite
-- GitHub Actions
-
-### Public Repository
-Link to a public, open-source repository for your project. _All code from accepted projects must be open source and public throughout the coding period and beyond._
-
-*[truncated]*
-
----
-
 ## #248: COBRAxy: constraint-based metabolic modeling in Galaxy
 
 **Labels:** Python, Difficulty: Medium, Size: 175h, Galaxy
@@ -725,60 +736,6 @@ Interested applicants should:
 - Kei Ono 
 - Dylan Fong 
 - Jing Chen
-
----
-
-## #223: Cytoscape.js extension template using ESM
-
-**Labels:** JavaScript, Cytoscape.js, Difficulty: Easy, Size: 175h
-
-### Background
-
-[Cytoscape.js](https://js.cytoscape.org/) is a library used to visualise and analyse [networks](https://en.wikipedia.org/wiki/Graph_theory) in the browser or in Node.js.
-
-Problems to solve:
-
-- A lot of JS projects now, and any recent projects, use [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) (either natively in the browser or with a bundler).  The core [Cytoscape.js](https://js.cytoscape.org/) library supports ESM.  The [extensions](https://js.cytoscape.org/#extensions) do not.
-- Someone using ESM would have to do complicated configurations to make the extensions work with a bundler.
-- Someone using ESM directly in the browser would have to use workarounds in their own code to make extensions work.  This would not be straightforward, especially for novices.
-- It’s difficult for someone to contribute an extension, unless they’re fairly well skilled technically.
-
-Technical background:
-
-- ESM is now the module standard for JS.
-- The existing extensions largely use Webpack to build UMD (CJS, AMD, globals).  They should use Rollup to build ESM and UMD in future.
-- The main library already uses Rollup to build ESM and UMD.
-
-### Goal
-
-- Build a template extension using a [Github template repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository).
-- Use your template to update the [main first-party extensions](https://js.cytoscape.org/#extensions).
-- Add the template extension to the [documentation](https://js.cytoscape.org/).  A new app author should just click a button to get a new repo for their extension on GitHub.  Then they can just focus on their extension itself.
-
-### Difficulty Level
-
-**Easy**.  It’s straightforward to do.  The core library can be used as a reference.  It’s a laborious process, though.
-
-### Size and Length of Project
-Define the project commitment as either "medium: 175 hours" or "large: 350 hours" and the timeline between 10 and 22 weeks, for example: 
-- **medium: 175 hours**
-- **12 weeks**
-
-### Skills
-
-Essential skills: JS, attention to detail, testing
-Nice to have skills: Experience using Cytoscape.js
-
-### Public Repository
-
-https://js.cytoscape.org/
-
-### Potential Mentors
-
-- Max Franz (maxkfranz@gmail.com)
-- Mike Kucera (mikekucera@gmail.com)
-- Christian Lopes (chrtannus@gmail.com)
-- Gary Bader (gary.bader@utoronto.ca)
 
 ---
 

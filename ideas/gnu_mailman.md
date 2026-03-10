@@ -1,7 +1,7 @@
 # GNU Mailman — Project Ideas
 
 **Source:** https://wiki.list.org/DEV/Google%20Summer%20of%20Code%202026
-**Scraped:** 2026-02-22T23:28:47.587565
+**Scraped:** 2026-03-10T16:58:40.267980
 
 ---
 
@@ -24,7 +24,7 @@ Contents
 [Mentors](https://wiki.list.org#Mentors) -
 [User Profile Tool](https://wiki.list.org#User_Profile_Tool) -
 [Moderating Emails and Threads in Hyperkitty](https://wiki.list.org#Moderating_Emails_and_Threads_in_Hyperkitty) -
-[Support for Encrypted Lists](https://wiki.list.org#Support_for_Encrypted_Lists) -
+[Support for Encrypted Lists (removed)](https://wiki.list.org#Support_for_Encrypted_Lists_.28removed.29) -
 [Improved UI for Subscription Management](https://wiki.list.org#Improved_UI_for_Subscription_Management) -
 [Dynamic Sublists (aka Conversations)](https://wiki.list.org#Dynamic_Sublists_.28aka_Conversations.29) -
 [Topics](https://wiki.list.org#Topics) -
@@ -34,6 +34,7 @@ Contents
 [Shell Completions](https://wiki.list.org#Shell_Completions) -
 [Log Access from the Web UI](https://wiki.list.org#Log_Access_from_the_Web_UI) -
 [Implement Domain Administration](https://wiki.list.org#Implement_Domain_Administration) -
+[IMAP Access to Archives](https://wiki.list.org#IMAP_Access_to_Archives) -
 [The Generic Project Template](https://wiki.list.org#The_Generic_Project_Template)
 
 -
@@ -82,7 +83,9 @@ To be considered as an applicant for Google Summer of Code 2026, we need you to 
 
 The best way to get started is to set up a local development environment, documentation for which is [available here](http://docs.mailman3.org/en/latest/devsetup.html).
 
-You can then find issues tagged with "beginner-friendly" and "easy" on [our Gitlab Page](https://gitlab.com/groups/mailman/-/issues?sort=created_date). Or ask us on the mailing lists (but showing you've checked the [GitLab](https://wiki.list.org/GitLab) issues first is something we consider anencouraging sign!) Feel free to open more issues when you find them.
+You can then find issues tagged with "beginner-friendly" and "easy" on [our Gitlab Page](https://gitlab.com/groups/mailman/-/issues?sort=created_date). Or ask us on the mailing lists (but showing you've checked the [GitLab](https://wiki.list.org/GitLab) issues first is something we consider an encouraging sign!) Feel free to open more issues when you find them yourself!
+
+If you decide to work on a particular issue in order to qualify for GSoC, feel free to claim it by posting a short comment to the issue, and if the assigned developer is empty, assign it to Stephen Turnbull (org admin). For "easy" issues, you should submit a merge request within 48 hours. If you miss that deadline, your claim lapses, and it can be claimed by another developer. Extensions will not be granted. For "beginner-friendly" issues, the default deadline for the merge request is also 48 hours, but if you estimate the initial submission will take longer than that, in your claim comment you should estimate when you will be done. (Note that these deadlines are **not** for the approval of the MR. Do as much work as you can, at least of proof of concept, to keep your claim active.)
 
 
 ## Contacting us
@@ -102,7 +105,7 @@ Mailing list to use for GSoC discussions:
 
 The
 
-[GSoC student Guide](https://google.github.io/gsocguides/student/)has some great information[Tips for Prospective Google Summer of Code Students](/ideas/gnu-mailman/tips-20for-20prospective-20google-20summer-20of-20code-20students)(general good advice)[Tips for writing a good GSoC proposal](/ideas/gnu-mailman/spam)(advice on structuring and composing the document; now several years old but mostly valid)
+[GSoC student Guide](https://google.github.io/gsocguides/student/)has some great information[Tips for Prospective Google Summer of Code Students](/ideas/gnu-mailman/tips-20for-20prospective-20google-20summer-20of-20code-20students)(general good advice)[Tips for writing a good GSoC proposal](https://wiki.list.org/DEV/SPAM)(advice on structuring and composing the document; now several years old but mostly valid)
 
 
 
@@ -198,28 +201,11 @@ With Hyperkitty, we can tackle this problem by adding moderation actions to spec
 - Stephen J. Turnbull
 
 
-## Support for Encrypted Lists
+## Support for Encrypted Lists (removed)
 
-This is an idea that has been around for a while and there are a number of custom implementations in the wild, we hear. The problem as usual is key distribution and management. The obvious distributed implementation using PGP requires everyone on the list to know everyone else's public key, and to encrypt using *all of them*. The basic idea is to add each subscriber's public key to their profile, so that subscribers only need to know the list's public key. Then the list would do the reencryption. That way subscribers only need to manage two keys: their own and the list's. The devil is in the details. For example, the list is by definition a person in the middle. To what extent can Mailman help to improve site security? A naive implementation would put plaintext on disk. Can that be avoided? What about archives? Some of these questions are design questions, and (for the purpose of GSoC) it doesn't matter how you answer them. But they do need to be answered and *documented*.
+After discussion with experts, I have decided to remove this task as it will not be integrated into Mailman. It is an "attractive nuisance", likely to make users *less* secure rather than *more* secure.
 
-The simplest, *low functionality*, model would involve disabling archives, and poster to server and server to subscriber encryption.
-
-A *high functionality* model would offer archives, with some degree of forward security as well as security in transit.
-
-Tags: *core* (securing the core), *postorius* (configuring an encrypted list), *hyperkitty* (archive management)
-
-
-### Requirements
-
-- Level: hard
-- Estimated effort: 175 hours (low functionality) or 350 (high functionality)
-
-
-### Mentors
-
-- Abhilash Raj
-- Stephen J. Turnbull
-- Victoriano Giralt
+If you had already started working on this for GSoC, please get in touch with Steve <[steve@turnbull.jp](mailto:steve@turnbull.jp)>, and we will negotiate whether this can still be a viable proposal.
 
 
 ## Improved UI for Subscription Management
@@ -443,6 +429,26 @@ Tag: Postorius
 
 - Stephen J. Turnbull
 - Abhilash Raj
+
+
+## IMAP Access to Archives
+
+The IETF's *Mailarchive* archiver allows access to the IETF mailing list archives. This task would allow users to access [HyperKitty](/ideas/gnu-mailman/hyperkitty) archives via the IMAPv4.1 protocol.
+
+Tag: [HyperKitty](/ideas/gnu-mailman/hyperkitty)
+
+
+### Requirements
+
+Knowledge of the IMAPv4.1 protocol and
+
+[HyperKitty](/ideas/gnu-mailman/hyperkitty)message storage- Level: hard
+- Estimated effort: 175 hours (extended period negotiable with additional IMAP feature support)
+
+
+### Mentors
+
+- Stephen J. Turnbull
 
 
 ## The Generic Project Template

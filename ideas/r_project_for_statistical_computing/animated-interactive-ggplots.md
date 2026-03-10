@@ -2,7 +2,7 @@
 
 **Parent:** R project for statistical computing — Project Ideas
 **Source:** https://github.com/rstats-gsoc/gsoc2026/wiki/Animated-interactive-ggplots
-**Scraped:** 2026-02-22T23:28:47.625964
+**Scraped:** 2026-03-10T16:58:40.305558
 
 ---
 
@@ -12,7 +12,7 @@
 
 # Animated interactive ggplots
 
-[49 revisions](https://github.com/rstats-gsoc/gsoc2026/wiki/Animated-interactive-ggplots/_history)
+[58 revisions](https://github.com/rstats-gsoc/gsoc2026/wiki/Animated-interactive-ggplots/_history)
 
 [animint2](https://github.com/tdhock/animint2) is an R package for making interactive animated data
 visualizations on the web, using ggplot syntax and two new keywords:
@@ -77,8 +77,7 @@ YES. If you don’t know JavaScript then I suggest you read some
 tutorials, e.g. [Mozilla JavaScript basics](https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/JavaScript_basics), [W3Schools](http://www.w3schools.com/js/), [mbostock’s D3 examples](https://observablehq.com/@mbostock).
 
 Please get in touch with EVALUATING MENTOR [Toby Dylan Hocking](https://github.com/tdhock)
-<toby.hocking@r-project.org> and
-[Yufan Fei](https://github.com/Faye-yufan) <yufanfei8@gmail.com>
+<toby.hocking@r-project.org>, Yufan Fei <yufanfei8@gmail.com>, and Suhaani Agarwal <suhaani0707@gmail.com>
 after completing at least one of the tests below.
 
 Do one or several — doing more hard tests makes you more likely to be selected.
@@ -131,9 +130,14 @@ Contributors, please post a link to your test results here.
 - Aviral Sapra –
 [worldbank-Visualisation](https://AviraL0013.github.io/worldbank-viz)–[worldbank-Github](https://github.com/AviraL0013/worldbank-viz/tree/gh-pages)|[Student Performance Visualisation](https://AviraL0013.github.io/student-performance-viz)–[Viz-Github](https://github.com/AviraL0013/student-performance-viz/tree/gh-pages)–[R file](https://github.com/AviraL0013/student-performance-code) - Aviral Sapra –
 [Least Squares Method](https://aviral0013.github.io/least-squares-animint/)|[Source](https://github.com/AviraL0013/least-squares-animint/blob/main/source/least_squares_animint.R) - Aviral Sapra –
-[Animation_Gallery](https://aviral0013.github.io/animation-examples-gallery/)|[Source](https://github.com/AviraL0013/animation-examples-gallery/tree/gh-pages) - Aakriti Kushwaha –
+[Animation_Gallery](https://aviral0013.github.io/animation-examples-gallery/)|[Source](https://github.com/AviraL0013/animation-examples-gallery/tree/gh-pages) - Aviral Sapra –
+[testhat unit test](https://github.com/animint/animint2/pull/304) - Aakriti Kushwaha –
 [Animint Tests – GitHub](https://github.com/aakritixyz/animint-tests) -
 **Prateek Kalwar**-[Solutions](https://github.com/prateek-kalwar-95/r/blob/main/README.md) - Aryan Singh,
-[Tests-Solution](https://github.com/Aryan-SINGH-GIT/animated-interactive-ggplots/blob/master/README.md)
+[Tests-Solution](https://github.com/Aryan-SINGH-GIT/animated-interactive-ggplots/blob/master/README.md) -
+**Gaurav Chaudhary**–[Solutions](https://github.com/ANAMASGARD/r) - Samiksha Sharma - [(https://samiksha22911.github.io/prime_test_folder/)]
+- Ashish Tiwari –
+[Animint2 Tests – GitHub](https://github.com/ashishtiwari03/animint2-tests)|[Animint Gallery](https://ashishtiwari03.github.io/animint-gallery/) -
+**Nandani Aggarwal**–[Solutions](https://github.com/NandaniAggarwal/animint_R/blob/main/README.md)
 
 - Aviral Sapra –

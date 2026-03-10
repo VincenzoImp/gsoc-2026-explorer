@@ -2,7 +2,7 @@
 
 **Parent:** SymPy — Project Ideas
 **Source:** https://github.com/sympy/sympy/wiki/GSoC-2015-Application-AMiT-Kumar--Solvers-:-Extending-Solveset
-**Scraped:** 2026-02-22T23:28:47.570707
+**Scraped:** 2026-03-10T16:58:40.298840
 
 ---
 

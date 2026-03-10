@@ -1,7 +1,7 @@
 # Qubes OS — Project Ideas
 
 **Source:** https://doc.qubes-os.org/en/latest/developer/general/gsoc.html#project-ideas
-**Scraped:** 2026-02-22T23:28:47.560809
+**Scraped:** 2026-03-10T16:58:40.265592
 
 ---
 
@@ -81,6 +81,26 @@ If applicable, links to more information or discussions
 **Size of the project**: either 175 hours (medium) or 350 hours (large)
 **Mentor**: Name and email address.
 ```
+
+### Graphical package manager support in templates[](https://doc.qubes-os.org#graphical-package-manager-support-in-templates)
+
+**Project**: Graphical package manager support in templates
+
+**Brief explanation**: Most of the actions needed to be performed by a Qubes OS user can be done easily with GUI tools and without the command line – except installing software in a template. This project aims to fill this gap by ensuring a smooth user experience across different default templates (Fedora, Debian, Whonix) to have GUI-based software management. for more info please see: [https://github.com/QubesOS/qubes-issues/issues/6310](https://github.com/QubesOS/qubes-issues/issues/6310) as well as [https://forum.qubes-os.org/t/how-to-fix-software-in-templates-to-install-packages-using-a-gui/20944](https://forum.qubes-os.org/t/how-to-fix-software-in-templates-to-install-packages-using-a-gui/20944)
+
+**Expected results**:
+- select a basic software manager for each template
+- ensure necessary tweaks so that they can access internet via qubes updates proxy [Updates proxy](https://doc.qubes-os.org/user/how-to-guides/how-to-install-software.html#updates-proxy)
+- an “Add Software” context button in Qubes menu that works across different templates
+
+**Difficulty**: medium
+
+**Knowledge prerequisite**:
+- Python
+
+**Size of the project**: 175 hours
+
+**Mentor**: Marta Marczykowska-Górecka <[marmarta@invisiblethingslab.com](mailto:marmarta%40invisiblethingslab.com)>
 
 ### Qubes as a Vagrant provider[](https://doc.qubes-os.org#qubes-as-a-vagrant-provider)
 
@@ -252,39 +272,19 @@ Python/Bash scripting
 
 **Mentor**: [Frédéric Pierret](https://www.qubes-os.org/team/)
 
-### Whonix IPv6 and nftables support[](https://doc.qubes-os.org#whonix-ipv6-and-nftables-support)
+### Whonix[](https://doc.qubes-os.org#whonix)
 
-**Project**: Whonix IPv6 and nftables support
+Nowadays, the following policies apply:
 
-**Brief explanation**: [T509](https://phabricator.whonix.org/T509)
+Steps:
 
-**Expected results**:
+Read the policies listed above.
 
-Work at upstream Tor: An older version of
+Become a contributor.
 
-[TransparentProxy](https://trac.torproject.org/projects/tor/wiki/doc/TransparentProxy)page was the origin of Whonix. Update that page for nftables / IPv6 support without mentioning Whonix. Then discuss that on the tor-talk mailing list for wider input.[here](https://trac.torproject.org/projects/tor/ticket/21397)implement corridor feature request add IPv6 support / port to nftables -
+Suggest a GSoC project in the
 
-[issue](https://github.com/rustybird/corridor/issues/39)port
-
-[whonix-firewall](https://github.com/Whonix/whonix-firewall)to nftablesmake connections to IPv6 Tor relays work
-
-make connections to IPv6 destinations work
-
-
-**Difficulty**: medium
-
-**Knowledge prerequisite**:
-
-nftables
-
-iptables
-
-IPv6
-
-
-**Size of the project**: 175 hours
-
-**Mentor**: [Patrick Schleizer](https://www.qubes-os.org/team/)
+[Whonix Forum](https://forums.whonix.org/)
 
 ### GUI agent for Windows 8/10[](https://doc.qubes-os.org#gui-agent-for-windows-8-10)
 

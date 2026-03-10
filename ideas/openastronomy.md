@@ -1,7 +1,7 @@
 # OpenAstronomy — Project Ideas
 
 **Source:** https://openastronomy.org/gsoc/gsoc2026/#/projects
-**Scraped:** 2026-02-22T23:28:47.545712
+**Scraped:** 2026-03-10T16:58:40.313287
 
 ---
 
@@ -27,7 +27,7 @@ juliaAstro
 
 Spectral timing in Julia
 
-Create a set of timing and spectral timing methods in Julia
+Create a set of timing and spectral timing methods in Julia.
 
 GSOC
 350 h
@@ -37,7 +37,7 @@ stingrayjuliaAstro
 
 PyArrow improvements for astronomy
 
-Improve and speed up PyArrow for nested arrays to enable on-scale time-domain analysis in astronomy
+Improve and speed up PyArrow for nested arrays to enable on-scale time-domain analysis in astronomy.
 
 GSOC
 350 h (Large)
@@ -47,7 +47,7 @@ lincc-frameworks
 
 Integrate a modern lazy-loading alternative for large-scale spectroscopic database processing
 
-Replace the unmaintained Vaex library with an actively-maintained alternative (Polars, DuckDB, or Dask) to efficiently handle large spectroscopic databases (50GB+) through lazy loading, memory mapping, and optimized I/O operations
+Replace the unmaintained Vaex library with an actively-maintained alternative (Polars, DuckDB, or Dask) to efficiently handle large spectroscopic databases (50GB+) through lazy loading, memory mapping, and optimized I/O operations.
 
 GSOC
 350 h (Large)

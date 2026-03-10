@@ -1,7 +1,7 @@
 # Open Technologies Alliance - GFOSS — Project Ideas
 
 **Source:** https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2026_proposed_ideas
-**Scraped:** 2026-02-22T23:28:47.624684
+**Scraped:** 2026-03-10T16:58:40.243325
 
 ---
 
@@ -59,7 +59,8 @@ Large Project – 350 hrs
 
 #### Related Repositories[[επεξεργασία](https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2026_proposed_ideas&veaction=edit§ion=5) | [επεξεργασία κώδικα](https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2026_proposed_ideas&action=edit§ion=5)]
 
-[https://github.com/dspinellis/cscout](https://github.com/dspinellis/cscout)
+[https://github.com/dspinellis/cscout](https://github.com/dspinellis/cscout)- Discuss ideas and pose questions at
+[https://github.com/dspinellis/cscout/issues/82](https://github.com/dspinellis/cscout/issues/82)
 
 #### Knowledge Prerequisites[[επεξεργασία](https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2026_proposed_ideas&veaction=edit§ion=6) | [επεξεργασία κώδικα](https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2026_proposed_ideas&action=edit§ion=6)]
 
@@ -305,7 +306,7 @@ Applicants should have good knowledge of Python, Git/GitHub, experience with dat
 
 #### Mentors[[επεξεργασία](https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2026_proposed_ideas&veaction=edit§ion=50) | [επεξεργασία κώδικα](https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2026_proposed_ideas&action=edit§ion=50)]
 
-Dimitrios Athanasopoulos, Nikos Tsekos
+Dimitrios Athanasopoulos, Nikos Tsekos, Panagiotis Skarvelis
 
 **GlossAPI: ML-assisted Anonymization Layer and Targeted Pipeline Improvements for Greek Datasets**[[επεξεργασία](https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2026_proposed_ideas&veaction=edit§ion=51) | [επεξεργασία κώδικα](https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2026_proposed_ideas&action=edit§ion=51)]
 
@@ -336,7 +337,7 @@ Applicants should have good knowledge of Python, Git/GitHub, Basic NLP/ML concep
 
 #### Mentors[[επεξεργασία](https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2026_proposed_ideas&veaction=edit§ion=58) | [επεξεργασία κώδικα](https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2026_proposed_ideas&action=edit§ion=58)]
 
-Myrsini Ioannou, Nikos Tsekos, Dimitrios Athanasopoulos
+Iraklis Varlamis, Myrsini Ioannou, Nikos Tsekos, Dimitrios Athanasopoulos
 
 ** FOSSBot Platform: Simulation Enhancements and AI Integration **[[επεξεργασία](https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2026_proposed_ideas&veaction=edit§ion=59) | [επεξεργασία κώδικα](https://ellak.gr/wiki/index.php?title=Google_Summer_of_Code_2026_proposed_ideas&action=edit§ion=59)]
 

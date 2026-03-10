@@ -1,7 +1,7 @@
 # OpenELIS Global — Project Ideas
 
 **Source:** https://uwdigi.atlassian.net/wiki/spaces/OG/pages/931594241/GSoC+2026
-**Scraped:** 2026-02-22T23:28:47.568321
+**Scraped:** 2026-03-10T16:58:40.245654
 
 ---
 
@@ -54,7 +54,7 @@ Date | Status | Activity |
 Dec 3, 2025 | DONE | GSoC 2025 Announced |
 Jan 19, 2026 | DONE | Mentoring organizations can begin submitting applications to Google |
 Feb 3, 2026 | DONE | Mentoring organization application deadline |
-Feb 19, 2026 | PENDING | List of accepted mentoring organizations announced |
+Feb 19, 2026 | DONE | List of accepted mentoring organizations announced |
 Feb 19, 2026 - Mar 15, 2026 | PENDING | Potential GSoC contributors discuss application ideas with mentoring organizations |
 Mar 16, 2025 | PENDING | GSoC contributor application period begins |
 Mar 31, 2026 | PENDING | GSoC contributor application deadline |

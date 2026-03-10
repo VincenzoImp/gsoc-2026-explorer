@@ -1,7 +1,7 @@
 # OpenMRS — Project Ideas
 
 **Source:** https://openmrs.atlassian.net/wiki/spaces/RES/pages/752844801/Summer+of+Code+2026
-**Scraped:** 2026-02-22T23:28:47.607342
+**Scraped:** 2026-03-10T16:58:40.276811
 
 ---
 
@@ -52,16 +52,6 @@ The following ideas are not fully finalized, and their requirements may change o
 |
 |
 |---|---|---|---|---|---|---|
-Medium | Growth Charts are a common need in Primary Health Care for children (pediatrics). Growth Charts are available in O2, but never yet added to O3. With more and more implementers using O3 for care that involves infants, babies, and young children, we need Growth Charts in O3!
-| React | @Anjula Samarasinghe |
-|
-| |
-Medium | This project aims to enforce stricter TypeScript configurations across OpenMRS repositories, ensuring developers follow best practices for strong typing. The primary goal is to eliminate the use of By implementing stricter TypeScript settings and refining type definitions, this project will enhance code maintainability, reduce runtime errors, and improve the overall developer experience. | React, Typescript | @Christopher Lumu |
-|
-| |
-Integrating Data Filter for Data Segregation / Multi-tenancy | Large | Data Filter is a powerful module that uses Hibernate’s filtering APIs to add additional where clauses to various SELECT statements. The use-case for this is to allow system-wide filters to be applied to the data added. Currently Data Filter includes a default set of filters that restrict the availability of data on patients to a set of locations a user has access to. The point of this project would be to expand on these capabilities to add things like: an administrative UI for associating users and patients with specific locations, additional rules to account for the various modules used in the O3 RefApp, templates for additional rules that may be useful (i.e., tie the ability to see obs with certain codes to certain privileges). | Java, Hibernate | @Joshua Nsereko
-| @Wyclif Luyima |
-|
 Large | In the scope of the project would be (depending on the progress we make using other contribution channels): Adjust codebase across core and O3 modules to use a new storage service described [here](https://talk.openmrs.org/t/new-storage-service/44655).Adjust code in core and O3 modules to use distributed caching Experiment with Hibernate Search using OpenSearch as backend instead of a local Lucene index.
 | Java, Hibernate | @Rafal Korytkowski |
 |
@@ -74,7 +64,8 @@ Medium | We have a service queues app in O3, which is functional, but needs some
 | |
 | Medium | Many OpenMRS implementers have used HTML Forms (HFE) for many years. Some organizations have **dozens or even hundreds**of OpenMRS forms encoded in HTML. This makes it intimidating to consider moving to O3, since O3 uses a custom Form Schema.There was a previous community project with scripts that help convert HTML forms into the O3 Form Schema for the Angular Form Engine. This did not convert 100% of the form into the new schema, but got most of it done (60-80%) so that it is faster for a team to work on the transition. This project needs to be (1) updated to enable implementers to convert HTML forms into the newer *React*Form Engine schema, and (2) documented to explain how to use it.
 |
-| @nethmi |
+|
+|
 |
 |
 Dynamic EHR: Custom Home screen (and other screens) based on User roles, locations and other values. (
@@ -83,8 +74,57 @@ Dynamic EHR: Custom Home screen (and other screens) based on User roles, locatio
 |
 |
 |
-(Definitely a priority - either GSOC 2026 or anyone who’s interested in meantime) | Large | Voiding in OpenMRS is a form of soft-deleting. We basically set a binary column to |
-| @dkayiwa |
+(Definitely a priority - either GSOC 2026 or anyone who’s interested in meantime) | Large | Voiding in OpenMRS is a form of soft-deleting. We basically set a binary column to | Java | @dkayiwa |
+|
+|
+Patient Visit Summary Printing | Medium | Requested by the Uganda team, the DRC team, and Palladium [Requirements](/ideas/openmrs/wiki-spaces-projects-pages-edit-v2-473333762)are documented and readyBuilds on the recently completed printing support Addresses real implementation needs
+| Java, Hibernate, Spring
+| @Wikum Weerakutti |
+|
+|
+Integrate O3 with the Authentication module | Medium | The | React, Typescript | @Jayasanka Weerasinghe |
+|
+|
+A Native O3 Frontend for the Audit Trail. | Small |
+| React, Typescript | SolDevelo |
+|
+|
+OpenMRS Password Authentication Re-work |
+| OpenMRS’s password authentication system hasn’t really been updated since 2009 and still has some of the hallmarks of a password authentication system from that time—this doesn’t mean it’s broken, just that it doesn’t support things like multiple hash iterations, work-factors, etc. This could use some modernization. This would likely be just a small Java-focused project to update things or it could be a more medium-size project to rework our password authentication so that it’s built on top of Spring Security. | Java |
+|
+|
+|
+Medium | The Audit Log Module integrated Hibernate Envers into OpenMRS 2.7.0+, enabling the system to track Create, Update, and Delete (CUD) operations on data. While this provided a strong starting point for auditing, The module can record who modified patient data but does not capture several critical actions, including when users simply view patient records, security-related events such as login attempts, failures, account lockouts, or session timeouts, and important administrative activities like changes to global properties, module installations, or data exports. Therefore, the goal of this project is to evolve the Audit module from a basic change-tracking system into a comprehensive security and compliance tool by introducing read auditing and logging key system-level and administrative events. | Java / Spring |
+|
+|
+|
+
+
+## Pending Project Ideas
+
+|
+|
+|
+|
+|
+|
+|
+|---|---|---|---|---|---|---|
+Medium | Growth Charts are a common need in Primary Health Care for children (pediatrics). Growth Charts are available in O2, but never yet added to O3. With more and more implementers using O3 for care that involves infants, babies, and young children, we need Growth Charts in O3!
+| React | @Anjula Samarasinghe |
+|
+| |
+| small | This project aims to enforce stricter TypeScript configurations across OpenMRS repositories, ensuring developers follow best practices for strong typing. The primary goal is to eliminate the use of By implementing stricter TypeScript settings and refining type definitions, this project will enhance code maintainability, reduce runtime errors, and improve the overall developer experience. | React, Typescript |
+|
+|
+|
+Integrating Data Filter for Data Segregation / Multi-tenancy | Large | Data Filter is a powerful module that uses Hibernate’s filtering APIs to add additional where clauses to various SELECT statements. The use-case for this is to allow system-wide filters to be applied to the data added. Currently Data Filter includes a default set of filters that restrict the availability of data on patients to a set of locations a user has access to. The point of this project would be to expand on these capabilities to add things like: an administrative UI for associating users and patients with specific locations, additional rules to account for the various modules used in the O3 RefApp, templates for additional rules that may be useful (i.e., tie the ability to see obs with certain codes to certain privileges). | Java, Hibernate | @Joshua Nsereko
+| @Wyclif Luyima |
+|
+Postgres support? |
+|
+This Project would enable the following as well: |
+| @Wikum Weerakutti |
 |
 |
 Better way to receive feedback from clinicians / users
@@ -95,30 +135,108 @@ Better way to receive feedback from clinicians / users
 |
 |
 |
-Postgres support? |
 |
 |
-| @Wikum Weerakutti |
 |
 |
-Patient Visit Summary Printing | Medium | Requested by the Uganda team, the DRC team, and Palladium [Requirements](/ideas/openmrs/wiki-spaces-projects-pages-edit-v2-473333762)are documented and readyBuilds on the recently completed printing support Addresses real implementation needs
-| Java, Hibernate, Spring
-| @Veronica Muthee |
 |
 |
-A Native O3 Frontend for the Audit Trail. | Small |
-| React, Typescript | SolDevelo |
 |
 |
-
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
 
 ## Program Timeline
 
 Look [here](https://developers.google.com/open-source/gsoc/timeline) for more info on the full GSoC 2026 program timeline.
 
-In Progress
+Done
 
-**GSoC 2026 preparations:**Community Brainstorming
+**GSoC 2026 preparations:**Community BrainstormingDone
+
+**January 19:**Mentoring organizations can begin submitting applications to GoogleDone Deadline
+
+**February 03:**Mentoring organization application deadlineDone
+
+**February 03 - February 18:**Google program administrators review organization applicationsdone
+
+**February 19:**List of accepted mentoring organizations announcedin progress
+
+**February 19 - March 15:**Potential GSoC contributors discuss application ideas with mentoring organizationsUpcoming
+
+**March 16:**GSoC contributor application period beginsUpcoming Deadline
+
+**March 31:**GSoC contributor application deadline: Prospective GSoC Contributors Submit their 2026 Applications (includes proposals)Upcoming DEADLINE
+
+**April 21:**GSoC contributor proposal rankings due from Org AdminsUpcoming
+
+**April 30:**Accepted GSoC contributor projects announcedUpcoming
+
+**May 01 - May 24:**Community Bonding Period | GSoC contributors get to know mentors, read documentation, get up to speed to begin working on their projectsUpcoming
+
+**May 25:**Coding officially beginsUpcoming
+
+**July 06:**Mentors and GSoC contributors can begin submitting midterm evaluations (for standard 12 week coding projects)Upcoming DEADLINE
+
+**July 10:**__Midterm evaluation deadline__(standard coding period)Upcoming
+
+**July 06 - August 16:**Work Period | GSoC contributors work on their project with guidance from MentorsUpcoming
+
+**August 17 - August 24:**Final week: GSoC contributors submit their final work product and their final mentor evaluation (standard coding period)Upcoming DEADLINE
+
+**August 24 - August 31:**Mentors submit final GSoC contributor evaluations (standard coding period)Upcoming
+
+**August 24 - November 02:**GSoC contributors with extended timelines continue codingUpcoming DEADLINE
+
+**November 02:**__Final date__for all GSoC contributors to submit their__final work product__and__final evaluation__Upcoming DEADLINE
+
+**November 09:**Final date for mentors to submit__evaluations__for GSoC contributor projects with extended deadlines
 
 ## Guidelines
 

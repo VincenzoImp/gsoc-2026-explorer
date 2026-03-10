@@ -1,12 +1,12 @@
 # single page with all our projects together
 
 **Parent:** The Julia Language — Project Ideas
-**Source:** https://julialang.org/jsoc/allprojects
-**Scraped:** 2026-02-22T23:28:47.595189
+**Source:** https://julialang.org/jsoc/allprojects/
+**Scraped:** 2026-03-10T16:58:40.261502
 
 ---
 
-This page is designed to improve discoverability of projects. You can, for example, search this page for specific keywords and find all of the relevant projects.
+This page is designed to improve discoverability of projects. You can search this page (Ctrl+F / Cmd+F) for specific keywords to find all relevant projects across all domains.
 
 Climate models are complex codes that simulate Earth's climate system (atmosphere, ocean, land, ice). These models demand immense computing power and present significant software engineering challenges, including managing massive datasets, ensuring numerical stability, optimizing performance, and coupling diverse components. The complexity and legacy nature of existing models hinder their ability to fully utilize modern computing infrastructure (GPUs, machine learning, etc.). The Climate Modeling Alliance is developing CliMA, a new climate model built in Julia and designed from the outset to leverage GPU acceleration and modern software engineering practices to overcome the limitations of traditional climate models.
 
@@ -33,54 +33,6 @@ will leverage the [Makie](https://github.com/MakieOrg/Makie.jl) ecosystem and we
 **Contact:** Feel free to ask questions via [email](https://julialang.org/clima-software@caltech.edu) or [Julia Slack](https://join.slack.com/t/julialang/shared_invite/zt-2a5wdtotu-H52pQQTMDOa4NwsTSgQ_lQ) (DM to Gabriele Bozzola).
 
 *Interested in other aspects of climate modeling in Julia but not this particular project? Get in touch—we have many more projects!*
-
-[OMEinsum.jl](https://github.com/under-Peter/OMEinsum.jl) is a pure Julia package for tensor network computation, which has been used in various projects, including
-
-[GenericTensorNetworks.jl](https://github.com/QuEraComputing/GenericTensorNetworks.jl)for solving combinatorial optimization problems,[YaoToEinsum.jl](https://github.com/QuantumBFS/YaoToEinsum.jl)for simulating large scale quantum circuit and[TensorInference.jl](https://github.com/TensorBFS/TensorInference.jl)for Bayesian inference.
-
-Unlike other tensor contraction packages such as `ITensors.jl`
-
-and `TensorOperations.jl`
-
-, it is designed for large scale tensor networks with arbitrary topology. The key feature of `OMEinsum.jl`
-
-is that it can automatically optimize the contraction order of a tensor network. Related features are implemented in [OMEinsumContractionOrders.jl](https://github.com/TensorBFS/OMEinsumContractionOrders.jl).
-
-We are looking for a student to work on the following tasks:
-
-Implement a better contraction order optimizer based on
-
-[Tamaki's algorithm](https://arxiv.org/abs/2202.07793).Implement a hyper-graph visualization tool based on
-
-[arXiv:2308.05043](https://arxiv.org/abs/2308.05043)Port the contraction order optimizers to
-
-[TensorOperations.jl](https://github.com/Jutho/TensorOperations.jl)
-
-**Recommended skills:** familiarity with tensor networks, graph theory and high performance computing.
-
-**Expected results:**
-
-new features added to the package
-
-`OMEinsumContractionOrders.jl`
-
-along with tests and relevant documentation.a new package about hyper-graph visualization, and relevant feature added to
-
-`OMEinsum.jl`
-
-.a pull request to
-
-`TensorOperations.jl`
-
-for better contraction order optimization.
-
-**Mentors:** [Jin-Guo Liu](https://github.com/giggleliu), [Jutho Haegeman](https://github.com/Jutho) and [Lukas Devos](https://github.com/lkdvos)
-
-**Project difficulty:** Medium to Hard
-
-**Project length:** 350 hrs
-
-**Contact:** feel free to ask questions via [email](https://julialang.org/cacate0129@gmail.com) or the Julia slack (user name: JinGuo Liu).
 
 The Julia manual and the documentation for a large chunk of the ecosystem is generated using [Documenter.jl](https://github.com/JuliaDocs/Documenter.jl) – essentially a static site generator that integrates with Julia and its docsystem. There are tons of opportunities for improvements for anyone interested in working on the interface of Julia, documentation and various front-end technologies (web, LaTeX).
 
@@ -110,111 +62,104 @@ Best way to reach out is to message in the `#documentation`
 
 channel on the [JuliaLang Slack](https://julialang.org/slack/)!
 
-[FastDifferentiation.jl](https://github.com/brianguenter/FastDifferentiation.jl) is a Julia package for computing very efficient symbolic derivatives of Julia functions and for compiling the derivatives into efficient executables. It can differentiate much larger expressions than other symbolic systems, such as Symbolics.jl, and the resulting derivatives are also much more efficient, rivaling hand computed derivatives in some cases (see the website for benchmark examples).
-
-[FastDifferentiation.jl](https://github.com/brianguenter/FastDifferentiation.jl) also computes the exact sparsity patterns of Jacobians and Hessians (and any other order derivative) and detects common terms in derivatives of Rⁿ->Rᵐ functions for large n,m. As a consequence computation time of Jacobians generally scales sub-linearly as a function of n,m.
-
-However, the current system has several weaknesses. It is not currently possible to differentiate through conditional expressions so many commonly used Julia functions cannot be differentiated. Derivatives of any order can be computed but orders above 3 or 4 become increasingly inefficient. These projects aim to address these weaknesse.
-
-FastDifferentiation supports conditionals in function definitions but cannot yet compute derivatives of functions with conditionals:
-
-```
-julia> @variables x y
-julia> f = if_else(x>y,x^2,y^2)
-(if_else (x > y) (x ^ 2) (y ^ 2))
-julia> derivative(f,x)
-ERROR: Your expression contained a if_else expression. FastDifferentiation does not yet support differentiation through this function
-```
-
-
-The goal of this project is to modify the derivative graph analysis code so that it detects conditional subgraphs and then generates run time code to evaluate conditionals and branches to correct derivative expressions.
-
-
-**Medium difficulty, 175 hours.**
-
-**Recommended Skills:** Julia programming experience, previous work with graph algorithms helpful but not required.
-
-**Expected Outcome:** Well-tested and well-documented support for conditionals.
-
-**Mentor:** [BrianGuenter](https://github.com/brianguenter/FastDifferentiation.jl)
-
-FastDifferentiation.jl produces extremely efficient first derivatives. But, higher order derivatives become increasingly less efficient since they are computed by repeatedly applying the differentiation algorithm.
-
-The fundamental cause of this behavior is that repeated higher order intermediate derivative terms are not detected and reused; instead they are computed from scratch. The goal of this project is to extend the FastDifferentiation algorithm to detect these common higher order terms and to reuse, rather than recompute them.
-
-This will require a rewrite of the graph factorization code as well as some theoretical work to determine which higher order terms can be reused.
-
-**Hard, 350 hours.**
-
-**Recommended Skills:** Julia programming experience, previous work with graph algorithms helpful but not required. Understanding of [Faa Di Bruno's](https://en.wikipedia.org/wiki/Fa%C3%A0_di_Bruno%27s_formula) and [Leibniz's rule](https://en.wikipedia.org/wiki/General_Leibniz_rule).
-
-**Expected Outcome:** Well-tested and well-documented support for higher order derivatives.
-
-**Mentor:** [BrianGuenter](https://github.com/brianguenter/FastDifferentiation.jl)
-
-FastDifferentiation.jl uses a new symbolic algorithm for automatic differentiation that can be orders of magnitude faster than conventional symbolic differentiation methods. Symoblics.jl could compute derivatives much faster using the FastDifferentiation algorithm. However implementation and data structure differences between the two systems make it difficult to add FastDifferentiation capabilities to Symbolics.jl.
-
-For example, Symbolics.jl allows you to define a function and then to compute a symbolic derivative without defining . Adding this capability to FastDifferentiation.jl requires a change in the graph representation of derivatives.
-
-The goal of this project is to first analyze the sources of the incompatibilities between the two systems and then to modify FastDifferentiation.jl, and perhaps Symbolics.jl, so that they interoperate.
-
-See [this](https://github.com/brianguenter/Proposals) page for a more detailed description of tasks.
-
-**Medium difficulty, 175 hours.**
-
-**Recommended Skills:** Julia programming experience, previous work with graph algorithms helpful but not required.
-
-**Expected Outcome:** Well-tested and well-documented integration of FastDifferentiation into Symbolics.jl.
-
-**Mentor:** [BrianGuenter](https://github.com/brianguenter/FastDifferentiation.jl)
-
 [Ferrite.jl](https://github.com/ferrite-fem/Ferrite.jl) is a Julia package providing the basic building blocks to develop finite element simulations of partial differential equations. The package provides extensive examples to start from and is designed as a compromise between simplicity and generality, trying to map finite element concepts 1:1 with the code in a low-level . Ferrite is actively used in teaching finite element to students at several universities across different countries (e.g. Ruhr-University Bochum and Chalmers University of Technology). Further infrastructure is provided in the form of different mesh parsers and a Julia based visualizer called [FerriteViz.jl](https://github.com/Ferrite-FEM/FerriteViz.jl).
 
-Below we provide a four of potential project ideas in [Ferrite.jl](https://github.com/ferrite-fem/Ferrite.jl). However, interested students should feel free to explore ideas they are interested in. Please contact any of the mentors listed below, or join the `#ferrite-fem`
+Below we provide a two of potential project ideas in [Ferrite.jl](https://github.com/ferrite-fem/Ferrite.jl). However, interested students should feel free to explore ideas they are interested in. Please contact any of the mentors listed below, or join the `#ferrite-fem`
 
-channel on the Julia slack to discuss. Projects in finite element visualization are also possible with [FerriteViz.jl](https://github.com/Ferrite-FEM/FerriteViz.jl).
+channel on the Julia slack to discuss. Projects in finite element visualization are also possible with for example [FerriteViz.jl](https://github.com/Ferrite-FEM/FerriteViz.jl). As a starting point, or to gather inspiration for a potential project, please check out issues marked with [Good First Issue](https://github.com/Ferrite-FEM/Ferrite.jl/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22).
 
-**Difficulty**: Easy-Medium (depending on your specific background)
+**Difficulty**: Medium
 
-**Project size**: 150-300 hours
+**Project size**: 300-350 hours
 
-**Problem**: [Ferrite.jl](https://github.com/ferrite-fem/Ferrite.jl) is designed with the possibility to define partial differential equations on subdomains. This makes it well-suited for interface-coupled multi-physics problems, as for example fluid-structure interaction problems. However, we currently do not have an example showing this capability in our documentation. We also do not provide all necessary utilities for interface-coupled problems.
+**Problem**: [Ferrite.jl](https://github.com/ferrite-fem/Ferrite.jl) supports arbitrary order interpolations in 1D and 2D. However, for 3D problems the order for the interpolations is right now limited to interpolations with at most a single dof per face. The difficulty here is of geometric nature. Faces in typical finite element meshes typically have a non-trivial relative orientation, and therefore the facet dofs of the neighboring elements do not match spatially.
 
-**Minimum goal**: The minimal goal of this project is to create a functional and documented linear fluid-structure interaction example coupling linear elasticity with a stokes flow in a simple setup. The code should come with proper test coverage.
+**Minimum goal**: A minimal goal would be to add the necessary infrastructure to support the adjustment of the dof location for high order Lagrange polynomial interpolation on all 3D elements interpolations during the dof assignment phase.
 
-**Extended goal**: With this minimally functional example it is possible to extend the project into different directions, e.g. optimized solvers or nonlinear fluid-structure interaction.
+**Extended goal**: With this minimally functional example it is possible to extend the project into different directions, e.g. high-order H(div) and H(curl) elements or optimizing the CellCache for these higher order elements by exploiting the tensor-product structure.
 
 **Recommended skills**:
 
-Basic knowledge the finite element method
+Basic knowledge about the finite element method
 
-Basic knowledge about solids or fluids
+Good geometric thinking
 
 The ability (or eagerness to learn) to write fast code
 
 
-**Mentors**: [Dennis Ogiermann](https://github.com/termi-official) and [Fredrik Ekre](https://github.com/fredrikekre/)
+**Mentors**: [Dennis Ogiermann](https://github.com/termi-official) and [Fredrik Ekre](https://github.com/fekre)
 
-**Difficulty**: Medium
+**Difficulty**: Hard
 
-**Project size**: 250-350 hours
+**Project size**: 350 hours
 
-**Problem**: [Ferrite.jl](https://github.com/ferrite-fem/Ferrite.jl) has an outstanding performance in single-threaded finite element simulations due to elaborate elimination of redundant workloads. However, we recently identified that the way the single-threaded assembly works makes parallel assembly memory bound, rendering the implementation for "cheap" assembly loops not scalable on a wide range of systems. This problem will also translate to high-order schemes, where the single-threaded strategy as is prevents certain common optimization strategies (e.g. sum factorization).
+**Problem**: Adaptive mesh refinement is an attractive technique to speed up simulations with localized features, like for example steep traveling wave-fronts. Over the last years multiple prototypes have been developed and adopted for a specific use-case. Our generic implementation utilizes ideas from the [p4est](https://p4est.github.io/papers/BursteddeWilcoxGhattas11.pdf) research paper and lives in a separate branch for quite a bit of time now (see [here](https://github.com/Ferrite-FEM/Ferrite.jl/pull/780)). We need more hands to finish the last steps.
 
-**Minimum goal**: As a first step towards better parallel assembly performance it is the investion of different assembly strategies. Local and global matrix-free schemes are a possibility to explore here. The code has to be properly benchmarked and tested to identify different performance problems.
+**Minimum goal**: As the PR is almost done, the bare minimum would be to push the PR over the finish line. This includes more adding more extensive tests, help with missing documentation, more debug coverage to track down failures and completing a nice user-interface. THe user interface is partially done and needs to cover the marking, error estimation, refinement, coarsening and efficient transfer operations between two nested grids.
 
-**Extended goal**: With this minimally functional example it is possible to extend the project into different directions, e.g. optimized matrix-free solvers or GPU assembly.
+**Extended goal**: We see are essentially four ways to can explore as an extended goal. The first one would be to expend the approach as described in the subsequent work by the group (t8code) to allow more element types that just line/quad/hex. The second possible extension would be to parallelize the algorithms and making them GPU ready, so we do not need a roundtrip for the grid through the main memory. The third option would be to allow MPI parallelization and (SFC-based) load balancing. The fourth one is to extend the data structures to 4D hypercubes to allow space-time adaptive simulations.
 
 **Recommended skills**:
 
-Basic knowledge the finite element method
+Basic knowledge about either the finite element method and/or tree-based data structures
+
+Good geometric thinking
+
+The ability (or eagerness to learn) to write fast code
+
+
+**Mentors**: [Dennis Ogiermann](https://github.com/termi-official) and [Maximilian Köhler](https://github.com/koehlerson)
+
+**Difficulty**: Hard
+
+**Project size**: 350 hours
+
+**Problem**: [FerriteDistributed.jl](https://github.com/ferrite-fem/FerriteDistributed.jl) is the MPI variant of Ferrite allowing scalable distributed assembly. However, it has been initially developed during the Ferrite v1.0 release window, right before proper subdomain has been added to Ferrite. Therefore, right now the upgrade to Ferrite v1 is primarily blocked by adding proper support for subdomains through the newly introduced SubDofHandler.
+
+**Minimum goal**: At the very least a DistributedSubDofHandler must be added. Therefore the internal communication infrastructure must be upgraded to properly subdomains instead of the full domain.
+
+**Extended goal**: Probably the most useful extended goal right now is to refactor the internal communication infrastructure to better integrate with MPI.jl, as we do not use the full potential of MPI.jl yet. Alternatively, we would like to also allow users to use other distributed memory backends to be used, as for example Reactant.jl.
+
+**Recommended skills**:
+
+Basic knowledge about the finite element method
 
 Basic knowledge about benchmarking
 
 The ability (or eagerness to learn) to write fast code
 
 
-**Mentors**: [Maximilian Köhler](https://github.com/koehlerson) and [Dennis Ogiermann](https://github.com/termi-official)
+**Mentors**: [Dennis Ogiermann](https://github.com/termi-official) and [Maximilian Köhler](https://github.com/koehlerson)
+
+[FreeBird.jl](https://github.com/wexlergroup/FreeBird.jl) is a Julia package of enhanced sampling methods, such as nested sampling, Wang-Landau sampling, Metropolis Monte Carlo, for accelerating materials discovery through statistical mechanics. It is designed to be an extensible platform for computationally studying phase equilibria across a diverse range of atomistic and molecular systems, with easy extension to other phenomena.
+
+**Difficulty**: Easy to medium
+
+**Project size**: 175 hours
+
+**Problem**: Nested sampling (NS) for materials is a novel computational algorithm that efficiently explores the phase space (position and momentum) and configuration space of an atomistic system, estimates partition function and detects phase transitions. The nested sampling algorithm requires continuous generation of new atomistic configurations under a monotonously decreasing energy limit. Currently in FreeBird.jl, it is done via a chian of Monte Carlo (MC) random walks. Molecular dynamics (MD) is a proven alternative to MC for a potentially better performance, especially when running on GPUs. In this project, we will integrate the Julia MD package, [Molly.jl](https://github.com/JuliaMolSim/Molly.jl), as the MD backend of NS in FreeBird.jl.
+
+**Expected outcome**:
+
+To implement an easy conversion between FreeBird.jl's walker system and Molly's atoms objects.
+
+To implement a dispatch of the NS function using Molly.jl's MD as a configuration generator.
+
+To enable MD-NS energy evaluations using classical and machine learning interatomic potentials, as well as force fields.
+
+To improve FreeBird.jl's test suits and documentations related to this project.
+
+
+**Recommended skills**:
+
+Prior exposure or strong interest in computational chemistry and/or materials science
+
+Prior Julia coding experience
+
+
+**Mentors**: [Ray Yang](https://github.com/yangmr04) (primary), [Joe Greener](https://github.com/jgreener64), [Robert Wexler](https://github.com/rwexler)
+
+**Contact**: Feel free to reach out to Ray Yang via [email](mailto:my@ainest.ee), #juliamolsim on the Julia Slack, or at the JuliaMolSim [Zulip(https://juliamolsim.zulipchat.com)].
 
 Quantum harmonic oscillators are important modalities for quantum computation and quantum networking. A class of them, known as Gaussian bosonic systems, are efficient to simulate on a classical computer. Although such systems do not provide quantum computational advantage, they are present in most protocols and algorithms in continuous variable quantum information. [Gabs.jl](https://github.com/apkille/Gabs.jl) is a Julia library designed to enable fast simulations of Gaussian bosonic circuits and serve as a sandbox for quantum hardware and protocol design.
 
@@ -321,14 +266,6 @@ Understanding of performance optimization
 **Expected Results:** A set of optimized GPU kernels in GPUArrays.jl that are vendor-agnostic and performant across different GPU backends. This will improve the portability of the Julia GPU stack and make it easier to support new GPU architectures.
 
 **Mentors:** [Tim Besard](https://github.com/maleadt), [Valentin Churavy](https://github.com/vchuravy)
-
-The [VegaLite.jl](https://github.com/queryverse/VegaLite.jl) package provides a Julia wrapper for [vega-lite](https://vega.github.io/vega-lite/) and [vega](https://vega.github.io/vega/). There are many areas that could be improved: 1) provide a more powerful [vega](https://vega.github.io/vega/) API that is similar to the existing [vega-lite](https://vega.github.io/vega-lite/) API, 2) complete the [vega-lite](https://vega.github.io/vega-lite/) API (there are many corner cases that are not ideally handled right now), 3) make things work better for large datasets, 4) come up with a way to auto-convert/integrate the comprehensive vega-lite documentation into the VegaLite.jl documentation, 5) write more documentation, 6) increase test coverage or 7) add a simple non-grammar of graphics API.
-
-**Expected Results**: Some subset of the list mentioned above.
-
-**Recommended Skills**: Familiarity with Julia, vega-lite or vega, and Node.
-
-**Mentors**: [David Anthoff](https://github.com/davidanthoff)
 
 Wouldn’t it be great if Julia would program itself? Tell it what you want, Julia magic happens, and you get your program directly. We introduce Herb.jl, a library written in Julia that gets us a step closer to our big goal. [Herb.jl](https://herb-ai.github.io/) is a library for program synthesis: The task of automatically generating programs from a given specification. Here, “a program” could be anything, from an actual Python program over moves in chess to the synthesis of biochemical molecules. There are numerous works on program synthesis, all speaking a different language in code and terminology. We want to make developing, comparing, and applying ideas in program synthesis easier.
 
@@ -507,14 +444,12 @@ Possible features to implement are:
 
 GPU and/or HPC support in Agents.jl by integrating existing ABM packages (Vanaha.jl or CellBasedModels.jl) into Agents.jl API.
 
-Integrating Agents.jl with ReinforcementLearning.jl
-
 Differentiation / parameter fitting of ABMs in Agents.jl by utilizing StochasticAD.jl or similar frameworks.
 
 
 **Pre-requisite**: Having already contributed to a Julia package either in JuliaDynamics or of sufficient relevance to JuliaDynamics.
 
-**Recommended Skills**: Familiarity with agent based modelling, Agents.jl and Julia's Type System, and achieving high-end computational performance within Julia. Research background in complex systems, sociology, agent based modelling, or nonlinear dynamics is not required but would be advantageous.
+**Recommended Skills**: Familiarity with agent based modelling, Agents.jl and Julia's Type System, and achieving high-end computational performance within Julia. Familiarity with complex systems or nonlinear dynamics is not required but would be a positive.
 
 **Expected Results**: Well-documented, well-tested useful new features for Agents.jl.
 
@@ -551,7 +486,7 @@ Other than that, we do not outline more possible projects here, and instead we i
 
 There is a high overlap with other organizations, you should definitely check out these projects:
 
-[Projects with MLJ.jl](https://julialang.org/jsoc/gsoc/MLJ/)- For more traditional machine learning projects[Projects in Reinforcement Learning](https://julialang.org/jsoc/gsoc/machine-learning/)- For projects around AlphaZero.jl[Projects with FluxML](https://fluxml.ai/gsoc/)- For projects around Flux.jl, the backbone of Julia's deep learning ecosystem
+[Projects in Reinforcement Learning](https://julialang.org/jsoc/gsoc/machine-learning/)- For projects around AlphaZero.jl[Projects with FluxML](https://fluxml.ai/gsoc/)- For projects around Flux.jl, the backbone of Julia's deep learning ecosystem
 
 Probably the easiest way is to join our [JuliaLang Slack](https://julialang.org/slack/) and join the `#generative-ai`
 
@@ -597,159 +532,248 @@ Improving the operation interface for GeometryOps and creating a declarative (a 
 
 JuliaHealth is an organization dedicated to improving healthcare by promoting open-source technologies and data standards. Our community is made up of researchers, data scientists, software developers, and healthcare professionals who are passionate about using technology to improve patient outcomes and promote data-driven decision-making. We believe that by working together and sharing our knowledge and expertise, we can create powerful tools and solutions that have the potential to transform healthcare.
 
-**Description:** Patient level prediction (PLP) is an important area of research in observational health research that involves using patient data to predict outcomes such as disease progression, response to treatment, and hospital readmissions. JuliaHealth is interested in developing supportive tooling for PLP that utilizes historical patient data, such as patient medical claims or electronic health records, that follow the OMOP Common Data Model (OMOP CDM), a widely used data standard that allows researchers to analyze large, heterogeneous healthcare datasets in a consistent and efficient manner. For this project, we are looking for students interested in developing supportive PLP tooling within JuliaHealth.
+**Description:** HealthLLM.jl is a Retrieval-Augmented Generation (RAG) framework that provides a foundation for domain-specific LLM workflows across JuliaHealth. The long-term vision for HealthLLM.jl is to enable workflows across JuliaHealth that lower the barrier to health data analysis while maintaining the reproducibility and auditability that health research demands. Validation efforts will focus on FunSQL.jl queries for a testing harness, while the architecture is designed to generalize to broader JuliaGenAI LLM tooling for JuliaHealth.
 
-**Mentor:**Jacob S. Zelko (aka TheCedarPrince) [email: jacobszelko@gmail.com]**Difficulty**: Medium**Duration**: 175 hours**Suggested Skills and Background**:Experience with Julia
+**Mentor:**Jacob S. Zelko (aka TheCedarPrince) [email: jacobszelko@gmail.com]**Difficulty:**Medium**Duration:**175 hours**Suggested Skills and Background:**Experience with Julia
 
-Exposure to machine learning concepts and ideas
+Strong expertise with LLM and RAG pipelines
 
-Familiarity with some of the following Julia packages would be a strong asset:
+Experience with the following is necessary:
 
-DataFrames.jl
+FunSQL.jl
 
-OMOPCDMCohortCreator.jl
+PromptingTools.jl or other Julia-native GenAI tooling
 
-MLJ.jl
+Vector database technologies (e.g. PgVector, FAISS, Qdrant)
 
-ModelingToolkit.jl
 
+Comfort with the OMOP CDM or health informatics concepts
 
-Comfort with the OMOP Common Data Model (or a willingness to learn)
 
+**Outcomes:**Refactor the RAG pipeline into modular components (retrieval, generation, post-processing, evaluation) with improved prompt templates, error handling, and logging
 
-**Outcomes:**
+Survey and evaluate multiple LLMs on FunSQL-based query generation tasks using standardized metrics (accuracy, latency, cost)
 
-This project will be very experimental and exploratory in nature. To constrain the expectations for this project, here is a possible approach students will follow while working on this project:
+Provide comprehensive documentation, reproducible evaluation scripts, and final experimental results
 
-Review existing literature on approaches to PLP
+Design and implement an abstract interface supporting multiple vector database backends, with benchmarking across backends (stretch goal)
 
-Familiarize oneself with tools for machine learning and prediction within the Julia ecosystem
 
-Develop infrastructure needed for doing PLP within the JuliaHealth ecosystem such as:
 
-Consistent DataFrames.jl interface
+No projects this year!
 
-Data harmonization methods
 
-Sampling considerations for large scale patient data
+**Difficulty:** Hard / Ambitious **Duration:** 350 hours (22 weeks) **Mentor:** Jakub Mitura **Technology Stack:** Julia, Lux.jl, NNlib.jl, ChainRules.jl, LogExpFunctions.jl
 
+Deep learning in medical diagnostics suffers from a well-known trust gap. Models often behave as black boxes and may produce physiologically implausible predictions — for example simultaneously predicting cachexia and obesity. This lack of interpretability and clinical consistency limits adoption of AI systems in healthcare environments.
 
-Document findings and novel software
+Neurosymbolic artificial intelligence (NeSy) addresses this limitation by integrating structured logical knowledge directly into neural models. However, many existing approaches struggle with numerical stability, scalability, and GPU efficiency when deployed in realistic clinical settings.
 
+KLAY-Core is a high-performance logical constraint layer designed for Lux.jl. It enables domain experts and developers to encode clinical knowledge as differentiable logical constraints integrated directly into neural network architectures.
 
-In whatever functionality that gets developed for tools within JuliaHealth, it will also be expected for students to contribute to the existing package documentation to highlight how new features can be used. Another perspective of this project is that its intended goal is to provide the foundational support needed within JuliaHealth to better accommodate multiple modalities of data available within public health settings. The long term goal is to use the development of foundational tooling with JuliaHealth to better support patient level prediction workflows across observational health data and additional information such as survey data, social determinants of health data, and climate data.
+Using the Knowledge Layers (KLAY) architecture, the project introduces static linearization of logical circuits (d-DNNF) into optimized tensor buffers. Circuit evaluation is reduced to sequences of NNlib.scatter operations and tensor indexing, significantly improving GPU parallel efficiency while ensuring physiologically consistent predictions.
 
-Additionally, depending on the success of the package, there is a potential to run experiments on actual patient data to generate actual patient population insights based on a chosen research question. This could possibly turn into a separate research paper, conference submission, or poster submission. Whatever may occur in this situation will be supported by project mentors.
+The project follows a "compile once, evaluate often" paradigm for efficient integration of symbolic knowledge into neural models.
 
-**Project Title:** Julia Radiomics **Difficulty:** Medium **Duration:** 375 hours (22 Weeks) **Mentor:** Jakub Mitura
+**Yggdrasil and JLL Integration**
 
-Radiomic features are quantitative metrics extracted from medical images using data-characterization algorithms. These features capture tissue and lesion characteristics, such as heterogeneity and shape, which may provide valuable insights beyond what the naked eye can perceive.
+High-performance symbolic compilers (e.g., d4, SDD) will be distributed as precompiled binaries via Yggdrasil and JLL packages. This guarantees a fully Julia-native workflow without requiring Python environments or local C++ toolchain configuration.
 
-This project aims to implement algorithms for extracting radiomic features from 2D and 3D medical images, similar to PyRadiomics, using Julia. The implementation will include Gray Level Co-occurrence Matrix (GLCM), Gray Level Size Zone Matrix (GLSZM), Gray Level Run Length Matrix (GLRM), Neighborhood Gray Tone Difference Matrix (NGTDM), and Gray Level Dependence Matrix (GLDM). The extracted features will be validated against PyRadiomics and applied to medical imaging data, such as the AutoPET dataset, to demonstrate the methodology.
+**Level-Order Flattening**
 
-**First Group:**GLCM, GLSZM, GLRM**Second Group:**NGTDM, GLDM
+A dedicated algorithm groups logical graph nodes into layers based on structural height. This converts hierarchical logical circuits into flat GPU-friendly buffers, eliminating recursion and enabling efficient parallel execution.
 
-Extract all features from segmented lesions in PET and CT modalities.
+**Solving the Derivative Bottleneck**
 
-Use MedImages.jl for image handling.
+Custom adjoints (rrule) implemented using ChainRules.jl ensure backward-pass efficiency comparable to standard neural layers while avoiding excessive memory overhead typical of recursive automatic differentiation.
 
-Leverage KernelAbstractions.jl for performance optimization where possible.
+To reduce usability barriers for clinicians and developers, the package introduces a domain-specific DSL macro supporting full Boolean logic and weighted relationships where w ∈ [0,1].
 
+Unlike Python-based frameworks such as Dolphin, which rely on object-oriented logic definitions, KLAY-Core offers a declarative macro interface integrated directly with the Julia compiler. This improves readability, auditability, and interdisciplinary collaboration between clinicians and AI engineers.
 
-Compare extracted features against PyRadiomics outputs.
+**Supported Logical Operators:**
 
-Ensure statistical equivalence in extracted features.
+AND (
 
+`&`
 
-Methodology, results, benchmarking.
+) — logical conjunctionOR (
 
-Public GitHub repository under an MIT license.
+`|`
 
+) — logical alternativeNOT (
 
-Literature Review and Setup (3 Weeks)
+`!`
 
+) — logical negationImplication (
 
-Review PyRadiomics documentation, MedImages.jl, KernelAbstractions.jl APIs, and AutoPET dataset structure.
+`->`
 
-**Success Criteria:**Understanding of feature definitions, dataset access, and GPU kernel design.
+) — logical implication
 
-Feature Implementation (6 Weeks)
+**Constraint Types:**
 
+*Hard Constraints (w = 1.0):* Strict logical rules ensuring physiological consistency.
 
-Implement GLCM, GLSZM, GLRM, NGTDM, and GLDM matrices.
+*Soft Constraints (w < 1.0):* Probabilistic correlations or clinical risk relationships.
 
-Validate outputs against PyRadiomics (>90% similarity in unit tests).
+**Explicit Layer Design**
 
-**Success Criteria:**GPU-accelerated implementation for 3D volumes.
+Implementation of an AbstractExplicitLayer where circuit structure is stored in the layer state while constraint strengths remain trainable parameters. This supports determinism, transparency, and reproducibility required in medical AI systems.
 
-Feature Extraction Pipeline (4 Weeks)
+**Log-Space Numerical Stability**
 
+Logical gates are evaluated in logarithmic space using logsumexp (OR) and summation (AND), preventing numerical instability and vanishing-gradient effects.
 
-Build a pipeline to process AutoPET lesions using MedImages.jl.
+| Feature | KLAY-Core (Julia) | Dolphin (Python/PyTorch) | DeepProbLog / LTN | Juice.jl (Julia) |
+|---|---|---|---|---|
+| GPU Parallelism | Native scatter-reduce | Standard PyTorch ops | Mostly sequential | Limited optimized kernels |
+| Integration | Native Lux.jl | Wrapper-style integration | Python–C++ bridges | Independent library |
+| Ecosystem | JLL / Yggdrasil | Pip / Conda environments | Mixed dependencies | Native Julia ecosystem |
+| Interface | High-level DSL macro | Python API definitions | Logic-heavy syntax | Low-level graph APIs |
+| Gradient Stability | Custom rrule | Standard AD | Potential instability | Variable stability |
 
-**Success Criteria:**Extraction of 100+ features per lesion, support for batch processing.
+**Competitive Edge:** KLAY-Core combines Julia's performance, macro system, and binary artifact ecosystem with a modern explicit deep learning framework (Lux.jl). Rather than functioning as an external wrapper, it becomes an integral neural network component, simplifying deployment, improving reproducibility, and reducing operational complexity in clinical AI environments.
 
-Validation (3 Weeks)
+**Phase 1 (Weeks 1–4):**Development of the @clinical_rule DSL and Yggdrasil/JLL integration.**Phase 2 (Weeks 5–9):**Flattening logical circuits into recursion-free GPU buffers.**Phase 3 (Weeks 10–13):**Custom rrule differentiation and log-space stability optimization.**Phase 4 (Weeks 14–17):**Validation using the Heart Failure Prediction Dataset with focus on: Accuracy, Brier Score, Expected Calibration Error (ECE), AUROC, and Constraint violation rates.**Phase 5 (Weeks 18–20):**Performance benchmarking against Dolphin, DeepProbLog, and Juice.jl.**Phase 6 (Weeks 21–22):**Final documentation, testing, and publication in the Julia General Registry.
 
+Alam, S., et al. (2026). Constraint-aware neurosymbolic uncertainty quantification with Bayesian deep learning for scientific discovery. arXiv preprint (arXiv:2601.12442).
 
-Compare Julia feature extraction results with PyRadiomics.
+Chicco, D., & Jurman, G. (2020). Machine learning can predict survival of patients with heart failure from serum creatinine and ejection fraction alone. BMC Medical Informatics and Decision Making, 20, 16.
 
-**Success Criteria:**Statistical equivalence (e.g., t-test p > 0.05), with documented discrepancies <5%.
+Dang, M., et al. (2021). JUICE: A Julia package for logic and probabilistic circuits. In Proceedings of the AAAI Conference on Artificial Intelligence, 35(14).
 
-Documentation and Packaging (4 Weeks)
+Fedesoriano. (2021). Heart failure prediction dataset [Dataset]. Kaggle.
 
+Lagniez, J.-M., & Marquis, P. (2017). An improved decision-DNNF compiler (d4). In Proceedings of the 26th International Joint Conference on Artificial Intelligence (IJCAI 2017).
 
-Write documentation for the Julia-based radiomics library.
+Maene, J., & Derkinderen, V. (2024). KLAY: Accelerating arithmetic circuits for neurosymbolic AI. arXiv preprint (arXiv:2410.11415).
 
-Write automated tests for the proper functioning of the library.
+Manhaeve, R., Demeester, T., Rocktäschel, T., & De Raedt, L. (2018). DeepProbLog: Neural probabilistic logic programming. In Advances in Neural Information Processing Systems (NeurIPS 2018).
 
-Register the package in the Julia package registry.
+Pal, A. (2023). Lux: Explicit parameterization of deep neural networks in Julia [Software]. Zenodo.
 
-**Success Criteria:**The final working library is successfully available in the Julia ecosystem.
 
-Reporting (2 Weeks)
+**Difficulty:** Hard **Duration:** 350 hours **Mentor:** Jakub Mitura **Technology Stack:** Julia, Lux.jl, MedPipe3D.jl, KernelAbstractions.jl, CUDA.jl, MLUtils.jl, MoonCake.jl
 
+3D Capsule Network layer primitives (dynamic routing, locally-constrained routing) as reusable Lux.jl modules
 
-Document methodology, results, and benchmarking.
+Two full architectures: 3D SegCaps and 3D SegCaps-UNet hybrid
 
-**Success Criteria:**Reproducible code, Jupyter notebooks, open-source repository.
+Custom GPU-accelerated routing kernels via KernelAbstractions.jl
 
-Implementation of additional radiomic features such as:
+End-to-end training/evaluation pipeline integrated with MedPipe3D.jl
 
-Wavelet Features (Transform-based texture analysis)
+Comprehensive benchmarks (Dice, HD95, cross-task transfer) across all 10 Medical Segmentation Decathlon tasks vs. 3D U-Net baseline
 
-Fractal Analysis (Estimating complexity in medical images)
+Documentation, pretrained weights, and reproducible experiment scripts contributed to JuliaHealth
 
-Laplacian of Gaussian (LoG) Features (Edge detection-based feature extraction)
 
+This project is scoped for a 350-hour GSoC timeframe (approximately 12–13 weeks). The following milestones and success criteria outline the expected progression.
 
-Optimized parallel computation using GPU acceleration in KernelAbstractions.jl.
+**Community Bonding (pre-coding period)**
 
-Implementation of an interactive Julia-based visualization tool for extracted radiomic features.
+Finalize detailed project plan and milestones with mentors.
 
+Familiarize with Lux.jl, MedPipe3D.jl, KernelAbstractions.jl, and existing MedPipe3D pipelines.
 
-This implementation will be done entirely in Julia, and Python will not be used in any part of the implementation. Any cross-validation with PyRadiomics is purely for benchmarking purposes.
+Set up development environment, GPU access, and reproduction of a baseline 3D U-Net on a subset of the Medical Segmentation Decathlon.
 
-**Julia Ecosystem Growth:**First native Radiomics toolkit in Julia.**GPU Acceleration:**Utilizes KernelAbstractions.jl for efficient 3D feature extraction.**Reproducibility:**Open-source implementation ensures transparency in radiomics research.
 
-**Cancer Differentiation:**Model insights may aid in non-invasive cancer subtyping.**Standardization:**Cross-tool validation enhances study comparability across different platforms.
+**Weeks 1–3: Core Capsule Primitives and 3D Extensions**
 
-**Foundation for Future Work:**Enables Julia-based radiomics pipelines for projects like TCIA.**Educational Value:**Demonstrates GPU-accelerated medical image processing in Julia for researchers and students.
+Implement and test core capsule network building blocks in Lux.jl:
 
-Radiomics Research: Various studies on the clinical relevance of radiomics in medical imaging.
+Squash nonlinearity, routing coefficients, and routing-by-agreement loops.
 
-Kumar, V., et al. "Radiomics: the process and the challenges." Magnetic Resonance Imaging, 2012.
+Pose and activation representations suitable for 3D convolutional capsules.
 
-Gillies, R.J., et al. "Radiomics: images are more than pictures, they are data." Nature Reviews Cancer, 2016.
 
-Lambin, P., et al. "Radiomics: extracting more information from medical images using advanced feature analysis." European Journal of Cancer, 2012.
+Extend these primitives to 3D convolution capsules (pose matrices, shared transformation matrices).
 
+Unit tests validating tensor shapes, numerical stability, and differentiability.
+
+Success criterion: Stable forward and backward passes for 3D capsule layers on synthetic 3D data.
+
+
+**Weeks 4–6: SegCaps Architectures and Integration**
+
+Design and implement:
+
+A 3D SegCaps encoder–decoder architecture.
+
+A 3D SegCaps–UNet hybrid that replaces CNN blocks with capsule blocks while retaining skip connections.
+
+
+Integrate architectures with MedPipe3D.jl data loading and preprocessing (NIFTI/DICOM I/O, patching/tiling).
+
+Implement basic training scripts (single-task training on 1–2 Decathlon tasks).
+
+Success criterion: End-to-end training runs to convergence on at least one Decathlon task, with validation metrics logged.
+
+
+**Weeks 7–9: Efficient Routing and GPU Optimization**
+
+Implement locally-constrained routing strategies to reduce computational cost and memory usage for volumetric data.
+
+Prototype and benchmark custom GPU-accelerated routing kernels using KernelAbstractions.jl.
+
+Profile training to identify and remove performance bottlenecks (e.g., memory layout, batching strategy).
+
+Success criterion: Capsule models train with acceptable throughput (within 2–3× of 3D U-Net) on a modern GPU and fit into GPU memory for standard Decathlon volumes.
+
+
+**Weeks 10–11: Benchmarking and Cross-Task Transfer**
+
+Train and evaluate 3D SegCaps and SegCaps–UNet models across all 10 Medical Segmentation Decathlon tasks.
+
+Implement cross-task transfer experiments (pretrain on one organ/modality, fine-tune on another).
+
+Compare performance against a strong 3D U-Net baseline using Dice, HD95, and cross-task transfer performance.
+
+Success criterion: Complete benchmark tables/plots and clear analysis of where capsule models help or hurt relative to U-Net.
+
+
+**Week 12+: Documentation, Polish, and Upstreaming**
+
+Clean and document code, ensuring idiomatic Julia and Lux.jl usage.
+
+Write user-facing documentation and examples (e.g., minimal training script, configuration templates).
+
+Prepare pretrained weights, experiment configuration files, and reproducibility instructions (including random seeds and environment description).
+
+Submit pull requests to relevant JuliaHealth repositories and iterate based on maintainer feedback.
+
+Success criterion: Merged contributions into JuliaHealth repositories plus a project report summarizing methods, experiments, and lessons learned.
+
+
+This project implements 3D Capsule Network (CapsNet) architectures within the Julia ecosystem using Lux.jl and MedPipe3D.jl for volumetric medical image segmentation. The core work involves building a SegCaps (Segmentation Capsules) layer abstraction supporting dynamic routing-by-agreement, extending it to 3D convolution capsules with equivariance-preserving pose matrices. We will implement two key variants: (1) a 3D SegCaps U-Net hybrid that replaces encoder/decoder conv blocks with capsule layers while retaining skip connections, and (2) an efficient locally-constrained routing variant to manage the quadratic computational cost of full capsule coupling in volumetric data. Custom CUDA kernels via KernelAbstractions.jl will accelerate the routing procedure, and the full pipeline—preprocessing, training, and evaluation—will integrate with MedPipe3D.jl's NIFTI/DICOM I/O and metric infrastructure.
+
+The central hypothesis is that capsule networks' explicit encoding of part-whole spatial hierarchies and viewpoint-equivariant pose vectors yields superior cross-domain generalization compared to standard CNNs, which rely on max-pooling and thus discard spatial relationships. We will rigorously benchmark 3D SegCaps against a 3D U-Net baseline across all 10 tasks of the Medical Segmentation Decathlon (covering CT and MRI across brain, liver, lung, pancreas, etc.), measuring not only per-task Dice/HD95 but critically cross-task transfer: models pretrained on one organ/modality and fine-tuned on another. We expect capsule routing to better preserve geometric structure across domains, improving few-shot adaptation. All code, pretrained weights, and reproducible experiment scripts will be contributed to the JuliaHealth ecosystem under MIT license.
+
+Sabour, S., Frosst, N., & Hinton, G. E. (2017).
+
+*Dynamic Routing Between Capsules*. Advances in Neural Information Processing Systems (NeurIPS).[https://arxiv.org/abs/1710.09829](https://arxiv.org/abs/1710.09829)Hinton, G. E., Sabour, S., & Frosst, N. (2018).
+
+*Matrix Capsules with EM Routing*. International Conference on Learning Representations (ICLR).[https://openreview.net/forum?id=HJWLfGWRb](https://openreview.net/forum?id=HJWLfGWRb)LaLonde, R., & Bagci, U. (2018).
+
+*Capsules for Object Segmentation*. (SegCaps).[https://arxiv.org/abs/1804.04241](https://arxiv.org/abs/1804.04241)Simpson, A. L., Antonelli, M., Bakas, S., et al. (2019).
+
+*A Large Annotated Medical Image Dataset for the Development and Evaluation of Segmentation Algorithms*. (Medical Segmentation Decathlon).[http://medicaldecathlon.com/](http://medicaldecathlon.com/)/[https://arxiv.org/abs/1902.09063](https://arxiv.org/abs/1902.09063)Çiçek, Ö., Abdulkadir, A., Lienkamp, S. S., Brox, T., & Ronneberger, O. (2016).
+
+*3D U-Net: Learning Dense Volumetric Segmentation from Sparse Annotation*. Medical Image Computing and Computer-Assisted Intervention (MICCAI).[https://arxiv.org/abs/1606.06650](https://arxiv.org/abs/1606.06650)Lux.jl: A deep learning library for Julia.
+
+[https://github.com/JuliaAI/Lux.jl](https://github.com/JuliaAI/Lux.jl)MedPipe3D.jl: A modular 3D medical imaging pipeline in Julia.
+
+[https://github.com/JuliaHealth/MedPipe3D.jl](https://github.com/JuliaHealth/MedPipe3D.jl)KernelAbstractions.jl: A vendor-neutral GPU programming model for Julia.
+
+[https://github.com/JuliaGPU/KernelAbstractions.jl](https://github.com/JuliaGPU/KernelAbstractions.jl)
 
 MedPipe3D was created to improve integration between other parts of the small ecosystem (MedEye3D, MedEval3D, and MedImage). Currently, it needs to be expanded and adapted to serve as the basis for a fully functional medical imaging pipeline.
 
 **Mentor:** Jakub Mitura [email: jakub.mitura14@gmail.com]
 
-**Difficulty:** Medium **Duration:** 12 weeks
+**Difficulty:** Hard **Duration:** 12 weeks
 
 Strong knowledge of the Julia programming language is required.
 
@@ -797,94 +821,6 @@ Implementing these features is crucial for advancing medical imaging technology.
 
 For each point, the mentor will also supply the person responsible for implementation with examples of required functionalities in Python or will point to the Julia libraries already implementing it (that just need to be integrated).
 
-This project aims to develop visualization and interaction software for advanced supervoxel visualization on multi-image views. Building on the experiences from MedEye3D, the project will focus on creating a tool that allows users to interact with and visualize supervoxels across different imaging modalities (e.g., CT and MRI) simultaneously. The software will highlight corresponding supervoxels in different images when the user hovers over them, facilitating reliable analysis even in the presence of natural elastic deformations.
-
-**Enhanced Visualization:**A software tool that provides side-by-side views of different imaging studies, displaying supervoxel borders and highlighting corresponding supervoxels across images.**Improved Interaction:**An interactive interface allowing users to manually correct supervoxel associations by clicking and highlighting supervoxels in both images.**Control Points Annotation:**Support for annotating and displaying control points to aid in registration and user orientation.**User Feedback Integration:**Mechanisms for users to indicate incorrect supervoxel associations, improving the reliability of the tool.
-
-**Software Development:**[10 Weeks]Develop the core visualization tool with side-by-side image views.
-
-Implement supervoxel border display and highlighting functionality.
-
-Integrate control points annotation and display features.
-
-
-**User Interaction Features:**[6 Weeks]Develop interactive features for manual correction of supervoxel associations.
-
-Implement user feedback mechanisms for indicating incorrect associations.
-
-
-**Testing and Validation:**[2 Weeks]Conduct extensive testing with sample medical imaging data.
-
-Validate the tool's accuracy and reliability in highlighting corresponding supervoxels.
-
-
-**Documentation and User Training:**[2 Weeks]Create comprehensive documentation for the software.
-
-Develop training materials and conduct user training sessions.
-
-
-**Final Review and Deployment:**[2 Weeks]Review the project outcomes and make necessary adjustments.
-
-Deploy the software for use by the scientific community.
-
-
-
-The total estimated time for the project is approximately 22 weeks. Success will be measured by the tool's ability to accurately highlight corresponding supervoxels, ease of use, and positive feedback from users in the medical imaging community.
-
-Strong programming skills in Julia/C++
-
-Experience with medical imaging libraries (ITK, SimpleITK, NIfTI)
-
-Familiarity with GUI development (preferably ModernGL.jl)
-
-Understanding of 3D visualization techniques
-
-Basic knowledge of medical image processing concepts
-
-Experience with version control (Git)
-
-
-**Primary Language:**Julia**GUI Framework:**ModernGL.jl/ Vulkan.jl**Image Processing:**ITK/SimpleITK**Visualization:**OpenGL**Building upon:**MedEye3D framework
-
-**Hovering Over Supervoxels:**When the user hovers the mouse over a supervoxel in one image (e.g., CT scan), the corresponding supervoxel in the other image (e.g., MRI scan) will be highlighted automatically.**Manual Correction:**If the user identifies an incorrect supervoxel association, they can click on the supervoxel in one image to freeze it, then manually find and click the correct supervoxel in the other image to establish the correct association.**Control Points:**Users can annotate control points by clicking on corresponding anatomical areas in both images. These points will be saved and displayed to assist in image registration and orientation.
-
-This project is significant because it addresses the challenges of non-rigid registration in medical imaging, which is crucial for accurate diagnosis and treatment planning. By providing a reliable tool for visualizing and interacting with supervoxels across different imaging modalities, the project has the potential to:
-
-Enhance the accuracy of image registration and subsequent measurements.
-
-Reduce the time required for manual registration by radiologists and nuclear medicine specialists.
-
-Enable the development of new algorithms and methods in the medical imaging field.
-
-Improve clinical decision-making by providing more reliable imaging data.
-
-
-While various medical image visualization tools exist, there is currently no software solution that specifically addresses supervoxel-based visualization across multiple imaging modalities with interactive correction capabilities. This project builds upon MedEye3D as an independent extension, enhancing its capabilities with new features for supervoxel visualization and interaction.
-
-2 Different Patient's MRI and CT Studies on Transversal plane with supervoxels
-
-
-Highlighting the same anatomical region in both images with supervoxel display
-
-
-Overall, this project aims to contribute to the advancement of medical imaging technology, ultimately benefiting both the scientific community and patient care. Additionally, it will serve as a support tool for digital twin projects, enhancing the reliability of image registration and subsequent measurements.
-
-[JuliaMusic](https://github.com/JuliaMusic) is an organization providing packages and functionalities that allow analyzing the properties of music performances.
-
-**Difficulty**: Medium.
-
-**Length**: 350 hours.
-
-It is easy to analyze timing and intensity fluctuations in music that is the form of MIDI data. This format is already digitalized, and packages such as MIDI.jl and MusicManipulations.jl allow for seamless data processing. But arguably the most interesting kind of music to analyze is the live one. Live music performances are recorded in wave formats. Some algorithms exist that can detect the "onsets" of music hits, but they are typically focused only on the timing information and hence forfeit detecting e.g., the intensity of the played note. Plus, there are very few code implementations online for this problem, almost all of which are old and unmaintained. We would like to implement an algorithm in MusicProcessing.jl that given a recording of a single instrument, it can "MIDIfy" it, which means to digitalize it into the MIDI format.
-
-**Recommended Skills**: Background in music, familiarity with digital signal processing.
-
-**Expected results**: A well-tested, well-documented function `midify`
-
-in MusicProcessing.jl.
-
-**Mentors**: [George Datseris](https://github.com/Datseris/).
-
 [JuliaReach](https://github.com/JuliaReach) is the Julia ecosystem for reachability computations of dynamical systems. Application domains of set-based reachability include formal verification, controller synthesis and estimation under uncertain model parameters or inputs. For further context reach us on the [JuliaReach zulip](https://julialang.zulipchat.com/#narrow/stream/278609-juliareach) stream. You may also refer to the review article [Set Propagation Techniques for Reachability Analysis](https://www.annualreviews.org/doi/abs/10.1146/annurev-control-071420-081941).
 
 **Difficulty**: Medium.
@@ -915,27 +851,6 @@ The main interest in this project is to implement algorithms that leverage the s
 
 **Difficulty**: Medium.
 
-**Description.** Sparse polynomial zonotopes are a new non-convex set representation that are well-suited for reachability analysis of nonlinear dynamical systems. This project is a continuation of [GSoC'2022 - Reachability with sparse polynomial zonotopes](https://summerofcode.withgoogle.com/archive/2022/projects/feZrZfQX), which implemented the basics in [LazySets](https://github.com/JuliaReach/LazySets.jl).
-
-**Expected Results.** It is expected to add efficient Julia implementations of a reachability algorithm for dynamical systems in [ReachabilityAnalysis](https://github.com/JuliaReach/ReachabilityAnalysis.jl) which leverages polynomial zonotopes. A successful project should:
-
-Replicate the results from the article
-
-[Reachability Analysis for Linear Systems with Uncertain Parameters using Polynomial Zonotopes](https://dl.acm.org/doi/abs/10.1145/3575870.3587130).The code shall be documented, tested, and evaluated extensively in benchmarks.
-
-
-For ambitious candidates it is possible to draw connections with neural-network control systems as implemented in [ClosedLoopReachability.jl](https://github.com/JuliaReach/ClosedLoopReachability.jl).
-
-**Expected Length.** 175 hours.
-
-**Recommended Skills.** Familiarity with Julia and Git/GitHub is mandatory. Familiarity with the mentioned Julia packages is appreciated but not required. The project does not require theoretical contributions, but it requires reading a research literature, hence a certain level of academic experience is recommended.
-
-**Literature and related packages.** [This video](https://www.youtube.com/watch?v=iMtq6YeIsjA) explains the concept of polynomial zonotopes (slides [here](https://github.com/JuliaReach/juliareach-days-3-reachathon/blob/master/Challenge_5/Challenge5_PolynomialZonotopes.pdf)). The relevant theory is described in [this research article](https://arxiv.org/pdf/1901.01780). There exists a Matlab implementation in [CORA](https://tumcps.github.io/CORA/) (the implementation of polynomial zonotopes can be found in [this folder](https://github.com/TUMcps/CORA/tree/master/contSet/%40polyZonotope)).
-
-**Mentors**: [Marcelo Forets](https://github.com/mforets), [Christian Schilling](https://github.com/schillic).
-
-**Difficulty**: Medium.
-
 **Description.** [ReachabilityAnalysis](https://github.com/JuliaReach/ReachabilityAnalysis.jl) is a Julia library for set propagation of dynamical systems. One of the main aims is to handle systems with mixed discrete-continuous behaviors (known as hybrid systems in the literature). This project will focus on enhancing the capabilities of the library and overall improvement of the ecosystem for users.
 
 **Expected Results.** Specific tasks may include: problem-specific heuristics for hybrid systems; API for time-varying input sets; flowpipe underapproximations. The code is to be documented, tested, and evaluated in benchmarks. Integration with [ModelingToolkit.jl](https://github.com/SciML/ModelingToolkit.jl) can also be considered if there is interest.
@@ -958,7 +873,7 @@ Mentors: [Dhairya Gandhi](https://github.com/DhairyaLGandhi/).
 
 Much of science can be explained by the movement and interaction of molecules. Molecular dynamics (MD) is a computational technique used to explore these phenomena, from noble gases to biological macromolecules. [Molly.jl](https://github.com/JuliaMolSim/Molly.jl) is a pure Julia package for MD, and for the simulation of physical systems more broadly. The package is currently under development with a focus on proteins and differentiable molecular simulation. There are a number of ways that the package could be improved:
 
-**Machine learning potentials (duration: 175h, expected difficulty: easy to medium):**in the last few years machine learning potentials have been improved significantly. Models such as ANI, ACE, NequIP and Allegro can be added to Molly.**Better GPU performance (duration: 175h, expected difficulty: medium):**custom GPU kernels can be written to significantly speed up molecular simulation and make the performance of Molly comparable to mature software.**Constraint algorithms (duration: 175h, expected difficulty: medium):**many simulations keep fast degrees of freedom such as bond lengths and bond angles fixed using approaches such as SHAKE, RATTLE and SETTLE. A fast implementation of these algorithms would be a valuable contribution.**Electrostatic summation (duration: 175h, expected difficulty: medium to hard):**methods such as particle-mesh Ewald (PME) are in wide use for molecular simulation. Developing fast, flexible implementations and exploring compatibility with GPU acceleration and automatic differentiation would be an[important contribution](https://discourse.julialang.org/t/electrostatics-in-julia/41633).
+**Machine learning potentials (duration: 175h, expected difficulty: easy to medium):**in the last few years machine learning potentials have been improved significantly. Models such as ANI, ACE, NequIP and Allegro can be added to Molly.**Alchemical simulation features (duration: 175h, expected difficulty: medium):**binding free energy methods are now used routinely in drug discovery. Appropriate potentials and protocols could be added to Molly based on software like OpenFE.**Reactant compatibility (duration: 175h, expected difficulty: medium to hard):**Reactant.jl allows improved performance and Enzyme support. Molly could be made compatible with Reactant to access these features.
 
 **Recommended skills:** familiarity with computational chemistry, structural bioinformatics or simulating physical systems.
 
@@ -967,87 +882,6 @@ Much of science can be explained by the movement and interaction of molecules. M
 **Mentor:** [Joe Greener](https://github.com/jgreener64)
 
 **Contact:** feel free to ask questions via [email](http://jgreener64.github.io) or #juliamolsim on the [Julia Slack](https://join.slack.com/t/julialang/shared_invite/zt-2a5wdtotu-H52pQQTMDOa4NwsTSgQ_lQ).
-
-Matrix functions map matrices onto other matrices, and can often be interpreted as generalizations of ordinary functions like sine and exponential, which map numbers to numbers. Once considered a niche province of numerical algorithms, matrix functions now appear routinely in applications to cryptography, aircraft design, nonlinear dynamics, and finance.
-
-This project proposes to implement state of the art algorithms that extend the currently available matrix functions in Julia, as outlined in issue [#5840](https://github.com/JuliaLang/julia/issues/5840). In addition to matrix generalizations of standard functions such as real matrix powers, surds and logarithms, contributors will be challenged to design generic interfaces for lifting general scalar-valued functions to their matrix analogues for the efficient computation of arbitrary (well-behaved) matrix functions and their derivatives.
-
-**Recommended Skills**: A strong understanding of calculus and numerical analysis.
-
-**Expected Results**: New and faster methods for evaluating matrix functions.
-
-**Mentors:** [Jiahao Chen](https://github.com/jiahao), [Steven Johnson](https://github.com/stevengj).
-
-**Difficulty:** Hard
-
-Julia currently supports big integers and rationals, making use of the GMP. However, GMP currently doesn't permit good integration with a garbage collector.
-
-This project therefore involves exploring ways to improve BigInt, possibly including:
-
-Modifying GMP to support high-performance garbage-collection
-
-Reimplementation of aspects of BigInt in Julia
-
-Lazy graph style APIs which can rewrite terms or apply optimisations
-
-
-This experimentation could be carried out as a package with a new implementation, or as patches over the existing implementation in Base.
-
-**Expected Results**: An implementation of BigInt in Julia with increased performance over the current one.
-
-**Require Skills**: Familiarity with extended precision numerics OR performance considerations. Familiarity either with Julia or GMP.
-
-**Mentors**: [Jameson Nash](https://github.com/vtjnash)
-
-**Difficulty:** Hard
-
-As a technical computing language, Julia provides a huge number of [special functions](https://en.wikipedia.org/wiki/Special_functions), both in Base as well as packages such as [StatsFuns.jl](https://github.com/JuliaStats/StatsFuns.jl). At the moment, many of these are implemented in external libraries such as [Rmath](https://github.com/JuliaLang/Rmath-julia) and [openspecfun](https://github.com/JuliaLang/openspecfun). This project would involve implementing these functions in native Julia (possibly utilising the work in [SpecialFunctions.jl](https://github.com/nolta/SpecialFunctions.jl)), seeking out opportunities for possible improvements along the way, such as supporting `Float32`
-
-and `BigFloat`
-
-, exploiting fused multiply-add operations, and improving errors and boundary cases.
-
-**Recommended Skills**: A strong understanding of calculus.
-
-**Expected Results**: New and faster methods for evaluating properties of special functions.
-
-**Mentors:** [Steven Johnson](https://github.com/stevengj), [Oscar Smith](https://github.com/oscardssmith). Ask on Discourse or on slack
-
-The CCSA algorithm by [Svanberg (2001)](https://epubs.siam.org/doi/10.1137/S1052623499362822) is a [nonlinear programming algorithm](https://en.wikipedia.org/wiki/Nonlinear_programming) widely used in [topology optimization](https://en.wikipedia.org/wiki/Topology_optimization) and for other large-scale optimization problems: it is a robust algorithm that can handle arbitrary nonlinear inequality constraints and huge numbers of degrees of freedom. Moreover, the relative simplicity of the algorithm makes it possible to easily incorporate sparsity in the Jacobian matrix (for handling huge numbers of constraints), approximate-Hessian preconditioners, and as special-case optimizations for affine terms in the objective or constraints. However, currently it is only available in Julia via the [NLopt.jl](https://github.com/JuliaOpt/NLopt.jl) interface to an external C implementation, which greatly limits its flexibility.
-
-**Recommended Skills**: Experience with nonlinear optimization algorithms and understanding of [Lagrange duality](https://en.wikipedia.org/wiki/Duality_(optimization)), familiarity with sparse matrices and other Julia data structures.
-
-**Expected Results**: A package implementing a native-Julia CCSA algorithm.
-
-**Mentors:** [Steven Johnson](https://github.com/stevengj).
-
-Unfortunately we won't have time to mentor this year. Check back next year!
-
-[Pythia](https://github.com/ababii/Pythia.jl) is a package for scalable machine learning time series forecasting and nowcasting in Julia.
-
-The project mentors are [Andrii Babii](https://ababii.github.io/) and [Sebastian Vollmer](https://www.turing.ac.uk/people/researchers/sebastian-vollmer/).
-
-This project involves developing scalable machine learning time series regressions for nowcasting and forecasting. Nowcasting in economics is the prediction of the present, the very near future, and the very recent past state of an economic indicator. The term is a contraction of "now" and "forecasting" and originates in meteorology.
-
-The objective of this project is to introduce scalable regression-based nowcasting and forecasting methodologies that demonstrated the empirical success in data-rich environment recently. Examples of existing popular packages for regression-based nowcasting on other platforms include the "MIDAS Matlab Toolbox", as well as the 'midasr' and 'midasml' packages in R. The starting point for this project is porting the 'midasml' package from R to Julia. Currently Pythia has the sparse-group LASSO regression functionality for forecasting.
-
-The following functions are of interest: in-sample and out-of sample forecasts/nowcasts, regularized MIDAS with Legendre polynomials, visualization of nowcasts, AIC/BIC and time series cross-validation tuning, forecast evaluation, pooled and fixed effects panel data regressions for forecasting and nowcasting, HAC-based inference for sparse-group LASSO, high-dimensional Granger causality tests. Other widely used existing functions from R/Python/Matlab are also of interest.
-
-**Recommended skills:** Graduate-level knowledge of time series analysis, machine learning, and optimization is helpful.
-
-**Expected output:** The contributor is expected to produce code, documentation, visualization, and real-data examples.
-
-**References:** Contact project mentors for references.
-
-Modern business applications often involve forecasting hundreds of thousands of time series. Producing such a gigantic number of reliable and high-quality forecasts is computationally challenging, which limits the scope of potential methods that can be used in practice, see, e.g., the 'forecast', 'fable', or 'prophet' packages in R. Currently, Julia lacks the scalable time series forecasting functionality and this project aims to develop the automated data-driven and scalable time series forecasting methods.
-
-The following functionality is of interest: forecasting intermittent demand (Croston, adjusted Croston, INARMA), scalable seasonal ARIMA with covariates, loss-based forecasting (gradient boosting), unsupervised time series clustering, forecast combinations, unit root tests (ADF, KPSS). Other widely used existing functions from R/Python/Matlab are also of interest.
-
-**Recommended skills:** Graduate-level knowledge of time series analysis is helpful.
-
-**Expected output:** The contributor is expected to produce code, documentation, visualization, and real-data examples.
-
-**References:** Contact project mentors for references.
 
 Clifford circuits are a class of quantum circuits that can be simulated efficiently on a classical computer. As such, they do not provide the computational advantage expected of universal quantum computers. Nonetheless, they are extremely important, as they underpin most techniques for quantum error correction and quantum networking. Software that efficiently simulates such circuits, at the scale of thousands or more qubits, is essential to the design of quantum hardware. The [QuantumClifford.jl](https://github.com/Krastanov/QuantumClifford.jl) Julia project enables such simulations.
 
@@ -1266,22 +1100,22 @@ Performance benchmarking
 
 **Contact:** ping either mentor on the Julia slack.
 
-The goal of this project is to develop a new language server for Julia, currently called [JETLS](https://github.com/aviatesk/JETLS.jl). This language server aims to enhance developer productivity by providing advanced static analysis and seamless integration with the Julia runtime. By leveraging tooling technologies like JET, Revise and JuliaLowering, JETLS aims to offer enhanced language features such as type-sensitive diagnostics and macro-aware code completions.
+The goal of this project is to develop a new language server for Julia, currently called [JETLS](https://github.com/aviatesk/JETLS.jl), that enhances developer productivity through advanced static analysis and seamless integration with the Julia runtime.
 
-The project is currently in the very early stages of prototyping. We've implemented the basic JSON message communication system and the protocol, but the core functionalities of the language server, including its analysis routines and incremental state management system, is still pretty primitive. The plan is to have the core functionalities of the language server more solid by the summer when GSoC 2025 starts, through working on implementing "diagnostics" and "completion" features. During GSoC, we expect to combine these core features with new tooling technologies like JuliaLowering.jl to implement new language server features, such as "go to definition" and "outline."
+JETLS has made significant progress and now implements a broad set of core LSP features. Type-sensitive diagnostics are powered by [JET.jl](https://github.com/aviatesk/JET.jl), which uses [JuliaInterpreter.jl](https://github.com/JuliaDebug/JuliaInterpreter.jl) to load and analyze code. Features like code completion, workspace symbols, find references, and rename are built by running [JuliaLowering.jl](https://github.com/JuliaLang/julia/tree/master/JuliaLowering) as a post-analysis step on top of the module context that JET/JuliaInterpreter has established.
 
-Also, as preparation, we hope that by the time GSoC starts, you'll have gained some knowledge about the implementation of JETLS.jl and tools like [JET.jl](https://github.com/aviatesk/JET.jl), [Revise.jl](https://github.com/timholy/Revise.jl) and [JuliaLowering.jl](https://github.com/c42f/JuliaLowering.jl/pulls).
+The next major milestone is to feed JuliaLowering-generated code directly into JET's analysis, rather than running JuliaLowering as a post-processing step. This deeper integration, combined with [Revise.jl](https://github.com/timholy/Revise.jl) for incremental analysis, will enable advanced features such as type-on-hover, inlay type hints, and argument-type-aware completions, as well as more precise diagnostic locations (currently reported at line granularity rather than column-precise positions).
 
-**Expected Outcomes**: A functional language server that significantly improves the developer experience for Julia users, with enhanced language capabilities including type-sensitive diagnostics and macro-aware code completions.**Skills Required**:Proficiency in Julia programming and familiarity with its compiler and runtime systems
+During GSoC, we expect the contributor to work on these deeper integrations and implement the advanced language features that depend on them. As preparation, we hope that by the time GSoC starts, you have studied the implementations of JETLS.jl and related tools: [JET.jl](https://github.com/aviatesk/JET.jl), [JuliaInterpreter.jl](https://github.com/JuliaDebug/JuliaInterpreter.jl), [Revise.jl](https://github.com/timholy/Revise.jl), and [JuliaLowering.jl](https://github.com/JuliaLang/julia/tree/master/JuliaLowering).
 
-Interest in and/or experience with LSP and developer tools like JET.jl and Revise.jl
+**Expected Outcomes**: Advanced language server features built on top of full JuliaLowering/JET/Revise integration, such as type-on-hover, inlay type hints, and argument-type-aware completions.**Skills Required**:Proficiency in Julia programming and familiarity with its compiler and runtime systems
+
+Deep understanding of Julia's compiler internals, including lowering, type inference, and abstract interpretation as implemented in JET.jl, JuliaInterpreter.jl, and JuliaLowering.jl
+
+Interest in and/or experience with LSP and developer tooling
 
 
 **Difficulty**: Hard**Contact**:[Shuhei Kadowaki](https://github.com/aviatesk)
-
-The Nanosoldier.jl project (and related [https://github.com/JuliaCI/BaseBenchmarks.jl](https://github.com/JuliaCI/BaseBenchmarks.jl)) tests for performance impacts of some changes. However, there remains many areas that are not covered (such as compile time) while other areas are over-covered (greatly increasing the duration of the test for no benefit) and some tests may not be configured appropriately for statistical power. Furthermore, the current reports are very primitive and can only do a basic pair-wise comparison, while graphs and other interactive tooling would be more valuable. Thus, there would be many great projects for a summer contributor to tackle here!
-
-**Expected Outcomes**: Improvement of Julia's automated testing/benchmarking framework.**Skills**: Interest in and/or experience with CI systems.**Difficulty**: Medium**Contact:**[Jameson Nash](https://github.com/vtjnash),[Tim Besard](https://github.com/maleadt)
 
 [TopOpt.jl](https://github.com/JuliaTopOpt/TopOpt.jl) is a [topology optimization](https://en.wikipedia.org/wiki/Topology_optimization) package written in pure Julia. Topology optimization is an exciting field at the intersection of shape representation, physics simulations and mathematical optimization, and the Julia language is a great fit for this field. To learn more about `TopOpt.jl`
 
@@ -1429,90 +1263,84 @@ This project is good for people who are interested in GPU programming, parallel 
 
 [Turing.jl](https://turinglang.org/) is a universal probabilistic programming language embedded in Julia. Turing allows the user to write statistical models in standard Julia syntax, and provides a wide range of sampling-based inference methods for solving problems across probabilistic machine learning, Bayesian statistics, and data science. Since Turing is implemented in pure Julia code, its compiler and inference methods are amenable to hacking: new model families and inference methods can be easily added.
 
-Below are the projects we have in mind for GSoC 2025. If you are interested in working on any of them, or want to propose your own Turing.jl-related GSoC project, please reach out to Markus Hauru (@mhauru) on Julia's [Slack](https://julialang.org/slack/) or [Discourse](https://discourse.julialang.org/).
+For GSoC 2026 we offer projects from core AD work to scalable inference and user-facing tools.
 
-Difficulty: Medium
+If a project interests you, contact the mentors listed below or open a discussion on the relevant GitHub repo. Please drop a short introduction message in the [ #turing](https://julialang.slack.com/archives/CCYDC34A0) channel on the
 
-Duration: 350 hours
+Also cross-posted on [Turing Blog](https://turinglang.org/news/).
 
-Description: [Mooncake.jl](https://github.com/compintell/Mooncake.jl/) is a reverse-mode AD package written entirely in Julia, which addresses many of limitations of the popular [ReverseDiff.jl](https://github.com/JuliaDiff/ReverseDiff.jl) and [Zygote.jl](https://github.com/FluxML/Zygote.jl) libraries. While the library is typically fast, performance is not tested as systematically as it could be, meaning that there are probably a range of performance bugs waiting to be uncovered. Additionally, there are a range of known performance limitations which need to be addressed. This project aims to resolve known performance problems, to find new ones, and fix them too!
+| Mentor | Slack Contact |
+|---|---|
+| Hong Ge |
+|
 
-Skills: familiarity with Julia programming, how to make Julia code performant, and a strong desire to make existing Julia code more performant! An understanding of AD is helpful, but not essential.
+**Mentors**: [Hong Ge](https://github.com/yebai) and [Xianda Sun](https://github.com/sunxd3)
 
-Difficulty: Medium
+**Project difficulty**: Medium
 
-Duration: 175 hours or 350 hours
+**Project length**: 350 hrs
 
-[JuliaBUGS](https://github.com/TuringLang/JuliaBUGS.jl) is a Julia implementation of the [BUGS](https://en.wikipedia.org/wiki/WinBUGS) probabilistic programming language. It emphasizes interoperability and modularity. JuliaBUGS gives users familiar with BUGS access to Hamiltonian Monte Carlo (HMC), Automatic Differentiation (AD), and Julia’s powerful scientific computing tools. This Google Summer of Code (GSoC) project aims to create easy-to-use R and Python interfaces for JuliaBUGS.
+Gibbs sampling is one of the most widely used inference strategies in Bayesian computation, but Turing.jl's current Gibbs implementation is tightly coupled to its internals and difficult to extend.
 
-Project Tasks:
+This project is about designing a clean, composable Gibbs sampler built on top of the [AbstractMCMC.jl](https://github.com/TuringLang/AbstractMCMC.jl) interface so that it works perfectly across both Turing.jl and [JuliaBUGS.jl](https://github.com/TuringLang/JuliaBUGS.jl). Work will include:
 
-*Interface Design*: Develop R and Python packages similar to existing and widely used R packages like R2OpenBUGS and rjags, making it easy for users to adopt.*Interoperability Development*: Use Julia's existing packages ([JuliaCall](https://github.com/JuliaInterop/JuliaCall)and[PythonCall](https://github.com/JuliaPy/PythonCall.jl)) to create the interfaces. This will allow smooth data transfer and function calls between Julia, R, and Python.*Integration with Tools (Large Project)*: Integrate these new interfaces seamlessly with popular Bayesian visualization and diagnostics tools—such as bayesplot, posterior, and coda in R, and ArviZ in Python.*Documentation and Tutorials (Large Project)*: Create clear and practical documentation, including tutorials, to support users in understanding and effectively using the interfaces.
+Agreeing on a minimal AbstractMCMC-compatible interface for conditional samplers.
 
-Participants will gain hands-on experience in Bayesian statistics, software engineering, computational methods, and developing software that works across multiple programming languages. This will prepare them well for future academic and professional opportunities.
+Implementing the new Gibbs combinator and verifying correctness on standard models.
 
-Difficulty: Hard
+Migrating existing Turing.jl Gibbs usage to the new interface.
 
-Duration: TBD
+Ensuring JuliaBUGS.jl can plug in its own conditional samplers without modification.
 
-The Turing.jl team is looking for a student to implement a lightweight Julia library to work with [Jaxprs](https://docs.jax.dev/en/latest/jaxpr.html). If this could be you, get in touch and we can discuss the details.
 
-We are generally looking for folks that want to help with the [Julia VS Code extension](https://www.julia-vscode.org/). We have a long list of open issues, and some of them amount to significant projects.
+**Mentors**: [Hong Ge](https://github.com/yebai) and [Xianda Sun](https://github.com/sunxd3)
 
-**Required Skills**: TypeScript, Julia, web development.
+**Project difficulty**: Medium to Hard
 
-**Expected Results**: Depends on the specific projects we would agree on.
+**Project length**: 350 hrs
 
-**Mentors**: [David Anthoff](https://github.com/davidanthoff)
+[Mooncake.jl](https://github.com/chalk-lab/Mooncake.jl) is a source-to-source reverse-mode AD package for Julia. Two open issues currently limit its performance and applicability in real-world workloads.
 
-The VSCode extension for Julia could provide a simple way to browse available packages and view what's installed on a users system. To start with, this project could simply provide a GUI that reads in package data from a `Project.toml`
+The first is that every hand-written `rrule!!`
 
-/`Manifest.toml`
+must allocate scratch memory on every call ([issue #403](https://github.com/chalk-lab/Mooncake.jl/issues/403)). Derived rules already avoid this by carrying persistent state between calls, but hand-written rules have no such mechanism. The fix is a `StatefulRRule`
 
-and show some UI elements to add/remove/manage those packages.
+struct that holds a `Stack`
 
-This could also be extended by having metadata about the package, such as a readme, github stars, activity and so on (somewhat similar to the VSCode-native extension explorer).
+of saved state, constructed via a `build_primitive_rrule`
 
-**Expected Results**: A UI in VSCode for package operations.
+function. Rule authors implement `stateful_rrule!!`
 
-**Recommended Skills**: Familiarity with TypeScript and Julia development.
+, which receives the current state (or `nothing`
 
-**Mentors**: [Sebastian Pfitzner](https://github.com/pfitzseb)
+on the first call) and returns updated state alongside the usual outputs – stack push/pop is handled automatically. The work is to (1) add a test that fails when a primal is allocation-free but its `rrule!!`
 
-*Also take a look at Pluto - VS Code integration!*
+is not, (2) audit all existing hand-written rules with that test, and (3) convert the offenders.
 
-Julia has early support for targeting WebAssembly and running in the web browser. Please note that this is a rapidly moving area (see the [project repository](https://github.com/Keno/julia-wasm) for a more detailed overview), so if you are interested in this work, please make sure to inform yourself of the current state and talk to us to scope out an appropriate project. The below is intended as a set of possible starting points.
+The second is that Mooncake currently errors on any code using `Threads.@threads`
 
-Mentor for these projects is [Keno Fischer](https://github.com/Keno) unless otherwise stated.
+([issue #570](https://github.com/chalk-lab/Mooncake.jl/issues/570)). Even a race-condition-free primal can produce race conditions on the reverse pass – two threads may concurrently increment the same tangent element, so increments must be atomic. Additionally, rule caches (the stacks inside `OpaqueClosure`
 
-Because Julia relies on an asynchronous task runtime and WebAssembly currently lacks native support for stack management, Julia needs to explicitly manage task stacks in the wasm heap and perform a compiler transformation to use this stack instead of the native WebAssembly stack. The overhead of this transformation directly impacts the performance of Julia on the wasm platform. Additionally, since all code Julia uses (including arbitrary C/C++ libraries) must be compiled using this transformation, it needs to cover a wide variety of inputs and be coordinated with other users having similar needs (e.g. the Pyodide project to run python on the web). The project would aim to improve the quality, robustness and flexibility of this transformation.
+s) must be Task-specific; sharing them across Tasks causes pushes and pops to interleave incorrectly. The work involves writing rules for the `ccall`
 
-**Recommended Skills**: Experience with LLVM.
+s that enter and exit threaded regions, ensuring atomic tangent updates, and making rule caches Task-local without relying on `threadid()`
 
-WebAssembly is in the process of standardizing [threads](https://github.com/WebAssembly/threads). Simultaneously, work is ongoing to introduce a new threading runtime in Julia (see [#22631](https://github.com/JuliaLang/julia/pull/22631) and replated PRs). This project would investigate enabling threading support for Julia on the WebAssembly platform, implementing runtime parallel primitives on the web assembly platform and ensuring that high level threading constructs are correctly mapped to the underlying platform. Please note that both the WebAssembly and Julia threading infrastructure is still in active development and may continue to change over the duration of the project. An informed understanding of the state of these projects is a definite prerequisite for this project.
+.
 
-**Recommended Skills**: Experience with C and multi-threaded programming.
+**Mentors**: [Xianda Sun](https://github.com/sunxd3)
 
-WebAssembly is in the process of adding [first class references to native objects](https://github.com/WebAssembly/reference-types) to their specification. This capability should allow very high performance integration between julia and javascript objects. Since it is not possible to store references to javascript objects in regular memory, adding this capability will require several changes to the runtime system and code generation (possibly including at the LLVM level) in order to properly track these references and emit them either as direct references to as indirect references to the reference table.
+**Project difficulty**: Medium to Hard
 
-**Recommended Skills**: Experience with C.
+**Project length**: 350 hrs
 
-While Julia now runs on the web platform, it is not yet a language that's suitable for first-class development of web applications. One of the biggest missing features is integration with and abstraction over more complicated javascript objects and APIs, in particular the DOM. Inspiration may be drawn from similar projects in [Rust](https://github.com/koute/stdweb) or other languages.
+[Pigeons.jl](https://github.com/Julia-Tempering/Pigeons.jl) implements parallel tempering and related algorithms that are particularly effective for multimodal and high-dimensional posteriors. This project has two related goals that together make Pigeons a first-class citizen of the TuringLang ecosystem.
 
-**Recommended Skills**: Experience with writing libraries in Julia, experience with JavaScript Web APIs.
+The first part is documentation and examples. Turing.jl models can already be used as targets for Pigeons, but the combination is under-documented. The contributor will produce reproducible tutorials that walk through common use cases – multimodal posteriors, hierarchical models, models with difficult geometry – and compare Pigeons against HMC/NUTS on the same problems. These will be published on the Turing website and any integration rough edges found along the way will be fixed.
 
-Several Julia libraries (e.g. WebIO.jl, Escher.jl) provide input and output capabilities for the web platform. Porting these libraries to run directly on the wasm platform would enable a number of existing UIs to automatically work on the web.
+The second part is implementing the efficient Gibbs sampler from [arXiv:2410.03630](https://arxiv.org/abs/2410.03630) in [JuliaBUGS.jl](https://github.com/TuringLang/JuliaBUGS.jl). The paper shows that by exploiting the structure of the compute graph (rather than the graphical model), the time per sweep of a full-scan Gibbs sampler on GLMs can be reduced from to in the number of parameters – making high-dimensional GLMs feasible where traditional Gibbs is not, and outperforming HMC on effective samples per unit time in many regimes. JuliaBUGS already exposes the graph structure this approach relies on. The implementation must be correct and performant, validated against standard benchmarks with comparisons to both traditional Gibbs and HMC.
 
-**Recommended Skills**: Experience with writing libraries in Julia.
+**Mentors**: Community
 
-The Julia project uses [BinaryBuilder](https://github.com/JuliaPackaging/BinaryBuilder.jl) to provide binaries of native dependencies of julia packages. Experimental support exists to extend this support to the wasm platform, but few packages have been ported. This project would consist of attempting to port a significant fraction of the binary dependencies of the julia ecosystem to the web platform by improving the toolchain support in BinaryBuilder or (if necessary), porting upstream packages to fix assumptions not applicable on the wasm platform.
+If you have an idea not listed here, propose it. Submit a short proposal with motivation, a concise plan, expected deliverables, and a timeline. Maintainers and mentors will review and help turn it into a plan. Be prepared to discuss scope with mentors early.
 
-**Recommended Skills**: Experience with building native libraries in Unix environments.
-
-The Distributed computing abstractions in Julia provide convenient abstraction for implementing programs that span many communicating Julia processes on different machines. However, the existing abstractions generally assume that all communicating processes are part of the same trust domain (e.g. they allow messages to execute arbitrary code on the remote). With some of the nodes potentially running in the web browser (or multiple browser nodes being part of the same distributed computing cluster via WebRPC), this assumption no longer holds true and new interfaces need to be designed to support multiple trust domains without overly restricting usability.
-
-**Recommended Skills**: Experience with distributed computing and writing libraries in Julia.
-
-Currently supported use cases for Julia on the web platform are primarily geared towards providing interactive environments to support exploration of the full language. Of course, this leads to significantly larger binaries than would be required for using Julia as part of a production deployment. By disabling dynamic language features (e.g. eval) one could generate small binaries suitable for deployment. Some progress towards this exists in packages like [PackageCompiler.jl](https://github.com/JuliaLang/PackageCompiler.jl), though significant work remains to be done.
-
-**Recommended Skills**: Interest in or experience with Julia internals.
+To discuss proposals and next steps, contact [Shravan Goswami](https://julialang.slack.com/team/U04UZB5U740) on the [Julia Slack](https://julialang.org/slack/).

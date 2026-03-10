@@ -2,7 +2,7 @@
 
 **Parent:** The Rust Foundation — Project Ideas
 **Source:** https://github.com/rust-lang/google-summer-of-code/blob/main/gsoc/README.md
-**Scraped:** 2026-02-22T23:28:47.594365
+**Scraped:** 2026-03-10T16:58:40.246086
 
 ---
 
@@ -32,6 +32,8 @@ We would appreciate if you used your own words when writing GSoC project proposa
 If you plan to use AI significantly for implementing your proposal, in particular for *generating* code, you should let the project mentor know during the application process, *prior* to being selected for GSoC. So that you can confirm with them that they are OK with AI being used for the project's implementation.
 
 In general, we would appreciate if you disclosed to your mentor, and also on opened PRs if and how you used AI for generating code. Note that you are still responsible for all the code that you produce and you should understand how it works.
+
+We might ask the applicant for a 1:1 assessment interview in case we have questions about the design of their proposal.
 
 ## Hardware access
 The Rust Project can provide remote access to powerful cloud-based [Linux machines](https://forge.rust-lang.org/infra/docs/dev-desktop.html) to contributors that will be accepted for a GSoC Rust project. This can help overcome potential contribution barriers caused e.g. by an using an unsupported operating system or not having performant enough hardware.

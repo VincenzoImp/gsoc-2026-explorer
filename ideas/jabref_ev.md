@@ -1,7 +1,7 @@
 # JabRef e.V. — Project Ideas
 
 **Source:** https://jabref.github.io/GSoC/projects/
-**Scraped:** 2026-02-22T23:28:47.605262
+**Scraped:** 2026-03-10T16:58:40.270012
 
 ---
 
@@ -254,6 +254,28 @@ In this project, two things should be tackled:
 [#8701](https://github.com/JabRef/jabref/issues/8701)
 
 Note that 2 does NOT mean that all preferences should be stored in the library; only the ones the user wants to store.
+
+**Possible Mentors:**
+
+**Project size:**
+
+350h (large)
+
+### JabTUI - the terminal UI for JabRef
+
+JabRef’s strength is that is has all tools to work with BibTeX and BibLaTeX.
+
+Currently, JabRef offers the GUI (known as “JabRef”, internally as “JabGUI”) and a CLI application (known as “JabKit”).
+
+Recently, a library for creating Terminal UIs in Java was published: [https://melix.github.io/blog/2026/02/17-announcing-tamboui.html](https://melix.github.io/blog/2026/02/17-announcing-tamboui.html). One can try it out using `jbang demos@tamboui`
+
+.
+
+There are terminal UIs for managing BibTeX available. For instance [bibiman](https://codeberg.org/lukeflo/bibiman) or [BibMan](https://github.com/ductri/BibMan). However, they are not as feature-rich as JabRef.
+
+The task is now to add a terminal UI based on [TamboUI](https://tamboui.dev/) build on top of JabRef.
+
+This project requires **strong UX and Software Engineering skills**, because the TUI should not be just a copy of the current JabRef interface. It should be intuitively and pleasent to use.
 
 **Possible Mentors:**
 

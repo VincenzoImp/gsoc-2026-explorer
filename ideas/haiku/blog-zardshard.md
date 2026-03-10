@@ -2,13 +2,13 @@
 
 **Parent:** Haiku — Project Ideas
 **Source:** https://www.haiku-os.org/blog/zardshard
-**Scraped:** 2026-02-22T23:28:47.590220
+**Scraped:** 2026-03-10T16:58:40.309655
 
 ---
 
 #### Blog-O-Sphere
 
-[Haiku Activity & Contract Report, January 2026](https://www.haiku-os.org/blog/waddlesplash/2026-02-12-haiku_activity_contract_report_january_2026/)[The Gerrit code review iceberg, episode 5](https://www.haiku-os.org/blog/pulkomandy/2026-02-03-the_gerrit_pending_review_iceberg_5/)[Haiku Activity & Contract Report, December 2025](https://www.haiku-os.org/blog/waddlesplash/2026-01-12-haiku_activity_contract_report_december_2025/)[The Gerrit code review iceberg, episode 4](https://www.haiku-os.org/blog/pulkomandy/2025-12-31-the_gerrit_pending_review_iceberg_4/)[The Gerrit code review iceberg, episode 3](https://www.haiku-os.org/blog/pulkomandy/2025-12-19-the_gerrit_pending_review_iceberg_3/)[Haiku Activity & Contract Report, November 2025 (ft. Go)](https://www.haiku-os.org/blog/waddlesplash/2025-12-12-haiku_activity_contract_report_november_2025/)[The Gerrit code review iceberg, episode 2](https://www.haiku-os.org/blog/pulkomandy/2025-12-05-the_gerrit_pending_review_iceberg_2/)[The Gerrit code review iceberg](https://www.haiku-os.org/blog/pulkomandy/2025-11-24-the_gerrit_pending_review_iceberg/)[Haiku Activity & Contract Report, October 2025](https://www.haiku-os.org/blog/waddlesplash/2025-11-11-haiku_activity_contract_report_october_2025/)[Haiku Activity & Contract Report, September 2025](https://www.haiku-os.org/blog/waddlesplash/2025-10-13-haiku_activity_contract_report_september_2025/)
+[Haiku Activity & Contract Report, February 2026](https://www.haiku-os.org/blog/waddlesplash/2026-03-05-haiku_activity_contract_report_february_2026/)[Haiku Activity & Contract Report, January 2026](https://www.haiku-os.org/blog/waddlesplash/2026-02-12-haiku_activity_contract_report_january_2026/)[The Gerrit code review iceberg, episode 5](https://www.haiku-os.org/blog/pulkomandy/2026-02-03-the_gerrit_pending_review_iceberg_5/)[Haiku Activity & Contract Report, December 2025](https://www.haiku-os.org/blog/waddlesplash/2026-01-12-haiku_activity_contract_report_december_2025/)[The Gerrit code review iceberg, episode 4](https://www.haiku-os.org/blog/pulkomandy/2025-12-31-the_gerrit_pending_review_iceberg_4/)[The Gerrit code review iceberg, episode 3](https://www.haiku-os.org/blog/pulkomandy/2025-12-19-the_gerrit_pending_review_iceberg_3/)[Haiku Activity & Contract Report, November 2025 (ft. Go)](https://www.haiku-os.org/blog/waddlesplash/2025-12-12-haiku_activity_contract_report_november_2025/)[The Gerrit code review iceberg, episode 2](https://www.haiku-os.org/blog/pulkomandy/2025-12-05-the_gerrit_pending_review_iceberg_2/)[The Gerrit code review iceberg](https://www.haiku-os.org/blog/pulkomandy/2025-11-24-the_gerrit_pending_review_iceberg/)[Haiku Activity & Contract Report, October 2025](https://www.haiku-os.org/blog/waddlesplash/2025-11-11-haiku_activity_contract_report_october_2025/)
 
 [[GSoC 2024] Porting WebKit2 Final Report](https://www.haiku-os.org/blog/zardshard/2024-08-16_gsoc_2024_porting_webkit2_final_report/)
 

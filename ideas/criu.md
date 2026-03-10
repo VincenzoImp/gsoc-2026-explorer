@@ -1,7 +1,7 @@
 # CRIU — Project Ideas
 
 **Source:** https://criu.org/Google_Summer_of_Code_Ideas
-**Scraped:** 2026-02-22T23:28:47.590723
+**Scraped:** 2026-03-10T16:58:40.253561
 
 ---
 
@@ -44,7 +44,7 @@ Kubernetes provides a highly dynamic and ephemeral environment where workloads c
 
 **Links:**
 
-[https://github.com/checkpoint-restore/checkpointctl](https://github.com/checkpoint-restore/checkpointctl)[Investigating Security Incidents with Forensic Snapshots in Kubernetes](https://fosdem.org/2026/events/attachments/F9RANH-forensic-snapshots-in-kubernetes/slides/266249/fosdem_2_4dh73ni.pdf)[Cloud Native Security Whitepaper](https://www.cncf.io/reports/cloud-native-security-whitepaper/)[Kubernetes Hardening Guide](https://media.defense.gov/2022/Aug/29/2003066362/-1/-1/0/CTR_KUBERNETES_HARDENING_GUIDANCE_1.2_20220829.PDF)
+[https://github.com/checkpoint-restore/checkpointctl](https://github.com/checkpoint-restore/checkpointctl)[Investigating Security Incidents with Forensic Snapshots in Kubernetes](https://fosdem.org/2026/events/attachments/F9RANH-forensic-snapshots-in-kubernetes/slides/267371/fosdem_2_4dh73ni.pdf)[Cloud Native Security Whitepaper](https://www.cncf.io/reports/cloud-native-security-whitepaper/)[Kubernetes Hardening Guide](https://media.defense.gov/2022/Aug/29/2003066362/-1/-1/0/CTR_KUBERNETES_HARDENING_GUIDANCE_1.2_20220829.PDF)
 
 **Details:**
 
@@ -70,47 +70,7 @@ capability, container engines do not yet support native checkpointing of contain
 - Expected size: 350 hours
 - Mentors: Radostin Stoyanov <rstoyanov@fedoraproject.org>, Adrian Reber <areber@redhat.com>
 
-### Files on detached mounts[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=6)]
-
-**Summary:** Initial support of open files on "detached" mounts
-
-When criu dumps a process with an open fd on a file, it gets the mount identifier (mnt_id) via /proc/<pid>/fdinfo/<fd>, so that criu knows from which exact mount the file was initially opened. This way criu can restore this fd by opening the same exact file from topologically the same mount in restored mount tree.
-
-Restoring fd from the right mount can be important in different cases, for instance if the process would later want to resolve paths relative to the fd, and obviously resolving from the same file on different mount can lead to different resolved paths, or if the process wants to check path to the file via /proc/<pid>/fd/<fd>.
-
-But we have a problem finding on which mount we need to reopen the file at restore if we only know mnt_id but can't find this mnt_id in /proc/<pid>/mountinfo.
-
-Mountinfo file shows the mount tree topology of current mntns: parent - child relations, sharing group information, mountpoint and fs root information. And if we don't see mnt_id in it we don't know anything about this mount.
-
-This can happen in two cases
-
-- 1) external mount or file - if file was opened from e.g. host it's mount would not be visible in container mountinfo
-- 2) mount was lazily unmounted
-
-In case of 1) we have criu options to help criu handle external dependencies.
-
-In case of 2) or no options provided criu can't resolve mnt_id in mountinfo and criu fails.
-
-**Solution:**
-We can handle 2) with: resolving major/minor via fstat, using name_to_handle_at and open_by_handle_at to open same file on any other available mount from same superblock (same major/minor) in container. Now we have fd2 of the same file as fd, but on existing mount we can dump it as usual instead, and mark it as "detached" in image, now criu on restore knows where to find this file, but instead of just opening fd2 from actually restored mount, we create a temporary bindmount which is lazy unmounted just after open making the file appear as a file on detached mount.
-
-Known problems with this approach:
-
-- Stat on btrfs gives wrong major/minor
-- file handles does not work everywhere
-- file handles can return fd2 on deleted file or on other hardlink, this needs special handling.
-
-Additionally (optional part): We can export real major/minor in fdinfo (kernel). We can think of new kernel interface to get mount's major/minor and root (shift from fsroot) for detached mounts, if we have it we don't need file handle hack to find file on other mount (see fsinfo or getvalues kernel patches in LKML, can we add this info there?).
-
-**Details:**
-
-- Skill level: intermediate
-- Language: C
-- Expected size: 350 hours
-- Mentor: Pavel Tikhomirov <ptikhomirov@virtuozzo.com>
-- Suggested by: Pavel Tikhomirov <ptikhomirov@virtuozzo.com>
-
-### Checkpointing of POSIX message queues[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=7)]
+### Checkpointing of POSIX message queues[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=6)]
 
 **Summary:** Add support for checkpoint/restore of POSIX message queues
 
@@ -128,7 +88,7 @@ POSIX message queues are a widely used inter-process communication mechanism. Me
 - Mentors: Radostin Stoyanov <rstoyanov@fedoraproject.org>, Pavel Tikhomirov <ptikhomirov@virtuozzo.com>
 - Suggested by: Pavel Tikhomirov <ptikhomirov@virtuozzo.com>
 
-### Add support for SCM_CREDENTIALS / SCM_PIDFD and friends[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=8)]
+### Add support for SCM_CREDENTIALS / SCM_PIDFD and friends[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=7)]
 
 **Summary:** Support for SCM_CREDENTIALS / SCM_PIDFD
 
@@ -152,11 +112,67 @@ There is some extra source of complexity here pidfds can be "stale" (see PIDFD_S
 - Suggested by: Alexander Mikhalitsyn <alexander@mihalicyn.com>
 - Mentors: Andrei Vagin <avagin@gmail.com>, Alexander Mikhalitsyn <alexander@mihalicyn.com>
 
-## Suspended project ideas[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=9)]
+### Integrate with Live Update Orchestrator (LUO)[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=8)]
+
+**Summary:** Integrate with Live Update Orchestrator (LUO)
+
+Live Update Orchestrator (LUO) is a framework for Linux kernel live updates (via kexec). Idea behind it is to provide kernel and user space API to save specific system resources across kexec reboot.
+
+This research project explores how CRIU can be integrated with LUO. For example, if a user is running memcached on a node, the current approach would require a full CRIU dump, then saving the entire process memory to disk, then followed by restoring it after the kernel live update.
+
+Instead, CRIU could be extended to leverage the LUO API. When instructed, it could preserve selected memory regions directly across the kexec reboot, avoiding a full disk dump and significantly accelerating the restore process after the kernel update.
+
+**Links:**
+
+- [1] LUO kernel documentation
+[https://docs.kernel.org/core-api/liveupdate.html](https://docs.kernel.org/core-api/liveupdate.html) - [2] LUO memfd doc
+[https://docs.kernel.org/mm/memfd_preservation.html](https://docs.kernel.org/mm/memfd_preservation.html)
+
+**Details:**
+
+- Skill level: intermediate / advanced
+- Language: C
+- Expected size: 350 hours
+- Suggested by: Andrei Vagin <avagin@gmail.com>
+- Mentors: Andrei Vagin <avagin@gmail.com>, Alexander Mikhalitsyn <alexander@mihalicyn.com>
+
+### Optimize COW memory dumping[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=9)]
+
+**Summary:** Optimize COW memory dumping
+
+The Linux kernel memory management subsystem is highly optimized not only for performance, but also to minimize unnecessary memory consumption. A key example of this is how the kernel handles private VMAs when user space invokes the fork() system call.
+
+Rather than duplicating the entire VMA tree along with all memory contents, the kernel creates optimized copies of inherited VMAs using the Copy-on-Write (COW) mechanism. When a process writes to a page within a COW-ed VMA, a write page fault occurs, and the kernel creates a private copy of that page before applying the modification. However, if the page is only read, no copying is performed.
+
+This approach significantly improves fork() performance and can dramatically reduce memory usage in many workloads.
+
+In CRIU, when dumping VMAs and their associated memory pages, this COW optimization is not currently taken into account during the dump phase. As a result, for COW-backed VMAs, CRIU may generate multiple copies of identical memory pages in the dump image.
+
+During restore, however, CRIU explicitly handles this situation (see [1] and [2]) and attempts to reconstruct COW relationships inside the kernel. This step is critical: without it, a checkpoint/restore (C/R) cycle could lead to a substantial increase in memory consumption for the same process tree. For example, a workload that originally consumed 500 MiB could expand to 800 MiB after restore, which is clearly unacceptable.
+
+This project aims to improve the dumping algorithm so that it avoids producing multiple unnecessary copies of identical pages belonging to COW-ed VMAs.
+
+The project requires some understanding of Linux memory management internals and CRIU’s architecture. We strongly encourage GSoC contributors to study references [1] and [2] and experiment with the relevant code paths before applying. We are happy to answer questions and provide guidance along the way.
+
+**Links:**
+
+- [1] preparing COW VMAs
+[https://github.com/checkpoint-restore/criu/blob/c180188db036f8ea4c08bfee28cbcdbdd52cdfc3/criu/mem.c#L878](https://github.com/checkpoint-restore/criu/blob/c180188db036f8ea4c08bfee28cbcdbdd52cdfc3/criu/mem.c#L878) - [2] private vma content restore cow case
+[https://github.com/checkpoint-restore/criu/blob/c180188db036f8ea4c08bfee28cbcdbdd52cdfc3/criu/mem.c#L1219](https://github.com/checkpoint-restore/criu/blob/c180188db036f8ea4c08bfee28cbcdbdd52cdfc3/criu/mem.c#L1219)
+
+**Details:**
+
+- Skill level: intermediate / advanced
+- Language: C
+- Expected size: 350 hours
+- Suggested by: Andrei Vagin <avagin@gmail.com>
+- Mentors: Andrei Vagin <avagin@gmail.com>, Alexander Mikhalitsyn <alexander@mihalicyn.com>
+
+## Suspended project ideas[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=10)]
 
 Listed here are tasks that seem suitable for GSoC, but currently do not have anybody to mentor it.
 
-### Optimize logging engine[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=10)]
+### Optimize logging engine[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=11)]
 
 **Summary:** CRIU puts a lots of logs when doing its job. Logging is done with simple fprintf function. They are typically useless, but *if* some operation fails -- the logs are the only way to find what was the reason for failure.
 
@@ -180,7 +196,7 @@ identifier copies all the args *as is* into the log file. The binary log decode 
 - Suggested by: Andrei Vagin
 - Mentors: Alexander Mikhalitsyn <alexander@mihalicyn.com>
 
-### IOUring support[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=11)]
+### IOUring support[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=12)]
 
 The io_uring Asynchronous I/O (AIO) framework is a new Linux I/O interface, first introduced in upstream Linux kernel version 5.1 (March 2019). It provides a low-latency and feature-rich interface for applications that require AIO functionality.
 
@@ -193,7 +209,7 @@ The io_uring Asynchronous I/O (AIO) framework is a new Linux I/O interface, firs
 - Skill level: expert (+linux kernel)
 - Expected size: 350 hours
 
-### Add support for SPFS[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=12)]
+### Add support for SPFS[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=13)]
 
 **Summary:** The SPFS is a special filesystem that allows checkpoint and restore of such things as NFS and FUSE
 
@@ -212,7 +228,7 @@ NFS support is already implemented in Virtuozzo CRIU, but it's very beneficial t
 
 
 
-### Anonymise image files[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=13)]
+### Anonymise image files[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=14)]
 
 **Summary:** Teach [CRIT](/ideas/criu/crit) to remove sensitive information from images
 
@@ -238,7 +254,7 @@ List of data to shred:
 - Skill level: beginner
 - Language: Python
 
-### Add support for checkpoint/restore of CORK-ed UDP socket[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=14)]
+### Add support for checkpoint/restore of CORK-ed UDP socket[[edit](https://criu.org/index.php?title=Google_Summer_of_Code_Ideas&action=edit§ion=15)]
 
 **Summary:** Support C/R of corked UDP socket
 

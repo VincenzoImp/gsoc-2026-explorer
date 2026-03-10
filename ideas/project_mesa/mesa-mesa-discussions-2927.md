@@ -2,7 +2,7 @@
 
 **Parent:** Project Mesa — Project Ideas
 **Source:** https://github.com/mesa/mesa/discussions/2927
-**Scraped:** 2026-02-22T23:28:47.626973
+**Scraped:** 2026-03-10T16:58:40.256883
 
 ---
 
@@ -23,7 +23,7 @@ Beta
 Was this translation helpful?
 [Give feedback.](https://github.com)
 
-## Replies: 14 comments 31 replies
+## Replies: 20 comments 34 replies
 
 -
 
@@ -171,6 +171,65 @@ Was this translation helpful?
 
 |
 Hi I plan to spend the coming weeks working through existing examples (such as Wolf–Sheep, Schelling, and Sugarscape), experimenting with small extensions or new example models that stress areas like adaptive decision-making, memory, and multi-step actions. The goal is to document where current Mesa primitives feel expressive versus where behavior logic becomes awkward or overly tangled. I also find the Mesa Inference direction very exciting, particularly the idea of formalizing the simulator–inference boundary and supporting SBI/ABC workflows for calibrating ABMs against observed macro data. I’ll aim to contribute incrementally through examples, documentation, or small PRs, and share concrete findings back into this discussion rather than proposing abstractions prematurely. Looking forward to learning from and contributing to the Mesa community. |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hey |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi everyone, I’ve been exploring the repository as preparation for a potential GSoC proposal around revitalizing the mesa-examples repository, and I wanted to share some findings from the work I’ve done so far. Over the past few days I audited around 20 examples locally using the latest Mesa version. While doing this I tried to systematically evaluate each example in terms of execution, dependencies, and documentation. What I have done so far For the audit I followed this process for each example: Installed the dependencies required for the example Ran the example using the command specified in the README Recorded whether the example runs successfully or fails Noted missing dependencies, outdated APIs, and documentation gaps During this process I observed several recurring issues across examples. - Legacy visualization API usage
+Some examples still rely on the older visualization stack, such as: mesa.visualization.CanvasGrid mesa runserver These appear to be incompatible with current Mesa versions. - Broken or outdated run instructions
+Some READMEs contain commands that no longer work or lack clear instructions for running the example. - Missing dependencies
+Several examples require dependencies that are not documented in the README (for example networkx, solara, etc.). - Compatibility issues with newer Mesa versions
+A few examples fail due to API changes in Mesa (for example changes in PropertyLayer or visualization components). - Documentation inconsistencies
+Some examples have very detailed documentation, while others lack installation instructions or clear execution steps. Possible direction moving forward While reading the discussion about improving discoverability and adding metadata to examples, I was thinking about an additional improvement that might help long-term maintainability. One potential approach could be combining: Example metadata Adding structured metadata for each example describing things like: domain (social science, biology, economics, etc.) complexity level (beginner/intermediate/advanced) dependencies run command last verified Mesa version Example structure: name: rumor_mill dependencies: - mesa[rec]
+run_command: solara run app.py tested_with: Using this metadata to power a CI workflow (e.g., GitHub Actions) that automatically: installs dependencies runs each example reports failures when examples break with new Mesa versions This could help keep the examples repository reliable and quickly identify compatibility issues when Mesa evolves. Next steps For now I plan to: finish organizing the results of the audit summarize common failure patterns experiment with a small prototype workflow that automatically runs examples Before going further, I wanted to ask the maintainers: Would an automated validation system like this be useful as part of the Mesa-examples revitalization effort? I’d really appreciate any feedback or suggestions on whether this direction aligns with the goals of the project. Thanks! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi! I'm Gaurav, a B.Tech CS student contributing to sktime. I've been reading through this discussion and the mesa-examples repo carefully. |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi everyone! - PR
+[Agents placed by an Agent are not added to the scheduler #344](https://github.com/mesa/mesa/issues/344)-- Hierarchical Organization Model: OrganizationAgent manages DepartmentAgents which manage EmployeeAgents — a 3-tier meta-agent hierarchy 2)PR[Python 3.4 build breaking... #353](https://github.com/mesa/mesa/issues/353)-- SEIR Epidemic Model: GovernmentAgent monitors infection rates and triggers vaccination campaigns dynamically
+Both use Mesa 3.x (OrthogonalMooreGrid, CellAgent, SolaraViz). Through building these, I directly experienced the pain points around meta-agent coordination and policy enforcement. |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi Following up on my recently merged PR ( I have finished my full draft covering the Raster Refactor, the Pandas-style Aggregation API, and the SolaraViz |
 
 Beta
 Was this translation helpful?

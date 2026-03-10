@@ -2,173 +2,199 @@
 
 **Parent:** JSON Schema — Project Ideas
 **Source:** https://github.com/json-schema-org/community/issues?q=is%3Aopen+label%3Agsoc+sort%3Acreated-desc
-**Scraped:** 2026-02-22T23:28:47.585761
+**Scraped:** 2026-03-10T16:58:40.243661
 
 ---
 
-## #1009: Developer-Friendly Schema Builder and Type Generator for JSON Schema
+## #1017: JSON Schema <> APIdays Paris 2026
 
-## **Project Title**
+Hello everyone 👋
 
-🚀 Developer-Friendly Schema Builder and Type Generator for JSON Schema (Node.js Ecosystem)
+This issue is opened to begin a structured discussion on how JSON Schema should strategically show up in 2026, particularly at API-focused events such as APIdays Paris. The goal is to align early on visibility, impact, and budget considerations.
 
----
+### **Option 1: Dedicated JSON Schema Track**
 
-## **Brief Description**
+Hosting a dedicated track would significantly increase visibility and allow us to introduce JSON Schema to a broader audience through curated talks, ecosystem showcases, and implementer stories.
 
-### 📌 Problem
+**Key considerations:**
 
-- JSON Schema is powerful and widely adopted.
-- However, writing raw JSON Schema is:
-  - Verbose
-  - Repetitive
-  - Hard to read for backend developers
-  - Boilerplate-heavy
+- AV team coverage for sessions (~€2,600–€3,000)
 
-Developers frequently repeat patterns like:
-- `"type": "string"`
-- `"type": "object"`
-- `"properties"`
-- `"required"`
+- Merchandise
 
-This reduces readability and slows down development.
+- Travel and representative expenses
 
----
+- Professional photography
 
-### 💡 Proposed Solution
+- Video editing and post-production
 
-Build a **developer-friendly schema builder library** for Node.js and TypeScript that:
+This option also creates stronger sponsorship opportunities, as we would have clearer space to showcase partners and ecosystem supporters.
 
-- Provides a clean DSL (Domain-Specific Language)
-- Reduces repetition
-- Improves readability
-- Internally generates valid JSON Schema (Draft 2020-12 compliant)
-- Optionally generates TypeScript types
+### **Option 2: Shared Open Standards Booth**
 
-The project focuses on improving developer ergonomics while remaining fully compliant with the JSON Schema specification.
+Alternatively, we could participate through a shared Open Standards booth presence.
 
----
+**Key considerations:**
 
-## **Example Comparison**
+- Representative expenses
 
-### 🔹 Current JSON Schema (Verbose)
+- Merchandise
 
-```json
-{
-  "type": "object",
-  "required": ["name", "ingredients"],
-  "properties": {
-    "name": { "type": "string" },
-    "ingredients": {
-      "type": "array",
-      "items": { "type": "string" }
-    }
-  }
-}
-```
+This approach is more cost-effective while still maintaining visibility, though with reduced programming control and sponsor activation opportunities.
+
+### **Next Steps**
+
+Discuss preferred direction (Dedicated Track vs. Booth)
+
+Estimate total projected budget
+
+Evaluate sponsorship strategy and funding pathways
+
+Identify volunteers/representatives
 
 ---
 
-### 🔹 Proposed DSL Version (Cleaner & Developer-Friendly)
+## #1016: JSON Schema <> APidays India 2026
 
-```ts
-const Recipe = schema.object({
-  name: schema.string().required(),
-  ingredients: schema.array(schema.string()).required()
-})
-```
+Hello everyone 👋
 
----
+This issue is opened to begin a structured discussion on how JSON Schema should strategically show up in 2026, particularly at API-focused events such as APIdays India. The goal is to align early on visibility, impact, and budget considerations.
 
-### 🔹 Generated Output (Auto JSON Schema)
+### **Option 1: Dedicated JSON Schema Track**
 
-```json
-{
-  "type": "object",
-  "required": ["name", "ingredients"],
-  "properties": {
-    "name": { "type": "string" },
-    "ingredients": {
-      "type": "array",
-      "items": { "type": "string" }
-    }
-  }
-}
-```
+Hosting a dedicated track would significantly increase visibility and allow us to introduce JSON Schema to a broader audience through curated talks, ecosystem showcases, and implementer stories.
 
----
+**Key considerations:**
 
-## **Expected Outcomes**
+- AV team coverage for sessions (< ~€2,600–€3,000)
 
-### 🛠 Core Deliverables
+- Merchandise
 
-- A schema builder library for Node.js / TypeScript
-- Draft 2020-12 compliant JSON Schema generation
-- Automatic TypeScript type generation
+- Travel and representative expenses
 
----
+- Professional photography
 
-### 📦 Feature Support (Initial Scope)
+- Video editing and post-production
 
-- `object`
-- `array`
-- `string`
-- `number`
-- `boolean`
-- `required`
-- `enum`
-- `minimum`
-- `maximum`
-- Basic composition:
-  - `oneOf`
-  - `anyOf`
+This option also creates stronger sponsorship opportunities, as we would have clearer space to showcase partners and ecosystem supporters.
+
+### **Option 2: Shared Open Standards Booth**
+
+Alternatively, we could participate through a shared Open Standards booth presence.
+
+**Key considerations:**
+
+- Representative expenses
+
+- Merchandise
+
+This approach is more cost-effective while still maintaining visibility, though with reduced programming control and sponsor activation opportunities.
+
+### **Next Steps**
+
+Discuss preferred direction (Dedicated Track vs. Booth)
+
+Estimate total projected budget
+
+Evaluate sponsorship strategy and funding pathways
+
+Identify volunteers/representatives
 
 ---
 
-### 🧰 Additional Deliverables
+## #1015: JSON Schema <> APIdays Munich 2026
 
-- Optional CLI tool:
-  - Generate schema files
-  - Export JSON Schema
-  - Inspect generated schemas
-- Clear documentation
-- Usage examples
-- Unit testing suite
-- Compatibility testing with validators (e.g., Ajv)
+Hello everyone 👋
+
+This issue is opened to begin a structured discussion on how JSON Schema should strategically show up in 2026, particularly at API-focused events such as APIdays Munich. The goal is to align early on visibility, impact, and budget considerations.
+
+### **Option 1: Dedicated JSON Schema Track**
+
+Hosting a dedicated track would significantly increase visibility and allow us to introduce JSON Schema to a broader audience through curated talks, ecosystem showcases, and implementer stories.
+
+**Key considerations:**
+
+- AV team coverage for sessions (~€2,600–€3,000)
+
+- Merchandise
+
+- Travel and representative expenses
+
+- Professional photography
+
+- Video editing and post-production
+
+This option also creates stronger sponsorship opportunities, as we would have clearer space to showcase partners and ecosystem supporters.
+
+### **Option 2: Shared Open Standards Booth**
+
+Alternatively, we could participate through a shared Open Standards booth presence.
+
+**Key considerations:**
+
+- Representative expenses
+
+- Merchandise
+
+This approach is more cost-effective while still maintaining visibility, though with reduced programming control and sponsor activation opportunities.
+
+### **Next Steps**
+
+Discuss preferred direction (Dedicated Track vs. Booth)
+
+Estimate total projected budget
+
+Evaluate sponsorship strategy and funding pathways
+
+Identify volunteers/representatives
 
 ---
 
-## **Skills Required**
+## #1014: JSON Schema  <> APidays London 2026
 
-- JavaScript
-- TypeScript
-- Node.js
-- Understanding of JSON Schema specification
-- Familiarity with Ajv or similar validators
-- Unit testing (Jest / Vitest)
-- Basic CLI development knowledge
+Hello everyone 👋
 
----
+This issue is opened to begin a structured discussion on how JSON Schema should strategically show up in 2026, particularly at API-focused events such as APIdays London. The goal is to align early on visibility, impact, and budget considerations.
 
-## **Mentors**
+### **Option 1: Dedicated JSON Schema Track**
 
-To be assigned by JSON Schema maintainers.
+Hosting a dedicated track would significantly increase visibility and allow us to introduce JSON Schema to a broader audience through curated talks, ecosystem showcases, and implementer stories.
 
----
+**Key considerations:**
 
-## **Expected Difficulty**
+- AV team coverage for sessions (~€2,600–€3,000)
 
-Medium to Hard
+- Merchandise
 
-- Requires understanding of JSON Schema internals
-- Requires spec compliance awareness
-- Requires strong TypeScript modeling and API design
+- Travel and representative expenses
 
----
+- Professional photography
 
-## **Expected Time Commitment**
+- Video editing and post-production
 
-350 hours
+This option also creates stronger sponsorship opportunities, as we would have clearer space to showcase partners and ecosystem supporters.
+
+### **Option 2: Shared Open Standards Booth**
+
+Alternatively, we could participate through a shared Open Standards booth presence.
+
+**Key considerations:**
+
+- Representative expenses
+
+- Merchandise
+
+This approach is more cost-effective while still maintaining visibility, though with reduced programming control and sponsor activation opportunities.
+
+### **Next Steps**
+
+Discuss preferred direction (Dedicated Track vs. Booth)
+
+Estimate total projected budget
+
+Evaluate sponsorship strategy and funding pathways
+
+Identify volunteers/representatives
 
 ---
 
@@ -224,89 +250,6 @@ Recording: [link]
 
 ---
 
-## #995: GSoC 2026: Enhancing the JSON Schema Community Page with Contributor Recognition and Activity Insights
-
-## Project Title  
-**Enhancing the JSON Schema Community Page with Contributor Recognition and Activity Insights**
-
----
-
-## Brief Description  
-
-The JSON Schema community page currently provides static information about the community, but it does not surface dynamic insights about contributor activity or recognize ongoing contributions across repositories.
-
-This project proposes enhancing the community page by integrating contribution data from GitHub and presenting it in a clear, accessible dashboard. The goal is to improve transparency, recognize contributors, and strengthen community engagement—without replacing GitHub or existing communication platforms.
-
-This idea is proposed for mentor consideration and can be refined based on feedback.
-
----
-
-## Expected Outcomes  
-
-By the end of the project, the following outcomes are expected:
-
-- A redesigned or extended **Community page** that displays dynamic contributor information.
-- A contributor listing with metrics such as:
-  - Pull requests opened and merged  
-  - Issues opened and closed  
-  - Review activity (where applicable)
-- Simple leaderboards highlighting:
-  - Active contributors  
-  - Reviewers  
-  - First-time contributors
-- Recognition indicators (e.g. badges or labels) to acknowledge consistent and impactful contributions.
-- Clear links back to GitHub profiles and relevant PRs/issues.
-- Clean, accessible UI consistent with the existing json-schema.org website.
-
----
-
-## Skills Required  
-
-- JavaScript (ES6+)
-- React (or similar modern frontend framework)
-- Git & GitHub workflow (issues, pull requests, reviews)
-- GitHub REST API usage
-- JSON Schema (for validating API responses)
-- HTML & CSS (responsive and accessible UI)
-
----
-
-## Expected Difficulty  
-
-**Medium**
-
-The project focuses on frontend development and API integration, without requiring complex backend infrastructure. The main challenges involve data aggregation, pagination, and presenting information in a clear and maintainable way.
-
----
-
-## Expected Time Commitment  
-
-**Medium (175–350 hours)**  
-Suitable for completion within the standard GSoC coding period (10–22 weeks).
-
----
-
-## Additional Notes  
-
-- This project intentionally focuses on correctness, usability, and community impact rather than advanced performance optimizations.
-- The scope can be adjusted based on mentor feedback and community priorities.
-- The implementation can start with a limited set of repositories and be expanded incrementally.
-
----
-
-## Mentor(s)  
-
-**Seeking mentor(s) from the JSON Schema community**  
-This project idea is open for adoption and refinement by interested mentors.
-
----
-
-###  Closing Note  
-
-This proposal is shared with the intention of contributing positively to the JSON Schema community. Feedback, suggestions, and scope adjustments from maintainers and mentors are very welcome.
-
----
-
 ## #994: GSoC 2026 - Unify the test suite
 
 **Labels:** gsoc, Status: Accepted
@@ -347,99 +290,6 @@ small
 ## Expected Time Commitment
 
 90 hours
-
----
-
-## #993: Intelligent Schema Migration & Modernization Assistant
-
-**Labels:** gsoc
-
-# GSoC 2025: Intelligent Schema Migration & Modernization Assistant
-
-## Project Overview
-
-Build an AI-powered tool using **LangGraph** and **MCP (Model Context Protocol)** that automates JSON Schema migration between versions, detects anti-patterns, consolidates duplicate schemas, and suggests modern best practices.
-
----
-
-## Problem Statement
-
-Organizations struggle with:
-- **Manual migration** from older JSON Schema drafts (Draft-04, Draft-06, Draft-07) to modern versions (2019-09, 2020-12)
-- **Schema sprawl** across microservices with duplicated and inconsistent schemas
-- **Anti-patterns** that accumulate over time (overly permissive validation, missing metadata, poor structure)
-- **Lack of intelligent automation** beyond basic linting
-- **Technical debt** from maintaining hundreds of outdated schemas
-
-Manual migration of complex schemas can take hours per schema, and refactoring large repositories can take weeks.
-
----
-
-## Project Goals
-
-### Core Functionality
-
-1. **Automated Version Migration**
-   - Migrate schemas between any JSON Schema draft versions
-   - Handle keyword deprecations (`id` → `$id`, `definitions` → `$defs`)
-   - Detect opportunities for new features (`unevaluatedProperties`, `$dynamicRef`)
-   - Ensure backward compatibility
-
-2. **Anti-Pattern Detection & Refactoring**
-   - Identify common problems: overly permissive `additionalProperties`, missing descriptions, security issues
-   - Suggest and apply automatic fixes
-   - Integrate with existing Sourcemeta linting tools (GSoC 2025 project)
-   - Provide severity classification (error/warning/info)
-
-3. **Schema Consolidation**
-   - Detect duplicate and similar schemas across repositories
-   - Merge compatible schemas into canonical versions
-   - Generate proper `$ref` relationships
-   - Update all references automatically
-
-4. **OpenAPI Integration**
-   - Extract schemas from OpenAPI specifications
-   - Migrate OpenAPI-embedded schemas
-   - Remove OpenAPI-specific extensions for reusable schemas
-
-5. **MCP Server Implementation**
-   - Expose all functionality as MCP tools for reusability
-   - Enable integration with AI assistants like Claude
-   - Support programmatic access via MCP protocol
-
----
-
-## Technical Architecture
-
-### Technology Stack
-
-**Core:**
-- **Python 3.11+** - Primary language
-- **LangGraph** - Agentic workflow orchestration
-- **MCP SDK (Python)** - Tool server implementation
-- **LangChain** - LLM integration for intelligent analysis
-
-**JSON Schema:**
-- **jsonschema** - Validation
-- **Sourcemeta linting tools** - Integration with existing quality tools
-- **json-schema-ref-parser** - Reference resolution
-
-**AI/LLM:**
-- **Claude API** (Anthropic) - Primary LLM for analysis
-- **Vector embeddings** - Semantic similarity detection
-
-### System Components
-
-```
-┌─────────────────────────────────────┐
-│     User Interfaces                 │
-│  (CLI, Web UI, GitHub Action)       │
-└─────────────────────────────────────┘
-              ↓
-┌─────────────────────────────────────┐
-│
-
-*[truncated]*
 
 ---
 
@@ -487,228 +337,6 @@ large
 
 ## Expected Time Commitment
 
-350 hour
-
----
-
-## #990: GSOC 2026:  JSON Schema Semantic Diff and Migration Assistant
-
-**Labels:** gsoc
-
-### JSON Schema Semantic Diff and Migration Assistant
-
-### Problem
-At the moment, there is no standard tool that helps developers understand the semantic impact of changes made to a JSON Schema.
-When schemas evolve, developers often struggle to answer important questions such as:
-Is this change backward compatible?
-Which existing data will fail after this change?
-Which exact part of the schema is affected?
-How can we safely migrate existing systems?
-Currently, developers rely mostly on textual tools like git diff, which only show line-by-line differences but do not explain what those changes mean in terms of validation behaviour.
-As a result, even small schema updates can introduce breaking changes that are only discovered later during testing or, in some cases, directly in production.
-
-### Proposed Solution
-
-This project proposes building a Schema Diff Engine that compares two versions of a JSON Schema and explains the real meaning of the changes.
-Instead of treating schemas as plain text files, the tool will understand them as validation rules and analyze how those rules have changed between versions.
-The goal is to provide developers with a clear and practical understanding of the impact of schema updates.
-
-### Main Features
-Breaking vs Non-breaking Detection
-The tool will detect common types of changes such as:
-Type changes (for example, number to string)
-Changes in constraints (maxLength, minimum, etc.)
-Adding or removing required fields
-Each change will be classified as:
-Breaking
-Non-breaking
-Potentially breaking
-This helps developers quickly understand the risk level of a schema update.
-
-### Affected Path Reporting
-
-For every significant change, the tool will show the exact location in the schema where it occurred.
-
-Example:
-Breaking change at /user/age  
-Type changed from number to string
-This makes it easy for developers to locate and understand the issue without manually searching through large schema files.
-
- ### Data Impact Simulation
-
-If sample or real data is available, the tool can validate it against both schema versions and report:
-Which records will fail under the new schema
-How many records are affected
-This provides a practical view of the impact instead of only a theoretical analysis.
-
-### Migration Suggestions
-
-Based on the detected changes, the tool will suggest simple migration steps, such as:
-Converting data types
-Adding default values for new required fields
-Adjusting constraints
-These suggestions help developers update their systems in a safer and more controlled way.
-
-### Why This Project Is Useful
-
-This tool will make schema evolution much safer and easier for developers.
-It reduces the risk of breaking APIs and data pipelines and saves time spent on manual reasoning and testing.
-It can be especially useful for:
-                            API development
-                            OpenAPI and AsyncAPI workflows
-                           Data validation systems
-                           Large distributed systems
-
-
-
-
-*[truncated]*
-
----
-
-## #987: GSOC 2026: An official online JSONSchema repository
-
-**Labels:** gsoc
-
-## Project title
-
-An official online JSONSchema repository
-
-## Brief Description
-
-There's pypi for python, npm for javascript, why don't we have an official repository for publishing JSONSchema?
-
-Such a thing exists but not officially: I've spent the last 3 years building [Strands](https://strands.octue.com/) - a repository for JSONSchema. It has:
-- publishing workflows for schema
-- organization / team management heavily inspired by GitHub
-- a fully featured [compatibility checker](https://strands.octue.com/compare) which already solves https://github.com/json-schema-org/community/issues/984
-- a GitHub action for [publishing and compatibility checking](https://github.com/octue/publish-strand-version) (eg allowing you to automate version bumping and publication from GitHub, and/or fail your CI on breaking changes)
-- a (basic, as yet - we're focusing on getting it right with excellent UX) [visual builder](https://strands.octue.com/builder)
-- [documentation](https://docs.strands.octue.com/getting-started/get-started-with-strands)
-
-It works beautifully, but **honestly, it should belong to the community**. I'd be willing to donate the project, which means open-sourcing:
-- the stack (Django backend + NextJS frontend)
-- the compatibility checker (amusingly named `version-cruzer` - an in-joke for those in the know!)
-- the documentation
-
-This project will manage that open-sourcing process and adapt the existing stack to be more cost-effective and maintainable as a community product.
-
-
-## Prerequisites
-
-- [ ] Buy-in from the JSONSchema TSC to make it an official repository on json-schema.org. **This is super important because there'll be a burden of ongoing maintenance, which I'm willing to help with, but we should discuss how that'll work before attempting this project.**
-- [x] Me to check the legals of open-sourcing the compatibility checker (shouldn't be a problem but need to check).
-
-## Steps
-
-- _Architecture._ Currently it's a split backend/frontend architecture, which suits me well, but **for a community product we'd need to avoid the eye-watering cost of Vercel**, so we'd convert it to a monorepo and serve the main views using django-vite (following the tutorial [here](https://github.com/saaspegasus/django-vite-tailwind-starter/), which will simplify auth considerably).
-- _Deployment._ Currently on GCP, I'd recommend keeping the same approach. But we'd split into a separate project outside of my commercial organization, which would be owned and administered by the TSC.
-- _Technical Documentation._ A community-owned product has to have clear processes in place, can't depend on my own in-house knowledge. So the process for deployment/development needs to be documented.
-- _Security review._ The app uses django-allauth and django-guardian which are extremely widely used. But, we should have a policy around 2FA requirements etc, possibly introducing more features than we have now.
-
-## Expected Outcomes
-
-- strands application moved from strands.octue.com 
-
-*[truncated]*
-
----
-
-## #986: Visual Test Lifecycle Explorer & Capabilities Manifest for the JSON Schema Test Suite
-
-**Labels:** gsoc
-
-**Visual Test Lifecycle Explorer & Capabilities Manifest for the JSON Schema Test Suite**
-
-**Brief Description**
-When I started contributing to the JSON Schema Test Suite, I struggled to understand the repository structure, how tests relate to different drafts, and why some tests are optional. This project proposes a visual, tree-based way to explore tests by draft, keyword, and lifecycle state, so new contributors can quickly understand what exists, what changed, and what is missing. The goal is to make test evolution across drafts visible and easier to manage.
-
-**Expected Outcomes**
-
-- A visual explorer showing tests grouped by draft and feature lifecycle
-- Clear visibility into added, changed, deprecated, and optional tests
-- Metadata to explain why tests are optional or environment-dependent
-- CI integration to keep lifecycle information up to date on PRs
-- Documentation to improve contributor onboarding
-
-**Skills Required**
-
-- TypeScript and React
-- Familiarity of JSON Schema
-- GitHub workflows and CI
-- Interest in developer tooling
-
-**Mentors**
-To be determined / seeking mentors.
-
-**Expected Difficulty**
-Medium
-
-**Expected Time Commitment**
-175 hours
-
----
-
-## #985: GSOC 2026 : Dependency-Level Risk Signals for the JSON Schema npm Ecosystem
-
-**Labels:** gsoc
-
-**OSS Dependency Risk Observatory**
-
-This project is intended to complement the broader ecosystem observability work in #980 by focusing specifically on dependency-level, longitudinal risk signals.
-
-**Brief Description**
-Modern software ecosystems rely heavily on open-source dependencies, yet dependency risk is usually evaluated only through static vulnerability scans. This overlooks broader ecosystem health signals such as maintainer activity, release staleness, contributor diversity (bus factor), and long-term sustainability.
-
-This project proposes a lightweight, zero-cost dependency risk observability tool focused on a curated subset of npm packages, initially targeting the JSON Schema ecosystem. Instead of building a large always-on platform, the project will implement batch-based analysis that periodically collects metadata from GitHub and the npm registry, computes interpretable risk signals, and produces static, versioned datasets and reports.
-
-The goal is to provide maintainers and contributors with reproducible, longitudinal insights into dependency health—without requiring persistent infrastructure, paid services, or ongoing operational costs.
-
-**Expected Outcomes**
-1.Curated Dependency Dataset
-- Clearly defined criteria for selecting JSON Schema–related npm packages
-- Package list maintained as version-controlled metadata
-2. Batch Data Collection Pipeline
-- Node.js tooling to fetch metadata from:
-- GitHub (commits, contributors, releases)
-- npm registry (downloads, versions, dependencies)
-- Designed to run periodically via GitHub Actions
-3. Dependency Risk Signals (Not a Heavy “Score”)
-- Maintainer activity trends
-- Release cadence and staleness
-- Contributor count (bus-factor proxy)
-- Dependency depth and centralization indicators
-- Optional: known security advisories (best-effort)
-4. Time-Series Snapshots
-- Periodic snapshots stored as versioned JSON/CSV files
-- Enables longitudinal analysis without a database
-5. Static Reports & Visualizations
-- Markdown summaries and Vega-Lite charts
-- Focus on trends and comparative risk signals
-6. Reusable Tooling
-- Modular design so other ecosystems can reuse the pipeline
-- Clear documentation on extending the analysis
-7. Documentation
-- Methodology and assumptions
-- Known limitations
-- Contribution guidelines
-
-**Skills Required**
-- TypeScript / JavaScript
-- Node.js
-- GitHub API and package registry APIs (npm)
-- Data processing and modeling
-- Basic knowledge of databases (PostgreSQL / SQLite)
-- DevOps and automation (GitHub Actions)
-- Data visualization (Grafana, Vega-Lite, D3, or similar)
-
-**Mentors**
-TBD (Open-source maintainers from the target ecosystem / organization)
-
-**Expected Difficulty**
-Medium–Hard
-
-**Expected Time Commitment**
 350 hour
 
 ---
@@ -809,86 +437,6 @@ Small
 
 ---
 
-## #982: JSON Schema Editor with Real‑Time Conflict & Suggestions
-
-**Labels:** gsoc
-
-# **Project Title**
-Smart JSON Schema Editor with Real‑Time Conflict & AI‑Powered Suggestions
-
-## **Brief Description**
-A web‑based JSON Schema authoring tool with intelligent feedback. Users can edit JSON Schemas with real‑time semantic conflict detection, receive plain‑language explanations of constraints, and get AI‑powered suggestions for improvements, helping both beginners and experienced developers produce better, error‑free schemas.
-
-## **Expected Outcomes**
-List the key deliverables and outcomes you expect by the end of the project:
-- A fully functional web application for editing JSON Schema
-- Real‑time validation (syntax + semantic analysis)
-- AI/LLM integration that explains schema parts and offers suggestions
-- UI components that show warnings, tips, and quick‑fix actions
-- Optional companion extension to detect schema files in repositories
-
-## **Skills Required**
-- Frontend: HTML, CSS, JavaScript (with editor components like Monaco)
-- Backend: Python, Flask (API endpoints to analyze schemas and integrate AI)
-- Basic understanding of JSON Schema standards
-- Optional: Experience with AI model APIs (for suggestions & explanations)
-
-## **Mentors**
-TBD
-
-## **Expected Difficulty**
-Medium  .
-
-## **Expected Time Commitment**
-250 hours
-
----
-
-## #981: GSOC 2026 : Improving Invalid and Boundary Test Case Generation in Existing JSON Schema Tooling
-
-**Labels:** gsoc
-
-**Project title**
-Improving Invalid and Boundary Test Case Generation in Existing JSON Schema Tooling
-
-**Brief Description**
-The JSON Schema ecosystem already provides several tools for generating valid JSON instances from schemas. However, systematic generation of invalid and boundary-focused test cases remains an underexplored area, despite its importance for validator authors, tooling maintainers, and API developers.
-This project aims to study existing schema-to-data tools in the ecosystem, identify concrete gaps in invalid and boundary test generation, and contribute targeted improvements to one of the existing open-source projects rather than creating a new tool. By focusing on a specific hard problem instead of reinventing existing solutions, the project seeks to strengthen the ecosystem in a practical and sustainable way.
-
-**Expected Outcomes**
-- An extension to the JSON Schema Test Suite (or a dedicated companion suite) containing comprehensive invalid and boundary test cases for core JSON Schema keywords.
-- Structured test cases covering:
-  - type violations
-  - required property failures
-  - enum/const mismatches
-  - numeric boundary conditions (minimum, maximum, etc.)
-  - string constraints (minLength, pattern, format, etc.)
-  - array and object constraint violations
-
-- Optional metadata tagging for test cases (e.g., constraint type, edge-case category, spec reference).
-- Optional integration with Bowtie to compare validator behavior on invalid cases.
-- Documentation to help implementors understand and adopt the suite.
-
-**Skills Required**
-JavaScript / TypeScript
-Node.js
-JSON Schema specification
-Algorithms and data structures
-Software testing concepts
-Open-source collaboration
-
-**Mentors**
-
-To be discussed with maintainers of the JSON Schema community.
-
-**Expected Difficulty**
-Hard
-
-**Expected Time Commitment**
-225 hours
-
----
-
 ## #980: GSoC 2026: Ecosystem Observability
 
 **Labels:** gsoc, Status: Accepted
@@ -920,91 +468,6 @@ Originally started here: https://github.com/json-schema-org/community/issues/518
 Now in it's own repo.
 I'm not totally clear what work has been or hasn't been done.
 Need to work out a clearer picture.
-
----
-
-## #979: GSOC 2026 : Enhancing UX of the JSON Schema Tooling Page with Progressive Loading and Modern Filters
-
-**Labels:** gsoc
-
-**Project title**
-Enhancing UX of the JSON Schema Tooling Page with Progressive Loading and Modern Filters.
-
-**Brief Description**
-The Tooling section of the JSON Schema website currently contains tool categories with a large number of rows, which leads to excessive scrolling and reduced readability especially on smaller screens. Additionally, the always-visible filter panel occupies more screen space, making the UI feel boring and outdated.
-This project proposes improving the overall user experience by introducing a “Load more” button for long tool tables and replacing the existing filter sidebar with a modern, icon-based filter modal. These changes aim to improve usability, user experience while preserving existing functionality and data logic.
-
-**Expected Outcomes**
-1. Reduced excessive scrolling in the Tooling section by introducing a “Load more” button for long tables
-2. Improved readability and navigation, especially on small and medium screens
-3. A cleaner, more modern UI by replacing the always-visible filter panel with a filter icon and modal
-4. No changes to existing filtering or table logic
-5. Better overall UX aligned with modern web designs
-6. Glimpse of UI how would it looks:
-
-![Image](https://github.com/user-attachments/assets/2251a5c6-b6f1-4b67-8118-25909801fadf)
-
-**Skills Required**
-Next.js
-TypeScript
-CSS / Tailwind CSS
-Git & GitHub workflow
-
-**Mentors**
-TBD
-
-**Expected Difficulty**
-Medium
-
-**Expected Time Commitment**
-175 hours
-
----
-
-## #978: GSOC 2026 : Make “Optional Tests” Machine-Selectable (Capabilities Manifest + Runner Interop)
-
-**Labels:** gsoc
-
-**Project Title**
-Test Suite “Capabilities Manifest” for Optional/Environment-Dependent Tests
-
-**Brief Description**
-
-Add a machine-readable metadata layer to the JSON Schema Test Suite so that runners (including Bowtie) can automatically decide which tests apply to a given implementation or environment. The manifest would describe capabilities such as whether an implementation enables format validation, supports big integers, or uses a network-less remote resolution strategy, and runners could filter tests based on those capabilities. The work includes defining the manifest format, integrating checks into CI, and documenting how implementers can declare and consume these capabilities.
-
-**Why It’s Needed**
-
-The Test Suite README notes that optional/ currently conflates multiple reasons why a test is optional and that the directory structure should be made richer in the future. This makes it hard for runners and tools like Bowtie to automate test selection consistently, because they cannot tell whether a test is optional due to environment constraints, feature flags, or other factors. A capabilities layer would make that behavior explicit and easier to integrate into automated tooling.
-
-**Expected Outcomes**
-
-- A manifest file per dialect (for example, tests/<dialect>/manifest.json) recording test file and test-case tags, required capabilities, and brief notes or links for implementers.
-- A linter/validator for the manifest, with CI checks in the Test Suite to keep metadata valid and in sync with tests.
-- A JSON Schema describing the manifest itself, published alongside the suite.
-- Migration of a meaningful subset of optional/ tests to use capability tags, starting with optional/format and a small number of other ambiguous categories.
-- Documentation for runner authors explaining how to read the manifest and filter tests by capabilities.
-- Optionally, a simple reference script or Bowtie example that demonstrates capability-based selection in practice.
-
-**Likely Repositories Involved**
-
-- json-schema-org/JSON-Schema-Test-Suite (manifest design, CI, and test metadata)
-- bowtie-json-schema/bowtie (using the manifest for test selection and providing examples)
-- json-schema-org/community (coordination and higher-level documentation)
-
-**Skills Required**
-
-- Familiarity with the JSON Schema Test Suite layout and contribution workflow
-- JSON tooling in Python and/or Node.js for validation and CI integration
-- Understanding of how format and other optional features differ across drafts and implementations
-
-** Mentor(s)**
-To be determined / seeking mentors.
-​
-**Expected Difficulty**
-Medium.
-​
-**Expected Time Commitment**
-Approximately 175 hours, covering the manifest design, validation tooling and CI wiring, migration of an initial set of tests, and documentation for implementers and runner authors.
 
 ---
 
@@ -1043,319 +506,6 @@ Medium
 
 **Expected Time Commitment**
 175 hours
-
----
-
-## #975: GSOC 2026: Schema Documentation Generator with Examples
-
-**Labels:** gsoc
-
-## Schema Documentation Generator with Examples
-
-**Brief Description**
-JSON Schemas are excellent for machines but often hard for humans to read, especially for non-technical stakeholders and API consumers. While JSON Schema has strong validation tooling and educational content (like A Tour of JSON Schema and the Visualization Tool), existing documentation tools often focus on rendering schema structure and can lack schema-aware navigation and plain-language explanations for non-technical readers, similar to the experience Swagger UI provides for OpenAPI. This project proposes a `Schema Documentation Generator` that consumes JSON Schemas and produces human-friendly documentation (Markdown/HTML) with examples and plain‑language explanations of validation rules, making schemas more discoverable, understandable, and usable across teams.
-
-**Expected Outcomes**
-
-- **Schema-to-documentation library**  
-  A TypeScript/Node.js library that converts one or more JSON Schemas into structured documentation artifacts (intermediate AST plus renderable Markdown/HTML).
-
-- **Human-readable rule descriptions**  
-  Clear, plain-language explanations of validation rules (for example, ranges, required fields), inspired by Better JSON Schema Errors but focused on documentation.
-
-- **Example surfacing (scoped)**
-Surfacing examples already present in the schema (and optionally validating them), with only very basic, best-effort examples for simple cases as a stretch goal.
-
-- **Multi-format output**  
-  Built-in support for Markdown and static HTML, with a pluggable template system (Handlebars/ETA/MDX or custom themes).
-
-- **Static-site integrations**  
-  Lightweight examples or adapters for publishing generated docs with tools like Docusaurus or Next.js.
-
-- **Schema-aware navigation**  
-  Documentation that resolves `$ref` / `$defs` and understands composition keywords (`allOf`, `anyOf`, `oneOf`), enabling cross-links and hierarchical navigation.
-
-- **Tests and example gallery**  
-  Automated tests (Vitest/Jest) covering complex schema features, plus a small gallery of real-world schemas showing before/after documentation.
-
-**Skills Required**
-
-- **JSON Schema**  
-  Good understanding of core/validation vocabularies (draft‑07 to 2020‑12+), including `$ref`, `$defs`, composition keywords, and annotations.
-
-- **TypeScript & Node.js**  
-  Experience building and packaging CLI tools or libraries in TypeScript.
-
-- **Schema tooling (nice to have)**  
-  Familiarity with validators like Ajv, Hyperjump, or Sourcemeta for introspection and example validation.
-
-- **Templates & text generation**  
-  Ability to design template-based Markdown/HTML output and write clear, user-friendly explanatory text.
-
-- **Testing & DX**  
-  Comfortable writing automated tests for edge cases and designing intuitive APIs/CLIs.
-
-- **Documentation & UX mindset**  
-  Interest in making technical artifacts approachable, with attention to navigation and clarity.
-
-**Context**
-This idea builds naturally on 
-
-*[truncated]*
-
----
-
-## #974: GSoC 2026: CLI Tool to Generate Self-Contained, Portable, Tree-Based JSON Schema HTML Visualizer
-
-**Labels:** gsoc
-
-**Project title**
-CLI Tool to Generate Self-Contained, Portable, Tree-Based JSON Schema HTML Visualizer
-
-**Brief Description**
-This project aims to develop a TypeScript/JavaScript-based CLI tool that takes a JSON Schema as input and generates a single, portable HTML file that visually represents the schema in an interactive, tree-based format. The generated HTML acts as a JSON Schema visualizer, allowing users to expand and collapse nodes and inspect schema properties (such as type, constraints, required fields, and descriptions) via hover interactions. 
-
-The key value of the tool lies in producing a **fully self-contained, transferable HTML artifact** that can be **easily shared via email or common team collaboration platforms** such as **Slack** or **Microsoft Teams**, enabling non-technical users and distributed teams to review JSON Schemas in a human-readable form **without installing Node.js, TypeScript, or running any server.**
-
-This approach is particularly valuable for **organizations** with **strict security** or **compliance policies** that **restrict uploading** internal schemas or **data** to external websites or third-party tools for visualization.
-
-<img width="660" height="397" alt="Image" src="https://github.com/user-attachments/assets/12d8eb32-4088-4b6c-9f1b-d65ccb4ed179" />
-
-(The above diagram is a conceptual example to illustrate the intended tree-based view and is not an actual rendered output)
-
-
-**Expected Outcomes**
-- A cross-platform CLI tool implemented in TypeScript/JavaScript.
-- Validation of input JSON Schema before visualization generation.
-- Generation of a single, dependency-free, portable HTML file.
-- Interactive tree-based visualization with expandable and collapsible nodes.
-- Hover-based display of detailed schema metadata (type, constraints, descriptions, required flags).
-- Clear documentation and sample outputs demonstrating portability and usage.
-
-
-**Skills Required**
-
-- JavaScript / TypeScript
-- Node.js and CLI tool development
-- JSON Schema understanding
-- HTML, CSS, and DOM manipulation
-- Familiarity with tree data structures and visualization concepts (optional but helpful)
-
-**Mentors**
-  TBD
-
-**Expected Difficulty**
-   Medium
-
-**Expected Time Commitment**
-   175 - 200 hours
-
----
-
-## #972: GSOC 2026 : Official Web-Based JSON Schema Playground
-
-**Labels:** gsoc
-
-### **Project title**
-
-Official Web-Based JSON Schema Playground
-
-### **Brief Description**
-<!-- 2-5+ sentences -->
-The JSON Schema ecosystem currently lacks a centralized, official, and feature-rich web-based playground. While third-party tools exist, they are often fragmented, limited in functionality, or not compliant with the latest specifications. This creates a barrier to entry for new users and a friction point for experienced developers.
-
-This project aims to build the Official JSON Schema Playground, a robust, client-side web application designed to be the definitive tool for authoring, validating, and sharing JSON Schemas. It will serve as a primary learning resource, a production-grade utility for practitioners, and a reference implementation of best practices within the JSON Schema organization.
-
-The solution will prioritize usability, performance, and correctness, offering a modern "IDE-like" experience in the browser with side-by-side editing, real-time draft-aware validation, and intelligent error reporting.
-
-### **Expected Outcomes**
-By the conclusion of this project, we will deliver a fully functional, deployed web application comprising the following key features:
-
-**2.1. Integrated Development Environment (IDE)**
-Dual-Pane Interface: A responsive, side-by-side editor layout for the JSON Schema and the JSON Instance, enabling immediate visual feedback.
-Modern UX: Built with modern frontend technologies to ensure a fast, reactive, and accessible user experience.
-Editor Features: Syntax highlighting, line numbers, and auto-formatting (prettier-integration) to establish a professional coding environment.
-
-**2.2. Live, Draft-Aware Validation**
-Real-Time Feedback: Instant validation of the JSON instance against the schema as the user types.
-Multi-Draft Support: Full support for major JSON Schema drafts (Draft-07, 2019-09, 2020-12), with a mechanism to easily switch between them.
-Standard-Compliant Engine: Integration of a robust, specification-compliant validator (e.g., Ajv) to ensure reliability.
-
-**2.3. Human-Centric Error Reporting**
-Actionable Diagnostics: Transformation of raw validation errors into structured, human-readable messages.
-Visual Context: Highlighting of error locations explicitly within both the schema and the instance editors.
-Remediation Guidance: (Where feasible) Providing suggestions or links to documentation for common errors.
-
-**2.4. Interactive Schema Explorer**
-Structural Visualization: An interactive tree-view visualization of the schema structure, allowing users to navigate complex nested objects and arrays.
-Reference Resolution: Basic handling and visualization of internal $ref definitions to simplify understanding of modular schemas.
-
-**2.5. Collaboration & Sharing**
-Permalink Generation: A mechanism to serialize the editor state (schema + instance) into a shareable URL, facilitating collaboration and bug reproduction.
-Export Capabilities: One-click export of the schema and instance as raw JSON files.
-
-
-
-*[truncated]*
-
----
-
-## #971: GSOC 2026 Proposal: SchemaFuzzer: Fixing weak Schemas with Generative Testing
-
-**Labels:** gsoc
-
-**Project title**
-SchemaFuzzer: Fixing weak Schemas with Generative Testing
-
-**Brief Description**
-Validation tells us if our data matches a schema, but it does not tells us if the schema itself is good. While I was working on Cypress tests for the JSON schema (PR #2043), I realized how easy it is for schemas to cause silent failures. For example, a schema might accept an empty string or a 10,000-character of text as "valid" even though it breaks the UI.  So, I'm  proposing SchemaFuzzer to remove this gap. It uses property based hypothesis to try and break a schema by generating valid but nonsensical data. When it finds a weakness it reports and then suggests linter rules needed to make the schema better. 
-<!-- 2-5+ sentences -->
-
-**Expected Outcomes**
-Fuzzer: A Python tool that highlights tests schemas to find where constraints (like 
-minLength or maximum) are missing with the help of AI. It gives smart suggestions like "You should probably add format: password here". There can be two features for this:
-1: Linter Integration: New Testability rules for the Sourcemeta linter based on the edge cases.
-2. Web Dashboard: A simple react playground where we can paste a schema and see a Strength Score.
-
-**Skills Required**
-Python: For the heavy testing with hypothesis-jsonschema.
-TypeScript and React - To build a clean UI for the dashboard.
-Real-World Testing: Experience with Cypress or similar tools.
-JSON Schema 
-
-**Mentors** 
-I've previously contributed to the website repo, hopefully it will be merged fast and would love to work with @Utkarsh-123github and @jviotti cause i see them often working to make jsonschemaorg from 0-1-100.
-
-**Expected Difficulty**
-Hard
-
-**Expected Time Commitment**
-350 hour
-
----
-
-## #969: GSOC-26 : Automated JSON Schema Evolution and Data Migration CLI
-
-**Labels:** gsoc
-
-**Project title**
-​SchemaShift:  Structural Diffing and Migrations CLI.
-
-**Brief Description**
-
-<!-- 2-5+ sentences -->
-In production environments, schemas are never static. When a schema evolves from S_{v1} to S_{v2}, existing legacy data often becomes invalid, creating a "versioning debt" that requires manual, error-prone migration scripts.
-The goal of SchemaShift is to build a CLI that actually "understands" the difference between two schemas. It shouldn't just show you a text diff; it should infer that you renamed a field or moved a property into an object, and then generate the code to fix your data automatically. It moves the community beyond simple validation and into the realm of automated data maintenance.
-
-**Expected Outcomes**
-
-1. ​A smart diffing engine: A tool that can look at two JSON Schemas and identify structural changes (renames, type shifts, or new constraints).
-
-2. ​Automatic Transform Generation: The CLI should output a migration script  that moves data from the old format to the new one.
-
-3. ​The "Safety Check": A workflow that runs the transformation and immediately validates the result against the new schema to make sure nothing got corrupted.
-
-4. ​Interactive CLI: If the change is too complex for the tool to guess (e.g., merging two fields into one), it should ask the user what the intent was instead of just failing.
-
-5. Support arbitrary transforms between schemas. Not only versions of the same schema  i.e. celsius to Fahrenheit.
-
-6. Support re-usability of transformation rules. For example, if there is a transform for celsius to Fahrenheit and you have a bigger schema whose property is a celsius, can it re-use the other transform that property to Farenheit?
-
-**Skills Required**
-
-1. JSON Schema Internals: You need to know your way around Draft 7 and 2020-12. If you don't know the difference between anyOf and oneOf, this will be a struggle.
-
-2. ​Language: Preference for Go, Rust, or TypeScript. We need something fast and easy to distribute as a binary.
-
-3. Algorithm Design: Experience with tree-diffing algorithms or AST (Abstract Syntax Tree) manipulation.
-
-4. ​Test-Driven Development: Ability to write rigorous unit tests for complex edge cases in data transformation.
-
-**Mentors**
-Any TSC or experienced community member and if possible then I am also happy to take this opportunity as a co mentor.
-
-**Expected Difficulty**
-<!-- an easy, medium or hard difficulty rating of each project -->
-Hard
-
-**Expected Time Commitment**
-<!-- 175 or 350 hour -->
-350 hours
-
----
-
-## #968: GSoC 2026: GraphQL Schema to JSON Schema Generator for Request and Response Validation
-
-**Labels:** gsoc
-
-**Project title**
-GSoC 2026: GraphQL Schema to JSON Schema Generator for Request and Response Validation
-
-**Brief Description**
-GraphQL schemas formally define API contracts, but many systems still rely on JSON Schema for request/response validation, documentation, and testing. This project aims to build an open-source JavaScript/TypeScript tool that converts a given GraphQL schema (SDL) into equivalent JSON Schemas for GraphQL operations (queries and mutations), covering both request variables and response payloads. The generated JSON Schemas can then be used with standard validators (e.g., AJV) for runtime validation, mock generation, and contract testing.
-
-**Expected Outcomes**
-
-- A reusable JavaScript/TypeScript library that parses GraphQL schemas using the official GraphQL reference implementation.
-- Automatic generation of JSON Schema definitions for:
-    - 	GraphQL input types (request variables)
-    - 	GraphQL output types (query/mutation responses)
-- CLI support to generate JSON Schema files from GraphQL SDL.
-- Well-documented examples and usage guides.
-- Unit tests and validation of generated schemas using a standard JSON Schema validator.
-
-
-**Skills Required**
-•  JavaScript / TypeScript
-•  Node.js ecosystem
-•  Basic understanding of GraphQL (schema, types, queries, mutations)
-•  Familiarity with JSON Schema
-•  Experience with AST traversal or compiler-style tooling is a plus
-
-
-<img width="892" height="131" alt="Image" src="https://github.com/user-attachments/assets/6aa653cc-dca8-4b46-93a8-41a6ba24ab55" />
-
-**Mentors**
-   @jdesrosiers @Utkarsh-123github 
-
-**Expected Difficulty**
-   Medium 
-(The project involves schema parsing, AST traversal, and careful semantic mapping between GraphQL and JSON Schema.)
-
-**Expected Time Commitment**
-  350 hours (Large GSoC project)
-
----
-
-## #967: GSoC 2026:JSON Schema Linter & Formatter: IDE-First Developer Tooling on Standardized Rules
-
-**Labels:** gsoc
-
-**Project title**
-JSON Schema Linter & Formatter: IDE-First Developer Tooling on Standardized Rules
-
-**Brief Description**
-Although JSON Schema linting rules and best practices exist, most developers don’t have an easy way to use them while writing schemas. Usually, feedback comes late during code reviews or CI, making it hard to catch problems early and follow best practices consistently. This project aims to bring these rules into developers’ editor, providing real-time warnings, safe fix suggestions and guidance to write better schemas from the start. _Think of it as ESLint or Prettier but for JSON Schema because who said JSON schemas can't be stylish and well behaved?😉_
-
-**Expected Outcomes**
-- A reusable library and CLI that apply existing standardized JSON Schema linting rules.
-- Draft aware linting across supported JSON Schema drafts (Draft-04 through 2020-12).
-- IDE integrations (e.g. VS Code) providing real-time diagnostics and fixes.
-- Rule-specific autofixes where changes are safe and unambiguous.
-- Formatter-style output for consistent schema structure and readability
-
-**Skills Required**
-- Node.js and Typescript
-- Knowledge of JSON Schema drafts and linting concepts
-- Familiarity with developer tooling such as linters and formatters
-
-**Mentors**
-
-**Expected Difficulty**
-Medium
-
-**Expected Time Commitment**
-350 hour
 
 ---
 
@@ -2218,58 +1368,6 @@ Looking forward to seeing you there!
 
 ---
 
-## #879: GSoC 2025: Making JSON Schema Docs Easy to Read and Share
-
-**Labels:** Status: Stale
-
-## What's This Project About?
-
-Have you ever tried to explain a JSON Schema to someone who's not a developer? It's pretty tough, right? This project aims to solve that problem by creating a tool that turns complex JSON Schemas into clear, easy-to-read documentation that anyone can understand. Think of it as a translator that converts technical schema definitions into human-friendly guides and explanations.
-
-## What Will It Do?
-
-Our tool will take your JSON Schema through a simple upload or paste process and transform it into beautiful documentation in various formats like web pages, markdown files, and PDFs, handling even the most complex schemas with ease. To make everything crystal clear, we'll convert technical constraints into plain English, provide real-world examples, create visual diagrams of connections, and highlight key rules in a way that makes sense to everyone.
-
-You'll have complete control over the look and feel, with the ability to choose different styles, customize what information appears, add your own branding, and make the documentation match your existing style guide. The tool will fit seamlessly into your workflow by offering both command-line and programmatic access, automatically updating documentation when schemas change, and making it simple to share with your team.
-
-## Why This Matters
-
-This project bridges the gap between technical and non-technical team members by creating documentation everyone can understand, while saving time on manual documentation and ensuring everything stays accurate and professional-looking.
-
-## What We'll Build
-
-We'll create an intuitive tool with a clean interface and simple commands, supporting multiple output formats like web pages, markdown, and PDFs. The documentation will automatically generate examples, explain rules clearly, and include helpful visual diagrams when needed.
-
-## What Skills Are Needed
-
-The ideal candidate should understand JSON Schema well and have solid programming experience, with an eye for design and a passion for making technical concepts accessible to everyone.
-
-## How Long Will It Take?
-
-Overall 350-hour journey will flow naturally from building the basic converter in the first month, to adding polished templates and themes in the second month, and finally integrating it with other tools and adding the finishing touches in the third month.
-
-## Difficulty Level
-
-Medium-difficulty project that requires attention to detail and good design sense rather than complex technical challenges.
-
-## Why Pick This Project?
-
-This project solves a real problem teams face every day while providing clear value and room for growth, ultimately making JSON Schema more accessible to everyone who needs to work with data structures.
-
-## Mentors : @benjagm 
-
-## Future Ideas
-
-The project can grow to include more output formats, interactive features, shared templates, and collaboration tools, making it even more valuable for teams working with JSON Schema.
-
-## Technical Details
-
-We'll build
-
-*[truncated]*
-
----
-
 ## #830: Application for Open Community Manager Role
 
 **Labels:** Status: Stale
@@ -2362,6 +1460,409 @@ The goal of this issue is to plan and track the launch of the JSON Schema Ambass
    - Monitor applications and provide updates.
    - Share additional content or testimonials if needed.
    - Engage with the community for feedback and que
+
+*[truncated]*
+
+---
+
+## #691: Proposal to formalize the processes for Working Groups
+
+**Labels:** Status: Do not close
+
+### Abstract
+
+As our community grows we'll need to establish working groups to collaborate more efficiently and empower everyone to lead initiatives. We are doing references about working groups in our (yet to be completed) [Charter](https://github.com/json-schema-org/community/pull/325) and there are no specific rules around them what slow down its adoption. 
+
+This is my proposal for defining Working Groups for JSON Schema:
+
+### Definition of a working group
+
+A working group is a group of people in our community who share a common interest beyond GitHub repositories.
+
+A working group must have, at least, one of its members appointed as its chairperson.
+
+Anyone can create a working group. The only prerequisites are to have at least 2 founding members and the approval of the TSC.
+
+A working group should have its own set of goals or objectives. This helps everyone in the working group to stay aligned. The goals must be public and easily accessible by anyone on the internet.
+
+It's recommended that a working group has an associated issue where the group outlines their roadmap. In addition it will be highly recommended the usage of a [GitHub Project](https://docs.github.com/en/issues/planning-and-tracking-with-projects/creating-projects/creating-a-project) to make it easier for others to collaborate.  It's up to the Working Group to decide the structure of the project. E.g., Kanban, Shape Up, TO-DO list, etc.
+
+The name of the group, its members, the goals, and any other relevant information must be listed in the WORKING_GROUPS.yaml file in the community repository.
+
+A working group has no decision power over the roadmap of the projects they may impact. It's up to the maintainers of the repositories involved to approve or reject the resulting pull requests. Therefore, it's highly recommended to either have maintainers of the impacted projects in the working group or make sure everyone is in agreement before deciding about the roadmap of the different repositories/projects.
+
+As soon as the feature is ready, working groups will be listed in the JSON Schema website along with their description, goals, members, an anything the working group wants to include.
+
+### Additional benefits
+
+- Working groups become more discoverable.
+- Coordinated effort across different projects/repos.
+- Bounty program can also target working groups, especially for tedious tasks.
+- Increased transparency of the structure of our community.
+
+### What do you think about this proposal?
+
+Please share your thoughts so we create together the best proposal for our project!
+
+Thanks @fmvilas for the [inspiration](https://github.com/orgs/asyncapi/discussions/1037).
+
+---
+
+## #548: Define the role & responsibilities of the chairpersons
+
+**Labels:** 👥 Team, Status: Do not close
+
+> @Relequestual I think we should add the role&responsibilities of the Executive director/chair. An example [here](https://github.com/asyncapi/community/blob/6e8e91168fb43b23e8ab0662299430ccefc94db4/GOVERNANCE.md#L4)
+
+_Originally posted by @benjagm in https://github.com/json-schema-org/community/issues/456#issuecomment-1748613295_
+
+---
+
+## #521: Let's define together what we understand by "critical" JSON Schema projects
+
+**Labels:** ✨ Enhancement, Status: In Progress, Status: Do not close
+
+### Objective
+This issue aims to start a discussion to define together what we understand by "critical" JSON Schema projects and establish the eligibility criteria and the support provided for these projects. Currently taking advantage of and supporting projects Bowtie that are not part of the Github Organization but are critical for the whole JSON Schema Ecosystem and this issue aims to standarize this situation by find a common definition, eligibility criteria and the benefits.
+
+### Defining Critical Projects (My proposal)
+To qualify as a "critical" project, a JSON Schema project should meet the following criteria:
+
+* **Language Agnostic**: The project should be language-agnostic, ensuring its relevance to a wide range of developers working with JSON Schema, regardless of the programming language they are using.
+
+* **Uniqueness**: The project should offer unique and valuable functionality, avoiding direct competition with existing tools in the JSON Schema ecosystem. It should fill a gap or provide an innovative solution to a problem not adequately addressed by other projects.
+
+* **Impact**: Critical projects should have a significant and positive impact on the entire JSON Schema ecosystem, benefiting a large user base, or addressing key challenges faced by the community.
+
+* **Open Source**: Critical projects should be Open Source by definition.
+
+### Support for Critical Projects (My proposal)
+The support provided to critical projects will include:
+
+* **Participation in Mentoring and Contribution Programs**: Critical projects will be eligible for mentorship programs to help onboard new contributors, and they will have access to resources and guidance to foster their growth.
+
+* **Promotion of New Features and Updates**: We will actively assist critical projects in promoting new features and updates to ensure they reach a wider audience, including cross-promotion within the JSON Schema community and on relevant platforms.
+
+### Process to join the List (To be defined)
+For a project to get this status there should be a TSC voting process.
+
+### Projects to consider:
+
+* [Bowtie](https://github.com/bowtie-json-schema/bowtie/)
+* [Learn JSON Schema](https://github.com/sourcemeta/learnjsonschema.com)
+* [Alter Schema](https://github.com/sourcemeta/alterschema)
+
+### Projects lists
+As soon as we have consensus on definition, benefits, accessibility and the projects part of this list we'll make the list available similarly to adopters.md.
+
+### Help us to define this together
+We value your input and invite you to participate in this discussion. Please provide your feedback, suggestions, and nominations for projects that you believe meet the criteria for critical JSON Schema projects.
+
+---
+
+## #513: Create a Community Handbook to explain operations and processes
+
+**Labels:** 📝 Documentation, Status: On Hold
+
+It will be beneficial for the JSON Schema Community if we can publish a Community Handbook to explain team structure, operations and processes. This is a great example : https://about.gitlab.com/handbook/marketing/developer-relations/
+
+**Do you think this work might require an [Architectural Decision Record (ADR)](https://github.com/json-schema-org/community/blob/main/CONTRIBUTING.md#key-architectural-decisions)? (significant or noteworthy)**
+
+No
+
+**Work Detail**:
+- [ ] Capture feedback from the community.
+- [ ] Publish the handbook.
+
+**Any further requirements to resolve this issue**
+
+---
+
+## #424: Enhance public communications strategy
+
+**Labels:** summit-results, Status: Do not close
+
+Problem: Lack of cohesive public face / communication of our status and progress.
+
+There is some existing planned work the improve public communications defined here: https://github.com/orgs/json-schema-org/projects/12/views/5
+
+🚨This Issue and Roadmap Item is marked as "deferred", meaning it is low priority and should not be a focus over other items in the roadmap. However, we should identify opportunities to empower others to contribute to this task, if helpful.
+
+@benjagm to define define success criteria, deliverables, and breakdown of tasks.
+
+Assessed as medium impact/medium effort during our [collaborators summit 2023](https://github.com/orgs/json-schema-org/discussions/391).
+
+---
+
+## #423: Implement and scale the new governance model
+
+**Labels:** summit-results, Status: Do not close
+
+Deliverables:
+
+- [x] Merge governance model document: https://github.com/json-schema-org/community/pull/456
+- [ ] Trial run of governance process (I feel [this](https://github.com/json-schema-org/community/issues/521) would be a good candidate for doing such)
+- [ ] Request feedback from those involved in the process
+- [ ] Compile report and assess if revisions are needed
+
+Assessed as medium impact/low effort during our [collaborators summit 2023](https://github.com/orgs/json-schema-org/discussions/391).
+
+---
+
+## #419: Report on projects financial sustainability requirements
+
+**Labels:** summit-results, Status: Do not close
+
+(To avoid taking credit, note, the below was written by @Julian)
+
+The JSON Schema team is generously sponsored by a number of organizations. In some sense, Postman is a particularly notable organization in this regard, as it funds a number of developers from the team in order to be able to dedicate full-time effort to the JSON Schema ecosystem without any distraction.
+
+Still, it is useful to ask and answer questions like "How much does development of JSON Schema cost today" in order to understand what is needed to sustain, maintain or grow development. This likely includes ensuring we understand what might happen if sponsorship of the project decreases, or more optimistically, how we could grow the project if sponsorship were to increase.
+
+This likely includes:
+
+* assessing the approximate combined operating expense today
+  - including one level down of specificity to differentiate between "$$ spent to push the specification forward" vs "$$ spent to support implementations" -- we could perhaps address this with current contributors (speaking e.g. for myself, @Julian) by estimating the fraction of time we spend on implementation specific work vs. community-wide work
+  - reviewing yearly expenses beyond salaries (e.g. hosting costs)
+*  tallying the current source of funding which supports the above, and including some "gut" estimate of how stable this funding is
+  - including OpenCollective funding and/or any other joint funds targeting the community
+* calling out specific pieces of ongoing expense which are critical to operation of the project (e.g. maintaining the json-schema.org site)
+
+It is very likely that we would benefit from having someone who has done this sort of calculation (e.g. as part of operations within a for-profit company, as part of a business case, or of course the best would be for a similar open source project).
+
+So a preliminary task for this issue is likely to identify a party qualified to *ask the right questions* for the above.
+
+The primary goal/output is to produce a deliverable which:
+
+* can be maintained on an ongoing basis
+* and which contains information about
+  - how much does running the project cost today
+  - where does the current funding for that cost come from today
+  - how stable do we consider that funding
+
+Once we have such a thing, the two obvious follow-on questions would be:
+
+* Do we have a viable plan if the amount of money changes there in either direction, either for finding additional sponsors or otherwise
+* How does an increase in $$ relate to any additional help we may want to bring in
+
+Assessed as low-medium impact/low-medium effort during our [collaborators summit 2023](https://github.com/orgs/json-schema-org/discussions/391).
+
+---
+
+## #418: Research of existing implementations by language
+
+**Labels:** summit-results, Status: Do not close
+
+Problem: We do not know which languages have high quality implementations.
+
+While members of the core team / TSC (not yet formally formed) have implementaitons in different languages, we do not know if we have "high quality" implemenations in all major languages.
+
+Having high quality implementaitons in all major languages would improve the ecosystem. If we can identify gaps in implementations, we could then target resources to support specific languages or implementations. Overall, this would improve our ecosystem.
+
+This item is just about the research and report, and not about making any actions or decisoions as a result of such a report.
+
+- [ ] Decide on a list of ~10-15 programming languages or environments to assess (by some combination of popularity, TIOBE, recent publicity, commonality of use for API-adjacent or data validation-adjacent use cases, etc.)
+- [ ] Compare this list against the JSON Schema [implementations page](https://json-schema.org/implementations.html)
+    * [ ] Confirm this page seems correct for the programming language by searching independently for JSON Schema implementations in GitHub search, Google, etc.
+    * [ ] Extract a crude "health" metric of how good support for JSON Schema is in the language based on version availability, maturity of the implementation, activity of development in the implementation and compliance with the specification (time boxed to not be fully in depth)
+      - does it fail some very large number of tests
+      - does it support recent versions of JSON Schema
+      - does it have recent releases
+      - does it have recent commits
+      - does it have open security warnings
+      - does its maintainer consider it production-ready (or explicitly the reverse)
+      - how many open issues and pull requests does it have
+      - does it implement many/all/some of the interfaces from #408
+    * [ ] Document languages which *are* popular but which are deficient in their JSON Schema support
+- [ ] Update any [out of date information](https://github.com/json-schema-org/website/blob/main/data/validator-libraries-modern.yml) on the implementations page on the website
+- [ ] Write a blog post report for general consumptions about the method, findings, and resulting insights. (And maybe potential future work)
+
+Assessed as high impact/low effort during our [collaborators summit 2023](https://github.com/orgs/json-schema-org/discussions/391).
+
+---
+
+## #415: Complete the new version of the Spec
+
+**Labels:** summit-results, Status: In Progress
+
+Problem: The scope the of next specification release is distributed among different issues and PRs. Some of the items have been included in milestones but not all what makes it difficult to progress with the release discussions. By identifying the pending scope and applying some project management to support the progress we hope to lighten the whole process.
+
+Team working on this issue:
+- @benjagm to project manage this work.
+- @jdesrosiers and @gregdennis to write up list of work the believe still needs to be done.
+
+Assessed as high impact/high effort during our [collaborators summit 2023](https://github.com/orgs/json-schema-org/discussions/391).
+
+### Updated plan:
+- [x] We'll create a new milestone called stable-release. We'll create a project board to enhance collaboration and transparency.
+        **Milestone:** https://github.com/json-schema-org/json-schema-spec/milestone/10
+        **Project Board:** https://github.com/orgs/json-schema-org/projects/15/views/1
+- [ ] We'll conduct a grooming session to setup the initial spec backlog associating the issues with the new milestone.
+- [ ] We'll decide if we remove the existing milestones.
+- [ ] We'll decide a labelling system to identify the issues' workflow. Before, during and after an issue is added to the spec scope.
+- [ ] We'll run 1 week cycles to decide the issues to focus on during that cycle. 1 session at the beginning to decide scope of the cycle and 1 session at the end to review the closed issues, and decide the issues for the next cycle. Short cycles can be done in during the OCWM.
+
+---
+
+## #326: Evaluate the usage of official test suite by JSON Schema implementations.
+
+**Labels:** help wanted
+
+**Slack Discussion:** [Link](https://json-schema.slack.com/archives/C8CQ81GKF/p1675868489424269)
+
+**Work Summary**:
+<!-- These are some suggestions to get you started, but feel free to write your own from scratch -->
+Understand how JSON Schema implementations are currently using the official test suite by JSON Schema to find missing and out-of-date tests. The resulting report would be beneficial and highlight why Bowtie is so important.
+
+**Requirements:**
+1. The list of JSON Schema implementations https://json-schema.org/implementations.html#validators or the smaller list of implementations bowtie supports https://github.com/bowtie-json-schema/bowtie/tree/main/implementations.
+2. Access to the GitHub repositories of each implementation.
+3. Search for a reference to the official test suite repository in the implementation's GitHub repository.
+4. Determine the age of the version of the test suite being referred to and write down the commit hash of the test suite.
+
+**Expected outcome:**
+* A report with information about the usage of the official test suite by JSON Implementations, including which have missing or outdated tests.
+* The report will provide a comprehensive overview of the adoption of the official test suite and the importance of using Bowtie to maintain up-to-date testing.
+
+**Do you think this work might require an [Architectural Decision Record (ADR)](https://github.com/json-schema-org/community/blob/main/CONTRIBUTING.md#key-architectural-decisions)? (significant or noteworthy)**
+
+No
+
+**Work Detail**:
+<!-- Each item in this list may be a single Pull Request or a single PR may cover multiple  -->
+- [ ] The list of JSON Schema implementations https://json-schema.org/implementations.html#validators or the smaller list of implementations bowtie supports https://github.com/bowtie-json-schema/bowtie/tree/main/implementations.
+- [ ] Access to the GitHub repositories of each implementation.
+- [ ] Search for a reference to the official test suite repository in the implementation's GitHub repository.
+- [ ] Determine the age of the version of the test suite being referred to and write down the commit hash of the test suite.
+- [ ] Create document with the results.
+
+**Any further requirements to resolve this issue**
+
+---
+
+## #324: Adopt either the Contributor License Agreement (CLA) or the Developer Certificate of Origin (DCO)
+
+**Labels:** Status: Do not close
+
+I'm going to recommend using DCO, as it is less problematic for potential contributors.
+
+---
+
+## #274: Publish Project Charter on website or GitHub
+
+**Labels:** openjsf-onboarding, Status: Do not close
+
+Requiremnet for OpenJS Foundation onboarding.
+Template provided: https://github.com/openjs-foundation/cross-project-council/blob/HEAD/PROJECT_CHARTER_TEMPLATE.md
+
+While we are no longer a project under the OpenJS Foundation, we still feel it important to have a charter. This helps keep us focused and enables newcomers to have a clear understanding of our objectives and boundaries. The template is still useful.
+
+---
+
+## #183: Open Community Working Meeting 2022-06-03
+
+**Labels:** Working Meeting, Status: Stale
+
+<!-- Starts Here -->
+
+📺 [See Recording](https://postman.zoom.us/rec/share/jTcXUOgjF0N5CFouqEK5uIKXHxCzN8zySQhFu9ab_n-Tc6FuBTHsrZ_AsRCJg2J3.pWzEGCNCf3sM2Yy9?startTime=1654282518000)
+
+
+⏪ [Go To Previous Meeting](https://github.com/json-schema-org/community/issues/177)
+
+## Agenda
+
+<!-- Added from the Meeting Issue -->
+
+```
+No agenda items were set for this meeting
+```
+
+## Highlights
+
+- @jviotti shared his project for upgrading and downgrading JSON Schemas between versions/drafts. [AlterSchema](https://github.com/jviotti/alterschema) which is designed to be langauge agnostic.
+
+- There was a good discussion around schema version compatibility from @jdesrosiers and @awwright.
+
+- Further discussion on vocabularies and how they could look in the future.
+
+- A discussion on keywords that depend on other keywords
+
+- A discussion on finite state machines, push down automata and ABNF's applicability in general and to JSON Schema. 
+ 
+## Actions
+
+- [x]  @Relequestual to have a backup for scheduled calls when on a holiday. 
+
+- [ ]  @jdesrosiers to write a blog post about concerning additionalProperties, inheritence concept etc.
+
+## Attendees
+
+| Account           |
+|:-----------------:|
+| @awwright         |
+| @jdesrosiers      |
+| @jviotti          |
+| Vipul             |
+| Pranit Brahmbhatt |
+| @gregsdennis      |
+| @handrews         |
+
+## Details
+
+### Upgrading and downgrading `Schema` versions using `Alter Schema`
+
+Alterschema is trying to solve upgrading and downgrading between JSON Schema and both OpenAPI versions. i.e how given any json schema can you upgrade it and can you also downgraded in a lossy manner. 
+
+As it was noticed ( while working at Postman ) that people are stuck with `draft 4` and `draft 6`. We realized that people do want to upgrade but the tooling's support for older versions becoming a barrier.
+
+---
+
+### Fragmented ecosystem and compatibility.
+
+Working group discussed how the ecosystem is fragmented. An example presented had to do with differences in semantic understanding while in usage the behaviour is expected with original meaning i.e of the JSON Schema specification. This leads to differences in implementation themselves i.e behaviour changes. Another is certain limitations eg. limited amount of memory leading changes in implementation and compatibility.
+
+There is an understanding that the vocabulary system is to address those problems in the future. Also, it is understood that idea of vocabularies should be malleable where it's a collection of keywords that are defined so that defining keywords and collecting them into a group, can be called a vocabulary.
+
+Regarding keywords that depend on other keywords, there were two points raised of resuability and usage of multiple keywords at a time and the annotation for behavior purposed of the same. The current proposal of the working group is already understood to moving in the direction of ironing it out.
+
+---
+
+Further Read
+
+*[truncated]*
+
+---
+
+## #173: MDN/Open Web Docs case study
+
+**Labels:** 📈 case study, Status: Stale
+
+Contacted Florin Scholz, who cc'ed Daniel Beck.
+Both responsibile in some capacity for using JSON Schmea in MDN web docs and compat data.
+Both keen to collaboarate on a case study and potentially a video later.
+
+---
+
+## #172: Open Community Working Meeting 2022-05-06
+
+**Labels:** Working Meeting, Status: Stale
+
+<!-- Starts Here -->
+
+📺 [See Recording](https://postman.zoom.us/rec/share/0-1cLt1wcUQtjZdhIL2IXRVoMI5AdoCFhb8CpW0HZIDN6HDmn4j_CMbAqZHVYvHH.5DezI8Wx1BggzEox?startTime=1651863577000)
+
+⏪ [Go To Previous Meeting](https://github.com/json-schema-org/community/issues/164)
+
+## Agenda
+
+<!-- Added from the Meeting Issue -->
+
+| Topic                                                                                                                                                                                                                                                                                                                                                                            | Owner         | Decisions/NextSteps                                                                                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Review last call's action items                                                                                                                                                                                                                                                                                                                                                  | @Relequestual | The action items were reviewed                                                                                                                                                                                     |
+| JSON Schema 2020-12 patch 1 rc-0 released<br/>Feedback requested. rc-0 feedback closes 2022-05-14.<br/>Is the release process looking ok? [Spec Issue #1191](https://github.com/json-schema-org/json-schema-spec/issues/1191)                                                                                                                                                    | @Relequestual | The updates can be found at [Spec Issue #1191](https://github.com/json-schema-org/json-schema-spec/issues/1191)                                                                                                    |
+| Website development progress - Johannes showed progress on the office hours call.                                                                                                                                                                                  
 
 *[truncated]*
 

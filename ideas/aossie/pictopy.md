@@ -2,7 +2,7 @@
 
 **Parent:** AOSSIE — Project Ideas
 **Source:** https://github.com/AOSSIE-Org/Info/blob/main/GSoC-Ideas/2026/PictoPy.md
-**Scraped:** 2026-02-22T23:28:47.633660
+**Scraped:** 2026-03-10T16:58:40.238676
 
 ---
 
@@ -43,6 +43,12 @@ With these core systems in place, PictoPy is positioned to evolve from a feature
 6. **Biweekly Release Management and Codebase Health Maintenance**: This task involves actively contributing to PictoPy’s biweekly release cycle by coordinating feature integration, testing, and versioning. It also focuses on maintaining a clean and reliable codebase through removal of obsolete code, configuring Dependabot for automated dependency updates, and ensuring setup guides remain accurate and error-free. Additionally, tests and documentation will be continuously updated to reflect the latest changes and preserve long-term project stability.
 
 7. **Project Maintenance, Contributor Support, and Community Engagement**: This task focuses on strengthening PictoPy’s open-source ecosystem through active project maintenance and community involvement. It includes reviewing issues and pull requests from contributors, providing constructive feedback, and assisting the mentor in maintaining code quality and project direction. Additionally, the contributor will co-conduct weekly project meetings to ensure organized progress, transparency, and sustained community engagement.
+
+8. **Evaluation and Integration of Features from PictoPy V2**: [PictoPy V2](https://github.com/imxade/PictoPyV2/wiki) was an independent branch of the project that experimented with some other features in 2024. This task involves systematically reviewing its feature set and selectively porting ideas that are compatible with the current Tauri + FastAPI architecture and the project's privacy-first philosophy. Candidates are expected to audit V2's approach, identify non-overlapping or superior solutions, and propose concrete integration work where applicable.
+
+   - **Video Support**: Extend PictoPy to handle video files alongside images. AI models (object detection, face recognition) will run on 1 out of every *X* frames (configurable frame-sampling rate) to generate classification and tagging metadata for the video without processing every frame, keeping inference cost low.
+
+9. (Optional) Explore Support for Mobile Devices with Tauri.
 
 Candidates are expected to refine these tasks in their GSoC proposals.
 

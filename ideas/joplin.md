@@ -1,7 +1,7 @@
 # Joplin — Project Ideas
 
 **Source:** https://github.com/joplin/gsoc/blob/master/ideas.md
-**Scraped:** 2026-02-22T23:28:47.624835
+**Scraped:** 2026-03-10T16:58:40.228325
 
 ---
 
@@ -25,7 +25,7 @@ These ideas were contributed by our developers and users. They are purposely vag
 
 When your quantity of notes grows you may reach a point where finding notes is difficult. You may know that a specific note is there somewhere but you can't remember any specific keyword that would allow you to find it.
 
-This project is to provide an alternative AI-based search for your notes. Instead of using the existing [seach syntax](https://joplinapp.org/help/apps/search/), the user would express in English what they are looking for. For example:
+This project is to provide an alternative AI-based search for your notes. Instead of using the existing [search syntax](https://joplinapp.org/help/apps/search/), the user would express in English what they are looking for. For example:
 
 - It's a note about a meeting with a company from Germany in 2020 or maybe 2019
 - I need the list of tasks I wrote for the website redesign
@@ -44,9 +44,9 @@ This project is to provide an alternative AI-based search for your notes. Instea
 
 ### 2. AI-Generated note graphs
 
-As the user uses Joplin, he may accumulate a large number of notes and may find it difficult to know how they related to each others. We could imagine a folder containing many notes for a website project but the user might want to know what is the core idea for this project, what are the less important parts, and how all these ideas are connected to each others.
+Over time a Joplin user may accumulate a large number of notes and may find it difficult to know how they are related to each other. We could imagine a folder containing many notes for a website project but the user might want to know what is the core idea for this project, what are the less important parts, and how all these ideas are connected to each others.
 
-The goal of this project is to help the user organise his notes and visualise the dependencies between them using a graph.
+The goal of this project is to help the user organise their notes and visualise the dependencies between them using a graph.
 
 The AI would analyse all the notes in a notebook or in sub-notebooks, categorise them, and discover how they are connected to each others.
 
@@ -78,7 +78,7 @@ The goal of this project would be to automatically categorise the user's notes. 
 
 ### 4. Chat with your note collection using AI
 
-Some users have very large knowledge base in Joplin, sometimes built from clipping thousands of pages. This is curated, carefully selected, and thus it would be good to have a way to "interogate" this content. The UI would be very similar to something like ChatGPT, except that the data would be based on the user's note collection.
+Some users have a very large knowledge base in Joplin, sometimes built from clipping thousands of pages. This is curated, carefully selected, and thus it would be good to have a way to "interrogate" this content. The UI would be very similar to something like ChatGPT, except that the data would be based on the user's note collection.
 
 The user asks a question, the AI answers, and the user can ask more questions to refine the answer.
 
@@ -96,7 +96,7 @@ The user asks a question, the AI answers, and the user can ask more questions to
 
 Joplin has a strong focus on [accessibility](https://discourse.joplinapp.org/t/project-2-making-joplin-more-accessible-with-wcag-2-compliance/42371). To enhance accessibility, we aim to use AI to automatically scan all images found within the notes and assign a descriptive label to each one. For instance, an image of the Mona Lisa could be labelled as "A portrait of a woman with an enigmatic smile, featuring a soft landscape background and masterful use of sfumato shading".
 
-**Expected Outcome**: This can be developed as an external application or a plugin. The program should scan the note collection then, for each image, it should generate a detailed description of it using AI.
+**Expected Outcome**: This can be developed as an external application or a plugin. The program should scan the note collection and then, for each image, generate a detailed description of it using AI.
 
 **Difficulty Level**: Medium
 
@@ -120,11 +120,11 @@ We would like to improve the security of Joplin's plugin ecosystem by reviewing 
 
 **Expected size of project**: 350 hours
 
-### 7. Support for encrypted notes
+### 7. Support for encrypted notes and notebooks
 
 In general, notes in Joplin are immediately accessible. However the user may want to lock certain sensitive notes behind a password.
 
-**Expected Outcome**: The user can choose to encrypt certain notes and associated resources. When doing so, they would have to enter a password. The note then can only be decrypted using that password.
+**Expected Outcome**: The user can choose to encrypt certain notes and associated resources. When doing so, they would have to enter a password. The note then can only be decrypted using that password. If the scope of the project allows without significantly increasing complexity, this feature could also be extended to support encrypting entire notebooks in addition to individual notes.
 
 **Difficulty Level**: Medium
 
@@ -138,7 +138,7 @@ In general, notes in Joplin are immediately accessible. However the user may wan
 
 Implement a password strength indicator to help users create stronger master passwords. The indicator can visually guide users on how secure their password is when setting or changing it.
 
-**Expected Outcome**: A UI element that displays password strength as the user types. Feedback to the user on how to improve their password strength (e.g., adding numbers, special characters). Integration with an algorithm like zxcvbn to evaluate password strength.
+**Expected Outcome**: A UI element that displays password strength as the user types. Feedback to the user on how to improve their password strength (e.g. adding numbers, special characters). Integration with an algorithm like zxcvbn to evaluate password strength.
 
 **Difficulty Level**: Easy
 
@@ -150,7 +150,7 @@ Implement a password strength indicator to help users create stronger master pas
 
 ### 9. LAN Sync
 
-Implement device-to-device synchronisation (LAN Sync). The applications can already sync using various server, but it would be good to also allow sync fully offline by having the devices connect to each others directly.
+Implement device-to-device synchronisation (LAN Sync). The application can already sync using various servers, but it would be good to also allow sync fully offline by having the devices connect to each other directly.
 
 **Expected Outcome**: A new synchronisation method (we call it "sync target") that allows LAN Sync. It should work at a minimum on the Windows and Android apps. Ideally it should be implemented in a cross-platform way so that it works on all our supported operating systems.
 
@@ -161,6 +161,20 @@ Implement device-to-device synchronisation (LAN Sync). The applications can alre
 **Potential Mentors**: PackElend, Laurent
 
 **Expected size of project**: 175 hours
+
+### 10. Automatic conflict resolution
+
+Implement a mechanism to automatically resolve note conflicts where possible, and provide semi-autonomous or assisted conflict resolution when automatic resolution is not feasible. Note conflicts occur when a note is edited while the local version is not synchronized with the latest version stored on the server. At present, resolving these conflicts requires manual intervention, which can be time-consuming and particularly challenging for longer notes, especially on mobile devices. The project may optionally explore the use of AI to assist with the conflict resolution process, though this is not a required component.
+
+**Expected Outcome**: The project will deliver an automatic note conflict resolution system that works consistently across both desktop and mobile versions of the app. The algorithm should automatically merge changes whenever possible while preserving all information. When this cannot be guaranteed, the application should provide semi-autonomous or assisted conflict resolution with a clear summary of the proposed changes and any potential information loss. Assisted conflict resolution must not interrupt synchronization and should be managed through a separate user interface.
+
+**Difficulty Level**: High
+
+**Skills Required**: TypeScript, Understanding of diff algorithms and version control
+
+**Potential Mentors**: Laurent, mrjo118
+
+**Expected size of project**: 350 hours
 
 ## More info
 

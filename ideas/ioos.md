@@ -1,7 +1,7 @@
 # IOOS — Project Ideas
 
 **Source:** https://github.com/ioos/gsoc/blob/main/2026/ideas-list.md
-**Scraped:** 2026-02-22T23:28:47.602344
+**Scraped:** 2026-03-10T16:58:40.284482
 
 ---
 
@@ -52,4 +52,8 @@ Right now, the statistical catch-at-age model in the Fisheries Integrated Modeli
 | Develop a universal installer for National Stock Assessment Program (NSAP) packages |
 [#115](/ideas/ioos/ioos-gsoc-issues-115) |
 Scientific software often depends on a complex mix of system tools, compilers, and R packages, making setup difficult and error-prone. This project will build a universal installer that provides simple “one-command” setups (e.g., bash scripts) for National Stock Assessment Program projects such as Stock Assessment Workflows and the Fisheries Integrated Modeling System (FIMS) |
+175 hours |
+| Enhancing CrocoLakeTools with IOOS Data Sync from ERDDAP |
+[#118](/ideas/ioos/ioos-gsoc-issues-118) |
+This project consists in adding to CrocoLakeTools the ability to download and sync specific IOOS datasets from the ERDDAP data server. Together with the mentor, the contributor will identify the package to use between erdappy and gliderpy, what IOOS datasets to sync, and implement a 'downloader' module in CrocoLakeTools that fetches the data and store them locally. |
 175 hours |

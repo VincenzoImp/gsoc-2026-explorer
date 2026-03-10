@@ -1,7 +1,7 @@
 # checkstyle — Project Ideas
 
 **Source:** https://github.com/checkstyle/checkstyle/wiki/Checkstyle-GSoC-2026-Project-Ideas
-**Scraped:** 2026-02-22T23:28:47.591367
+**Scraped:** 2026-03-10T16:58:40.259660
 
 ---
 
@@ -15,7 +15,7 @@
 * [Markdown Javadoc Support](#project-name-markdown-javadoc-support)
 * [Optimization of distance between methods in single Java class](#project-name-optimization-of-distance-between-methods-in-single-java-class)
 * [Reconcile formatters of Eclipse , NetBeans and IntelijIdea IDEs by Checkstyle config](#project-name-reconcile-formatters-of-eclipse--netbeans-and-intellij-idea-ides-by-checkstyle-config)
-* [Coverage of Documentation Comments Style Guide and performance improvement](#project-name-coverage-of-documentation-comments-style-guide-and-performance-improvement)
+* [Coverage of Documentation Comments Style Guide](#project-name-coverage-of-documentation-comments-style-guide)
 * [Open JDK Code convention coverage](#project-name-open-jdk-code-convention-coverage)
 * [Spellcheck of Identifiers by English dictionary](#project-name-spellcheck-of-identifiers-by-english-dictionary)
 * [Patch Suppression improvement](#project-name-patch-suppression-improvement)
@@ -37,7 +37,7 @@
 
 **Complexity Rating**: hard
 
-**Mentors**: Ruslan Diachenko, Timur Tibeyev
+**Mentors**: Ruslan Diachenko, Anmol202005, stoyan, Roman Ivanov, Mohit 
 
 **Description**:
 Checkstyle is known as tool that raises numerous minor issues. There are so many of these and they are so minor that it is hard to find time and engineer to fix them. Most of the issues are so easy to fix but navigation to certain part of the code and making the fix takes time. Engineers could spend this time doing something more valuable. Implementation of an auto-fix functionality could significantly simplify introduction of checkstyle to project as it will do most tedious work automatically.
@@ -62,7 +62,7 @@ Last year we made decision to use OpenRewrite to implement auto-fix features. Ba
 
 **Complexity Rating**: hard
 
-**Mentors**: Roman Ivanov, Andrei Paikin
+**Mentors**: Mohamed Mahfouz, Roman Ivanov
 
 **Description**:
 
@@ -101,7 +101,7 @@ Users sharing big interest in [module-info.java support](/ideas/checkstyle/check
 
 **Complexity Rating**: intermediate
 
-**Mentors**: Roman Ivanov, Baratali Izmailov, Mauryan Kansara
+**Mentors**: Roman Ivanov, Mauryan Kansara, kkoutsilis, stoyan, Baratali Izmailov 
 
 **Description**:
 
@@ -138,7 +138,7 @@ We see a rise of Checkstyle usage in the education process, so having all docume
 
 **Complexity Rating**: hard
 
-**Mentors**: Roman Ivanov, Mauryan Kansara
+**Mentors**: Mauryan Kansara, Mohit, Roman Ivanov
 
 **Description:**
 
@@ -177,7 +177,7 @@ Develop a local LLM-based solution that generates optimal XPath queries to suppr
 
 **Complexity Rating**: hard
 
-**Mentors**: Ruslan Diachenko, Roman Ivanov, Andrei Paikin, Timur Tibeyev
+**Mentors**: Ruslan Diachenko, stoyan, kkoutsilis, Roman Ivanov
 
 **Description**:
 Creating XPath expressions to suppress Checkstyle violations is a complex task requiring deep understanding of both XPath syntax and AST structure. This leads to either overly broad suppressions hiding important issues or overly specific rules needing frequent updates. This project aims to create an AI-powered system to convert Checkstyle violations and user instructions into precise XPath expressions for violation suppression. The core focus is on developing a containerized LLM-based solution that can understand both the violation context and user intent to generate accurate XPath queries.
@@ -209,7 +209,7 @@ A preliminary [proof of concept (PoC)](https://github.com/rdiachenko/checkstyle-
 
 **Complexity Rating:** hard
 
-**Mentors**: Roman Ivanov
+**Mentors**: Roman Ivanov, Mohamed Mahfouz, kkoutsilis
 
 **Description:**
 
@@ -244,7 +244,7 @@ A preliminary [proof of concept (PoC)](https://github.com/rdiachenko/checkstyle-
 
 **Complexity Rating**: hard
 
-**Mentors**: Roman Ivanov, Baratali Izmailov, Ruslan Diachenko
+**Mentors**: Roman Ivanov, kkoutsilis, Baratali Izmailov, Ruslan Diachenko
 
 **Description**:
 
@@ -280,7 +280,7 @@ As a second step it is required to use a matrix of distances between methods and
 
 **Complexity Rating**: hard
 
-**Mentors**: Roman Ivanov, Andrei Paikin, Mauryan Kansara
+**Mentors**: Roman Ivanov, Mauryan Kansara, Andrei Paikin 
 
 **Description**:
 
@@ -318,7 +318,7 @@ Main focus of this project is the analysis of formatting abilities of IDEs (inde
 
 **Complexity Rating**: hard
 
-**Mentors**: Roman Ivanov, Baratali Izmailov, Daniel Mühlbachler, Mauryan Kansara
+**Mentors**: Roman Ivanov, Mauryan Kansara, Baratali Izmailov, Daniel Mühlbachler, 
 
 **Description**:
 
@@ -340,7 +340,7 @@ Big projects (Apache Spark) use this style guide , search for "Code style guide"
 
 ***
 
-### Project Name: Coverage of Documentation Comments Style Guide and performance improvement
+### Project Name: Coverage of Documentation Comments Style Guide
 
 **Skills required**: basic Java.
 
@@ -352,19 +352,17 @@ Big projects (Apache Spark) use this style guide , search for "Code style guide"
 
 **Complexity Rating**: hard
 
-**Mentors**: Roman Ivanov, Baratali Izmailov, Mauryan Kansara
+**Mentors**: Roman Ivanov, Mohamed Mahfouz, Mauryan Kansara 
 
 **Description**:
 
-Project will mainly be focusing on automation of [Documentation Comments (javadoc) guidelines](http://www.oracle.com/technetwork/articles/java/index-137868.html) by Checkstyle Checks. Reliable comments parsing  was a major improvement in Checkstyle during GSoC 2014, archived results need to be reused to reliably implement automation of Javadoc best practices.
+Project will mainly be focusing on automation of [Documentation Comments (javadoc) guidelines](http://www.oracle.com/technetwork/articles/java/index-137868.html) by Checkstyle Checks. Reliable comments parsing  was a major improvement in Checkstyle during GSoC 2014 and 2025, archived results need to be reused to reliably implement automation of Javadoc best practices.
 
 Separate configuration file with newly created Checks need to be created. Best practices in documentation make sense not for all projects. Javadoc validation matters only for library projects that need to expose online documentation in web publicly.
 
-Performance improvement of existing javadoc parser are expected, see details at https://github.com/checkstyle/checkstyle/issues/11193 .
 
 **Deliverables**:
 The result of this project will be a configuration file with the maximum possible coverage of Comment style guide. Report should look like [Google's Java Style Checkstyle Coverage](http://checkstyle.sourceforge.net/google_style.html).
-Performance improvements of javadoc parsing.
 If there will be time left we can focus on coverage of guidelines from https://blog.joda.org/2012/11/javadoc-coding-standards.html
 
 **Prove of necessity**: [javadoc issues on github](/ideas/checkstyle/checkstyle-checkstyle-issues-3).
@@ -419,7 +417,7 @@ https://github.com/giraciopide/shellcheck-maven-plugin, https://github.com/codes
 
 **Complexity Rating**: intermediate
 
-**Mentors**: Roman Ivanov, Daniel Mühlbachler,
+**Mentors**: Roman Ivanov, stoyan, Daniel Mühlbachler,
 
 **Description**:
 

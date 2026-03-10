@@ -2,7 +2,7 @@
 
 **Parent:** DBpedia — Project Ideas
 **Source:** https://forum.dbpedia.org/t/dbpedia-hindi-chapter-2026-fine-tuning-indic-models-for-hindi-relational-triple-extraction-human-in-the-loop-feedback-gsoc-2026/4788
-**Scraped:** 2026-02-22T23:28:47.607981
+**Scraped:** 2026-03-10T16:58:40.251117
 
 ---
 

@@ -1,7 +1,7 @@
 # Sugar Labs — Project Ideas
 
 **Source:** https://github.com/sugarlabs/GSoC/blob/master/Ideas-2026.md
-**Scraped:** 2026-02-22T23:28:47.545443
+**Scraped:** 2026-03-10T16:58:40.250599
 
 ---
 
@@ -14,6 +14,7 @@
 * [Sugar Activity on Demand](#sugar-activity-on-demand)
 * [AI Optimization](#ai-optimization)
 * [AI Reflection in the Sugar Journal](#ai-reflection-in-the-sugar-journal)
+* [Automated Release Pipeline for Music Blocks](#automated-release-pipeline-for-music-blocks)
 * [Music Blocks Maintenance](#music-blocks-maintenance)
 * [Music Blocks Performance](#music-blocks-performance)
 * [Music Blocks Temperament](#music-blocks-temperament)
@@ -368,6 +369,50 @@ Specifically, we would be working toward accomplishing the following:
 
 -------------
 
+## Automated Release Pipeline for Music Blocks
+
+**Prerequisites**<br>
+ - Experience with GitHub Actions or CI/CD platforms
+ - Experience with Docker and containerization
+ - Experience with JavaScript/Node.js testing frameworks
+ - Understanding of DevOps principles and automated deployment
+ - Familiarity with Git workflows and versioning tools
+
+**Description**<br>
+
+Music Blocks is a Visual Programming Language and web application for exploring musical and mathematical concepts. While the project has basic CI workflows (linting, testing, security scans, and performance audits), it currently **lacks a structured, automated deployment pipeline**. Releases from the master branch to production are done **manually and irregularly**, resulting in unpredictable deployments, risk of human error, slow time-to-market for bug fixes and features, and project agility bottlenecks. There is no automated deployment workflow, versioning automation, multi-environment strategy (dev/staging/production), rollback mechanisms, deployment monitoring, automated changelog generation, or optimized containerized deployment options.
+
+This project will transform Music Blocks' release process from manual and ad-hoc to automated, reliable, and auditable. The contributor will design and implement an automated release pipeline covering the entire software delivery lifecycle, including multi-environment infrastructure (staging and production), semantic versioning automation, optimized Docker builds with GitHub Container Registry, automated deployment workflows with approval gates and preview deployments, one-click rollback mechanisms, pre/post-deployment validation, error tracking and performance monitoring, deployment notifications and dashboards, and comprehensive documentation with runbooks and troubleshooting guides.
+
+**Expected Deliverables:**
+- Perform the audit of current infrastructure with mentors and create a documentation of the existing infrastructure
+- Design the effective CI-CD pipelines that goes well of with the semi-automated/automated deployments to cop-up with the translations feature development cycles lagging behind
+- Fully automated deployment pipeline with multi-environment support (staging, production, preview)
+- Automated semantic versioning, changelog generation, and GitHub releases
+- Optimized Docker containerization with GitHub Container Registry
+- One-click rollback and deployment recovery mechanisms
+- Comprehensive monitoring, error tracking, and deployment dashboards
+- Complete documentation with runbooks and troubleshooting guides
+
+References:
+ - <https://github.com/sugarlabs/musicblocks>
+ - <https://github.com/sugarlabs/musicblocks/tree/master/.github/workflows>
+ - <https://docs.github.com/en/actions>
+ - <https://www.conventionalcommits.org/>
+
+**Project Length**<br>
+
+**350** hours
+
+**Difficulty**<br>
+
+**Hard**<br>
+
+**Coding Mentors**<br>
+[Om Santosh Suneri](https://github.com/omsuneri) [Walter Bender](https://github.com/walterbender/)<br>
+
+-----------
+
 ## Music Blocks Maintenance
 
 **Prerequisites**
@@ -549,7 +594,7 @@ Three distinct modes will be implemented:
 
 * ***Draw mode***: A very basic mode for young users. Let users create freely like in Gridpaint activity - inspired by [pok pok](https://playpokpok.com/res/img/video/connect-the-dots.mp4). In shared mode, all users are drawing together on the same board like in Paint activity.
 * ***Number mode***: The user chooses a template with numbered dots and has to connect them in the correct order - inspired by [connect-the-dots-activity](https://github.com/sugarlabs/connect-the-dots-activity/tree/master). In shared mode, all users compete to finish the template first like in Maze activity. It should also be possible to create and share new templates like in Calligra or Tangram activities.
-* ***Game mode***: Strategic mode to conquer territory, each users should fill a maximum part of the screen starting from a little square in a border - inspired by [paper io](https://github.com/sugarlabs/connect-the-dots-activity/tree/master). If the user is alone, an AI opponent will try to beat him. In shared mode, all users compete to conquer the most territory.
+* ***Game mode***: Strategic mode to conquer territory, each users should fill a maximum part of the screen starting from a little square in a border - inspired by [paper io](https://paperio.site/). If the user is alone, an AI opponent will try to beat him. In shared mode, all users compete to conquer the most territory.
 
 **First steps to starts**<br>
 

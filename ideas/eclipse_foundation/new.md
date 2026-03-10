@@ -2,7 +2,160 @@
 
 **Parent:** Eclipse Foundation — Project Ideas
 **Source:** https://gitlab.eclipse.org/eclipsefdn/emo-team/gsoc-at-the-ef/-/issues/new?issuable_template=GSoC_projectidea
-**Scraped:** 2026-02-22T23:28:47.613486
+**Scraped:** 2026-03-10T16:58:40.241004
+
+---
+
+## #31: Restructure the Eclipse Project Handbook
+
+**Labels:** GSoC 2026, Project Idea
+
+## **Restructure the Eclipse Project Handbook**
+<!-- 
+If you are interested in mentoring a project please use this template to submit your Project Idea for the GSoC programme.
+The format suggested below is exactly that, a suggestion. Play with the layout, but please make sure to provide all relevant information. Please be sure to follow branding guidelines (e.g. "Eclipse Dash", not "Dash"). Links to content hosted elsewhere are fine, but bear in mind that this GitLab project and its issues will be the main point of contact for people who are not already inside your community.
+-->
+
+### **Description** 
+
+The Eclipse Project Handbook currently rendered as a single HTML page. The current build also generates a PDF which we don't currently use.
+
+The rendered forms are generated from a collection of files in AsciiDoc format. Each file (generally) represents one chapter of the handbook. The AsciiDoc content includes  some graphviz and PlantUML markup that generates embedded images. The current build script uses a combination of Maven and `bash` script.
+
+As the handbook has grown in size, the decision to render it as a single HTML file makes less sense, and we'd like to explore rendering it in a more modern manner (e.g., similar to the [asciidoctor.org](https://docs.asciidoctor.org/asciidoctor/latest/) documentation with multiple pages and navigation block on the left).
+
+Ideally, we'd like retain the ability to render the handbook as a either an ebook or a format suitable for printing hardcopies (physical books are things that we can give to our moms to impress their friends).
+
+Our use of cross references across chapters may require adjustment (there's a lot of cross references, so this may be a painstaking chore). There may be other examples of naive use of AsciiDoc features that we'd welcome help remediating.
+
+### **Links to Eclipse Project** 
+
+- [Eclipse Dash](https://projects.eclipse.org/projects/technology.dash)
+- [Eclipse Project Handbook in GitLab](https://gitlab.eclipse.org/eclipse/technology/dash/org.eclipse.dash.handbook)
+
+### **Expected outcomes** 
+
+- Document (content) updates as required
+- Updated (or new) automated build that produces the handbook in chapter format and in PDF/ebook format
+
+Note that replacement of the Maven-based build is an acceptable outcome.
+
+Hint: We think that [Antora](https://docs.antora.org) plays a role in the solution.
+
+### **Skills required/preferred** 
+
+- Familiarity with AsciiDoc and asciidoctor.org will be a tremendous asset
+
+### **Project size** 
+We think that this is a 90 hour project. But feel free to convince us otherwise.
+
+### **Possible mentors:** 
+[Wayne Beaton](https://projects.eclipse.org/projects/technology.dash/PL/wbeaton)
+
+Hint: don't try to figure out how to contact me directly. This is an open source project. An important part of engaging in open source is to ask questions and work in the open. Ask your questions on this issue. Working in the open is hard. But I believe in you.
+
+### **Rating** 
+
+W
+
+*[truncated]*
+
+---
+
+## #30: Support for using an SBOM as input
+
+**Labels:** GSoC 2026, Project Idea
+
+## **Support for using an SBOM as input**
+
+### **Description** 
+
+The Eclipse Dash License Tool is a Java-based utility used by Eclipse committers to identify the licenses of project dependencies and verify them against the Eclipse Foundation’s IP policy. Currently, the tool relies on specific ecosystem inputs (like Maven `pom.xml`, Gradle lockfiles, or NPM `package-lock.json`) to identify dependencies.
+
+This project aims to generalise the tool’s input capabilities by implementing support for Software Bill of Materials (SBOM) files in CycloneDX and SPDX formats. The student will extend the tool to parse these industry-standard formats, extract dependency identifiers (pURLs, GAVs, NPM IDs, etc.), and perform the license check. Furthermore, the tool should be able to output an "enriched" version of the original SBOM, populated with the license information and review status discovered during the check.
+
+### **Links to Eclipse Project** 
+- [Eclipse Dash](https://projects.eclipse.org/projects/technology.dash)
+- [Eclipse Dash License Tool](https://github.com/eclipse-dash/dash-licenses)
+- This feature is discussed in [Issue 191](https://github.com/eclipse-dash/dash-licenses/issues/191)
+
+### **Expected outcomes** 
+
+- Implement parsers for CycloneDX (JSON/XML) and SPDX (JSON/Tag-Value) that extract a list of dependencies for the Dash Tool to process.
+- Integrate the extracted data into the existing Dash License Tool licence identification workflow.
+- Add a feature to generate an updated SBOM file that merges the original data with the discovered license information.
+- Add new command-line arguments (e.g., `--sbom-input` and `--sbom-output`) to support this workflow.
+- Provide comprehensive unit tests and user documentation for the new features.
+- Be open and transparent (e.g., discuss implementation ideas using issues and public discussion channels; contribute code as pull requests)
+
+### **Skills required/preferred** 
+
+- Basic understanding with Java (the tool is written in Java).
+- Understanding of dependency management (GAVs, PURLs, etc.).
+- Some familiarity with SBOM standards (CycloneDX and SPDX).
+
+### **Project size** 
+
+175 or 350 hours (The scope is flexible; a 175-hour project could focus on one format like CycloneDX, while 350 hours would cover both formats and the enrichment/output features).
+
+### **Possible mentors:** 
+
+[Wayne Beaton](https://projects.eclipse.org/projects/technology.dash/PL/wbeaton)
+
+**Do not email maintainers to ask questions about this project. Do not ask for hints or tips on how to "win" this project.** Open source depends on openness and transparency. So, step one is: be open and transparent. If you have questions, ask them either as a comment on this issue, on [Issue 191](https://github.com/eclipse-dash/dash-licenses/issues/191), or start a [discussion](https://github.com/eclipse-dash/dash-licenses/discussions).
+
+### **Rating** 
+
+Medium
+
+### **Hints**
+
+- Plan on using standard libraries like `cyclonedx-core-java` and `spdx-j
+
+*[truncated]*
+
+---
+
+## #29: Getting Eclipse ThreadX "Getting Started" restarted
+
+**Labels:** GSoC 2026, Project Idea
+
+**Description** 
+
+The goal of this project is to build a set of new "Getting Started" demos and samples showcasing [Eclipse ThreadX](https://threadx.io) and its companion components (NetX Duo, FileX, GUIX, and USBX). The code will target specific evaluation boards from major silicon vendors.
+
+Eclipse ThreadX is the world's first and only Real-Time Operating System (RTOS) certified for safety-critical applications. Deployed in over 12 billion devices since 1997, it is still going strong. From 2109 to 2023, ThreadX was known as Microsoft Azure RTOS. During that time, Microsoft worked with its silicon partners (Microship, NXP, Renesas, and STMicroelectronics) to provide hardware enablement and developer tooling support. Microsoft contributed Azure RTOS and the ThreadX trademarks to the Eclipse Foundation in November 2023. Since then, the Eclipse Foundation and the Eclipse ThreadX project team have been working together to create a true open source ecosystem around the project. 
+
+The Azure RTOS team at Microsoft built and maintained [a repository named _Getting Started_](https://github.com/eclipse-threadx/getting-started), which contained sample code pre-configured to run on popular evaluation boards from Microsoft's partners. Since the transition to Eclipse, this repository has been mostly untouched. The applications it contains showcase integration to Microsoft Azure IoT, which is not a goal of the Eclipse ThreadX project. 
+
+In 2024, the Eclipse ThreadX team started [a new repository called IoT DevKit](https://github.com/eclipse-threadx/iot-devkit/) to replace Getting Started. For the time being, this repository is focused on the AZ3166 board from MXChip only, since Microsoft donated hundreds of those boards to Eclipse.   
+
+***Practical goals***
+
+- Build a set of clean, empty starter applications targeting several popular evaluation boards
+- Taking inspiration from IoT DevKit, build samples and demonstrations leveraging the hardware features of the boards (sensors, buttons, screen, WiFi, Bluetooth, etc.)
+- Ensure the samples and demos can be built and run using CMake or the IDEs provided by the selected board's vendors (example: STM32CubeIDE and STM32CubeIDE for VS Code in the case of STMicroelectronics.
+- Nice-to-have: Some video content showcasing the work above!
+
+**Links to Eclipse Project**
+ 
+- [GitHub organisation](https://github.com/eclipse-threadx)
+- [Eclipse ThreadX](https://github.com/eclipse-threadx/threadx)
+- [Eclipse ThreadX NetXDuo](https://github.com/eclipse-threadx/netxduo)
+- [Eclipse ThreadX USBX](https://github.com/eclipse-threadx/usbx)
+- [Eclipse ThreadX FileX](https://github.com/eclipse-threadx/filex)
+- [Eclipse ThreadX GUIX](https://github.com/eclipse-threadx/guix)
+
+
+**Expected outcomes**
+
+- A fresh set of samples and demos targeting at least two distinct evaluation boards
+- Documentation describing how to keep the samples and demos up-to-date when vendors release SDK updates
+- Some video content (optional)
+
+**Skills required/pr
+
+*[truncated]*
 
 ---
 

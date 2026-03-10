@@ -2,24 +2,52 @@
 
 **Parent:** MoFA Org — Project Ideas
 **Source:** https://github.com/mofa-org/GSoC/blob/main/README.md
-**Scraped:** 2026-02-22T23:28:47.617423
+**Scraped:** 2026-03-10T16:58:40.266512
 
 ---
 
+<p align="center">
+  <img src="./gsoc_mofa_banner.png" alt="Google Summer of Code 2026 — MoFA" width="100%">
+</p>
+
 # Google Summer of Code 2026 — MoFA
 
-> [中文版](https://github.com/mofa-org/GSoC/blob/main/README-zh.md) |  English Version
+> English Version
 
 Welcome to MoFA's GSoC 2026 page.
 
 - **GSoC 2026 Organization Page**: https://summerofcode.withgoogle.com/programs/2026/organizations/mofa-org
-- **Project Ideas**: [ideas-list.md](https://github.com/mofa-org/GSoC/blob/main/ideas-list.md) ([中文版](https://github.com/mofa-org/GSoC/blob/main/ideas-list-zh.md))
+- **Project Ideas**: [ideas-list.md](https://github.com/mofa-org/GSoC/blob/main/ideas-list.md)
+- **Contributor Docs (mdBook)**: https://mofa.ai/mofa/
 - **Discord**: https://discord.gg/hKJZzDMMm9
 - **Organization Contact**: dev@mofa.ai
 
 **All contributors will be featured on mofa.ai Developer Hall of Fame**
 
 > **Can I start working on ideas now?** Yes. You do not need to wait for the official GSoC application period. Start exploring the codebase, pick up [open tasks](https://github.com/mofa-org/GSoC/blob/main/ideas-list.md#open-tasks--start-contributing-here), and discuss your approach with mentors. Early contributions help both you and us.
+
+["Disclaimer"  for GSoC applicants](https://github.com/mofa-org/GSoC/blob/main/disclaimer.md)
+
+## GSoC 2026 Key Dates (Official)
+
+All times below are in UTC:
+
+- **March 16, 2026 (18:00 UTC)**: Contributor application period opens
+- **March 31, 2026 (18:00 UTC)**: Contributor application deadline
+- **April 30, 2026 (18:00 UTC)**: Accepted contributor projects announced
+- **May 25, 2026**: Coding officially begins
+
+Full timeline: https://developers.google.com/open-source/gsoc/timeline
+
+## How Selection Works
+
+Short version:
+
+1. Mentors and Org Admins review proposals and rank them inside the organization.
+2. Org Admin submits slot requests and proposal rankings to Google.
+3. Google allocates slots to each org.
+4. If MoFA receives `N` slots, the proposals ranked `#1` to `#N` are accepted.
+5. If a contributor is selected by multiple orgs, Google admins coordinate the final matching.
 
 ---
 
@@ -28,6 +56,7 @@ Welcome to MoFA's GSoC 2026 page.
 ### 1. Clone and Build
 
 **Core framework** (Rust):
+
 ```bash
 git clone https://github.com/mofa-org/mofa
 cd mofa
@@ -45,6 +74,7 @@ cd mofa-studio
 
 ### 2. Explore
 
+- Read the MoFA mdBook docs: https://mofa.ai/mofa/
 - Read `docs/architecture.md` in the mofa repository
 - Study `examples/` in mofa-rs: `monitoring_dashboard`, `multi_agent_coordination`, `react_agent`
 - Build and run Studio locally
@@ -88,6 +118,15 @@ Don't aim for perfection. Show us you:
 - Have a plausible path forward
 - Can break the work into milestones
 - Are prepared to adapt as requirements evolve
+
+### Architecture Blueprint (Required)
+
+Your proposal must include an architecture blueprint, not only a feature list. At minimum, include:
+- Component boundaries and responsibilities
+- Interface contracts and data flow
+- Failure handling, rollback, and recovery strategy
+- Test plan and validation approach
+- Delivery milestones for mainline integration
 
 ### Timeline
 
@@ -133,6 +172,8 @@ It helps, but it is not a hard requirement. A small PR or a thoughtful issue com
 
 We strongly encourage you to make at least one contribution before submitting your proposal. This helps us assess your ability and helps you understand the codebase.
 
+We encourage you to transcend the perspective of individual features and take a holistic architectural view. The goal is to organically integrate various capabilities to establish a cohesive and comprehensive system.
+
 ### Contribution Workflow
 
 1. **Comment on the issue** expressing your interest. Briefly describe your approach.
@@ -152,6 +193,7 @@ We strongly encourage you to make at least one contribution before submitting yo
 
 ### PR Quality Expectations
 
+- **Evaluation is based on quality and depth, not quantity.** We care about architectural coherence, testability, and maintainability.
 - **Avoid skeleton-only PRs.** Include runnable examples and tests that demonstrate the feature works. If the change is large, make sure you understand the code well enough to maintain it going forward.
 - **Iterate continuously.** Do not treat a PR as a one-time submission. You are expected to maintain and improve the feature until it is reasonably complete.
 - **We encourage AI tooling**, but you must understand the code you submit. Avoid submitting code you cannot explain or maintain.
@@ -190,6 +232,17 @@ Our journey started with a Python/Dora-based prototype that taught us what works
 - Core runtime: [github.com/mofa-org/mofa](https://github.com/mofa-org/mofa)
 - Studio application: [github.com/mofa-org/mofa-studio](https://github.com/mofa-org/mofa-studio)
 - Makepad UI components: [makepad-chart](https://github.com/mofa-org/makepad-chart), [makepad-d3](https://github.com/mofa-org/makepad-d3), [makepad-flow](https://github.com/mofa-org/makepad-flow), [makepad-element](https://github.com/mofa-org/makepad-element)
+
+## Optional Chinese Translation
+
+- README: [zh/README.md](https://github.com/mofa-org/GSoC/blob/main/zh/README.md)
+- Project ideas: [zh/ideas-list.md](https://github.com/mofa-org/GSoC/blob/main/zh/ideas-list.md)
+- Proposal template: [zh/proposal-template.md](https://github.com/mofa-org/GSoC/blob/main/zh/proposal-template.md)
+
+## Directory Notes
+
+- English CFP sources and images: [ideas/README.md](https://github.com/mofa-org/GSoC/blob/main/ideas/README.md)
+- Chinese mirrored CFP docs: [zh/ideas/](https://github.com/mofa-org/GSoC/blob/main/zh/ideas/)
 
 ---
 

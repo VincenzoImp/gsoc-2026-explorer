@@ -1,7 +1,83 @@
 # openSUSE Project — Project Ideas
 
 **Source:** https://github.com/openSUSE/mentoring/issues
-**Scraped:** 2026-02-22T23:28:47.566236
+**Scraped:** 2026-03-10T16:58:40.251649
+
+---
+
+## #260: [Enhancement]: Upgrade Jekyll and modernize build/dependency workflow
+
+Description
+
+The mentoring program website is built using Jekyll and Bootstrap. This issue proposes modernizing the development stack to improve maintainability and long-term sustainability.
+
+Objectives
+
+Upgrade to latest stable Jekyll version
+
+Audit Ruby gem dependencies
+
+Remove deprecated plugins
+
+Improve local development setup instructions
+
+Enable consistent builds across environments
+
+Proposed Improvements
+
+Add .ruby-version file
+
+Improve Gemfile structure
+
+Add bundle exec jekyll doctor check in CI
+
+Optimize asset pipeline
+
+Expected Outcome
+
+Cleaner build process
+
+Easier onboarding for new contributors
+
+Future-proof setup
+
+---
+
+## #259: AI Powered Onboarding Experience for openSUSE Linux distributions
+
+**Labels:** Rancher, Larged Sized Project
+
+## Project Description 
+
+The project proposes building an AI-native onboarding and assistance layer for openSUSE Linux distributions (preferably Leap) by integrating a locally running Small Language Model with system lifecycle workflows. The assistant would operate as a containerized service that ingests contextual signals from the installer, system state, and official documentation through a retrieval pipeline to provide interactive guidance, command explanations, and troubleshooting insights. The initiative focuses on validating architecture, packaging, performance, and security considerations while delivering a functional prototype integrated with the installer or first-boot experience.
+
+## Project Size 
+
+- Large - 350 Hrs 
+
+## Deliverables 
+
+- Containerized AI assistant service running a local SLM
+- Prototype integration with installer or first-boot onboarding workflow
+- Retrieval pipeline over openSUSE documentation (RAG)
+- Basic user interface (CLI or lightweight web UI)
+- Performance and resource usage evaluation report
+- Project documentation and packaging guide
+
+
+## Eligibility
+
+- Should be a student or contributor according to Google Summer of Code guildlines
+- Comfortable working in a Linux development environment, Bash, Containerization, etc. 
+- Intermidiate Python programming skills 
+- Interest in buliding AI systems, developer tooling as well as  Linux platform engineering
+- Availability to actively contribute throughout the proposed project timeline
+
+
+## Project Mentors
+- @rudrakshkarpe @satyampsoni
+
+PS - we will shortly add more reference documentations and relevant resources to this concept
 
 ---
 
@@ -189,7 +265,7 @@ This project aims to develop a specialized benchmarking suite that mimics real-w
 
 ## Mentor
 
-Oscar Barrios and Pablo Gómez
+Oscar Barrios (@srbarrios) and Pablo Gómez
 
 ## Skills Required
 
@@ -211,7 +287,7 @@ Large-Sized Project (350 hours)
 
 **Specific Use Cases for Benchmarking:**
 
-* **Use Case 1: Metadata Processing (Small-file I/O):** Measure the time to process and generate repository metadata (repodata) for a channel with 50,000+ RPMs. This tests metadata operatio
+* **Use Case 1: Metadata Processing (Small-file I/O):** Measure the time to process and generate repository metadata (repodata) for a channel with 50,000+ RPMs. This tests meta
 
 *[truncated]*
 
@@ -247,7 +323,7 @@ This project aims to integrate an **AI Monitoring Agent** into the Uyuni ecosyst
 
 ## Mentor
 
-Oscar Barrios (I might have a co-mentor)
+Oscar Barrios (@srbarrios)
 
 ## Skills Required
 
@@ -259,7 +335,7 @@ Oscar Barrios (I might have a co-mentor)
 
 ## Skill Level
 
-* **Large:** Requires a solid understanding of Linux internals and the ability to integrate multiple distinct technologies
+* **Large:** Requires a solid understanding of Linux internals and the ability to integrate multiple distinct technologies (Prometheus, 
 
 *[truncated]*
 

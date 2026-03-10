@@ -1,7 +1,7 @@
 # AOSSIE — Project Ideas
 
 **Source:** https://github.com/AOSSIE-Org/Info/blob/main/GSoC-Ideas/2026/index.md
-**Scraped:** 2026-02-22T23:28:47.632937
+**Scraped:** 2026-03-10T16:58:40.237617
 
 ---
 
@@ -52,6 +52,7 @@ The skillset needed in each idea is shown in brackets.
   - [DocPilot](/ideas/aossie/docpilot) _{Mobile}_ _{AI}_
   - [Smart Notes](/ideas/aossie/smartnotes) _{AI}_ _{Desktop}_
   - [Neurotrack](/ideas/aossie/neurotrack) _{Mobile}_ _{AI}_
+  - [BabyNest](/ideas/aossie/babynest) _{Mobile}_ _{AI}_
 
 ### Theme: Trust
 

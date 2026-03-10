@@ -2,7 +2,7 @@
 
 **Parent:** SymPy — Project Ideas
 **Source:** https://github.com/sympy/sympy/wiki/UD-series-situation
-**Scraped:** 2026-02-22T23:28:47.572998
+**Scraped:** 2026-03-10T16:58:40.301023
 
 ---
 

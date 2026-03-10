@@ -2,7 +2,7 @@
 
 **Parent:** Kubeflow — Project Ideas
 **Source:** https://www.kubeflow.org/docs/started/architecture/
-**Scraped:** 2026-02-22T23:28:47.580754
+**Scraped:** 2026-03-10T16:58:40.314835
 
 ---
 

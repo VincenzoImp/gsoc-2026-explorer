@@ -1,7 +1,7 @@
 # Neuroinformatics Unit — Project Ideas
 
 **Source:** https://neuroinformatics.dev/get-involved/gsoc/2026
-**Scraped:** 2026-02-22T23:28:47.579184
+**Scraped:** 2026-03-10T16:58:40.297798
 
 ---
 
@@ -37,6 +37,57 @@ If you have any ideas within these themes, please reach out via our [GSoc Zulip 
 Our working language is English, but our mentors for these projects also speak Italian, French, and German.
 
 Three BrainGlobe repositories ([morphapi](https://github.com/brainglobe/morphapi), [brainrender](https://github.com/brainglobe/brainrender), [brainreg](https://github.com/brainglobe/brainreg)) are in pure maintenance mode, and therefore excluded from any GSoC project proposals. All other BrainGlobe repositories welcome alternative project ideas!
+
+## Miscellaneous maintenance work on BrainGlobe overall infrastructure
+
+BrainGlobe’s tools are housed in many different GitHub repositories and are bundled together as a BrainGlobe meta-package. While this works reasonably well, there are a number of improvements to the general infrastructure that need implementing to make the BrainGlobe ecosystem more self-consistent and more modern.
+
+Deliverables
+
+exposing the API from different tools under a simplified API at the meta-package level.
+
+standardising terminology across repositories and functions
+
+standardising the use of positional and keyword arguments across repositories and functions
+
+automating the creation of API reference documentation on the BrainGlobe website
+
+replacing
+
+`tox`
+
+with`uv`
+
+in all of BrainGlobe’s Continuous Integration workflowsimproving the process of publishing BrainGlobe releases on
+
+`conda-forge`
+
+add setuptools to conda recipes move to
+
+[https://conda-forge.org/blog/2025/02/27/conda-forge-v1-recipe-support/](https://conda-forge.org/blog/2025/02/27/conda-forge-v1-recipe-support/)
+
+standardising badge order
+
+
+Duration
+
+Large (~350 hours)
+
+Required skills
+
+Fluency with Python, and at least some experience with Github Actions and/or Python Packaging
+
+Difficulty
+
+This project is well suited for an intermediate contributor to open source.
+
+Nice-to-haves
+
+Extensive experience with GitHub Actions and structuring and publishing Python packages, experience with API design
+
+Potential mentors
+
+@alessandrofelder @igortatarnikov @adamltyson
 
 ##
 Refactor `brainglobe-heatmap`

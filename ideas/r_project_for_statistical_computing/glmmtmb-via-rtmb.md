@@ -2,7 +2,7 @@
 
 **Parent:** R project for statistical computing — Project Ideas
 **Source:** https://github.com/rstats-gsoc/gsoc2026/wiki/glmmTMB-via-RTMB
-**Scraped:** 2026-02-22T23:28:47.626233
+**Scraped:** 2026-03-10T16:58:40.306045
 
 ---
 
@@ -81,5 +81,4 @@ make them specific for your project.
 Contributors, please post a link to your test results here.
 - EXAMPLE CONTRIBUTOR 1 NAME, LINK TO GITHUB PROFILE, LINK TO TEST
   RESULTS.
-1) Name: Siddhesh Akole , [GITHUB PROFILE: "Siddd-hrr"](https://github.com/Siddd-hrr)
--  [Easy-test](https://github.com/Siddd-hrr/rstats-gsoc2026-task--glmmTMB-via-RTMB-/blob/main/README.md), [Medium-test](https://github.com/Siddd-hrr/rstats-gsoc2026-task--glmmTMB-via-RTMB-/blob/main/README.md), [Hard-test](https://github.com/Siddd-hrr/rstats-gsoc2026-task--glmmTMB-via-RTMB-/blob/main/README.md)
+1) Name: Siddhesh Akole , [GITHUB PROFILE: "Siddd-hrr"](https://github.com/Siddd-hrr), [Easy-test](https://github.com/Siddd-hrr/rstats-gsoc2026-task--glmmTMB-via-RTMB-/blob/main/README.md), [Medium-test](https://github.com/Siddd-hrr/rstats-gsoc2026-task--glmmTMB-via-RTMB-/blob/main/README.md), [Hard-test](https://github.com/Siddd-hrr/rstats-gsoc2026-task--glmmTMB-via-RTMB-/blob/main/README.md)

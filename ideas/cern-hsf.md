@@ -1,7 +1,7 @@
 # CERN-HSF — Project Ideas
 
 **Source:** https://hepsoftwarefoundation.org/gsoc/2026/summary.html
-**Scraped:** 2026-02-22T23:28:47.618318
+**Scraped:** 2026-03-10T16:58:40.290054
 
 ---
 
@@ -126,7 +126,7 @@ Negative weight mitigation with cell resampling and tests with MCFM
 Omnifold:
 Publication of Omnifold weights
 PODIO:
-Aparche Arrow interface for PODIO
+Apache Arrow interface for PODIO
 ROOT:
 Enhance and develop GeneROOT infrastructure
 ROOT:

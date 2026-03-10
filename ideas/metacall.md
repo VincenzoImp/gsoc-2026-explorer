@@ -1,7 +1,7 @@
 # MetaCall — Project Ideas
 
 **Source:** https://github.com/metacall/gsoc-2026
-**Scraped:** 2026-02-22T23:28:47.583731
+**Scraped:** 2026-03-10T16:58:40.275778
 
 ---
 
@@ -132,7 +132,7 @@ The project will involve fixing failing and pending tests, polishing the TypeScr
 - Improved integration with MetaCall CLI for a smoother developer workflow.
 - Updated documentation describing usage, limitations, and deployment flow.
 
-**Possible mentors**: Thomas Rory Gummerson, Jose Antonio Dominguez, Alexandre Gimenez Fernandez, Param Siddharth, Raj Aryan.
+**Possible mentors**: Thomas Rory Gummerson, Jose Antonio Dominguez, Alexandre Gimenez Fernandez, Param Siddharth, Raj Aryan, Praveen Kumar.
 
 **Resources**:
 
@@ -165,7 +165,7 @@ The project will involve deep work in both Rust and TypeScript to ensure seamles
 - Seamless integration of React on the backend with minimal friction in deployment.
 - Enhanced CI/CD pipelines for automated testing and deployment.
 
-**Possible mentors**: Thomas Rory Gummerson, Vicente Eduardo Ferrer Garcia, Gil Arasa Verge, Mostafa Wael Kamal, Alexandre Gimenez Fernandez, Param Siddharth, Jose Antonio Dominguez, Raj Aryan.
+**Possible mentors**: Thomas Rory Gummerson, Vicente Eduardo Ferrer Garcia, Gil Arasa Verge, Mostafa Wael Kamal, Alexandre Gimenez Fernandez, Param Siddharth, Jose Antonio Dominguez, Raj Aryan, Praveen Kumar.
 
 **Resources**:
 
@@ -250,7 +250,7 @@ The outcome will include a fully functional API for managing and sharing model c
 - Documentation and integration for the project in order to make it ready to use for other developers.
 - Testing for verifying that the tooling works and it's future proof.
 
-**Possible mentors**: Jose Antonio Dominguez, Alexandre Gimenez Fernandez, Param Siddharth, Mostafa Wael Kamal, Raj Aryan.
+**Possible mentors**: Jose Antonio Dominguez, Alexandre Gimenez Fernandez, Param Siddharth, Mostafa Wael Kamal, Raj Aryan, Praveen Kumar.
 
 **Resources**:
 

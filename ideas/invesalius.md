@@ -1,7 +1,7 @@
 # Invesalius — Project Ideas
 
 **Source:** https://github.com/invesalius/gsoc/blob/main/gsoc_2026_ideas.md
-**Scraped:** 2026-02-22T23:28:47.588217
+**Scraped:** 2026-03-10T16:58:40.258161
 
 ---
 
@@ -13,19 +13,19 @@ All the current ideas for GSoC 2026 are listed bellow:
 
 ---
 
-### Fixes in 3D mask editing and mask preview
+### ~~Fixes in 3D mask editing and mask preview~~
 
-Fix 1 - 3D edition tools: Polygons are not removed after using the tool. https://github.com/invesalius/invesalius3/issues/1078   
+Fix 1 - ~~3D edition tools: Polygons are not removed after using the tool. https://github.com/invesalius/invesalius3/issues/1078~~   
 
-Fix 2 - 3D edition tools: The “Clean Polygons” button clears the edits even when “Edit in 3D” is disabled. https://github.com/invesalius/invesalius3/issues/1079   
+Fix 2 - ~~3D edition tools: The “Clean Polygons” button clears the edits even when “Edit in 3D” is disabled. https://github.com/invesalius/invesalius3/issues/1079~~   
 
-Fix 3 - 3D edition tools: Incorrect volume selection when it occupies the entire viewport. https://github.com/invesalius/invesalius3/issues/1084   
+Fix 3 - ~~3D edition tools: Incorrect volume selection when it occupies the entire viewport. https://github.com/invesalius/invesalius3/issues/1084~~   
 
-Fix 4 - 3D edition tools: Empty volume screen when activating 3D editing after DICOM import. https://github.com/invesalius/invesalius3/issues/1085   
+Fix 4 - ~~3D edition tools: Empty volume screen when activating 3D editing after DICOM import. https://github.com/invesalius/invesalius3/issues/1085~~   
 
-Fix 5 - 3D edition tools: Incorrectly edited volume after importing a DICOM study and enabling “Edit in 3D”. https://github.com/invesalius/invesalius3/issues/1086   
+Fix 5 - ~~3D edition tools: Incorrectly edited volume after importing a DICOM study and enabling “Edit in 3D”. https://github.com/invesalius/invesalius3/issues/1086~~   
 
-Fix 6 - Mask Preview:  Volume is not updated after selecting part of the mask. https://github.com/invesalius/invesalius3/issues/1080
+Fix 6 - ~~Mask Preview:  Volume is not updated after selecting part of the mask. https://github.com/invesalius/invesalius3/issues/1080~~
 
 Fix 7 - Mask Preview: Update the volume color (in red), as in the slices, when a region is selected with "Tools -> Mask -> Select parts". https://github.com/invesalius/invesalius3/issues/1081   
 
@@ -108,7 +108,7 @@ InVesalius uses Marching Cubes to extract surface from volumetric images. It's i
 **Deliverables**:
 - Tool to generate surfaces using other methods than Marching Cubes.
 
-**Programming Languages**: Python and Cython
+**Programming Languages**: Python and Rust
 
 **Duration**: 350h (large)
 

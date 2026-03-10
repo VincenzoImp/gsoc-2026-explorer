@@ -2,66 +2,1193 @@
 
 **Parent:** API Dash — Project Ideas
 **Source:** https://github.com/foss42/apidash/issues/new/choose
-**Scraped:** 2026-02-22T23:28:47.569287
+**Scraped:** 2026-03-10T16:58:40.286575
 
 ---
 
-## #1125: [BUG] Cloudflare-protected APIs are blocked due to missing default User-Agent header
+## #1319: feat: show response latency in history sidebar cards
+
+#### Tell us about the task you want to perform and are unable to do so because the feature is not available
+When reviewing past API requests in the History tab, I can see the timestamp and status code for each run in the sidebar list, but I cannot quickly compare how long each request took without clicking into each one individually and checking the response pane header. This makes it slow to spot performance regressions or outliers across multiple runs of the same endpoint.
+
+
+#### Describe the solution/feature you'd like us to add
+Show response latency inline on each history sidebar card, alongside the existing timestamp and status code.
+
+Each card in the history run list would display:
+
+<img width="1088" height="449" alt="Image" src="https://github.com/user-attachments/assets/bf88ed3a-a374-4a99-9b30-ae531fe0bb96" />
+
+#### Implementation details:
+
+Add a ```Duration? latency``` field to ```HistoryMetaModel``` so it is stored in the lightweight metadata index (same pattern as ```responseStatus```)
+Populate it from the already-measured duration value at request completion time in ```CollectionStateNotifier```
+Render it in ```HistoryRequestCard``` between the timestamp and status chip using the existing ```humanizeDuration() ```utility
+Gracefully hidden for older history entries that predate this field (null check)
+This avoids loading full ```HistoryRequestModel``` records from Hive just to show latency, the meta layer is already designed for exactly this kind of lightweight display data.
+
+---
+
+## #1315: Implement "Add Custom Model" functionality in AI Model Selector
+
+#### Tell us about the task you want to perform and are unable to do so because the feature is not available
+
+In the AI Model Selector dialog, there is no way to add a custom AI model to a provider's model list. The "Add" button next to "Models" is commented out, and the [addNewModel](file:///d:/Projects/apidash/lib/screens/common_widgets/ai/dialog_add_ai_model.dart#6-45) function in [dialog_add_ai_model.dart](file:///d:/Projects/apidash/lib/screens/common_widgets/ai/dialog_add_ai_model.dart) contains a TODO - it collects a model ID and display name via a dialog but discards the result without adding the model.
+
+#### Describe the solution/feature you'd like us to add
+
+- The [addNewModel](file:///d:/Projects/apidash/lib/screens/common_widgets/ai/dialog_add_ai_model.dart#6-45) function should return a [Model](file:///d:/Projects/apidash/packages/genai/lib/models/available_models.dart#60-69) object constructed from the user's input (model ID and display name).
+- Input validation: reject empty model IDs; default display name to the model ID if left blank.
+- The add button in [ai_model_selector_dialog.dart](file:///d:/Projects/apidash/lib/screens/common_widgets/ai/ai_model_selector_dialog.dart) should be enabled and wired up to append the new model to the currently selected provider's model list, with the UI refreshing immediately.
+
+#### Any other feedback you would like to provide regarding the site
+
+N/A
+
+---
+
+## #1313: [Feature]: Auto-detect API type (REST / GraphQL / AI) from URL
+
+#### Tell us about the task you want to perform and are unable to do so because the feature is not available
+When working with different API types in API Dash, I have to manually switch between REST, GraphQL, and AI modes using the API type dropdown every time I paste or type a new URL. This gets repetitive - especially when switching between endpoints frequently. For example, pasting `https://api.openai.com/v1/chat/completions` should obviously be an AI request, and `https://api.example.com/graphql` is clearly GraphQL, but I still have to select the type manually each time.
+
+#### Describe the solution/feature you'd like us to add
+Auto-detect the API type from the URL as the user types or pastes it into the URL field, and automatically switch the request mode accordingly. Detection should be based on multiple signals:
+
+GraphQL: URL path contains `/graphql`
+AI: URL path matches known AI endpoint patterns (e.g. `/v1/chat/completions`, `/api/generate`), or the host belongs to a known AI provider (OpenAI, Anthropic, Gemini, Groq, etc.), or it's a localhost URL on a common AI server port (11434 for Ollama, 1234 for LM Studio, etc.)
+REST: Everything else
+Additionally:
+
+The detection should resolve environment variables `({{BASE_URL}}/graphql)` before matching
+A settings toggle should allow users to enable/disable this behavior (disabled by default)
+The user should always be able to manually override the detected type
+Future protocol support: The detection logic is designed to be extensible. When API Dash adds support for additional protocols, the same auto-detection approach can be expanded to cover:
+
+WebSocket: detect `ws://` / `wss://` URL schemes
+gRPC: detect common gRPC patterns (e.g. port 50051, `grpc://` scheme, or `.proto`-related paths)
+MQTT: detect `mqtt://` / `mqtts://` schemes or known MQTT broker ports (1883, 8883)
+
+#### Any other feedback you would like to provide regarding the site
+This would significantly improve the workflow for developers who frequently test across different API types in the same session. It's a small quality-of-life improvement that reduces friction without being intrusive, since the toggle lets users opt out. The extensible design also means it naturally grows as API Dash adds support for more protocols.
+
+---
+
+## #1296: Bug: Dashbot Ollama model Integration: "400 Invalid Request" & Configuration Wiped on Selection
+
+# [Bug Report] Dashbot Ollama Integration: "400 Invalid Request" & Configuration Wiped on Selection
+
+#### Bug/Problem
+When using Dashbot and attempting to select or configure an Ollama model (e.g., `qwen 2.5 `), I am encountering a `400 Invalid Request: model is required` API error. 
+
+Additionally, anytime I try to open the selector and pick an Ollama model, my existing custom configurations—specifically the **Custom URL** and **API Key**—are actively wiped out and reset within the UI. This prevents any successful interaction with custom local models since their endpoint parameters disappear before execution.
+
+**Component:** Dashbot / AI Model Selector Dialog (`lib/screens/common_widgets/ai/ai_model_selector_dialog.dart`)
+
+**Suspected Root Cause:**
+The core issue appears to stem from how the `AIModelSelectorDialog` handles state changes when a user selects a new AI provider or model from the dropdown.
+
+When the `onChanged` event fires, the logic instantiates a completely **new** `AIRequestModel` object from scratch:
+
+```dart
+AIRequestModel newModel = AIRequestModel(
+  aiModelProvider: value.provider,
+  model: aiModel.name,
+);
+```
+
+Because it creates a brand new instance, it only evaluates the `aiModelProvider` and the new `model` name. It appears to completely ignore the existing state of the dialog. Consequently, user-defined properties like the `url` and `apiKey` are abandoned and implicitly set to `null` on the new object. 
+
+When this truncated model is eventually passed back down to Dashbot to execute via the `ollama_dart` client, the lack of a proper endpoint URL triggers the `400` errors from the server.
+
+**Console Logs:**
+```text
+[ChatBubble] Actions count: 0 | msg: hey
+[ChatBubble] Actions count: 0 | msg: No response received from the AI.
+[ChatBubble] Actions count: 0 | msg: hey
+[ChatBubble] Actions count: 0 | msg: No response received from the AI.
+LLM_EXCEPTION: 400
+{"error":{"message":"model is required","type":"api_error","param":null,"code":null}}
+```
+
+**Local Ollama Server Logs:**
+```text
+[GIN] 2026/03/07 - 08:31:30 | 200 |    2.8718ms | 127.0.0.1 | GET  "/api/ps"
+[GIN] 2026/03/07 - 08:32:05 | 400 |   44.3568ms | 127.0.0.1 | POST "/v1/chat/completions"
+```
+
+#### Steps to Reproduce the bug/problem
+1. Open the **Dashbot** window in API Dash.
+2. Click on the **AI Model Selector Button** to open the `AIModelSelectorDialog`.
+3. Input a custom URL (e.g., `http://localhost:11434/api/generate`) and a custom API key.
+4. Select an Ollama model from the dropdown list.
+5. *Observe:* The previously entered URL and API Key fields are instantly cleared.
+6. Submit a prompt to Dashbot.
+7. *Result:* Dashbot returns a `400: model is required` or similar error because the backend request model appears to have lost its configuration data during the UI state change in step 4.
+
+#### Expected behavior
+Selecting an AI Model from the dropdown should preserve the existing inputs in the dialog. The configuration should merge the new `aiModelProvider` and `model
+
+*[truncated]*
+
+---
+
+## #1292: Documentation: Add comprehensive scripting assertions guide with test coverage
+
+## Summary
+Add exhaustive documentation guide for API Dash scripting assertions with practical examples and corresponding test suite.
+
+## What was requested
+@animator asked to update the user guide to document scripting assertion patterns with working examples and add test files to validate them work correctly.
+
+## Completed work
+- ✅ Updated `doc/user_guide/scripting_user_guide.md` with 7 comprehensive examples covering:
+  - Status code checks (equals, notEquals, greaterThan, lessThan)
+  - Header verification (exists, equals, contains)
+  - Performance checks (single response, history tracking)
+  - Required field validation
+  - Data type checking
+  
+- ✅ Added `test/providers/scripting_assertions_test.dart` with test coverage for all examples
+
+- ✅ Fixed misleading "Save for tracking" comment in Example 3
+
+## References
+Related to #1239 - Feature proposal: MVP assertion checks for API responses
+
+---
+
+## #1283: Typo in Request Body: "answer" displayed as "anwe\nr" (shifted r)
+
+The request body field **`answer`** is incorrectly rendered as **`anwe`**, where the character **`r`** appears below the word instead of being placed correctly at the end. This causes the parameter name to appear malformed in the request body.
+
+---
+
+#### Steps to Reproduce the bug/problem
+
+1. Open the **request body** section where parameters are defined.
+2. Locate the field intended to be **`answer`**.
+3. Observe that the text appears as **`anwe`**, with the **`r`** positioned below the word instead of inline.
+
+---
+
+#### Expected behavior
+
+The parameter name should appear correctly as **`answer`**, with all characters displayed inline in the correct order.
+
+---
+
+#### Device Info (The device where you encountered this issue)
+
+* **OS:** Windows
+* **Version:** Windows 11 (25H2)
+
+---
+
+<img width="1919" height="1079" alt="Image" src="https://github.com/user-attachments/assets/ca31a009-e368-46ee-a8e1-f88688c634d8" />
+
+#### Flutter Doctor
+
+```
+Doctor summary (to see all details, run flutter doctor -v):
+
+[√] Flutter (Channel stable, 3.41.4, on Microsoft Windows [Version 10.0.26200.7840], locale en-US)
+[√] Windows Version (Windows 11 or higher, 25H2, 2009)
+
+[!] Android toolchain - develop for Android devices (Android SDK version 36.1.0)
+    X cmdline-tools component is missing.
+      Try installing or updating Android Studio.
+      Alternatively, download the tools from:
+      https://developer.android.com/studio#command-line-tools-only
+      and make sure to set the ANDROID_HOME environment variable.
+      See https://developer.android.com/studio/command-line for more details.
+
+    X Android license status unknown.
+      Run `flutter doctor --android-licenses` to accept the SDK licenses.
+      See https://flutter.dev/to/windows-android-setup for more details.
+
+[√] Chrome - develop for the web
+[√] Visual Studio - develop Windows apps (Visual Studio Community 2026 18.0.2)
+[√] Connected device (3 available)
+[√] Network resources
+
+! Doctor found issues in 1 category.
+```
+
+---
+
+## #1276: [Bug] Application crashes when searching in collection pane if AI requests are present
+
+#### Describe the bug/problem
+The application crashes when using the filter/search bar in the collection pane if there is an **AI Request** in the collection list. 
+
+This happens because the search logic explicitly calls `item.httpRequestModel!.url`, which throws a "Null check operator used on a null value" error because AI requests have a `null` `httpRequestModel`.
+
+#### Steps to Reproduce the bug/problem
+1. Open API Dash.
+2. Create a new request and change the **API Type** to **AI Request**.
+3. Focus on the **Filter bar** at the top of the collection pane (sidebar).
+4. Type any character (e.g., "a").
+5. The application crashes immediately.
+
+#### Expected behavior
+The search should work without crashing. AI requests should be filtered by their **Name**, while HTTP requests should continue to be filtered by both **Name** and **URL**.
+
+#### Device Info
+ - **OS**: Windows 11
+ - **Version**: 10.0.26200 Build 26200
+
+#### Flutter Doctor
+```text
+[!] Flutter (Channel [user-branch], 3.38.7, on Microsoft Windows [Version 10.0.26200.7922], locale en-IN) [359ms]
+    ! Flutter version 3.38.7 on channel [user-branch] at D:\dsa\flutter
+      Currently on an unknown channel. Run `flutter channel` to switch to an official channel.
+      If that doesn't fix the issue, reinstall Flutter by following instructions at https://flutter.dev/setup.
+    ! Upstream repository unknown source is not a standard remote.
+      Set environment variable "FLUTTER_GIT_URL" to unknown source to dismiss this error.
+    • Framework revision 3b62efc2a3 (7 weeks ago), 2026-01-13 13:47:42 -0800
+    • Engine revision 78fc3012e4
+    • Dart version 3.10.7
+    • DevTools version 2.51.1
+    • Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop, enable-android,
+      enable-ios, cli-animations, enable-native-assets, omit-legacy-version-file, enable-lldb-debugging
+    • If those were intentional, you can disregard the above warnings; however it is recommended to use "git" directly
+      to perform update checks and upgrades.
+
+[√] Windows Version (11 Home Single Language 64-bit, 25H2, 2009) [1,019ms]
+
+[√] Android toolchain - develop for Android devices (Android SDK version 36.1.0) [1,987ms]
+    • Emulator version 36.2.12.0 (build_id 14214601) (CL:N/A)
+    • Platform android-36, build-tools 36.1.0
+    • Java binary at: D:\jbr\bin\java
+      This is the JDK bundled with the latest Android Studio installation on this machine.
+      To manually set the JDK path, use: `flutter config --jdk-dir="path/to/jdk"`.
+    • Java version OpenJDK Runtime Environment (build 21.0.8+-14196175-b1038.72)
+    • All Android licenses accepted.
+
+[√] Chrome - develop for the web [86ms]
+    • Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
+
+[√] Visual Studio - develop Windows apps (Visual Studio Community 2026 18.3.1) [85ms]
+    • Visual Studio at D:\visual studio
+    • Visual Studio Community 2026 version 18.3.11512.155
+    • Windows 10 SDK version 10.0.26100.0
+
+[
+
+*[truncated]*
+
+---
+
+## #1269: Revamp Model Selector dialog
+
+Meta list to track issues with model selector dialog.
+Currently, it needs a complete revamp.
+
+---
+
+## #1264: App crashes with unhandled exception when Infinity value is entered in AI config numeric fields
+
+#### Describe the bug/problem
+When a user enters `1e309` (or any value that evaluates to Infinity) 
+in a numeric configuration field (e.g., max_tokens / maxOutputTokens) 
+for an AI request, the app crashes silently with an unhandled exception. 
+No error is shown to the user.
+
+#### Steps to Reproduce the bug/problem
+1. Create a new request and set API type to AI
+2. Open Model Selector, choose any provider (e.g., Gemini), save
+3. Go to the Configurations tab
+4. In the max_tokens / maxOutputTokens numeric field, type: 1e309
+5. Click Send
+
+Confirmed on multiple providers:
+- Gemini: crashes with "Converting object to an encodable object failed: Infinity"
+- Anthropic: same crash with anthropic.dart in stack trace
+- Azure OpenAI
+
+#### Expected behavior
+The app should validate the input and show a clear error message such as 
+"Please enter a valid number" — and should not allow Infinity or NaN 
+values to be saved or sent.
+
+#### Actual Behavior
+The app crashes silently. No feedback is shown to the user.
+The following unhandled exception appears in the console:
+
+FormatException: Converting object to an encodable object failed: Infinity
+  at GeminiModel.createRequest (genai/interface/model_providers/gemini.dart:46)
+  at AIRequestModel.httpRequestModel (genai/models/ai_request_model.dart:29)
+
+#### Stack Trace
+[ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception:
+Converting object to an encodable object failed: Infinity
+#0      _JsonStringifier.writeObject (dart:convert/json.dart:824:7)
+#1      _JsonPrettyPrintMixin.writeMap (dart:convert/json.dart:971:7)
+#2      _JsonStringifier.writeJsonValue (dart:convert/json.dart:863:21)
+#3      _JsonStringifier.writeObject (dart:convert/json.dart:815:9)
+#4      _JsonPrettyPrintMixin.writeMap (dart:convert/json.dart:971:7)
+#5      _JsonStringifier.writeJsonValue (dart:convert/json.dart:863:21)
+#6      _JsonStringifier.writeObject (dart:convert/json.dart:815:9)
+#7      _JsonStringStringifier.printOn (dart:convert/json.dart:1024:17)
+#8      _JsonStringStringifier.stringify (dart:convert/json.dart:1005:5)
+#9      JsonEncoder.convert (dart:convert/json.dart:353:30)
+#10     GeminiModel.createRequest
+(package:genai/interface/model_providers/gemini.dart:46:26)
+#11     AIRequestModel.httpRequestModel
+(package:genai/models/ai_request_model.dart:29:45)
+#12     CollectionStateNotifier.sendRequest
+(package:apidash/providers/collection_providers.dart:366:49)
+
+#### Device Info (The device where you encountered this issue)
+ - OS: Windows 11
+- App type: Desktop
+- Flutter: 3.41.3
+
+#### Flutter Doctor
+Please run the `flutter doctor -v` command and provide the details below:
+
+```
+[√] Flutter (Channel stable, 3.41.3, on Microsoft Windows [Version 10.0.26100.7623], locale en-US) [416ms]
+    • Flutter version 3.41.3 on channel stable at C:\Users\User\flutter\flutter
+    • Upstream repository https://github.com/flutter/flutter.git
+    • Framework revision 48c32af034 (5 days ago), 2026-02-27 17:09:06 -0500
+    • Engine revisio
+
+*[truncated]*
+
+---
+
+## #1262: Add unit tests for genai agentic engine blueprint and model providers
+
+## Description
+
+The `packages/genai/` package currently lacks test coverage for its core agentic engine blueprint and model provider implementations. While basic utility tests exist (PR #882), the following critical areas remain untested:
+
+### Agentic Engine Blueprint (`lib/agentic_engine/blueprint.dart`)
+- `AIAgent` abstract class contract (name, system prompt, validator, output formatter)
+- `SystemPromptTemplating` extension (`:variable:` placeholder substitution)
+- `AgentInputs` model (query and variables handling)
+
+### Model Providers (`lib/interface/model_providers/`)
+- `OpenAIModel` — request creation, bearer auth, streaming, output formatting
+- `AnthropicModel` — request creation, API key auth, anthropic-version header, output formatting
+- `AzureOpenAIModel` — request creation, api-key header, empty URL validation, output formatting
+- `OllamaModel` — inherited OpenAI format, config subset (temperature + top_p only)
+
+Adding tests for these ensures reliability of the AI integration layer and provides a safety net for future MCP-related features that will build on this infrastructure.
+
+---
+
+## #1255: File upload crashes on macOS/iOS due to missing uniformTypeIdentifiers in XTypeGroup in DashBot
+
+#### Describe the bug/problem
+When attempting to upload a file using DashBot's ``Import OpenAPI``→ Upload file feature on macOS (Flutter desktop) or iOS, the application crashes with an exception from file_selector_ios.
+
+This occurs because the ``XTypeGroup`` used in the file picker does not include ``uniformTypeIdentifiers``, which are required by file_selector_ios.
+
+#### Steps to Reproduce the bug/problem
+- Run ApiDash on macOS/IOS.
+- Open DashBot.
+- Click Import OpenAPI.
+- Choose Upload file.
+- Select a file.
+
+The application throws an exception and the file picker fails.
+
+https://github.com/user-attachments/assets/fedc7ba1-4b7e-4530-a0a0-67811495adc6
+
+#### Expected behavior
+The file picker should open normally and allow selecting files for upload without crashing.
+
+
+### Suggested Fix
+Add uniformTypeIdentifiers to the XTypeGroup, for example:
+``` dart
+uniformTypeIdentifiers: const [
+  'public.json',
+  'public.yaml',
+  'public.data',
+]
+```
+
+#### Device Info (The device where you encountered this issue)
+ - OS: [e.g. Windows, MacOS]
+ - Version: [e.g. Catalina 10.15.7, Monterey 12.3.1, Windows 11 22H2]
+ - Browser (only if you encountered the issue while running the web app): [e.g. chrome, safari]
+
+#### Flutter Doctor
+Please run the `flutter doctor -v` command and provide the details below:
+
+```
+prajwal@prajwals-MacBook-Air-2 apidash % flutter doctor -v
+[!] Flutter (Channel [user-branch], 3.38.7, on macOS 26.2 25C56 darwin-arm64, locale en-US) [490ms]
+    ! Flutter version 3.38.7 on channel [user-branch] at /Users/prajwal/flutter_sdk
+      Currently on an unknown channel. Run `flutter channel` to switch to an official channel.
+      If that doesn't fix the issue, reinstall Flutter by following instructions at https://flutter.dev/setup.
+    ! Upstream repository unknown source is not a standard remote.
+      Set environment variable "FLUTTER_GIT_URL" to unknown source to dismiss this error.
+    • Framework revision 3b62efc2a3 (7 weeks ago), 2026-01-13 13:47:42 -0800
+    • Engine revision 78fc3012e4
+    • Dart version 3.10.7
+    • DevTools version 2.51.1
+    • Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop, enable-android, enable-ios,
+      cli-animations, enable-native-assets, omit-legacy-version-file, enable-lldb-debugging
+    • If those were intentional, you can disregard the above warnings; however it is recommended to use "git" directly to perform update
+      checks and upgrades.
+
+[✓] Xcode - develop for iOS and macOS (Xcode 26.2) [1,174ms]
+    • Xcode at /Applications/Xcode.app/Contents/Developer
+    • Build 17C52
+    • CocoaPods version 1.16.2
+
+[✓] Chrome - develop for the web [7ms]
+    • Chrome at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+
+[✓] Connected device (3 available) [7.6s]
+    • iPhone 16e (mobile) • DA298410-4AFF-464E-AC38-319B380B3B76 • ios            • com.apple.CoreSimulator.SimRuntime.iOS-26-2
+      (simulator)
+    • macOS (desktop)     • macos                    
+
+*[truncated]*
+
+---
+
+## #1252: OpenAPI import does not populate form fields from schema for multipart/form-data and x-www-form-urlencoded
+
+#### Describe the bug/problem
+When importing an openApi specification that has a request body with multipart/form-data or  application/x-www-form-urlencoded with schema containing type:object ,the generated payload sets: 
+``form=true``
+``Content-Type`` header
+but the fields defined under schema.properties are not populated in the formData[].
+
+#### Steps to Reproduce the bug/problem
+- Use an OpenAPI 3 specification that defines a requestBody with multipart/form-data or application/x-www-form-urlencoded.
+- Ensure the schema defines type: object with properties, for example:
+```
+       requestBody:
+          required: true
+          content:
+              multipart/form-data:
+                 schema:
+                     type: object
+                     properties:
+                          username:
+                                type: string
+                          avatar:
+                                type: string
+                                format: binary
+```
+- Import the OpenAPI specification into ApiDash through DashBot
+
+#### Observed behavior
+- form is set to true
+- Content-Type header is correctly set
+- formData is empty
+
+Added a unit test to validate schema property extraction. The assertion fails because formData remains empty.
+<img width="752" height="106" alt="Image" src="https://github.com/user-attachments/assets/a190b003-0c93-427b-a5b9-7d273acb6a52" />
+
+#### Expected behavior
+- Each property under schema.properties should be added as a form field.
+- Fields with format: binary should be treated as file inputs.
+- Other fields should default to text inputs.
+```
+[
+  { "name": "username", "value": "", "type": "text" },
+  { "name": "avatar", "value": "", "type": "file" }
+]
+```
+
+**If this aligns with the intended behavior, I’d be happy to work on a fix and submit a PR.**
+
+
+
+#### Flutter Doctor
+```
+prajwal@prajwals-MacBook-Air-2 apidash % flutter doctor -v
+[!] Flutter (Channel [user-branch], 3.38.7, on macOS 26.2 25C56 darwin-arm64, locale en-US) [490ms]
+    ! Flutter version 3.38.7 on channel [user-branch] at /Users/prajwal/flutter_sdk
+      Currently on an unknown channel. Run `flutter channel` to switch to an official channel.
+      If that doesn't fix the issue, reinstall Flutter by following instructions at https://flutter.dev/setup.
+    ! Upstream repository unknown source is not a standard remote.
+      Set environment variable "FLUTTER_GIT_URL" to unknown source to dismiss this error.
+    • Framework revision 3b62efc2a3 (7 weeks ago), 2026-01-13 13:47:42 -0800
+    • Engine revision 78fc3012e4
+    • Dart version 3.10.7
+    • DevTools version 2.51.1
+    • Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop, enable-android, enable-ios,
+      cli-animations, enable-native-assets, omit-legacy-version-file, enable-lldb-debugging
+    • If those were intentional, you can disregard the above warnings; however it is recommended to use "git" directly to perform update
+      checks and upgrades.
+
+
+*[truncated]*
+
+---
+
+## #1244: Auto-focus URL field when creating a new request
+
+#### Tell us about the task you want to perform and are unable to do so because the feature is not available
+
+When creating a new request using the `+` button, the URL input field is not automatically focused. This requires an additional mouse click before typing the URL.
+
+For users who frequently create new requests, this slightly interrupts the workflow and makes the interaction less keyboard-friendly.
+
+### Screen recording demonstrating current behavior:
+
+[https://github.com/user-attachments/assets/ae2d749c-a966-494e-ad3e-e0ec882166fc](https://github.com/user-attachments/assets/ae2d749c-a966-494e-ad3e-e0ec882166fc)
+
+#### Describe the solution/feature you'd like us to add
+
+After a new request is created:
+
+* The URL input field should automatically receive focus.
+* The cursor should be placed inside the URL field so the user can immediately start typing.
+* This should only trigger when a new request is added (not when switching between existing requests).
+
+This would improve usability and make request creation faster and more intuitive.
+
+#### Any other feedback you would like to provide regarding the site
+
+This small improvement would make the request creation flow smoother and more aligned with common developer tools, where the primary input field is focused automatically after creating a new item.
+
+---
+
+## #1232: UX improvement : Add JSON Parser and auto format in request body
+
+### Problem
+The JSON editor in the API Dash request body currently lacks native parsing and formatting capabilities, requiring manual formatting and increasing the likelihood of syntax errors.
+
+https://github.com/user-attachments/assets/25fdb5ac-4f36-439b-bcb1-1e37af905f2c
+
+### Proposed Solution
+* Enable native JSON parsing, syntax validation, and formatting within the request body editor to mirror the VS Code experience.
+
+https://github.com/user-attachments/assets/fc7ae35b-64c5-4dc8-ae58-046a04b6e680
+
+### Benefits
+* The user can validates whether the JSON format is correct or not in the text editor
+*  It solves the problem of depending on external text editors
+
+
+### Implementation Ideas
+* Integrate a web-compatible JSON parser or Language Server (like in VS-CODE)
+* Implement core QoL (Quality of Life) features: auto-closing brackets, smart indentation, and syntax highlighting.
+
+#### I have researched about tools to do it: 
+   * [Monaco Editor](https://microsoft.github.io/monaco-editor/)
+  * [CodeMirror](https://codemirror.net/)
+
+---
+
+## #1221: Add tests for agentic services
+
+Hi! I'm exploring the codebase for GSoC 2026 (interested in the GSOC Idea – Agentic API Testing) and noticed that the `lib/services/agentic_services/` folder currently has no test coverage.
+
+### Current State
+The `lib/services/agentic_services/` directory currently has **zero test coverage**:
+
+- `agent_caller.dart` — no tests
+- `lib/services/agentic_services/agents/` — no tests for individual agent classes
+
+### Proposed Solution
+Add unit tests for these services, starting with:
+
+- **`APIDashAgentCaller`** — test exception handling when no default AI model is set
+- **Individual agent classes** — test `validator` and `outputFormatter` methods
+
+### Why This Matters
+-  Ensures agentic features are reliable and regression-proof
+-  Provides a foundation for future agentic testing features
+-  Follows the testing guidelines outlined in `CONTRIBUTING.md`
+
+### Related Issues / Ideas
+- Related to GSoC 2026 Idea #4 — Agentic API Testing
+- Related to #96, #100
+
+### Contribution
+I've already written a basic test for `agent_caller.dart` and would like to 
+contribute it as a starting point.
+### Checklist
+- [ ] Tests for `APIDashAgentCaller` (exception handling, no default model set)
+- [ ] Tests for individual agent `validator` methods
+- [ ] Tests for individual agent `outputFormatter` methods
+- [ ] Ensure all tests follow ex
+
+---
+
+## #1202: [Feature]: Enable Streaming Responses in Dashbot
+
+## 🚀 Feature Request: Enable Streaming Responses in Dashbot
+
+### Description
+
+Dashbot currently has all the groundwork for streaming AI responses in place, but streaming is never actually used — it is hardcoded to `false`. This means users always wait for the entire AI response to be generated before seeing any output, resulting in a noticeably sluggish experience.
+
+---
+
+### Current Behavior
+
+In `chat_viewmodel.dart:211`, the AI request is always built with `stream: false`:
+
+```dart
+final enriched = ai!.copyWith(
+  systemPrompt: systemPrompt,
+  userPrompt: userPrompt,
+  stream: false, // <-- always disabled
+);
+```
+
+Additionally, `ChatRemoteRepository` only exposes a `sendChat()` method — there is no `streamChat()` counterpart to handle streamed responses.
+
+---
+
+### What Already Exists
+
+The infrastructure for streaming is largely already in place:
+- `streamGenAIRequest()` is fully implemented in `ai_request_utils.dart:31` with SSE (Server-Sent Events) parsing.
+- The `ChatState` model already has a `currentStreamingResponse` field, indicating streaming was designed for from the start.
+
+This means the heavy lifting is already done — streaming just needs to be wired up.
+
+---
+
+### ⚠️ Key Risk: JSON Parsing During Streaming
+
+Dashbot expects structured JSON responses (`{"explanation": "...", "actions": [...]}`). During streaming, chunks arrive incomplete and can't be parsed mid-stream — naively enabling `stream: true` will cause `FormatException` errors.
+
+**Suggested approaches:**
+- **Buffer + parse at end** *(safest)* — accumulate all chunks, parse only once the stream closes. Still improves UX over the current blank wait.
+- **Partial extraction** — stream the `explanation` field in real time (it appears first), defer `actions` parsing until stream ends.
+
+
+---
+
+### Proposed Solution
+
+1. **Add `streamChat()` to `ChatRemoteRepository`** — implement a method that calls `streamGenAIRequest()` and yields chunks as they arrive.
+2. **Update `chat_viewmodel.dart`** — set `stream: true` when making a request and listen to the stream, progressively updating `currentStreamingResponse` in `ChatState`.
+3. **Update the Dashbot UI** — render `currentStreamingResponse` so tokens appear in real time as they stream in.
+
+---
+
+### Expected Behavior
+
+Users see AI responses being typed out token-by-token in real time, dramatically improving perceived responsiveness — consistent with the experience users expect from modern AI chat interfaces.
+
+---
+
+## #1183: missing validation for empty API key and Endpoint URL in AI Model Selector Dialog
+
+## Problem
+The **AI Model Selector dialog** does not check if required fields are filled before saving.
+
+When the user clicks **Save**, it allows saving an AI model even if:
+- The **API Key** is empty (for providers other than Ollama)
+- The **Endpoint URL** is empty
+
+This results in invalid configurations being saved without any warning.
+
+## Steps to reproduce
+1. Open the **AI Model Selector** dialog.
+2. Select any AI provider (for example, OpenAI or Gemini).
+3. Leave the **API Key / Credential** field empty.
+4. Leave the **Endpoint** field empty.
+5. Click **Save**.
+6. The dialog closes and saves the invalid configuration.
+
+## Expected behavior
+When **Save** is clicked:
+- If the provider is **not Ollama** and the API key is empty, show a warning (for example: **"API Key is required"**).
+- If the **Endpoint URL** is empty, show a warning (for example: **"Endpoint URL is required"**).
+
+The dialog should not close until all required fields are valid.
+
+## Device information
+- **OS:** Windows  
+- **Version:** Windows 11  
+- **App type:** Desktop app
+
+## Flutter Doctor
+Run the following command and paste the output:
+
+```bash
+[√] Flutter (Channel master, 3.42.0-1.0.pre-290, on Microsoft Windows [Version 10.0.26200.7922], locale en-IN) [3.1s]
+    • Flutter version 3.42.0-1.0.pre-290 on channel master at D:\dsa\flutter
+    • Upstream repository https://github.com/flutter/flutter.git
+    • Framework revision b7ac273fa0 (3 hours ago), 2026-02-26 09:02:27 -0500
+    • Engine revision b7ac273fa0
+    • Dart version 3.12.0 (build 3.12.0-178.0.dev)
+    • DevTools version 2.55.0
+    • Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop, enable-android,
+      enable-ios, cli-animations, enable-native-assets, omit-legacy-version-file, enable-lldb-debugging,
+      enable-uiscene-migration, enable-riscv64
+
+[√] Windows Version (11 Home Single Language 64-bit, 25H2, 2009) [2.1s]
+
+[√] Android toolchain - develop for Android devices (Android SDK version 36.1.0) [2.3s]
+    • Android SDK at C:\Users\prata\AppData\Local\Android\sdk
+    • Emulator version 36.2.12.0 (build_id 14214601) (CL:N/A)
+    • Platform android-36, build-tools 36.1.0
+    • Java binary at: D:\Games\jbr\bin\java
+      This is the JDK bundled with the latest Android Studio installation on this machine.
+      To manually set the JDK path, use: `flutter config --jdk-dir="path/to/jdk"`.
+    • Java version OpenJDK Runtime Environment (build 21.0.8+-14196175-b1038.72)
+    • All Android licenses accepted.
+
+[√] Chrome - develop for the web [91ms]
+    • Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
+
+[√] Visual Studio - develop Windows apps (Visual Studio Community 2026 18.3.1) [90ms]
+    • Visual Studio at D:\visual studio
+    • Visual Studio Community 2026 version 18.3.11512.155
+    • Windows 10 SDK version 10.0.26100.0
+
+[√] Connected device (3 available) [394ms]
+    • Windows (desktop) • windows • windows-x64    • Microsoft Windows [Version 10.0.26200.79
+
+*[truncated]*
+
+---
+
+## #1182: Disappearing API keys
+
+## API Key Disappears After Selecting AI Provider
 
 ### Describe the bug/problem
+When an API key is entered and saved, everything works normally. 
 
-When sending HTTP requests without manually adding a `User-Agent` header, some services behind Cloudflare block the request. This happens because Dart's `http` package sends `dart:io` as the default User-Agent, which Cloudflare flags as a bot.
+However, If an API key is previously inserted and the window is closed, reopening the app and selecting an AI provider causes the API key field to become empty. The key still remains there but the ui misbehaves and displays a blank input box. 
 
-The same request works fine using `curl` (which sends `User-Agent` and `Accept` headers by default) or when manually adding headers like `User-Agent: Mozilla/5.0` and `Accept: application/json`.
-
-The root cause is in `packages/better_networking/lib/services/http_service.dart` — the `sendHttpRequestV1()` function uses `authenticatedRequestModel.enabledHeadersMap` directly without setting a fallback `User-Agent`.
-
-**Suggestion:** Set a default `User-Agent: APIDash/<version>` and `Accept: */*` header when the user hasn't explicitly provided one, similar to how Postman sends `PostmanRuntime/7.x`.
+<img width="1512" height="979" alt="Image" src="https://github.com/user-attachments/assets/b6a056df-0dfc-4187-a3fc-70ae7d81f4cd" />
+---
 
 ### Steps to Reproduce the bug/problem
 
-1. Open API Dash
-2. Create a GET request to `https://jsonplaceholder.typicode.com/posts/1` (Cloudflare-protected)
-3. Send it **without** adding any headers → request gets blocked
-4. Add `User-Agent: Mozilla/5.0` + `Accept: application/json` manually → request succeeds with `200 OK`
-5. Try the same without headers on a non-Cloudflare API like `https://reqres.in/api/users` → works fine
+1. Open Dashbot.
+2. Navigate to AI provider/ API key settings.
+3. Select an AI provider
+4. Enter a valid API key.
+5. Click save. 
+6. Go back to the AI config tab on Dashbot.
+7. Select the AI provider Chosen in Step 3
 
-**Additional observations:**
-- Sending with **no headers** → blocked by Cloudflare
-- Sending with **only `User-Agent`** → still blocked
-- Sending with **`User-Agent` + any one other header** (e.g., `Accept`) → works ✅
-- `curl` works out of the box because it sends both `User-Agent` and `Accept` by default
-- This issue is **specific to Cloudflare-protected APIs** — non-Cloudflare APIs like `https://reqres.in/api` work fine without any headers
+**Observed Behavior:**  
+The previously entered API key disappears (the field becomes empty).
+
+---
 
 ### Expected behavior
+The API key should persist after being entered and remain populated when:
+- The app is reopened.
+- An AI provider is selected.
+- Switching between providers (if applicable).
 
-API Dash should send meaningful default headers (`User-Agent` and `Accept`) automatically so requests don't get blocked by common bot detection systems.
+The API key should not be cleared out in the UI if previously set
 
-### Device Info
-- **OS:** macOS
-- **Version:** Sequoia 15.2
+---
+
+### Device Info (The device where you encountered this issue)
+
+- **OS:** macOS  
+- **Version:** macOS Tahoe 26.2
+- **Browser:** N/A (Desktop app)
+
+---
 
 ### Flutter Doctor
-
-```
-[✓] Flutter (Channel stable, 3.41.2, on macOS 15.2 24C101 darwin-arm64, locale en-US) [683ms]
-    • Flutter version 3.41.2 on channel stable at /Users/shreyanshjain/flutter
+[✓] Flutter (Channel stable, 3.41.2, on macOS 26.2 25C56 darwin-arm64, locale en-US) [2.6s]
+    • Flutter version 3.41.2 on channel stable at /opt/homebrew/share/flutter
     • Upstream repository https://github.com/flutter/flutter.git
-    • Framework revision 90673a4eef (4 days ago), 2026-02-18 13:54:59 -0800
+    • Framework revision 90673a4eef (8 days ago), 2026-02-18 13:54:59 -0800
     • Engine revision 6c0baaebf7
     • Dart version 3.11.0
     • DevTools version 2.54.1
-    • Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop,
-      enable-windows-desktop, enable-android, enable-ios, cli-animations, enable-native-assets,
+    • Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop, enable-android, enable-ios, cli-animations, enable-native-assets,
       omit-legacy-version-file, enable-lldb-debugging, enable-uiscene-migration
 
-[✗] Android toolchain - develop for Android devices [632ms]
+[✗] Android toolchain - develop for Android devices [203ms]
     ✗ Unable to locate Android SDK.
       Install Android Studio from: https://developer.android.com/studio/index.html
       On first launch it will assist you in installing the Android SDK components.
-      (or visit https://flutter.dev/to/macos-android-setup for detai
+      (or visit https://flutter.dev/to/macos-android-setup for detailed instructions).
+      If the Android SDK has been installed to a custom location, please use
+      `flutter config --android-sdk` to update to that location.
+
+
+[✓] Xcode - develop for iOS and macOS (Xcode 26.2) [1,287ms]
+    • Xcode at /Applications/Xcode.app/Contents/Developer
+    • Build 17C52
+    • CocoaPods version 1.16.2
+
+[✓] Chrome - develop for the web [4ms]
+    • Chrome at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+
+[✓] Connected device (2 available) [9.4s]
+    • macOS (desktop) • macos  • darwin-arm64   • macOS 26.2 25C56 darwin-arm64
+    • Chrome (web)    • chrome • web-javascript • Google Chrome 145.0.7632.117
+
+[✓] Network resources [988ms]
+    • All expe
 
 *[truncated]*
+
+---
+
+## #1180: [Feat] AI-powered smart request suggestions based on URL pattern
+
+Problem :
+When a user enters a new API URL in API Dash, they have to manually figure out the correct HTTP method, required headers, body format, and query parameters. This is especially tedious for unfamiliar APIs where the user has to look up documentation externally.
+
+Proposed Feature : 
+Add a **"Smart Suggest"** capability to Dashbot that analyzes the entered URL and auto-suggests:
+
+**How It Would Work** ? 
+1. User enters a URL in the request editor
+2. User clicks a ✨ (sparkle) icon next to the URL field — or triggers "Suggest Request" from Dashbot's task buttons
+3. Dashbot sends the URL + any existing request context to the configured AI model with a purpose-built prompt
+4. The AI returns structured actions (update_method, add_header, update_body, etc.)
+5. The existing AutoFixService pipeline applies the suggestions to the current request — **no new action handling code needed**
+
+**How it would be helpful ?**
+1. A new developer testing an API for the first time doesn't know what headers, params, or body format to use. Instead of switching to docs, they enter the URL and hit ✨ — the AI fills in everything they need to get a working request in seconds.
+2. Right now, users often hit "Send" with wrong settings, get a 400/415/405 error, then debug manually. Smart suggestions get it right on the first try — correct method, correct Content-Type, correct body shape.
+3. New API Dash users see immediate AI-powered value the moment they type a URL. It makes the tool feel intelligent and differentiates it from Postman/Insomnia where you configure everything manually.
+4. It's optional — just a button click. Doesn't change the existing workflow. Power users ignore it, _**beginners rely on it.**_
+
+---
+
+## #1175: Support for Custom OpenAI-Compatible LLM Providers (Groq, OpenRouter, Mistral, etc.)
+
+#### Tell us about the task you want to perform and are unable to do so because the feature is not available  
+Currently, APIDash only supports specific built-in AI providers, including OpenAI, Anthropic, Gemini, Azure OpenAI, and Ollama, for its GenAI features. I want to use other alternative LLM providers that offer OpenAI-compatible API endpoints, such as OpenRouter, Groq, Mistral, Together AI, and LlamaAPI. Since there is no option to specify a custom endpoint and model identifier, I cannot connect APIDash's AI features to these powerful, often cost-effective or faster alternative models.
+
+#### Describe the solution/feature you'd like us to add  
+I would like a **"Custom (OpenAI Compatible)"** option added to the AI Model Selector Dialog. 
+
+When this provider is selected, the dialog should allow the user to provide:  
+1. **API Key / Credential:** The API key for the custom provider.  
+2. **Endpoint:** The full OpenAI-compatible chat completions URL, for example, `https://api.groq.com/openai/v1/chat/completions` `https://openrouter.ai/api/v1/chat/completions` , `https://api.mistral.ai/v1/chat/completions`.  
+3. **Model Name:** A text field to type out the identifier of the specific model to be used, for example, `llama-3.3-70b-versatile`.  
+
+This would use the existing [OpenAIModel]implementation structure under the hood to serialize the request correctly using Bearer authentication and the standard OpenAI JSON schema, but it would point to the custom URL provided by the user.
+
+#### Any other feedback you would like to provide regarding the site  
+This feature would greatly increase the accessibility of AI integrations in APIDash by allowing access to hundreds of open-source and alternative hosted models without needing to change the code for every new provider on the market.
+
+---
+
+## #1174: [Feat] Add support for Groq like cloud based model providers
+
+#### Tell us about the task you want to perform and are unable to do so because the feature is not available
+Many students hesitate to purchase API credit to run cloud based models (like from `OpenAI, Anthropic`) nor they have proper local system infrastructure and GPU to run heavy LLM models locally using Ollama. Groq provides free API key (with limits ofcourse) which can be used for LM inference.
+
+#### Describe the solution/feature you'd like us to add
+Add Groq as a LM provider in the application with some popular models like `llama-3.3-70b-versatile , gemma2-9b-it, deepseek-r1-distill-llama-70b` etc but not limited to these, user can also select other option where they can call models other than listed ones.
+
+#### Any other feedback you would like to provide regarding the site
+No
+
+---
+
+## #1170: test: Add unit tests for import/export IO parsers (postman, curl, har, insomnia)
+
+Added comprehensive unit tests for the four import/export IO parsers in **apidash_core** that had no prior test coverage.
+
+Created `postman_io_test.dart` (21 tests)
+Created `har_io_test.dart` (22 tests)
+Created `insomnia_io_test.dart` (19 tests)
+Extended `curl_test.dart` with 8 new edge case tests (7 → 15 total)
+
+Each parser is tested for:
+
+1. Basic HTTP methods (GET, POST, PUT, PATCH, DELETE)
+2. Query parameters and headers (including disabled/enabled states)
+3. Request bodies: raw JSON, form-data (text + file), x-www-form-urlencoded
+4. Nested folder structures (Postman) / multiple entries (HAR)
+5. Environment model conversion (Insomnia)
+6. parseFormData utility (HAR)
+7. Error handling: invalid JSON, empty strings, null/unknown methods
+8. URL parameter stripping
+9. Full API Dash collection round-trip parsing
+
+**How to verify:**
+`cd packages/apidash_core`
+`flutter test test/parsers/ --reporter expanded`
+
+**Result**: 77/77 tests passing.
+
+---
+
+## #1164: Fix: escape regex special characters in environment variable keys
+
+#### Describe the bug/problem
+There was a logic bug in [lib/utils/envvar_utils.dart](cci:7://file:///d:/top/gsoc/New%20folder/test/apidash/lib/utils/envvar_utils.dart:0:0-0:0) where environment variable keys were being used to build a `RegExp` without being escaped. This caused two main issues:
+
+1. **Substitution Failure:** If a variable name contains regex-special characters like `.` or [()](https://github.com/foss42/apidash/issues/new/ the substitution fails. For example, a key named `auth(v2)` would prevent the value from being replaced because the regex engine interprets the parentheses as a capturing group instead of literal text.
+2. **Security/Accuracy Risk:** A key like `api.url` was treated as a regex pattern where `.` matches any character. This could lead to accidental matching of incorrect strings like `api-url` or `api_url`.
+3. **Stability:** Certain characters in a key name could potentially trigger a `FormatException` during regex construction, leading to unexpected app behavior.
+
+#### Steps to Reproduce the bug/problem
+1. Go to the **Variables** tab and create a new environment variable.
+2. Set the key to a name with parentheses, e.g., `auth(v2)`, and give it a value.
+3. Use this variable in a Request header or URL, e.g., `Bearer {{auth(v2)}}`.
+4. Click **Send**.
+5. Observe the response: The variable is not replaced and is sent as the literal string `{{auth(v2)}}`.
+
+#### Expected behavior
+Environment variable keys should always be treated as literal strings. By wrapping the key in `RegExp.escape()`, we ensure that characters like dots or parentheses are matched exactly as the user typed them.
+
+#### Device Info
+ - OS: Windows 11
+
+#### Flutter Doctor
+Please run the `flutter doctor -v` command and paste your output below:
+## Screenshots
+<img width="2558" height="1510" alt="Image" src="https://github.com/user-attachments/assets/d4a7975b-bf24-4d98-af13-54909717cce8" />
+<img width="2558" height="1517" alt="Image" src="https://github.com/user-attachments/assets/9a425dcc-9059-40ce-8d17-2e5d42262533" />
+
+---
+
+## #1161: Bug: Cursor jumping in ai fields
+
+#### Describe the bug/problem
+Typing in the System Prompt or User Prompt fields in the AI request pane causes the cursor to jump to the end when editing in the middle of the text.
+
+#### Steps to Reproduce the bug/problem
+1.open an AI request
+2.Type some text in the System Prompt or User Prompt field
+3.Place the cursor in the middle of the text
+4.Type and see the cursor jumps forward
+
+#### Expected behavior
+The cursor should stay at the position where the user is typing.
+
+#### Device Info (The device where you encountered this issue)
+ - OS: MacOS
+ - Version: 15.6.1
+
+---
+
+## #1138: [Bug] "invalid text selection" crash in EnvironmentTriggerField when changing request type while text is highlighted
+
+#### Describe the bug/problem
+
+While testing the application, I encountered a crash related to the URL/Environment text field. It occurs during a specific edge case, but it completely breaks the UI state when triggered.
+
+I have investigated the codebase to isolate the root cause and attached a screen recording below demonstrating the exact crash.
+
+#### Steps to Reproduce the bug/problem
+- Enter a relatively long string into the main URL/address bar.
+
+- Use the cursor to highlight a portion of the text (specifically towards the end of the string).
+
+- With the text still highlighted, change the overall request type (e.g., switch from HTTP to AI or GraphQL).
+
+- The application throws an invalid text selection exception and crashes to a red screen.
+
+Video --- 
+https://github.com/user-attachments/assets/e08ee8da-c5b6-42cb-9c4b-25a1849be520
+
+Image ---
+<img width="1216" height="538" alt="Image" src="https://github.com/user-attachments/assets/b9445a21-a18b-436d-95a9-e10e8c19c7ce" />
+
+#### Expected behavior
+Changing the request type should update the UI state smoothly. If the new state causes the URL/Environment text to update or clear, the text field should either safely maintain the selection bounds or gracefully collapse the cursor, rather than throwing an out-of-bounds error.
+
+#### Actual behavior
+A RangeError (invalid text selection) exception is thrown because the TextEditingController attempts to apply a text selection that exceeds the length of the newly updated string.
+
+#### Root Cause Analysis:
+I tracked this down to the EnvironmentTriggerFieldState. Inside the didUpdateWidget method, there is logic meant to restore the cursor or selection when the parent widget passes down a new initialValue.
+
+Currently, the check is implemented as follows:
+```
+if (currentSelection.baseOffset <= controller.text.length) {
+  controller.selection = currentSelection;
+}
+```
+This implementation only verifies if the start (baseOffset) of the selection is within the bounds of the new string length. It does not check if the end of the selection (extentOffset) is valid. When the widget rebuilds with a shorter string which happens during the layout swap from HTTP to AI/GraphQL, Flutter tries to stretch the highlight to an index that no longer exists in memory. Additionally, if a user highlights right-to-left, the baseOffset and extentOffset values are inverted, which bypasses this condition entirely.
+
+Proposed Solution:
+To fix this, we need to ensure the entire selection range is valid before applying it. Updating the condition to use the .end property (which accurately handles both left-to-right and right-to-left selection bounds) prevents the crash:
+```
+if (currentSelection.isValid && currentSelection.end <= controller.text.length) {
+  controller.selection = currentSelection;
+}
+```
+
+#### Next Steps:
+Since I have the project set up locally and have already tested this fix, I would be glad to open a Pull Request to resolve this.
+
+#### Device Info (The device where you enc
+
+*[truncated]*
+
+---
+
+## #1135: feat : Multi-select requests with bulk delete
+
+**Labels:** priority: low
+
+#### Tell us about the task you want to perform and are unable to do so because the feature is not available
+
+Currently, requests in the sidebar can only be selected and deleted one at a time. When managing a large collection, this becomes tedious. This feature would allow users to:
+
+1. **Enter a multi-select mode** (e.g., long-press a request card, or toggle via a button/shortcut)
+2. Select multiple requests via checkboxes on each sidebar card
+3. Perform bulk actions — starting with bulk delete, with room for future actions like bulk duplicate or bulk export
+
+Current Behavior : 
+
+1. Single request selection via _selectedIdStateProvider_ (_StateProvider<String?>_)
+2. Delete one request at a time via the 3-dot _ItemCardMenu_ on _SidebarRequestCard_
+3. No multi-select, checkbox, or bulk action UI exists
+
+
+#### Any other feedback you would like to provide regarding the site
+
+---
+
+## #1132: Env Variable Text Field Loses Focus After First Character Typing
+
+#### Describe the bug/problem
+After the recent fix for the cURL import variable refresh issue (#1080), When entering text into an env variable field, the field loses focus immediately after typing the first character.
+
+#### Steps to Reproduce the bug/problem
+1. Navigate to the Variables tab.
+2. Click inside an env variable field.
+3. Type a single character.
+
+Observe that the field loses focus immediately.
+
+https://github.com/user-attachments/assets/ba6bf083-941c-440b-9442-393430217615
+
+#### Expected behavior
+The env variable text field should retain focus while typing, allowing continuous input without interruption.
+
+#### Device Info (The device where you encountered this issue)
+ - OS: Windows
+ - Version: Windows 11
+
+#### Flutter Doctor
+Please run the `flutter doctor -v` command and provide the details below:
+
+<img width="1556" height="661" alt="Image" src="https://github.com/user-attachments/assets/3468f62f-718c-4d4a-8d98-0e5eaff3b97f" />
+
+---
+
+## #1131: Visible Delay when closing the App on Windows
+
+#### Describe the bug/problem
+When I run the Release build of the app (generated via `flutter build windows` and located in `apidash\build\windows\x64\runner\Release`), closing the app with the ❌ shows a noticeable lag or glitch.
+This behavior feels unexpected in the Release build—especially since the Debug build doesn’t have this issue.
+
+#### Expected behavior
+The released build of the app should close immediately without any lag.
+
+#### Device Info (The device where you encountered this issue)
+ - OS: Windows 11 Home Single Language
+
+
+#### Flutter Doctor
+Please run the `flutter doctor -v` command and provide the details below:
+
+```
+E:\GSOC\apidash(project-exploring)
+λ flutter doctor -v
+[√] Flutter (Channel stable, 3.41.2, on Microsoft Windows [Version
+    10.0.26200.7840], locale en-US) [341ms]
+    • Flutter version 3.41.2 on channel stable at C:\flutter
+    • Upstream repository https://github.com/flutter/flutter.git
+    • Framework revision 90673a4eef (5 days ago), 2026-02-18 13:54:59
+      -0800
+    • Engine revision 6c0baaebf7
+    • Dart version 3.11.0
+    • DevTools version 2.54.1
+    • Feature flags: enable-web, enable-linux-desktop,
+      enable-macos-desktop, enable-windows-desktop, enable-android,
+      enable-ios, cli-animations, enable-native-assets,
+      omit-legacy-version-file, enable-lldb-debugging,
+      enable-uiscene-migration
+
+[√] Windows Version (11 Home Single Language 64-bit, 25H2, 2009) [981ms]
+
+[√] Android toolchain - develop for Android devices (Android SDK version
+    37.0.0-rc1) [5.8s]
+    • Android SDK at C:\Users\17swa\AppData\Local\Android\sdk
+    • Emulator version 36.4.9.0 (build_id 14788078) (CL:N/A)
+    • Platform android-36, build-tools 37.0.0-rc1
+    • Java binary at: C:\Program Files\Java\jdk-18.0.2\bin\java
+      This JDK is specified in your Flutter configuration.
+      To change the current JDK, run: `flutter config
+      --jdk-dir="path/to/jdk"`.
+    • Java version Java(TM) SE Runtime Environment (build 18.0.2+9-61)    
+    • All Android licenses accepted.
+
+[√] Chrome - develop for the web [85ms]
+    • Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe     
+
+[√] Visual Studio - develop Windows apps (Visual Studio Community 2022
+    17.9.6) [84ms]
+    • Visual Studio at C:\Program Files\Microsoft Visual
+      Studio\2022\Community
+    • Visual Studio Community 2022 version 17.9.34728.123
+    • Windows 10 SDK version 10.0.22621.0
+
+[√] Connected device (4 available) [267ms]
+    • RMX3710 (mobile)  • SGEQTOHU996P8POB • android-arm64  • Android 14  
+      (API 34)
+    • Windows (desktop) • windows          • windows-x64    • Microsoft   
+      Windows [Version 10.0.26200.7840]
+    • Chrome (web)      • chrome           • web-javascript • Google      
+      Chrome 145.0.7632.76
+    • Edge (web)        • edge             • web-javascript • Microsoft   
+      Edge 145.0.3800.70
+
+[√] Network resources [1,500ms]
+    • All expected network resources are available.
+
+• No issues found!
+```
+
+---
+
+## #1129: [Feature] : Auto-generate meaningful names for imported requests (cURL & HAR)
+
+#### Tell us about the task you want to perform and are unable to do so because the feature is not available
+
+When importing requests via cURL, every imported request shows up as "untitled" in the sidebar because the cURL format has no concept of a request name. The import code passes null as the name, which gets stored as an empty string, and the sidebar falls back to displaying "untitled".
+
+For HAR imports, the name is set to the full raw URL (e.g., https://jsonplaceholder.typicode.com/posts/1), which is hard to scan when you have many requests.
+
+This makes the sidebar unusable after importing multiple requests — users see a wall of identical "untitled" entries or long unreadable URLs with no way to tell them apart without clicking each one.
+
+Postman and Insomnia imports don't have this problem because those formats include user-defined request names.
+
+Steps to Reproduce
+      1. Open API Dash
+      2.Click Import → select cURL format
+      3.Drop a file with multiple cURL commands
+      4.All imported requests appear as "untitled" in the sidebar
+
+<img width="239" height="337" alt="Image" src="https://github.com/user-attachments/assets/084f0f24-5ac2-4978-a57e-210bdff0ca9c" />
+
+#### Describe the solution/feature you'd like us to add
+
+Expected Behavior
+Imported requests should have auto-generated, human-readable names derived from the available information. 
+A combination of HTTP method + URL path (without the host) would be short, unique, and scannable.
+
+Solution : Well we can add a utility function that derives a short name from the HTTP method and url , then use it as the fallback name during import.
+
+#### Any other feedback you would like to provide regarding the site
+
+Why This Matters
+      1. Users importing a batch of cURL commands can't distinguish between requests without clicking each one
+      2. It slows down the workflow — the whole point of importing is to get set up quickly   
+      3. Other tools (Postman, Insomnia app) auto-name imported requests from the URL when no name is provided
 
 ---
 
@@ -334,14 +1461,14 @@ Note: While this can be handled easily by adding the header within the request m
 
 
 <!--[if gte IE 10]><!-->
-<script>
+
   if (!navigator.cookieEnabled) {
     window.addEventListener('DOMContentLoaded', function () {
       var cookieEl = document.getElementById('cookie-alert');
       cookieEl.style.display = 'block';
     })
   }
-</script>
+
 <!--<![endif]-->
 
 </head>
@@ -533,91 +1660,6 @@ It instantly improves agent logic observability by allowing developers to see th
 
 ---
 
-## #1099: Feature: Upgrade DashBot Test Generation to Agentic Self-Healing Test Suites (Idea 4 PoC)
-
-### Description
-This issue proposes upgrading the standard DashBot test generation prompt into an intelligent **Agentic Test Suite Generator**. It enforces LLM outputs to include self-healing conditionals (e.g., dynamically adjusting payloads on 400 errors or mocking token refresh on 401s), stateful execution chains, and advanced security edge cases. This serves as a functional Proof of Concept for GSoC 2026 Idea #4.
-
-### Motivation
-Providing an agentic baseline for DashBot's test generation aligns with Idea #4 and adds more robust testing capabilities out-of-the-box.
-
----
-
-## #1092: Build fails on latest Flutter due to Freezed 2.x and dart_style 3.x dependency conflict
-
-#### Describe the bug/problem
-Installation from source code fails on 'melos pub-get' due to dependency conflict
-
-<img width="1116" height="628" alt="Image" src="https://github.com/user-attachments/assets/52bb24a2-e77d-4b29-8e04-0f14054541a8" />
-
-#### Steps to Reproduce the bug/problem
-Follow the Local installation guide from the offical md.
-[https://github.com/foss42/apidash/blob/main/doc/dev_guide/setup_run.md](https://github.com/foss42/apidash/issues/new/url)
-
-#### Expected behavior
-Installation to be successful without any errors
-
-#### Device Info (The device where you encountered this issue)
- - OS: MacOS
- - Version: 26.4
-
-#### Flutter Doctor
-Please run the `flutter doctor -v` command and provide the details below:
-
-```
-[✓] Flutter (Channel stable, 3.41.1, on macOS 26.3 25D125 darwin-arm64, locale
-    en-IN) [217ms]
-    • Flutter version 3.41.1 on channel stable at /Users/sagarnewpane/flutter
-    • Upstream repository https://github.com/flutter/flutter.git
-    • Framework revision 582a0e7c55 (9 days ago), 2026-02-12 17:12:32 -0800
-    • Engine revision 3452d735bd
-    • Dart version 3.11.0
-    • DevTools version 2.54.1
-    • Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop,
-      enable-windows-desktop, enable-android, enable-ios, cli-animations,
-      enable-native-assets, omit-legacy-version-file, enable-lldb-debugging,
-      enable-uiscene-migration
-
-[✓] Android toolchain - develop for Android devices (Android SDK version 36.1.0)
-    [1,485ms]
-    • Android SDK at /Users/sagarnewpane/Library/Android/sdk
-    • Emulator version 36.4.9.0 (build_id 14788078) (CL:N/A)
-    • Platform android-36.1, build-tools 36.1.0
-    • ANDROID_HOME = /Users/sagarnewpane/Library/Android/sdk
-    • Java binary at: /Applications/Android
-      Studio.app/Contents/jbr/Contents/Home/bin/java
-      This is the JDK bundled with the latest Android Studio installation on
-      this machine.
-      To manually set the JDK path, use: `flutter config
-      --jdk-dir="path/to/jdk"`.
-    • Java version OpenJDK Runtime Environment (build 21.0.9+-14649483-b1163.86)
-    • All Android licenses accepted.
-
-[✓] Xcode - develop for iOS and macOS (Xcode 26.1.1) [590ms]
-    • Xcode at /Applications/Xcode.app/Contents/Developer
-    • Build 17B100
-    • CocoaPods version 1.16.2
-
-[✓] Chrome - develop for the web [4ms]
-    • Chrome at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
-
-[✓] Connected device (2 available) [5.7s]
-    • macOS (desktop) • macos  • darwin-arm64   • macOS 26.3 25D125 darwin-arm64
-    • Chrome (web)    • chrome • web-javascript • Google Chrome 142.0.7444.177
-    ! Error: Browsing on the local area network for iPhone. Ensure the device is
-      unlocked and attached with a cable or associated with the same local area
-      network as this Mac.
-      The device must be opted into Developer Mode to connect wirelessly. (code
-      -27)
-
-[✓] Network resources [1,487ms]
-    • All expected network resources are available.
-
-• No issues found!
-```
-
----
-
 ## #1090: Request/Response pane widths reset when toggling View Code
 
 #### Describe the bug/problem
@@ -680,63 +1722,6 @@ Please run the `flutter doctor -v` command and provide the details below:
     • Visual Studio Community 2026
 
 *[truncated]*
-
----
-
-## #1084: Build failure on Windows with Flutter SDK 3.38+ due to csv package conflicts
-
-#### Describe the bug/problem
-The project fails to build on Windows when using newer Flutter SDK versions (3.38+). The primary issue is a version conflict between core dependencies (freezed, test, matcher) and a specific compilation error in lib/widgets/previewer_csv.dart due to a breaking change in how constant expressions are handled in Dart.
-
-#### Steps to Reproduce the bug/problem
-
-Clone the repository on a Windows machine.
-
-Ensure you are using Flutter SDK 3.38.7 or newer.
-
-Run flutter pub get.
-
-Run flutter run -d windows.
-
-The build fails with the following error:
-
-<img width="1629" height="249" alt="Image" src="https://github.com/user-attachments/assets/196b9d7c-2376-4644-9435-3acbab0647ba" />
-
-#### Expected behavior
-
-The project should compile successfully on Windows without any manual dependency overrides or code changes in previewer_csv.dart, even on newer Flutter SDK versions.
-
-<img width="1919" height="1079" alt="Image" src="https://github.com/user-attachments/assets/14d5cf4d-9546-4837-ab4e-dcd3edf53d8b" />
-
-#### Device Info (The device where you encountered this issue)
-OS: Windows
-Version: Windows 11
-
-#### Flutter Doctor
-[√] Flutter (Channel stable, 3.41.1, on Microsoft Windows [Version 10.0.26200.7840], locale en-US)
-    • Flutter version 3.41.1 on channel stable at C:\src\flutter
-    • Dart version 3.11.0
-    • DevTools version 2.54.1
-
-[√] Windows Version (11 Home Single Language 64-bit, 25H2, 2009)
-
-[X] Android toolchain - develop for Android devices
-    X Unable to locate Android SDK.
-
-[√] Chrome - develop for the web
-    • Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
-
-[√] Visual Studio - develop Windows apps (Visual Studio Build Tools 2019 16.11.49)
-    • Visual Studio at C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools
-    • Windows 10 SDK version 10.0.19041.0
-
-[√] Connected device (3 available)
-    • Windows (desktop) • windows • windows-x64
-    • Chrome (web)      • chrome  • web-javascript
-    • Edge (web)        • edge    • web-javascript
-
-[√] Network resources
-    • All expected network resources are available.
 
 ---
 
@@ -1118,555 +2103,5 @@ The implementation should:
 
 #### Any other feedback you would like to provide regarding the site
 We'll have to work on the UI/UX, i'll simultaneously be exploring the entire codebase and checkout for more technical changes.
-
----
-
-## #942: Empty text of Select model button when no model is chosen.
-
-#### Describe the bug/problem
-When selecting AI model, if user choses the model from the options of Ollama, OpenAI, Anthropic, Gemini, Azure OpenAI but not the exact model, the Select button displays empty text.
-
-#### Expected behavior
-It should continue to show Select Model text.
-
-#### Device Info (The device where you encountered this issue)
- - OS: Windows
- - Version: Windows 11 22H2
-
-<img width="1500" height="606" alt="Image" src="https://github.com/user-attachments/assets/807b074e-55a9-4136-8ae1-d9e751d0c331" />
-
----
-
-## #938: macOS traffic light icons overlap the sidebar border in the Dashboard view
-
-**Labels:** triage required
-
-#### Describe the bug/problem
-macOS traffic light icons (close, minimize, maximize) overlap with the sidebar navigation icons in the Dashboard view. The traffic lights appear on top of the "Requests" icon and label, making the sidebar content partially obscured.
-
-#### Steps to Reproduce the bug/problem
-
-1. Launch API Dash on macOS
-2. Observe the top-left corner of the application window
-3. Notice that the traffic light icons (red, yellow, green) overlap with the sidebar navigation icons
-<img width="1582" height="1034" alt="Image" src="https://github.com/user-attachments/assets/8a1f28d7-fb70-49e8-9e4a-e4ca1fb990c6" />
-
-### Expected behavior
-The right border of the sidebar should be positioned to the right of the macOS traffic light icons, with sufficient spacing to avoid any visual overlap.
-
-#### Device Info (The device where you encountered this issue)
- - OS: macOS
- - Version: Tahoe 26.1
- - Browser: N/A (Desktop app)
-
-#### Flutter Doctor
-
-```
-[✓] Flutter (Channel stable, 3.35.1, on macOS 26.1 25B78 darwin-arm64, locale en-US)
-    [1,029ms]
-    • Flutter version 3.35.1 on channel stable at
-      /Users/abhinavkumarchoudhary/flutter
-    • Upstream repository https://github.com/flutter/flutter.git
-    • Framework revision 20f8274939 (4 months ago), 2025-08-14 10:53:09 -0700
-    • Engine revision 1e9a811bf8
-    • Dart version 3.9.0
-    • DevTools version 2.48.0
-    • Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop,
-      enable-windows-desktop, enable-android, enable-ios, cli-animations,
-      enable-lldb-debugging
-
-[✓] Android toolchain - develop for Android devices (Android SDK version 36.0.0)
-    [2.5s]
-    • Android SDK at /Users/abhinavkumarchoudhary/Library/Android/sdk
-    • Emulator version 36.1.9.0 (build_id 13823996) (CL:N/A)
-    • Platform android-36, build-tools 36.0.0
-    • Java binary at: /Applications/Android
-      Studio.app/Contents/jbr/Contents/Home/bin/java
-      This is the JDK bundled with the latest Android Studio installation on this
-      machine.
-      To manually set the JDK path, use: `flutter config --jdk-dir="path/to/jdk"`.
-    • Java version OpenJDK Runtime Environment (build 21.0.6+-13391695-b895.109)
-    • All Android licenses accepted.
-
-[✓] Xcode - develop for iOS and macOS (Xcode 26.1.1) [1,642ms]
-    • Xcode at /Applications/Xcode.app/Contents/Developer
-    • Build 17B100
-    • CocoaPods version 1.16.2
-
-[✓] Chrome - develop for the web [6ms]
-    • CHROME_EXECUTABLE = /Applications/Brave Browser.app/Contents/MacOS/Brave
-      Browser
-
-[✓] Android Studio (version 2025.1) [6ms]
-    • Android Studio at /Applications/Android Studio.app/Contents
-    • Flutter plugin can be installed from:
-      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
-    • Dart plugin can be installed from:
-      🔨 https://plugins.jetbrains.com/plugin/6351-dart
-    • Java version OpenJDK Runtime Environment (build 21.0.6+-13391695-b895.109)
-
-[✓] VS Code (version 1.107.0) [5ms]
-    • VS Code at /Applications/Visual Studio C
-
-*[truncated]*
-
----
-
-## #881: Ability to inherit auth credentials
-
-#### Tell us about the task you want to perform and are unable to do so because the feature is not available
-Currently, we have ability to add auth credentials but it only applies to per request.
-
-#### Describe the solution/feature you'd like us to add
-We need to have some way to inherit auth credentials, either on the basis of environment or creating generic credentials which can be then used in multiple requests.
-
-#### Any other feedback you would like to provide regarding the site
-This feature is similar to other api testing clients like postman and insomnia
-
----
-
-## #879: Importing postman collection doesn't respect folder structure
-
-#### Describe the bug/problem
-When trying to import postman v2.1 collection into apidash, the individual requests are imported without the folder hierarchy present in the import file. Thus, causing issues with properly organizing the api request definitions.
-
-#### Steps to Reproduce the bug/problem
-- Export a postman v2.1 collection with multiple api requests neatly grouped with folder hierarchy.
-- Import the collection into apidash, you wouls notice, the requests get imported successfully without retaining the original folder hierarchy.
-
-#### Expected behavior
-- Folders should also get created when importing the collection.
-
-#### Device Info (The device where you encountered this issue)
- - OS: Android, MacOS; but should be reproducible on all platforms.
- - Version: v0.5.0 built locally from main branch
- - Browser: NA
-
-#### Flutter Doctor
-Please run the `flutter doctor -v` command and provide the details below:
-
-```
-❯ flutter doctor -v                
-[✓] Flutter (Channel stable, 3.35.2, on macOS 15.6.1 24G90 darwin-arm64, locale en-US) [579ms]
-    • Flutter version 3.35.2 on channel stable at /opt/homebrew/Caskroom/flutter/3.29.1/flutter
-    • Upstream repository https://github.com/flutter/flutter.git
-    • Framework revision 05db968908 (3 days ago), 2025-08-25 10:21:35 -0700
-    • Engine revision a8bfdfc394
-    • Dart version 3.9.0
-    • DevTools version 2.48.0
-    • Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop, enable-android, enable-ios,
-      cli-animations, enable-lldb-debugging
-
-[✓] Android toolchain - develop for Android devices (Android SDK version 36.0.0) [1,339ms]
-    • Android SDK at /opt/homebrew/Cellar/android-sdk
-    • Emulator version 35.6.11.0 (build_id 13610412) (CL:N/A)
-    • Platform android-36, build-tools 36.0.0
-    • ANDROID_HOME = /opt/homebrew/Cellar/android-sdk/
-    • ANDROID_SDK_ROOT = /opt/homebrew/Cellar/android-sdk/
-    • Java binary at: /Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin/java
-      This JDK is specified in your Flutter configuration.
-      To change the current JDK, run: `flutter config --jdk-dir="path/to/jdk"`.
-    • Java version OpenJDK Runtime Environment Temurin-17.0.16+8 (build 17.0.16+8)
-    • All Android licenses accepted.
-
-[✓] Xcode - develop for iOS and macOS (Xcode 16.4) [1,095ms]
-    • Xcode at /Applications/Xcode.app/Contents/Developer
-    • Build 16F6
-    • CocoaPods version 1.16.2
-
-[✓] Chrome - develop for the web [8ms]
-    • CHROME_EXECUTABLE = /Applications/Chromium.app/Contents/MacOS/Chromium
-
-[✓] Android Studio (version 2025.1) [7ms]
-    • Android Studio at /Applications/Android Studio.app/Contents
-    • Flutter plugin can be installed from:
-      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
-    • Dart plugin can be installed from:
-      🔨 https://plugins.jetbrains.com/plugin/6351-dart
-    • Java version OpenJDK Runtime Environment (build 21.0.6+-13391695-b895.109)
-
-[✓] Connected device (3 available) [6.4s]
-    
-
-*[truncated]*
-
----
-
-## #873: SSE - Raw response doesn't show all entries
-
-**Labels:** APP: BUG
-
-#### Describe the bug/problem
-SSE - Raw Response doesn't show all the entries
-
-#### Steps to Reproduce the bug/problem
-https://github.com/user-attachments/assets/12c6662e-baa7-44ab-beb5-4c2d98b6309b
-
-#### Device Info (The device where you encountered this issue)
- - OS: Windows
- - Version: Windows 11 22H2
-
----
-
-## #848: Switching to a different screen does not stop the background tasks from the previous screen
-
-**Labels:** APP: BUG
-
-#### Describe the bug/problem
-In the History Screen if the requests that contain the video preview response are in the `play` state (initial state is 'play' and is being looped). Switching over to a different screen, keeps that request in the `play` state. The video is played in the background. 
-
-#### Steps to Reproduce the bug/problem
-* Make a request that has a video preview response.
-eg: make a GET request by pasting this in the https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4 url
-* Restart flutter app
-* Switch to the history tab
-* Select the request which has the video preview response
-* Make sure it is currently on the playing state
-* Switch to any other tab.
-* If the video has sound you are able to identify the video is playing in background. You can also check the logs in console that also shows the video rendering logs being run
-
-#### Expected behavior
-When switching to a different tab in the navigation rail, `not active` screen should not have any background running tasks
-
-#### Device Info (The device where you encountered this issue)
- - OS: [e.g. Windows, MacOS] Windows
- - Version: [e.g. Catalina 10.15.7, Monterey 12.3.1, Windows 11 22H2] Windows 11 22H2
- - Browser (only if you encountered the issue while running the web app): [e.g. chrome, safari]
-
----
-
-## #826: Textfields should become multiline when tapped on or when the user is editing
-
-#### Tell us about the task you want to perform and are unable to do so because the feature is not available
-
-URL params or header values can be quite long some times (like bearer token values).
-Instead of horizontally scrolling through the field (to verify due to the fear of missing out something) , life will become much easier if the value wraps across multiple lines and one can easily view the full text and edit it.
-
-Example below:
-
-<img width="819" alt="Image" src="https://github.com/user-attachments/assets/4193d692-ffd0-46a1-89d5-66af8100df22" />
-
----
-
-## #825: [Mobile] Difficulty in Navigating URL Field for longer URLs
-
-#### Tell us about the task you want to perform and are unable to do so because the feature is not available
-
-In mobile, when the user wants to edit a long url. Navigating, selecting, scrolling the cursor is quite painful.
-UX improvement is required in this regards. 
-
-The floor is open to ideas below👇
-
----
-
-## #824: [Mobile] Making copying values (like tokens) from JSON previewer easy for end users
-
-#### Tell us about the task you want to perform and are unable to do so because the feature is not available
-
-Related Desktop issue #638 
-
-There should be a one click solution to easily copy values (like token values) to clipboard from JSON previewer for mobile users.
-Currently, for desktop users there is a copy button which appears on hover, but no such provision is available for mobile/tablet.
-
----
-
-## #823: Mobile Usability improvements
-
-Meta issue to track issues required to be solved to improve mobile user experience.
-
----
-
-## #773: Support various importers and exporters
-
-**Labels:** enhancement
-
-Meta-issue to track support for various importers and exporters
-
----
-
-## #772: Supporting various API Types
-
-**Labels:** enhancement
-
-Meta-issue to track support for various API Types
-
----
-
-## #771: Enhance API Dash Request Body
-
-**Labels:** enhancement
-
-A meta-issue to track various enhancements required for Request body of REST API Type
-
----
-
-## #646: Errors Encountered During Flutter Tests
-
-**Labels:** DEV: BUG
-
-#### Describe the bug/problem
-When running `flutter test`, the following errors are encountered:
-
-1. **Pending Timer Error**
-   - **Exception:**
-     ```
-     ═╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞═════
-     The following assertion was thrown running a test:
-     A Timer is still pending even after the widget tree was disposed.
-     'package:flutter_test/src/binding.dart':
-     Failed assertion: line 1606 pos 12: '!timersPending'
-     ```
-   - **Possible Cause:**  
-     A timer remains active after the widget tree has been disposed.
-
-2. **Late Initialization Error**
-   - **Exception:**
-     ```
-     ═╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞═
-     The following LateError was thrown while finalizing the widget tree:
-     LateInitializationError: Field '_videoController@28198544' has not been initialized.
-     ```
-   - **Possible Cause:**  
-     The `_videoController` field is not properly initialized before usage, leading to this error during widget disposal.
-
-#### Steps to Reproduce the bug/problem
-1. Open the project in a preferred IDE (e.g., VS Code, Android Studio).
-2. Run the command:
-flutter test
-
-#### Expected behavior
-The tests should pass successfully without encountering Pending Timer or LateInitializationError issues.
-
-#### Device Info (The device where you encountered this issue)
- - OS: Ubuntu 24.04.1 LTS
-
-#### Additional Notes
-- I discussed this with a experienced flutter dev and he concluded that the latetimer error is related to the video_player package (version 2.9.3) Not the project Codebase
-- The late initialization error might indicate that _videoController should be initialized earlier in the widget -lifecycle
-
----
-
-## #638: Make copying just the values from JSON rendered view possible
-
-#### Tell us about the task you want to perform and are unable to do so because the feature is not available
-I do a little login to my api, like this:
-
-![Image](https://github.com/user-attachments/assets/bc0bc089-4b7b-49d1-9191-1f9a0672851e)
-
-and get a token. This token i want on my clipboard obviously. Now I can't select the text to copy it, so i have to use the little copy button, which would be fine if it didnt also copy the json structure around it. When i press the little copy button i get this:
-
-```
-{
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJwaWQiOiJiOTFmNWZhYS05NWYzLTQ1ZDUtYmM1ZC1kMjcxNjg3NGQ0NmUiLCJleHAiOjE3NDE3ODMwNzAsImNsYWltcyI6bnVsbH0.Okfmc52W6vZzl74-Y5hxLPVefhFatdkzs3pHgEcUc1tG1RTKc2v7quV2nwoEAy-1AVme-Run3698MuX_9yc7QQ"
-}
-```
-
-#### Describe the solution/feature you'd like us to add
-
-Either make the text selectable in the rendered json view, or make the copy button give me the value of the key in the json, not a new json object with just that key.
-
-#### Any other feedback you would like to provide regarding the site
-
-I like the app, keep it up
-
----
-
-## #627: Fix video player crash
-
-**Labels:** priority: high, triage required
-
-#### Describe the bug/problem
-
-Launch API Dash
-
-Paste the following URL in GET Request:
-https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4
-
-Hit `Send`
-
-Once the response is received, the App crashes due to some error in VideoPreviewer - https://github.com/foss42/apidash/blob/main/lib/widgets/video_previewer.dart
-
-This issue requires analysis of the root cause of the crash & potential fix.
-
-Setup - Apple M1 (Sonoma 14.6.1)
-
-```
-% flutter doctor -v
-[✓] Flutter (Channel stable, 3.29.0, on macOS 14.6.1 23G93 darwin-arm64, locale en-IN) [271ms]
-    • Flutter version 3.29.0 on channel stable at /Users/ap/Documents/flutter
-    • Upstream repository https://github.com/flutter/flutter.git
-    • Framework revision 35c388afb5 (3 weeks ago), 2025-02-10 12:48:41 -0800
-    • Engine revision f73bfc4522
-    • Dart version 3.7.0
-    • DevTools version 2.42.2
-
-[✓] Android toolchain - develop for Android devices (Android SDK version 35.0.0) [1,143ms]
-    • Android SDK at /Users/ap/Library/Android/sdk
-    • Platform android-35, build-tools 35.0.0
-    • Java binary at: /Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/java
-      This is the JDK bundled with the latest Android Studio installation on this machine.
-      To manually set the JDK path, use: `flutter config --jdk-dir="path/to/jdk"`.
-    • Java version OpenJDK Runtime Environment (build 17.0.11+0-17.0.11b1207.24-11852314)
-    • All Android licenses accepted.
-
-[✓] Xcode - develop for iOS and macOS (Xcode 15.4) [603ms]
-    • Xcode at /Applications/Xcode.app/Contents/Developer
-    • Build 15F31d
-    • CocoaPods version 1.16.2
-
-[✓] Chrome - develop for the web [28ms]
-    • Chrome at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
-
-[✓] Android Studio (version 2024.1) [28ms]
-    • Android Studio at /Applications/Android Studio.app/Contents
-    • Flutter plugin can be installed from:
-      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
-    • Dart plugin can be installed from:
-      🔨 https://plugins.jetbrains.com/plugin/6351-dart
-    • Java version OpenJDK Runtime Environment (build 17.0.11+0-17.0.11b1207.24-11852314)
-
-[✓] IntelliJ IDEA Community Edition (version 2023.1.2) [27ms]
-    • IntelliJ at /Applications/IntelliJ IDEA CE.app
-    • Flutter plugin can be installed from:
-      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
-    • Dart plugin can be installed from:
-      🔨 https://plugins.jetbrains.com/plugin/6351-dart
-
-[✓] VS Code (version 1.97.2) [9ms]
-    • VS Code at /Applications/Visual Studio Code.app/Contents
-    • Flutter extension version 3.104.0
-
-[✓] Connected device (3 available) [6.9s]
-    • macOS (desktop)                 • macos                 • darwin-arm64   • macOS 14.6.1 23G93 darwin-arm64
-    • Mac Designed for iPad (desktop) • mac-designed-for-ipad • darwin         • macOS 14.6.1 23G93 darwin-arm64
-    • Chrome (web)                    • chrome                • web-javascript • Google Chrome 133.0.6943.142
-or associated
-      with the sam
-
-*[truncated]*
-
----
-
-## #619: API Explorer
-
-#### Tell us about the task you want to perform and are unable to do so because the feature is not available
-
-This project is designed to enhance the API Dash user experience by integrating a curated library of popular and publicly available APIs. This feature allows users to discover, browse, search, and directly import API endpoints into their workspace for seamless testing and exploration. Developers can access pre-configured API request templates, complete with authentication details, sample payloads, and expected responses. This eliminates the need to manually set up API requests, reducing onboarding time and improving efficiency. APIs spanning various domains—such as AI, finance, weather, and social media—are organized into categories, making it easy for users to find relevant services. You are required to develop the entire process backend in the form of an automation pipeline which parses OpenAPI/HTML files, auto-tag it to relevant category, enrich the data, create templates. You can also add features such as user ratings, reviews, and community contributions (via GitHub) to ensure accurate and up-to-date resources.
-
----
-
-## #601: Adding color support for environments
-
-#### Tell us about the task you want to perform and are unable to do so because the feature is not available
-
-When a new environment is created it can be assigned a color.
-This color can be used to highlight the environment name in the dropdown when the user is switching the environment.
-
-For example, user can assign the color RED for prod env & GREEN for dev env.
-
----
-
-## #600: Reading environment variables directly from OS environment
-
-#### Tell us about the task you want to perform and are unable to do so because the feature is not available
-
-It would be great if API Dash has the ability to read environment variables from the operating system. This way it can access security credentials (like a password) and other system level variables.
-
----
-
-## #592: Env. Variable Support for JSON request body
-
-#### Tell us about the task you want to perform and are unable to do so because the feature is not available
-
-Currently, env variable support available for:
-- URL
-- URL Params
-- Headers
-
-Instead of updating the body every time, it would be great if the support can be extended for JSON request body as well.
-
----
-
-## #591: Env. Variable Support for Text request body
-
-#### Tell us about the task you want to perform and are unable to do so because the feature is not available
-
-Currently, env variable support available for:
-- URL
-- URL Params
-- Headers
-
-Instead of updating the body every time, it would be great if the support can be extended for **text** request body as well.
-
----
-
-## #590: Add environment variable support in request body
-
-#### Tell us about the task you want to perform and are unable to do so because the feature is not available
-
-Currently, env variable support available for:
-- URL
-- URL Params
-- Headers
-
-Instead of updating the body every time, it would be great if the support can be extended for request body as well.
-
-**This is a meta issue. Adding sub-issues to track the progress for all content types.**
-
----
-
-## #583: Add validation for JSON request body
-
-#### Tell us about the task you want to perform and are unable to do so because the feature is not available
-
-Currently, validation is missing for JSON request body.
-
-What is JSON validation?
-
-<img width="996" alt="Image" src="https://github.com/user-attachments/assets/9eb33945-3ed3-4e93-9494-f0f09e0d6753" />
-
-From UX point of view, 
-- a single line status card below the JSON Text field would be a good idea which will turn red if the JSON is invalid and user can tap/hover on the card to view more details of the error. 
-- A more preferred approach is to notify user via the Status bar as mentioned in https://github.com/foss42/apidash/issues/587
-
-Also, the check should be triggered keeping proper debounce time which allows users to finish typing a word or phrase without triggering unnecessary checks.
-
-There is a JSON editor in the repo which has not yet been integrated for request body:
-https://github.com/foss42/apidash/blob/main/lib/widgets/editor_json.dart
-
----
-
-## #576: GraphQL Variables
-
-#### Tell us about the task you want to perform and are unable to do so because the feature is not available
-Finding it hard to use the graphql feauture since the query needs to be edited again and again for minor changes in values.
-
-#### Describe the solution/feature you'd like us to add
-Introduce a section for graphql variables .  
-
-#### Any other feedback you would like to provide regarding the site
-
----
-
-## #556: Virus total and windows flagged the Windows .exe file to be malicious!
-
-#### Describe the bug/problem
-I recently tried to install the APIDASH application for windows but I have this habit of checking the file for malware on Virus Total, and suprisingly it flagged the .exe file to be malicious. I understand there might be false positives but then too I am afraid and one more thing is we should get to the root why it flagged the .exe in first place!
-
-#### Steps to Reproduce the bug/problem
-
-![Image](https://github.com/user-attachments/assets/1010ed86-2ce2-42bb-bbbd-bdb2cfef06fb)
-
-![Image](https://github.com/user-attachments/assets/e0ab4867-04e0-404f-bf38-e197ea2cd9b5)
-
-#### Expected behavior
-A 0 (zero) community score on Virus Total
-
-#### Device Info (The device where you encountered this issue)
- - OS: Windows
- - Version: Windows 11 home
-
-#### Flutter Doctor
-NA
 
 ---

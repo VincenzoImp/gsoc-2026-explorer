@@ -1,13 +1,14 @@
 # The Libreswan Project — Project Ideas
 
 **Source:** https://github.com/libreswan/libreswan/wiki/GSoC-2026-Code-Project-Ideas
-**Scraped:** 2026-02-22T23:28:47.597232
+**Scraped:** 2026-03-10T16:58:40.302810
 
 ---
 
 [Libreswan](http://github.com/libreswan) is an [Internet Key
 Exchange](https://www.rfc-editor.org/rfc/rfc7296.html) (IKE)
-implementation that runs on Linux, FreeBSD, NetBSD and OpenBSD.
+implementation that runs on Linux, FreeBSD, NetBSD
+and OpenBSD.
 
 While the original IKE and IPsec protocols were drafted in 1998, the
 need to deal with an ever changing and increasingly hostile world,
@@ -23,12 +24,8 @@ challenge, and a way to participate in The Internet's development.
 The mentors also have a personal interest in seeing these projects
 through to completion.
 
-If you see a project that looks interesting then see the [Contributor
-Guidance](/ideas/the-libreswan-project/gsoc-contributor-guidance) for next steps.
-
-If you just have questions, then please feel free to contact us; either on the
-[developer mailing list](https://lists.libreswan.org/mailman/listinfo/swan-dev) or [IRC](/ideas/the-libreswan-project/irc).  You can
-also email **gsoc at libreswan.org** which is not publicly archived.
+If you see a project that looks interesting, or you just have questions,
+then see the [Contributor Guidance](/ideas/the-libreswan-project/gsoc-contributor-guidance) for next steps.
 
 It isn't a requirement at you pick one of the ideas below - we also
 welcome new ideas.  For instance, additional draft RFCs that could
@@ -47,7 +44,8 @@ form the basis of a project can be found
 
 **Difficulty:** Medium
 
-**Draft RFC:** [Announcing Supported Authentication Methods in IKEv2](https://tools.ietf.org/html/draft-smyslov-ipsecme-ikev2-auth-announce)
+**RFC 9593:** [Announcing Supported Authentication Methods in
+the Internet Key Exchange Protocol Version 2 (IKEv2)](https://datatracker.ietf.org/doc/html/rfc9593)
 
 ### Description
 
@@ -90,7 +88,7 @@ The proposal should address each of these areas.
 
 **Difficulty:** Medium
 
-**Draft RFC:** [Downgrade Prevention for the Internet Key Exchange Protocol Version 2 (IKEv2)](/ideas/the-libreswan-project/https-datatracker-ietf-org-doc-draft-ietf-ipsecme-ikev2-downgrade-prevention)
+**Draft RFC:** [Downgrade Prevention for the Internet Key Exchange Protocol Version 2 (IKEv2)](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention)
 
 ### Description
 

@@ -1,7 +1,7 @@
 # The Mifos Initiative — Project Ideas
 
 **Source:** https://mifosforge.jira.com/wiki/spaces/RES/pages/5021990914/2026+Google+Summer+of+Code+Ideas+List
-**Scraped:** 2026-02-22T23:28:47.625202
+**Scraped:** 2026-03-10T16:58:40.280472
 
 ---
 
@@ -277,7 +277,7 @@ __Source Code__Online Banking App - Web:
 
 __Source Code__
 
-**Overview:** [https://openmf.github.io/mobileapps.github.io/](https://openmf.github.io/mobileapps.github.io/)
+**Overview:** [Mobile Applications](https://openmf.github.io/mobileapps.github.io/)
 
 ### Payment Hub EE
 
@@ -293,7 +293,7 @@ When you need help, ask for help after exploring all options on the web. We are 
 
 .__ask well__Tips for a Good Application from former GSOC intern and Mentor, Ishan Khanna:
 
-[https://hackernoon.com/7-things-you-need-to-know-to-ace-your-gsoc-proposal-8e422f2b6abe](https://hackernoon.com/7-things-you-need-to-know-to-ace-your-gsoc-proposal-8e422f2b6abe)Not sure if you are qualified? Download and build the code, then run the Platform and the Mifos X distribution.
+[7 things you need to know, to ace your GSoC Proposal | HackerNoon](https://hackernoon.com/7-things-you-need-to-know-to-ace-your-gsoc-proposal-8e422f2b6abe)Not sure if you are qualified? Download and build the code, then run the Platform and the Mifos X distribution.
 
 Instructions for running the backend components are in
 
@@ -327,7 +327,8 @@ Overview and Objectives | AI is evolving at a rapid pace, with significant progr
 Description | At a high level, the core of this project will involve research and exploration into how AI-powered voice agents can be effectively integrated into mobile applications. A major focus will be identifying which features and capabilities make the most sense to expose through voice interaction, and what kinds of user operations can be reliably and safely performed using a voice-first interface. This includes understanding user experience considerations, accessibility requirements, multilingual support, and limitations specific to mobile platforms. Another key aspect of the project will be evaluating the existing ecosystem of tools, frameworks, and models that can be used to build such voice agents. This includes researching speech-to-speech systems, lightweight language or speech–language models suitable for mobile environments, and agent frameworks that support tool usage. The intern will be expected to assess trade-offs between different deployment strategies, such as using hosted/cloud-based models versus running models locally on-device, taking into account factors like latency, privacy, cost, reliability, and memory footprint. |
 Skills | Kotlin / Mobile app development Python AI agents and tool-based workflows Speech-to-Text (STT) systems Text-to-Speech (TTS) systems Voice-first UX / accessibility On-device vs hosted model deployment Audio streaming and processing |
 Resources | https://docs.ultravox.ai/overview |
-Mifos Repositories | |
+Mifos Repositories |
+|
 Impact | Our mobile app is widely used in regions where English is not the primary language, and it also supports multiple Digital Public Goods (DPGs) and public infrastructure initiatives aligned with UNICEF’s goals, making inclusivity a core priority. By enabling seamless voice-based interaction, this project will allow users who may not speak English or who face technological barriers to use the app effectively through simple voice commands. In addition, the voice agent will help users better understand the app by providing guided, voice-only onboarding and explanations of its features. Overall, the project aims to significantly lower access barriers, improve user experience for diverse communities, and create meaningful social impact by making the app more accessible and inclusive. |
 Provisional Mentors | Aru Sharma, Keshav Arora |
 Channels to Discuss | Slack: Channel: #mifos-mobile #wg-ai-for-all |
@@ -391,8 +392,8 @@ Integration of a "Test Sharding" strategies in GitHub Actions to run tests in pa
 |
 Skills | Typescript, Angular 17+ (Signals & Standalone Components), Playwright, Jest, RxJS, GitHub Actions (CI/CD), Docker, Unit Testing Principles, E2E Testing Patterns, Page Object Model (POM) Design Pattern |
 Resources |
-**Merged Playwright Infrastructure (Proof of Concept):**[https://github.com/openMF/web-app/pull/2912](https://github.com/openMF/web-app/pull/2912)**Initial E2E Foundation:**[https://github.com/openMF/web-app/pull/2886](https://github.com/openMF/web-app/pull/2886)**Merged jest unit testing pr's**:[https://github.com/openMF/web-app/pull/2742](https://github.com/openMF/web-app/pull/2742)[https://github.com/openMF/web-app/pull/2802](https://github.com/openMF/web-app/pull/2802)[https://github.com/openMF/web-app/pull/2816](https://github.com/openMF/web-app/pull/2816)[https://github.com/openMF/web-app/pull/3041](https://github.com/openMF/web-app/pull/3041)
-**Playwright Docs:**[https://playwright.dev/docs/intro](https://playwright.dev/docs/intro)**Angular Testing Guide:**[https://angular.dev/guide/testing](https://angular.dev/guide/testing)**Mifos X API Documentation:**[https://demo.mifos.io/api-docs/apiLive.htm](https://demo.mifos.io/api-docs/apiLive.htm)
+**Merged Playwright Infrastructure (Proof of Concept):**[establish Playwright E2E testing infrastructure with configuration by devvaansh · Pull Request #2912 · openMF/web-app](https://github.com/openMF/web-app/pull/2912)**Initial E2E Foundation:**[E2E regression test for Audit Trails CSV download by devvaansh · Pull Request #2886 · openMF/web-app](https://github.com/openMF/web-app/pull/2886)**Merged jest unit testing pr's**:[Web 391 unit test coverage for url to string pipe by devvaansh · Pull Request #2742 · openMF/web-app](https://github.com/openMF/web-app/pull/2742)[WEB-422 unit test coverage for ViewTaxComponentComponent by devvaansh · Pull Request #2802 · openMF/web-app](https://github.com/openMF/web-app/pull/2802)[WEB-435 Unit Test Coverage for ViewCollateralComponent by devvaansh · Pull Request #2816 · openMF/web-app](https://github.com/openMF/web-app/pull/2816)[feat: add comprehensive unit tests for ActivateClientComponent by devvaansh · Pull Request #3041 · openMF/web-app](https://github.com/openMF/web-app/pull/3041)
+**Playwright Docs:**[Installation | Playwright](https://playwright.dev/docs/intro)**Angular Testing Guide:**[Testing • Overview • Angular](https://angular.dev/guide/testing)**Mifos X API Documentation:**[Apache Fineract API Documentation](https://demo.mifos.io/api-docs/apiLive.htm)
 **Research on Page Object Model (POM):**"Maintainable Automated Testing" (Leotta et al., IEEE,link-[https://sepl.dibris.unige.it/publications/2013-leotta-ICSTW.pdf)](https://sepl.dibris.unige.it/publications/2013-leotta-ICSTW.pdf))- Demonstrated 3x faster maintenance and 8x code stability improvement.**Project Context:**The codebase a months ago underwent a major migration to Angular 18/19, highlighting significant regression risks which this project directly addresses.
 |
 Mifos Repositories |

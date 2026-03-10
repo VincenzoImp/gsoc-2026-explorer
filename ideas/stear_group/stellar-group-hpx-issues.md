@@ -2,11 +2,284 @@
 
 **Parent:** Ste||ar group — Project Ideas
 **Source:** https://github.com/STEllAR-GROUP/hpx/issues
-**Scraped:** 2026-02-22T23:28:47.614141
+**Scraped:** 2026-03-10T16:58:40.230910
+
+---
+
+## #6989: Tracy fiber support present but currently unused in HPX runtime
+
+**Labels:** category: core, type: feature request
+
+While exploring the current Tracy integration in HPX I noticed a couple of things that made me curious about the intended design.
+
+### 1. Fiber wrappers exist but are not currently used
+
+The Tracy module under `libs/core/tracy` exposes wrappers for the Tracy fiber API:
+
+* `enter_fiber()`
+* `leave_fiber()`
+* `fiber_region`
+
+Tracy supports fiber instrumentation through the `TRACY_FIBERS` define. However, after searching through the runtime it appears that these functions are not currently called in the scheduler or task execution paths.
+
+For example, the scheduling loop instruments task execution using:
+
+```cpp
+tracy::region rctx(name, num_thread, thrdptr->get_thread_phase());
+```
+
+which attaches zones to OS worker threads rather than logical HPX tasks.
+
+Since HPX uses an M:N threading model where many HPX tasks are scheduled onto a smaller number of worker threads, this means the Tracy timeline currently reflects worker-thread activity rather than task-level timelines.
+
+### 2. `suspend_region` exists but also appears unused
+
+`tracy::suspend_region` is defined in `tracy_tls.hpp` as an RAII helper intended to temporarily close a region and restore it later.
+
+I noticed that the equivalent `likwid::suspend_region` is used at yield points (e.g. in `execution_agent.cpp` and `thread_helpers.cpp`), but I couldn’t find usage of the Tracy equivalent.
+
+### Question
+
+Was the intention originally to map HPX tasks to Tracy fibers, or is the current worker-thread-level region instrumentation considered sufficient?
+
+It seems like mapping HPX tasks to Tracy fibers could potentially provide clearer task-level timelines for M:N scheduling, but I wanted to check whether this direction aligns with the project's goals before experimenting further.
+
+If mapping HPX tasks to Tracy fibers would be desirable, I would be happy to experiment with this direction and see how it could integrate with the current scheduler instrumentation.
+
+Thanks!
+
+---
+
+## #6982: Missing validation of thread_schedule_hint.hint in shared_priority_queue_scheduler
+
+**Labels:** type: defect, category: scheduler
+
+# Description
+
+While reviewing the scheduler implementation, I noticed that the `thread_schedule_hint_mode::thread` path in `shared_priority_queue_scheduler` appears to use the hint value directly as a worker index without validating that it falls within the valid worker range.
+
+The code already contains TODO comments indicating that validation may be missing.
+
+---
+
+## Relevant Code
+
+### `create_thread()`
+
+```cpp
+case thread_schedule_hint_mode::thread:
+{
+    // @TODO. We should check that the thread num is valid
+    thread_num = select_active_pu(data.schedulehint.hint);
+    domain_num = d_lookup_[thread_num];
+    q_index = q_lookup_[thread_num];
+    break;
+}
+```
+
+### `schedule_thread()`
+
+```cpp
+case thread_schedule_hint_mode::thread:
+{
+    // @TODO. We should check that the thread num is valid
+    thread_num = select_active_pu(schedulehint.hint, allow_fallback);
+    domain_num = d_lookup_[thread_num];
+    q_index = q_lookup_[thread_num];
+    break;
+}
+```
+
+---
+
+## Potential Issue
+
+`thread_schedule_hint` stores the hint as:
+
+```cpp
+std::int16_t hint;
+```
+
+The constructor only checks whether the hint is non-negative when determining the scheduling mode, but it does not ensure that the value is within the range of available worker threads.
+
+If a hint larger than the number of worker threads is provided, it appears possible that the value may be used as an index in several places, including:
+
+* `select_active_pu()`
+* `d_lookup_[]`
+* `q_lookup_[]`
+
+Since these structures are sized based on `num_workers_`, using an out-of-range hint could potentially lead to out-of-bounds access.
+
+---
+
+## Notes
+
+The `numa` scheduling path already applies modulo normalization:
+
+```cpp
+domain_num = fast_mod(schedulehint.hint, num_domains_);
+```
+
+which suggests that bounds normalization may have been intended for the `thread` scheduling path as well.
+
+Additionally, both affected locations contain the TODO comment:
+
+```
+@TODO. We should check that the thread num is valid
+```
+
+which may indicate this validation step was planned but not implemented yet.
+
+---
+
+## Affected File
+
+```
+libs/core/schedulers/include/hpx/schedulers/shared_priority_queue_scheduler.hpp
+```
+
+Functions:
+
+* `create_thread()`
+* `schedule_thread()`
+
+If this behavior is unintended, I’d be happy to submit a PR to address it.
+
+---
+
+## #6978: shared_priority_queue_scheduler: possible stale (domain_num, q_index) after select_active_pu() in schedule_thread() `none` path
+
+**Labels:** type: defect, category: scheduler
+
+While working on the fix for #6963 in `shared_priority_queue_scheduler`, I spent some additional time reviewing the scheduling logic and noticed a potential inconsistency in the `schedule_thread()` implementation for `thread_schedule_hint_mode::none`.
+
+In the `none` path, `domain_num` and `q_index` are derived from the initial `thread_num`, but `thread_num` may later be modified by `select_active_pu(thread_num, allow_fallback)`.
+
+Relevant section (simplified):
+
+```cpp
+else /*(round_robin_)*/
+{
+    domain_num = d_lookup_[thread_num];
+    q_index = q_lookup_[thread_num];
+
+    thread_num =
+        numa_holder_[domain_num]
+            .thread_queue(q_index)
+            ->worker_next(num_workers_);
+}
+
+thread_num = select_active_pu(thread_num, allow_fallback);
+break;
+````
+
+Later, the task is dispatched using:
+
+```cpp
+numa_holder_[domain_num].thread_queue(q_index)->schedule_thread(thrd, priority, false);
+```
+
+Since `select_active_pu()` may redirect to a different PU (for example when elasticity is enabled and the requested PU is suspended or inactive), `domain_num` and `q_index` may become stale. This affects all three sub-paths of the `none` case:
+
+* **Cross-pool injection (`local_num == -1`)** – `domain_num` and `q_index` remain `0`, but `select_active_pu()` may redirect to a different PU.
+* **`!round_robin_` (assign_parent)** – `domain_num` and `q_index` are derived from `local_num`, but `select_active_pu()` may redirect to a different PU.
+* **`round_robin_`** – `worker_next()` first changes `thread_num`, and `select_active_pu()` may change it again.
+
+In each case, the task can end up being pushed to the queue corresponding to the original `(domain_num, q_index)` rather than the queue associated with the final `thread_num`.
+
+Other scheduling paths recompute these values after calling `select_active_pu()`. For example:
+
+* `create_thread()` recomputes `(domain_num, q_index)` after `select_active_pu()`
+* the `thread_schedule_hint_mode::thread` and `thread_schedule_hint_mode::numa` paths in `schedule_thread()` also recompute them
+
+By analogy with `create_thread()`’s `none` path (which is structurally similar and does recompute after `select_active_pu()`), this appears to be an unintentional omission.
+
+Would it make sense to recompute
+
+```cpp
+domain_num = d_lookup_[thread_num];
+q_index = q_lookup_[thread_num];
+```
+
+after the call to `select_active_pu()` in the `none` path as well?
+
+If this is not intentional, I would be happy to open a PR to address it.
+
+---
+
+## #6975: Fix failing unit tests related to move algorithm
+
+**Labels:** type: defect, category: tests, category: algorithms, project: GSoC
+
+We're seeing occasional test failures for our tests related to the move algorithm (see for instance: https://cdash.rostam.cct.lsu.edu/test/35941854). We should try to identify the problem and fix it.
+
+---
+
+## #6974: Fix failing unit tests related to sort algorithms
+
+**Labels:** type: defect, category: tests, category: algorithms, project: GSoC
+
+We're seeing occasional test failures for our tests related to the sort algorithms (see for instance: https://cdash.rostam.cct.lsu.edu/test/35939007, but similar failures happen for the non-ranged version of `hpx::sort`). We should try to identify the problem and fix it.
+
+---
+
+## #6969: Implementation of `hpx::ranges::iota`
+
+**Labels:** type: feature request, category: algorithms
+
+Hi,
+
+I've been looking into getting more involved with HPX and noticed that `ranges::iota` (from Issue #5654) seems to be a great starting point. I have briefly explored the codebase (looking at standard algorithms like `reduce` and `fill`) to understand the use of CPOs (`tag_fallback_invoke`) and the dispatching mechanism.
+
+I would like to contribute the implementation of `hpx::iota` and `hpx::ranges::iota` along with their corresponding C++23 return type (`iota_result`). Currently, HPX seems doesn't have its own `iota` implementation, and existing tests rely on `std::iota` from the standard library.
+
+Before I create a PR, I wanted to check:
+
+**1. Is this feature still needed?**
+I noticed HPX hasn't yet implemented `hpx::iota` (neither the iterator-based version nor the `ranges` version).
+
+**2. Sequential Implementation Plan:**
+I plan to implement the standard sequential version first, utilizing C++20 concepts (`std::weakly_incrementable`, `std::ranges::output_range`, etc.) and encapsulating it within a CPO (`hpx::ranges::iota_t`).
+
+**3. Thoughts on Parallelization:**
+Currently, the C++ standard does not define a parallel version of `iota`, likely due to the sequential dependency inherent in repeated `++value` operations.
+
+However, I believe we can offer a parallel implementation as an HPX extension for types that support random access.
+*   **Concept:** If the value type `T` supports $O(1)$ addition (e.g., integers or types satisfying `std::random_access_iterator`), we can determine the starting value of any sub-range independently (`start_val + offset`).
+*   **Strategy:** This allows us to partition the range into chunks and fill them in parallel using HPX's `ExecutionPolicy`. For types that only satisfy `std::weakly_incrementable` (where $O(1)$ jumping isn't possible), the implementation would naturally fall back to sequential execution.
+
+I plan to start with a sequential implementation PR and then we can discuss the parallel extension if there's interest.
+
+Looking forward to your feedback!
+
+---
+
+## #6941: Remove obsolete feature tests
+
+**Labels:** category: CMake, category: tests
+
+Now that we have moved to C++20, many of our feature tests that were checking for C++20 features supported by a particular compiler are obsolete and can be removed. Let's collect a list of those here:
+
+- [ ] HPX_WITH_CXX20_STD_RANGES_ITER_SWAP
+- [x] HPX_WITH_CXX20_PERFECT_PACK_CAPTURE (#6964)
+- [ ] HPX_WITH_CXX20_PAREN_INITIALIZATION_OF_AGGREGATES (#6983)
+- [x] HPX_WITH_CXX20_STD_ENDIAN (#6966)
+- [x] HPX_WITH_CXX20_TRIVIAL_VIRTUAL_DESTRUCTOR (#6959)
+- [x] HPX_WITH_CXX20_STD_DEFAULT_SENTINEL (#6977)
+- [ ] HPX_WITH_CXX20_STD_BIT_CAST (#6976)
+- [x] HPX_WITH_CXX20_STD_IDENTITY (#6973)
+- [x] HPX_WITH_CXX20_CONSTEXPR_DESTRUCTOR (#6980)
+- [ ] HPX_WITH_CXX20_SOURCE_LOCATION
+
+Each of the above needs to be verifiesd separately to make sure removing it will not break anything on any tested platform.
+
+This also means removing the corresponding #ifdef's from the code base to unconditionally use C++ 20 features.
 
 ---
 
 ## #6931: Two correctness bugs in  chunk_size.hpp : swapped next_or_subrange args and mismatched  add_ready_future_idx  parameter order
+
+**Labels:** type: defect, category: algorithms
 
 While reviewing:
 
@@ -111,138 +384,6 @@ Proposed Fix:
 - Optionally document required parameter order to pr
 
 *[truncated]*
-
----
-
-## #6922: fork_join_executor silently truncates ranges > 2^32
-
-**Labels:** type: defect, category: executors
-
-Summary
--------
-
-fork_join_executor currently truncates iteration ranges to 32-bit
-indices. When size > UINT32_MAX (~4.29B), indices wrap silently,
-causing incorrect results with no warning or exception.
-
-This affects both static and dynamic scheduling paths.
-
-
-Root Cause
-----------
-
-1) Static scheduling:
-   In fork_join_executor.hpp, partition boundaries are cast to
-   std::uint32_t:
-
-       auto const part_begin = static_cast<std::uint32_t>(...);
-       auto const part_end   = static_cast<std::uint32_t>(...);
-
-   If size > UINT32_MAX, part_begin/part_end wrap.
-
-2) Dynamic scheduling:
-   contiguous_index_queue is hardcoded to 32-bit indices via:
-
-       static_assert(sizeof(T) <= 4, ...);
-
-   It packs two 32-bit indices into a 64-bit atomic, so 64-bit
-   ranges are fundamentally unsupported.
-
-
-Impact
-------
-
-- Silent incorrect results for large ranges
-- Affects for_each, transform, reduce, etc.
-- Particularly problematic for HPC workloads
-
-
-Proposed Fix
-------------
-
-Immediate (correctness):
-
-1) For loop_schedule::static_:
-   Replace std::uint32_t with std::size_t in partition calculations.
-
-2) For loop_schedule::dynamic:
-   Add runtime guard:
-
-       if (size > std::numeric_limits<std::uint32_t>::max())
-           throw std::overflow_error(
-               "fork_join_executor: dynamic scheduling "
-               "not supported for ranges > 2^32");
-
-Long-term:
-- Either implement a 64-bit index queue (128-bit CAS), or
-- Provide a lock-based fallback for 64-bit indices.
-
----
-
-## #6908: Implement missing C++23 range algorithms: fold, chunk_by, slide, stride, cartesian_product
-
-**Labels:** category: algorithms
-
-Proposal: Implement Missing C++23 Range Algorithms and Views
-===============================================================================
-
-Overview
--------------------------------------------------------------------------------
-
-I would like to work on implementing several C++23 range algorithms that are
-currently missing in HPX.
-
-This will help move HPX closer to full C++23 standard compliance and provide
-users with additional modern tools for working with ranges.
-
-
-Planned Additions
-===============================================================================
-
-1) Fold Algorithms (P2322R6)
--------------------------------------------------------------------------------
-
-ranges::fold_left family:
-    - fold_left
-    - fold_left_with_iter
-    - fold_left_first
-    - fold_left_first_with_iter
-
-ranges::fold_right family:
-    - fold_right
-    - fold_right_last
-
-
-2) Range Adaptors / Views
--------------------------------------------------------------------------------
-
-- views::chunk_by        (P2443R1)
-- views::slide           (P2442R1)
-- views::stride          (P1899R3)
-- views::cartesian_product (P2374R4)
-- views::repeat          (P2474R2)
-
-
-Implementation Plan
-===============================================================================
-
-- Implement fold algorithms as Customization Point Objects (CPOs)
-  using hpx::tag_invoke, following the pattern used in reduce.
-
-- Place implementations under:
-    hpx/parallel/container_algorithms   (for fold algorithms)
-    hpx/parallel/util                   (for views)
-
-- Ensure support for:
-    - sequenced execution policy
-    - parallel execution policy
-    - parallel unsequenced execution policy
-
-- Add unit tests for each algorithm/view covering:
-    - Basic correctness
-    - Sequential execution
-    - Parallel execution
-    - Edge cases (e.g., empty ranges)
 
 ---
 
@@ -1637,83 +1778,6 @@ Reference: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=81429.
 
 ---
 
-## #6232: Par performance of hpx::reverse
-
-**Labels:** type: defect, category: algorithms
-
-## Expected Behavior
-
-hpx::reverse() performs worse with par execution policy compared to seq execution policy.
-Mentioned in : https://devblogs.microsoft.com/cppblog/using-c17-parallel-algorithms-for-better-performance/
-
-![ReverseAlgorithm](https://user-images.githubusercontent.com/69986621/236041182-da815e0d-c50f-4e94-8478-c307443cca8a.png)
-![ReverseAlgorithm](https://user-images.githubusercontent.com/69986621/236041565-ff8e7c71-80da-4a6b-91b2-b6e16089b049.png)
-
-
-Median execution time for 100'000'000 elements
-Par : 9787040.0
-Seq : 6424720.0
-
-The performance difference is as mentioned in the microsoft blog
-
-perf-stat output:
-
-Par
- Performance counter stats for './par':
-
-          6,856.13 msec task-clock                #    3.624 CPUs utilized          
-             1,734      context-switches          #  252.912 /sec                   
-                25      cpu-migrations            #    3.646 /sec                   
-         1,051,732      page-faults               #  153.400 K/sec                  
-    27,791,403,155      cycles                    #    4.054 GHz                      (83.55%)
-        68,433,024      stalled-cycles-frontend   #    0.25% frontend cycles idle     (83.52%)
-       524,413,414      stalled-cycles-backend    #    1.89% backend cycles idle      (83.16%)
-    21,075,188,028      instructions              #    0.76  insn per cycle         
-                                                  #    0.02  stalled cycles per insn  (83.47%)
-     3,606,953,700      branches                  #  526.092 M/sec                    (83.21%)
-         3,547,443      branch-misses             #    0.10% of all branches          (83.12%)
-
-       1.891962963 seconds time elapsed
-
-       5.695293000 seconds user
-       1.143055000 seconds sys
-
-
- Performance counter stats for './par':
-
-       426,032,401      cache-references                                            
-        51,362,077      cache-misses              #   12.056 % of all cache refs    
-    24,980,933,230      cycles                                                      
-    18,996,816,372      instructions              #    0.76  insn per cycle         
-     3,239,373,302      branches                                                    
-         1,051,732      faults                                                      
-                29      migrations                                                  
-
-       1.605927855 seconds time elapsed
-
-       5.177040000 seconds user
-       0.884079000 seconds sys
-
-
-
-
-
-
-
-
-Seq:
- Performance counter stats for './seq':
-
-          2,531.75 msec task-clock                #    1.589 CPUs utilized          
-               401      context-switches          #  158.388 /sec                   
-                28      cpu-migrations            #   11.060 /sec                   
-         1,051,725      page-faults               #  415.414 K/sec                  
-     9,805,342,29
-
-*[truncated]*
-
----
-
 ## #6190: --hpx:queuing=shared fails for distributed runs
 
 **Labels:** type: defect, category: parcel transport, category: scheduler
@@ -1829,350 +1893,5 @@ Tried to use MPI parcelport and disable TCP to no avail (error changes, but stil
 
   - HPX Version: 1.7.1 and 1.8.1 tried
   - Platform (compiler, OS): Ubuntu / GCC
-
----
-
-## #6028: `hpx` namespaces without corresponding `std`
-
-**Labels:** category: documentation, type: feature request
-
-The following list contains names that are currently in the `hpx` namespace, but are not present in the `std` namespace:
-
-- [ ] `hpx::any_nonser`
-- [ ] `hpx::unique_any_nonser`
-- [ ] `hpx::make_any_nonser`
-- [ ] `hpx::make_unique_any_nonser`
-- [ ] `hpx::channel`
-- [x] `hpx::function_ref` (see: http://wg21.link/p0792) DOCUMENTED
-- [x] `hpx::scoped_annotation`
-- [x] `hpx::annotated_function`
-- [x] ~`hpx::apply`~ `hpx:post`
-- [x] `hpx::sync`
-- [x] `hpx::dataflow`
-- [x] `hpx::make_future`
-- [x] `hpx::make_shared_future`
-- [x] `hpx::make_ready_future` (see: http://wg21.link/p0159) DOCUMENTED
-- [x] `hpx::make_ready_future_alloc`
-- [x] `hpx::make_ready_future_at`
-- [x] `hpx::make_ready_future_after`
-- [x] `hpx::make_exceptional_future` (see: http://wg21.link/p0159) DOCUMENTED
-- [x] `hpx::when_all` (see: http://wg21.link/p0159) DOCUMENTED
-- [x] `hpx::when_any` (see: http://wg21.link/p0159) DOCUMENTED
-- [x] `hpx::when_some`
-- [x] `hpx::when_each`
-- [x] `hpx::wait_all`
-- [x] `hpx::wait_any`
-- [x] `hpx::wait_some`
-- [x] `hpx::wait_each`
-- [x] all names in the `init.hpp` header file
-- [x] `hpx::no_mutex` DOCUMENTED
-- [x] `hpx::spinlock` DOCUMENTED
-- [x] `hpx::unlock_guard`
-- [x] `hpx::unwrap`
-- [x] `hpx::unwrap_n`
-- [x] `hpx::unwrap_all`
-- [x] `hpx::unwrapping`
-- [x] `hpx::unwrapping_n`
-- [x] `hpx::unwrapping_all`
-- [ ] all names in the `version.hpp` header file
-
-This is not an implication that all the above names should change namespace. The list's purpose is to make the differences between `hpx` and `std` known.
-
----
-
-## #6014: Support C++20 modules
-
-**Labels:** type: enhancement, type: compatibility issue, category: modules
-
-Level 0:
-- [ ] core/config_registry
-- [ ] core/preprocessor
-
-Level 1:
-- [ ] core/config
-
-Level 2:
-- [ ] core/assertion
-- [ ] core/cache
-- [ ] core/concepts
-- [ ] core/debugging
-- [ ] core filesystem
-- [ ] core/hardware
-- [ ] core/itt_notify
-- [ ] core/string_util
-
-Level 3:
-- [ ] core/allocator_support
-- [ ] core/timing
-- [ ] core/type_support
-
-Level 4:
-- [ ] core/format
-- [ ] core/tag_invoke
-- [ ] core/thread_support
-
-Level 5:
-- [ ] core/logging
-- [ ] core/properties
-
-Level 6:
-- [ ] core/errors
-
-Level 7:
-- [ ] core/serialization
-
-Level 8:
-- [ ] core/datastructures
-- [ ] core/hashing
-- [ ] core/memory
-- [ ] core/checkpoint_base
-
-Level 9:
-- [ ] core/functional
-- [ ] core/iterator_support
-
-Level 10:
-- [ ] core/asio
-- [ ] core/lock_registration
-- [ ] core/plugin
-- [ ] core/program_options
-- [ ] core/util
-- [ ] core/statistics
-
-Level 11:
-- [ ] core/batch_environments
-- [ ] core/concurrency
-- [ ] core/execution_base
-- [ ] core/prefix
-- [ ] core/testing
-
-Level 12:
-- [ ] core/ini
-- [ ] core/static_reinit
-- [ ] core/topology
-- [ ] core/version
-
-Level 13:
-- [ ] core/affinity
-- [ ] core/coroutines
-
-Level 14:
-- [ ] core/async_base
-- [ ] core/runtime_configuration
-- [ ] core/threading_base
-
-Level 15:
-- [ ] core/command_line_handling_local
-- [ ] core/io_service
-- [ ] core/schedulers
-- [ ] core/synchronization
-
-Level 16:
-- [ ] core/futures
-- [ ] core/thread_pools
-- [ ] full/command_line_handling
-
-Level 17:
-- [ ] core/lcos_local
-- [ ] core/pack_traversal
-- [ ] core/resource_partitioner
-- [ ] core/threading
-- [ ] full/naming_base
-
-Level 18:
-- [ ] core/async_combinators
-
-Level 19:
-- [ ] core/execution
-
-Level 20:
-- [ ] core/executors
-
-Level 21:
-- [ ] core/async_local
-- [ ] core/timed_execution
-
-Level 22:
-- [ ] core/algorithms
-- [ ] core/resiliency
-- [ ] core/thread_pool_util
-
-Level 23:
-- [ ] core/threadmanager
-
-Level 24:
-- [ ] core/runtime_local
-
-Level 25:
-- [ ] core/compute_local
-- [ ] core/init_runtime_local
-- [ ] full/parcelset_base
-
-Level 26:
-- [ ] core/include_local
-- [ ] full/components_base
-- [ ] full/plugin_factories
-
-Level 27:
-- [ ] full/actions_base
-- [ ] full/naming
-
-Level 28:
-- [ ] full/actions
-- [ ] full/components
-
-Level 29:
-- [ ] full/executors_distributed
-- [ ] full/parcelset
-
-Level 30:
-- [ ] full/async_distributed
-- [ ] full/parcelport_tcp
-
-Level 31:
-- [ ] full/agas_base
-- [ ] full/resiliency_distributed
-
-Level 32:
-- [ ] full/agas
-- [ ] full/async_colocated
-
-Level 33:
-- [ ] full/runtime_components
-
-Level 34:
-- [ ] full/lcos_distributed
-- [ ] full/performance_counters
-
-Level 35:
-- [ ] full/distribution_policies
-
-Level 36:
-- [ ] full/runtime_distributed
-- [ ] full/segmented_algorithms
-
-Level 37:
-- [ ] full/checkpoint
-- [ ] full/collectives
-- [ ] full/compute
-
-Level 38:
-- [ ] full/include
-- [ ] full/init_runtime
-
----
-
-## #5997: Coroutines do work with Apple Clang but not with gcc
-
-**Labels:** compiler: gcc
-
-## Expected Behavior
-
-The [code](https://github.com/ModernCPPBook/Examples/blob/main/hpx/taylor_hpx_future_coroutine.cpp) should compile with both clang and gcc. 
-
-## Actual Behavior
-
-However, using gcc results in this error
-
-```
-/home/diehlpk/git/book/Examples/hpx/taylor_hpx_future_coroutine.cpp: In function ‘hpx::future<double> run(size_t, size_t, double)’:
-/home/diehlpk/git/book/Examples/hpx/taylor_hpx_future_coroutine.cpp:38:77: error: use of deleted function ‘hpx::future<double>::future(const hpx::future<double>&)’
-   38 |   for (size_t i = 0; i < futures2.size(); i++) result += co_await futures2[i];
-      |                                                                             ^
-In file included from /home/diehlpk/Compile/hpx-1.8.0/libs/core/runtime_local/include/hpx/runtime_local/runtime_local.hpp:12,
-                 from /home/diehlpk/Compile/hpx-1.8.0/libs/core/init_runtime_local/include/hpx/init_runtime_local/init_runtime_local.hpp:20,
-                 from /home/diehlpk/Compile/hpx-1.8.0/libs/full/init_runtime/include/hpx/hpx_init_params.hpp:13,
-                 from /home/diehlpk/Compile/hpx-1.8.0/libs/full/init_runtime/include/hpx/hpx_init.hpp:16,
-                 from /home/diehlpk/Compile/hpx-1.8.0/wrap/include/hpx/wrap_main.hpp:11,
-                 from /home/diehlpk/Compile/hpx-1.8.0/wrap/include/hpx/hpx_main.hpp:9,
-                 from /home/diehlpk/git/book/Examples/hpx/taylor_hpx_future_coroutine.cpp:3:
-/home/diehlpk/Compile/hpx-1.8.0/libs/core/futures/include/hpx/futures/future.hpp:830:11: note: ‘hpx::future<double>::future(const hpx::future<double>&)’ is implicitly declared as deleted because ‘hpx::future<double>’ declares a move constructor or move assignment operator
-  830 |     class future : public lcos::detail::future_base<future<R>, R>
-      |           ^~~~~~
-make[2]: *** [hpx/CMakeFiles/taylor_hpx_future_coroutine.dir/build.make:76: hpx/CMakeFiles/taylor_hpx_future_coroutine.dir/taylor_hpx_future_coroutine.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:1136: hpx/CMakeFiles/taylor_hpx_future_coroutine.dir/all] Error 2
-```
-
-
-
-## Steps to Reproduce the Problem
-
-... Please be as specific as possible while describing how to reproduce your problem.
-
-  1. Compile HPX with clang 12 and gcc 12
-  1. Compile the example code with both of them
-
-## Specifications
-
-... Please describe your environment
-
-  - HPX Version: 1.8.0
-  - Platform (compiler, OS): Mac OS X with Apple Clang and Fedora Linux with gcc 12
-
----
-
-## #5978: Registering Nested Component Actions
-
-## Expected Behavior
-
-I'm attempting to convert an established MPI code to HPX by writing an HPX version of the program's swappable communication submodule. I've been following along with the local to remote example in the documentation. I'm preserving most of the structure from the distributed memory verson of that example and trying to nest it in a class of the type being used for the communication submodule.
-
-## Actual Behavior
-
-When running the example below as is, mimicking the local to remote example with an extra layer of indirection to the components, I get an error about the `get_data_action` that I registered using `HPX_DEFINE_COMPONENT_DIRECT_ACTION()` not naming a type:
-
-````
-error: ‘get_data_action’ in ‘struct CommHPX::partition_server’ does not name a type
-  763 | typedef CommHPX::partition_server::get_data_action get_data_action;
-      |                                    ^~~~~~~~~~~~~~~
-````
-
-Trying to make `CommHPX` inherit `hpx::components::component_base<>` in the same manner as the `partition_server` component and adding a matching call to `HPX_REGISTER_COMPONENT()` as shown below throws a long list of errors regarding multiple definitions. I think I'm either fundamentally misunderstanding nested components or trying to leverage a code structure that HPX doesn't support.
-````
-typedef hpx::components::component<CommHPX> comm_hpx_type;
-HPX_REGISTER_COMPONENT(comm_hpx_type, CommHPX)
-````
-
-## Steps to Reproduce the Problem
-
-This is a stripped down version of the class structure of the communication module, as well as the macros I'm using to register the components and actions in global scope.
-
-comm_hpx.h
-````
-class CommHPX {
-    struct partition_data {}
-
-    struct partition_server : hpx::components::component_base<partition_server> {
-        partition_data get_data() const;
-    }
-
-    struct partition : hpx::components::client_base<partition, partition_server> {}
-}
-
-HPX_DEFINE_COMPONENT_DIRECT_ACTION(CommHPX::partition_server, get_data, get_data_action)
-
-typedef hpx::components::component<CommHPX::partition_server> partition_server_type;
-HPX_REGISTER_COMPONENT(partition_server_type, partition_server)
-
-typedef CommHPX::partition_server::get_data_action get_data_action;
-HPX_REGISTER_ACTION(get_data_action)
-````
-
-
-
-comm_hpx.cpp
-
-````
-hpx::future<CommHPX::partition_data> CommHPX::partition::get_data() const {
-  get_data_action act;
-  //return hpx::async(act, get_id(), t);
-  return hpx::async(act, get_id());
-}
-````
-
-## Specifications
-
-  - HPX Version: 1.8
-  - Platform (compiler, OS): CMake/3.21.1, GCC/8.3.0, Arch
 
 ---

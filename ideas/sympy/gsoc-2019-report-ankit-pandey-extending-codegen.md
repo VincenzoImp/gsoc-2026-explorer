@@ -2,14 +2,14 @@
 
 **Parent:** SymPy — Project Ideas
 **Source:** https://github.com/sympy/sympy/wiki/GSoC-2019-Report-Ankit-Pandey:-Extending-Codegen
-**Scraped:** 2026-02-22T23:28:47.573507
+**Scraped:** 2026-03-10T16:58:40.301470
 
 ---
 
 -
 -
 [Notifications](https://github.com/login?return_to=%2Fsympy%2Fsympy)You must be signed in to change notification settings -
-[Fork 5.1k](https://github.com/login?return_to=%2Fsympy%2Fsympy)
+[Fork 5.2k](https://github.com/login?return_to=%2Fsympy%2Fsympy)
 
 # GSoC 2019 Report Ankit Pandey: Extending Codegen
 

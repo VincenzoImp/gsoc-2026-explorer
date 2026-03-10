@@ -1,7 +1,7 @@
 # OpenVINO Toolkit — Project Ideas
 
 **Source:** https://github.com/openvinotoolkit/openvino/wiki/Google-Summer-Of-Code#project-ideas-for-2026
-**Scraped:** 2026-02-22T23:28:47.632506
+**Scraped:** 2026-03-10T16:58:40.312217
 
 ---
 
@@ -19,17 +19,19 @@ Please subscribe [this discussion](/ideas/openvino-toolkit/openvinotoolkit-openv
 
 ## Prerequisite task
 
-We require one pull request sent to our OpenVINO repository from each potential GSoC contributor before accepting participation for GSoC. We would like to see if you know how to code, use git and GitHub, and your coding style. To fulfill this requirement, please:
+To better understand your coding skills, familiarity with Git and GitHub, and overall coding style, we ask each prospective GSoC contributor to complete a preliminary coding task. You may either request a prerequisite task directly from a mentor or follow the approach outlined below.
+
+If you choose to follow the specified approach:
 
 1. Visit the [OpenVINO Good First Issues board](https://github.com/orgs/openvinotoolkit/projects/3).
 2. Select one of the unassigned tickets ("Contributors Needed" column) and ask for the assignment.
 3. Discuss the solution with the OpenVINO developers.
 4. Implement it according to the [OpenVINO contribution guide](/ideas/openvino-toolkit/openvinotoolkit-openvino-blob-master-contributing).
-5. If you encounter any issues talk to our developers on [Discord](https://discord.com/invite/7pVRxUwdWG).
+5. If you encounter any issues talk to our developers directly in the ticket or via [discussions](/ideas/openvino-toolkit/openvinotoolkit-openvino-discussions).
 5. Create a new pull request with your work.
 6. Wait for the review and eventual merge.
 
-Please note the above task is **mandatory**. However, we reserve the right to review and merge only the selected PRs. Not merging or closing your PR doesn't change your chances of being accepted for GSoC. Due to the expected large number of requests, the review process can be delayed, so please be patient.
+Please note that completing a prerequisite task is **mandatory** for consideration. However, we reserve the right to review and merge only selected pull requests. **Anyway, please don't open more PRs than 2 at the same time!** Whether your PRs are merged or closed will not affect your chances of being accepted for GSoC. As we expect a large number of submissions, reviews may take some time. Thank you for your patience.
 
 If you're unfamiliar with git and GitHub, check out this [blog](https://medium.com/openvino-toolkit/how-to-contribute-to-an-ai-open-source-project-c741f48e009e). The blog is about contributing to OpenVINO core project, but the workflow is the same for all projects.
 

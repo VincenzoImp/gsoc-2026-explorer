@@ -1,7 +1,7 @@
 # KolibriOS Project Team — Project Ideas
 
 **Source:** https://wiki.kolibrios.org/wiki/Ideas_Page
-**Scraped:** 2026-02-22T23:28:47.588697
+**Scraped:** 2026-03-10T16:58:40.256183
 
 ---
 
@@ -19,7 +19,9 @@ A general information about Google Summer of Code can be found here: [Google Sum
 
 ## Google Summer of Code'26 Contributor Requirements
 
-Prospective contributors are required to register [on our developers forum](https://board.kolibrios.org) and submit a small bugfix / improvement [to our Git](/ideas/kolibrios-project-team/get_source_code) in order for their application to be considered. Examples of such tasks can be obtained by asking on the developers forum or on our IRC channel (#kolibrios @ irc.libera.chat), [Discord server](https://discord.com/invite/FeB2NvE6bF) or [Telegram chat](https://t.me/kolibri_os). This requirement is only to show us that you are able to work with [our Git](/ideas/kolibrios-project-team/get_source_code) and interact with our developers if you are selected.
+Prospective contributors are required to register [on our developers forum](https://board.kolibrios.org) and submit a small bugfix / improvement [to our Git](https://wiki.kolibrios.org/wiki/Get_source_code) in order for their application to be considered. Examples of such tasks can be obtained by asking on the developers forum or on our:
+
+This requirement is only to show us that you are able to work with [our Git](https://wiki.kolibrios.org/wiki/Get_source_code) and interact with our developers if you are selected.
 
 **This task has to be completed before contributor proposal deadline (8 April 18:00 UTC).**
 
@@ -52,13 +54,13 @@ Role
 | Ivan Baravy |
 |
 
-[hidnplayr](/ideas/kolibrios-project-team/user-hidnplayr)[Punk_Joker](/ideas/kolibrios-project-team/user-punk_joker)[Leency](/ideas/kolibrios-project-team/user-leency)## Ideas
+[hidnplayr](https://wiki.kolibrios.org/wiki/User:Hidnplayr)[Punk_Joker](https://wiki.kolibrios.org/wiki/User:Punk_Joker)[Leency](https://wiki.kolibrios.org/wiki/User:Leency)## Ideas
 
 | Idea Name | Area | Programming Language | Mentors |
 |---|---|---|---|
 |
 
-[Widget toolkit](https://wiki.kolibrios.org#Widget_toolkit)[Finish Mbed TLS port](https://wiki.kolibrios.org#Finish_Mbed_TLS_port)[Port FLTK](https://wiki.kolibrios.org#Port_FLTK)[FASMG port](https://wiki.kolibrios.org#FASMG_port)[Unicode library](https://wiki.kolibrios.org#Unicode_library)[Virt-IO driver](https://wiki.kolibrios.org#Virt-IO_driver)[Loop device driver](https://wiki.kolibrios.org#Loop_device_driver)[RSS/Atom news reader](https://wiki.kolibrios.org#RSS/Atom_news_reader)[Add HTML forms to WebView](https://wiki.kolibrios.org#Add_HTML_forms_to_WebView)[J2ME Emulator](https://wiki.kolibrios.org#J2ME_Emulator)[Rust library development for KolibriOS](https://wiki.kolibrios.org#Rust_library_development_for_KolibriOS)[WebAssembly runtime development](https://wiki.kolibrios.org#WebAssembly_runtime_development)[MIDI subsystem implementation](https://wiki.kolibrios.org#MIDI_subsystem_implementation)[Git client development](https://wiki.kolibrios.org#Git_client_development)### File system improvement
+[Widget toolkit](https://wiki.kolibrios.org#Widget_toolkit)[Finish Mbed TLS port](https://wiki.kolibrios.org#Finish_Mbed_TLS_port)[Port FLTK](https://wiki.kolibrios.org#Port_FLTK)[FASMG port](https://wiki.kolibrios.org#FASMG_port)[Unicode library](https://wiki.kolibrios.org#Unicode_library)[Virt-IO driver](https://wiki.kolibrios.org#Virt-IO_driver)[Loop device driver](https://wiki.kolibrios.org#Loop_device_driver)[RSS/Atom news reader](https://wiki.kolibrios.org#RSS/Atom_news_reader)[Add HTML forms to WebView](https://wiki.kolibrios.org#Add_HTML_forms_to_WebView)[J2ME Emulator](https://wiki.kolibrios.org#J2ME_Emulator)[Rust library development for KolibriOS](https://wiki.kolibrios.org#Rust_library_development_for_KolibriOS)[WebAssembly runtime development](https://wiki.kolibrios.org#WebAssembly_runtime_development)[MIDI subsystem implementation](https://wiki.kolibrios.org#MIDI_subsystem_implementation)[Git client development](https://wiki.kolibrios.org#Git_client_development)[C89 compiler development](https://wiki.kolibrios.org#C89_compiler_development)[Matrix client development](https://wiki.kolibrios.org#Matrix_client_development)### File system improvement
 
 **General Description**
 
@@ -252,7 +254,7 @@ RSS/Atom feed can be a great addition to the KolibriOS functionality, as it allo
 
 **General Description**
 
-Despite supporting many basic HTML features, the WebView browser does not currently support HTML forms (<form>, <input>, etc.). This makes its use extremely limited and prevents it from utilizing the functionality of many popular sites. Therefore, it would be great to implement this functionality in WebView.
+Despite supporting many basic HTML features, the WebView browser does not currently support HTML forms (, , etc.). This makes its use extremely limited and prevents it from utilizing the functionality of many popular sites. Therefore, it would be great to implement this functionality in WebView.
 
 **What it gives us**
 
@@ -261,7 +263,7 @@ Because of the lack of form support, WebView can't even use search engines direc
 **Other information**
 
 - Goals:
-- Primary: Add support for <form>, <input> tags for types that was prior to HTML5.
+- Primary: Add support for ,  tags for types that was prior to HTML5.
 - Additional: Add input types that was introduced in HTML5.
 
 - Language:
@@ -373,6 +375,53 @@ Git is the most popular version control system, and it is also the version contr
 **Intermediate**, you need to be familiar with web-protocols, such as HTTP and SSH, as well as general software development. - Time/Size:
 **175 hours**. - Links:
 
+### C89 compiler development
+
+**General Description**
+
+The ANSI C programming language is really popular programming language. KolibriOS needs fast, simple and small optimizing ANSI C (C89) compiler.
+
+**What it gives us**
+
+A simple, small and fast ANSI C (C89) compiler as compiler of very popular programming language. We expect, the compiler to be really small and be able to fit it in basic floppy image.
+
+**Other information**
+
+- Goals:
+- Primary: Full ANSI C (C89) complaint lexical analysis, full ANSI C (C89) complaint syntax analysis and generation instructions for abstract stack machine, generation FASM assembly code from abstract stack machine code.
+- Additional: K&R compatibility syntax analysis, abstract stack machine optimizations, low-level (assembly) optimizations.
+
+- Languages: C, FASM (Assembly).
+- Difficulty:
+**Intermediate**, you need to understand formal languages and state machine (automata) theory, you need to know how parsing works, you need to know FASM basics. - Time/Size:
+**175 hours**. - Links:
+- Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D.:
+**"Compilers: Principles, Techniques, and Tools (1st edition)"**(**"Dragon book"**) - Brian Kernighan, Dennis Ritchie:
+**"The C Programming Language (2nd edition — ANSI)"**
+
+- Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D.:
+
+### Matrix client development
+
+**General Description**
+
+Matrix is an open standard and communication protocol for real-time, decentralized communication. It supports features such as instant messaging, voice and video calls, and bridging to other platforms. Matrix is federated, meaning anyone can host their own server while still communicating with users on other servers, which makes it a great fit for open-source communities.
+
+**What it gives us**
+
+Having a native Matrix client in KolibriOS would provide users with access to a modern, decentralized messaging platform directly from the operating system. This is especially relevant for the KolibriOS community itself, as Matrix could serve as an additional communication channel for developers and users. Furthermore, since Matrix uses HTTPS for its client-server API, this task will also drive improvements to the networking stack, particularly the Mbed TLS port, which is required for proper HTTPS support.
+
+**Other information**
+
+- Goals:
+- Primary: Implement a basic Matrix client application capable of logging in, listing joined rooms, and sending/receiving text messages via the Matrix client-server API over HTTPS. This includes finishing necessary parts of the Mbed TLS port (certificates, HTTPS in HTTP library) to enable secure communication.
+- Additional: Add support for room joining/leaving, message history browsing, and basic rich-text (formatted message) display.
+
+- Language: Any, but
+**Assembly/FASM**is preferable. - Difficulty:
+**Intermediate**, you need to be familiar with web protocols (HTTP/HTTPS), JSON processing, and general application development for KolibriOS. - Time/Size:
+**175 hours**. - Links:
+
 ## Completed Ideas
 
 Below are examples of ideas successfully completed during KolibriOS's previous participation in GSoC.
@@ -381,7 +430,7 @@ Below are examples of ideas successfully completed during KolibriOS's previous p
 
 [SDL2 library port](https://summerofcode.withgoogle.com/programs/2024/projects/U7cf4oma)was succesfully completed by[arnavbhatt288](https://board.kolibrios.org/memberlist.php?mode=viewprofile&u=14954).[NVMe driver implementation](https://summerofcode.withgoogle.com/programs/2024/projects/W1VYwf7j)was succesfully completed by[ramenu](https://board.kolibrios.org/memberlist.php?mode=viewprofile&u=15061).
 
-For more information see [GSoC 2024 Results](/ideas/kolibrios-project-team/gsoc_2024_results).
+For more information see [GSoC 2024 Results](https://wiki.kolibrios.org/wiki/GSoC_2024_Results).
 KolibriOS Project Team at [GSOC'2024](https://summerofcode.withgoogle.com/archive/2024/organizations/kolibrios-project-team).
 
 ### GSoC 2016

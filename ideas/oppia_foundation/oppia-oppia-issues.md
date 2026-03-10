@@ -2,7 +2,2130 @@
 
 **Parent:** Oppia Foundation — Project Ideas
 **Source:** https://github.com/oppia/oppia/issues?q=is%3Aopen+is%3Aissue+label%3A%22Impact%3A+High%22
-**Scraped:** 2026-02-22T23:28:47.619918
+**Scraped:** 2026-03-10T16:58:40.307703
+
+---
+
+## #25255: [E2E/Acceptance CI Failure]: Acceptance (logged-in-learner/completes-the-exploration-and-decides-what-to-do-next)
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+Acceptance
+
+### Which CI step failed?
+
+Acceptance (logged-in-learner/completes-the-exploration-and-decides-what-to-do-next)
+
+### Did the test fail after an automatic rerun?
+
+Test failed once, was automatically re-run, and then failed again
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Desktop, Mobile
+
+### Stacktrace
+
+```shell
+FAIL core/tests/puppeteer-acceptance-tests/specs/logged-in-learner/completes-the-exploration-and-decides-what-to-do-next.spec.ts (160.068 s)
+  Logged-In Learner
+    ✕ should be able to rate the lesson
+
+  ● Logged-In Learner › should be able to rate the lesson
+
+    TimeoutError: Element <div.oppia-editable-section-mask.e2e-test-state-edit-content> took too long to be clickable.
+    Original Error:
+    waiting for function failed: timeout 30000ms exceeded
+
+      493 |         : selector;
+      494 |     try {
+    > 495 |       await this.page.waitForFunction(isElementClickable, {}, element);
+          |                       ^
+      496 |     } catch (error) {
+      497 |       if (error instanceof Error) {
+      498 |         await this.page.evaluate(isElementClickable, element, true, true);
+
+      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
+      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
+      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
+      at Page.waitForFunction (../../../node_modules/puppeteer/src/common/Page.ts:3358:29)
+      at BaseUser.waitForElementToBeClickable (utilities/common/puppeteer-utils.ts:495:23)
+          at runMicrotasks (<anonymous>)
+      at BaseUser.clickOnElement (utilities/common/puppeteer-utils.ts:520:5)
+      at BaseUser.clickOnElementWithSelector (utilities/common/puppeteer-utils.ts:555:5)
+      at BaseUser.updateCardContent (utilities/user/exploration-editor.ts:2863:5)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        161.734 s
+Ran all test suites matching /core\/tests\/puppeteer-acceptance-tests\/specs\/logged-in-learner\/completes-the-exploration-and-decides-what-to-do-next.spec.ts/i.
+INFO     2026-03-09 23:06:12,232 shutdown.py:48] Shutting down.
+Error: 3-09 23:06:12 +0000] [2971] [ERROR] Worker (pid:2975) was sent SIGTERM!
+Error: 3-09 23:06:12 +0000] [3001] [ERROR] Worker (pid:3003) was sent SIGTERM!
+Error: 3-09 23:06:12 +0000] [2967] [ERROR] Worker (pid:2973) was sent SIGTERM!
+Error: 3-09 23:06:12 +0000] [2808] [ERROR] Worker (pid:2810) was sent SIGTERM!
+INFO     2026-03-09 23:06:12,946 stub_util.py:321] Applying all pending transactions and saving the datastore
+INFO     2026-03-09 23:06:12,946 stub_util.py:324] Saving search indexes
+```
+
+### Screenshots and/or Screen Recordings
+
+N/A
+
+### Occurrences
+
+https://github.com/oppia/oppia/actions/runs/22862346424/job/66345183378?pr=25086
+
+### Additional Information
+
+The failure appears to occur when Puppeteer waits for
+`oppia-edit
+
+*[truncated]*
+
+---
+
+## #25245: [Feature Request]: Create website banner for Financial Literacy Campaign (Launch: April 7)
+
+**Labels:** enhancement
+
+### Is your feature request related to a problem? Please describe.
+
+In preparation for the launch of the  Financial Literacy classroom, the Marketing team is planning to run a Financial Literacy campaign and would like to request a campaign banner for the Oppia website to support the launch campaign.
+
+The campaign will begin on April 7, and the banner will be activated once the campaign goes live.
+
+### Describe the solution (or solutions) you'd like
+
+I have created a design sample in Figma to illustrate the layout and messaging we have in mind. Please see the link here: [https://www.figma.com/design/wAUQVHxnPslVMaPelzAgCy/Untitled?node-id=0-1&t=mLF3cMMJz271YM0n-1]
+
+### Describe alternatives you've considered and rejected
+
+_No response_
+
+### Additional context
+
+**Additional Context**
+
+- The banner should be implemented as a site-wide banner so it is visible across the website during the campaign period.
+- The banner should appear on all pages except the Donate page.
+- The preferred language for this campaign is English. - We would consider translating banners into additional languages in future campaigns, but for this launch, we would like to keep it in English.
+
+**Campaign Banner Close Behavior**
+- If a user clicks the close (✕) button on the Financial Literacy Month campaign banner, the banner should be temporarily hidden but should reappear after 24 hours.
+
+**Expected Behavior**
+- When a user visits the site, the campaign banner is displayed.
+- If the user clicks the ✕ close button, the banner should disappear immediately.
+- The banner should remain hidden for the rest of the session or for up to 24 hours.
+- After 24 hours, the banner should appear again when the user revisits the site.
+
+---
+
+## #25234: [CI Failure]: GitHub Actions network timeout during repository fetch
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+Frontend
+
+### Which CI step failed?
+
+Checkout the repository so that local actions can be used
+
+### Stacktrace
+
+```shell
+Fetching the repository
+  /usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +0a873b02f907c1957b64326e755ab0b7d7a1d0d5:refs/remotes/pull/24419/merge
+  Error: fatal: unable to access 'https://github.com/oppia/oppia/': Failed to connect to github.com port 443 after 132959 ms: Connection timed out
+  The process '/usr/bin/git' failed with exit code 128
+  Waiting 17 seconds before trying again
+  /usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +0a873b02f907c1957b64326e755ab0b7d7a1d0d5:refs/remotes/pull/24419/merge
+  Error: error: RPC failed; curl 56 GnuTLS recv error (-54): Error in the pull function.
+  Error: fatal: protocol error: bad pack header
+  The process '/usr/bin/git' failed with exit code 128
+  Waiting 14 seconds before trying again
+  /usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +0a873b02f907c1957b64326e755ab0b7d7a1d0d5:refs/remotes/pull/24419/merge
+  Error: fatal: unable to access 'https://github.com/oppia/oppia/': Failed to connect to github.com port 443 after 133423 ms: Connection timed out
+  Error: The process '/usr/bin/git' failed with exit code 128
+```
+
+### Screenshots / Screen Recordings
+
+_No response_
+
+### Occurrences
+
+Once 
+
+### Additional Information
+
+_No response_
+
+### Debugging document link
+
+_No response_
+
+---
+
+## #25231: [BUG]: InteractionBackendDict.id uses string instead of InteractionSpecsKey, requiring unsafe cast in state editor
+
+**Labels:** triage needed, bug
+
+### Describe the bug
+
+Interaction ID contracts in the frontend are too broad (string | null) instead of using InteractionSpecsKey | null. Because of this mismatch, callers need casts like as InteractionSpecsKey (for example in state editor initialization). This weakens type safety and can hide contract errors.
+
+### URL of the page where the issue is observed.
+
+N/A
+
+### Steps To Reproduce
+
+1. Open `core/templates/components/state-editor/state-editor.component.ts`.
+2. Locate the call to `stateInteractionIdService.init(...)`.
+3. Observe that `stateData.interaction.id` requires `as InteractionSpecsKey`.
+4. Open `core/templates/domain/exploration/interaction.model.ts`.
+5. Observe `InteractionBackendDict.id` is typed as `string | null` instead of `InteractionSpecsKey | null`.
+
+### Expected Behavior
+
+Interaction ID types should use InteractionSpecsKey | null across relevant frontend contracts so casts are not needed in callers like state editor.
+
+### Screenshots/Videos
+
+N/A
+
+### What device are you using?
+
+Desktop
+
+### Operating System
+
+MacOS
+
+### What browsers are you seeing the problem on?
+
+Chrome
+
+### Browser version
+
+_No response_
+
+### Additional context
+
+_No response_
+
+### Tips for developers
+
+- Cast currently appears in:
+  - `core/templates/components/state-editor/state-editor.component.ts`
+- Current frontend contract:
+  - `core/templates/domain/exploration/interaction.model.ts`
+  - `InteractionBackendDict.id` is `string | null`
+- Backend reference:
+  - `core/domain/state_domain.py` -> `InteractionInstanceDict.id: Optional[str]`
+- Goal:
+  - Introduce/use `InteractionSpecsKey | null` in frontend interaction ID contract where appropriate.
+  - Remove unnecessary casts (starting with state editor).
+  - Keep `null` support for uninitialized/default interaction state.
+- Validation:
+  - `python -m scripts.run_typescript_checks`
+  - `python -m scripts.run_typescript_checks --strict_checks`
+
+---
+
+## #25227: [E2E/Acceptance CI Failure]: Acceptance (curriculum-admin/create-subtopic-study-guide-with-multiple-sections)
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+Acceptance
+
+### Which CI step failed?
+
+run mobile acceptance tests to check flakiness
+
+### Did the test fail after an automatic rerun?
+
+Test failed once but was not automatically re-run
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Mobile
+
+### Stacktrace
+
+```shell
+FAIL core/tests/puppeteer-acceptance-tests/specs/curriculum-admin/create-subtopic-study-guide-with-multiple-sections.spec.ts (264.41 s)
+  Curriculum Admin
+    ✕ should create a study guide with multiple sections. (40335 ms)
+    ✕ should add sections with workedexamples. (30134 ms)
+    ✕ should preview a study guide. (30001 ms)
+
+  ● Curriculum Admin › should create a study guide with multiple sections.
+
+    Expected image to match or be a close match to snapshot but was 7.307546226886556% different from snapshot (73112 differing pixels).
+    See diff for details: /home/runner/work/oppia/oppia/core/tests/puppeteer-acceptance-tests/curriculum-admin/create-subtopic-study-guide-with-multiple-sections/prod-mobile-screenshots/diff-snapshots/sectionContentLengthError-diff.png
+    Download the artifact folder diff-snapshots from the github workflow to check the difference between the old screenshot(s) and the new one(s). To download the folder, go to "Summary" of the CI Job of the PR and find the "Artifacts" section. The artifact folder name should be something like diff-snapshots_(suite-name)_desktop_original. The diff screenshot(s) should end with "-diff".
+    Please update the screenshots if the UI changed. If screenshot comparisons consistently show the same difference percentage across multiple test runs, the baseline screenshot(s) should be updated.
+    To update the screenshots(s), you should run the tests in CI, download the artifact folder new-snapshots from the github workflow and use the screenshots in that folder to replace the old one(s).
+    To download the folder, go to "Summary" of the CI Job of the PR and find the "Artifacts" section. The artifact folder name should be something like new-snapshots_(suite-name)_desktop_original. The new screenshot(s) should end with "-received". When replacing the screenshot(s), make sure to change the postfix "-received" to "-snap".
+
+      1126 |         ' folder name should be something like new-snapshots_(suite-name)_desktop_original.' +
+      1127 |         ' The new screenshot(s) should end with "-received". When replacing the screenshot(s), make sure to change the postfix "-received" to "-snap".';
+    > 1128 |       throw new Error(errorMessage);
+           |             ^
+      1129 |     }
+      1130 |   }
+      1131 |
+
+      at BaseUser.expectScreenshotToMatch (utilities/common/puppeteer-utils.ts:1128:13)
+          at runMicrotasks (<anonymous>)
+      at Object.<anonymous> (specs/curriculum-admin/create-subtopic-study-guide-with-multiple-sections.spec.ts:76:5)
+
+  ● Curriculum Admin › should add sections with workedexamples.
+
+    TimeoutError: Element 
+
+### What device are you using?
+
+Desktop
+
+### Operating System
+
+Windows
+
+### What browsers are you seeing the problem on?
+
+_No response_
+
+### Browser version
+
+_No response_
+
+### Additional context
+
+_No response_
+
+### Tips for developers
+
+Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
+
+Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
+
+**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
+
+---
+
+## #25179: [E2E/Acceptance CI Failure]: Exceeded timeout of 380000 ms for a hook
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+Acceptance
+
+### Which CI step failed?
+
+Acceptance (topic-manager/edit-and-republish-story-with-mobile-supported-explorations)
+
+### Did the test fail after an automatic rerun?
+
+Test failed once and then passed after an automatic rerun
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Desktop
+
+### Stacktrace
+
+```shell
+FAIL core/tests/puppeteer-acceptance-tests/specs/topic-manager/edit-and-republish-story-with-mobile-supported-explorations.spec.ts (461.464 s)
+  Topic Manager
+    ✕ should be able to modify chapter details, preview the chapter card, add skills, and save the changes.
+
+  ● Topic Manager › should be able to modify chapter details, preview the chapter card, add skills, and save the changes.
+
+    thrown: "Exceeded timeout of 380000 ms for a hook.
+    Use jest.setTimeout(newTimeout) to increase the timeout value, if this is a long-running test."
+
+      34 |   let explorationId3: string | null;
+      35 |
+    > 36 |   beforeAll(async function () {
+         |   ^
+      37 |     curriculumAdmin = await UserFactory.createNewUser(
+      38 |       'curriculumAdm',
+      39 |       'curriculumAdmin1@example.com',
+
+      at specs/topic-manager/edit-and-republish-story-with-mobile-supported-explorations.spec.ts:36:3
+      at Object.<anonymous> (specs/topic-manager/edit-and-republish-story-with-mobile-supported-explorations.spec.ts:29:1)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        463.072 s
+Ran all test suites matching /core\/tests\/puppeteer-acceptance-tests\/specs\/topic-manager\/edit-and-republish-story-with-mobile-supported-explorations.spec.ts/i.
+INFO     2026-03-01 09:06:19,855 shutdown.py:48] Shutting down.
+Error: 3-01 09:06:19 +0000] [2654] [ERROR] Worker (pid:2656) was sent SIGTERM!
+Error: 3-01 09:06:19 +0000] [2831] [ERROR] Worker (pid:2837) was sent SIGTERM!
+INFO     2026-03-01 09:06:20,670 stub_util.py:321] Applying all pending transactions and saving the datastore
+INFO     2026-03-01 09:06:20,670 stub_util.py:324] Saving search indexes
+```
+
+### Screenshots and/or Screen Recordings
+
+N/A
+
+### Occurrences
+
+https://github.com/oppia/oppia/actions/runs/22537631782/job/65289423681
+
+2 March 2026
+
+### Additional Information
+
+_No response_
+
+### Debugging document link
+
+_No response_
+
+---
+
+## #25174: [Feature Request]: Batch Voiceover Regeneration to Avoid 60-Second Timeout
+
+**Labels:** triage needed, enhancement
+
+### Is your feature request related to a problem? Please describe.
+
+Currently, voiceover regeneration for an exploration is triggered asynchronously under the following conditions:
+
+- When an exploration is added to a published story
+- When changes are made to a curated exploration
+- When voiceover synthesis is explicitly triggered from the voiceover admin page
+
+This approach has a limitation: all required voiceovers must be generated within the 60-second Gunicorn timeout limit.
+
+In practice, generating a single voiceover takes approximately 5 seconds. As a result, when multiple contents require regeneration, the process is highly likely to exceed the Gunicorn timeout in any of the above scenarios.
+
+### Describe the solution (or solutions) you'd like
+
+In each of the three cases, suppose voiceovers need to be synthesized for n contents. Instead of processing all n contents in a single deferred (asynchronous) task, the task should split them into m smaller batches. Each batch would contain a limited number of contents such that its processing time remains within the 60-second timeout window.
+
+This batching approach would prevent request timeouts while ensuring all required voiceovers are successfully regenerated.
+
+### Describe alternatives you've considered and rejected
+
+_No response_
+
+### Additional context
+
+_No response_
+
+---
+
+## #25172: [E2E/Acceptance CI Failure]: Acceptance (exploration-creator/preview-commonly-used-interactions)
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+Acceptance
+
+### Which CI step failed?
+
+ Exploration Editor › should be able to preview "Continue Button" interaction and  should be able to preview "Multiple Choice" interaction
+
+### Did the test fail after an automatic rerun?
+
+Test failed once but was not automatically re-run
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Desktop
+
+### Stacktrace
+
+```shell
+FAIL core/tests/puppeteer-acceptance-tests/specs/exploration-creator/preview-commonly-used-interactions.spec.ts (529.288 s)
+  Exploration Editor
+    ✕ should be able to preview "Continue Button" interaction (60120 ms)
+    ✕ should be able to preview "Multiple Choice" interaction (30112 ms)
+    ✓ should be able to preview "Number Input" interaction (77604 ms)
+    ✓ should be able to preview "Text Input" interaction (69496 ms)
+    ✓ should be able to preview "Image Region" interaction (69066 ms)
+    ✓ should be able to preview "Item Selection" interaction (70132 ms)
+    ✓ should be able to preview "Drag and Drop Sort" interaction (86877 ms)
+
+  ● Exploration Editor › should be able to preview "Continue Button" interaction
+
+    TimeoutError: Element <div.oppia-editable-section-mask.e2e-test-state-edit-content> took too long to be clickable.
+    Original Error:
+    waiting for function failed: timeout 30000ms exceeded
+
+      492 |         : selector;
+      493 |     try {
+    > 494 |       await this.page.waitForFunction(isElementClickable, {}, element);
+          |                       ^
+      495 |     } catch (error) {
+      496 |       if (error instanceof Error) {
+      497 |         await this.page.evaluate(isElementClickable, element, true, true);
+
+      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
+      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
+      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
+      at Page.waitForFunction (../../../node_modules/puppeteer/src/common/Page.ts:3358:29)
+      at BaseUser.waitForElementToBeClickable (utilities/common/puppeteer-utils.ts:494:23)
+      at BaseUser.clickOnElement (utilities/common/puppeteer-utils.ts:519:5)
+      at BaseUser.clickOnElementWithSelector (utilities/common/puppeteer-utils.ts:554:5)
+      at BaseUser.updateCardContent (utilities/user/exploration-editor.ts:2863:5)
+      at Object.<anonymous> (specs/exploration-creator/preview-commonly-used-interactions.spec.ts:56:5)
+
+  ● Exploration Editor › should be able to preview "Multiple Choice" interaction
+
+    TimeoutError: Element <i.fa.fa-book.show-mobile-navbar-icon.e2e-test-mobile-options> took too long to be clickable.
+    Original Error:
+    waiting for function failed: timeout 30000ms exceeded
+
+      492 |         : selector;
+      493 |     try {
+    > 494 |       await this.page.waitForFunction(isElementClickable, {}, element);
+          |                       ^
+      495 |     } catch (error) {
+      496 |       if (er
+
+*[truncated]*
+
+---
+
+## #25170: [BUG]: PreferencesHandler.put reads from raw self.payload instead of self.normalized_payload, bypassing schema validation
+
+**Labels:** triage needed, bug
+
+### Describe the bug
+
+PreferencesHandler.put in core/controllers/profile.py reads the updates list from self.payload instead of self.normalized_payload. This means the entire PUT /preferences endpoint bypasses Oppia's schema validation framework, allowing unvalidated, untyped data (e.g. invalid language codes, arbitrary-length lists, invalid dashboard types) to be written directly to user settings in the datastore without error.
+This is confirmed by PreferencesHandler being listed in HANDLER_CLASS_NAMES_WHICH_STILL_NEED_SCHEMAS in core/handler_schema_constants.py, meaning validate_and_normalize_args() does not run for this handler's PUT method.
+
+### URL of the page where the issue is observed.
+
+N/A
+
+### Steps To Reproduce
+
+1. Log in as any registered Oppia user.
+2. Send a PUT request to /preferences with the following JSON body:
+   {"updates": [{"update_type": "default_dashboard", "data": "INVALID_DASHBOARD_TYPE"}, {"update_type": "preferred_language_codes", "data": ["zzz", "xyz", "abc"]}]}
+3. Observe that the server returns HTTP 200 with no validation error.
+4. Send a GET to /preferences and observe the corrupted/invalid values were saved to the datastore.
+Root cause: Line 356 of core/controllers/profile.py uses self.payload['updates'] instead of self.normalized_payload['updates'].
+
+### Expected Behavior
+
+The server should reject invalid values (unsupported language codes, invalid dashboard types, etc.) with a 400 InvalidInputException, consistent with how other validated handlers work. The handler should define HANDLER_ARGS_SCHEMAS for its PUT method and use self.normalized_payload instead of self.payload.
+
+### Screenshots/Videos
+
+_No response_
+
+### What device are you using?
+
+Desktop
+
+### Operating System
+
+MacOS
+
+### What browsers are you seeing the problem on?
+
+Chrome
+
+### Browser version
+
+_No response_
+
+### Additional context
+
+This is related to the ongoing schema migration effort tracked in issue #13162 ("Write schemas for handler class arguments"). PreferencesHandler is one of the handlers still missing a schema. Fixing this requires:
+1. Adding HANDLER_ARGS_SCHEMAS['PUT'] to PreferencesHandler
+2. Replacing self.payload with self.normalized_payload on line 356
+3. Removing PreferencesHandler from HANDLER_CLASS_NAMES_WHICH_STILL_NEED_SCHEMAS in core/handler_schema_constants.py
+
+---
+
+## #25167: [E2E/Acceptance CI Failure]: E2E explorationImprovementsTab
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+E2E
+
+### Which CI step failed?
+
+Run E2E Test explorationImprovementsTab
+
+### Did the test fail after an automatic rerun?
+
+Test failed once, was automatically re-run, and then failed again
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Desktop
+
+### Stacktrace
+
+```shell
+INFO     2026-03-02 13:24:20,735 admin_server.py:67] Starting admin server at: http://0.0.0.0:8000
+INFO     2026-03-02 13:24:21,738 instance.py:555] Detected GOOGLE_CLOUD_PROJECT=dev-project-id in environment variables
+2026-03-02T13:24:22.398Z WARN @wdio/config:ConfigParser: No suite was found with name "145.0.7632.116"
+
+Execution of 1 workers started at 2026-03-02T13:24:22.405Z
+
+INFO     2026-03-02 13:24:22,751 instance.py:293] Instance PID: 6055
+
+Error in "getDownloadStream". Could not download https://github.com/SeleniumHQ/selenium/releases/download/selenium-4.9.0/selenium-server-4.9.0.jar
+See more details below:
+socket hang up
+
+/home/runner/work/oppia/oppia/node_modules/selenium-standalone/lib/install.js:301
+          throw new Error('Could not download ' + downloadUrl);
+                ^
+Error: Could not download https://github.com/SeleniumHQ/selenium/releases/download/selenium-4.9.0/selenium-server-4.9.0.jar
+    at Request.<anonymous> (/home/runner/work/oppia/oppia/node_modules/selenium-standalone/lib/install.js:301:17)
+    at Object.onceWrapper (node:events:510:26)
+    at Request.emit (node:events:390:28)
+    at Request.emit (node:domain:475:12)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+INFO     2026-03-02 13:24:22,858 shutdown.py:48] Shutting down.
+```
+
+### Screenshots and/or Screen Recordings
+
+[e2e_test_retry_explorationImprovementsTab.log](https://github.com/user-attachments/files/25690990/e2e_test_retry_explorationImprovementsTab.log)
+
+### Occurrences
+
+Occurred in PR: #24935 
+
+### Additional Information
+
+_No response_
+
+### Debugging document link
+
+_No response_
+
+---
+
+## #25166: [E2E/Acceptance CI Failure]: E2E embedding test
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+E2E
+
+### Which CI step failed?
+
+Run E2E test embedding
+
+### Did the test fail after an automatic rerun?
+
+Test failed once, was automatically re-run, and then failed again
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Desktop
+
+### Stacktrace
+
+```shell
+[0-0] Error in "Embedding should display and play embedded explorations"
+Error: Can't call $ on element with selector "<oppia-interactive-numeric-input>" because element wasn't found
+    ��� should display and play embedded explorations �� [ /core/tests/webdriverio_desktop/embedding.js ]
+[0-0] ffmpeg exited with code 255
+[0-0] FAILED in chrome - /core/tests/webdriverio_desktop/embedding.js
+
+ "spec" Reporter:
+------------------------------------------------------------------
+Running: chrome (v145.0.7632.116) on LINUX
+Session ID: 909bef8213e8f20cce5a4ca689a825f5
+
+�� /core/tests/webdriverio_desktop/embedding.js
+Embedding
+   ��� should display and play embedded explorations
+
+1 failing (2m 2.7s)
+
+1) Embedding should display and play embedded explorations
+Error: Can't call $ on element with selector "<oppia-interactive-numeric-input>" because element wasn't found
+Error: Can't call $ on element with selector "<oppia-interactive-numeric-input>" because element wasn't found
+
+
+Spec Files:	 0 passed, 1 failed, 1 total (100% completed) in 00:02:08 
+
+INFO     2026-03-02 13:28:13,042 shutdown.py:48] Shutting down.
+Error: 3-02 13:28:13 +0000] [8449] [ERROR] Worker (pid:8460) was sent SIGTERM!
+Error: 3-02 13:28:13 +0000] [8140] [ERROR] Worker (pid:8142) was sent SIGTERM!
+Error: 3-02 13:28:13 +0000] [7743] [ERROR] Worker (pid:7753) was sent SIGTERM!
+[datastore] Mar 02, 2026 1:28:13 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+```
+
+### Screenshots and/or Screen Recordings
+
+[e2e_test_retry_embedding.log](https://github.com/user-attachments/files/25690955/e2e_test_retry_embedding.log)
+
+### Occurrences
+
+Occurred in PR: 24935
+
+### Additional Information
+
+_No response_
+
+### Debugging document link
+
+_No response_
+
+---
+
+## #25162: [E2E/Acceptance CI Failure]: logged-out-learner/play-a-complete-community-lesson
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+Acceptance
+
+### Which CI step failed?
+
+re run mobile acceptance test to check flakiness
+
+### Did the test fail after an automatic rerun?
+
+Test failed once but was not automatically re-run
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Mobile
+
+### Stacktrace
+
+```shell
+FAIL core/tests/puppeteer-acceptance-tests/specs/logged-out-learner/play-a-complete-community-lesson.spec.ts (295.731 s)
+  Logged-Out Learner
+    ✕ should use all RTE components in the exploration
+
+  ● Logged-Out Learner › should use all RTE components in the exploration
+
+    TimeoutError: Element  "Done" took too long to be clickable.
+    Original Error:
+    waiting for function failed: timeout 30000ms exceeded
+
+      492 |         : selector;
+      493 |     try {
+    > 494 |       await this.page.waitForFunction(isElementClickable, {}, element);
+          |                       ^
+      495 |     } catch (error) {
+      496 |       if (error instanceof Error) {
+      497 |         await this.page.evaluate(isElementClickable, element, true, true);
+
+      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
+      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
+      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
+      at Page.waitForFunction (../../../node_modules/puppeteer/src/common/Page.ts:3358:29)
+      at BaseUser.waitForElementToBeClickable (utilities/common/puppeteer-utils.ts:494:23)
+          at runMicrotasks (<anonymous>)
+      at BaseUser.clickOnElement (utilities/common/puppeteer-utils.ts:519:5)
+      at BaseUser.clickOnElementWithSelector (utilities/common/puppeteer-utils.ts:554:5)
+      at BaseUser.addExplorationDescriptionContainingAllRTEComponents (utilities/user/exploration-editor.ts:6771:5)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        297.409 s
+```
+
+### Screenshots and/or Screen Recordings
+
+n/a
+
+### Occurrences
+
+once
+
+### Additional Information
+
+_No response_
+
+### Debugging document link
+
+_No response_
+
+---
+
+## #25160: [E2E/Acceptance CI Failure]: TimeoutError: waiting for selector `button.e2e-test-confirm-skill-creation-button` to be hidden failed: timeout 30000ms exceeded
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+Acceptance
+
+### Which CI step failed?
+
+Acceptance (topic-manager/create-and-edit-questions-in-skill-dashboard)
+
+### Did the test fail after an automatic rerun?
+
+Test failed once and then passed after an automatic rerun
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Desktop
+
+### Stacktrace
+
+```shell
+t-log] 50:35.711: Started closing broswer for curriculumAdm.
+[test-log] 50:35.711: Started closing broswer for superAdm.
+[test-log] 50:35.711: Screen recording stopped for curriculumAdm.
+[test-log] 50:35.712: Screen recording stopped for superAdm.
+[test-log] 50:35.794: Error while taking screenshot for curriculumAdm: ProtocolError: Protocol error (Target.activateTarget): Target closed.
+[test-log] 50:35.904: Browser closed for superAdm.
+[test-log] 50:35.907: Browser closed for curriculumAdm.
+[test-log] 50:35.907: All browsers closed.
+FAIL core/tests/puppeteer-acceptance-tests/specs/topic-manager/create-and-edit-questions-in-skill-dashboard.spec.ts (398.238 s)
+  Topic Manager
+    ✕ should be able to add questions to skills using the skill editor (1 ms)
+    ✕ should be able to edit questions in skills editor
+
+  ● Topic Manager › should be able to add questions to skills using the skill editor
+
+    TimeoutError: waiting for selector `button.e2e-test-confirm-skill-creation-button` to be hidden failed: timeout 30000ms exceeded
+
+      611 |     await this.clickOnElementWithSelector(confirmSkillCreationButton);
+      612 |     await this.waitForNetworkIdle();
+    > 613 |     await this.page.waitForSelector(confirmSkillCreationButton, {
+          |                     ^
+      614 |       hidden: true,
+      615 |     });
+      616 |     await this.page.bringToFront();
+
+      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
+      at DOMWorld.waitForSelectorInPage (../../../node_modules/puppeteer/src/common/DOMWorld.ts:656:22)
+      at Object.internalHandler.waitFor (../../../node_modules/puppeteer/src/common/QueryHandler.ts:78:19)
+      at DOMWorld.waitForSelector (../../../node_modules/puppeteer/src/common/DOMWorld.ts:511:25)
+      at Frame.waitForSelector (../../../node_modules/puppeteer/src/common/FrameManager.ts:1290:47)
+      at Page.waitForSelector (../../../node_modules/puppeteer/src/common/Page.ts:3222:29)
+      at BaseUser.fillSkillInfoAndSubmit (utilities/user/curriculum-admin.ts:613:21)
+      at BaseUser.createSkillFromSkillsDashboard (utilities/user/curriculum-admin.ts:3033:5)
+      at specs/topic-manager/create-and-edit-questions-in-skill-dashboard.spec.ts:71:5
+
+  ● Topic Manager › should be able to edit questions in skills editor
+
+    TimeoutError: waiting for selector `button.e2e-test-confirm-skill-creation-button` to be hidden failed: timeout 30000ms exceeded
+
+      611 |     await this.clickOnElementWithSelector(confirmSkillCreationButton);
+      612 |     await this.waitForNetworkIdle();
+    > 613 |     await this.page.waitForSelector(confirmSkillCreationButton, {
+          |  
+
+*[truncated]*
+
+---
+
+## #25157: [BUG]: translation is not done expected संख्याओं का पूर्णांकन, भाग 2
+
+**Labels:** triage needed, bug
+
+### Describe the bug
+
+the hindi transalation is not done proper
+
+### URL of the page where the issue is observed.
+
+https://www.oppia.org/learn/math/place-values/story
+
+### Steps To Reproduce
+
+https://www.oppia.org/learn/math/place-values/story 
+here is you can see the issue 
+
+### Expected Behavior
+
+5.संख्याओं का पूर्णांकन, भाग 2
+
+### Screenshots/Videos
+
+<img width="949" height="500" alt="Image" src="https://github.com/user-attachments/assets/6f2cc1b1-3c2a-4032-a14b-4680f6a5e0d3" />
+
+### What device are you using?
+
+Desktop
+
+### Operating System
+
+Windows
+
+### What browsers are you seeing the problem on?
+
+Chrome
+
+### Browser version
+
+_No response_
+
+### Additional context
+
+_No response_
+
+### Tips for developers
+
+Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
+
+Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
+
+**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
+
+---
+
+## #25156: [BUG]: ExpressionChangedAfterItHasBeenCheckedError on New Learner Dashboard (Home Tab)
+
+**Labels:** triage needed, bug
+
+### Describe the bug
+
+When loading the New Learner Dashboard (Home tab), an Angular runtime error appears in the browser console: ExpressionChangedAfterItHasBeenCheckedError. The error indicates that an *ngIf expression changed value (true → false) after Angular completed its change detection cycle. This happens during initial page rendering.
+
+### URL of the page where the issue is observed.
+
+http://localhost:8181/learner-dashboard
+
+### Steps To Reproduce
+
+1)Log in as a learner.
+
+2)Go to the Admin page.
+
+3)Grant yourself Release Coordinator rights.
+
+4)Navigate to:
+http://localhost:8181/release-coordinator
+
+5)Enable the feature flag:
+show_redesigned_learner_dashboard
+
+6)Navigate to the Learner Dashboard.
+
+7)Open the browser DevTools Console.
+
+8)Refresh the page.
+
+9)Observe the following error in the console:
+ERROR Error: ExpressionChangedAfterItHasBeenCheckedError:
+Expression has changed after it was checked.
+Previous value: 'ngIf: true'. Current value: 'ngIf: false'.
+at HomeTabComponent.html
+
+### Expected Behavior
+
+The New Learner Dashboard should load without any Angular runtime errors in the console.
+
+### Screenshots/Videos
+
+<img width="1438" height="775" alt="Image" src="https://github.com/user-attachments/assets/23431042-651a-4bc7-9428-3875d1fb7ac5" />
+
+### What device are you using?
+
+Desktop
+
+### Operating System
+
+MacOS
+
+### What browsers are you seeing the problem on?
+
+Chrome
+
+### Browser version
+
+_No response_
+
+### Additional context
+
+_No response_
+
+### Tips for developers
+
+Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
+
+Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
+
+**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
+
+---
+
+## #25125: [E2E/Acceptance CI Failure]: Acceptance (logged-in-learner/edit-the-profile)
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+Acceptance
+
+### Which CI step failed?
+
+logged-in-learner/edit-the-profile
+
+### Did the test fail after an automatic rerun?
+
+Test failed once but was not automatically re-run
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Desktop
+
+### Stacktrace
+
+```shell
+FAIL core/tests/puppeteer-acceptance-tests/specs/logged-in-learner/edit-the-profile.spec.ts (233.261 s)
+  Logged-In Learner
+    ✓ should be able to find the preferences page (4939 ms)
+    ✓ should be able to change the profile photo (7105 ms)
+    ✓ should be able to edit bio (623 ms)
+    ✓ should be able to change the preferred dashboard (155 ms)
+    ✓ should be able to edit subject interests (1801 ms)
+    ✓ should be able to add preferred audio language (1690 ms)
+    ✓ should be able to change preferred exploration language (3537 ms)
+    ✓ should be able to change email preferences (3170 ms)
+    ✓ should be able to save all the information edited (15019 ms)
+    ✓ should be able to go to their profile by clicking on their username (12106 ms)
+    ✕ should be able to subscribe creators (40932 ms)
+
+  ● Logged-In Learner › should be able to subscribe creators
+
+    TimeoutError: Element <span.e2e-test-exploration-tile-title> "Solving problems without calcu..." took too long to be clickable.
+    Original Error:
+    waiting for function failed: timeout 30000ms exceeded
+
+      492 |         : selector;
+      493 |     try {
+    > 494 |       await this.page.waitForFunction(isElementClickable, {}, element);
+          |                       ^
+      495 |     } catch (error) {
+      496 |       if (error instanceof Error) {
+      497 |         await this.page.evaluate(isElementClickable, element, true, true);
+
+      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
+      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
+      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
+      at Page.waitForFunction (../../../node_modules/puppeteer/src/common/Page.ts:3358:29)
+      at BaseUser.waitForElementToBeClickable (utilities/common/puppeteer-utils.ts:494:23)
+          at runMicrotasks (<anonymous>)
+      at BaseUser.playLessonFromSearchResults (utilities/user/logged-out-user.ts:4523:7)
+      at Object.<anonymous> (specs/logged-in-learner/edit-the-profile.spec.ts:160:5)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 10 passed, 11 total
+Snapshots:   0 total
+Time:        234.966 s
+Ran all test suites matching /core\/tests\/puppeteer-acceptance-tests\/specs\/logged-in-learner\/edit-the-profile.spec.ts/i.
+INFO     2026-02-27 02:04:43,875 shutdown.py:48] Shutting down.
+INFO     2026-02-27 02:04:43,888 stub_util.py:321] Applying all pending transactions and saving the datastore
+INFO     2026-02-27 02:04:43,888 stub_util.py:324] Saving search indexes
+Error: 2-27 02:04:43 +0000] [4937] [ERROR] Worker (pid:4939) was sent SIGTERM!
+Error: 2-27 02:04:43 +0000] [4724
+
+*[truncated]*
+
+---
+
+## #25115: [E2E/Acceptance CI Failure]: Acceptance (logged-in-user/manage-exploration-progress-in-learner-dashboard)
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+Acceptance
+
+### Which CI step failed?
+
+logged-in-user/manage-exploration-progress-in-learner-dashboard
+
+### Did the test fail after an automatic rerun?
+
+Test failed once but was not automatically re-run
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Desktop
+
+### Stacktrace
+
+```shell
+FAIL core/tests/puppeteer-acceptance-tests/specs/logged-in-user/manage-exploration-progress-in-learner-dashboard.spec.ts (241.873 s)
+  Logged-in User
+    ✕ should navigate to the new learner dashboard
+
+  ● Logged-in User › should navigate to the new learner dashboard
+
+    TimeoutError: Element <div.oppia-editable-section-mask.e2e-test-state-edit-content> took too long to be clickable.
+    Original Error:
+    waiting for function failed: timeout 30000ms exceeded
+
+      492 |         : selector;
+      493 |     try {
+    > 494 |       await this.page.waitForFunction(isElementClickable, {}, element);
+          |                       ^
+      495 |     } catch (error) {
+      496 |       if (error instanceof Error) {
+      497 |         await this.page.evaluate(isElementClickable, element, true, true);
+
+      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
+      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
+      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
+      at Page.waitForFunction (../../../node_modules/puppeteer/src/common/Page.ts:3358:29)
+      at BaseUser.waitForElementToBeClickable (utilities/common/puppeteer-utils.ts:494:23)
+          at runMicrotasks (<anonymous>)
+      at BaseUser.clickOnElement (utilities/common/puppeteer-utils.ts:519:5)
+      at BaseUser.clickOnElementWithSelector (utilities/common/puppeteer-utils.ts:554:5)
+      at BaseUser.updateCardContent (utilities/user/exploration-editor.ts:2863:5)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        243.663 s
+Ran all test suites matching /core\/tests\/puppeteer-acceptance-tests\/specs\/logged-in-user\/manage-exploration-progress-in-learner-dashboard.spec.ts/i.
+INFO     2026-02-26 22:54:09,644 shutdown.py:48] Shutting down.
+Error: 2-26 22:54:09 +0000] [9704] [ERROR] Worker (pid:9719) was sent SIGTERM!
+Error: 2-26 22:54:09 +0000] [10264] [ERROR] Worker (pid:10266) was sent SIGTERM!
+Error: 2-26 22:54:09 +0000] [10063] [ERROR] Worker (pid:10065) was sent SIGTERM!
+Error: 2-26 22:54:09 +0000] [10229] [ERROR] Worker (pid:10231) was sent SIGTERM!
+Error: 2-26 22:54:09 +0000] [9889] [ERROR] Worker (pid:9896) was sent SIGTERM!
+INFO     2026-02-26 22:54:09,964 stub_util.py:321] Applying all pending transactions and saving the datastore
+INFO     2026-02-26 22:54:09,965 stub_util.py:324] Saving search indexes
+```
+
+### Screenshots and/or Screen Recordings
+
+N/A
+
+### Occurrences
+
+https://github.com/oppia/oppia/actions/runs/22452275553/job/65056161804?pr=24837#logs
+
+### Additional Information
+
+_No response_
+
+### D
+
+*[truncated]*
+
+---
+
+## #25094: [BUG]: Blog page is not accessible via sidebar in mobile view
+
+**Labels:** triage needed, bug
+
+### Describe the bug
+
+The blog page cannot be accessed via the sidebar in mobile view because there is no blog button present.
+
+### URL of the page where the issue is observed.
+
+https://www.oppia.org
+
+### Steps To Reproduce
+
+1. Open Oppia in mobile view (small viewport width or device emulator)
+2. Sign in as a user
+3. Open the navigation menu (hamburger menu)
+4. Click on the "About" section
+5. Observe that there is no "Blog" option available
+
+### Expected Behavior
+
+The "Blog" option should be present in the mobile navigation so users can access the blog page.
+
+### Screenshots/Videos
+
+_No response_
+
+### What device are you using?
+
+Mobile
+
+### Operating System
+
+Android
+
+### What browsers are you seeing the problem on?
+
+_No response_
+
+### Browser version
+
+_No response_
+
+### Additional context
+
+_No response_
+
+### Tips for developers
+
+Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
+
+Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
+
+**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
+
+---
+
+## #25093: [E2E/Acceptance CI Failure]: Acceptance (logged-in-learner/starts-from-beginning-after-completing-a-lesson)
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+Acceptance
+
+### Which CI step failed?
+
+Starting new Acceptance Tests Server
+
+### Did the test fail after an automatic rerun?
+
+Test failed once, was automatically re-run, and then failed again
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Desktop
+
+### Stacktrace
+
+```shell
+[test-log] 11:03.531: Test failed: Capturing screenshots...
+[test-log] 11:03.532: Closing browsers for 1 users.
+[test-log] 11:03.532: Started closing broswer for explorationEditor.
+INFO     2026-02-24 23:11:06,498 module.py:830] default: "GET /internetconnectivityhandler HTTP/1.1" 200 36
+INFO     2026-02-24 23:11:10,000 module.py:830] default: "GET /internetconnectivityhandler HTTP/1.1" 200 36
+INFO     2026-02-24 23:11:13,478 module.py:830] default: "GET /internetconnectivityhandler HTTP/1.1" 200 36
+INFO     2026-02-24 23:11:16,996 module.py:830] default: "GET /internetconnectivityhandler HTTP/1.1" 200 36
+INFO     2026-02-24 23:11:20,494 module.py:830] default: "GET /internetconnectivityhandler HTTP/1.1" 200 36
+[test-log] 11:21.670: Screen recording stopped for explorationEditor.
+[test-log] 11:21.822: Screenshot captured for test failure and saved as : /home/runner/work/oppia/oppia_full_stack_test_failure_screenshots/acceptance/logged-in-learner_starts-from-beginning-after-completing-a-lesson-2026-02-24T23_11_21.670Z-instance-0.png
+[test-log] 11:21.822: All screenshots captured for explorationEditor
+[test-log] 11:21.883: Browser closed for explorationEditor.
+[test-log] 11:21.883: All browsers closed.
+FAIL core/tests/puppeteer-acceptance-tests/specs/logged-in-learner/starts-from-beginning-after-completing-a-lesson.spec.ts (146.233 s)
+  Logged-In User
+    ✕ should be able to start lesson from beginning on revisit
+
+  ● Logged-In User › should be able to start lesson from beginning on revisit
+
+    TimeoutError: Element <div.oppia-editable-section-mask.e2e-test-state-edit-content> took too long to be clickable.
+    Original Error:
+    waiting for function failed: timeout 30000ms exceeded
+
+      492 |         : selector;
+      493 |     try {
+    > 494 |       await this.page.waitForFunction(isElementClickable, {}, element);
+          |                       ^
+      495 |     } catch (error) {
+      496 |       if (error instanceof Error) {
+      497 |         await this.page.evaluate(isElementClickable, element, true, true);
+
+      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
+      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
+      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
+      at Page.waitForFunction (../../../node_modules/puppeteer/src/common/Page.ts:3358:29)
+      at BaseUser.waitForElementToBeClickable (utilities/common/puppeteer-utils.ts:494:23)
+      at BaseUser.clickOnElement (utilities/common/puppeteer-utils.ts:519:5)
+      at BaseUser.clickOnElementWithSelector (utilities/common/puppeteer-utils.ts:554:5)
+ 
+
+*[truncated]*
+
+---
+
+## #25092: [E2E/Acceptance CI Failure]: Acceptance (curriculum-admin/create-edit-and-delete-a-classroom)
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+Acceptance
+
+### Which CI step failed?
+
+Starting new Acceptance Tests Server
+
+### Did the test fail after an automatic rerun?
+
+Test failed once but was not automatically re-run
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Desktop
+
+### Stacktrace
+
+```shell
+[test-log] 29:23.758: There are 1 classrooms present.
+[test-log] 29:23.758: Closing browsers for 3 users.
+[test-log] 29:23.758: Started closing broswer for curriculumAdm.
+[test-log] 29:23.759: Started closing broswer for superAdm.
+[test-log] 29:23.759: Started closing broswer for unknown user.
+[test-log] 29:23.759: Screen recording stopped for curriculumAdm.
+[test-log] 29:23.759: Screen recording stopped for unknown user.
+[test-log] 29:23.841: Error while taking screenshot for curriculumAdm: ProtocolError: Protocol error (Target.activateTarget): Target closed.
+[test-log] 29:23.948: Browser closed for unknown user.
+[test-log] 29:23.953: Browser closed for curriculumAdm.
+[test-log] 29:24.089: Screenshot captured for test failure and saved as : /home/runner/work/oppia/oppia_full_stack_test_failure_screenshots/acceptance/curriculum-admin_create-edit-and-delete-a-classroom-2026-02-24T23_29_23.759Z-instance-12.png
+[test-log] 30:53.630: Screen recording stopped for superAdm.
+[test-log] 30:53.714: Browser closed for superAdm.
+[test-log] 30:53.714: All browsers closed.
+FAIL core/tests/puppeteer-acceptance-tests/specs/curriculum-admin/create-edit-and-delete-a-classroom.spec.ts (738.544 s)
+  Curriculum Admin
+    ✓ should be able to create a new classroom (7871 ms)
+    ✕ should be able to edit classroom information (61313 ms)
+    ✓ should be able to publish classroom (14278 ms)
+    ✓ should be able to enable diagnostic test for a classroom (14065 ms)
+    ✓ should be able to change order of classrooms (36288 ms)
+    ✓ should be able to delete a classroom (7606 ms)
+
+  ● Curriculum Admin › should be able to edit classroom information
+
+    TimeoutError: waiting for function failed: timeout 30000ms exceeded
+
+      2446 |
+      2447 |     // Wait for the topic to appear in the classroom before adding prerequisites.
+    > 2448 |     await this.page.waitForFunction(
+           |                     ^
+      2449 |       (
+      2450 |         topicBoxSelector: string,
+      2451 |         topicNameSelector: string,
+
+      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
+      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
+      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
+      at Page.waitForFunction (../../../node_modules/puppeteer/src/common/Page.ts:3358:29)
+      at BaseUser.addTopicToClassroom (utilities/user/curriculum-admin.ts:2448:21)
+          at runMicrotasks (<anonymous>)
+      at Object.<anonymous> (specs/curriculum-admin/create-edit-and-delete-a-classroom.spec.ts:111:5)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 5 passed, 6 total
+S
+
+*[truncated]*
+
+---
+
+## #25087: [BUG]: No validation for Message text and Thread subject inside feedback.
+
+**Labels:** triage needed, bug
+
+### Describe the bug
+
+when i click on CREATE EXPLORATION and navigate to feedback section when i add Message text and Thread subject there is no validation for than and no translation also.
+
+### URL of the page where the issue is observed.
+
+http://localhost:8181/create/85vN9avNWv3P#/feedback
+
+### Steps To Reproduce
+
+when i click on CREATE EXPLORATION inside creator dashboard and navigate to feedback section when i add Message text and Thread subject there is no validation for than and no translation also.
+
+### Expected Behavior
+
+I expect to be some validations for both inputs.
+
+### Screenshots/Videos
+
+https://github.com/user-attachments/assets/9f82fc2d-256f-4a68-bece-5246d6eebe2f
+
+### What device are you using?
+
+Desktop
+
+### Operating System
+
+Windows
+
+### What browsers are you seeing the problem on?
+
+Chrome
+
+### Browser version
+
+145.0.7632.117
+
+### Additional context
+
+_No response_
+
+### Tips for developers
+
+Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
+
+Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
+
+**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
+
+---
+
+## #25067: [E2E/Acceptance CI Failure]: Element <div.oppia-editable-section-mask.e2e-test-state-edit-content> took too long to be clickable timeout 30000ms exceeded.
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+E2E
+
+### Which CI step failed?
+
+Acceptance (logged-out-learner/share-the-lesson-from-the-lesson-player)
+
+### Did the test fail after an automatic rerun?
+
+Test failed once, was automatically re-run, and then failed again
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Desktop
+
+### Stacktrace
+
+```shell
+FAIL core/tests/puppeteer-acceptance-tests/specs/logged-out-learner/share-the-lesson-from-the-lesson-player.spec.ts (171.952 s)
+  Logged-Out Learner
+    ✕ should be able to share the lesson using copy link
+    ✕ should be able to share the lesson on Google Classroom
+    ✕ should be able to share the lesson on Facebook
+
+  ● Logged-Out Learner › should be able to share the lesson using copy link
+
+    TimeoutError: Element <div.oppia-editable-section-mask.e2e-test-state-edit-content> took too long to be clickable.
+    Original Error:
+    waiting for function failed: timeout 30000ms exceeded
+
+      492 |         : selector;
+      493 |     try {
+    > 494 |       await this.page.waitForFunction(isElementClickable, {}, element);
+          |                       ^
+      495 |     } catch (error) {
+      496 |       if (error instanceof Error) {
+      497 |         await this.page.evaluate(isElementClickable, element, true, true);
+
+      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
+      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
+      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
+      at Page.waitForFunction (../../../node_modules/puppeteer/src/common/Page.ts:3358:29)
+      at BaseUser.waitForElementToBeClickable (utilities/common/puppeteer-utils.ts:494:23)
+          at runMicrotasks (<anonymous>)
+      at BaseUser.clickOnElement (utilities/common/puppeteer-utils.ts:519:5)
+      at BaseUser.clickOnElementWithSelector (utilities/common/puppeteer-utils.ts:554:5)
+      at BaseUser.updateCardContent (utilities/user/exploration-editor.ts:2863:5)
+
+  ● Logged-Out Learner › should be able to share the lesson on Google Classroom
+
+    TimeoutError: Element <div.oppia-editable-section-mask.e2e-test-state-edit-content> took too long to be clickable.
+    Original Error:
+    waiting for function failed: timeout 30000ms exceeded
+
+      492 |         : selector;
+      493 |     try {
+    > 494 |       await this.page.waitForFunction(isElementClickable, {}, element);
+          |                       ^
+      495 |     } catch (error) {
+      496 |       if (error instanceof Error) {
+      497 |         await this.page.evaluate(isElementClickable, element, true, true);
+
+      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
+      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
+      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
+      at Page.waitForFunction (../../../node_modules/puppet
+
+*[truncated]*
+
+---
+
+## #25066: [CI Failure]: Failed to run "/tmp/tmphfrngrrb/bin/pip install -r requirements.txt"
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+Frontend
+
+### Which CI step failed?
+
+Acceptance (topic-manager/edit-the-topic)
+
+### Stacktrace
+
+```shell
+INFO     2026-02-25 05:46:19,580 instance_factory.py:280] Using pip to install dependency libraries; pip stdout is redirected to /tmp/tmpi_kjbpvk
+INFO     2026-02-25 05:46:19,594 instance_factory.py:310] Running /tmp/tmphfrngrrb/bin/pip install --upgrade pip
+...
+Failed to run "/tmp/tmphfrngrrb/bin/pip install -r requirements.txt"
+ 
+i  emulators: Received SIGTERM for the first time. Starting a clean shutdown.
+i  emulators: Please wait for a clean shutdown or send the SIGTERM signal again to stop right now.
+i  Automatically exporting data using --export-on-exit "/home/runner/work/oppia/oppia/../firebase_emulator_cache" please wait for the export to finish...
+⚠  Emulator UI has exited upon receiving signal: SIGTERM
+i  Found running emulator hub for project dev-project-id at http://localhost:4400
+i  Creating export directory /home/runner/work/oppia/firebase_emulator_cache
+i  Exporting data to: /home/runner/work/oppia/firebase_emulator_cache
+i  emulators: Received export request. Exporting data to /home/runner/work/oppia/firebase_emulator_cache.
+✔  emulators: Export complete.
+✔  Export complete
+i  emulators: Shutting down emulators.
+i  ui: Stopping Emulator UI
+⚠  ui: Error stopping Emulator UI
+i  auth: Stopping Authentication Emulator
+i  hub: Stopping emulator hub
+i  logging: Stopping Logging Emulator
+ERROR:root:Portserver failed to shut down after 10 seconds.
+```
+
+### Screenshots / Screen Recordings
+
+N/A
+
+### Occurrences
+
+https://github.com/oppia/oppia/actions/runs/22342787946/job/64752942698
+
+### Additional Information
+
+_No response_
+
+### Debugging document link
+
+_No response_
+
+---
+
+## #25060: [Feature Request]: Remove E2E test publicationAndLibrary.js
+
+**Labels:** good first issue, enhancement, Impact: Medium, Work: Low, EUJ LO.4
+
+### Is your feature request related to a problem? Please describe.
+
+We are currently migrating from E2E tests to Acceptance tests; however, some of the E2E tests are still not covered by Acceptance tests. We need to write acceptance tests covering these uncovered E2E tests and delete the corresponding E2E test.
+
+The goal is to create a new acceptance test that covers the features currently handled by the existing E2E test.
+
+### Describe the solution (or solutions) you'd like
+
+Write the new acceptance test and delete the existing E2E test.
+
+**Steps to follow:**
+
+1. Create a new acceptance test file in the appropriate directory.
+2. Write the acceptance test based on the specifications found in the **WIP Doc (Internal/External Users)** linked below.
+3. Add the acceptance test to [acceptance.json](https://github.com/oppia/oppia/blob/develop/core/tests/ci-test-suite-configs/acceptance.json).
+4. Run the newly created test-suite locally and ensure it passes.
+5. Push the code to your repo-fork.
+6. **Stress test** the new test-suite to check for flakes. (In your Oppia repo fork, go to *Actions* > *Stress Test Acceptance Test* > *Run Workflow* > branch: `<YOUR_FEATURE_BRANCH_NAME>`, runs: `20`, test-suite: `<TEST_SUITE_NAME_USED_IN_ACCEPTANCE.JSON>`).
+7. Ensure that all jobs pass in the above workflow run.
+8. Remove the corresponding E2E test file.
+9. Open a PR.
+
+### Describe alternatives you've considered and rejected
+
+*No response*
+
+### Additional context
+
+*No response*
+
+---
+
+### E2E Tests to be Removed
+
+* publicationAndLibrary.js
+
+### Acceptance Tests to be Added / Updated
+
+* [EDITED] 🟡 LO.4. Play through a lesson (WIP External Users)
+    - Add first step in the acceptance test.
+    - Make required changes in setup.
+### Documentation References
+
+* **[WIP Doc (Internal Users)](https://docs.google.com/spreadsheets/d/1DIZ0_Gmf9uhjTbhuDpA495PTjYZW9ZE97r6urS-iXwg/edit?gid=888982708)** 
+* [WIP Doc (External Users)](https://docs.google.com/spreadsheets/d/1IrxN13IC5xwWdAFnGMu_4p3FU1ADL4QO-eLZIuTowIA/edit?gid=888982708#gid=888982708)
+* **Puppeteer Acceptance Tests Folder:** [[GitHub Link](https://github.com/oppia/oppia/tree/develop/core/tests/puppeteer-acceptance-tests)](https://github.com/oppia/oppia/tree/develop/core/tests/puppeteer-acceptance-tests)
+* **Acceptance Test Wiki:** [[GitHub Wiki](https://github.com/oppia/oppia/wiki/Acceptance-Tests)](https://github.com/oppia/oppia/wiki/Acceptance-Tests)
+
+
+> [!IMPORTANT]
+> **If you want to claim this issue, strictly follow the instructions below:**
+>
+> 1. Read the guidance (if you haven't already):  
+>    https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue  
+> 2. As this issue is simple, no need to explain how you’ll fix it — just provide proof you can complete it.  
+> 3. Run:
+>    ```
+>    VIDEO_RECORDING_IS_ENABLED=1 python -m scripts.run_acceptance_test --suite=<SUITE>
+>    ```
+>    Recordings will be saved in `../oppia_full_stack_test_video_recordings`.  
+>    Link all rec
+
+*[truncated]*
+
+---
+
+## #25058: [BUG]: Creator should not be able to add manager without exploration title.
+
+**Labels:** triage needed, bug
+
+### Describe the bug
+
+When a creator tries to share an exploration without a title, they should be blocked. However, it seems they are not.
+
+Note: While fixing this bug, acceptance test "LC.9. Delete lesson creator’s user profile" should also be fixed from [WIP doc](https://docs.google.com/spreadsheets/d/1DIZ0_Gmf9uhjTbhuDpA495PTjYZW9ZE97r6urS-iXwg/edit?gid=888982708#gid=888982708&range=J144:K144).
+
+So, this issue covers
+- [ ] Fixing the issue
+- [ ] Fixing the acceptance test LC.9.
+
+### URL of the page where the issue is observed.
+
+/create/<EXP_ID>
+
+### Steps To Reproduce
+
+1. Navigate to creator dashboard
+2. Click on "Create Exploration"
+3. Close welcome modal
+4. Navigate to settings tab.
+5. Click "Edit" button next to managers.
+6. Insert a valid username (a user with given username should exists).
+8. Press "tab" key (or get focus out of user name input).
+9. "Save" button is enabled.
+
+### Expected Behavior
+
+In step 9, the "Save" button should be disabled, and a error should be shown that creator needs to add title before they can share.
+
+### Screenshots/Videos
+
+_No response_
+
+### What device are you using?
+
+Desktop
+
+### Operating System
+
+Linux
+
+### What browsers are you seeing the problem on?
+
+_No response_
+
+### Browser version
+
+_No response_
+
+### Additional context
+
+_No response_
+
+### Tips for developers
+
+Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
+
+Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
+
+**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
+
+---
+
+## #25052: [E2E/Acceptance CI Failure]: Acceptance (blog-post-writer/create-and-edit-blog-post)
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+E2E
+
+### Which CI step failed?
+
+run desktop tests
+
+### Did the test fail after an automatic rerun?
+
+Test failed once but was not automatically re-run
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Desktop
+
+### Stacktrace
+
+```shell
+[test-log] 06:14.052: Element .e2e-test-save-blog-post-content is visible.
+[test-log] 06:14.157: Checking if element  "DONE" is clickable...
+[test-log] 06:14.243: Element (selector: .e2e-test-save-blog-post-content) clicked.
+[test-log] 06:14.252: Element .e2e-test-save-blog-post-content is hidden.
+[test-log] 06:17.284: Page rendered fully.
+[test-log] 06:17.287: Element .e2e-test-blog-card-preview-button is visible.
+[test-log] 06:17.392: Checking if element  "PREVIEW" is clickable...
+[test-log] 06:17.458: Element (selector: .e2e-test-blog-card-preview-button) clicked.
+[test-log] 06:17.471: Element .e2e-test-modal-header is visible.
+INFO     2026-02-25 03:06:17,492 module.py:830] default: "GET /assetsdevhandler/blog_post/h6nXMXrMmWGc/assets/thumbnail/banner.jpeg HTTP/1.1" 200 56619
+WARNING:root:Invalid URL requested: http://localhost:8181/assetsdevhandler/user//assets/image/profile_picture.webp?v=26596.600000000093
+INFO     2026-02-25 03:06:17,497 module.py:830] default: "GET /assetsdevhandler/user//assets/image/profile_picture.webp?v=26596.600000000093 HTTP/1.1" 404 5943
+[test-log] 06:23.186: Test failed: Capturing screenshots...
+[test-log] 06:23.195: Element .e2e-test-profile-dropdown is visible.
+[test-log] 06:23.300: Checking if element <li.nav-item.e2e-test-profile-dropdown.oppia-navbar-clickable-dropdown.profile-dropdown.pfl.dropdown> "blogPostWriter Creator Dashboa..." is clickable...
+[browser-log] 06:53.303: [debug]: Document state:
+  - readyState: complete
+  - styleSheets loaded: 35
+  - pending stylesheets: 0
+  - viewport: 383x682
+[browser-log] 06:53.304: [debug]: Element LI is disabled: false
+[browser-log] 06:53.304: [debug]: Element LI is in viewport: true, true
+[browser-log] 06:53.305: [debug]: Element LI
+Dimensions: 295.5, 0, 87.5, 56
+Center point: 339.5, 28
+[browser-log] 06:53.305: [debug]: Element LI overlapping elements found: 2
+Overlapping element: MAT-ICON (class="mat-icon notranslate material-icons mat-icon-no-color")
+Overlapping rect: MAT-ICON (class="mat-icon notranslate material-icons mat-icon-no-color")
+[browser-log] 06:53.305: [debug]: Checking overlap for LI (class="nav-item e2e-test-profile-dropdown oppia-navbar-clickable-dropdown profile-dropdown pfl dropdown")
+Overlapping elements to check: 2
+[browser-log] 06:53.305: [debug]: Overlapping element MAT-ICON (class="mat-icon notranslate material-icons mat-icon-no-color")
+  - Is same element: false
+  - Is contained by target: false
+  - Contains target: false
+[browser-
+
+*[truncated]*
+
+---
+
+## #25051: [Feature Request]: Remove E2E test contributorAdminDashoard.js
+
+**Labels:** good first issue, enhancement, Impact: Medium, Work: Medium, IUJ TC.1, IUJ QC.1
+
+### Is your feature request related to a problem? Please describe.
+
+We are currently migrating from E2E tests to Acceptance tests; however, some of the E2E tests are still not covered by Acceptance tests. We need to write acceptance tests covering these uncovered E2E tests and delete the corresponding E2E test.
+
+The goal is to create a new acceptance test that covers the features currently handled by the existing E2E test.
+
+### Describe the solution (or solutions) you'd like
+
+Write the new acceptance test and delete the existing E2E test.
+
+**Steps to follow:**
+
+1. Create a new acceptance test file in the appropriate directory.
+2. Write the acceptance test based on the specifications found in the **WIP Doc (Internal/External Users)** linked below.
+3. Add the acceptance test to [acceptance.json](https://github.com/oppia/oppia/blob/develop/core/tests/ci-test-suite-configs/acceptance.json).
+4. Run the newly created test-suite locally and ensure it passes.
+5. Push the code to your repo-fork.
+6. **Stress test** the new test-suite to check for flakes. (In your Oppia repo fork, go to *Actions* > *Stress Test Acceptance Test* > *Run Workflow* > branch: `<YOUR_FEATURE_BRANCH_NAME>`, runs: `20`, test-suite: `<TEST_SUITE_NAME_USED_IN_ACCEPTANCE.JSON>`).
+7. Ensure that all jobs pass in the above workflow run.
+8. Remove the corresponding E2E test file.
+9. Open a PR.
+
+### Describe alternatives you've considered and rejected
+
+*No response*
+
+### Additional context
+
+*No response*
+
+---
+
+### E2E Tests to be Removed
+
+* contributorAdminDashboard.js
+
+### Acceptance Tests to be Added / Updated
+
+* [EDITED] 🟡 QC.1. Manage contributors' question review/submission rights. (WIP Internal Users)
+* [EDITED] 🟡 TC.1. Manage contributors' translation review rights. (WIP Internal Users)
+### Documentation References
+
+* **WIP Doc (Internal Users):** [[Spreadsheet Link](https://docs.google.com/spreadsheets/d/1DIZ0_Gmf9uhjTbhuDpA495PTjYZW9ZE97r6urS-iXwg/edit?gid=888982708&authuser=2)](https://docs.google.com/spreadsheets/d/1DIZ0_Gmf9uhjTbhuDpA495PTjYZW9ZE97r6urS-iXwg/edit?gid=888982708)
+* [WIP Doc (External Users)](https://docs.google.com/spreadsheets/d/1IrxN13IC5xwWdAFnGMu_4p3FU1ADL4QO-eLZIuTowIA/edit?gid=888982708#gid=888982708)
+* **Puppeteer Acceptance Tests Folder:** [[GitHub Link](https://github.com/oppia/oppia/tree/develop/core/tests/puppeteer-acceptance-tests)](https://github.com/oppia/oppia/tree/develop/core/tests/puppeteer-acceptance-tests)
+* **Acceptance Test Wiki:** [[GitHub Wiki](https://github.com/oppia/oppia/wiki/Acceptance-Tests)](https://github.com/oppia/oppia/wiki/Acceptance-Tests)
+
+
+> [!IMPORTANT]
+> **If you want to claim this issue, strictly follow the instructions below:**
+>
+> 1. Read the guidance (if you haven't already):  
+>    https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue  
+> 2. As this issue is simple, no need to explain how you’ll fix it — just provide proof you can complete it.  
+> 3. Run:
+>    ```
+>    VIDEO_RECORD
+
+*[truncated]*
+
+---
+
+## #25031: [BUG]: Backend coverage checks fail when jobs merge different commits from develop
+
+**Labels:** bug
+
+### Describe the bug
+
+In [this backend test run on CI](https://github.com/oppia/oppia/actions/runs/22294254567/attempts/1?pr=25020), the coverage checks fail because between the jobs that run the tests and the job that checks coverage, the develop branch changed, so the coverage check job merged different code from develop than the test runner jobs.
+
+### URL of the page where the issue is observed.
+
+https://github.com/oppia/oppia/actions/runs/22294254567/attempts/1?pr=25020
+
+### Steps To Reproduce
+
+This is hard to reproduce on oppia/oppia, but in a testing repo, you can create a similar set of backend test CI jobs and merge changes to the backend code under test between the test runs and the coverage check. You'll likely need to build in a delay to the backend test runner jobs so you have time to update develop.
+
+### Expected Behavior
+
+Even if the tests have to run on a slightly older version of our code, they shouldn't fail just because develop changes while the tests are running.
+
+### Screenshots/Videos
+
+_No response_
+
+### What device are you using?
+
+Desktop
+
+### Operating System
+
+Other
+
+### What browsers are you seeing the problem on?
+
+_No response_
+
+### Browser version
+
+_No response_
+
+### Additional context
+
+Two possible solutions:
+
+1. Stop merging from develop for backend tests. I think we used to do this. Downside is any flake fixes won't automatically get incorporated.
+2. Create a job that runs before the test-running jobs. This setup job only grabs the SHA of the HEAD of develop and stores it as an artifact. Then all subsequent jobs merge the feature branch into this SHA instead of into develop. This lets us still incorporate new fixes from develop while also ensuring that all jobs run off of the same code.
+
+### Tips for developers
+
+Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
+
+Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
+
+**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
+
+---
+
+## #25026: [BUG]: Remove Existing Translation error . 
+
+**Labels:** triage needed, bug
+
+### Describe the bug
+
+When a second logged in user tries to edit a exploration which is assigned to a story , during publishing the story the error is coming . 
+
+### URL of the page where the issue is observed.
+
+http://localhost:8181/create/<exp_id>
+
+### Steps To Reproduce
+
+Prerequisite have 2 logged in user and user A is curriculum admin 
+
+1) With the help of user A make a exploration make edits to the exploration. 
+2) The user a should make user b as the manager of the exploration . 
+3) User A  should then publish the exploration l. 
+4) User A should assign themselves as the curriculum admin
+5) User A  should make new math classroom . 
+6) They should then make a new story for  any topic , and add the exploration as one of the chapters of the story. 
+7) User B should go to the exploration through their webpage . 
+8) User B should then edit the exploration . 
+9) User B when saving the changes , a warning will be shown with a pop up which will give three options : 
+  a) Remove Existing translation b) Mark Translation as stale c) Leave as is 
+10) Click on any of the options 
+11) Try to publish the exploration . 
+12) The stack trace is produced 
+
+### Expected Behavior
+
+It is expected that the story is uploaded succesfully . 
+
+### Screenshots/Videos
+
+(NOTE : The video starts directly from step 8 onwards. )
+
+https://github.com/user-attachments/assets/9f606828-843c-4038-b19d-b0d70b1e2ae9
+
+### What device are you using?
+
+Desktop
+
+### Operating System
+
+Linux, Windows
+
+### What browsers are you seeing the problem on?
+
+Chrome
+
+### Browser version
+
+_No response_
+
+### Additional context
+
+**This issue was seen when I was testing the 3.4.9 release  locally .** 
+
+The stack trace is given below : 
+```
+ERROR:root:
+
+KeyError: Exception raised
+
+Stack Trace:
+Traceback (most recent call last):
+  File "/tmp/tmp448rbo1o/lib/python3.10/site-packages/webapp2.py", line 604, in dispatch
+    return method(*args, **kwargs)
+  File "/home/meeth/oppia/core/controllers/acl_decorators.py", line 2205, in test_can_save
+    return handler(self, exploration_id, **kwargs)
+  File "/home/meeth/oppia/core/controllers/editor.py", line 266, in put
+    exp_services.update_exploration(
+  File "/home/meeth/oppia/core/domain/exp_services.py", line 2038, in update_exploration
+    models_to_put = compute_models_to_put_when_saving_new_exp_version(
+  File "/home/meeth/oppia/core/domain/exp_services.py", line 2143, in compute_models_to_put_when_saving_new_exp_version
+    new_voiceover_models = voiceover_services.compute_voiceover_related_change(
+  File "/home/meeth/oppia/core/domain/voiceover_services.py", line 312, in compute_voiceover_related_change
+    language_accent_codes = language_code_to_language_accent_mapping[
+KeyError: 'en'
+
+URL requested: http://localhost:8181/createhandler/data/T1NQEEUjkrRN
+Request method: PUT
+Handler class name: ExplorationHandler
+Traceback (most recent call last):
+  File "/tmp/tmp448rbo1o/lib/python3.10/site-packages/webapp2.py", line 604, in dispatch
+    return meth
+
+*[truncated]*
+
+---
+
+## #25024: [E2E/Acceptance CI Failure]: should be able to edit classroom information
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+E2E
+
+### Which CI step failed?
+
+Acceptance (curriculum-admin/create-edit-and-delete-a-classroom)
+
+### Did the test fail after an automatic rerun?
+
+Test failed once but was not automatically re-run
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Mobile
+
+### Stacktrace
+
+```shell
+● Curriculum Admin › should be able to edit classroom information
+
+    TimeoutError: waiting for function failed: timeout 30000ms exceeded
+
+      2446 |
+      2447 |     // Wait for the topic to appear in the classroom before adding prerequisites.
+    > 2448 |     await this.page.waitForFunction(
+           |                     ^
+      2449 |       (
+      2450 |         topicBoxSelector: string,
+      2451 |         topicNameSelector: string,
+
+      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
+      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
+      at BaseUser.addTopicToClassroom (utilities/user/curriculum-admin.ts:2448:21)
+      at Object.<anonymous> (specs/curriculum-admin/create-edit-and-delete-a-classroom.spec.ts:111:5)
+```
+
+### Screenshots and/or Screen Recordings
+
+[acceptance_test_curriculum-admin_create-edit-and-delete-a-classroom_mobile_original.log](https://github.com/user-attachments/files/25484777/acceptance_test_curriculum-admin_create-edit-and-delete-a-classroom_mobile_original.log)
+
+### Occurrences
+
+3 occurrence I think.
+
+https://github.com/oppia/oppia/actions/runs/22257693646/job/64427374261
+
+### Additional Information
+
+_No response_
+
+### Debugging document link
+
+_No response_
+
+---
+
+## #25022: [BUG]: Button is not properly translated on Homepage in Turkish language
+
+**Labels:** triage needed, bug
+
+### Describe the bug
+
+On the homepage, when switching language to Türkçe, the button labeled 'Explore Oppia Classrooms' is not properly translated. 
+
+### URL of the page where the issue is observed.
+
+https://www.oppia.org/
+
+### Steps To Reproduce
+
+1. Go to the Oppia Homepage
+2. At the top right, click on the language selector and select Türkçe from the dropdown.
+3. The button labeled 'Explore Oppia Classrooms' is not translated, but is still in English.
+
+### Expected Behavior
+
+I expect the button labeled 'Explore Oppia Classrooms' to be translated to the relevant language (Türkçe/Turkish).
+
+### Screenshots/Videos
+
+<img width="1523" height="910" alt="Image" src="https://github.com/user-attachments/assets/120275c1-642b-4c1c-844d-d5a2274f90fd" />
+
+### What device are you using?
+
+Desktop
+
+### Operating System
+
+Windows
+
+### What browsers are you seeing the problem on?
+
+Firefox
+
+### Browser version
+
+147.0.4 (Firefox)
+
+### Additional context
+
+_No response_
+
+### Tips for developers
+
+Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
+
+Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
+
+**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
+
+---
+
+## #25021: [E2E/Acceptance CI Failure]: Acceptance (voiceover-submitter/create-delete-and-update-status-of-voiceovers-of-the-explorations)
+
+**Labels:** triage needed, bug, CI breakage
+
+### CI Test Type
+
+Acceptance
+
+### Which CI step failed?
+
+Run Mobile Acceptance Test
+
+### Did the test fail after an automatic rerun?
+
+Test failed once but was not automatically re-run
+
+### Did the test fail when running on desktop, mobile, or both?
+
+Mobile
+
+### Stacktrace
+
+```shell
+FAIL core/tests/puppeteer-acceptance-tests/specs/voiceover-submitter/create-delete-and-update-status-of-voiceovers-of-the-explorations.spec.ts (282.12 s)
+  Voiceover Submitter
+    ✕ should see content for voiceover in exploration language
+    ✕ should see correct accessibility labels in the voiceover translation tab
+    ✕ should be able to add and remove voiceovers to explorations
+    ✕ should not be able to upload a non-audio file
+    ✕ should not be able to upload audio file larger than 5 minutes
+    ✕ should be able to mark/unmark voiceover as stale
+
+  ● Voiceover Submitter › should see content for voiceover in exploration language
+
+    TimeoutError: Element <h3.e2e-test-voice-artists-settings-container.e2e-test-voice-artists-header> "Voice Artists" took too long to be clickable.
+    Original Error:
+    waiting for function failed: timeout 30000ms exceeded
+
+      492 |         : selector;
+      493 |     try {
+    > 494 |       await this.page.waitForFunction(isElementClickable, {}, element);
+          |                       ^
+      495 |     } catch (error) {
+      496 |       if (error instanceof Error) {
+      497 |         await this.page.evaluate(isElementClickable, element, true, true);
+
+      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
+      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
+      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
+      at Page.waitForFunction (../../../node_modules/puppeteer/src/common/Page.ts:3358:29)
+      at BaseUser.waitForElementToBeClickable (utilities/common/puppeteer-utils.ts:494:23)
+          at runMicrotasks (<anonymous>)
+      at BaseUser.clickOnElement (utilities/common/puppeteer-utils.ts:519:5)
+      at BaseUser.clickOnElementWithSelector (utilities/common/puppeteer-utils.ts:554:5)
+      at BaseUser.addVoiceoverArtistsToExploration (utilities/user/voiceover-admin.ts:241:7)
+```
+
+### Screenshots and/or Screen Recordings
+
+https://github.com/user-attachments/assets/ea6298af-bd41-45f6-9813-a0eb98f8ecf0
+
+### Occurrences
+
+https://github.com/Mohak51234/oppia/actions/runs/22255264867/job/64385473046
+
+### Additional Information
+
+_No response_
+
+### Debugging document link
+
+_No response_
 
 ---
 
@@ -329,7 +2452,7 @@ Then, please leave a comment with details of the approach that you plan to take 
 
 ## #24976: [BUG]: Tags do not appear in Preview Summary
 
-**Labels:** triage needed, bug
+**Labels:** bug
 
 ### Describe the bug
 
@@ -369,66 +2492,6 @@ Windows
 ### What browsers are you seeing the problem on?
 
 Chrome
-
-### Browser version
-
-_No response_
-
-### Additional context
-
-_No response_
-
-### Tips for developers
-
-Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
-
-Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
-
-**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
-
----
-
-## #24975: [BUG]: Try again is not Displaying
-
-**Labels:** triage needed, bug
-
-### Describe the bug
-
-If you Enter wrong messeage or wrong input  Try again messeage is not displaying.
-
-### URL of the page where the issue is observed.
-
-https://www.oppiatestserver.org/create/FZLXbilbRDWw#/preview/1-number
-
-### Steps To Reproduce
-
-Go to /Creator- dashboared and click "Create Exploration"
-click on Add interaction and select the Number input interaction
-Click on the checkbox “Allow only input greater than or equal to zero”.
-Click on “Save interaction."
-In the "Add Response" pop-up, select any option from the dropdown under “if the learner’s answer …”. Write the correct answer in the content box. Add "Correct!" feedback.
-Click on “Save Response
-Enter a wrong number as the answer and click "Submit".
-
-### Expected Behavior
-
-The message "Try again" is displayed.
-
-### Screenshots/Videos
-
-<img width="1920" height="1020" alt="Image" src="https://github.com/user-attachments/assets/c42a8d6a-66c1-4e64-b1c4-204b5b08d6c2" />
-
-### What device are you using?
-
-Desktop
-
-### Operating System
-
-Windows
-
-### What browsers are you seeing the problem on?
-
-_No response_
 
 ### Browser version
 
@@ -562,7 +2625,7 @@ _No response_
 
 ## #24953: [BUG]: 'Add Item' button label in 'Set Input' interaction has no character limit, causing error
 
-**Labels:** triage needed, bug
+**Labels:** bug
 
 ### Describe the bug
 
@@ -679,7 +2742,7 @@ FAIL core/tests/puppeteer-acceptance-tests/specs/logged-in-learner/interact-with
 
 ## #24943: [BUG]: Next Lesson button is white on the lesson completion page
 
-**Labels:** triage needed, bug
+**Labels:** bug
 
 ### Describe the bug
 
@@ -735,49 +2798,69 @@ Then, please leave a comment with details of the approach that you plan to take 
 
 ## #24938: [Feature Request]: Migrate remaining userJourneys.js tests to acceptance
 
-**Labels:** triage needed, enhancement
+**Labels:** good first issue, enhancement, Work: Medium, Work: Low, EUJ IP.1, IUJ LC.1, EUJ LO.13
 
 ### Is your feature request related to a problem? Please describe.
 
+We are currently migrating from E2E tests to Acceptance tests; however, some of the E2E tests are still not covered by Acceptance tests. We need to write acceptance tests covering these uncovered E2E tests and delete the corresponding E2E test.
 
-We are currently migrating from E2E tests to Acceptance tests, however, some of the E2E tests are still not covered by Acceptance tests. So, we need to write acceptance tests covering uncovered E2E tests and delete the corresponding E2E test.
-
-The following scenarios from E2E test `core/tests/webdriverio_desktop/userJourneys.js` are **Not Covered** in Acceptance tests:
-
-- `should not change in an exploration`
-- `should not change in exploration and collection player for guest users`
-- `should show version details in the about page footer`
-
+The goal is to create a new acceptance test that covers the features currently handled by the existing E2E test.
 
 ### Describe the solution (or solutions) you'd like
 
-Write acceptance tests covering the scenarios above and then remove the corresponding tests from `core/tests/webdriverio_desktop/userJourneys.js`. The E2E file itself can be cleaned up or fully removed in the parent \"Fully Remove E2E tests\" issue once all of its scenarios are covered by acceptance tests.
+Write the new acceptance test and delete the existing E2E test.
 
-Steps to follow:
+**Steps to follow:**
 
-  1. Create a new acceptance test for **exploration editor** to cover: `should not change in an exploration`. (Suggested file name: `core/tests/puppeteer-acceptance-tests/specs/exploration-editor/site-language-persists-in-exploration-editor.spec.ts`.)
-  2. Create a new acceptance test for **logged-out users** to cover: `should not change in exploration and collection player for guest users`. (Suggested file name: `core/tests/puppeteer-acceptance-tests/specs/logged-out-user/site-language-persists-in-collection-player.spec.ts`.)
-  3. Update the existing acceptance test `core/tests/puppeteer-acceptance-tests/specs/logged-out-user/click-all-links-in-oppia-footer.spec.ts` to cover: `should show version details in the about page footer`.
-  4. Add any new acceptance test-suite(s) to `acceptance.json` (https://github.com/oppia/oppia/blob/develop/core/tests/ci-test-suite-configs/acceptance.json).
-  5. Run the newly created/updated test-suite(s) locally and ensure they pass.
-  6. Push the code to your repo-fork.
-  7. Stress test the new/updated test-suite(s) to check for flakes. (In your Oppia repo fork, go to Actions > Stress Test Acceptance Test > Run Workflow > branch: `<YOUR_FEATURE_BRANCH_NAME>`, runs: `<ATLEAST_20>`, test-suite: `<TEST_SUITE_NAME_USED_IN_ACCEPTANCE.JSON>`.)
-  8. Ensure that all jobs passes in the above workflow run.
-  9. Remove the three corresponding tests from `core/tests/webdriverio_desktop/userJourneys.js` (and any other now-fully-covered tests, as per the migration sheet). Keep the file itself for now; it will be cleaned up/removed under the parent E2E removal issue.
-  10. Open a PR :)
-  
-Other References:
-
-- [puppeteer-acceptance-tests](https://github.com/oppia/oppia/tree/develop/core/tests/puppeteer-acceptance-tests) is the base folder for acceptance tests.
-- Acceptance tests: https://github.com/oppia/oppia/wiki/Acceptance-Tests
+1. Create a new acceptance test file in the appropriate directory.
+2. Write the acceptance test based on the specifications found in the **WIP Doc (Internal/External Users)** linked below.
+3. Add the acceptance test to [acceptance.json](https://github.com/oppia/oppia/blob/develop/core/tests/ci-test-suite-configs/acceptance.json).
+4. Run the newly created test-suite locally and ensure it passes.
+5. Push the code to your repo-fork.
+6. **Stress test** the new test-suite to check for flakes. (In your Oppia repo fork, go to *Actions* > *Stress Test Acceptance Test* > *Run Workflow* > branch: `<YOUR_FEATURE_BRANCH_NAME>`, runs: `20`, test-suite: `<TEST_SUITE_NAME_USED_IN_ACCEPTANCE.JSON>`).
+7. Ensure that all jobs pass in the above workflow run.
+8. Remove the corresponding E2E test file.
+9. Open a PR.
 
 ### Describe alternatives you've considered and rejected
 
-_No response_
+*No response*
 
 ### Additional context
 
-_No response_
+*No response*
+
+---
+
+### E2E Tests to be Removed
+
+* userJourney.js
+
+### Acceptance Tests to be Added / Updated
+
+* [EDITED] IP.1. Learn about the organization (WIP External Users)
+* [EDITED] LO.13. View a collection (WIP External Users)
+* [EDITED] LC.1. Create a basic exploration. (WIP Internal Users)
+
+### Documentation References
+
+* **WIP Doc (Internal Users):** [[Spreadsheet Link](https://docs.google.com/spreadsheets/d/1DIZ0_Gmf9uhjTbhuDpA495PTjYZW9ZE97r6urS-iXwg/edit?gid=888982708&authuser=2)](https://docs.google.com/spreadsheets/d/1DIZ0_Gmf9uhjTbhuDpA495PTjYZW9ZE97r6urS-iXwg/edit?gid=888982708)
+* [WIP Doc (External Users)](https://docs.google.com/spreadsheets/d/1IrxN13IC5xwWdAFnGMu_4p3FU1ADL4QO-eLZIuTowIA/edit?gid=888982708#gid=888982708)
+* **Puppeteer Acceptance Tests Folder:** [[GitHub Link](https://github.com/oppia/oppia/tree/develop/core/tests/puppeteer-acceptance-tests)](https://github.com/oppia/oppia/tree/develop/core/tests/puppeteer-acceptance-tests)
+* **Acceptance Test Wiki:** [[GitHub Wiki](https://github.com/oppia/oppia/wiki/Acceptance-Tests)](https://github.com/oppia/oppia/wiki/Acceptance-Tests)
+
+
+> [!IMPORTANT]
+> **If you want to claim this issue, strictly follow the instructions below:**
+>
+> 1. Read the guidance (if you haven't already):  
+>    https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue  
+> 2. As this issue is simple, no need to explain how you’ll fix it — just provide proof you can complete it.  
+> 3. Run:
+>    ```
+>    VIDEO_RECORDING_IS_
+
+*[truncated]*
 
 ---
 
@@ -805,7 +2888,7 @@ _No response_
 
 ## #24932: [Feature Request]: Remove E2E test topicAndStoryEditor.js
 
-**Labels:** triage needed, good first issue, enhancement, Impact: High, Work: Medium, IUJ TM.3
+**Labels:** good first issue, enhancement, Impact: High, Work: Medium, IUJ TM.3
 
 ### Is your feature request related to a problem? Please describe.
 
@@ -918,1767 +3001,6 @@ INFO     2026-02-13 02:17:15,193 stub_util.py:324] Saving search indexes
                                                             
 ERROR:root:Portserver failed to shut down after 10 seconds.
 Traceback (mo
-
-*[truncated]*
-
----
-
-## #24925: [E2E/Acceptance CI Failure]: should have the correct tab title, available sections on landing and Sidebar should contain these items in this order from top to bottom: Profile picture, "Home" button, "Goals" button, "Progress" button (19963 ms)
-
-**Labels:** triage needed, bug, CI breakage
-
-### CI Test Type
-
-E2E
-
-### Which CI step failed?
-
-Acceptance (logged-in-learner/manage-classroom-progress-in-home-learner-dashboard)
-
-### Did the test fail after an automatic rerun?
-
-Test failed once and then passed after an automatic rerun
-
-### Did the test fail when running on desktop, mobile, or both?
-
-Mobile
-
-### Stacktrace
-
-```shell
-FAIL core/tests/puppeteer-acceptance-tests/specs/logged-in-learner/manage-classroom-progress-in-home-learner-dashboard.spec.ts (1404.298 s)
-  Logged-In Learner
-    ✕ should have the correct tab title, available sections on landing and Sidebar should contain these items in this order from top to bottom: Profile picture, "Home" button, "Goals" button, "Progress" button (19963 ms)
-    ✓ should navigate directly to math classroom (9283 ms)
-    ✓ should navigate directly to the Place Values topic in the math classroom (13265 ms)
-    ✓ should display in-progress and recommended lessons after starting a lesson (36363 ms)
-    ✓ should not recommend any lessons if currently on last lesson (107690 ms)
-
-  ● Logged-In Learner › should have the correct tab title, available sections on landing and Sidebar should contain these items in this order from top to bottom: Profile picture, "Home" button, "Goals" button, "Progress" button
-
-    Expected image to match or be a close match to snapshot but was 5.53023488255872% different from snapshot (55330 differing pixels).
-    See diff for details: /home/runner/work/oppia/oppia/core/tests/puppeteer-acceptance-tests/logged-in-learner/manage-classroom-progress-in-home-learner-dashboard/prod-mobile-screenshots/diff-snapshots/learnerDashboardHomeTab-diff.png
-    Download the artifact folder diff-snapshots from the github workflow to check the difference between the old screenshot(s) and the new one(s). To download the folder, go to "Summary" of the CI Job of the PR and find the "Artifacts" section. The artifact folder name should be something like diff-snapshots_(suite-name)_desktop_original. The diff screenshot(s) should end with "-diff".
-    Please update the screenshots if the UI changed. If screenshot comparisons consistently show the same difference percentage across multiple test runs, the baseline screenshot(s) should be updated.
-    To update the screenshots(s), you should run the tests in CI, download the artifact folder new-snapshots from the github workflow and use the screenshots in that folder to replace the old one(s).
-    To download the folder, go to "Summary" of the CI Job of the PR and find the "Artifacts" section. The artifact folder name should be something like new-snapshots_(suite-name)_desktop_original. The new screenshot(s) should end with "-received". When replacing the screenshot(s), make sure to change the postfix "-received" to "-snap".
-
-      1126 |         ' folder name should be something like new-snapshots_(suite-name)_desktop_original.' +
-      1127 |         ' The new screenshot(s) should end with "-received". When replacing the screenshot(s), make sure to
-
-*[truncated]*
-
----
-
-## #24924: [BUG]: Broken ARIA menu and Contrast errors in shared components (Navbar) across multiple pages
-
-**Labels:** triage needed, bug
-
-### Describe the bug
-
-While using the WAVE Web Accessibility Evaluation Tool (Chrome Extension) across global routes like `/donate` and `/learner-dashboard`, I discovered two main accessibility violations originating from shared UI components, specifically within `top-navigation-bar` and `admin-navbar`:
-
-1. **Broken ARIA menu**: Dropdown `<ul>` elements (such as "Learn", "About", "Language", and "Profile") are incorrectly assigned `role="menu"`. Since these are standard navigation links and not application menus, this breaks arrow-key keyboard navigation for screen readers. This violates WCAG 2.1.1 and 4.1.2.
-2. **Very low contrast**: Several text elements and icons in the `top-navigation-bar.component.css` fail to meet the WCAG minimum contrast ratio of 4.5:1 against the white background. Specifically:
-   - Language/Volunteer/Contact/Fav items (`#f2994a`, `#2d9cdb`, `#b4bbc3`, `#eb5757`)
-   - Hover states (`#888`)
-   - Description texts using `opacity: 0.9` which dilutes the contrast.
-
-### URL of the page where the issue is observed.
-
-Observed across multiple pages, including:
-- https://www.oppia.org/donate
-- http://localhost:8181/learner-dashboard
-
-### Steps To Reproduce
-
-1. Navigate to any main page on Oppia (e.g., the Learner Dashboard or Donate page).
-2. Run the WAVE Chrome or Firefox Extension.
-3. Open the "Details" tab in the WAVE sidebar.
-4. Observe the "Errors" section showing the "Broken ARIA menu" flag pointing to the top navigation area.
-5. Observe the "Contrast Errors" section showing the "Very low contrast" flag.
-
-### Expected Behavior
-
-- For the ARIA menu error: Remove the `role="menu"` attribute from the navigation dropdown `<ul>` elements in `top-navigation-bar.component.html` and `admin-navbar.component.html`. Standard semantic HTML handles navigation accessibility correctly.
-- For the Contrast error: Update the CSS hex codes in `top-navigation-bar.component.css` to darker, WCAG AA compliant shades (e.g., changing `#2d9cdb` to a darker `#0070B8`, removing opacity rules that dilute text color, etc.) to ensure a >= 4.5:1 ratio.
-
-### Screenshots/Videos
-
-<img width="1918" height="1038" alt="Image" src="https://github.com/user-attachments/assets/bc369d6c-03cb-4373-bbba-5b20cf0d0545" />
-
-<img width="1918" height="1038" alt="Image" src="https://github.com/user-attachments/assets/5d1ca0cb-90fe-433c-83b9-a0e7caf2bde6" />
-
-### What device are you using?
-
-Desktop
-
-### Operating System
-
-Linux
-
-### What browsers are you seeing the problem on?
-
-Chrome
-
-### Browser version
-
-Chromium 144.0.7559.132
-
-### Additional context
-
-I initially discovered these UI accessibility issues on the `/donate` page while verifying a separate server-side HTML issue (#24488). After testing other routes like `/learner-dashboard`, I confirmed it's a sitewide issue likely rooted in a shared component.
-
-I would love to be assigned to this issue so I can track down the exact components and fix them.
-
-### Tips for developers
-
-Before addressing the bug, please identify wh
-
-*[truncated]*
-
----
-
-## #24920: [E2E/Acceptance CI Failure]: Acceptance (curriculum-admin/create-edit-and-delete-a-classroom)
-
-**Labels:** triage needed, bug, CI breakage
-
-### CI Test Type
-
-Acceptance
-
-### Which CI step failed?
-
-Run Mobile Acceptance Test curriculum-admin/create-edit-and-delete-a-classroom
-
-### Did the test fail after an automatic rerun?
-
-Test failed once and then passed after an automatic rerun
-
-### Did the test fail when running on desktop, mobile, or both?
-
-Mobile
-
-### Stacktrace
-
-```shell
-FAIL core/tests/puppeteer-acceptance-tests/specs/curriculum-admin/create-edit-and-delete-a-classroom.spec.ts (646.457 s)
-  Curriculum Admin
-    ✓ should be able to create a new classroom (7909 ms)
-    ✕ should be able to edit classroom information (61222 ms)
-    ✓ should be able to publish classroom (14534 ms)
-    ✓ should be able to enable diagnostic test for a classroom (13962 ms)
-    ✓ should be able to change order of classrooms (35971 ms)
-    ✓ should be able to delete a classroom (7607 ms)
-
-  ● Curriculum Admin › should be able to edit classroom information
-
-    TimeoutError: waiting for function failed: timeout 30000ms exceeded
-
-      2446 |
-      2447 |     // Wait for the topic to appear in the classroom before adding prerequisites.
-    > 2448 |     await this.page.waitForFunction(
-           |                     ^
-      2449 |       (
-      2450 |         topicBoxSelector: string,
-      2451 |         topicNameSelector: string,
-
-      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
-      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
-      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
-      at Page.waitForFunction (../../../node_modules/puppeteer/src/common/Page.ts:3358:29)
-      at BaseUser.addTopicToClassroom (utilities/user/curriculum-admin.ts:2448:21)
-          at runMicrotasks (<anonymous>)
-      at Object.<anonymous> (specs/curriculum-admin/create-edit-and-delete-a-classroom.spec.ts:111:5)
-
-Test Suites: 1 failed, 1 total
-Tests:       1 failed, 5 passed, 6 total
-Snapshots:   0 total
-Time:        648.107 s, estimated 763 s
-Ran all test suites matching /core\/tests\/puppeteer-acceptance-tests\/specs\/curriculum-admin\/create-edit-and-delete-a-classroom.spec.ts/i.
-```
-
-### Screenshots and/or Screen Recordings
-
-[acceptance_test_curriculum-admin_create-edit-and-delete-a-classroom_mobile_original.log](https://github.com/user-attachments/files/25316855/acceptance_test_curriculum-admin_create-edit-and-delete-a-classroom_mobile_original.log)
-
-### Occurrences
-
-https://github.com/oppia/oppia/actions/runs/21930509067/job/63388383847
-
-### Additional Information
-
-_No response_
-
-### Debugging document link
-
-_No response_
-
----
-
-## #24919: [E2E/Acceptance CI Failure]: Acceptance (exploration-creator/exploration-feedback)
-
-**Labels:** triage needed, bug, CI breakage
-
-### CI Test Type
-
-Acceptance
-
-### Which CI step failed?
-
-Run Desktop Acceptance Test exploration-creator/exploration-feedback Re-run Desktop Acceptance Test to check flakiness for exploration-creator/exploration-feedback Run Mobile Acceptance Test exploration-creator/exploration-feedback Re-run Mobile Acceptance Test to check flakiness for exploration-creator/exploration-feedback
-
-### Did the test fail after an automatic rerun?
-
-Test failed once, was automatically re-run, and then failed again
-
-### Did the test fail when running on desktop, mobile, or both?
-
-Desktop, Mobile
-
-### Stacktrace
-
-```shell
-FAIL core/tests/puppeteer-acceptance-tests/specs/exploration-creator/exploration-feedback.spec.ts (124.153 s)
-  Exploration Editor
-    ✕ should be able to give exploration feedback
-
-  ● Exploration Editor › should be able to give exploration feedback
-
-    TimeoutError: Element <li.nav-item.icon.nav-list-item.e2e-test-feedback-tab> "0" took too long to be clickable.
-    Original Error:
-    waiting for function failed: timeout 30000ms exceeded
-
-      492 |         : selector;
-      493 |     try {
-    > 494 |       await this.page.waitForFunction(isElementClickable, {}, element);
-          |                       ^
-      495 |     } catch (error) {
-      496 |       if (error instanceof Error) {
-      497 |         await this.page.evaluate(isElementClickable, element, true, true);
-
-      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
-      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
-      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
-      at Page.waitForFunction (../../../node_modules/puppeteer/src/common/Page.ts:3358:29)
-      at BaseUser.waitForElementToBeClickable (utilities/common/puppeteer-utils.ts:494:23)
-      at BaseUser.clickOnElement (utilities/common/puppeteer-utils.ts:519:5)
-      at BaseUser.clickOnElementWithSelector (utilities/common/puppeteer-utils.ts:554:5)
-      at BaseUser.navigateToFeedbackTab (utilities/user/exploration-editor.ts:2744:7)
-      at specs/exploration-creator/exploration-feedback.spec.ts:38:5
-
-Test Suites: 1 failed, 1 total
-Tests:       1 failed, 1 total
-Snapshots:   0 total
-Time:        125.893 s
-Ran all test suites matching /core\/tests\/puppeteer-acceptance-tests\/specs\/exploration-creator\/exploration-feedback.spec.ts/i.
-```
-
-### Screenshots and/or Screen Recordings
-
-https://github.com/user-attachments/assets/5aa82721-2cce-4f04-8dd9-161130d0a530
-
-### Occurrences
-
-https://github.com/oppia/oppia/actions/runs/21971840472/job/63522154644
-
-### Additional Information
-
-_No response_
-
-### Debugging document link
-
-_No response_
-
----
-
-## #24915: [BUG]: Pre-push hook incorrectly runs acceptance test specs in frontend unit test runner
-
-**Labels:** triage needed, bug
-
-### Describe the bug
-
-The pre-push hook incorrectly attempts to run acceptance test spec files located under:
-
-core/tests/puppeteer-acceptance-tests/specs/
-
-using the frontend unit test runner (Karma).
-
-This happens because scripts/run_frontend_tests.py() treats all .spec.ts files as frontend unit tests without excluding the puppeteer-acceptance-tests directory.
-
-As a result, Karma executes 0 tests and the push fails.
-
-### URL of the page where the issue is observed.
-
-N/A
-
-### Steps To Reproduce
-
-1) Modify any acceptance test file under:
-core/tests/puppeteer-acceptance-tests/specs/
-
-2) Run:
-git push
-
-3) Observe pre-push hook failure due to Karma attempting to run acceptance specs
-
-### Expected Behavior
-
-Acceptance test specs should be excluded from the frontend unit test runner.
-
-### Screenshots/Videos
-
-_No response_
-
-### What device are you using?
-
-Desktop
-
-### Operating System
-
-Linux
-
-### What browsers are you seeing the problem on?
-
-_No response_
-
-### Browser version
-
-_No response_
-
-### Additional context
-
-_No response_
-
-### Tips for developers
-
-Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
-
-Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
-
-**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
-
----
-
-## #24914: [E2E/Acceptance CI Failure]: Timeout error in  Full-stack tests / Acceptance (exploration-creator/create-an-exploration-with-all-interactions)
-
-**Labels:** triage needed, bug, CI breakage
-
-### CI Test Type
-
-Acceptance
-
-### Which CI step failed?
-
- Full-stack tests / Acceptance (exploration-creator/create-an-exploration-with-all-interactions) 
-
-### Did the test fail after an automatic rerun?
-
-Test failed once, was automatically re-run, and then failed again
-
-### Did the test fail when running on desktop, mobile, or both?
-
-Desktop
-
-### Stacktrace
-
-```shell
-INFO     2026-02-12 07:26:53,842 module.py:830] default: "GET /internetconnectivityhandler HTTP/1.1" 200 36
-[test-log] 26:55.135: Screen recording stopped for explorationEditor.
-INFO     2026-02-12 07:26:55,151 module.py:830] default: "GET /third_party/generated/webfonts/fa-solid-900.woff2 HTTP/1.1" 304 -
-[test-log] 26:55.719: Screenshot captured for test failure and saved as : /home/runner/work/oppia/oppia_full_stack_test_failure_screenshots/acceptance/exploration-creator_create-an-exploration-with-all-interactions-2026-02-12T07_26_55.136Z-instance-0.png
-[test-log] 26:55.719: All screenshots captured for explorationEditor
-[test-log] 26:55.838: Browser closed for explorationEditor.
-[test-log] 26:55.838: All browsers closed.
-FAIL core/tests/puppeteer-acceptance-tests/specs/exploration-creator/create-an-exploration-with-all-interactions.spec.ts (927.462 s)
-  Exploration Editor
-    ✓ should be able to use "Continue Button" interaction (26910 ms)
-    ✓ should be able to use "Multiple Choice" interaction (35987 ms)
-    ✓ should be able to use "Number Input" interaction (34276 ms)
-    ✓ should be able to use "Text Input" interaction (32017 ms)
-    ✓ should be able to use "Image Region" interaction (34997 ms)
-    ✓ should be able to use "Item Selection" interaction (36614 ms)
-    ✓ should be able to use "Drag and Drop Sort" interaction (28802 ms)
-    ✓ should be able to use "Fraction Input" interaction (32427 ms)
-    ✓ should be able to use "Graph Theory" interaction (106985 ms)
-    ✓ should be able to use "Set Input" interaction (34788 ms)
-    ✓ should be able to use "Numeric Expression" interaction (48999 ms)
-    ✕ should be able to use "Algebric Expression" intreaction (67085 ms)
-    ✕ should be able to use "Math Equation" interaction (40618 ms)
-    ✕ should be able to use "Number With Units" interaction (40612 ms)
-    ✕ should be able to use "Ratio Expression Input" interaction (40616 ms)
-    ✕ should be able to use "Code Editor" interaction (40615 ms)
-    ✕ should be able to use "Pencil Code Editor" interaction (40917 ms)
-    ✕ should be able to use "Music Notes Input" interaction (40617 ms)
-    ✕ should be able to use "World Map" interaction (40615 ms)
-
-  ● Exploration Editor › should be able to use "Algebric Expression" intreaction
-
-    TimeoutError: Element <div.oppia-rte-resizer.oppia-rte.e2e-test-rte.cke_editable.cke_editable_inline.cke_contents_ltr.cke_show_borders> took too long to be clickable.
-    Original Error:
-    waiting for function failed: timeout 30000ms exceeded
-
-      492 |         : selector;
-      493 |     try {
-    > 494 |       await this.page.waitForFunction(is
-
-*[truncated]*
-
----
-
-## #24911: [BUG]: Error in Blog page
-
-**Labels:** triage needed, bug
-
-### Describe the bug
-
-1. Error message shown in Blog page. The "Latest Posts” on the left, with the blog title, author name, publish time, related tags showing on each blog card are not shown. 
-2. Search bar for tags is not shown.
-
-
-### URL of the page where the issue is observed.
-
-https://www.oppiatestserver.org/blog
-
-### Steps To Reproduce
-
-1. Select “About” -> “Blog” from the top navbar.
-2. The "Latest Posts” on the left, with the blog title, author name, publish time, related tags showing on each blog card are not shown. 
-3. Search bar for tags is not shown.
-
-
-### Expected Behavior
-
-The "Latest Posts” on the left, with the blog title, author name, publish time, related tags showing on each blog card should be shown.
-Search bar for tags should be shown.
-
-
-### Screenshots/Videos
-
-<img width="960" height="598" alt="Image" src="https://github.com/user-attachments/assets/90b305e2-28b8-4256-acd5-cd1d5502d08b" />
-
-### What device are you using?
-
-Desktop
-
-### Operating System
-
-Windows
-
-### What browsers are you seeing the problem on?
-
-_No response_
-
-### Browser version
-
-_No response_
-
-### Additional context
-
-_No response_
-
-### Tips for developers
-
-Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
-
-Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
-
-**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
-
----
-
-## #24905: [CI Failure]: ModuleNotFoundError: No module named 'psutil'
-
-**Labels:** triage needed, bug, CI breakage
-
-### CI Test Type
-
-Frontend
-
-### Which CI step failed?
-
-Acceptance (logged-out-learner/complete-the-embedded-lesson)
-
-### Stacktrace
-
-```shell
-Prepare all required actions
-Getting action download info
-Run ./.github/actions/run-a-specific-acceptance-test
-Run if [[ ! "" =~ ^[a-zA-Z0-9_-]*$ ]]; then
-Run set -o pipefail; VIDEO_RECORDING_IS_ENABLED=1 xvfb-run -a --server-args="-screen 0, 1920x1080x24" python -m scripts.run_acceptance_tests --skip_build --suite=logged-out-learner/complete-the-embedded-lesson --mobile --prod_env --server_log_level=info | tee acceptance_test_.log
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
-    return _run_code(code, main_globals, None,
-  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
-    exec(code, run_globals)
-  File "/home/runner/work/oppia/oppia/scripts/run_acceptance_tests.py", line 26, in <module>
-    from scripts import build, common, servers
-  File "/home/runner/work/oppia/oppia/scripts/build.py", line 31, in <module>
-    from scripts import (
-  File "/home/runner/work/oppia/oppia/scripts/servers.py", line 33, in <module>
-    import psutil
-ModuleNotFoundError: No module named 'psutil'
-Error: Process completed with exit code 1.
-```
-
-### Screenshots / Screen Recordings
-
-_No response_
-
-### Occurrences
-
-occurred at  : https://github.com/oppia/oppia/actions/runs/21959286869/job/63468815410?pr=24882#logs 
-
-### Additional Information
-
-_No response_
-
-### Debugging document link
-
-_No response_
-
----
-
-## #24902: [BUG]: When we click on “Read more stories” in partnerships page, error message is shown.
-
-**Labels:** triage needed, bug
-
-### Describe the bug
-
-When we click on “Read more stories” in partnerships page, error message is shown. 
-
-### URL of the page where the issue is observed.
-
-https://www.oppiatestserver.org/blog
-
-### Steps To Reproduce
-
-1. Click on 'Get Involved' in oppiatestserver.org page
-2. Click on 'Schools and Organizations' in the navbar
-3. Click on “Read more stories”.
-
-### Expected Behavior
-
-The error message 'Failed to get blog home page data.Error: User not found' should not show.
-
-### Screenshots/Videos
-
-https://github.com/user-attachments/assets/2daac6b4-1999-4a82-a488-0c08087af0a8
-
-### What device are you using?
-
-Desktop
-
-### Operating System
-
-Windows
-
-### What browsers are you seeing the problem on?
-
-Chrome
-
-### Browser version
-
-_No response_
-
-### Additional context
-
-_No response_
-
-### Tips for developers
-
-Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
-
-Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
-
-**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
-
----
-
-## #24899: [Feature Request]: Upgrade ElasticSearch from 8.17 to 9.X
-
-**Labels:** triage needed, enhancement
-
-### Is your feature request related to a problem? Please describe.
-
-ElasticSearch we are using, 8.17, is reaching end-of-life and that, for continued support, we would need to upgrade to the latest 9.x version.
-
-![Image](https://github.com/user-attachments/assets/eb23fea3-92bd-4290-a93c-3f88d8167c22)
-
-### Describe the solution (or solutions) you'd like
-
-N/A
-
-### Describe alternatives you've considered and rejected
-
-_No response_
-
-### Additional context
-
-Please take reference from this PR: https://github.com/oppia/oppia/pull/23596
-especially the testing doc.
-
----
-
-## #24898: [BUG]: Lesson Info page  - Learner is not able to see all the contributors of the lesson
-
-**Labels:** triage needed, bug
-
-### Describe the bug
-
-Lesson Info page - When hovering over the Contributors icon, learner can see the number of contributors and the tooltip indicates multiple contributors(partial list is visible). However, the full list of contributor names is not completely visible to the learner. Some names appear truncated or hidden. As a result, the learner cannot view or click on certain contributors, which prevents them from subscribing to a specific contributor.
-
-### URL of the page where the issue is observed.
-
-https://www.oppiatestserver.org/explore/G8ZgSj1O4rjE?story_url_fragment=piece-of-cake&topic_url_fragment=fractionsssssssss&classroom_url_fragment=math&node_id=node_1
-
-### Steps To Reproduce
-
-1. Load the URL https://www.oppiatestserver.org/learner-dashboard
-2. Hover on the "Learn" tab of the nav bar
-3. Click on any topic
-4. Click a Chapter (Preferably which has more contributors)--> Click on the Lesson info on the left bottom corner '
-5. In the Pop up window hover on the contributors icon 
-
-### Expected Behavior
-
-All contributor names should be fully visible and clickable so learners can subscribe to a specific contributor.
-
-### Screenshots/Videos
-
-https://github.com/user-attachments/assets/7e797c36-5e37-43c7-a8b9-5a519dc2e3b5
-
-### What device are you using?
-
-Desktop
-
-### Operating System
-
-Windows
-
-### What browsers are you seeing the problem on?
-
-Chrome
-
-### Browser version
-
-_No response_
-
-### Additional context
-
- Environment Hat: Slow Connection
-
-### Tips for developers
-
-Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
-
-Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
-
-**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
-
----
-
-## #24885: [E2E/Acceptance CI Failure]: Acceptance (logged-in-learner/manage-goals-in-learner-dashboard)
-
-**Labels:** triage needed, bug, CI breakage
-
-### CI Test Type
-
-Acceptance
-
-### Which CI step failed?
-
-Run Mobile Acceptance Test logged-in-learner/manage-goals-in-learner-dashboard
-
-### Did the test fail after an automatic rerun?
-
-Test failed once and then passed after an automatic rerun
-
-### Did the test fail when running on desktop, mobile, or both?
-
-Mobile
-
-### Stacktrace
-
-```shell
-FAIL core/tests/puppeteer-acceptance-tests/specs/logged-in-learner/manage-goals-in-learner-dashboard.spec.ts (1082.474 s)
-  Logged-In Learner - Manage Goals
-    ✓ should display empty Goals tab with title and Add Goals button (18161 ms)
-    ✓ should open add goals modal with topic checkbox and cancel (9792 ms)
-    ✓ should add Place Values goal and display In Progress card (0%) (13222 ms)
-    ✓ should prompt for goal removal when unchecked in modal (13331 ms)
-    ✓ should return to empty state after removal (4294 ms)
-    ✓ should not save checkbox selection when closing modal (7362 ms)
-    ✓ should show goal card with 0% and Start button after adding goal (22072 ms)
-    ✓ should expand Place Values and show all lessons with Start buttons (12539 ms)
-    ✕ should highlight Goals tab in sidebar (11811 ms)
-
-  ● Logged-In Learner - Manage Goals › should highlight Goals tab in sidebar
-
-    Expected image to match or be a close match to snapshot but was 4.800999500249875% different from snapshot (48034 differing pixels).
-    See diff for details: /home/runner/work/oppia/oppia/core/tests/puppeteer-acceptance-tests/logged-in-learner/manage-goals-in-learner-dashboard/prod-mobile-screenshots/diff-snapshots/goalsTabSidebarHighlighted-diff.png
-    Download the artifact folder diff-snapshots from the github workflow to check the difference between the old screenshot(s) and the new one(s). To download the folder, go to "Summary" of the CI Job of the PR and find the "Artifacts" section. The artifact folder name should be something like diff-snapshots_(suite-name)_desktop_original. The diff screenshot(s) should end with "-diff".
-    Please update the screenshots if the UI changed. If screenshot comparisons consistently show the same difference percentage across multiple test runs, the baseline screenshot(s) should be updated.
-    To update the screenshots(s), you should run the tests in CI, download the artifact folder new-snapshots from the github workflow and use the screenshots in that folder to replace the old one(s).
-    To download the folder, go to "Summary" of the CI Job of the PR and find the "Artifacts" section. The artifact folder name should be something like new-snapshots_(suite-name)_desktop_original. The new screenshot(s) should end with "-received". When replacing the screenshot(s), make sure to change the postfix "-received" to "-snap".
-
-      1126 |         ' folder name should be something like new-snapshots_(suite-name)_desktop_original.' +
-      1127 |         ' The new screenshot(s) should end with "-received". When replacing the screenshot(s), make sure to change the postfix "-received" to "-snap".';
-   
-
-*[truncated]*
-
----
-
-## #24884: [E2E/Acceptance CI Failure]: Acceptance (practice-question-reviewer/view-contribution-stats-and-badges-earned)
-
-**Labels:** triage needed, bug, CI breakage
-
-### CI Test Type
-
-Acceptance
-
-### Which CI step failed?
-
-Run Desktop Acceptance Test practice-question-reviewer/view-contribution-stats-and-badges-earned
-
-### Did the test fail after an automatic rerun?
-
-Test failed once, was automatically re-run, and then failed again
-
-### Did the test fail when running on desktop, mobile, or both?
-
-Desktop, Mobile
-
-### Stacktrace
-
-```shell
-FAIL core/tests/puppeteer-acceptance-tests/specs/practice-question-reviewer/view-contribution-stats-and-badges-earned.spec.ts (391.567 s)
-  Practice Question Reviewer
-    ✕ should be able to check contribution stats
-    ✕ should be able to check badges earned
-
-  ● Practice Question Reviewer › should be able to check contribution stats
-
-    TimeoutError: Element <div.oppia-editable-section-mask.e2e-test-state-edit-content> took too long to be clickable.
-    Original Error:
-    waiting for function failed: timeout 30000ms exceeded
-
-      492 |         : selector;
-      493 |     try {
-    > 494 |       await this.page.waitForFunction(isElementClickable, {}, element);
-          |                       ^
-      495 |     } catch (error) {
-      496 |       if (error instanceof Error) {
-      497 |         await this.page.evaluate(isElementClickable, element, true, true);
-
-      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
-      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
-      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
-      at Page.waitForFunction (../../../node_modules/puppeteer/src/common/Page.ts:3358:29)
-      at BaseUser.waitForElementToBeClickable (utilities/common/puppeteer-utils.ts:494:23)
-          at runMicrotasks (<anonymous>)
-      at BaseUser.clickOnElement (utilities/common/puppeteer-utils.ts:519:5)
-      at BaseUser.clickOnElementWithSelector (utilities/common/puppeteer-utils.ts:554:5)
-      at BaseUser.updateCardContent (utilities/user/exploration-editor.ts:2863:5)
-
-  ● Practice Question Reviewer › should be able to check badges earned
-
-    TimeoutError: Element <div.oppia-editable-section-mask.e2e-test-state-edit-content> took too long to be clickable.
-    Original Error:
-    waiting for function failed: timeout 30000ms exceeded
-
-      492 |         : selector;
-      493 |     try {
-    > 494 |       await this.page.waitForFunction(isElementClickable, {}, element);
-          |                       ^
-      495 |     } catch (error) {
-      496 |       if (error instanceof Error) {
-      497 |         await this.page.evaluate(isElementClickable, element, true, true);
-
-      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
-      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
-      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
-      at Page.waitForFunction (../../../node_modules/puppeteer/src/common/Page.ts:3358:2
-
-*[truncated]*
-
----
-
-## #24883: [Feature Request]: Removing oppia-lightweight-root entrypoint .
-
-**Labels:** enhancement
-
-### Is your feature request related to a problem? Please describe.
-
-Currently Oppia is using oppia-lightweight-root entrypoint in order to build the oppia splash page . The problem is it is acting as a blocker in the case of remove webpack project , as custom inbuild webpack which we are trying to shift to , will require only one entrypoint . 
-
-### Describe the solution (or solutions) you'd like
-
-Removing the entire lightweight root and making sure that the splash page  is made using the oppia-root entry point 
-
-### Describe alternatives you've considered and rejected
-
-_No response_
-
-### Additional context
-
-_No response_
-
----
-
-## #24881: [E2E/Acceptance CI Failure]: Acceptance (exploration-editor/verify-statistics-and-previous-explorations)
-
-**Labels:** triage needed, bug, CI breakage
-
-### CI Test Type
-
-Acceptance
-
-### Which CI step failed?
-
-Run Desktop Acceptance Test exploration-editor/verify-statistics-and-previous-explorations
-
-### Did the test fail after an automatic rerun?
-
-Test failed once and then passed after an automatic rerun
-
-### Did the test fail when running on desktop, mobile, or both?
-
-Desktop
-
-### Stacktrace
-
-```shell
-FAIL core/tests/puppeteer-acceptance-tests/specs/exploration-editor/verify-statistics-and-previous-explorations.spec.ts (289.175 s)
-  Exploration Editor
-    ✕ should display created explorations and their statistics on the creator dashboard after creating, playing, and rating as a logged-in user (1 ms)
-
-  ● Exploration Editor › should display created explorations and their statistics on the creator dashboard after creating, playing, and rating as a logged-in user
-
-    TimeoutError: Navigation timeout of 30000 ms exceeded
-
-      at ../../../node_modules/puppeteer/src/common/LifecycleWatcher.ts:211:18
-```
-
-### Screenshots and/or Screen Recordings
-
-https://github.com/user-attachments/assets/acce1045-f29d-4a31-a8be-bcb5bc5abbbb
-
-### Occurrences
-
-https://github.com/oppia/oppia/actions/runs/21726992294/job/62716902769
-
-### Additional Information
-
-_No response_
-
-### Debugging document link
-
-_No response_
-
----
-
-## #24878: [CI Failure]: Lighthouse CI check failed: modern-image-formats failure for maxLength assertion
-
-**Labels:** triage needed, bug, CI breakage
-
-### CI Test Type
-
-Lighthouse CI performance
-
-### Which CI step failed?
-
-Lighthouse perf (shard 1)
-
-### Stacktrace
-
-```shell
-Return code: 1
-ERROR:
-Checking assertions against 2 URL(s), 6 total run(s)
-
-1 result(s) for http://localhost:8181/topic_editor/CaA00xoNbzmo :
-
-  ✘  modern-image-formats failure for maxLength assertion
-       Serve images in next-gen formats
-       https://web.dev/uses-webp-images/
-
-        expected: <=0
-           found: 1
-      all values: 1, 1, 1
-
-Assertion failed. Exiting with status code 1.
-assert command failed. Exiting with status code 1.
-
-Lighthouse checks failed. More details can be found above.
-Stopping GAE Development Server(name="sh", pid=3785)...
-Stopping Cloud Datastore Emulator(name="sh", pid=3671)...
-Stopping Firebase Emulator(name="sh", pid=3646)...
-Stopping ElasticSearch Server(name="sh", pid=3497)...
-Stopping Redis Server(name="sh", pid=3490)...
-Error: Process completed with exit code 1.
-```
-
-### Screenshots / Screen Recordings
-
-_No response_
-
-### Occurrences
-
-https://github.com/oppia/oppia/actions/runs/21903543361/job/63313273177
-
-### Additional Information
-
-_No response_
-
-### Debugging document link
-
-_No response_
-
----
-
-## #24877: [BUG]: Voiceover Upload - Error message Contains Extra Information (Schema validation for 'raw_audio_file' failed)
-
-**Labels:** triage needed, bug
-
-### Describe the bug
-
-Voiceover Upload - Error message Contains Extra Information:
-
- At 'https://www.oppiatestserver.org/createhandler/audioupload/EyJ180bShWrI' these errors are happening: Schema validation for 'raw_audio_file' failed: Audio not recognized as a mp3 file
-
-
-### URL of the page where the issue is observed.
-
-https://www.oppiatestserver.org/create/EyJ180bShWrI#/translation/Introduction
-
-### Steps To Reproduce
-
-1. As a voice over artist, navigate to an exploration/ translation Tab
-2. Select English as Voiceover Language Code and Voiceover Language Code
-3. Click "Add manual voiceover"
-4. Submit a file over 5min
-5. Click "Save"
-
-
-### Expected Behavior
-
-Clear message is displayed to user:
-Audio files must be under 300 seconds in length. The uploaded file is 330.03 seconds long.
-
-### Screenshots/Videos
-
-<img width="1280" height="738" alt="Image" src="https://github.com/user-attachments/assets/aebe02c2-686c-41d1-a1aa-a4563a5907f7" />
-
-### What device are you using?
-
-Desktop
-
-### Operating System
-
-MacOS
-
-### What browsers are you seeing the problem on?
-
-_No response_
-
-### Browser version
-
-_No response_
-
-### Additional context
-
-_No response_
-
-### Tips for developers
-
-Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
-
-Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
-
-**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
-
----
-
-## #24876: [BUG]: Remove files once Job is run on test server
-
-**Labels:** triage needed, bug
-
-### Describe the bug
-
-The Beam Job and Audit Job mentioned in the PRs were created to fix a specific bug. Once these jobs are run on the test server and the bug is resolved, the corresponding files and all references to them in the codebase should be deleted, as they are no longer needed.
-
-PR : 
-- https://github.com/oppia/oppia/pull/24004
-- https://github.com/oppia/oppia/pull/23575
-
-
-
-### URL of the page where the issue is observed.
-
-N/A
-
-### Steps To Reproduce
-
-N/A
-
-### Expected Behavior
-
-N/A
-
-### Screenshots/Videos
-
-_No response_
-
-### What device are you using?
-
-Desktop
-
-### Operating System
-
-Other
-
-### What browsers are you seeing the problem on?
-
-_No response_
-
-### Browser version
-
-_No response_
-
-### Additional context
-
-_No response_
-
-### Tips for developers
-
-Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
-
-Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
-
-**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
-
----
-
-## #24871: [Feature Request]: Add collapsible search panel to improve blog page layout and visual consistency
-
-**Labels:** triage needed, enhancement
-
-### Is your feature request related to a problem? Please describe.
-
-On the Blog page, the search panel on the right occupies a fixed column width even when it is not actively used. This results in a large blank white space below the search bar, making the page look visually unbalanced and less aesthetic, especially when scrolling through blog posts.
-
-This unused space gives the impression that the layout is broken or incomplete and reduces the effective content area for blog posts.
-
-### Describe the solution (or solutions) you'd like
-
-Introduce a collapsible search panel on the Blog page with the following behavior:
-- A toggle button (e.g., “Search” / filter icon) to expand or collapse the search panel.
-- When the search panel is collapsed:
-  - The blog posts should expand horizontally and utilize the full available width
-  - The layout should feel more content-focused and visually balanced.
-- When the search panel is expanded:
-  - The current two-column layout should remain intact.
-  - Blog posts should align vertically, as they do now, alongside the search panel.
-
-### Describe alternatives you've considered and rejected
-
-_No response_
-
-### Additional context
-
-<img width="3014" height="1792" alt="Image" src="https://github.com/user-attachments/assets/a33528aa-5356-4f3c-8edd-a58aa699636d" />
-
-<img width="2414" height="1450" alt="Image" src="https://github.com/user-attachments/assets/9d2b3e3f-eb6a-4059-9a77-41ae605cbadb" />
-
----
-
-## #24870: [BUG]: Pagination shows confusing background circle instead of highlighting active page
-
-**Labels:** triage needed, bug
-
-### Describe the bug
-
-In the blog pagination:
-
-- A background circle appears behind the ellipsis/dots (...) instead of the active page number.
-- The current page number is not clearly highlighted, which makes the pagination state confusing.
-- This can mislead users into thinking the dots represent the active page.
-
-### URL of the page where the issue is observed.
-
-https://www.oppia.org/blog
-
-### Steps To Reproduce
-
-- Open https://www.oppia.org/ in a web browser.
-- From the top navigation bar, click on the About dropdown menu.
-- Select Blog to navigate to the blog listing page.
-- Use the pagination controls to move to a page beyond Page 2 (e.g., Page 3 or later).
-- Observe the pagination component and note how the background circle appears behind the ellipsis (...) instead of clearly highlighting the active page number.
-
-### Expected Behavior
-
-The pagination component should clearly highlight the current active page number only so users can easily understand which page they are on.
-
-- Highlight the active page number instead of the ellipsis.
-- Remove the background circle behind the dots.
-
-
-
-### Screenshots/Videos
-
-<img width="2306" height="1392" alt="Image" src="https://github.com/user-attachments/assets/5ef1ca08-db8c-49f8-8c2d-6acf87adf9eb" />
-
-### What device are you using?
-
-Desktop
-
-### Operating System
-
-MacOS
-
-### What browsers are you seeing the problem on?
-
-Chrome
-
-### Browser version
-
-_No response_
-
-### Additional context
-
-_No response_
-
-### Tips for developers
-
-Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
-
-Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
-
-**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
-
----
-
-## #24859: [E2E/Acceptance CI Failure]: Acceptance (logged-out-user/sign-in-and-save-exploration-progress)
-
-**Labels:** triage needed, bug, CI breakage
-
-### CI Test Type
-
-E2E
-
-### Which CI step failed?
-
-Run Desktop Acceptance Test logged-out-user/sign-in-and-save-exploration-progress
-
-### Did the test fail after an automatic rerun?
-
-Test failed once but was not automatically re-run
-
-### Did the test fail when running on desktop, mobile, or both?
-
-Desktop
-
-### Stacktrace
-
-```shell
-[test-log] 10:24.725: Checking if element <span.mat-button-wrapper> "Sign In" is clickable...
-INFO     2026-02-11 01:10:24,910 module.py:830] default: "GET /third_party/generated/webfonts/fa-solid-900.woff2 HTTP/1.1" 304 -
-[test-log] 10:24.933: Element (text: Sign In) clicked.
-ERROR:root:Frontend error: 
-Error: A network error (such as timeout, interrupted connection or unreachable host) has occurred.
-
-    at URL: http://localhost:8181/login?return_url=%2F
-INFO     2026-02-11 01:10:25,059 module.py:830] default: "POST /frontend_errors HTTP/1.1" 200 30
-[test-log] 10:54.537: Test failed: Capturing screenshots...
-[test-log] 10:54.538: Closing browsers for 0 users.
-[test-log] 10:54.538: All browsers closed.
-FAIL core/tests/puppeteer-acceptance-tests/specs/logged-out-user/sign-in-and-save-exploration-progress.spec.ts (54.578 s)
-  Logged-out User
-    ✕ should be able to play the exploration without signing in, sign in at any point, save progress, and clear progress
-
-  ● Logged-out User › should be able to play the exploration without signing in, sign in at any point, save progress, and clear progress
-
-    TimeoutError: Navigation timeout of 30000 ms exceeded
-
-      662 |       await this.clickOnElementWithText(selector);
-      663 |     }
-    > 664 |     await navigationPromise;
-          |     ^
-      665 |   }
-      666 |
-      667 |   /**
-
-      at ../../../node_modules/puppeteer/src/common/LifecycleWatcher.ts:211:18
-      at FrameManager.waitForFrameNavigation (../../../node_modules/puppeteer/src/common/FrameManager.ts:239:19)
-      at Frame.waitForNavigation (../../../node_modules/puppeteer/src/common/FrameManager.ts:795:12)
-      at Page.waitForNavigation (../../../node_modules/puppeteer/src/common/Page.ts:1833:12)
-      at BaseUser.clickAndWaitForNavigation (utilities/common/puppeteer-utils.ts:664:5)
-      at BaseUser.signInWithEmail (utilities/common/puppeteer-utils.ts:366:5)
-      at BaseUser.signUpNewUser (utilities/common/puppeteer-utils.ts:373:5)
-      at Function.Object.<anonymous>.UserFactory.createNewUser (utilities/common/user-factory.ts:308:5)
-      at specs/logged-out-user/sign-in-and-save-exploration-progress.spec.ts:51:25
-
-Test Suites: 1 failed, 1 total
-Tests:       1 failed, 1 total
-Snapshots:   0 total
-Time:        56.362 s
-Ran all test suites matching /core\/tests\/puppeteer-acceptance-tests\/specs\/logged-out-user\/sign-in-and-save-exploration-progress.spec.ts/i.
-INFO     2026-02-11 01:10:54,629 shutdown.py:48] Shutting down.
-Error: 2-11 01:10:54 +0000] [2857] [ERROR] Worker (pid:2866) was sent SIGTERM!
-Error: 2-11 01:10:54 +0000] [2853] [ERROR] Worker (pid:2863) was sent SIGTERM!
-INFO     2026-02-11 01
-
-*[truncated]*
-
----
-
-## #24858: [BUG]: Blog Home Page Fails to Load – "User not found" Error
-
-**Labels:** triage needed, bug
-
-### Describe the bug
-
-When accessing the Blog Home Page, the system displays the error: "**Failed to get blog home page data. Error: User not found**."
-
-### URL of the page where the issue is observed.
-
-https://www.oppiatestserver.org/blog
-
-### Steps To Reproduce
-
-- Navigate to the Blog Home Page
-
-- Observe the error message displayed
-
-- Page content does not load
-
-### Expected Behavior
-
-Page content should be loaded properly
-
-
-
-### Screenshots/Videos
-
-<img width="1920" height="1020" alt="Image" src="https://github.com/user-attachments/assets/03e60b60-7d91-42c1-82af-e234cb0d3b56" />
-
-### What device are you using?
-
-Desktop
-
-### Operating System
-
-Windows
-
-### What browsers are you seeing the problem on?
-
-Chrome
-
-### Browser version
-
-_No response_
-
-### Additional context
-
-Observed in Oppia Main server as well
-
-### Tips for developers
-
-Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
-
-Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
-
-**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
-
----
-
-## #24856: [BUG]: Category Drop down mismatch - Dropdown options which are available while publishing the exploration are not available in the community library page.
-
-**Labels:** triage needed, bug
-
-### Describe the bug
-
-Category Drop down mismatch - Drop down options which are available while publishing the exploration are not available in the community library page to be used as a search category.
-
-### URL of the page where the issue is observed.
-
-https://www.oppiatestserver.org/search/find?q=&language_code=(%22en%22)
-
-### Steps To Reproduce
-
-1. Load the URL https://www.oppiatestserver.org/creator-dashboard
-2. Click on create an exploration
-3. Create an exploration successfully 
-4. Save the exploration
-5. Click on publish exploration
-6. Observe and make a note of the categories available to choose 
-7. Publish the exploration successfully 
-8. Navigate to "Community library page"
-9. Locate and click on the category drop down menu and look for all the drop down options available 
-
-Note:
-Behavioral Hat: Slow connection  
-
-### Expected Behavior
-
-All the drop down options available while publishing the exploration should also be made available in the community library page. 
-
-### Screenshots/Videos
-
-<img width="960" height="504" alt="Image" src="https://github.com/user-attachments/assets/cce2b6fc-c31f-4c1f-828f-5bc8af42db8d" />
-<img width="960" height="504" alt="Image" src="https://github.com/user-attachments/assets/e4d4a0e7-6516-44e3-afed-aab804768397" />
-
-### What device are you using?
-
-Desktop
-
-### Operating System
-
-Windows
-
-### What browsers are you seeing the problem on?
-
-Chrome
-
-### Browser version
-
-_No response_
-
-### Additional context
-
-Note:
-Behavioral Hat: Slow connection  
-
-### Tips for developers
-
-Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
-
-Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
-
-**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
-
----
-
-## #24855: Use official type hints for the Firebase Admin SDK python package
-
-**Labels:** triage needed, enhancement
-
-### Is your feature request related to a problem? Please describe.
-
-The Firebase Admin SDK does not provide strong types, meaning our code fails MyPy checks with `Any` type errors. This makes it difficult for our developers to use the library consistently, correctly, and intentionally.
-
-### Describe the solution (or solutions) you'd like
-
-We should use the official type hint solution published by the Firebase Admin SDK: firebase/firebase-admin-python#569.
-
-### Describe alternatives you've considered and rejected
-
-- **[CURRENT WORKAROUND]:** Maintain a partial stub of the SDK on our own.
-- The [`types-firebase-admin`](https://pypi.org/project/types-firebase-admin/) on PyPi is no longer maintained and the repository no longer exists. The most-recent publication of the package provides weaker type hints than our hand-written stubs.
-
-### Additional context
-
-Oppia's type stubs for the Firebase Admin SDK can be found here: https://github.com/oppia/oppia/tree/develop/stubs/firebase_admin/
-
----
-
-## #24846: [E2E/Acceptance CI Failure]: Timeout error in Acceptance (logged-out-user/play-through-lesson-while-getting-feedback-and-hints)
-
-**Labels:** triage needed, bug, CI breakage
-
-### CI Test Type
-
-Acceptance
-
-### Which CI step failed?
-
-Acceptance (logged-out-user/play-through-lesson-while-getting-feedback-and-hints)
-
-### Did the test fail after an automatic rerun?
-
-Test failed once, was automatically re-run, and then failed again
-
-### Did the test fail when running on desktop, mobile, or both?
-
-Desktop
-
-### Stacktrace
-
-```shell
-L core/tests/puppeteer-acceptance-tests/specs/logged-out-user/play-through-lesson-while-getting-feedback-and-hints.spec.ts (128.931 s)
-  Logged-out User
-    ✕ should be able to interact with different interactions,receive feedback, navigates through cards, uses hints, views previous responses, and reaches a checkpoint
-
-  ● Logged-out User › should be able to interact with different interactions,receive feedback, navigates through cards, uses hints, views previous responses, and reaches a checkpoint
-
-    TimeoutError: Element <div.oppia-editable-section-mask.e2e-test-state-edit-content> took too long to be clickable.
-    Original Error:
-    waiting for function failed: timeout 30000ms exceeded
-
-      492 |         : selector;
-      493 |     try {
-    > 494 |       await this.page.waitForFunction(isElementClickable, {}, element);
-          |                       ^
-      495 |     } catch (error) {
-      496 |       if (error instanceof Error) {
-      497 |         await this.page.evaluate(isElementClickable, element, true, true);
-
-      at new WaitTask (../../../node_modules/puppeteer/src/common/DOMWorld.ts:813:28)
-      at DOMWorld.waitForFunction (../../../node_modules/puppeteer/src/common/DOMWorld.ts:728:22)
-      at Frame.waitForFunction (../../../node_modules/puppeteer/src/common/FrameManager.ts:1368:28)
-```
-
-### Screenshots and/or Screen Recordings
-
-https://github.com/user-attachments/assets/09ed3843-3519-4f8e-a8f5-7639a3621564
-
-https://github.com/user-attachments/assets/33c462e7-438a-427b-9f0d-19553991b115
-
-### Occurrences
-
-https://github.com/oppia/oppia/actions/runs/21856179044?pr=24702
-
-10 Feb 2026
-
-### Additional Information
-
-_No response_
-
-### Debugging document link
-
-_No response_
-
----
-
-## #24845: [E2E/Acceptance CI Failure]: practice-question-reviewer/review-submitted-question (should be able to review the submitted questions)
-
-**Labels:** triage needed, bug, CI breakage
-
-### CI Test Type
-
-Acceptance
-
-### Which CI step failed?
-
-  ● Practice Question Reviewer › should be able to review the submitted questions
-
-### Did the test fail after an automatic rerun?
-
-Test failed once, was automatically re-run, and then failed again
-
-### Did the test fail when running on desktop, mobile, or both?
-
-Mobile, Desktop
-
-### Stacktrace
-
-```shell
-INFO     2026-02-09 22:31:00,419 module.py:830] default: "GET /internetconnectivityhandler HTTP/1.1" 200 36
-INFO     2026-02-09 22:31:03,916 module.py:830] default: "GET /internetconnectivityhandler HTTP/1.1" 200 36
-[browser-log] 31:04.011: [debug]: Document state:
-  - readyState: complete
-  - styleSheets loaded: 54
-  - pending stylesheets: 1
-  - viewport: 375x667
-[browser-log] 31:04.011: [debug]: Element DIV is disabled: false
-[browser-log] 31:04.012: [debug]: Element DIV is in viewport: true, true
-[browser-log] 31:04.012: [debug]: Element DIV
-Dimensions: 11, 242.59375, 337, 72
-Center point: 179.5, 278.59375
-[browser-log] 31:04.012: [debug]: Element DIV overlapping elements found: 2
-Overlapping element: BUTTON (class="btn oppia-welcome-modal-button oppia-transition-200 e2e-test-dismiss-welcome-modal")
-Overlapping rect: BUTTON (class="btn oppia-welcome-modal-button oppia-transition-200 e2e-test-dismiss-welcome-modal")
-[browser-log] 31:04.014: [debug]: Checking overlap for DIV (class="oppia-editable-section-mask e2e-test-state-edit-content")
-Overlapping elements to check: 2
-[browser-log] 31:04.014: [debug]: Overlapping element BUTTON (class="btn oppia-welcome-modal-button oppia-transition-200 e2e-test-dismiss-welcome-modal")
-  - Is same element: false
-  - Is contained by target: false
-  - Contains target: false
-[browser-log] 31:04.014: [debug]: Overlapping element BUTTON (class="btn oppia-welcome-modal-button oppia-transition-200 e2e-test-dismiss-welcome-modal")
-  - Is same element: false
-  - Is contained by target: false
-  - Contains target: false
-[browser-log] 31:04.014: [debug]: Element DIV shadow elements: 0
-[browser-log] 31:04.014: [debug]: Document state:
-  - readyState: complete
-  - styleSheets loaded: 54
-  - pending stylesheets: 1
-  - viewport: 375x667
-[browser-log] 31:04.014: [debug]: Element DIV is disabled: false
-[browser-log] 31:04.014: [debug]: Element DIV is in viewport: true, true
-[browser-log] 31:04.015: [debug]: Element DIV
-Dimensions: 11, 242.59375, 337, 72
-Center point: 179.5, 278.59375
-[browser-log] 31:04.015: [debug]: Element DIV overlapping elements found: 2
-Overlapping element: BUTTON (class="btn oppia-welcome-modal-button oppia-transition-200 e2e-test-dismiss-welcome-modal")
-Overlapping rect: BUTTON (class="btn oppia-welcome-modal-button oppia-transition-200 e2e-test-dismiss-welcome-modal")
-[browser-log] 31:04.015: [debug]: Checking overlap for DIV (class="oppia-editable-section-mask e2e-test-state-edit-content")
-Overlapping elements to check: 2
-[browser-log] 31:04.015: [debug]: Overlapping element BUTTON (class="btn oppia-welcome-modal-button oppia-transition-200 e2e
-
-*[truncated]*
-
----
-
-## #24840: [BUG]: Community Library - Category drop down is not displayed properly - UI is partially cut off on page load
-
-**Labels:** triage needed, bug
-
-### Describe the bug
-
-Community Library - Category drop down is not displayed properly - UI  is partially cut off on page load.
-
-Note: Behavioural Hat: "Slow Connection"
-
-### URL of the page where the issue is observed.
-
-https://www.oppiatestserver.org/search/find?q=just&language_code=(%22en%22)
-
-### Steps To Reproduce
-
-1. Load the URL https://www.oppiatestserver.org/search/find?q=just&language_code=(%22en%22)
-2. Login as a learner
-3. Navigate to the community library page
-4. Locate the 'category' drop down menu
-5. Click on it without scrolling down the page
-
-### Expected Behavior
-
-Drop down UI can be made more visible or can be displayed in a better way to make the option visible to the user
-
-### Screenshots/Videos
-
-<img width="960" height="504" alt="Image" src="https://github.com/user-attachments/assets/a3661dbe-fcf5-4511-961a-6f67e7fbbae7" />
-<img width="960" height="504" alt="Image" src="https://github.com/user-attachments/assets/e74f1185-8b87-4015-bdd2-815402e6e09e" />
-
-### What device are you using?
-
-Desktop
-
-### Operating System
-
-Windows
-
-### What browsers are you seeing the problem on?
-
-Chrome
-
-### Browser version
-
-_No response_
-
-### Additional context
-
-Note: Behavioural Hat: "Slow Connection"
-
-### Tips for developers
-
-Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
-
-Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
-
-**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
-
----
-
-## #24839: [BUG]: Community Library - Search results are not matching with the search term
-
-**Labels:** triage needed, bug
-
-### Describe the bug
-
-Community Library - Search results are not matching with the search term. 
-Exploration which are not matching with the search term is listed in the community library page.
-Neither the Title of the exploration nor the goal of the exploration has the search term in it. 
-
-### URL of the page where the issue is observed.
-
-https://www.oppiatestserver.org/search/find?q=just&language_code=(%22en%22)
-
-### Steps To Reproduce
-
-1. Load the URL https://www.oppiatestserver.org/search/find?q=just&language_code=(%22en%22)
-2. Login as a learner
-3. Navigate to the community library page 
-4. Search for an exploration by entering a key
-
-Note: Behavioural Hat: "Slow Connection"
-
-Exploration which are not matching with the search term is listed in the community library page.
-Attaching the screen recording for reference.
-
-### Expected Behavior
-
-Exploration whose "Title" and/or "Goal" matching with the search term should be displayed.
-
-### Screenshots/Videos
-
-<!-- Failed to upload "SearchFuntionality-Irrelevant.mp4" -->
-
-### What device are you using?
-
-Desktop
-
-### Operating System
-
-Windows
-
-### What browsers are you seeing the problem on?
-
-Chrome
-
-### Browser version
-
-_No response_
-
-### Additional context
-
-Note: Behavioural Hat: "Slow Connection"
-
-### Tips for developers
-
-Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
-
-Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
-
-**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
-
----
-
-## #24834: [Feature Request]: Add acceptance test for Blog Post search by body content
-
-**Labels:** triage needed, enhancement
-
-### Is your feature request related to a problem? Please describe.
-
-Currently, the Acceptance Test suite for the Blog Pages (core/tests/puppeteer-acceptance-tests/specs/logged-out-user/view-and-search-blog-posts.spec.ts) covers basic functionality like tag filtering and pagination.
-
-However, there is a missing test case for the search bar functionality. We need to verify that a user can successfully find a blog post by searching for a unique keyword that appears only in the body of the post (and not in the title). This ensures the search index is correctly parsing and retrieving the full content of the posts.
-
-### Describe the solution (or solutions) you'd like
-
-Update the existing acceptance test file core/tests/puppeteer-acceptance-tests/specs/logged-out-user/view-and-search-blog-posts.spec.ts to include this scenario.
-
-The test should perform the following steps:
-
-Create and publish a new blog post containing a unique keyword in the body.
-
-Perform a search query using that unique keyword.
-
-### Describe alternatives you've considered and rejected
-
-_No response_
-
-### Additional context
-
-_No response_
-
----
-
-## #24829: [Feature Request]: Add visual indicator for End Exploration interaction in editor preview
-
-**Labels:** triage needed, bug
-
-### Is your feature request related to a problem? Please describe.
-
-Currently, the "End Exploration" interaction shows no visual representation in the exploration editor preview. When adding this interaction to a card, the interaction area appears completely empty. Unlike other interactions (Continue, Multiple Choice, etc.) that display preview UI in the editor, End Exploration leaves creators with an empty container, which can be confusing and makes it difficult to verify that the interaction was added correctly.
-
-### Describe the solution (or solutions) you'd like
-Add a visual indicator or placeholder in the editor preview for the End Exploration interaction. This could be:
-
-- A simple text message like "End of Exploration"
--  A mock button showing "Finish" or similar
-- Any visual element that makes it clear the interaction is present and functioning
-
-### Describe alternatives you've considered and rejected
-No response
-
-### Additional context
-
-Screenshot showing the empty interaction area:
-<img width="1918" height="1037" alt="Image" src="https://github.com/user-attachments/assets/1392a084-8874-490f-8765-62d20b409052" />
-
-
-### Tips for developers
-
-Before addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).
-
-Then, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).
-
-**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!
-
----
-
-## #24827: [Feature Request]: Making the CI checks Optimized.
-
-**Labels:** triage needed, enhancement
-
-### Is your feature request related to a problem? Please describe.
-
-Currently there are almost 70 PR'S and most of the CI test checking is queued because of so many PR'S . This is causing the checking of the CI test  to take a lot of time (One of my PR'S took 18 hours just to pass all the CI checks.)
-
-
-
-### Describe the solution (or solutions) you'd like
-
-It is expected that even if there is large number of PR'S , the CI test should run in a well optimized manner , and not take such a long time to complete the CI check for any PR. 
-
-### Describe alternatives you've considered and rejected
-
-_No response_
-
-### Additional context
-
-_No response_
-
----
-
-## #24826: Error Exploration version is not set.
-
-**Labels:** triage needed, server errors, bug
-
-<!--
-  - Before filing a new issue, please do a quick search to check that it hasn't
-  - already been filed on the [issue tracker](https://github.com/oppia/oppia/issues)._
-  -->
-
-This error occurred recently in test server:
-
-```
-Frontend error: 
-Uncaught (in promise): Error: Exploration version is not set.
-Error: Exploration version is not set.
-    at ue.init (https://www.oppiatestserver.org/build/webpack_bundles/19.bf4156ace67342de0de2.bundle.js:1:27380)
-    at https://www.oppiatestserver.org/build/webpack_bundles/19.bf4156ace67342de0de2.bundle.js:1:303850
-    at e.invoke (https://www.oppiatestserver.org/build/webpack_bundles/vendors~lightweight_oppia_root~oppia_root.479abbc142614449781c.bundle.js:2995:7175)
-    at Object.onInvoke (https://www.oppiatestserver.org/build/webpack_bundles/vendors~lightweight_oppia_root~oppia_root.479abbc142614449781c.bundle.js:971:1770)
-    at e.invoke (https://www.oppiatestserver.org/build/webpack_bundles/vendors~lightweight_oppia_root~oppia_root.479abbc142614449781c.bundle.js:2995:7115)
-    at t.run (https://www.oppiatestserver.org/build/webpack_bundles/vendors~lightweight_oppia_root~oppia_root.479abbc142614449781c.bundle.js:2995:2271)
-    at https://www.oppiatestserver.org/build/webpack_bundles/vendors~lightweight_oppia_root~oppia_root.479abbc142614449781c.bundle.js:3003:2717
-    at e.invokeTask (https://www.oppiatestserver.org/build/webpack_bundles/vendors~lightweight_oppia_root~oppia_root.479abbc142614449781c.bundle.js:2995:7859)
-    at Object.onInvokeTask (https://www.oppiatestserver.org/build/webpack_bundles/vendors~lightweight_oppia_root~oppia_root.479abbc142614449781c.bundle.js:971:1586)
-    at e.invokeTask (https://www.oppiatestserver.org/build/webpack_bundles/vendors~lightweight_oppia_root~oppia_root.479abbc142614449781c.bundle.js:2995:7780)
-
-    at URL: https://www.oppiatestserver.org/create/<ID>/preview/Introduction
-```
-
-**Where did the error occur?** https://www.oppiatestserver.org/create/<ID>/preview/Introduction
-
-**Which release did the error occur in?** default:3-4-9-hotfix-1
-
-**Frequency of occurrence** Once till now.
-
-**General instructions for contributors**
-In general, the procedure for fixing server errors should be the following:
-
-- Analyze the code in the file where the error occurred and come up with a hypothesis for the reason.
-- Based on your hypothesis, determine a list of steps that reliably reproduce the issue (or confirm any repro instructions that have been provided). For example, if your hypothesis is that the issue arises due to a delay in a response from the backend server, try to change the code so that the backend server always has a delay, and see if the error then shows up 100% of the time on your local machine.
-- Explain your proposed fix, the logic behind it, and any other findings/context you have on this thread. You can also link to a [debugging doc](https://docs.google.com/document/d/1qRbvKjJ0A7NPVK8g6XJNISMx_6BuepoCL7F2eIfrGqM/edit) if you prefer.
-- Get your approach vali
 
 *[truncated]*
 

@@ -1,7 +1,7 @@
 # cBioPortal for Cancer Genomics — Project Ideas
 
 **Source:** https://github.com/cBioPortal/GSoC/issues?q=is%3Aissue%20state%3Aopen%20label%3AGSoC-2026
-**Scraped:** 2026-02-22T23:28:47.555860
+**Scraped:** 2026-03-10T16:58:40.243176
 
 ---
 
@@ -74,42 +74,6 @@ Medium to Hard (depending on scope chosen)
 
 - Medium (~175 hours): Core improvements (goals 1-4)
 - Large (~350 hours): Core + Extended goals (goals 1-6)
-
----
-
-## #140: Optimizing Co-Expression Performance with ClickHouse
-
-**Labels:** enhancement, Java, SQL, Size: Medium (175h), Difficulty: Medium, GSoC-2026
-
-### Background
-The Co-Expression analysis feature in cBioPortal is a computationally intensive tool that allows researchers to identify genes whose expression patterns correlate across a study. However, the current implementation is facing significant performance bottlenecks: the endpoint is slow to return results and consumes a high amount of server memory.
-
-<img width="577" height="400" alt="Image" src="https://github.com/user-attachments/assets/dad55f44-f342-4643-8aee-9e8d63dcce03" />
-
-### Goal
-The goal of this project is to drastically reduce the latency and memory footprint of the Co-Expression endpoint by migrating the calculation logic to a high-performance analytical database (ClickHouse) and optimizing the backend retrieval strategy.
-
-* **Performance Target:** Reduce API response time for large-scale co-expression queries by at least 70%.
-* **Memory Optimization:** Shift the heavy lifting of correlation calculations from the Java heap to the database layer.
-* **Scalability:** Ensure the solution works across various molecular profiles (RNA-seq, Microarray, etc.) and handles large-scale cohorts like TCGA.
-
-### Approach
-1. **Bottleneck Analysis:** Profile the existing Java-based co-expression service to identify the specific methods causing memory pressure.
-2. **ClickHouse Implementation:**  Implement high-speed correlation functions using ClickHouse solution (e.g., Pearson or Spearman correlation) directly within the database.
-3. **Multi-Profile Support:** Generalize the ClickHouse schema and query logic to support different molecular data types and study configurations.
-4. **API Refactoring:** Update the cBioPortal backend to delegate calculation tasks to ClickHouse, ensuring proper handling of different molecular profiles and study filters.
-5. **Validation:** Benchmarking the new implementation against the legacy system to ensure mathematical accuracy and performance gains.
-
-
-
-### Need skills
-* **Java:** Proficiency in Spring Boot and backend development.
-* **ClickHouse / SQL:** Strong knowledge of analytical database design and optimized query writing.
-* **Data Engineering:** Experience with large-scale data processing and performance tuning.
-* **Mathematics/Statistics:** Basic understanding of correlation algorithms.
-
-### Possible mentors
-* **@alisman** (Aaron Lisman)
 
 ---
 

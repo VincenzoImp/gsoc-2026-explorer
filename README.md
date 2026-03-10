@@ -1,8 +1,8 @@
 # GSoC 2026 — Project Ideas
 
-All **185** organizations participating in [Google Summer of Code 2026](https://summerofcode.withgoogle.com/programs/2026/organizations), with their project ideas scraped and collected in one place.
+All **184** organizations participating in [Google Summer of Code 2026](https://summerofcode.withgoogle.com/programs/2026/organizations), with their project ideas scraped and collected in one place.
 
-**180** out of 185 ideas pages successfully scraped.
+**180** out of 184 ideas pages successfully scraped.
 
 | # | Organization | Tech | Ideas |
 |---|---|---|---|
@@ -60,7 +60,7 @@ All **185** organizations participating in [Google Summer of Code 2026](https://
 | 52 | [GNU Image Manipulation Program](organizations/gnu_image_manipulation_program.md) | c, GEGL | [Ideas](ideas/gnu_image_manipulation_program.md) |
 | 53 | [GNU Mailman](organizations/gnu_mailman.md) | python, django, rest, sqlalchemy | [Ideas](ideas/gnu_mailman.md) |
 | 54 | [GNU Octave](organizations/gnu_octave.md) | c++, hg | [Ideas](ideas/gnu_octave.md) |
-| 55 | [GNU Project](organizations/gnu_project.md) | c, c++, gcc, autotools | [Ideas](ideas/gnu_project.md) |
+| 55 | [GNU Project](organizations/gnu_project.md) | c, c++, gcc, autotools | [Link](https://www.gnu.org/s/soc-projects/ideas.html) |
 | 56 | [GNU Radio](organizations/gnu_radio.md) | python, c++, qt, simd | [Ideas](ideas/gnu_radio.md) |
 | 57 | [gprMax](organizations/gprmax.md) | python, cuda, openmp, mpi | [Ideas](ideas/gprmax.md) |
 | 58 | [GRAME](organizations/grame.md) | c, javascript, c++, rust | [Ideas](ideas/grame.md) |
@@ -102,95 +102,94 @@ All **185** organizations participating in [Google Summer of Code 2026](https://
 | 94 | [MalariaGEN](organizations/malariagen.md) | python, GCS | [Ideas](ideas/malariagen.md) |
 | 95 | [MariaDB](organizations/mariadb.md) | python, c/c++, perl, databases | [Ideas](ideas/mariadb.md) |
 | 96 | [MDAnalysis](organizations/mdanalysis.md) | python, cython, c/c++ | [Ideas](ideas/mdanalysis.md) |
-| 97 | [Measurement Lab](organizations/measurement_lab.md) | python, javascript, html, sql | [Ideas](ideas/measurement_lab.md) |
-| 98 | [Meshery](organizations/meshery.md) | javascript, golang, kubernetes, ai | [Ideas](ideas/meshery.md) |
-| 99 | [MetaBrainz Foundation Inc](organizations/metabrainz_foundation_inc.md) | python, machine learning, perl, postgres | [Ideas](ideas/metabrainz_foundation_inc.md) |
-| 100 | [MetaCall](organizations/metacall.md) | python, c++, rust, nodejs | [Ideas](ideas/metacall.md) |
-| 101 | [Metaflow](organizations/metaflow.md) | python, javascript, kubernetes | [Ideas](ideas/metaflow.md) |
-| 102 | [Metasploit](organizations/metasploit.md) | c, python, postgresql, ruby | [Ideas](ideas/metasploit.md) |
-| 103 | [MIT App Inventor](organizations/mit_app_inventor.md) | javascript, java, gwt, swift | [Ideas](ideas/mit_app_inventor.md) |
-| 104 | [Mixxx](organizations/mixxx.md) | javascript, c++, qt, pytorch | [Ideas](ideas/mixxx.md) |
-| 105 | [MLLAM](organizations/mllam.md) | python, numpy, pytorch, xarray | [Ideas](ideas/mllam.md) |
-| 106 | [MoFA Org](organizations/mofa_org.md) | python, rust | [Ideas](ideas/mofa_org.md) |
-| 107 | [MoganLab](organizations/moganlab.md) | c++, qt, scheme | [Link](https://github.com/MoganLab/GSoC-2026-MoganLab/blob/main/idelas/main.md) |
-| 108 | [National Resource for Network Biology (NRNB)](organizations/national_resource_for_network_biology_nrnb.md) | python, javascript, html, css | [Ideas](ideas/national_resource_for_network_biology_nrnb.md) |
-| 109 | [Neovim](organizations/neovim.md) | c, lua, Zig | [Ideas](ideas/neovim.md) |
-| 110 | [Neuroinformatics Unit](organizations/neuroinformatics_unit.md) | python, numpy, pytorch, Scipy | [Ideas](ideas/neuroinformatics_unit.md) |
-| 111 | [Neutralinojs](organizations/neutralinojs.md) | c, javascript, node.js, c++ | [Ideas](ideas/neutralinojs.md) |
-| 112 | [NixOS Foundation](organizations/nixos_foundation.md) | git, nix | [Ideas](ideas/nixos_foundation.md) |
-| 113 | [NumFOCUS](organizations/numfocus.md) | python, c++, r, julia | [Ideas](ideas/numfocus.md) |
-| 114 | [omegaUp](organizations/omegaup.md) | python, mysql, php, typescript | [Ideas](ideas/omegaup.md) |
-| 115 | [Open Food Facts](organizations/open_food_facts.md) | python, javascript, machine learning, perl | [Ideas](ideas/open_food_facts.md) |
-| 116 | [Open Genome Informatics](organizations/open_genome_informatics.md) | python, react, r-project, graph | [Ideas](ideas/open_genome_informatics.md) |
-| 117 | [Open HealthCare Network](organizations/open_healthcare_network.md) | python, django, react, typescript | [Ideas](ideas/open_healthcare_network.md) |
-| 118 | [Open Robotics](organizations/open_robotics.md) | python, ros, gazebo, c++ | [Ideas](ideas/open_robotics.md) |
-| 119 | [Open Science Initiative for Perfusion Imaging](organizations/open_science_initiative_for_perfusion_imaging.md) | python, github | [Ideas](ideas/open_science_initiative_for_perfusion_imaging.md) |
-| 120 | [Open Science Labs](organizations/open_science_labs.md) | python, javascript, llvm, c++ | [Ideas](ideas/open_science_labs.md) |
-| 121 | [Open Technologies Alliance - GFOSS](organizations/open_technologies_alliance_-_gfoss.md) | javascript, c/c++, nodejs, python 3 | [Ideas](ideas/open_technologies_alliance_-_gfoss.md) |
-| 122 | [Open Transit Software Foundation](organizations/open_transit_software_foundation.md) | android, java, golang, docker | [Ideas](ideas/open_transit_software_foundation.md) |
-| 123 | [OpenAFS](organizations/openafs.md) | c, python, javascript, git | [Link](https://www.openafs.org/gsoc/project-ideas.html) |
-| 124 | [OpenAstronomy](organizations/openastronomy.md) | c, python, c++, julia | [Ideas](ideas/openastronomy.md) |
-| 125 | [OpenELIS Global](organizations/openelis_global.md) | postgresql, javascript, java, react | [Ideas](ideas/openelis_global.md) |
-| 126 | [OpenMRS](organizations/openmrs.md) | mysql, javascript, java, reactjs | [Ideas](ideas/openmrs.md) |
-| 127 | [OpenMS Inc](organizations/openms_inc.md) | python, cython, c++, pytorch | [Ideas](ideas/openms_inc.md) |
-| 128 | [OpenStreetMap](organizations/openstreetmap.md) | python, javascript, c++, docker | [Ideas](ideas/openstreetmap.md) |
-| 129 | [openSUSE Project](organizations/opensuse_project.md) | python, c/c++, go, ruby | [Ideas](ideas/opensuse_project.md) |
-| 130 | [OpenVINO Toolkit](organizations/openvino_toolkit.md) | python, c++, arm, x86 | [Ideas](ideas/openvino_toolkit.md) |
-| 131 | [OpenWISP](organizations/openwisp.md) | python, javascript, django, lua | [Ideas](ideas/openwisp.md) |
-| 132 | [Oppia Foundation](organizations/oppia_foundation.md) | python, google app engine, angular, typescript | [Ideas](ideas/oppia_foundation.md) |
-| 133 | [OSGeo (Open Source Geospatial Foundation)](organizations/osgeo_open_source_geospatial_foundation.md) | c, python, javascript, java | [Ideas](ideas/osgeo_open_source_geospatial_foundation.md) |
-| 134 | [OWASP Foundation](organizations/owasp_foundation.md) | python, javascript, java, ZAP | [Ideas](ideas/owasp_foundation.md) |
-| 135 | [PEcAn Project](organizations/pecan_project.md) | r, docker, api, geospatial | [Ideas](ideas/pecan_project.md) |
-| 136 | [Pharo Consortium](organizations/pharo_consortium.md) | git, smalltalk, pharo, spec | [Ideas](ideas/pharo_consortium.md) |
-| 137 | [PostgreSQL](organizations/postgresql.md) | c, python, postgresql, javascript | [Ideas](ideas/postgresql.md) |
-| 138 | [preCICE](organizations/precice.md) | c, python, shell, c++ | [Ideas](ideas/precice.md) |
-| 139 | [Processing Foundation](organizations/processing_foundation.md) | javascript, java, typescript, webgl | [Ideas](ideas/processing_foundation.md) |
-| 140 | [Project Mesa](organizations/project_mesa.md) | python, gis, object oriented programming, LLMs | [Ideas](ideas/project_mesa.md) |
-| 141 | [Python Software Foundation](organizations/python_software_foundation.md) | python, javascript | [Ideas](ideas/python_software_foundation.md) |
-| 142 | [QC-Devs](organizations/qc-devs.md) | python, github, c++, julia | [Ideas](ideas/qc-devs.md) |
-| 143 | [QEMU](organizations/qemu.md) | c, python, linux, rust | [Ideas](ideas/qemu.md) |
-| 144 | [Qubes OS](organizations/qubes_os.md) | c, python, xen | [Ideas](ideas/qubes_os.md) |
-| 145 | [R project for statistical computing](organizations/r_project_for_statistical_computing.md) | c, javascript, c++, r-project | [Ideas](ideas/r_project_for_statistical_computing.md) |
-| 146 | [Rizin](organizations/rizin.md) | c, python, go, c++ | [Ideas](ideas/rizin.md) |
-| 147 | [rocket.chat](organizations/rocketchat.md) | javascript, typescript, node, LLM | [Ideas](ideas/rocketchat.md) |
-| 148 | [RTEMS Project](organizations/rtems_project.md) | python, c/c++, assembly, posix | [Ideas](ideas/rtems_project.md) |
-| 149 | [Ruby](organizations/ruby.md) | c, java, ruby on rails, ruby | [Ideas](ideas/ruby.md) |
-| 150 | [SageMath](organizations/sagemath.md) | python, cython | [Ideas](ideas/sagemath.md) |
-| 151 | [ScummVM](organizations/scummvm.md) | python, opengl, c++, assembly | [Ideas](ideas/scummvm.md) |
-| 152 | [St. Jude Children's Research Hospital](organizations/st_jude_childrens_research_hospital.md) | python, rust, simd, WDL | [Ideas](ideas/st_jude_childrens_research_hospital.md) |
-| 153 | [stdlib](organizations/stdlib.md) | c, javascript, node.js, typescript | [Ideas](ideas/stdlib.md) |
-| 154 | [Ste\|\|ar group](organizations/stear_group.md) | c++, hpc | [Ideas](ideas/stear_group.md) |
-| 155 | [Stichting SU2](organizations/stichting_su2.md) | python, c++ | [Ideas](ideas/stichting_su2.md) |
-| 156 | [Submitty](organizations/submitty.md) | python, postgresql, javascript, c++ | [Ideas](ideas/submitty.md) |
-| 157 | [Sugar Labs](organizations/sugar_labs.md) | python, gtk, typescript, javascipt | [Ideas](ideas/sugar_labs.md) |
-| 158 | [SW360](organizations/sw360.md) | java, react, couchdb, SpringBoot | [Ideas](ideas/sw360.md) |
-| 159 | [Swift](organizations/swift.md) | c++, cmake, swift | [Ideas](ideas/swift.md) |
-| 160 | [SymPy](organizations/sympy.md) | python, numpy, jupyter | [Ideas](ideas/sympy.md) |
-| 161 | [Synfig](organizations/synfig.md) | python, c++, gtk, gtkmm | [Ideas](ideas/synfig.md) |
-| 162 | [TARDIS RT Collaboration](organizations/tardis_rt_collaboration.md) | python, numba, numpy, jupyter | [Ideas](ideas/tardis_rt_collaboration.md) |
-| 163 | [The FreeBSD Project](organizations/the_freebsd_project.md) | c, llvm, assembly, make | [Link](https://wiki.freebsd.org/SummerOfCodeIdeas) |
-| 164 | [The Honeynet Project](organizations/the_honeynet_project.md) | python, javascript, django, go | [Ideas](ideas/the_honeynet_project.md) |
-| 165 | [The JPF team](organizations/the_jpf_team.md) | android, java, distributed systems, jvm | [Ideas](ideas/the_jpf_team.md) |
-| 166 | [The Julia Language](organizations/the_julia_language.md) | machine learning, julia, data science, compilers | [Ideas](ideas/the_julia_language.md) |
-| 167 | [The Libreswan Project](organizations/the_libreswan_project.md) | c, kernel, nss, RFCs | [Ideas](ideas/the_libreswan_project.md) |
-| 168 | [The Linux Foundation](organizations/the_linux_foundation.md) | c, linux, cups, ai | [Ideas](ideas/the_linux_foundation.md) |
-| 169 | [The Mifos Initiative](organizations/the_mifos_initiative.md) | android, java, kotlin, spring | [Ideas](ideas/the_mifos_initiative.md) |
-| 170 | [The NetBSD Foundation](organizations/the_netbsd_foundation.md) | c, shell script, make, unix | [Ideas](ideas/the_netbsd_foundation.md) |
-| 171 | [The ns-3 Network Simulator Project](organizations/the_ns-3_network_simulator_project.md) | python, django, c++ | [Ideas](ideas/the_ns-3_network_simulator_project.md) |
-| 172 | [The OpenROAD Initiative](organizations/the_openroad_initiative.md) | python, verilog, c++, tcl | [Link](https://docs.google.com/document/d/1X6xxUonxgEQ_iD5G5vFp2ZOH1vbkRSspEdYrpSf4khE/edit?usp=sharing) |
-| 173 | [The P4 Language Consortium](organizations/the_p4_language_consortium.md) | llvm, c++, linux kernel, mlir | [Ideas](ideas/the_p4_language_consortium.md) |
-| 174 | [The Rust Foundation](organizations/the_rust_foundation.md) | python, rust | [Ideas](ideas/the_rust_foundation.md) |
-| 175 | [Tiled](organizations/tiled.md) | c++, qt | [Ideas](ideas/tiled.md) |
-| 176 | [Typelevel](organizations/typelevel.md) | linux, node.js, jvm, scala | [Ideas](ideas/typelevel.md) |
-| 177 | [UC OSPO](organizations/uc_ospo.md) | python, javascript, c/c++, machine learning | [Ideas](ideas/uc_ospo.md) |
-| 178 | [Unikraft](organizations/unikraft.md) | c, xen, golang, kvm | [Ideas](ideas/unikraft.md) |
-| 179 | [United Nations Office of Information Communication Technology](organizations/united_nations_office_of_information_communication_technology.md) | python, javascript, css | [Ideas](ideas/united_nations_office_of_information_communication_technology.md) |
-| 180 | [Uramaki LAB](organizations/uramaki_lab.md) | python, javascript, html, css | [Ideas](ideas/uramaki_lab.md) |
-| 181 | [VideoLAN](organizations/videolan.md) | c, c++, qt, assembly | [Ideas](ideas/videolan.md) |
-| 182 | [Wagtail](organizations/wagtail.md) | python, javascript, django | [Ideas](ideas/wagtail.md) |
-| 183 | [webpack](organizations/webpack.md) | javascript, typescript, node | [Ideas](ideas/webpack.md) |
-| 184 | [Wikimedia Foundation](organizations/wikimedia_foundation.md) | javascript, html, php, css | [Ideas](ideas/wikimedia_foundation.md) |
-| 185 | [Zulip](organizations/zulip.md) | python, django, flutter, css | [Ideas](ideas/zulip.md) |
+| 97 | [Meshery](organizations/meshery.md) | javascript, golang, kubernetes, ai | [Ideas](ideas/meshery.md) |
+| 98 | [MetaBrainz Foundation Inc](organizations/metabrainz_foundation_inc.md) | python, machine learning, perl, postgres | [Ideas](ideas/metabrainz_foundation_inc.md) |
+| 99 | [MetaCall](organizations/metacall.md) | python, c++, rust, nodejs | [Ideas](ideas/metacall.md) |
+| 100 | [Metaflow](organizations/metaflow.md) | python, javascript, kubernetes | [Ideas](ideas/metaflow.md) |
+| 101 | [Metasploit](organizations/metasploit.md) | c, python, postgresql, ruby | [Ideas](ideas/metasploit.md) |
+| 102 | [MIT App Inventor](organizations/mit_app_inventor.md) | javascript, java, gwt, swift | [Ideas](ideas/mit_app_inventor.md) |
+| 103 | [Mixxx](organizations/mixxx.md) | javascript, c++, qt, pytorch | [Ideas](ideas/mixxx.md) |
+| 104 | [MLLAM](organizations/mllam.md) | python, numpy, pytorch, xarray | [Ideas](ideas/mllam.md) |
+| 105 | [MoFA Org](organizations/mofa_org.md) | python, rust | [Ideas](ideas/mofa_org.md) |
+| 106 | [MoganLab](organizations/moganlab.md) | c++, qt, scheme | [Ideas](ideas/moganlab.md) |
+| 107 | [National Resource for Network Biology (NRNB)](organizations/national_resource_for_network_biology_nrnb.md) | python, javascript, html, css | [Ideas](ideas/national_resource_for_network_biology_nrnb.md) |
+| 108 | [Neovim](organizations/neovim.md) | c, lua, Zig | [Ideas](ideas/neovim.md) |
+| 109 | [Neuroinformatics Unit](organizations/neuroinformatics_unit.md) | python, numpy, pytorch, Scipy | [Ideas](ideas/neuroinformatics_unit.md) |
+| 110 | [Neutralinojs](organizations/neutralinojs.md) | c, javascript, node.js, c++ | [Ideas](ideas/neutralinojs.md) |
+| 111 | [NixOS Foundation](organizations/nixos_foundation.md) | git, nix | [Ideas](ideas/nixos_foundation.md) |
+| 112 | [NumFOCUS](organizations/numfocus.md) | python, c++, r, julia | [Ideas](ideas/numfocus.md) |
+| 113 | [omegaUp](organizations/omegaup.md) | python, mysql, php, typescript | [Ideas](ideas/omegaup.md) |
+| 114 | [Open Food Facts](organizations/open_food_facts.md) | python, javascript, machine learning, perl | [Ideas](ideas/open_food_facts.md) |
+| 115 | [Open Genome Informatics](organizations/open_genome_informatics.md) | python, react, r-project, graph | [Ideas](ideas/open_genome_informatics.md) |
+| 116 | [Open HealthCare Network](organizations/open_healthcare_network.md) | python, django, react, typescript | [Ideas](ideas/open_healthcare_network.md) |
+| 117 | [Open Robotics](organizations/open_robotics.md) | python, ros, gazebo, c++ | [Ideas](ideas/open_robotics.md) |
+| 118 | [Open Science Initiative for Perfusion Imaging](organizations/open_science_initiative_for_perfusion_imaging.md) | python, github | [Ideas](ideas/open_science_initiative_for_perfusion_imaging.md) |
+| 119 | [Open Science Labs](organizations/open_science_labs.md) | python, javascript, llvm, c++ | [Ideas](ideas/open_science_labs.md) |
+| 120 | [Open Technologies Alliance - GFOSS](organizations/open_technologies_alliance_-_gfoss.md) | javascript, c/c++, nodejs, python 3 | [Ideas](ideas/open_technologies_alliance_-_gfoss.md) |
+| 121 | [Open Transit Software Foundation](organizations/open_transit_software_foundation.md) | android, java, golang, docker | [Ideas](ideas/open_transit_software_foundation.md) |
+| 122 | [OpenAFS](organizations/openafs.md) | c, python, javascript, git | [Link](https://www.openafs.org/gsoc/project-ideas.html) |
+| 123 | [OpenAstronomy](organizations/openastronomy.md) | c, python, c++, julia | [Ideas](ideas/openastronomy.md) |
+| 124 | [OpenELIS Global](organizations/openelis_global.md) | postgresql, javascript, java, react | [Ideas](ideas/openelis_global.md) |
+| 125 | [OpenMRS](organizations/openmrs.md) | mysql, javascript, java, reactjs | [Ideas](ideas/openmrs.md) |
+| 126 | [OpenMS Inc](organizations/openms_inc.md) | python, cython, c++, pytorch | [Ideas](ideas/openms_inc.md) |
+| 127 | [OpenStreetMap](organizations/openstreetmap.md) | python, javascript, c++, docker | [Ideas](ideas/openstreetmap.md) |
+| 128 | [openSUSE Project](organizations/opensuse_project.md) | python, c/c++, go, ruby | [Ideas](ideas/opensuse_project.md) |
+| 129 | [OpenVINO Toolkit](organizations/openvino_toolkit.md) | python, c++, arm, x86 | [Ideas](ideas/openvino_toolkit.md) |
+| 130 | [OpenWISP](organizations/openwisp.md) | python, javascript, django, lua | [Ideas](ideas/openwisp.md) |
+| 131 | [Oppia Foundation](organizations/oppia_foundation.md) | python, google app engine, angular, typescript | [Ideas](ideas/oppia_foundation.md) |
+| 132 | [OSGeo (Open Source Geospatial Foundation)](organizations/osgeo_open_source_geospatial_foundation.md) | c, python, javascript, java | [Ideas](ideas/osgeo_open_source_geospatial_foundation.md) |
+| 133 | [OWASP Foundation](organizations/owasp_foundation.md) | python, javascript, java, ZAP | [Ideas](ideas/owasp_foundation.md) |
+| 134 | [PEcAn Project](organizations/pecan_project.md) | r, docker, api, geospatial | [Ideas](ideas/pecan_project.md) |
+| 135 | [Pharo Consortium](organizations/pharo_consortium.md) | git, smalltalk, pharo, spec | [Ideas](ideas/pharo_consortium.md) |
+| 136 | [PostgreSQL](organizations/postgresql.md) | c, python, postgresql, javascript | [Ideas](ideas/postgresql.md) |
+| 137 | [preCICE](organizations/precice.md) | c, python, shell, c++ | [Ideas](ideas/precice.md) |
+| 138 | [Processing Foundation](organizations/processing_foundation.md) | javascript, java, typescript, webgl | [Ideas](ideas/processing_foundation.md) |
+| 139 | [Project Mesa](organizations/project_mesa.md) | python, gis, object oriented programming, LLMs | [Ideas](ideas/project_mesa.md) |
+| 140 | [Python Software Foundation](organizations/python_software_foundation.md) | python, javascript | [Ideas](ideas/python_software_foundation.md) |
+| 141 | [QC-Devs](organizations/qc-devs.md) | python, github, c++, julia | [Ideas](ideas/qc-devs.md) |
+| 142 | [QEMU](organizations/qemu.md) | c, python, linux, rust | [Ideas](ideas/qemu.md) |
+| 143 | [Qubes OS](organizations/qubes_os.md) | c, python, xen | [Ideas](ideas/qubes_os.md) |
+| 144 | [R project for statistical computing](organizations/r_project_for_statistical_computing.md) | c, javascript, c++, r-project | [Ideas](ideas/r_project_for_statistical_computing.md) |
+| 145 | [Rizin](organizations/rizin.md) | c, python, go, c++ | [Ideas](ideas/rizin.md) |
+| 146 | [rocket.chat](organizations/rocketchat.md) | javascript, typescript, node, LLM | [Ideas](ideas/rocketchat.md) |
+| 147 | [RTEMS Project](organizations/rtems_project.md) | python, c/c++, assembly, posix | [Ideas](ideas/rtems_project.md) |
+| 148 | [Ruby](organizations/ruby.md) | c, java, ruby on rails, ruby | [Ideas](ideas/ruby.md) |
+| 149 | [SageMath](organizations/sagemath.md) | python, cython | [Ideas](ideas/sagemath.md) |
+| 150 | [ScummVM](organizations/scummvm.md) | python, opengl, c++, assembly | [Ideas](ideas/scummvm.md) |
+| 151 | [St. Jude Children's Research Hospital](organizations/st_jude_childrens_research_hospital.md) | python, rust, simd, WDL | [Ideas](ideas/st_jude_childrens_research_hospital.md) |
+| 152 | [stdlib](organizations/stdlib.md) | c, javascript, node.js, typescript | [Ideas](ideas/stdlib.md) |
+| 153 | [Ste\|\|ar group](organizations/stear_group.md) | c++, hpc | [Ideas](ideas/stear_group.md) |
+| 154 | [Stichting SU2](organizations/stichting_su2.md) | python, c++ | [Ideas](ideas/stichting_su2.md) |
+| 155 | [Submitty](organizations/submitty.md) | python, postgresql, javascript, c++ | [Ideas](ideas/submitty.md) |
+| 156 | [Sugar Labs](organizations/sugar_labs.md) | python, gtk, typescript, javascipt | [Ideas](ideas/sugar_labs.md) |
+| 157 | [SW360](organizations/sw360.md) | java, react, couchdb, SpringBoot | [Ideas](ideas/sw360.md) |
+| 158 | [Swift](organizations/swift.md) | c++, cmake, swift | [Ideas](ideas/swift.md) |
+| 159 | [SymPy](organizations/sympy.md) | python, numpy, jupyter | [Ideas](ideas/sympy.md) |
+| 160 | [Synfig](organizations/synfig.md) | python, c++, gtk, gtkmm | [Ideas](ideas/synfig.md) |
+| 161 | [TARDIS RT Collaboration](organizations/tardis_rt_collaboration.md) | python, numba, numpy, jupyter | [Ideas](ideas/tardis_rt_collaboration.md) |
+| 162 | [The FreeBSD Project](organizations/the_freebsd_project.md) | c, llvm, assembly, make | [Link](https://wiki.freebsd.org/SummerOfCodeIdeas) |
+| 163 | [The Honeynet Project](organizations/the_honeynet_project.md) | python, javascript, django, go | [Ideas](ideas/the_honeynet_project.md) |
+| 164 | [The JPF team](organizations/the_jpf_team.md) | android, java, distributed systems, jvm | [Ideas](ideas/the_jpf_team.md) |
+| 165 | [The Julia Language](organizations/the_julia_language.md) | machine learning, julia, data science, compilers | [Ideas](ideas/the_julia_language.md) |
+| 166 | [The Libreswan Project](organizations/the_libreswan_project.md) | c, kernel, nss, RFCs | [Ideas](ideas/the_libreswan_project.md) |
+| 167 | [The Linux Foundation](organizations/the_linux_foundation.md) | c, linux, cups, ai | [Ideas](ideas/the_linux_foundation.md) |
+| 168 | [The Mifos Initiative](organizations/the_mifos_initiative.md) | android, java, kotlin, spring | [Ideas](ideas/the_mifos_initiative.md) |
+| 169 | [The NetBSD Foundation](organizations/the_netbsd_foundation.md) | c, shell script, make, unix | [Ideas](ideas/the_netbsd_foundation.md) |
+| 170 | [The ns-3 Network Simulator Project](organizations/the_ns-3_network_simulator_project.md) | python, django, c++ | [Ideas](ideas/the_ns-3_network_simulator_project.md) |
+| 171 | [The OpenROAD Initiative](organizations/the_openroad_initiative.md) | python, verilog, c++, tcl | [Ideas](ideas/the_openroad_initiative.md) |
+| 172 | [The P4 Language Consortium](organizations/the_p4_language_consortium.md) | llvm, c++, linux kernel, mlir | [Ideas](ideas/the_p4_language_consortium.md) |
+| 173 | [The Rust Foundation](organizations/the_rust_foundation.md) | python, rust | [Ideas](ideas/the_rust_foundation.md) |
+| 174 | [Tiled](organizations/tiled.md) | c++, qt | [Ideas](ideas/tiled.md) |
+| 175 | [Typelevel](organizations/typelevel.md) | linux, node.js, jvm, scala | [Ideas](ideas/typelevel.md) |
+| 176 | [UC OSPO](organizations/uc_ospo.md) | python, javascript, c/c++, machine learning | [Ideas](ideas/uc_ospo.md) |
+| 177 | [Unikraft](organizations/unikraft.md) | c, xen, golang, kvm | [Ideas](ideas/unikraft.md) |
+| 178 | [United Nations Office of Information Communication Technology](organizations/united_nations_office_of_information_communication_technology.md) | python, javascript, css | [Ideas](ideas/united_nations_office_of_information_communication_technology.md) |
+| 179 | [Uramaki LAB](organizations/uramaki_lab.md) | python, javascript, html, css | [Ideas](ideas/uramaki_lab.md) |
+| 180 | [VideoLAN](organizations/videolan.md) | c, c++, qt, assembly | [Ideas](ideas/videolan.md) |
+| 181 | [Wagtail](organizations/wagtail.md) | python, javascript, django | [Ideas](ideas/wagtail.md) |
+| 182 | [webpack](organizations/webpack.md) | javascript, typescript, node | [Ideas](ideas/webpack.md) |
+| 183 | [Wikimedia Foundation](organizations/wikimedia_foundation.md) | javascript, html, php, css | [Ideas](ideas/wikimedia_foundation.md) |
+| 184 | [Zulip](organizations/zulip.md) | python, django, flutter, css | [Ideas](ideas/zulip.md) |
 
 ---
 

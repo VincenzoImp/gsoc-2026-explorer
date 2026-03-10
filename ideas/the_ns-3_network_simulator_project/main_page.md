@@ -2,7 +2,7 @@
 
 **Parent:** The ns-3 Network Simulator Project — Project Ideas
 **Source:** https://www.nsnam.org/wiki/Main_Page
-**Scraped:** 2026-02-22T23:28:47.552865
+**Scraped:** 2026-03-10T16:58:40.232029
 
 ---
 
@@ -30,7 +30,8 @@ The main use of the wiki is for storing our [Roadmap](https://www.nsnam.org/wiki
 
 ## Upcoming Events
 
-- ns-3 is part of
+- Friday March 13:
+[maintainers meeting](https://www.nsnam.org/wiki/MaintainersMar2026) - ns-3 is part of
 [Google Summer of Code 2026](https://www.nsnam.org/wiki/Summer_Projects#Google_Summer_of_Code_2026) - The
 [2026 edition of ICNS3](https://www.nsnam.org/research/icns3/icns3-2026/)will be held October 19-21.
 

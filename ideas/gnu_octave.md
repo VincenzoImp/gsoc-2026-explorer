@@ -1,7 +1,7 @@
 # GNU Octave — Project Ideas
 
 **Source:** https://wiki.octave.org/wiki/index.php?title=Summer_of_Code_-_Getting_Started#Suggested_projects
-**Scraped:** 2026-02-22T23:28:47.623775
+**Scraped:** 2026-03-10T16:58:40.278534
 
 ---
 
@@ -89,7 +89,7 @@ You should know:
 
 The following suggested projects are distilled from the [Projects](/ideas/gnu-octave/projects) page for the benefit of potential SoC participants. You can also look at our [completed past projects](/ideas/gnu-octave/summer_of_code), or the current [| Octave Development Roadmap](https://hg.savannah.gnu.org/hgweb/octave/file/tip/etc/ROADMAP.md) for more inspiration.
 
-**propose your own projects**. If you are passionate about your project, it will be easy to find an Octave developer to mentor and guide you. Please note that for such a proposal to be successful it will almost certainly involve initiating pre-proposal discussion over at the
+**propose your own projects**. If you are passionate about your project, we may be able to find an Octave developer to mentor and guide you. Please note that for such a proposal to be successful it will almost certainly involve initiating pre-proposal discussion over at the
 
 [Octave Discourse forum](https://octave.discourse.group).
 
@@ -124,6 +124,20 @@ Implement anova classdef including its methods and extend the functionality of t
 ## Add **LinearModel** and **CompactLinearModel** objects to the statistics package
 
 Implement LinearModel and CompactLinearModel classdefs including their methods and extend the functionality of the statistics package for linear regression by refactoring the existing fitlm function and implementing the missing stepwiselm function. More information about this project can be found at the related [issue](https://github.com/gnu-octave/statistics/issues/266) in the statistics repository.
+
+**Project size**[[?]](https://wiki.octave.org#Project_sizes)and**Difficulty**
+
+- ~350 hours (hard)
+
+**Required skills**
+
+- Octave, linear models, statistics, classdef
+
+**Potential mentors**
+
+## Add **NonLinearModel** object to the statistics package
+
+Implement a complete NonLinearModel classdef including the baseline functions fitnlm, nlinfit, nlparci, and nlpredci. The implementation must include full documentation, extensive unit testing against MATLAB and R, and usage examples integrated as demos. More information about this project can be found at the related [issue](https://github.com/gnu-octave/statistics/issues/402) in the statistics repository.
 
 **Project size**[[?]](https://wiki.octave.org#Project_sizes)and**Difficulty**
 

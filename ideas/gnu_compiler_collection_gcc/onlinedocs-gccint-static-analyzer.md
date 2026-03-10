@@ -2,7 +2,7 @@
 
 **Parent:** GNU Compiler Collection (GCC) — Project Ideas
 **Source:** https://gcc.gnu.org/onlinedocs/gccint/Static-Analyzer.html
-**Scraped:** 2026-02-22T23:28:47.608660
+**Scraped:** 2026-03-10T16:58:40.281788
 
 ---
 
@@ -17,7 +17,7 @@ Contents
 ][
 Index
 ]
-26 Static Analyzer
+27 Static Analyzer
 ¶
 Analyzer Internals
 Debugging the Analyzer

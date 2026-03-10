@@ -1,7 +1,7 @@
 # GNOME Foundation — Project Ideas
 
 **Source:** https://gsoc.gnome.org/2026/
-**Scraped:** 2026-02-22T23:28:47.593828
+**Scraped:** 2026-03-10T16:58:40.235566
 
 ---
 
@@ -14,6 +14,8 @@ This is the list of project ideas that the GNOME community is interested in ment
 GSoC contributors proposing something original must engage with the community strongly before or during the application period to get feedback and guidance to improve the proposal.
 
 ## Project list
+
+**In High Demand: This project has attracted a significant number of applicants.**
 
 This project will introduce a right-click "Uninstall" option to the GNOME Shell App Grid. Currently, users must open GNOME Software or use the terminal to uninstall apps. This feature will make it simpler and quicker to uninstall apps from the app grid directly.
 
@@ -93,7 +95,7 @@ The #gnome-shell IRC/Matrix channel.
 
 Find out more in [https://gitlab.gnome.org/Teams/internship/project-ideas/-/issues/68](https://gitlab.gnome.org/Teams/internship/project-ideas/-/issues/68)
 
-Implement support in mutter (and its scene graph and compositing library Clutter) for unredirecting client buffers into DRM overlay planes. This involves calculating what elements of the scene graph are candidates for unredirection, without relying on anything other than the scene graph state itself, as well as plumbing the act of unredirecting via the relevant kernel mode setting API, as well as evaluating eventually using libraries such as libliftoffi.
+Implement support in mutter (and its scene graph and compositing library Clutter) for unredirecting client buffers into DRM overlay planes. This involves calculating what elements of the scene graph are candidates for unredirection, without relying on anything other than the scene graph state itself, as well as plumbing the act of unredirecting via the relevant kernel mode setting API, as well as evaluating eventually using libraries such as libliftoff.
 
 Related GitLab issues: [https://gitlab.gnome.org/GNOME/mutter/-/issues/61](https://gitlab.gnome.org/GNOME/mutter/-/issues/61)
 
@@ -136,3 +138,57 @@ Short Project
 [Matrix (#crosswords:gnome.org)](https://matrix.to/#/#crosswords:gnome.org) and GitLab are best.
 
 Find out more in [https://gitlab.gnome.org/Teams/internship/project-ideas/-/issues/69](https://gitlab.gnome.org/Teams/internship/project-ideas/-/issues/69)
+
+Gitg is a helpful tool, to deal with your contributions in any project, where git CLI can be little bit overwhelming at first.
+
+At same time, as written in vala, is an approachable project for newcomers, where you see the impact of your contributions as you might use yourself to improve your workflows.
+
+Gitg is still in Gtk3. There's an issue about migration: [GNOME/gitg#345](https://gitlab.gnome.org/GNOME/gitg/-/issues/345) and a basic starter MR: [GNOME/gitg!308](https://gitlab.gnome.org/GNOME/gitg/-/merge_requests/308).
+
+Get progress on Gtk4 migration might be an interesting intership. I have experience in past GSoC (with students with zero experience or more skilled) and journey was always pleasant.
+
+### Requirements
+
+- Read documentation about Gtk4
+- Read docs about migration from Gtk3 to Gtk4
+- Proprose little MR on top of this main MR (learn to contribute on large changes)
+- Work with design team to decide on new UI paradigms for Gtk4
+- Join online channels to discuss with other developers about challenges
+
+### Components
+
+### Mentors
+
+[Alberto Fanjul](https://gitlab.gnome.org/albfan) and the design team
+
+### Communication
+
+[Matrix (#gitg:gnome.org)](https://matrix.to/#/#gitg:gnome.org) and GitLab are best.
+
+Find out more in [https://gitlab.gnome.org/Teams/internship/project-ideas/-/issues/70](https://gitlab.gnome.org/Teams/internship/project-ideas/-/issues/70)
+
+[Pitivi](https://www.pitivi.org/) is a free and open source video editor built with GStreamer and GTK.
+
+The [ruler widget](https://aleb.ro/post/2016-01-23-polishing-pitivis-ruler/) sits above the timeline provides the time context for the timeline. It displays time markers and at lower zoom levels the successive frames.
+
+Currently it's implemented in Python as a GTK3 widget, relying on the legacy cairo based drawing model.
+
+This project involves rewriting the ruler as a standalone native GTK4 widget using Rust.
+
+### Components
+
+### Requirements
+
+Experience with Rust and GTK4 is required for this project. Familiarity with Python, GES and contributions to Pitivi are a plus.
+
+### Mentors
+
+aleb, thiblahute, yatinmaan
+
+### Project length
+
+TBD
+
+### Communication
+
+[Matrix (#pitivi:matrix.org)](https://matrix.to/#/#pitivi:matrix.org)

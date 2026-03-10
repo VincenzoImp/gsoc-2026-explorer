@@ -2,7 +2,7 @@
 
 **Parent:** GNU Compiler Collection (GCC) — Project Ideas
 **Source:** https://gcc.gnu.org/onlinedocs/gcc/Developer-Options.html
-**Scraped:** 2026-02-22T23:28:47.609038
+**Scraped:** 2026-03-10T16:58:40.282303
 
 ---
 
@@ -716,7 +716,25 @@ Store the usual “temporary” intermediate files permanently; name them as aux
 
 [¶](https://gcc.gnu.org#index-save-temps_003dobj)Equivalent to
 
-`-save-temps -dumpdir`, where`outdir/``outdir/`is the directory of the output file specified after the`-o`option, including any directory separators. If the`-o`option is not used, the`-save-temps=obj`switch behaves like`-save-temps=cwd`.`-time[=`
+`-save-temps -dumpdir`, where`outdir/``outdir/`is the directory of the output file specified after the`-o`option, including any directory separators. If the`-o`option is not used, the`-save-temps=obj`switch behaves like`-save-temps=cwd`.`-specs=`
+
+`file`[¶](https://gcc.gnu.org#index-specs)`--specs=`
+
+`file``--specs`
+
+`file`Process
+
+`file`after the compiler reads in the standard`specs`file, in order to override the defaults which the`gcc`
+
+driver program uses when determining what switches to pass to`cc1`
+
+,`cc1plus`
+
+,`as`
+
+,`ld`
+
+, etc. More than one`-specs=`can be specified on the command line, and they are processed in order, from left to right. See`file`[Specifying Subprocesses and the Switches to Pass to Them](https://gcc.gnu.org/onlinedocs/gccint/Spec-Files.html#Spec-Files)in GNU Compiler Collection (GCC) Internals, for information about the format of the`file`.`-time[=`
 
 `file`][¶](https://gcc.gnu.org#index-time)Report the CPU time taken by each subprocess in the compilation sequence. For C source files, this is the compiler proper and assembler (plus the linker if linking is done).
 
@@ -826,7 +844,7 @@ Makes the compiler print some statistics about permanent memory allocation befor
 
 `TFLAGS`
 
-to be used to build target libraries with options different from those the compiler is configured to use by default, through the use of specs (see[Specifying Subprocesses and the Switches to Pass to Them](https://gcc.gnu.org/Spec-Files.html)) set up by compiler internals, by the target, or by builders at configure time.Like
+to be used to build target libraries with options different from those the compiler is configured to use by default, through the use of specs (see[Specifying Subprocesses and the Switches to Pass to Them](https://gcc.gnu.org/onlinedocs/gccint/Spec-Files.html#Spec-Files)in GNU Compiler Collection (GCC) Internals) set up by compiler internals, by the target, or by builders at configure time.Like
 
 `TFLAGS`
 
@@ -989,7 +1007,7 @@ or`7`
 
 [¶](https://gcc.gnu.org#index-dumpspecs)Print the compiler’s built-in specs—and don’t do anything else. (This is used when GCC itself is being built.) See
 
-[Specifying Subprocesses and the Switches to Pass to Them](https://gcc.gnu.org/Spec-Files.html).`--param`
+[Specifying Subprocesses and the Switches to Pass to Them](https://gcc.gnu.org/onlinedocs/gccint/Spec-Files.html#Spec-Files)in GNU Compiler Collection (GCC) Internals.`--param`
 
 `name`=`value`[¶](https://gcc.gnu.org#index-param)`--param=`
 

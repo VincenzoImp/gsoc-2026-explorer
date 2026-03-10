@@ -1,7 +1,7 @@
 # Haiku — Project Ideas
 
 **Source:** https://www.haiku-os.org/community/gsoc/2026/ideas
-**Scraped:** 2026-02-22T23:28:47.589953
+**Scraped:** 2026-03-10T16:58:40.309351
 
 ---
 
@@ -76,7 +76,7 @@ The web browser is an important part of the operating system today. It is diffic
 XMPP is a modern communication protocol for instant messaging. It has open standards and several free software client and server implementations.
 
 Currently, the available native clients for Haiku are quite simple and don't even allow to replace all IRC features. The goal of this project is
-to improve [Renga](https://github.com/haikuarchives/renga), one of such clients, to make it possible to migrate Haiku discussion channels over to XMPP instead of IRC.
+to improve [Renga](https://pulkomandy.tk/projects/renga), one of such clients, to make it possible to migrate Haiku discussion channels over to XMPP instead of IRC.
 
 The main features to implement are more complete support for multi-user chat (in particular, moderation aspects, allowing to manage channel permissions, kick and ban users, etc) as well as any other feature considered useful: message history browsing, message reactions, activity notification, pictures and file sharing, whiteboard collaboration, …
 

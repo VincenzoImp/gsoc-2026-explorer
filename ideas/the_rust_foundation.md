@@ -1,7 +1,7 @@
 # The Rust Foundation — Project Ideas
 
 **Source:** https://github.com/rust-lang/google-summer-of-code
-**Scraped:** 2026-02-22T23:28:47.594234
+**Scraped:** 2026-03-10T16:58:40.245962
 
 ---
 
@@ -39,7 +39,7 @@ The Rust compiler debuginfo test suite should test how Rust programs interact wi
 - It is difficult (in part) to comprehend test failure, in part because debugger output is captured then fed to LLVM FileCheck, and the FileCheck failures in turn are hard to figure out what's wrong.
 - There is a significant lack of docs surrounding the design intention and actual usage of the debuginfo test infra.
 
-We would like to rewrite the test suite to make it more maintainable and thus increase our confidence in the Rust compiler debugger visualizers, and maintain the quality of debuginfo emitted (and detect if there are regressions).
+We would like to redesign and rewrite the test suite to make it more maintainable and thus increase our confidence in the Rust compiler debugger visualizers, and maintain the quality of debuginfo emitted (and detect if there are regressions).
 
 **Expected result**
 
@@ -823,6 +823,7 @@ will be able to catch the breakage in cases like:
 + pub fn example(x: String) {}
 ```
 
+
 It will do so by using its declarative query language to notice the API change and capture information regarding it,
 then plugging that information into a templating system able to generate a "witness" crate for the API change.
 `cargo-semver-checks`
@@ -855,6 +856,7 @@ While this approach may seem overly complex at first, consider the following cha
 - pub fn example(x: i64) {}
 + pub fn example(x: impl Into<i64>) {}
 ```
+
 
 This is a case where the type of `x`
 

@@ -2,7 +2,7 @@
 
 **Parent:** Django Software Foundation — Project Ideas
 **Source:** https://code.djangoproject.com/query?status=assigned&status=new&component=contrib.staticfiles&col=id&col=summary&col=status&col=owner&col=type&col=component&col=version&desc=1&order=id
-**Scraped:** 2026-02-22T23:28:47.630773
+**Scraped:** 2026-03-10T16:58:40.252003
 
 ---
 

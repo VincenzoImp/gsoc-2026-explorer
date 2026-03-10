@@ -1,7 +1,7 @@
 # 52°North Spatial Information Research GmbH — Project Ideas
 
 **Source:** https://52north.org/outreach-dissemination/google-summer-of-code/project-ideas/
-**Scraped:** 2026-02-22T23:28:47.619003
+**Scraped:** 2026-03-10T16:58:40.264896
 
 ---
 

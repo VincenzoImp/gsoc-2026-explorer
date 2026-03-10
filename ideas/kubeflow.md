@@ -1,7 +1,7 @@
 # Kubeflow — Project Ideas
 
 **Source:** https://www.kubeflow.org/events/upcoming-events/gsoc-2026/
-**Scraped:** 2026-02-22T23:28:47.580428
+**Scraped:** 2026-03-10T16:58:40.314471
 
 ---
 
@@ -28,7 +28,7 @@ Please carefully read the following information to learn how to participate in G
 
 ### Key Dates
 
-Here are the key dates for GSoC 2025, the [full timeline](https://developers.google.com/open-source/gsoc/timeline) is available on the GSoC website:
+Here are the key dates for GSoC 2026, the [full timeline](https://developers.google.com/open-source/gsoc/timeline) is available on the GSoC website:
 
 | Event | Date |
 |---|---|
@@ -37,6 +37,11 @@ Org Acceptance | February 19th |
 Applications Open | March 16 @ 18:00 UTC |
 Applications Deadline | March 31 @ 18:00 UTC |
 Accepted Proposals Announced | April 30 |
+Community Bonding | May 1 - 24 |
+Coding Begins | May 25 |
+Midterm Evaluations | July 6 - 10 |
+Coding Ends | August 24 |
+Final Evaluations | August 24 - 31 |
 
 ### Eligibility
 
@@ -610,6 +615,39 @@ Tryout reading and connecting to data warehouse and data lakehouse:
 - Testing (Unit, Integration, E2E)
 - Technical Writing (Documentation)
 
+### Project 13: Kubeflow Pipelines - Enhance Support for Pod Lifecycle Failure
+
+**Component:**
+[kubeflow/pipelines](https://www.github.com/kubeflow/pipelines)
+
+**Mentors:** [@alyssacgoins](https://github.com/alyssacgoins)
+
+**Contributor:**
+
+**Details:**
+A pipeline in Kubeflow Pipelines (KFP) fails for one of two reasons: the user-defined pipeline script returns an error, or a pod lifecycle failure occurs. The latter failure can be classified according to lifecycle stage; a failure is either at the provisioning level (e.g., ImagePullBackOff or Unschedulable), runtime level (e.g., CrashLoopBackOff or OOMKilled), or node level (e.g., NodeLost or Preempted).
+
+KFP currently provides limited support when a pipeline run hits a pod lifecycle failure. While the Kubernetes CLI allows users to view the status of their pipeline pods in real time on the terminal, the KFP UI currently provides only minimal visualization. When a pod lifecycle failure occurs, the KFP UI displays a pipeline frozen at the current pod – not progressing, finishing or failing. The cause of failure is not displayed. This creates a confusing and frustrating user experience. KFP intends to function as a Kubernetes abstraction for data scientists and AI engineers, meaning that not all KFP users are experienced with Kubernetes. Requiring use of Kubernetes tools and skills leaks that abstraction.
+
+This project implements error timeouts and enhanced visualization for pod lifecycle failures in KFP:
+
+- Implement parameterized time limits (with defaults), with an optional mapping of pod status (e.g. ImagePullBackOff) to timeout value.
+- Implement visualization of pod failure reasons in the KFP UI, similar to the current visualization of pipeline script errors.
+- In addition to the time management component, it would enhance user experience to visually log these failures in the UI.
+
+**Related Issues/PRs:**
+[kubeflow/pipelines#12843](https://github.com/kubeflow/pipelines/issues/12843)
+
+**Difficulty:** Medium
+
+**Size:** 175 hours
+
+**Skills Required/Preferred:**
+
+- Typescript (core development)
+- Go (backend development)
+- Kubernetes
+
 ### Feedback
 
 Was this page helpful?
@@ -619,4 +657,4 @@ Thank you for your feedback!
 We're sorry this page wasn't helpful.
 If you have a moment, please [share your feedback](https://github.com/kubeflow/website/issues/new?title=[Feedback]+events/upcoming-events/gsoc-2026.md) so we can improve.
 
-[gsoc: Add End-to-End ARM64 Support & Validation on Kubeflow for GSoC 2026 proposal (#4299) (719404fc)](https://github.com/kubeflow/website/commit/719404fc2b12e72fa04a4d35f39a3ff2bf46a103)
+[gsoc: Add remaining milestone dates to GSoC 2026 Key Dates section (#4321) (34e3b3bc)](https://github.com/kubeflow/website/commit/34e3b3bcfdcb3a17a15c365a154dbafde9b45c7b)

@@ -1,62 +1,80 @@
 # Kiwix — Project Ideas
 
 **Source:** https://kiwix.org/en/google-summer-of-code/
-**Scraped:** 2026-02-22T23:28:47.614968
+**Scraped:** 2026-03-10T16:58:40.303430
 
 ---
 
--
-For the full list of issues you can work on, see our GitHub repositoriesÂ
+## Google Summer of Code (GSoC)
 
-[/openZIM](https://github.com/openzim),[/offspot](https://github.com/offspot)and[/kiwix](https://github.com/kiwix)GSoC has three sets of projects, lasting ~90, ~175 and ~350 hours approximately so that people who can not work full-time (because of exams or whatnot) can still participate.
+Kiwix is regularly selected as an Open Source Organisation to participate in Google’s annual Summer of Code.
 
-**We do not prioritize long over short projects**: the job must be done, they’re just an indication for your own comfort.A couple of project ideas are listed below to get you started:Â
+The GSoC is a yearly program by Google that essentially pays FOSS newcomers to work on identified Open Source software for 12+ weeks. Participants are mentored by Organisation’s developers.
 
-## WP1 Combinator Builder
+##### Timeline of events
 
-WP1 is the bot and website that provides tables like
+GSoC has three sets of projects, lasting approximately ~90, ~175 and ~350 hours so that people who can not work full-time (because of exams or whatnot) can still participate.
 
-[this one](https://en.wikipedia.org/wiki/User:WP_1.0_bot/Tables/OverallArticles)on English Wikipedia. The tables help editors determine which articles they should focus on in their WikiProjects. The website also provides tools for creating a Wikipedia âselectionâ, ie a list of articles, so that they can create a ZIM file and have a subsetted offline version of Wikipedia.There are currently multiple ways to build a selection, from simple article lists to SPARQL queries. We wish to create a âcombinatorâ builder, which allows a user to combine existing or future builders to create a final selection.
+Candidates are free to submit any proposal they want. We do maintain a list of GSoC-appropriate projects for candidates to pick but it’s not a requirement.
 
-**Deliverables:**- Provide a data model for a combinator builder that integrates with the rest of the WP1 site
-- Provide a UI frontend for users to create combinator builders
-- Sufficient backend and frontend tests
+##### Upcoming projects
 
-**Skills required:**- Good understanding of Python
-- Understanding of Javascript
-- Understanding of Vue.js or willingness to learn
+Here are the projects scheduled during the upcoming GSoC.
 
-**Project length:**Small (about 90 hours of work)**Repository:**[https://github.com/openzim/wp1](https://github.com/openzim/wp1)## Hermetic Test Suite for MWoffliner
+##### Most recent projects
 
-MWofflinerâs test suite currently relies heavily on live HTTP requests to Wikipedia and other MediaWiki sites, resulting in 30 minutes test runs that are flaky, resource-intensive, and unsuitable for CI/CD pipelines. This project aims to rewrite the test infrastructure to be hermeticâusing mocked responses, local test fixtures, and in-memory MediaWiki instances where needed.
 
-**Deliverables:**Contributors will identify all external dependencies, create comprehensive mock data representing various MediaWiki configurations and edge cases, refactor tests to use dependency injection for HTTP clients, and establish patterns for future hermetic testing. The goal is reducing test runtime to under 10 minutes while improving coverage and reliability. By the end, the tests should be as hermetic as possible. A stretch goal is to separate any remaining non-hermetic tests (which need to make HTTP calls for a technical reason) to a separate e2e test target.**Skills required:**Strong testing experience (unit, integration, mocking frameworks), TypeScript/Node.js proficiency, understanding of HTTP mocking techniques (nock, MSW, or similar), experience with CI/CD systems. Familiarity with MediaWiki structure and test architecture design patterns is a plus: use the time before applications are opened to familiarize yourself with the tool.**Project Length:**Medium (150-175 hrs in total)**Repository:**[github.com/openzim/mwoffliner](https://github.com/openzim/mwoffliner)## Refactor MWoffliner Core Architecture
+| Year | Project | Author | Size | Mentor |
+|---|---|---|---|---|
+| 2025 |
+|
 
-MWoffliner is a tool for scraping MediaWiki content into ZIM files for offline access. This project involves refactoring the codebase to improve maintainability, modularity, and performance. The current architecture has grown organically over time, leading to tight coupling between components, unclear separation of concerns, and difficulty adding new features.
+[Uchechukwu Orji](https://github.com/elfkuzco)[benoit74](https://github.com/benoit74)[Scheduled ZIM generation from WP1 selections](https://gist.github.com/nicolapace/822fc72fa1e438c1fb3848043347f9ce)[Nicola Pace](https://github.com/nicolapace)[Travis Briggs](https://github.com/audiodude)[Lorraine L.](https://github.com/Lorrainnn)[benoit74](https://github.com/benoit74)[Automated download speed testing solution](https://elfkuzco.github.io/gsoc-2024/)[Uchechukwu Orji](https://github.com/elfkuzco)[rgaudin](https://github.com/rgaudin)[Stale and long-overdue issues in kiwix-desktop](https://gist.github.com/ShaopengLin/f1b80ded606f10a88f6dd9f82646e8e2)[Shaopeng (Chris) Lin](https://github.com/ShaopengLin)[Matthieu Gautier](https://github.com/mgautierfr)[Youtube UI revamp](https://dan-niles.github.io/gsoc-2024/)[Dan Niles](https://github.com/dan-niles)[benoit74](https://github.com/benoit74)[Implement a user-friendly web UI for Nautilus](https://github.com/orgs/openzim/projects/9)[FledgeShiu](https://github.com/FledgeXu)[rgaudin](https://github.com/rgaudin)[kiwix-desktop library rework](https://gist.github.com/juuz0/0912b00616e2e5a38e07586b50502f38)[Nikhil Tanwar](https://gist.github.com/juuz0)[Kelson](https://github.com/kelson42)
 
-**Deliverables:**Contributors will work to identify architectural pain points, design a cleaner module structure, and incrementally refactor critical paths while maintaining backward compatibility. Key areas include separating scraping logic from ZIM packaging, improving the article processing pipeline, and making the codebase more testable.**Skills required:**Strong TypeScript/Node.js experience, understanding of software architecture patterns, experience with large-scale refactoring, familiarity with MediaWiki APIs (beneficial, but youâll learn anyway). Contributors should be comfortable reading unfamiliar codebases, writing design documents, and working incrementally with extensive test coverage to prevent regressions (hard requirement).**Project length:**Long (350 hours)**Repository**:[github.com/openzim/mwoffliner](https://github.com/openzim/mwoffliner)## Testing and Reliability Engineering for Kiwix-Android
+##### Must-read for candidates
 
-While the project already contains unit and instrumentation tests, the current testing infrastructure has several gaps: incomplete test coverage, flaky tests, missing scenario tests for critical flows (downloads, storage, restart behavior), partial or unused coverage tooling, and inconsistent CI reliability
+Here is a list of [Good First Issues](https://github.com/search?q=org%3Akiwix+org%3Aopenzim+org%3Aoffspot+label%3A%22good+first+issue%22+state%3Aopen&type=issues) to get you on-boarded.These are low-hanging fruits, grab them.
 
-This project focuses on building a robust, scalable, and maintainable testing ecosystem for the app. The goal is not simply âadding tests,â but establishing production-grade reliability engineering practices
+We have three main projects:
 
-**Deliverables:**By the end of the program we expect fixed flaky/failing tests; significant (and measured) increase in unit test coverage; Multiple stable instrumentation tests; a working coverage pipeline; CI improvements and reliability; a testing documentation and of course throughout the project clean, reviewable PRs**Skills required:**Kotlin, JUnit, Robolectric, Espresso / Compose Testing, MockK or Mockito, GitHub Actions and Jacoco**Project length:**Long (350 hours)**Repository**:[github.com/kiwix/kiwix-android](https://github.com/kiwix/kiwix-android) -
-### Want to join?
+**Kiwix**: the reader**openZIM:**the file format and scrapers**offspot:**the Raspberry Pi-based hotspot
 
-Think hard about what you want to do, and go to the
+Check [the Hub](https://hub.kiwix.org/), poke around and do something fun / easy / that makes you comfortable with the project. Then do it again until you are really comfortable and can pick more subtle tasks.
 
-[Google Summer of Code](https://summerofcode.withgoogle.com/)website between 16 to 31 March to register and submit your project idea(s).After reviewing all proposals, projects will be announced on 30 April. (
+There are no designated mentors at this stage so ask questions in the relevant repo/issues. You can actually open your own issues if you identify a bug or problem!
 
-[full timeline](https://developers.google.com/open-source/gsoc/timeline))### Help & Tips
+Our list of projects for GSoC is above, but they’re not set in stone. Historically, 20-30% of the GSoC projects we ended up picking were not on the initial list but suggested by candidates themselves.
 
-We want to be clear upfront that
+Check [the timeline](https://developers.google.com/open-source/gsoc/timeline) for Applications dates to submit a detailed project proposal.
 
-**we will not select candidates who have never made at least**: we make our choice based on how candidates handle themselves (is the code clear, are there comments, how do they explain their choices when asked,*one*PR to our codebase*etc.*). PRs do not need to be related to the project submitted – we just need to know that you can work in a team. If we don’t know you, we can’t choose you! And if your project has “UI” in it, then it probably is a good idea to submit a mockup of what you plan to implement.(We also wrote a helpful
+**✅ Things to do
+Include a list of previous PRs you’ve made, and if your proposal includes some UI, add a mockup of what you propose.**
 
-[guide to Writing your Google Summer of Code](/ideas/kiwix/writing-your-google-summer-of-code-application)application)Last but not least: over the years about half the contributors who did GSoC with Kiwix came up with their own project rather than one from our list â be
+**❌ Things to not do
+Ask to contact mentors directly, send your CV, or a motivation letter (they’re all written by an LLM nowadays).**
 
-**bold**!### Do you have questions?
+============================================================
 
-Then come and join us on ourÂ
+Just. Send. Your. PRs. and a detailed proposal with timeline.
 
-[Slack channel](https://join.slack.com/t/kiwixoffline/shared_invite/enQtOTUyMTg4NzMxMTM4LTU0MzYyZDliYjdmMDYzYWMzNDA0MDc4MWE5OGM0ODFhYjAxNWIxMjVjZTU4MTkyODJlZWFkMmQ2YTZkYTUzZDY)!
+============================================================
+
+You can make more than one proposal (they need to be separate in the Google dashboard), and you can apply to several orgs at the same time.
+
+We do not give individual feedback on proposals before the deadline, but you normally can edit them until the last minute.
+
+We ask to see your PRs in order to know that you can code, comment your code, and answer questions or comments about your code.
+
+Don’t try to be smart, but rather show that you can work as part of a team (someone has to review those PRs: make it easy for them).
+
+Last but not least: use of AI-generated code = banned! Google is not paying you to use their products, or those of their competitors. It’s easy to spot and shows you are lazy and disrespectful of our time.
+
+We usually get 60-80 formal applications submitted each year, 90% of which are garbage because people did not follow what you just read above. We request 2-3 slots from Google, meaning that if you follow the guidelines properly, you will jump from 3-4% chance to a 30-50% chance of getting selected.
+
+##### Additional application-writing tips
+
+[Apertium](https://www.apertium.org/)!).
+
+##### More tips
+
+We’re not saying that following the advice below will automatically get you a mentor, but going through it will give you a pretty good chance!

@@ -1,7 +1,7 @@
 # LabLua — Project Ideas
 
 **Source:** https://github.com/labluapucrio/gsoc
-**Scraped:** 2026-02-22T23:28:47.582454
+**Scraped:** 2026-03-10T16:58:40.258524
 
 ---
 
@@ -9,11 +9,20 @@ In this page we introduce some of the projects that are are working with us this
 
 If you are a contributor candidate, feel free to get in touch with us via our [Matrix](https://matrix.to/#/#lablua:matrix.org), [mailing list](mailto:labluagsoc@googlegroups.com) or by sending an email to one of our mentors. You can apply using one of the ideas in the list or you can bring your own idea. Either way, don't leave it to the last minute =).
 
-Please use our [application template](/ideas/lablua/blob-main-apply) to prepare your proposal and take a look at our [successful projects](http://www.lua.inf.puc-rio.br/gsoc/blog2025.html) from last year.
+Due to the rise of AI usage which is overwhelming the GSoC mentors, and OpenSource projects in general, we have decided to change the criteria for GSoC 2026. We assume positive intent when students use AI, yet we have found that students are overly confident in the results of AI agents/bots. So were we previously relied mostly on the proposals, we no longer do. Here's what we expect from students (every item is required, in the order listed):
+
+**communicate!**if you're interested in participating, then let us know. Details for contacting mentors or matrix-channels are listed with the projects below. Ask for guidance, or clarification for things you do not understand, we're here to help. Project proposals submitted with no previous communication with a project mentor will not be evaluated.**meaningful contributions;**get involved in the code base, show you understand the project, the patterns, the architecture. PR's are a great way of doing so. If this seems a daunting task, ask for help.- deliver a
+**meaningful proposal**in time. Please use our[application template](/ideas/lablua/blob-main-apply)to prepare your proposal and take a look at our[successful projects](http://www.lua.inf.puc-rio.br/gsoc/blog2025.html)from last year.
+
+GSoC is about learning and growing your personal skills. Using AI to code for you will not help you reach that goal. If you are eager to learn, then don't use AI to write your code. AI is improving quickly and provides great opportunities for research and learning, but you should write your own code.
+
+We further ask you not to use an AI to create a "smart" looking application for any of the proposed projects. Instead do your homework, look at the prerequisites and starting points we provided you with. Get familiar with the code base and only then write your application, in your words, using your skills. *Any proposal that is generated using AI will NOT be evaluated!*
+
+TLDR: As mentors we're here to mentor you, not your bot.
 
 | ❗ Important note on AI usage |
 |---|
-| GSoC is about learning and growing your personal skills. Using AI to code for you will not help you reach that goal. If you are eager to learn, then don't use AI to write your code. AI is improving quickly and provides great opportunities for research and learning, but you should write your own code. We further ask you not to use an AI to create a "smart" looking application for any of the proposed projects. Instead do your homework, look at the prerequisites and starting points we provided you with. Get familiar with the code base and only then write your application, in your words, using your skills. Use the application template we provided. As mentors we're here to mentor you, not your bot. |
+| Check for each project below what is and is not allowed wrt AI usage |
 
 [Evaluating Structured Reactive Patterns in Atmos](https://github.com#evaluating-structured-reactive-patterns-in-atmos)[Add Video Support to pico-sdl and pico-lua](https://github.com#add-video-support-to-pico-sdl-and-pico-lua)[Prepared Statements for LuaSQL](https://github.com#add-support-for-prepared-statements-for-luasql)
 
@@ -26,6 +35,8 @@ Lunatik is a project that brings Lua to the Linux kernel to make it possible to 
 [Conntrack and NAT support for Lunatik](https://github.com#conntrack-and-nat-support-for-lunatik)[Port The Lua Test Suite to Lunatik](https://github.com#port-the-lua-test-suite-to-lunatik)[Lunatik Binding for Linux Traffic Control (TC) and eBPF Maps](https://github.com#lunatik-binding-for-linux-traffic-control-tc-and-ebpf-maps)[Lunatik Binding for Netlink](https://github.com#lunatik-binding-for-netlink)[Lunatik Binding for OpenWrt UBUS](https://github.com#lunatik-binding-for-openwrt-ubus)[Lunatik Binding for sched-ext](https://github.com#lunatik-binding-for-sched-ext)
 
 Pallene is a typed dialect of Lua, designed to write performant code that is interoperable with Lua.
+
+terminal.lua is a project providing a cross-platform TUI.
 
 [Atmos](https://github.com/atmos-lang/atmos/) is an experimental
 programming language that compiles to Lua 5.4 and reconciles structured
@@ -148,11 +159,25 @@ Audio/video synchronization should follow time-based frame scheduling, in which 
 
 The inclusion of support for prepared statements in LuaSQL has been discussed thoroughly some time ago, but since each DBMS offers very different APIs there is no standard that could be defined to assure portability between them. Anyway the demand persists.
 
-This project proposes the addition of a minimal API that would allow each driver to offer prepared statements according to its DBMS restrictions and mechanisms.
+This project proposes the addition of a minimal API that would allow each driver to offer prepared statements according to its DBMS restrictions and mechanisms. Each driver could implement particular extensions to the common API.
 
-- Propose a new API that would be flexibly enough to cover the main features of each database respecting each different mechanisms of defining prepared statements
-- Implement the new API into one or more drivers
+The common API should offer:
+
+- A new method in the connection object,
+`prepare`
+
+, to allow the creation of a prepared statement - A new object, Statement, that will represent the prepared statement and offer the following methods:
+`bind`
+
+`execute`
+
+`close`
+
+
+
+- Implement the common API into one driver
 - Test and document everything
+- Optionally implement extensions
 
 - C programming languages
 - Experience with any database C API (highly desirable)
@@ -445,3 +470,56 @@ Due to the nature of this project, it is important that we develop a solid plan 
 - Nice to have: experience with CMake, Scons, xmake, or similar
 
 - Medium (175)
+
+Lua has several core libraries that work across platforms; luasocket (networking), luafilesystem (file system), and [luasystem](https://github.com/lunarmodules/luasystem) (time, random, terminal). The latter library, [luasystem](https://github.com/lunarmodules/luasystem), provides the primitives to handle terminal operations, albeit they are fundamentally different on Posix and Windows based systems.
+
+The purpose of this project is to advance the [ terminal.lua library](https://github.com/lunarmodules/terminal.lua) that builds on
+
+[luasystems terminal primitives](https://lunarmodules.github.io/luasystem/topics/03-terminal.md.html)to build basic UI elements for user interaction in a cross-platform way. This should not be anything like curses, but the simpler user interactions like;
+
+- progress indicators/bars
+- prompts; yes/no, ok/cancel
+- reading inputs boxes
+- hidden inputs; for secrets
+- More complex full screen app support (panels, drawing/re-drawing)
+- etc.
+
+The library is general purpose, adhering the the Lua principle of 'mechanisms over policies'. This means for example that it should be possible to use it sync as well as async (coroutines), and it shouldn't force control over the main application loop, etc. A developer using the library should be able to make his/her own choice.
+
+- what are terminals to begin with? a great explanation
+[part 1](https://blog.nelhage.com/2009/12/a-brief-introduction-to-termios/), and[part 2](https://blog.nelhage.com/2009/12/a-brief-introduction-to-termios-termios3-and-stty/) - read up on terminals and streams;
+`stdin`
+
+,`stdout`
+
+, and`stder`
+
+; especially the latter two, when to use what? - what does LuaSystem offer for platform compatibility, see
+[LuaSystem terminal docs](https://lunarmodules.github.io/luasystem/topics/03-terminal.md.html) - check the
+[existing code base](https://github.com/lunarmodules/terminal.lua)
+
+- API that makes it easy to work around terminal limitations
+- API design with consistency across platforms (and review existing code for inconsistencies)
+- dialog design
+- prompts (yes/no/cancel, ok/cancel, and similar)
+- filepicker
+- viewport for editboxes/editline
+- working luarocket example application
+- updated
+`terminal.lua`
+
+build on top of LuaSystem, ready for a first release by end of GSoC - including tests, documentation and examples
+
+- basic Lua programming language knowledge
+- Experience with terminals (nice to have)
+- a proposal of max 6 pages; 1 page generics, 1 to 5 pages of project specific content.
+- daily communications during the project in YTB format (Y: what I did yesterday, T: what I plan to do today, B: blockers that limit my progress)
+
+- Beginner
+
+- The project proposal must be written without the help of AI
+- Using AI for research, testing ideas, get feedback, listing test cases is allowed
+- Using AI as an auto-complete in an editor is allowed
+- Generating code or tests is allowed, but the mentor reserves the right to disallow it on an individual basis. This depends on the quality of the code, whether it was reviewed by the author, how well it was manually tested locally, and how much understanding of the code base is shown in the PR.
+
+- Medium (175 hours)

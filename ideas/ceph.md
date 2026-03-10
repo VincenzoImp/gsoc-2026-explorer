@@ -1,7 +1,7 @@
 # Ceph — Project Ideas
 
 **Source:** https://ceph.io/en/developers/google-summer-of-code/
-**Scraped:** 2026-02-22T23:28:47.577424
+**Scraped:** 2026-03-10T16:58:40.268956
 
 ---
 
@@ -9,7 +9,7 @@ Google Summer of Code ([g.co/gsoc](http://g.co/gsoc)) is Google's mentorship pro
 
 Google Summer of Code is a unique program where new contributors to open source, ages 18 and over, are paired with a mentor to introduce them to the open source community and provide guidance while they work on a real world open source project over the summer. Projects cover a wide range of fields including: Cloud, Operating Systems, Graphics, Medicine, Programming Languages, Robotics, Science, Security and many more. GSoC Contributors do earn a stipend to work on their small, (~90 hour), medium (~175 hour) or large (~350 hour) projects.
 
-GSoC is a highly competitive program, so don't wait to the last minute to prepare! GSoC Contributors should reach out to the mentors of projects that interest them once orgs are announced on February 27, 2025. Potential GSoC Contributors can apply for Ceph's projects at [g.co/gsoc](http://g.co/gsoc) from March 24th - April 8, 2025.
+GSoC is a highly competitive program, so don't wait to the last minute to prepare! GSoC Contributors should reach out to the mentors of projects that interest them once orgs are announced on February 19, 2026. Potential GSoC Contributors can apply for Ceph's projects at [g.co/gsoc](http://g.co/gsoc) from March 16th - March 31st, 2026.
 
 See the list of projects we have available for GSoC contributors and [learn how get started with contributions](https://ceph.io/en/developers/contribute/).
 
@@ -50,9 +50,14 @@ We would like to use a more Programmatic approach towards the problem:
 
 **Standup/weekly call mentee could attend?:** RGW standup, RGW refactoring meeting
 
-**Steps to evaluate an applicant for the project:** TBD
+**Steps to evaluate an applicant for the project:** [https://gist.github.com/yuvalif/4a077cef5063653f337337c9ca08094e](https://gist.github.com/yuvalif/4a077cef5063653f337337c9ca08094e)
 
-**1-2 short paragraphs about what first 2 weeks of work would look like during the internship:** TBD
+**1-2 short paragraphs about what first 2 weeks of work would look like during the internship:**
+
+- research on different commandline frameworks
+- learning the internal of the
+`radosgw-admin`
+
 
 **Expected Outcome:** Detailed in the description.
 
@@ -70,7 +75,7 @@ We would like to use a more Programmatic approach towards the problem:
 
 **Skills needed:** Python and C++
 
-**Subcomponent of Ceph:** RGW (teuthology and rook as stretch goals)
+**Subcomponent of Ceph:** RGW
 
 **Description of project:**
 
@@ -81,24 +86,26 @@ The following features are missing:
 - GSSAPI
 - OAUTHBEARER
 - mtls
-- passing in CA without a file (useful for rook integration)
+- passing in CA without a file (useful for Rook integration)
 
 The main challenge in the above would be in automating the tests, so they could easily run locally,
 
-- as a stretch goal, we should make sure these tests can also run in teuthology.
-- another stretch goal would be to use the integrate the above feature into rook (this would involve some golang coding as well).
+as a stretch goal, we should make sure these tests can also run in teuthology.
 
 **Standup/weekly call mentee could attend?:** RGW daily standup, RGW weekly refactoring meeting
 
-**Steps to evaluate an applicant for the project:** TBD
+**Steps to evaluate an applicant for the project:** [https://gist.github.com/yuvalif/3c5439b144044223a9e70f00354ad785](https://gist.github.com/yuvalif/3c5439b144044223a9e70f00354ad785)
 
-**1-2 short paragraphs about what first 2 weeks of work would look like during the internship:** TBD
+**1-2 short paragraphs about what first 2 weeks of work would look like during the internship:**
+
+- get to know the bucket notifications code
+- learn about kafka security
 
 **Expected outcome:** Detailed in the description.
 
 **Rules for AI usage:** [https://gist.github.com/yuvalif/b07312c98ea74890e157594a456c6e6b](https://gist.github.com/yuvalif/b07312c98ea74890e157594a456c6e6b)
 
-## RGW tcmalloc profiling [Â¶](https://ceph.io#rgw-tcmalloc-profiling)
+## RGW tcmalloc Profiling [Â¶](https://ceph.io#rgw-tcmalloc-profiling)
 
 **Mentor name(s):** Yuval Lifshitz
 
@@ -106,27 +113,29 @@ The main challenge in the above would be in automating the tests, so they could 
 
 **Difficulty:** Advanced
 
-**Project Hours:** 175
+**Project Hours:** 90
 
 **Skills needed:** Python and C++
 
-**Subcomponent of Ceph:** RGW (teuthology and rook as stretch goals)
+**Subcomponent of Ceph:** RGW
 
 **Description of project:**
 
-All daemons in ceph are using tcmalloc as the memory allocator to achieve better performance.
+All daemons in ceph are using [tcmalloc](https://gperftools.github.io/gperftools/tcmalloc.html) as the memory allocator to achieve better performance. In a [recent PR](https://github.com/ceph/ceph/pull/67446) the ability to get information on how tcmalloc performs in the RGW was added. In this project, we should use the profiling information from RGW runs to tune the tcmalloc parameters so that would be more suitable for the memory use of the RGW. The main strength of tcmalloc is using thread local cache to get lock-free memory allocations. We would like to understand how tuning the parameters that governs this behavior is impacting the memory usage of the RGW? We would also like to investigate if there are other parameters, either runtime or compile time, that can improve the performance of the RGW:
 
-However, while the OSD, MON, and MDS can report the memory allocation performance, the RGW does not support that (see: [https://docs.ceph.com/en/latest/rados/troubleshooting/memory-profiling/#memory-profiling](https://docs.ceph.com/en/latest/rados/troubleshooting/memory-profiling/#memory-profiling)).
-
-In this project, we should add this reporting support to the RGW as well.
-
-As a stretch goal, we should use the profiling information from RGW runs to tune the tcmalloc parameters so that would be more suitable for the memory use of the RGW
+- use more thread local cache for small memory allocations
+- keep the overall memory consumption of the RGW low
+- free unused memory back to the OS
+- any other tuning?
 
 **Standup/weekly call mentee could attend:** RGW daily standup, RGW weekly refactoring meeting
 
-**Steps to evaluate an applicant for the project:** TBD
+**Steps to evaluate an applicant for the project:** [https://gist.github.com/yuvalif/9ae7508b599aa8718521109b77dbc413](https://gist.github.com/yuvalif/9ae7508b599aa8718521109b77dbc413)
 
-**1-2 short paragraphs about what first 2 weeks of work would look like during the internship:** TBD
+**1-2 short paragraphs about what first 2 weeks of work would look like during the internship:**
+
+- understand the different RGW workloads and how to simulate them
+- tune up the RGW to get better performence baseline
 
 **Expected outcome:** Detailed in description.
 

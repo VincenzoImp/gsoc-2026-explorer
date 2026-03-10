@@ -2,7 +2,7 @@
 
 **Parent:** Neovim — Project Ideas
 **Source:** https://github.com/neovim/neovim/discussions?discussions_q=label%3Agsoc
-**Scraped:** 2026-02-22T23:28:47.615934
+**Scraped:** 2026-03-10T16:58:40.272751
 
 ---
 
@@ -26,6 +26,7 @@ Latest activity
 ## Discussions
 
 -
+You must be logged in to vote 💬 [GSoC 2026 Presentation Mode Need directions to start crafting a POC.](https://github.com/neovim/neovim/discussions/38020)[gsoc](https://github.com/neovim/neovim/discussions?discussions_q=label%3Agsoc)community: Google Summer of Code project -
 You must be logged in to vote 💬 [Multibuffer and Region-Scoped Undo - GSoC 2026](https://github.com/neovim/neovim/discussions/37953)[gsoc](https://github.com/neovim/neovim/discussions?discussions_q=label%3Agsoc)community: Google Summer of Code project -
 You must be logged in to vote 💬 [GSoC: Enhancing AI Primitives in Neovim](https://github.com/neovim/neovim/discussions/34270)[gsoc](https://github.com/neovim/neovim/discussions?discussions_q=label%3Agsoc)community: Google Summer of Code project -
 You must be logged in to vote 💡 [[GSoC] Implementation of AI-Oriented LSP feature & LSP Data Caching module](https://github.com/neovim/neovim/discussions/34254)[gsoc](https://github.com/neovim/neovim/discussions?discussions_q=label%3Agsoc)community: Google Summer of Code project -

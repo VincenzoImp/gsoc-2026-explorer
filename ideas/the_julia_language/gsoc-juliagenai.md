@@ -2,7 +2,7 @@
 
 **Parent:** The Julia Language — Project Ideas
 **Source:** https://julialang.org/jsoc/gsoc/juliagenai/
-**Scraped:** 2026-02-22T23:28:47.596013
+**Scraped:** 2026-03-10T16:58:40.262349
 
 ---
 
@@ -16,7 +16,7 @@
 
 There is a high overlap with other organizations, you should definitely check out these projects:
 
-[Projects with MLJ.jl](https://julialang.org/jsoc/gsoc/MLJ/)- For more traditional machine learning projects[Projects in Reinforcement Learning](https://julialang.org/jsoc/gsoc/machine-learning/)- For projects around AlphaZero.jl[Projects with FluxML](https://fluxml.ai/gsoc/)- For projects around Flux.jl, the backbone of Julia's deep learning ecosystem
+[Projects in Reinforcement Learning](https://julialang.org/jsoc/gsoc/machine-learning/)- For projects around AlphaZero.jl[Projects with FluxML](https://fluxml.ai/gsoc/)- For projects around Flux.jl, the backbone of Julia's deep learning ecosystem
 
 Probably the easiest way is to join our [JuliaLang Slack](https://julialang.org/slack/) and join the `#generative-ai`
 

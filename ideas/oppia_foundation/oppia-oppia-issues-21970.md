@@ -2,7 +2,7 @@
 
 **Parent:** Oppia Foundation — Project Ideas
 **Source:** https://github.com/oppia/oppia/issues/21970
-**Scraped:** 2026-02-22T23:28:47.620978
+**Scraped:** 2026-03-10T16:58:40.308502
 
 ---
 
@@ -32,12 +32,12 @@ Implement missing domain objects for the following storage models with full `val
 - [ ] CompleteExplorationEventLogEntryModel
 - [ ] CsrfSecretModel
 - [ ] DeletedUserModel
-- [ ] DeletedUsernameModel
+- [ ] DeletedUsernameModel (Assignee: @SIRILEKKALA)
 - [ ] ExplorationActualStartEventLogEntryModel
 - [ ] ExplorationAnnotationsModel
 - [ ] ExplorationContextModel
 - [ ] ExplorationIssuesModel
-- [ ] ExplorationRecommendationsModel: @aasmaa11 
+- [ ] ExplorationRecommendationsModel
 - [x] ExplorationRightsModel: @Somnath-Mishra 
 - [ ] ExplorationRightsSnapshotMetadataModel
 - [ ] ExplorationSnapshotMetadataModel
@@ -76,7 +76,7 @@ Implement missing domain objects for the following storage models with full `val
 - [ ] TopicRightsSnapshotMetadataModel
 - [ ] TopicSimilaritiesModel
 - [ ] TopicSnapshotMetadataModel
-- [ ] TranslationCoordinatorsModel
+- [ ] TranslationCoordinatorsModel (Assignee: @SG-devOS)
 - [ ] UnsentFeedbackEmailModel
 - [ ] UserBulkEmailsModel
 - [ ] UserEmailPreferencesModel (Assignee: @anushaa-m)
@@ -86,9 +86,8 @@ Implement missing domain objects for the following storage models with full `val
 - [ ] UserRecentChangesBatchModel
 - [ ] UserStatsModel
 - [ ] UserSubscribersModel
-- [ ] UserSubscriptionsModel @FCancella 
+- [ ] UserSubscriptionsModel 
 - [ ] VoiceArtistMetadataModel
-- [ ] VoiceoverAutogenerationPolicyModel: @aasmaa11 
-
+- [ ] VoiceoverAutogenerationPolicyModel
 
 

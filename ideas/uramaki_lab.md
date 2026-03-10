@@ -1,7 +1,7 @@
 # Uramaki LAB — Project Ideas
 
 **Source:** https://ruxailab.github.io/gsoc/
-**Scraped:** 2026-02-22T23:28:47.614842
+**Scraped:** 2026-03-10T16:58:40.280130
 
 ---
 
@@ -37,6 +37,20 @@ Cognitive WalkthroughLearnabilityUsability EvaluationHuman-Computer InteractionU
 PythonUX Research MethodsFrontend Development
 |
 This project aims to implement Cognitive Walkthrough as a core usability evaluation methodology in RUXAILAB. The focus i... |
+Configuration & Disability Profile Engine |
+Medium | 175h | Medium | Afra Pascual |
+Accessibility ConfigurationWCAGDisability ProfilesEvaluation Strategy
+|
+Python or JavaScriptJSON SchemasAccessibility Fundamentals
+|
+Develop the configuration core of the evaluation system, including scope definition, normative targets, and disability p... |
+End-to-End Accessibility Evaluation Platform |
+Big | 350h | Hard | Afra Pascual |
+Web AccessibilityWCAGWCAG-EMEN 301 549Accessibility AuditingUser Disability Profiles
+|
+PythonJavaScriptWeb Accessibility (WCAG)Data Modelling
+|
+This project aims to build a minimum viable end-to-end accessibility evaluation platform based on WCAG-EM and EU public-... |
 Enhancing Playwright Testing in RUXAILAB |
 Small | 90h | Easy | Eric |
 PlaywrightAutomated TestingUI TestingAccessibilityDocumentation
@@ -79,20 +93,41 @@ A/B TestingUser ExperienceUsability TestingData AnalysisFront-End Development
 JavaScriptPythonData AnalysisUI/UX Testing
 |
 This project focuses on implementing A/B testing functionality within RUXAILAB to enhance usability evaluation and data-... |
+In-Depth Sampling Engine |
+Small | 90h | Medium | Afra Pascual |
+Accessibility SamplingEU 2018/1524WCAG-EMAudit Compliance
+|
+Python or JavaScriptData Processing
+|
+Implement the micro-sampling rules required for in-depth accessibility audits, particularly those defined in EU Decision... |
 Intent and Semantic Analysis of Transcriptions and User Answers |
-Medium | 175h | Medium | Marc |
+Medium | 175h | Medium | Basma Hatem |
 NLPIntent DetectionUX ResearchText AnalysisExplainable AI
 |
 PythonNLPMachine LearningData Analysis
 |
 This project focuses on extracting user intent, expectations, and perceived issues from transcriptions, open-ended answe... |
+Mandatory Page Detector |
+Small | 90h | Easy | Afra Pascual |
+Accessibility ComplianceWeb DetectionLegal RequirementsWCAG Monitoring
+|
+JavaScript or PythonWeb ScrapingDOM Analysis
+|
+Automatically detect mandatory pages such as accessibility statements, contact pages, or feedback mechanisms to support ... |
 Multimodal Sentiment Analysis Engine for Usability Studies |
-Big | 350h | Hard | Marc |
+Big | 350h | Hard | Basma Hatem |
 Multimodal Sentiment AnalysisAffective ComputingNLPSpeech AnalysisUX Evaluation
 |
 PythonMachine LearningDeep LearningNLPSignal Processing
 |
 This project focuses on designing and implementing a multimodal sentiment analysis engine that combines facial expressio... |
+Profile-Driven Test Matrix Generator |
+Small | 90h | Medium | Afra Pascual |
+Accessibility TestingDisability ProfilesWCAG MappingAudit Planning
+|
+PythonData ModellingAccessibility Basics
+|
+Develop the core logic that converts normative accessibility requirements combined with disability profiles into an exec... |
 Real-Time Gaze Cursor Overlay for Live Observation |
 Small | 90h | Easy | Karine |
 Eye TrackingReal-Time VisualizationUX TestingHCI
@@ -107,15 +142,22 @@ Eye TrackingReal-Time VisualizationData StreamingUX TestingHCI
 PythonJavaScriptWebSockets or WebRTCData Visualization
 |
 This project focuses on developing a real-time gaze visualization system that allows researchers and moderators to see w... |
+Reporting & Dataset Generator |
+Medium | 175h | Medium | Afra Pascual |
+Accessibility ReportingWCAG AuditsData ExportMonitoring Systems
+|
+Python or JavaScriptData ProcessingBasic UX Writing
+|
+Transform raw accessibility audit results into normative reports and profile-oriented insights. This project focuses on ... |
 Sentiment and Emotion Output Standardization for Usability Reports |
-Small | 90h | Easy | Eric |
+Small | 90h | Easy | Basma Hatem |
 Sentiment AnalysisReportingUX EvaluationData Formatting
 |
 PythonData ModelingNLP
 |
 This project aims to define and implement standardized output formats for sentiment, emotion, and intent analysis result... |
 Sentiment Taxonomy Definition and Dataset Construction for Usability Research |
-Big | 350h | Hard | Marc |
+Medium | 350h | Hard | Basma Hatem |
 Sentiment AnalysisAffective ComputingUX ResearchDataset ConstructionHuman-Computer Interaction
 |
 PythonData AnnotationMachine LearningUX Research Methods
@@ -128,6 +170,13 @@ Prompt EngineeringUX MethodologiesAI EvaluationResearch Reproducibility
 PythonPrompt EngineeringUX Research Methods
 |
 This project focuses on designing a prompt-generation framework that automatically creates methodology-specific prompts ... |
+System Exploration & Inventory Builder |
+Medium | 175h | Medium | Afra Pascual |
+Web CrawlingDOM AnalysisAccessibility EvaluationSystem Mapping
+|
+JavaScript or PythonWeb ScrapingDOM Analysis
+|
+Build an intelligent exploration engine that analyses a website as a system rather than as isolated pages. The tool iden... |
 Unified Logging and Traceability System for Usability Studies |
 Medium | 175h | Medium | Marc |
 Logging SystemsResearch TraceabilityUX EvaluationSoftware Architecture
@@ -136,7 +185,7 @@ PythonBackend DevelopmentSoftware Architecture
 |
 This project aims to implement a structured logging and traceability system that records all relevant events during a us... |
 Voice and Speech Analysis for Emotion and Cognitive State Detection |
-Medium | 175h | Medium | Marc |
+Medium | 175h | Medium | Basma Hatem |
 Speech AnalysisEmotion RecognitionCognitive LoadUX ResearchSignal Processing
 |
 PythonSignal ProcessingMachine LearningAudio Analysis

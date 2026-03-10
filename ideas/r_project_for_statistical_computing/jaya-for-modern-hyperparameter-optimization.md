@@ -2,7 +2,7 @@
 
 **Parent:** R project for statistical computing — Project Ideas
 **Source:** https://github.com/rstats-gsoc/gsoc2026/wiki/Jaya-for-Modern-Hyperparameter-Optimization
-**Scraped:** 2026-02-22T23:28:47.626419
+**Scraped:** 2026-03-10T16:58:40.306514
 
 ---
 
@@ -180,6 +180,6 @@ Students should submit their test results below:
 
 | Contributor Name | GitHub Profile | Test Results |
 | ---------------- | -------------- | ------------ |
-|     |                |              |
-|                  |                |              |
+|     |            |                |
+| Shalini Kumari   |  https://github.com/Shalinis1913 |      https://colab.research.google.com/drive/1uW-oEY6KS6-PF9SbeL6OIt9USnMbCxcP?usp=sharing OR https://github.com/Shalinis19137/Jaya-as-a-Modern-Hyperparameter-Optimization-Engine.git     |
 |                  |                |              |

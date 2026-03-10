@@ -1,7 +1,7 @@
 # Cuneiform Digital Library Initiative (CDLI) — Project Ideas
 
 **Source:** https://gitlab.com/cdli/framework/-/wikis/Google-Summer-of-Code-GSoC-2026-Cuneiform-Digital-Library-Initiative-(CDLI)-ideas-list
-**Scraped:** 2026-02-22T23:28:47.613008
+**Scraped:** 2026-03-10T16:58:40.275608
 
 ---
 
@@ -73,6 +73,8 @@ This project proposes rebuilding the CDLI tablet applications using React Native
 
 The result will be a production-ready cross-platform tablet application backed by a unified content management pipeline.
 
+*The contributor is expected to brainstorm the mobile design using tools like Figma and come up with wireframes.*
+
 #### Project Goals
 
 Build a single React Native application for Android and iOS that replaces the existing native apps and connects directly to the CDLI framework and admin panel, allowing curators to manage tablet content centrally while users consume it through a modern mobile experience.
@@ -121,6 +123,16 @@ By the end of GSoC:
 - Mobile apps will consume live framework data
 - Maintenance overhead will be significantly reduced
 - Future development will be faster and easier
+
+### Required Skills
+
+- React Native mobile app development
+- Good understanding of mobile UI/UX principles and responsive design
+- Experience using design tools like Figma and converting wireframes into mobile screens
+- Familiarity with REST APIs and integrating backend services
+- Experience with performance optimization and debugging in React Native
+- Understanding of mobile app lifecycle, navigation, and component architecture
+- Experience with native modules, push notifications, or background tasks is a plus
 
 ## 4.2 Search & Discovery Improvements – 350h
 
@@ -366,15 +378,10 @@ Ex GSoC | SDE-2, Microsoft
 [https://www.linkedin.com/in/vishv07/](https://www.linkedin.com/in/vishv07/) -
 #### Vedant Wakalkar
 
-Ex GSoC | SDE-2, Jio
-
-
-[https://www.linkedin.com/in/karna98/](https://www.linkedin.com/in/karna98/) -
+-
 #### Daksh Paleria
 
 Ex GSoC | SDE, Blinkit
 
 
-[https://www.linkedin.com/in/daksh-paleria-606211190/](https://www.linkedin.com/in/daksh-paleria-606211190/) -
-**TBD by 18/02/26, Status: Shortlisting** -
-**TBD by 18/02/26, Status: Shortlisting**
+[https://www.linkedin.com/in/daksh-paleria-606211190/](https://www.linkedin.com/in/daksh-paleria-606211190/)

@@ -2,13 +2,23 @@
 
 **Parent:** SymPy — Project Ideas
 **Source:** https://github.com/sympy/sympy/labels/limits
-**Scraped:** 2026-02-22T23:28:47.571718
+**Scraped:** 2026-03-10T16:58:40.300009
 
 ---
 
-We read every piece of feedback, and take your input very seriously.
+# Issues
 
-To see all available qualifiers, see our documentation.
+## Search results
 
-
-There was an error while loading. Please reload this page.
+- Status: Open.#29342 In sympy/sympy;
+- Status: Open.#28313 In sympy/sympy;
+- Status: Open.#28033 In sympy/sympy;
+- Status: Open.#27957 In sympy/sympy;
+- Status: Open.#27551 In sympy/sympy;
+- Status: Open (in progress).sympy/sympynumber 27346#27346 In sympy/sympy;
+- Status: Open (in progress).sympy/sympynumber 27266#27266 In sympy/sympy;
+- Status: Open.#27236 In sympy/sympy;
+- Status: Open.#27143 In sympy/sympy;
+- Status: Open.#27058 In sympy/sympy;
+- Status: Draft (not ready).sympy/sympynumber 27028#27028 In sympy/sympy;
+- Status: Open (in progress).sympy/sympynumber 26766#26766 In sympy/sympy;

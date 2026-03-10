@@ -1,7 +1,7 @@
 # KDE Community — Project Ideas
 
 **Source:** https://community.kde.org/GSoC/2026/Ideas
-**Scraped:** 2026-02-22T23:28:47.569708
+**Scraped:** 2026-03-10T16:58:40.252978
 
 ---
 
@@ -261,6 +261,48 @@ The implementation will be based on [recent research in this domain](https://arx
 - Documentation and user guide for optimal usage
 
 **Knowledge Prerequisite**: C++, Qt, Machine Learning basics (PyTorch/TensorFlow or C++ ML libraries), Signal Processing, Control Systems
+
+**Duration:** 350 hours
+
+**Difficulty:** Hard
+
+**Mentor**: Jasem Mutlaq ([KDE Web Chat](https://webchat.kde.org/#/room/#kstars:kde.org): Jasem)
+
+### Spectroscopy Slit Guiding & Comet Tracking
+
+**Brief explanation**: Spectroscopy is an increasingly popular branch of amateur astronomy, yet Ekos currently offers no dedicated support for slit spectrograph guiding — users must improvise using the existing manual dither offset controls. Meanwhile, Patrick Chevalley's CCDciel implements the most complete open-source slit guiding available for INDI-compatible setups, including multiple centering strategies and a dedicated slit overlay, while PHD2 offers a visual slit overlay with a manual lock-position nudge workflow. On a separate front, comet imagers face a unique challenge: a comet moves relative to background stars, so standard star-locked guiding blurs the comet over long exposures. This project adds both capabilities as integrated features of the Ekos Guide module.
+
+The Spectroscopy Slit Guiding feature will:
+
+**Slit Overlay Widget**: Render a configurable slit rectangle overlay on the Guide module's camera view, with adjustable width, length, rotation angle, and pixel position — consistent with the approach taken in PHD2 and CCDciel. The overlay geometry is saved per equipment profile.
+
+**Automated Slit Centering**: When the user defines the slit position and initiates centering, Ekos issues a sequence of guide pulses to move the guide star's lock position onto the defined slit center. This builds on the existing lock-position infrastructure already present in the Guide module, replacing the current workaround of manually entering dither offsets.
+
+**Persistent Lock Position**: The slit-relative lock position persists across guide start/stop cycles and is restored at session start, so users do not need to re-center after a meridian flip or a brief guiding interruption.
+
+**Spectrograph Profile Management**: Save and reload named spectrograph profiles (slit geometry and pixel offset) so users can switch between instruments — for example between a wide-slit low-resolution spectrograph and a narrow high-resolution one — without re-entering parameters each session.
+
+The Comet Tracking feature will:
+
+**JPL Horizons Ephemeris Import**: Parse standard JPL Horizons observer-table plain-text files to extract time-stamped RA/Dec positions for a comet. The Horizons text format is stable and well-documented, making the parser a well-defined, self-contained subtask. Optionally, the student may also implement direct querying via the [Horizons REST API](https://ssd-api.jpl.nasa.gov/doc/horizons.html) if time permits.
+
+**Differential Rate Tracking**: At each guide cycle, compute the comet's current positional offset from its reference position at session start using cubic spline interpolation over the imported ephemeris, then inject this offset as a bias into the guide correction pipeline. The guide star continues to correct for mount periodic error and atmospheric drift normally — the comet motion is layered on top. This is the same approach used by tools such as Astro-Physics APCC and is well-established for INDI-compatible mounts.
+
+**Guide Module Readout Widget**: Display the live comet offset in RA and Dec (arcseconds) and the current interpolated motion rate (arcsec/min) alongside the standard RMS error metrics already present in the Guide module.
+
+**Session Persistence**: Store the ephemeris file path and session reference time so the user can pause, restart guiding, or resume the following night without re-importing data.
+
+**Expected results**:
+
+- Slit overlay rendered in the Ekos Guide module view with a profile editor dialog
+- Automated slit centering via guide pulse nudging, replacing the manual dither workaround
+- JPL Horizons plain-text file parser with cubic spline interpolation for RA/Dec positions
+- Differential comet tracking integrated into the guide correction pipeline
+- Live comet offset and rate readout widget in the Guide module
+- Unit tests for ephemeris parsing, spline interpolation accuracy, and slit offset calculations
+- Documentation and user guide for both features
+
+**Knowledge Prerequisite**: C++, Qt, basic celestial coordinate math (RA/Dec, arcsecond offsets), basic numerical methods (spline interpolation)
 
 **Duration:** 350 hours
 

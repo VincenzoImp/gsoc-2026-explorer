@@ -1,7 +1,7 @@
 # Apache Software Foundation — Project Ideas
 
 **Source:** https://s.apache.org/gsoc2026ideas
-**Scraped:** 2026-02-22T23:28:47.597654
+**Scraped:** 2026-03-10T16:58:40.297271
 
 ---
 
@@ -43,6 +43,36 @@ Must-have:
 *Project Devs*, mail: dev (at) apisix.apache.org
 
 # Apache AsterixDB
+
+[Dynamic Memory Management ](https://issues.apache.org/jira/browse/ASTERIXDB-3703)
+
+AsterixDB currently uses a static approach for memory allocation in memory-intensive operators, where each operator is assigned a fixed memory budget, either user-provided or derived from defaults. Static budgeting can lead to several issues. Long-running queries may hold large memory allocations for extended periods, reducing concurrency and blocking other queries. In addition, memory estimation errors can result in over-allocation that wastes resources or under-allocation that causes spills and performance degradation.
+
+This project will make key memory-intensive operators dynamically adaptive to memory reallocation requests from a resource broker. The broker will adjust operator memory budgets at runtime based on system conditions and workload objectives, such as improving fairness across concurrent queries, increasing overall throughput, and maintaining predictable performance under contention. The expected outcome is a coordinated memory management loop where operators expose safe resizing hooks and the broker uses feedback signals to rebalance memory across running queries.
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Shiva Jahangiri*, mail: shivajah (at) apache.org
+
+*Project Devs*, mail:
+
+[Top K Nearest Queries Support ](https://issues.apache.org/jira/browse/ASTERIXDB-3699)
+
+AsterixDB currently lacks native support for Top-K-Nearest queries, which return the K tuples whose attribute values are closest to a given reference value or point. Examples include: the five employees whose salaries are closest to the CEO's salary or the five buildings closest to the White House. This project involves designing and implementing efficient Top-K-Nearest query processing within AsterixDB's execution engine (Hyracks), including optimizer support to avoid full scans and to leverage existing indexes where possible. The implementation should integrate cleanly with SQL++.
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Suryaa Charan*, mail: suryaacharan (at) apache.org
+
+*Project Devs*, mail:
 
 [NL2SQL++ assistant ](https://issues.apache.org/jira/browse/ASTERIXDB-3696)
 
@@ -102,39 +132,45 @@ With the advancement of WASM and Javascript in general, there now exist versions
 
 *Project Devs*, mail:
 
-[Dynamic Memory Management ](https://issues.apache.org/jira/browse/ASTERIXDB-3703)
+# Apache Cassandra
 
-AsterixDB currently uses a static approach for memory allocation in memory-intensive operators, where each operator is assigned a fixed memory budget, either user-provided or derived from defaults. Static budgeting can lead to several issues. Long-running queries may hold large memory allocations for extended periods, reducing concurrency and blocking other queries. In addition, memory estimation errors can result in over-allocation that wastes resources or under-allocation that causes spills and performance degradation.
+[[CEP-59] Implementation of In-Band Connection Draining (Graceful Disconnect)](https://issues.apache.org/jira/browse/CASSANDRA-21191)
 
-This project will make key memory-intensive operators dynamically adaptive to memory reallocation requests from a resource broker. The broker will adjust operator memory budgets at runtime based on system conditions and workload objectives, such as improving fairness across concurrent queries, increasing overall throughput, and maintaining predictable performance under contention. The expected outcome is a coordinated memory management loop where operators expose safe resizing hooks and the broker uses feedback signals to rebalance memory across running queries.
+This ticket covers the implementation of the server-side logic and protocol extensions defined in **CEP-59: Graceful Disconnect – In-Band Connection Draining for Node Shutdown**.
 
-**Difficulty:**Major
+**Goal:**
+
+Currently, when a Cassandra node shuts down or drains, client connections are often terminated abruptly, leading to failed requests. CEP-59 proposes an "in-band" signal (GRACEFUL_DISCONNECT) to notify clients before the socket is closed, allowing them to stop sending new requests and wait for pending ones to complete.
+
+**Proposed Scope (Implementation):**
+
+**Server-Side:**
+
+- Modify the transport layer (specifically the Netty pipeline) to advertise and emit GRACEFUL_DISCONNECT on shutting down, as CEP-59 outlines.
+
+- Implement configurable timeouts to allow clients a grace period before hard closure.
+
+**Python driver (potentially):**
+
+- Update the Python driver to opt-in and handle GRACEFUL_DISCONNECT.
+
+**References:**
+
+**Difficulty:**
 
 **Project size:**~350 hour (large)
 
 **Potential mentors:**
 
-*Shiva Jahangiri*, mail: shivajah (at) apache.org
+*, mail: (at) apache.org*
 
-*Project Devs*, mail:
+*Project Devs*, mail: dev (at) cassandra.apache.org
 
-[Top K Nearest Queries Support ](https://issues.apache.org/jira/browse/ASTERIXDB-3699)
 
-AsterixDB currently lacks native support for Top-K-Nearest queries, which return the K tuples whose attribute values are closest to a given reference value or point. Examples include: the five employees whose salaries are closest to the CEO's salary or the five buildings closest to the White House. This project involves designing and implementing efficient Top-K-Nearest query processing within AsterixDB's execution engine (Hyracks), including optimizer support to avoid full scans and to leverage existing indexes where possible. The implementation should integrate cleanly with SQL++.
-
-**Difficulty:**Major
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*Suryaa Charan*, mail: suryaacharan (at) apache.org
-
-*Project Devs*, mail:
 
 # Apache Fineract
 
-[Loan Origination POC](https://issues.apache.org/jira/browse/FINERACT-2442)
+[BI connector and demonstration](https://issues.apache.org/jira/browse/FINERACT-2441)
 
 **Note: GSOC applicants - this is a "draft concept". Do not work on your proposal until we kick off the process at Fineract for evaluating. We may significantly edit this concept or create new ones to replace it.**
 
@@ -142,60 +178,13 @@ AsterixDB currently lacks native support for Top-K-Nearest queries, which return
 
 **For more information, you should be reviewing emails on this subject and following the Wiki pages.** [https://lists.apache.org/list.html?dev@fineract.apache.org](https://lists.apache.org/list.html?dev@fineract.apache.org)[https://cwiki.apache.org/confluence/display/FINERACT/GSOC+Program+at+Fineract](https://cwiki.apache.org/confluence/display/FINERACT/GSOC+Program+at+Fineract)
 
-**LOAN ORIGINATION CONTEXT**
+The idea is to create a connector and a demonstration of analytics that would consume and organize data from Fineract.
 
-Fineract has some loan origination functionality but it is not robust enough for many operations. Several vendors, working with Fineract have created new Loan Origination plug ins.
+For example, create a way to pull data out of Fineract and make it easy to use in common analytics such as Power BI or Tableau or, better yet, an open source variant. The data should probably go to a Data Warehouse.
 
-There is also a major enhancement underway that would build out a full Loan Origination flow by supporting the backend needs of data storage for such LOS. See ticket [https://issues.apache.org/jira/browse/FINERACT-2418](https://issues.apache.org/jira/browse/FINERACT-2418) .
+Start by proposing and exploring different options and write up the pros and cons.
 
-The GSOC student would be expected to propose something as a POC (proof of concept) that would either - use the developed Fienract backend solution, or build a new component outside of Fineract to create the flows that would demonstrate the LOS functionality.
-
-That is, this is a moving target, and we would need different proposals from prospective candidates to explore the area of Loan Origination. This may require expertise in risk assessment, loan origination models and business acumen. There will not be much more explanation that this available. The student would be expected to be a self starter.
-
-The mentor for this would need to be an expert at risk modeling, understand Loan Origination, and support a conceptual basis that may involve some things internal to Fineract and some processing elements outside of Fineract. Please comment below if you are an existing Fineract contributor with this expertise.
-
-To try to illustrate: one possible GSOC Proposal archtype we could accept would be a survey of Loan Origination Models, their strengths and weaknesses and to identify commonalities for the community to focus on. This would thus be a Requirements exercise and may help identify future roadmap concepts. In this case, the code to be developed may just expose a few APIs into different screen flows. Thus, perhaps FIGMA flows (or similar) connecting to a set of APIs on the backend.
-
-If those new LOS APIs are existing in June 2026 (ticket 2418 resolved), then those APIs are to be used. if they are NOT there in Fineract, then the student would be requested to create a fork and to implement the POC outside of the main Dev branch.
-
-I welcome additions to this write up. [jdailey](https://issues.apache.org/jira/secure/ViewProfile.jspa?name=jdailey)
-
-**Difficulty:**Minor
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*James Dailey*, mail: jdailey (at) apache.org
-
-*Project Devs*, mail: dev (at) fineract.apache.org
-
-[Front end application MVP (POC)](https://issues.apache.org/jira/browse/FINERACT-2440)
-
-**Note: GSOC applicants - this is a "draft concept". Do not work on your proposal until we kick off the process at Fineract for evaluating. We may significantly edit this concept or create new ones to replace it.**
-
-**No one should work on this specific ticket unless assigned - the GSOC candidate we choose will be assigned this ticket.**
-
-**For more information, you should be reviewing emails on this subject and following the Wiki pages.** [https://lists.apache.org/list.html?dev@fineract.apache.org](https://lists.apache.org/list.html?dev@fineract.apache.org)[https://cwiki.apache.org/confluence/display/FINERACT/GSOC+Program+at+Fineract](https://cwiki.apache.org/confluence/display/FINERACT/GSOC+Program+at+Fineract)
-
-**Build a simple self-service front end that talks to the Self-Service API**
-
-We need a new, user-friendly front end app that connects to our Backend for Front end (**Self-Service API component)** This will be the “customer portal” experience where users can log in, see their accounts, and check recent activity. It should be straightforward, easy to use, and a good reference example for others to build on.
-
-Functionality needed would include:
-
-- Login
-- Check balances
-- Transfer between accounts owned by the same customer.
-- Submit application for a new loan
-
-Testing end to end required.
-
-Solid UI design
-
-Modern app framework
-
-Documentation
+Create a demonstration project that takes into account security, levels of access, and security of PII data if it exists.
 
 **Difficulty:**Minor
 
@@ -237,174 +226,7 @@ Not included in this GSOC would be the end consumer APP, although that may be un
 
 *Project Devs*, mail: dev (at) fineract.apache.org
 
-[BI connector and demonstration](https://issues.apache.org/jira/browse/FINERACT-2441)
-
-**Note: GSOC applicants - this is a "draft concept". Do not work on your proposal until we kick off the process at Fineract for evaluating. We may significantly edit this concept or create new ones to replace it.**
-
-**No one should work on this specific ticket unless assigned - the GSOC candidate we choose will be assigned this ticket.**
-
-**For more information, you should be reviewing emails on this subject and following the Wiki pages.** [https://lists.apache.org/list.html?dev@fineract.apache.org](https://lists.apache.org/list.html?dev@fineract.apache.org)[https://cwiki.apache.org/confluence/display/FINERACT/GSOC+Program+at+Fineract](https://cwiki.apache.org/confluence/display/FINERACT/GSOC+Program+at+Fineract)
-
-The idea is to create a connector and a demonstration of analytics that would consume and organize data from Fineract.
-
-For example, create a way to pull data out of Fineract and make it easy to use in common analytics such as Power BI or Tableau or, better yet, an open source variant. The data should probably go to a Data Warehouse.
-
-Start by proposing and exploring different options and write up the pros and cons.
-
-Create a demonstration project that takes into account security, levels of access, and security of PII data if it exists.
-
-**Difficulty:**Minor
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*James Dailey*, mail: jdailey (at) apache.org
-
-*Project Devs*, mail: dev (at) fineract.apache.org
-
-[fineract-client-feign usage for integration tests](https://issues.apache.org/jira/browse/FINERACT-2454)
-
-**Note: GSOC applicants - this is a "draft concept". Do not work on your proposal until we kick off the process at Fineract for evaluating. We may significantly edit this concept or create new ones to replace it.**
-
-**No one should work on this specific ticket unless assigned - the GSOC candidate we choose will be assigned this ticket.**
-
-**For more information, you should be reviewing emails on this subject and following the Wiki pages.** [https://lists.apache.org/list.html?dev@fineract.apache.org](https://lists.apache.org/list.html?dev@fineract.apache.org)[https://cwiki.apache.org/confluence/display/FINERACT/GSOC+Program+at+Fineract](https://cwiki.apache.org/confluence/display/FINERACT/GSOC+Program+at+Fineract)
-
-"Moving away from RestAssured (low-level) API calls in integration tests and rather use fineract-client-feign would be a great improvement"
-
-**Summary (with some assist from chatgpt for clarity)**
-
-Apache Fineract has a large set of REST APIs and many integration tests currently call those APIs using **RestAssured**(low-level HTTP requests). This ticket is to help modernize the tests by switching them to use **fineract-client-feign**, which is Fineract’s higher-level API client.
-
-#### Goal
-
-Create a simple migration approach and then migrate a small set of integration tests from RestAssured to fineract-client-feign.
-
-#### Why we’re doing this
-
-- Makes tests easier to read and maintain (less raw HTTP code).
-
-- Encourages consistent API usage across tests.
-
-- Reduces duplicated request-building logic (headers, base URLs, auth, etc.).
-
-## Scope of Work
-
-### 1) Create a short migration plan
-
-Write a short note (in the Jira ticket comments or a small doc) that answers:
-
-- Where are the current RestAssured-based integration tests located?
-
-- What’s the recommended pattern for using fineract-client-feign in tests?
-
-- What should be migrated first (start small)?
-
-### 2) Pick a small “starter set” of tests
-
-Identify **2–5 integration tests** that:
-
-- Are simple (e.g., create/read/update a resource)
-
-- Don’t involve complicated multi-step workflows
-
-- Run reliably in CI
-
-### 3) Implement the migration for the starter set
-
-For each selected test:
-
-- Replace RestAssured calls with fineract-client-feign client calls
-
-- Keep the same assertions (same expected behavior)
-
-- Ensure the tests still pass locally and in CI
-
-### 4) Document the new pattern
-
-Add a short README note or comments in the test code showing:
-
-- How to initialize/configure the Feign client for tests
-
-- How auth/session is handled
-
-- A small “before vs after” explanation (1 paragraph is enough)
-
-## Acceptance Criteria
-
-- A brief migration plan is written and linked in the ticket.
-
-- At least
-**2 integration tests**have been converted to use fineract-client-feign.
-
-- All tests pass (locally and/or in CI).
-
-- A short note exists explaining how to write future integration tests using fineract-client-feign.
-
-## Notes / Hints for a beginner
-
-- Start by converting just one very small test to learn the pattern.
-
-- Keep changes small and easy to review (one test per commit is ideal).
-
-- If something is unclear (e.g., how auth is set up), add a comment in the ticket describing what you found.
-
-## Out of Scope (for this ticket)
-
-- Migrating
-*all*integration tests across the repo
-
-- Refactoring production API code
-
-- Changing API behavior—this is only a test client swap
-
-**Difficulty:**Minor
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*James Dailey*, mail: jdailey (at) apache.org
-
-*Project Devs*, mail: dev (at) fineract.apache.org
-
-[[GSoC 2026] [POC] Standardize and Harden Transaction Idempotency for Savings and Loans](https://issues.apache.org/jira/browse/FINERACT-2485)
-
-**Goal:** Standardize idempotency enforcement to prevent replay attacks in core financial modules. **Implementation Strategy (Addressing James Dailey's feedback):**
-
-**Opt-In Architecture:**New logic will be behind a Global Configuration flag. Default remains legacy behavior to ensure 100% backward compatibility.
-
-**Phased Approach:**Audit existing m_portfolio_command_source usage and bridge gaps in the Savings module first.
-
-**Testing:**Implementation of integration tests simulating network failures/retries.
-
-**Difficulty:**Major
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*saifulhuq*, mail: saifulhuq (at) apache.org
-
-*Project Devs*, mail: dev (at) fineract.apache.org
-
-[[Testing] Add unit tests for ApiParameterHelper in fineract-core](https://issues.apache.org/jira/browse/FINERACT-2494)
-
-There is currently no unit test coverage for the ApiParameterHelper utility class. I have implemented a new test suite using JUnit 5 to cover core methods like extractFieldsForResponseIfProvided.
-
-Verification: Successfully ran locally with 1/1 tests passed (100% success rate)
-
-
-**Difficulty:**Major
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*Ambika*, mail: ambikasony (at) apache.org
-
-*Project Devs*, mail: dev (at) fineract.apache.org
+* *
 
 [New command processing infrastructure](https://issues.apache.org/jira/browse/FINERACT-2169)
 
@@ -543,6 +365,225 @@ TBD
 
 *Project Devs*, mail: dev (at) fineract.apache.org
 
+[Fineract Backoffice Interface POC](https://issues.apache.org/jira/browse/FINERACT-2526)
+
+To enable a more comprehensive Fineract project, there will be a new administrative backend User Interface (UI) component. It will be a separate GitHub repository within the Apache Fineract project.
+
+It will be aimed explaining the key functionality of fineract to devs and to act as the demo infrastructure. It will be aimed at being downloaded as part of the Docker container from the ASF, for example.
+
+It should include, for the system user and dev, a page showing all of the APIs organized in a sensible way, and generated automatically at each build.
+
+This back office component is NOT THE SAME as the end-user POC that is proposed in [https://issues.apache.org/jira/browse/FINERACT-2440](https://issues.apache.org/jira/browse/FINERACT-2440)
+
+This does overlap partially with external open source projects that are offered under different licenses. However, this will be apache 2.0 license.
+
+This project will use Angular.
+
+This project should re-imagine the Fineract use cases in a way that is visually simple, distinct, and relates to the several user groups that we see in the project: Fintechs, embedded lending programs, non banking financial institutions (lenders), small banks, etc
+
+Use cases will include, but not be limited to:
+
+- login and select user type
+- configure other users
+- set up a new loan product
+- disburse a loan
+- create a savings account
+- configure global variables
+- run dashboards
+
+**Difficulty:**Minor
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*James Dailey*, mail: jdailey (at) apache.org
+
+*Project Devs*, mail: dev (at) fineract.apache.org
+
+[fineract-client-feign usage for integration tests](https://issues.apache.org/jira/browse/FINERACT-2454)
+
+**Note: GSOC applicants - this is a "draft concept". Do not work on your proposal until we kick off the process at Fineract for evaluating. We may significantly edit this concept or create new ones to replace it.**
+
+**No one should work on this specific ticket unless assigned - the GSOC candidate we choose will be assigned this ticket.**
+
+**For more information, you should be reviewing emails on this subject and following the Wiki pages.** [https://lists.apache.org/list.html?dev@fineract.apache.org](https://lists.apache.org/list.html?dev@fineract.apache.org)[https://cwiki.apache.org/confluence/display/FINERACT/GSOC+Program+at+Fineract](https://cwiki.apache.org/confluence/display/FINERACT/GSOC+Program+at+Fineract)
+
+"Moving away from RestAssured (low-level) API calls in integration tests and rather use fineract-client-feign would be a great improvement"
+
+**Summary (with some assist from chatgpt for clarity)**
+
+Apache Fineract has a large set of REST APIs and many integration tests currently call those APIs using **RestAssured**(low-level HTTP requests). This ticket is to help modernize the tests by switching them to use **fineract-client-feign**, which is Fineract’s higher-level API client.
+
+#### Goal
+
+Create a simple migration approach and then migrate a small set of integration tests from RestAssured to fineract-client-feign.
+
+#### Why we’re doing this
+
+- Makes tests easier to read and maintain (less raw HTTP code).
+
+- Encourages consistent API usage across tests.
+
+- Reduces duplicated request-building logic (headers, base URLs, auth, etc.).
+
+## Scope of Work
+
+### 1) Create a short migration plan
+
+Write a short note (in the Jira ticket comments or a small doc) that answers:
+
+- Where are the current RestAssured-based integration tests located?
+
+- What’s the recommended pattern for using fineract-client-feign in tests?
+
+- What should be migrated first (start small)?
+
+### 2) Pick a small “starter set” of tests
+
+Identify **2–5 integration tests** that:
+
+- Are simple (e.g., create/read/update a resource)
+
+- Don’t involve complicated multi-step workflows
+
+- Run reliably in CI
+
+### 3) Implement the migration for the starter set
+
+For each selected test:
+
+- Replace RestAssured calls with fineract-client-feign client calls
+
+- Keep the same assertions (same expected behavior)
+
+- Ensure the tests still pass locally and in CI
+
+### 4) Document the new pattern
+
+Add a short README note or comments in the test code showing:
+
+- How to initialize/configure the Feign client for tests
+
+- How auth/session is handled
+
+- A small “before vs after” explanation (1 paragraph is enough)
+
+## Acceptance Criteria
+
+- A brief migration plan is written and linked in the ticket.
+
+- At least
+**2 integration tests**have been converted to use fineract-client-feign.
+
+- All tests pass (locally and/or in CI).
+
+- A short note exists explaining how to write future integration tests using fineract-client-feign.
+
+## Notes / Hints for a beginner
+
+- Start by converting just one very small test to learn the pattern.
+
+- Keep changes small and easy to review (one test per commit is ideal).
+
+- If something is unclear (e.g., how auth is set up), add a comment in the ticket describing what you found.
+
+## Out of Scope (for this ticket)
+
+- Migrating
+*all*integration tests across the repo
+
+- Refactoring production API code
+
+- Changing API behavior—this is only a test client swap
+
+**Difficulty:**Minor
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*James Dailey*, mail: jdailey (at) apache.org
+
+*Project Devs*, mail: dev (at) fineract.apache.org
+
+* *
+
+[Loan Origination POC](https://issues.apache.org/jira/browse/FINERACT-2442)
+
+**Note: GSOC applicants - this is a "draft concept". Do not work on your proposal until we kick off the process at Fineract for evaluating. We may significantly edit this concept or create new ones to replace it.**
+
+**No one should work on this specific ticket unless assigned - the GSOC candidate we choose will be assigned this ticket.**
+
+**For more information, you should be reviewing emails on this subject and following the Wiki pages.** [https://lists.apache.org/list.html?dev@fineract.apache.org](https://lists.apache.org/list.html?dev@fineract.apache.org)[https://cwiki.apache.org/confluence/display/FINERACT/GSOC+Program+at+Fineract](https://cwiki.apache.org/confluence/display/FINERACT/GSOC+Program+at+Fineract)
+
+**LOAN ORIGINATION CONTEXT**
+
+Fineract has some loan origination functionality but it is not robust enough for many operations. Several vendors, working with Fineract have created new Loan Origination plug ins.
+
+There is also a major enhancement underway that would build out a full Loan Origination flow by supporting the backend needs of data storage for such LOS. See ticket [https://issues.apache.org/jira/browse/FINERACT-2418](https://issues.apache.org/jira/browse/FINERACT-2418) .
+
+The GSOC student would be expected to propose something as a POC (proof of concept) that would use and expand upon the developed Fineract backend solution. It should not revisit the design of that, and it should be separated enough as to not collide with ongoing work in the project that may be moving faster.
+
+It may be useful to build a new component outside of Fineract to create the flows that would demonstrate the LOS functionality.
+
+That is, this is a moving target, and we would need different proposals from prospective candidates to explore the area of Loan Origination. This may require expertise in risk assessment, loan origination models and business acumen. There will not be much more explanation that this available. The student would be expected to be a self starter.
+
+The mentor for this would need to be an expert at risk modeling, understand Loan Origination, and support a conceptual basis that may involve some things internal to Fineract and some processing elements outside of Fineract. Please comment below if you are an existing Fineract contributor with this expertise.
+
+To try to illustrate: one possible GSOC Proposal archtype we could accept would be a survey of Loan Origination Models, their strengths and weaknesses and to identify commonalities for the community to focus on. This would thus be a Requirements exercise and may help identify future roadmap concepts. In this case, the code to be developed may just expose a few APIs into different screen flows. Thus, perhaps FIGMA flows (or similar) connecting to a set of APIs on the backend.
+
+If those new LOS APIs are existing in June 2026 (ticket 2418 resolved), then those APIs are to be used. if they are NOT there in Fineract, then the student would be requested to create a fork and to implement the POC outside of the main Dev branch.
+
+I welcome additions to this write up. [jdailey](https://issues.apache.org/jira/secure/ViewProfile.jspa?name=jdailey)
+
+**Difficulty:**Minor
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*James Dailey*, mail: jdailey (at) apache.org
+
+*Project Devs*, mail: dev (at) fineract.apache.org
+
+[Front end application MVP (POC)](https://issues.apache.org/jira/browse/FINERACT-2440)
+
+**Note: GSOC applicants - this is a "draft concept". Do not work on your proposal until we kick off the process at Fineract for evaluating. We may significantly edit this concept or create new ones to replace it.**
+
+**No one should work on this specific ticket unless assigned - the GSOC candidate we choose will be assigned this ticket.**
+
+**For more information, you should be reviewing emails on this subject and following the Wiki pages.** [https://lists.apache.org/list.html?dev@fineract.apache.org](https://lists.apache.org/list.html?dev@fineract.apache.org)[https://cwiki.apache.org/confluence/display/FINERACT/GSOC+Program+at+Fineract](https://cwiki.apache.org/confluence/display/FINERACT/GSOC+Program+at+Fineract)
+
+**Build a simple self-service front end that talks to the Self-Service API**
+
+We need a new, user-friendly front end app that connects to our Backend for Front end (**Self-Service API component)** This will be the “customer portal” experience where users can log in, see their accounts, and check recent activity. It should be straightforward, easy to use, and a good reference example for others to build on.
+
+Functionality needed would include:
+
+- Login
+- Check balances
+- Transfer between accounts owned by the same customer.
+- Submit application for a new loan
+
+Testing end to end required.
+
+Solid UI design
+
+Modern app framework
+
+Documentation
+
+**Difficulty:**Minor
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*James Dailey*, mail: jdailey (at) apache.org
+
+*Project Devs*, mail: dev (at) fineract.apache.org
+
 # Apache NuttX
 
 [Add support to ESP Hosted on NuttX](https://issues.apache.org/jira/browse/NUTTX-25)
@@ -573,7 +614,7 @@ Adding support to SSH client will let low cost boards powered by NuttX and LVGL 
 
 **Difficulty:**Major
 
-**Project size:**~350 hour (large)
+**Project size:**~90 hour (small)
 
 **Potential mentors:**
 
@@ -684,6 +725,20 @@ This feature will make NuttX even yet more Unix/Linux-like.
 
 *Project Devs*, mail: dev (at) nuttx.apache.org
 
+[Analog (ADC/DAC) interfaces unification and better API](https://issues.apache.org/jira/browse/NUTTX-24)
+
+The issue was discussed and is tracked in a GitHub issue [https://github.com/apache/nuttx/issues/16916](https://github.com/apache/nuttx/issues/16916)
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Michal Lenc*, mail: michallenc (at) apache.org
+
+*Project Devs*, mail: dev (at) nuttx.apache.org
+
 [NXBoot algorithm extension for two partitions](https://issues.apache.org/jira/browse/NUTTX-23)
 
 Currently NuttX bootloader NXBoot requires three partitions to function properly. This is a trade of between better update speed and higher external memory capacity requirements.
@@ -700,9 +755,11 @@ The algorithm isn't suited for devices with small or even none external memory. 
 
 *Project Devs*, mail: dev (at) nuttx.apache.org
 
-[Analog (ADC/DAC) interfaces unification and better API](https://issues.apache.org/jira/browse/NUTTX-24)
+[Port NuttX to the Raspberry Pi 4B](https://issues.apache.org/jira/browse/NUTTX-26)
 
-The issue was discussed and is tracked in a GitHub issue [https://github.com/apache/nuttx/issues/16916](https://github.com/apache/nuttx/issues/16916)
+This project tackles more of the port of NuttX to the Raspberry Pi 4B, like including networking support and more user demos. This will help NuttX demonstrate its scalability, provide a great target for regression testing multiple features at once, and unlock new RTOS applications that have not been previously tackled by NuttX (multimedia, large memory programs, etc.).
+
+GitHub issue tracker here: [https://github.com/apache/nuttx/issues/18507](https://github.com/apache/nuttx/issues/18507)
 
 **Difficulty:**Major
 
@@ -710,7 +767,7 @@ The issue was discussed and is tracked in a GitHub issue [https://github.com/apa
 
 **Potential mentors:**
 
-*Michal Lenc*, mail: michallenc (at) apache.org
+*Tomasz Cedro*, mail: cederom (at) apache.org
 
 *Project Devs*, mail: dev (at) nuttx.apache.org
 
@@ -764,6 +821,8 @@ The project includes:
 
 *Project Devs*, mail: dev (at) wayang.apache.org
 
+* *
+
 [Implement a JDBC driver for Wayang](https://issues.apache.org/jira/browse/WAYANG-55)
 
 **Background**
@@ -803,6 +862,8 @@ The driver should delegate incoming SQL queries to the SQL api provided by Wayan
 *Zoi Kaoudi*, mail: zkaoudi (at) apache.org
 
 *Project Devs*, mail: dev (at) wayang.apache.org
+
+* *
 
 [Support for a Dataframes API ](https://issues.apache.org/jira/browse/WAYANG-53)
 
@@ -844,7 +905,7 @@ By the end of GSoC, Wayang will have its first robust DataFrame API — a major 
 
 *Project Devs*, mail: dev (at) wayang.apache.org
 
-# Mahout
+*Mahout*
 
 [Add ZZFeatureMap Encoding for QDP](https://issues.apache.org/jira/browse/GSOC-312)
 
@@ -930,6 +991,42 @@ Please email me(jiekaichang@apache.org) your proposal first and show me differen
 **Potential mentors:**
 
 *Jie-Kai Chang*, mail: jiekaichang (at) apache.org
+
+*Project Devs*, mail: dev (at) mahout.apache.org
+
+[Rust code quality and website improvements for Apache Mahout (QDP & site)](https://issues.apache.org/jira/browse/GSOC-327)
+
+## Background
+
+**QDP:**GPU-accelerated quantum state encoding with a Rust core (qdp-core), CUDA kernels (qdp-kernels), and PyO3 bindings (qumat.qdp / _qdp). Keeping the Rust stack in good shape and visible (e.g. via rustdoc) is part of project health.**Website:**Built with Docusaurus; docs/ is the source of truth. Work here includes site code (config, scripts, components), fixing link and nav issues, integrating API docs, and CI.
+
+## Project context
+
+**QDP encodings:**qdp/qdp-core/src/gpu/encodings/ — QuantumEncoder trait, get_encoder, encodings: amplitude, angle, basis, iqp.**Website:**Docusaurus 3.x; source of truth docs/ (sync script copies into website/ before build).**QDP API:**Encoding methods "amplitude" | "angle" | "basis" | "iqp" | "iqp-z"; see docs/qdp/api.md.
+
+## Concrete improvements
+
+### Rust (QDP)
+
+**Unsafe scope refactor:**Narrow unsafe blocks; keep setup/teardown outside; add // SAFETY: where needed; avoid new broad unsafe regions.**Doc coverage:**Add or fix /// / //! for public items (first-line summary; optional # Examples / # Panics). Use cargo doc --no-deps → target/doc/.**Lints and style:**Fix cargo clippy warnings; remove dead code and unused imports; rustfmt.**Small refactors:**Extract helpers, clarify names, shorten long functions; no behavior change.**Tests:**Add or tighten unit tests where coverage is low; keep tests fast and deterministic.
+
+### Website
+
+**Link errors:**Fix broken links, wrong URLs, and redirect issues in docs/ and the built site.**Site programming:**Fix or improve Docusaurus config, sync scripts, or components.**Nav and sidebar:**Align labels and order with content; fix inconsistencies.**Doc build in CI:**Run cargo doc --no-deps (and optionally Python doc generation); fail on errors.**Placeholders:**Replace "TODO: Add API reference" with a link or short summary.
+
+Tracked github issue
+
+[https://github.com/apache/mahout/issues/1080](https://github.com/apache/mahout/issues/1080)
+
+Email : richhuang@apache.org
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Rich Huang*, mail: richhuang (at) apache.org
 
 *Project Devs*, mail: dev (at) mahout.apache.org
 
@@ -1048,7 +1145,7 @@ Stretch goal: Update Python FileIO.readContinuously to use watch transform
 
 *Project Devs*, mail: dev (at) beam.apache.org
 
-# DolphinScheduler
+*DolphinScheduler*
 
 [Apache DolphinScheduler Embedding the AlertServer into the API Server](https://issues.apache.org/jira/browse/GSOC-306)
 
@@ -1147,6 +1244,8 @@ Currently, BanyanDB supports disaster recovery backups and simple CSV dumps for 
 
 *Project Devs*, mail: dev (at) skywalking.apache.org
 
+* *
+
 [Apache SkyWalking Natural Language to BydbQL](https://issues.apache.org/jira/browse/GSOC-309)
 
 **Background**
@@ -1186,7 +1285,7 @@ The goal of this project is to build an **Intelligent Query Agent** that leverag
 
 *Project Devs*, mail: dev (at) skywalking.apache.org
 
-# IoTDB
+*IoTDB*
 
 [Compatible with TPU & integrate SOTA time series foundation models for IoTDB-AINode](https://issues.apache.org/jira/browse/GSOC-307)
 
@@ -1503,6 +1602,136 @@ IoTDB Table Model Query Syntax:[https://iotdb.apache.org/UserGuide/latest-Table/
 
 # Seata
 
+[GSoC 2026 - Apache Seata(Incubating)Enhance the Seata framework Golang SDK’s multi-registry support and seata-ctl capability](https://issues.apache.org/jira/browse/GSOC-316)
+
+# Project Overview
+
+## Title
+
+Enhance Seata-Go Multi-Registry Support and seata-ctl Diagnostic Tool Capability
+
+## Abstract
+
+Apache Seata (incubating) is a popular distributed transaction solution for ensuring data consistency in microservice architectures. Seata-Go, as its Go language SDK, is responsible for implementing core TM/RM functionalities in the Go ecosystem.
+
+Currently, Seata-Go lags behind the Java version in terms of registry support richness at the infrastructure layer, and its production-level transaction troubleshooting and operational toolchain (seata-ctl) is still in its early stages. This results in limited options for users in non-Etcd/Raft scenarios and high troubleshooting costs when transaction anomalies occur.
+
+This project aims to align with Seata's infrastructure ecosystem by introducing support for four mainstream registries: **Nacos, ZooKeeper, Consul, and Redis** to Seata-Go. Additionally, it will significantly enhance seata-ctl's diagnostic capabilities through full-chain environment checks, transaction state insights, and an interactive terminal interface, reducing the operational threshold for distributed transactions.
+
+## Detailed Description / Objectives
+
+**Infrastructure Alignment**: Ensure Seata-Go can seamlessly integrate into existing enterprise-level microservice governance systems by implementing adapters for various mainstream registries.**Operational Efficiency Improvement**: Build a complete diagnostic command set enabling developers to quickly locate network, database, and transaction state anomalies, and simplify operation workflows through an interactive interface.**Community Ecosystem Contribution**: Produce high-quality design documents and technical blogs to help community users understand Seata-Go's underlying governance logic and operational best practices.
+
+## Deliverables
+
+### 1. Multi-Registry Cluster Support (Priority P0)
+
+**Mainstream Registry Adapter Implementation**:
+
+- Implement
+**Nacos**and**ZooKeeper**registry adapters with support for service instance subscription, real-time listening, and multi-tenant isolation configuration. - Implement
+**Consul**and**Redis**adapters with support for service registration/discovery and heartbeat monitoring mechanisms. - Bug fixes for Seata NamingServer Golang SDK.
+- Ensure service registration path formats for all registries are fully compatible with Java version Seata.
+
+- Implement
+**Configuration and Initialization System Integration**:
+
+- Extend configuration structure to standardize registry-specific configuration parameters.
+- Optimize factory initialization logic to support smooth registry type switching via configuration files.
+
+
+### 2. seata-ctl Diagnostic Tool Enhancement (Priority P1)
+
+**Full-Chain Self-Check Functionality**:
+
+- Implement automated environment checks covering network connectivity verification with the server.
+- Implement database-level health checks including connection availability and validation of transaction core system table structures.
+- Implement configuration file format and required field legality validation.
+
+**Transaction State Insight Capability**:
+
+- Implement real-time query functionality for active transaction lists.
+- Implement query functionality for resource lock records corresponding to specific transaction identifiers (XID).
+- Support structured output formats (e.g., table, JSON, YAML).
+
+**Interactive Terminal Interface (TUI)**:
+
+- Introduce a visual interactive mode for the tool, simplifying complex command input through interface guidance to enhance operational experience.
+
+
+### 3. Testing, Samples, and Community Output (Priority P2)
+
+**Testing and Validation**:
+
+- Write unit tests and integration tests for each registry adapter to verify node change awareness capabilities.
+- Validate diagnostic tool accuracy across different database dialects.
+
+**Samples and Documentation**:
+
+- Add complete multi-registry integration examples in seata-go-samples.
+- Write technical articles:
+**"Seata-Go Registry Extension Design and Practice Guide"**and**"Distributed Transaction Troubleshooting in Practice: Quickly Locating Anomalies with Diagnostic Tools"**.
+
+
+## Implementation Plan
+
+**Phase 1: Research and Architecture Design**
+
+- Research existing Seata-Go registry implementations and study Seata NamingServer implementation logic.
+- Design diagnostic tool's interaction logic and command set architecture, ensuring tool extensibility.
+
+**Phase 2: Registry Adapter Development (P0)**
+
+- Prioritize completion of core functionality implementation and compatibility testing for Nacos and ZooKeeper.
+- Perform bug fixes for Seata NamingServer to optimize its stability in the Go SDK.
+- Integrate Consul and Redis support and unify configuration initialization entry points.
+
+**Phase 3: Diagnostic Tool and Interactive Interface Development (P1)**
+
+- Develop core logic for environment checks and transaction state queries.
+- Build interactive terminal interface (TUI), encapsulating underlying commands into intuitive visual operations.
+
+**Phase 4: Testing Validation and Community Promotion (P2)**
+
+- Improve test cases to ensure stability across different registry environments.
+- Complete community technical article output and submit related sample code.
+
+
+## Required Skills
+
+- Have Go language development experience, familiar with concurrent programming and network communication.
+- Understand service discovery principles, familiar with mainstream registries (e.g., Nacos, ZooKeeper).
+- Understand basic distributed transaction principles, familiar with Seata's interaction architecture (TM/RM/TC).
+- Familiar with command-line tool development, possess good code standards awareness and documentation writing skills.
+
+## Benefits to Apache Seata
+
+**Expand Infrastructure Boundaries**: Enable Seata-Go to adapt to more diverse enterprise production environments, eliminating selection barriers.**Improve Operational Convenience**: Fill the gap in operational diagnostic tools for the Go version, significantly reducing user learning and maintenance costs.**Enhance Ecosystem Interoperability**: Ensure consistency in governance between Go and Java versions, supporting Seata's unified multi-language ecosystem.
+
+## Conclusion
+
+This project addresses Seata-Go's shortcomings in infrastructure adaptation and operational troubleshooting by enhancing multi-registry support and diagnostic tool capabilities. This not only improves Seata-Go's production readiness but also strengthens the Apache Seata community ecosystem through user-friendly interactive tools and comprehensive technical documentation.
+
+## Useful Link
+
+[https://seata.apache.org/](https://seata.apache.org/)[https://github.com/apache/incubator-seata-go](https://github.com/apache/incubator-seata-go)[https://github.com/apache/incubator-seata-go-samples](https://github.com/apache/incubator-seata-go-samples)[https://github.com/apache/incubator-seata-ctl](https://github.com/apache/incubator-seata-ctl)
+
+## Contact Information
+
+- Mentor Name: TunGuo [tew@apache.org], Apache Seata(incubating) Committer
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*FinnTew*, mail: tew (at) apache.org
+
+*Project Devs*, mail: dev (at) seata.apache.org
+
+* *
+
 [GSoC 2026 - Apache Seata(Incubating)Enhance the Seata framework Golang SDK’s support for multiple databases](https://issues.apache.org/jira/browse/GSOC-314)
 
 **Project Overview**
@@ -1644,222 +1873,6 @@ This project strengthens Seata-Go AT mode by adding robust MariaDB and Oracle su
 
 *Project Devs*, mail: dev (at) seata.apache.org
 
-[GSoC 2026 - Apache Seata(Incubating)Enhance the Seata framework Golang SDK’s multi-registry support and seata-ctl capability](https://issues.apache.org/jira/browse/GSOC-316)
-
-# Project Overview
-
-## Title
-
-Enhance Seata-Go Multi-Registry Support and seata-ctl Diagnostic Tool Capability
-
-## Abstract
-
-Apache Seata (incubating) is a popular distributed transaction solution for ensuring data consistency in microservice architectures. Seata-Go, as its Go language SDK, is responsible for implementing core TM/RM functionalities in the Go ecosystem.
-
-Currently, Seata-Go lags behind the Java version in terms of registry support richness at the infrastructure layer, and its production-level transaction troubleshooting and operational toolchain (seata-ctl) is still in its early stages. This results in limited options for users in non-Etcd/Raft scenarios and high troubleshooting costs when transaction anomalies occur.
-
-This project aims to align with Seata's infrastructure ecosystem by introducing support for four mainstream registries: **Nacos, ZooKeeper, Consul, and Redis** to Seata-Go. Additionally, it will significantly enhance seata-ctl's diagnostic capabilities through full-chain environment checks, transaction state insights, and an interactive terminal interface, reducing the operational threshold for distributed transactions.
-
-## Detailed Description / Objectives
-
-**Infrastructure Alignment**: Ensure Seata-Go can seamlessly integrate into existing enterprise-level microservice governance systems by implementing adapters for various mainstream registries.**Operational Efficiency Improvement**: Build a complete diagnostic command set enabling developers to quickly locate network, database, and transaction state anomalies, and simplify operation workflows through an interactive interface.**Community Ecosystem Contribution**: Produce high-quality design documents and technical blogs to help community users understand Seata-Go's underlying governance logic and operational best practices.
-
-## Deliverables
-
-### 1. Multi-Registry Cluster Support (Priority P0)
-
-**Mainstream Registry Adapter Implementation**:
-
-- Implement
-**Nacos**and**ZooKeeper**registry adapters with support for service instance subscription, real-time listening, and multi-tenant isolation configuration. - Implement
-**Consul**and**Redis**adapters with support for service registration/discovery and heartbeat monitoring mechanisms. - Bug fixes for Seata NamingServer Golang SDK.
-- Ensure service registration path formats for all registries are fully compatible with Java version Seata.
-
-- Implement
-**Configuration and Initialization System Integration**:
-
-- Extend configuration structure to standardize registry-specific configuration parameters.
-- Optimize factory initialization logic to support smooth registry type switching via configuration files.
-
-
-### 2. seata-ctl Diagnostic Tool Enhancement (Priority P1)
-
-**Full-Chain Self-Check Functionality**:
-
-- Implement automated environment checks covering network connectivity verification with the server.
-- Implement database-level health checks including connection availability and validation of transaction core system table structures.
-- Implement configuration file format and required field legality validation.
-
-**Transaction State Insight Capability**:
-
-- Implement real-time query functionality for active transaction lists.
-- Implement query functionality for resource lock records corresponding to specific transaction identifiers (XID).
-- Support structured output formats (e.g., table, JSON, YAML).
-
-**Interactive Terminal Interface (TUI)**:
-
-- Introduce a visual interactive mode for the tool, simplifying complex command input through interface guidance to enhance operational experience.
-
-
-### 3. Testing, Samples, and Community Output (Priority P2)
-
-**Testing and Validation**:
-
-- Write unit tests and integration tests for each registry adapter to verify node change awareness capabilities.
-- Validate diagnostic tool accuracy across different database dialects.
-
-**Samples and Documentation**:
-
-- Add complete multi-registry integration examples in seata-go-samples.
-- Write technical articles:
-**"Seata-Go Registry Extension Design and Practice Guide"**and**"Distributed Transaction Troubleshooting in Practice: Quickly Locating Anomalies with Diagnostic Tools"**.
-
-
-## Implementation Plan
-
-**Phase 1: Research and Architecture Design**
-
-- Research existing Seata-Go registry implementations and study Seata NamingServer implementation logic.
-- Design diagnostic tool's interaction logic and command set architecture, ensuring tool extensibility.
-
-**Phase 2: Registry Adapter Development (P0)**
-
-- Prioritize completion of core functionality implementation and compatibility testing for Nacos and ZooKeeper.
-- Perform bug fixes for Seata NamingServer to optimize its stability in the Go SDK.
-- Integrate Consul and Redis support and unify configuration initialization entry points.
-
-**Phase 3: Diagnostic Tool and Interactive Interface Development (P1)**
-
-- Develop core logic for environment checks and transaction state queries.
-- Build interactive terminal interface (TUI), encapsulating underlying commands into intuitive visual operations.
-
-**Phase 4: Testing Validation and Community Promotion (P2)**
-
-- Improve test cases to ensure stability across different registry environments.
-- Complete community technical article output and submit related sample code.
-
-
-## Required Skills
-
-- Have Go language development experience, familiar with concurrent programming and network communication.
-- Understand service discovery principles, familiar with mainstream registries (e.g., Nacos, ZooKeeper).
-- Understand basic distributed transaction principles, familiar with Seata's interaction architecture (TM/RM/TC).
-- Familiar with command-line tool development, possess good code standards awareness and documentation writing skills.
-
-## Benefits to Apache Seata
-
-**Expand Infrastructure Boundaries**: Enable Seata-Go to adapt to more diverse enterprise production environments, eliminating selection barriers.**Improve Operational Convenience**: Fill the gap in operational diagnostic tools for the Go version, significantly reducing user learning and maintenance costs.**Enhance Ecosystem Interoperability**: Ensure consistency in governance between Go and Java versions, supporting Seata's unified multi-language ecosystem.
-
-## Conclusion
-
-This project addresses Seata-Go's shortcomings in infrastructure adaptation and operational troubleshooting by enhancing multi-registry support and diagnostic tool capabilities. This not only improves Seata-Go's production readiness but also strengthens the Apache Seata community ecosystem through user-friendly interactive tools and comprehensive technical documentation.
-
-## Useful Link
-
-[https://seata.apache.org/](https://seata.apache.org/)[https://github.com/apache/incubator-seata-go](https://github.com/apache/incubator-seata-go)[https://github.com/apache/incubator-seata-go-samples](https://github.com/apache/incubator-seata-go-samples)[https://github.com/apache/incubator-seata-ctl](https://github.com/apache/incubator-seata-ctl)
-
-## Contact Information
-
-- Mentor Name: TunGuo [tew@apache.org], Apache Seata(incubating) Committer
-
-**Difficulty:**Major
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*FinnTew*, mail: tew (at) apache.org
-
-*Project Devs*, mail: dev (at) seata.apache.org
-
-# HugeGraph
-
-[[GSoC][HugeGraph] HugeGraph Query Engine Upgrade & Adaptation](https://issues.apache.org/jira/browse/GSOC-317)
-
-**Description**
-
-Currently, the HugeGraph core query engine is built on **Java 11 + TinkerPop 3.5.x + Groovy 3**. While this stack provides fundamental graph query capabilities, it lags behind in security, performance optimization, and support for modern features. Specifically, the built-in Groovy engine relies on complex, high-maintenance black/whitelist mechanisms for script security, which poses potential bypass risks.
-
-The goal of this task is to comprehensively upgrade HugeGraph's underlying dependencies to **Java 17 + TinkerPop 3.7/3.8 + Groovy 4**. This is not just a version iteration, but a modern architectural transformation:
-
-**Groovy 4 & TinkerPop 3.7/3.8**: Introduce improved syntax features and security designs. We aim to refactor HugeGraphSecurity using native, efficient sandboxing mechanisms to replace the legacy blacklist logic.**Java 17/21 Support**: Adapt to the new JDK to fully leverage features like ZGC/Shenandoah GC, Records, and Virtual Threads, significantly improving throughput and reducing long-tail latency in large-scale graph queries.
-
-Applicants are expected to handle the full lifecycle, from dependency upgrades and code refactoring to unit test fixes and final performance benchmarking.
-
-**Recommended Skills**
-
-**Java Core**: Proficiency in Java development with a solid understanding of Java 17+ new features.**HugeGraph Architecture**: Basic understanding of HugeGraph's storage structure (KV Store), Schema design, and specifically the Gremlin query execution flow.**Graph Computing & Compilers**: Familiarity with the TinkerPop Gremlin framework architecture; knowledge of AST (Abstract Syntax Tree) parsing or Functional Programming (FP) mindset is a plus.**AI Coding**:**Proficiency in using AI Coding tools (e.g., Codex, Claude Code, Copilot) to assist in code refactoring, test case optimization, and source code interpretation is highly preferred.****Security Awareness**: Awareness of code security, understanding of how to prevent Script Injection, and experience designing secure sandbox environments.
-
-### 💡 **Important Notes for Applicants**
-
-**Authenticity Matters**: While we encourage the use of AI for coding efficiency, please**strictly control and reasonably limit**the use of LLMs when writing your project**proposal**/**emails**. We value genuine communication and mutual respect.**Proactive Engagement**: We highly recommend participating in community**Mini Tasks**early. Demonstrating your hands-on ability within the community will significantly increase your chances of selection and help build trust with mentors.
-
-**Task List**
-
-**Dependency Analysis & Upgrade**:- Analyze
-**Breaking Changes**from TinkerPop 3.5 to 3.7/3.8. - Complete core dependency version upgrades and API adaptations following mentor confirmation.
-
-- Analyze
-
-**Java 17 Environment Adaptation**:- Resolve compile-time and runtime compatibility issues (e.g., reflection restrictions, module access) to ensure the Server module runs correctly on Java 17 (Java 21 is even better).
-- Update Docker configurations to migrate the default runtime to Java 17 (while exploring backward compatibility with Java 11).
-
-
-**PD & Store Module Upgrade (New)**:- Extend the upgrade scope to the
-**PD (Placement Driver)**and**Store**modules after completing the core Server upgrade. - Ensure these modules are adapted to Java 17 to unify the runtime environment across the HugeGraph ecosystem.
-
-- Extend the upgrade scope to the
-
-**Security Module Refactoring**:- Refactor the HugeGraphSecurity component based on Groovy 4 features.
-- Design a lightweight, secure script execution strategy and remove the performance-heavy legacy blacklist logic.
-
-
-**Testing & Fixes**:- Fix Unit Test (UT) failures caused by the upgrade.
-- Ensure all core functions (CRUD, complex Gremlin queries) pass verification.
-
-
-**Performance Benchmarking**:- Produce a performance comparison report:
-**Java 11 (Old)**vs.**Java 17 (New)**using the Twitter-14B public dataset. - Quantify improvements in
-**Latency**reduction and**Throughput**increases.
-
-- Produce a performance comparison report:
-
-**References**
-
-**New Contributor Guide**:[HugeGraph Contribution Guide (Issue #2212)](https://www.google.com/url?sa=E&q=https%3A%2F%2Fgithub.com%2Fapache%2Fhugegraph%2Fissues%2F2212)- Environment setup & basics.
-
-**Upgrade Docs**:[TinkerPop Upgrade Documentation](https://www.google.com/url?sa=E&q=https%3A%2F%2Ftinkerpop.apache.org%2Fdocs%2Fcurrent%2Fupgrade%2F)
-
-**Reference Implementation**:[JanusGraph Upgrade PR (For reference only)](https://www.google.com/url?sa=E&q=https%3A%2F%2Fgithub.com%2FJanusGraph%2Fjanusgraph%2Fpull%2F3914)
-
-**Gremlin Learning**:[Practical Gremlin Guide](https://www.google.com/url?sa=E&q=https%3A%2F%2Fkelvinlawrence.net%2Fbook%2FGremlin-Graph-Guide.html)
-
-**Project Wiki**:[HugeGraph Deepwiki](https://www.google.com/url?sa=E&q=https%3A%2F%2Fdeepwiki.com%2Fapache%2Fhugegraph%2F)
-
-**Project Size**
-
-**Difficulty**: Medium (Similar references available)
-
-**Estimated Time**: ~250 Hours (~15 Weeks)
-
-**Mentors**
-
-- Yan Zhang:
-[vaughn@apache.org](https://www.google.com/url?sa=E&q=mailto%3Avaughn%40apache.org)(Apache HugeGraph PMC)
-
-- Imba Jin:
-[jin@apache.org](https://www.google.com/url?sa=E&q=mailto%3Ajin%40apache.org)(Apache HugeGraph PMC)
-
-**Difficulty:**Major
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*Imba Jin*, mail: jin (at) apache.org
-
-*Project Devs*, mail:
-
 # CloudStack
 
 [[GSoC] [CloudStack] Improve CloudMonkey user experience by enhancing autocompletion](https://issues.apache.org/jira/browse/GSOC-295)
@@ -1977,7 +1990,7 @@ If Grails is accepted for GSoC 2026, this would be an excellent intermediate pro
 
 *Project Devs*, mail: dev (at) grails.apache.org
 
-# Apache Fory
+*Apache Fory*
 
 [Apache Fory Ruby Serialization](https://issues.apache.org/jira/browse/GSOC-321)
 
@@ -2381,211 +2394,6 @@ Chaokun Yang, Weipeng Wang.
 
 *Project Devs*, mail: dev (at) fory.apache.org
 
-[Apache Fory Swift Schema IDL Codegen and gRPC Integration](https://issues.apache.org/jira/browse/GSOC-326)
-
-Apache Fory has a mature compiler pipeline for FDL, Protocol Buffers, and FlatBuffers frontends, plus code generators for Java, Python, Go, Rust, and C++. The compiler also already includes service IR parsing and a `--grpc` generation path, but Swift code generation is not yet supported.
-
-This project adds end-to-end Swift support in two layers:
-
-1. Swift schema and model code generation from Fory IR.
-
-2. Swift gRPC generation from service definitions, including transport bindings and a Fory-backed codec.
-
-The implementation should follow existing compiler conventions and prioritize low-overhead, allocation-conscious runtime behavior.
-
-**Problem Statement**
-
-The repository already contains a Swift runtime (`swift/Sources/Fory`) but lacks compiler-generated Swift model code and Swift gRPC bindings from IDL files. This creates a gap:
-
-- Swift users cannot use `foryc` to generate model types from `.fdl`, `.proto`, or `.fbs`.
-- Service definitions parsed into compiler IR cannot yet target Swift transport code.
-- There is no official Fory codec integration for grpc-swift.
-
-**Why This Project Matters**
-
-- Completes the Swift developer workflow: IDL -> generated models -> generated service APIs -> runnable gRPC client and server.
-- Reuses existing multi-frontend service parsing support in compiler IR.
-- Aligns Swift with other language targets and improves cross-language consistency.
-- Enables high-performance Swift service communication using Fory serialization semantics.
-
-**Expected Outcomes**
-
-- Add Swift as a first-class compiler target (`
-~~{~~}lang swift`, `{-}-swift_out`). - Generate Swift model code from schema definitions (messages, enums, unions, nested types).
-- Generate `service_grpc.swift` from service definitions.
-- Generate grpc-swift compatible async server and client wrappers.
-- Implement a custom grpc-swift codec backed by Fory serialization and deserialization.
-- Implement inbound zero-copy decode support with a safe copy fallback path.
-- Add golden-style codegen tests for filenames and key generated signatures.
-- Add cross-frontend parity tests for FDL, proto, and fbs service definitions.
-- Provide runnable Swift server and client example(s) using generated code and codec.
-- Document compiler usage, constraints, and integration steps.
-
-**Detailed Scope**
-
-1) Compiler and CLI Integration
-
-- Add `SwiftGenerator` under `compiler/fory_compiler/generators/`.
-- Register generator in `compiler/fory_compiler/generators/
-*{*}init{*}*.py`. - Extend CLI output mapping and options to support `--swift_out`.
-- Ensure `--lang swift` works with existing recursive import compilation flow.
-
-2) Swift Model Code Generation
-
-Generate Swift for:
-
-- Enums
-- Messages
-- Unions
-- Nested types
-- Type registration helper APIs
-
-**Requirements:**
-
-- Follow Fory type ID behavior (explicit IDs, auto IDs, namespace/name registration fallback).
-- Match existing cross-language semantics where applicable.
-- Integrate with existing Swift runtime abstractions (`Serializer`, type resolver, registration APIs).
-
-3) Swift Service and gRPC Code Generation
-
-For each schema service:
-
-- Generate `service.swift` containing service protocol and method shape declarations.
-- Generate `service_grpc.swift` containing grpc-swift server and client transport bindings.
-
-Required RPC support:
-
-- Unary
-- Client streaming
-- Server streaming
-- Bidirectional streaming
-
-4) Fory Codec for grpc-swift
-
-- Implement codec encode and decode using Fory Swift runtime.
-- Ensure request and response types map correctly to generated Swift types.
-- Provide clear error mapping for decode and type mismatch failures.
-
-5) Zero-Copy Decode and Fallback
-
-- Add a zero-copy-friendly decode path for inbound payload handling when safe ownership and lifecycle constraints are satisfied.
-- Add a fallback path that copies payload bytes when zero-copy cannot be safely applied.
-- Ensure behavior is deterministic and memory-safe.
-
-6) Tests
-
-Compiler tests:
-
-- Add codegen tests validating generated Swift file names and key signatures.
-- Add service generation tests for all RPC modes.
-- Add cross-frontend equivalence tests for FDL/proto/fbs service definitions.
-
-Swift runtime and integration tests:
-
-- Codec round-trip tests.
-- Error-path tests (invalid payload, type mismatch, unsupported mode).
-- Zero-copy path and fallback path coverage.
-
-7) Examples and Documentation
-
-- Add runnable Swift gRPC server/client example using generated files.
-- Update `docs/compiler/compiler-guide.md` for Swift codegen options and usage.
-- Update `docs/compiler/generated-code.md` with Swift output layout and generated API shape.
-- Add concise Swift integration documentation for grpc-swift + Fory codec.
-
-**Performance and Quality Requirements**
-
-- Keep allocation count low on encode and decode paths.
-- Avoid unnecessary data copies in transport integration.
-- Keep generated code predictable and stable for golden-style testing.
-- Preserve compiler behavior for existing languages and frontends.
-
-**Milestones (Recommended)**
-
-1. Community Bonding
-
-- Finalize generated API naming and file layout.
-- Confirm Swift option strategy and dependency constraints.
-- Agree on test matrix and acceptance checklist.
-
-2. Phase 1
-
-- Implement Swift generator base and CLI wiring.
-- Generate core model types and registration helpers.
-- Add baseline model codegen tests.
-
-3. Phase 2
-
-- Implement service generation (`service.swift`, `service_grpc.swift`).
-- Support unary and all streaming RPC method shapes.
-- Add service signature and transport generation tests.
-
-4. Phase 3
-
-- Implement and validate Fory grpc-swift codec.
-- Implement zero-copy decode path and fallback path.
-- Add integration example and end-to-end tests.
-
-**Finalization**
-
-- Documentation updates.
-- Stability pass and cleanup.
-- Final validation across compiler and Swift test suites.
-
-**Acceptance Criteria**
-
-1. `foryc` supports Swift generation through `~~{~~}lang swift` and `{-}-swift_out`.
-
-2. Swift model code compiles and integrates with Fory Swift runtime.
-
-3. Service generation outputs `service.swift` and `service_grpc.swift` with correct signatures.
-
-4. Unary, client-streaming, server-streaming, and bidi-streaming methods are correctly generated.
-
-5. Fory-backed grpc-swift codec works for request and response round-trip.
-
-6. Zero-copy decode path exists with tested fallback behavior.
-
-7. Added tests pass and no regressions are introduced in existing compiler suites.
-
-8. Documentation and runnable Swift example are complete and usable.
-
-**Skills Required**
-
-- Swift
-- grpc-swift
-- Compiler and code generation
-- Serialization internals
-- Async and streaming APIs
-- Testing and performance profiling
-
-**Difficulty**
-
-Hard
-
-**Project Size**
-
-350 hours
-
-**Potential Mentors**
-
-- Chaokun Yang
-- Weipeng Wang
-
-**Source Links**
-
-[https://github.com/apache/fory/issues/3370](https://github.com/apache/fory/issues/3370)[https://fory.apache.org/docs/next/compiler/compiler_guide](https://fory.apache.org/docs/next/compiler/compiler_guide)[https://github.com/apache/fory/tree/main/compiler](https://github.com/apache/fory/tree/main/compiler)[https://github.com/apache/fory/tree/main/compiler/fory_compiler](https://github.com/apache/fory/tree/main/compiler/fory_compiler)[https://github.com/apache/fory/tree/main/compiler/fory_compiler/tests](https://github.com/apache/fory/tree/main/compiler/fory_compiler/tests)[https://github.com/apache/fory/tree/main/swift](https://github.com/apache/fory/tree/main/swift)[https://fory.apache.org/docs/guide/rust/](https://fory.apache.org/docs/guide/rust/)[https://github.com/grpc/grpc-swift](https://github.com/grpc/grpc-swift)
-
-**Difficulty:**Major
-
-**Project size:**~350 hour (large)
-
-**Potential mentors:**
-
-*Chaokun Yang*, mail: chaokunyang (at) apache.org
-
-*Project Devs*, mail: dev (at) fory.apache.org
-
 [Apache Fory Java & Python gRPC Integration](https://issues.apache.org/jira/browse/GSOC-318)
 
 **Description:**
@@ -2829,32 +2637,85 @@ Chaokun Yang, Weipeng Wang
 
 *Project Devs*, mail: dev (at) fory.apache.org
 
-[Apache Fory Dart gRPC integration](https://issues.apache.org/jira/browse/GSOC-324)
+[Apache Fory Serialization Support for Android](https://issues.apache.org/jira/browse/GSOC-328)
 
-**Description**
+**Description:**
 
-Apache Fory does not yet generate Dart gRPC service bindings.
+Fory Java currently does not provide production-ready Android support. Several Java runtime assumptions do not hold consistently on Android, and some existing runtime mechanisms are not suitable for mobile constraints.
 
-This project will add Dart gRPC code generation to the Fory compiler. For each service definition, the compiler should generate Dart service interfaces and gRPC transport bindings that follow the existing Dart generator layout and use a Fory codec instead of protobuf runtime payload types.
+**Known limitations in current Java path:**
 
-The implementation must keep the Fory runtime free of gRPC dependencies. Any required gRPC glue should be emitted as generated helper code. Runtime behavior should remain low-overhead and allocation-conscious.
+1. Android reflection is very slow.
 
-**Potential Outcomes**
+2. JDK `Unsafe` APIs are unavailable or inconsistent across Android versions.
 
-- Generate Dart service interface and gRPC binding outputs from service definitions, aligned with current Dart generator conventions.
-- Generate Dart gRPC server and client stubs for unary and streaming RPCs using Dart gRPC APIs.
-- Wire request/response handling through generated Fory serializer and deserializer functions.
-- Implement zero-copy deserialization buffer support for inbound gRPC payloads, with a safe fallback path when zero-copy cannot be applied.
-- Coordinate with Dart type generation so emitted message, enum, and union types are directly usable by generated gRPC stubs.
-- Add golden codegen tests for generated file names and key signatures.
-- Provide a runnable Dart server/client example using generated bindings and the Fory codec.
-- Update compiler documentation for Dart gRPC code generation usage and constraints.
+3. JDK `MethodHandle` APIs are unavailable for many Android versions.
 
-**Skills：**Dart, gRPC (`grpc`), compiler/code generation, serialization internals, async programming, testing, performance optimization.
+4. Bytecode generated by Janino cannot run on Android.
 
-**Difficulty：** Medium**Project size：**175 hours**Potential mentors：**Chaokun Yang, Weipeng Wang**Source links：**
+5. Generating source/bytecode on mobile devices is slow and resource-intensive.
 
-[https://github.com/apache/fory/issues/3279](https://github.com/apache/fory/issues/3279)[https://github.com/apache/fory/issues/3281](https://github.com/apache/fory/issues/3281)[https://fory.apache.org/docs/next/compiler/compiler_guide](https://fory.apache.org/docs/next/compiler/compiler_guide)[https://github.com/apache/fory/tree/main/compiler](https://github.com/apache/fory/tree/main/compiler)[https://github.com/apache/fory/tree/main/dart](https://github.com/apache/fory/tree/main/dart)[https://github.com/apache/fory/blob/main/dart/README.md](https://github.com/apache/fory/blob/main/dart/README.md)[https://github.com/apache/fory/tree/main/dart/packages/fory](https://github.com/apache/fory/tree/main/dart/packages/fory)
+
+This project will deliver production-ready Android support for Fory Java serialization while preserving high performance and compatibility with existing Java behavior.
+
+**Expected outcomes:**
+
+1. Keep reflection usage on Android only in very rare code paths.
+
+2. Add Android-specific `Buffer` and utility implementations guarded by a static final `IS_ANDROID` constant, and route Android code paths early.
+
+3. Avoid `MethodHandle` in Android execution paths.
+
+4. Avoid runtime bytecode generation on Android; update `java/fory-core/src/main/java/org/apache/fory/builder` to generate stable source code compatible across Android/JDK versions.
+
+5. Add an annotation processor that invokes the builder pipeline at build time to generate serializer code.
+
+6. Integrate generated serializers with current type resolver so generated code is used for serialization.
+
+7. Validate no performance regression with `benchmarks/java` comparisons against current Java path.
+
+8. Add CI coverage and comprehensive Android tests for compatibility and correctness.
+
+9. Update Fory Java documentation and add a dedicated Android support guide.
+
+**Required Android verification and test coverage:**
+
+1. Add unit tests for Android-specific utility and buffer code paths.
+
+2. Add serializer selection tests to verify generated serializers are preferred in resolver flow.
+
+3. Add compatibility tests across representative Android API levels.
+
+4. Add tests for fallback paths when generated serializers are unavailable.
+
+5. Add performance benchmark runs and regression checks for representative payloads.
+
+**CI end-to-end requirements:**
+
+1. Add Android CI workflow/jobs for build and test validation.
+
+2. Run Android-targeted tests for key serialization scenarios in CI.
+
+3. Fail CI on compatibility regressions that violate project thresholds.
+
+**Skills:**
+
+Java, Android runtime internals, annotation processing, code generation, serialization internals, benchmarking, testing, CI automation.
+
+**Difficulty:**
+
+Hard.
+
+**Project size:**
+
+Preferred 350 hours.
+
+**Potential mentors:**
+
+Chaokun Yang, Weipeng Wang.
+
+**Related links:**[https://github.com/apache/fory/issues/3405](https://github.com/apache/fory/issues/3405)[https://github.com/apache/fory/issues/1101](https://github.com/apache/fory/issues/1101)[https://github.com/apache/fory/issues/2435](https://github.com/apache/fory/issues/2435)[https://github.com/apache/fory/tree/main/java](https://github.com/apache/fory/tree/main/java)[https://fory.apache.org/docs/guide/java/](https://fory.apache.org/docs/guide/java/)[https://fory.apache.org/docs/compiler/](https://fory.apache.org/docs/compiler/)
+
 
 **Difficulty:**Major
 
@@ -2865,6 +2726,334 @@ The implementation must keep the Fory runtime free of gRPC dependencies. Any req
 *Chaokun Yang*, mail: chaokunyang (at) apache.org
 
 *Project Devs*, mail: dev (at) fory.apache.org
+
+[Apache Fory Swift & Dart gRPC integration](https://issues.apache.org/jira/browse/GSOC-324)
+
+**Description**
+
+Apache Fory does not yet generate Swift and Dart gRPC service bindings.
+
+This project will add Swift and Dart gRPC code generation to the Fory compiler. For each service definition, the compiler should generate language-native service interfaces and gRPC transport bindings that follow existing Swift and Dart generator layouts and use a Fory codec instead of protobuf runtime payload types.
+
+The implementation must keep the Fory runtimes free of gRPC dependencies. Any required gRPC glue should be emitted as generated helper code. Runtime behavior should remain low-overhead and allocation-conscious.
+
+**Potential Outcomes**
+
+- Generate Swift and Dart service interface and gRPC binding outputs from service definitions, aligned with current language generator conventions.
+- Generate Swift and Dart gRPC server and client stubs for unary and streaming RPCs using each ecosystem's gRPC APIs.
+- Wire request/response handling through generated Fory serializer and deserializer functions in both languages.
+- Implement zero-copy deserialization buffer support for inbound gRPC payloads, with a safe fallback path when zero-copy cannot be applied.
+- Coordinate with Swift and Dart type generation so emitted message, enum, and union types are directly usable by generated gRPC stubs.
+- Add golden codegen tests for generated file names and key signatures for both Swift and Dart outputs.
+- Provide runnable Swift and Dart server/client examples using generated bindings and the Fory codec.
+- Update compiler documentation for Swift and Dart gRPC code generation usage and constraints.
+
+**Skills**
+
+Swift, Dart, gRPC (`grpc-swift`, `grpc`), compiler/code generation, serialization internals, async programming, testing, performance optimization.
+
+**Difficulty**
+
+Hard
+
+**Project Size**
+
+350 hours
+
+**Potential Mentors**
+
+Chaokun Yang, Weipeng Wang
+
+**Source Links**
+
+[https://github.com/apache/fory/issues/3370](https://github.com/apache/fory/issues/3370)[https://github.com/apache/fory/issues/3279](https://github.com/apache/fory/issues/3279)[https://github.com/apache/fory/issues/3281](https://github.com/apache/fory/issues/3281)[https://fory.apache.org/docs/next/compiler/compiler_guide](https://fory.apache.org/docs/next/compiler/compiler_guide)[https://github.com/apache/fory/tree/main/compiler](https://github.com/apache/fory/tree/main/compiler)[https://github.com/apache/fory/tree/main/dart](https://github.com/apache/fory/tree/main/dart)[https://github.com/apache/fory/blob/main/dart/README.md](https://github.com/apache/fory/blob/main/dart/README.md)[https://github.com/apache/fory/tree/main/dart/packages/fory](https://github.com/apache/fory/tree/main/dart/packages/fory)[https://github.com/apache/fory/tree/main/swift](https://github.com/apache/fory/tree/main/swift)[https://github.com/apache/fory/blob/main/swift/README.md](https://github.com/apache/fory/blob/main/swift/README.md)
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Chaokun Yang*, mail: chaokunyang (at) apache.org
+
+*Project Devs*, mail: dev (at) fory.apache.org
+
+# HugeGraph
+
+[[GSoC][HugeGraph] HugeGraph Query Engine Upgrade & Adaptation](https://issues.apache.org/jira/browse/GSOC-317)
+
+Apache
+
+[HugeGraph]is a fast-speed and highly-scalable[graph database]/computing/AI ecosystem. Billions of vertices and edges can be easily stored into and queried from HugeGraph due to its excellent OLTP ability.
+
+**Description**
+
+Currently, the HugeGraph core query engine is built on **Java 11 + TinkerPop 3.5.x + Groovy 3**. While this stack provides fundamental graph query capabilities, it lags behind in security, performance optimization, and support for modern features. Specifically, the built-in Groovy engine relies on complex, high-maintenance black/whitelist mechanisms for script security, which poses potential bypass risks.
+
+The goal of this task is to comprehensively upgrade HugeGraph's underlying dependencies to **Java 17 + TinkerPop 3.7/3.8 + Groovy 4**. This is not just a version iteration, but a modern architectural transformation:
+
+**Groovy 4 & TinkerPop 3.7/3.8**: Introduce improved syntax features and security designs. We aim to refactor HugeGraphSecurity using native, efficient sandboxing mechanisms to replace the legacy blacklist logic.**Java 17/21 Support**: Adapt to the new JDK to fully leverage features like ZGC/Shenandoah GC, Records, and Virtual Threads, significantly improving throughput and reducing long-tail latency in large-scale graph queries.
+
+Applicants are expected to handle the full lifecycle, from dependency upgrades and code refactoring to unit test fixes and final performance benchmarking.
+
+**Recommended Skills**
+
+**Java Core**: Proficiency in Java development with a solid understanding of Java 17+ new features.**HugeGraph Architecture**: Basic understanding of HugeGraph's storage structure (KV Store), Schema design, and specifically the Gremlin query execution flow.**Graph Computing & Compilers**: Familiarity with the TinkerPop Gremlin framework architecture; knowledge of AST (Abstract Syntax Tree) parsing or Functional Programming (FP) mindset is a plus.**AI Coding**:**Proficiency in using AI Coding tools (e.g., Codex, Claude Code, Copilot) to assist in code refactoring, test case optimization, and source code interpretation is highly preferred.****Security Awareness**: Awareness of code security, understanding of how to prevent Script Injection, and experience designing secure sandbox environments.
+
+### 💡 **Important Notes for Applicants**
+
+**Authenticity Matters**: While we encourage the use of AI for coding efficiency, please**strictly control and reasonably limit**the use of LLMs when writing your project**proposal**/**emails**. We value genuine communication and mutual respect.**Proactive Engagement**: We highly recommend participating in community**Mini Tasks**early. Demonstrating your hands-on ability within the community will significantly increase your chances of selection and help build trust with mentors.
+
+**Task List**
+
+**Dependency Analysis & Upgrade**:- Analyze
+**Breaking Changes**from TinkerPop 3.5 to 3.7/3.8. - Complete core dependency version upgrades and API adaptations following mentor confirmation.
+
+- Analyze
+
+**Java 17 Environment Adaptation**:- Resolve compile-time and runtime compatibility issues (e.g., reflection restrictions, module access) to ensure the Server module runs correctly on Java 17 (Java 21 is even better).
+- Update Docker configurations to migrate the default runtime to Java 17 (while exploring backward compatibility with Java 11).
+
+
+**PD & Store Module Upgrade (New)**:- Extend the upgrade scope to the
+**PD (Placement Driver)**and**Store**modules after completing the core Server upgrade. - Ensure these modules are adapted to Java 17 to unify the runtime environment across the HugeGraph ecosystem.
+
+- Extend the upgrade scope to the
+
+**Security Module Refactoring**:- Refactor the HugeGraphSecurity component based on Groovy 4 features.
+- Design a lightweight, secure script execution strategy and remove the performance-heavy legacy blacklist logic.
+
+
+**Testing & Fixes**:- Fix Unit Test (UT) failures caused by the upgrade.
+- Ensure all core functions (CRUD, complex Gremlin queries) pass verification.
+
+
+**Performance Benchmarking**:- Produce a performance comparison report:
+**Java 11 (Old)**vs.**Java 17 (New)**using the Twitter-14B public dataset. - Quantify improvements in
+**Latency**reduction and**Throughput**increases.
+
+- Produce a performance comparison report:
+
+**References**
+
+**New Contributor Guide**:[HugeGraph Contribution Guide (Issue #2212)](https://www.google.com/url?sa=E&q=https%3A%2F%2Fgithub.com%2Fapache%2Fhugegraph%2Fissues%2F2212)- Environment setup & basics.
+
+**Upgrade Docs**:[TinkerPop Upgrade Documentation](https://www.google.com/url?sa=E&q=https%3A%2F%2Ftinkerpop.apache.org%2Fdocs%2Fcurrent%2Fupgrade%2F)
+
+**Reference Implementation**:[JanusGraph Upgrade PR (For reference only)](https://www.google.com/url?sa=E&q=https%3A%2F%2Fgithub.com%2FJanusGraph%2Fjanusgraph%2Fpull%2F3914)
+
+**Gremlin Learning**:[Practical Gremlin Guide](https://www.google.com/url?sa=E&q=https%3A%2F%2Fkelvinlawrence.net%2Fbook%2FGremlin-Graph-Guide.html)
+
+**Project Wiki**:[HugeGraph Deepwiki](https://www.google.com/url?sa=E&q=https%3A%2F%2Fdeepwiki.com%2Fapache%2Fhugegraph%2F)
+
+**Project Size**
+
+**Difficulty**: Medium (Similar references available)
+
+**Estimated Time**: ~250 Hours (~15 Weeks)
+
+**Mentors**
+
+- Yan Zhang:
+[vaughn@apache.org](https://www.google.com/url?sa=E&q=mailto%3Avaughn%40apache.org)(Apache HugeGraph PMC)
+
+- Imba Jin:
+[jin@apache.org](https://www.google.com/url?sa=E&q=mailto%3Ajin%40apache.org)(Apache HugeGraph PMC)
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Imba Jin*, mail: jin (at) apache.org
+
+*Project Devs*, mail:
+
+# Airflow
+
+[Apache Airflow Contribution & Verification Agent Skills](https://issues.apache.org/jira/browse/GSOC-329)
+
+### Background
+
+Apache Airflow’s **Breeze** environment is the de facto way to reproduce CI, run tests, and verify changes locally. It encapsulates complex tooling (Docker, integrations, static checks, tests, system verification) behind a single, consistent developer interface.
+
+However, modern AI coding tools (e.g. Claude Code, Gemini CLI, GitHub Copilot–style agents) currently treat Airflow’s repo like any generic Python project. They **rarely**:
+
+- Understand whether they are running inside or outside Breeze.
+- Choose the correct commands for host vs. container.
+- Follow the same workflows that Airflow contributors actually use (e.g. prek, breeze shell, breeze start-airflow).
+
+We already expose some information through docs (e.g. AGENTS.md), but this mostly inflates the context window rather than giving agents a structured, machine-usable interface to Breeze.
+
+This project aims to bridge that gap by creating an **“Airflow Breeze Contribution / Contribution Verification” AI skill** (final name TBD) that systematically encodes common contribution workflows and makes them reliably executable and testable by AI agents.
+
+### Goal
+
+The overarching goal is to make AI tools:
+
+**Breeze-aware**: able to detect whether they are running inside or outside Breeze and act accordingly.
+
+In practice, this means that for a typical contributor PR, an AI agent can:
+
+- Run the right static checks.
+- Run the right subset of tests in Breeze.
+- Spin up Airflow and verify system behavior for a Dag representing the change (nice-to-have).
+**Do all of the above while respecting host/container boundaries**.
+
+Additionally, the solution should be **consistency-focused**, meaning that we want to **keep Breeze CLI as the single source of truth for agent skills**. This can be achieved by auto-syncing CLI docstrings and behaviors into the AI skill using existing tooling (e.g. prek), ensuring that the skill definitions always reflect the current state of the Breeze CLI.
+
+### Core Tasks
+
+##### 1. Environment Awareness & Detection
+
+- Design and implement a simple, robust mechanism for the agent skills to detect:
+- “Host” vs “inside Breeze container”.
+- Relevant environment variables, markers, or file paths that indicate context.
+
+- Encode decision logic for when to run:
+- Host-only commands (e.g. breeze shell, breeze start-airflow, git operations).
+- Container-only commands (e.g. pytest, airflow ...).
+
+- Provide a clear API/contract that AI tools can call to query current context and get recommended commands.
+
+**Note**: Maybe we need to add some explicit markers, files in the repo, or write a small helper script that can be called to determine context in a reliable way. Or maybe we can rely on existing environment variables or filesystem cues. This is an open design question to explore.
+
+##### 2. Modeling Core Contributor Workflows as Skills
+
+Based on the three scenarios described, define and implement skills that represent common contribution flows:
+
+**Scenario 1: Static checks pass**
+
+- Stage changes (git add ...).
+- Run prek.
+- Collect and surface failures in a structured way so that an agent can fix them.
+
+**Scenario 2: Unit tests in Breeze**
+
+- Start or attach to a Breeze container with breeze shell or breeze exec.
+- Run pytest with a targeted module/test path (not the whole suite).
+- Then the agent can inspect results and decide on next steps (e.g. fix code, exit Breeze).
+
+##### 3. Syncing with Breeze CLI as Source of Truth (via prek)
+
+- Investigate existing Breeze CLI docstrings and structure.
+- Define a mapping from Breeze commands (and their docstrings) to skill definitions, paths, and parameters.
+- Implement a prek hook that:
+- Generates or updates the agent skills definition files from Breeze CLI docstrings.
+- Fails when drift is detected (e.g. a command changed but the skill spec was not updated).
+
+- Integrate these checks into existing static check pipelines so the skills stay in sync automatically.
+
+##### 4. Evaluation & Test Harness
+
+- Design a testable user scenario or “exam” that simulates a typical contribution workflow (e.g. fixing a simple bug, adding a small feature) to verify that the added skills work as intended.
+- Add unit tests for any additional scripts or helper functions created.
+
+##### 5. Documentation & Developer Guide
+
+- Add or extend documentation (e.g. AGENTS.md, Breeze docs) to:
+- Describe the new Breeze-aware skills.
+- Show example workflows for human contributors and AI tools.
+- Document how other tools can integrate with the skills (e.g. path to spec file, key commands).
+
+
+### Advanced Tasks (Optional / Stretch Goals)
+
+**Scenario: System behavior verification**
+
+- Write a Dag representing the feature/bugfix being contributed (or use an existing one).
+- Run breeze start-airflow (with --integration when needed).
+- Trigger the Dag via CLI (instead of UI) and wait for completion.
+- Inspect logs/status to determine success/failure from the TaskInstance logs.
+- Inspect logs/status from all the component services (scheduler, api-server, triggerer, etc) to determine if there are any underlying issues.
+- The agent can then decide to fix code, fix the Dag, or exit Breeze based on the results.
+
+### Expected Outcome
+
+By the end of the project, we expect:
+
+- A
+**Breeze-aware AI skill**that can:- Detect host vs. container context.
+- Choose appropriate commands and environment transitions.
+
+- The AI toolings will be "smart-enough" to handle the core workflows for contributions, including:
+- Static checks with prek.
+- Targeted unit tests in Breeze.
+- Continue iterating based on results (e.g. fix code, fix tests, exit).
+
+- A
+**sync mechanism**(likely using prek) that:- Keeps Breeze CLI and the skill definitions in sync.
+- Fails CI when they diverge, ensuring Breeze remains the single source of truth.
+
+- Initial
+**evaluation “exam(s)”**and test harnesses that:- Verify that an implementation of the skill behaves correctly on at least the core scenarios.
+
+- Updated
+**documentation**explaining how contributors and AI tools can make use of the new capability.
+
+A successful project will make it much easier for future AI tooling (IDEs, CLIs, bots) to interact with Breeze in a reliable and Airflow-native way, increasing contributor productivity and lowering the barrier to entry.
+
+### Recommended Skills
+
+**Programming & Tooling**- Solid Python skills (CLI tools, packaging, basic testing).
+- Familiarity with Docker and containerized development environments.
+- Experience with writing or using CLIs and handling subprocesses.
+
+**Dev Workflow & CI**- Understanding of typical open source contribution workflows (git, PRs, static checks, unit tests, pre-commit).
+- Exposure to CI systems and concepts of reproducible environments.
+
+**AI/Agents**- Interest in or experience with AI coding assistants, Agent Skills, tool-calling, or agent frameworks.
+- Comfort reasoning about what “smart enough” means in terms of concrete, testable behaviors.
+
+**Airflow/Breeze (Nice to Have)**- Basic knowledge of Apache Airflow concepts (Dags, tasks, operators).
+- Prior use of Breeze for development or testing is a plus, but not strictly required.
+
+
+Motivation to work at the intersection of developer experience, tooling, and AI is more important than prior deep expertise in all of these areas.
+
+### Mentors
+
+Jason Liu (GitHub: @jason810496, Slack: Zhe-You(Jason) Liu)Jarek Potiuk (GitHub: @potiuk, Slack: Jarek Potiuk)- #gsoc Slack Channel in Apache Airflow workspace:
+[https://apache-airflow.slack.com/archives/CSC0FLNJF](https://apache-airflow.slack.com/archives/CSC0FLNJF)
+
+### Learning Materials
+
+- Airflow Breeze documentation:
+[https://github.com/apache/airflow/blob/main/dev/breeze/doc/README.rst](https://github.com/apache/airflow/blob/main/dev/breeze/doc/README.rst) - Recent Airflow Dev Mailing List discussion regarding Agent Skills/ Agents:
+- Airflow prek (pre-commit) hooks entrypoint:
+[https://github.com/apache/airflow/blob/main/.pre-commit-config.yaml](https://github.com/apache/airflow/blob/main/.pre-commit-config.yaml) - Modern Python monorepo for Apache Airflow (by Jarek):
+[https://medium.com/apache-airflow/modern-python-monorepo-for-apache-airflow-part-1-1fe84863e1e1](https://medium.com/apache-airflow/modern-python-monorepo-for-apache-airflow-part-1-1fe84863e1e1) - pre-commit:
+[https://pre-commit.com/](https://pre-commit.com/) - prek:
+[https://github.com/j178/prek](https://github.com/j178/prek)
+
+### Tracked GitHub Issue
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Zhe You Liu*, mail: jasonliu (at) apache.org
+
+*Project Devs*, mail: dev (at) airflow.apache.org
+
+# Apache HTTP Server
+
+[httpd server Improve a prototype of mod_h3 using openssl and nghttp3](https://issues.apache.org/jira/browse/GSOC-330)
+
+OpenSSL 3.2+ brought native QUIC to the world’s most popular security library, yet integration into established web servers remains experimental. This project aims to stabilize the openssl-h3-examples repository and, crucially, advance the development of a prototype Apache httpd module (mod_h3). The work will focus on solving the architectural mismatch between Apache’s TCP-based workers and QUIC’s UDP-based streams, using OpenSSL and nghttp3.
+
+**Difficulty:**Major
+
+**Project size:**~350 hour (large)
+
+**Potential mentors:**
+
+*Jean-Frederic Clere*, mail: jfclere (at) apache.org
+
+*Project Devs*, mail: dev (at) httpd.apache.org
 
 # Spark
 

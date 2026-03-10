@@ -1,7 +1,7 @@
 # Alaska — Project Ideas
 
 **Source:** https://github.com/uaanchorage/GSoC
-**Scraped:** 2026-02-22T23:28:47.623045
+**Scraped:** 2026-03-10T16:58:40.284024
 
 ---
 
@@ -169,7 +169,7 @@ A report on model performance and fire risk metrics.
 
 **[5] Building a Decentralized Application (dApp) for Data Analysis in Bio-Block.**
 
-**Mentors:** Chalinda Weerasinghe (chalindaweerasinghe -at- gmail.com), Karthik Sathish (karthiksathishjeemain -at- gmail.com), Albin Bajramovic (albin -at- cptolabs.com), and Erik Zvaigzne (erik.zvaigzne -at- gmail.com)
+**Mentors:** Chalinda Weerasinghe (chalindaweerasinghe -at- gmail.com) and Erik Zvaigzne (erik.zvaigzne -at- gmail.com)
 
 **Overview:** The open-source Bio-Block data and payment portal could theoretically admit health and medical information, subject to proper compliance and regulatory protocols. Can we build a dApp that takes this information and performs various levels of analytics: graphical, descriptive, inferential and possibly predictive? What blockchain architectures would permit such a dApp to reside on Bio-Block, and how can we make such a dApp scalable and open? Would the dApp connect through an API, and if so, what would that look like? This project explores and constructs a dApp that meets at least minimal architectural requirements, such as being decentralized, scalable and open, and implements at least two levels of analysis.
 
@@ -191,7 +191,7 @@ A report on model performance and fire risk metrics.
 
 **[6] Anonymization of Personal Health Information (PHI) Submitted to Bio-Block and Improving Data Retrieval.**
 
-**Mentors:** Karthik Sathish (karthiksathishjeemain -at- gmail.com), Ashutosh Ingole (ashingole -at- gmail.com), and Forrester Kane Manis (Forrester -at- headword.co).
+**Mentors:** Karthik Sathish (karthiksathishjeemain -at- gmail.com) and Ashutosh Ingole (ashingole -at- gmail.com).
 
 **Overview:** This is a two-part project. Bio-Block is meant to admit all types of bio-medical information. Some of these data types were explored and tackled in GSoC 2025. The personal health and identification information must be stripped from this data completely so that anonymization is achieved. The first part of the project explores algorithms and processes to completely anonymize the data while maintaining the ability to sort, query and analyze. After anonymization is achieved, there needs to be sufficient ability to query the data so that potential data retrieval is easy and meaningful. The second part of the project entails creating retrieval algorithms and processes to achieve this objective.
 
@@ -213,7 +213,7 @@ A report on model performance and fire risk metrics.
 
 **[7] DICOM Image Retrieval and Processing in MATLAB.**
 
-**Mentors:** Pradeeban Kathiravelu (pkathiravelu -at- alaska.edu) and Ananth Reddy (bananthreddy30 -at- gmail.com)
+**Mentors:** Ryan Birmingham (rainventions -at- gmail.com) and Pradeeban Kathiravelu (pkathiravelu -at- alaska.edu)
 
 **Overview:** DICOM (Digital Imaging and Communications in Medicine) is a radiographic imaging standard for how various modalities of scanners, PACS (Picture archiving and communication system), and other imaging systems communicate. As a storage protocol, it defines how images are stored in a standard way. It also functions as a messaging protocol, an extension to TCP. Many DICOM processing tools exist. They support receiving images from the scanners and PACS to a research cluster in real-time as an imaging stream or on-demand, selectively. They also provide means to anonymize the DICOM images to preserve patient privacy, export the DICOM images into a format such as PNG or JPEG, and extract the textual metadata from DICOM files to store it in a CSV file format or a database. Machine learning pipelines cannot be executed in clinical systems such as scanners and PACS. Therefore, the DICOM images and their metadata in the research clusters can be used to run machine learning pipelines.
 
@@ -348,9 +348,9 @@ A mashup of healthcare access (or the lack of it) combined with Internet access 
 
 **[11] A Reference Implementation for concore Library in Julia.**
 
-**Mentors:** Mayuresh Kothare (mvk2 -at- lehigh.edu), Rahul Jagwani (rahuljagwani1012 -at- gmail.com), and Pradeeban Kathiravelu (pkathiravelu -at- alaska.edu)
+**Mentors:** Mayuresh Kothare (mvk2 -at- lehigh.edu) and Rahul Jagwani (rahuljagwani1012 -at- gmail.com)
 
-**Overview:** [concore](https://github.com/ControlCore-Project/concore) is a lightweight framework for closed-loop peripheral neuromodulation control systems. Currently, it supports implementations of programs in Python, C++, Matlab, Octave, and Verilog. In this project, the contributor will develop a reference implementation of the concore library in Julia.
+**Overview:** [CONTROL-CORE](https://github.com/ControlCore-Project) is a lightweight framework for closed-loop peripheral neuromodulation control systems. Currently, it supports implementations of programs in Python, C++, Matlab, Octave, and Verilog. In this project, the contributor will develop a reference implementation of the concore library in Julia.
 
 **Current Status:** We developed the concore library initially in Python and then implemented support for other languages. The contributor will work towards a reference implementation in Julia in this project. The successful completion of this project will expand the user base of concore to include Julia developers.
 
@@ -359,6 +359,96 @@ A mashup of healthcare access (or the lack of it) combined with Internet access 
 **Required Skills:** Julia and Python
 
 **Code Challenge:** Demonstration of previous expertise in Julia and Python can be beneficial.
+
+**Source Code:** [https://github.com/ControlCore-Project/concore](https://github.com/ControlCore-Project/concore)
+
+**Discussion Forum**: [https://github.com/ControlCore-Project/concore/discussions](https://github.com/ControlCore-Project/concore/discussions)
+
+**Effort:** 350 Hours
+
+**Difficulty Level:** Medium
+
+**[12] WATER: Workflow Allocation Towards Edge Resources.**
+
+**Mentors:** David Creighton (david -at- equilibriacorp.com), Albin Bajramovic (albin -at- cptolabs.com), and Vladan Krunic (krunic.vladan -at- gmail.com)
+
+**Overview:** This project scopes the cloud and edge landscape to build a hybrid-cloud/multi-cloud environment for healthcare workflows. The healthcare workflows can be executed on healthcare data across multiple nodes, in-cloud, across cloud providers, or in a hybrid edge-to-cloud compute continuum. The workflows can be machine learning (ML) models, artificial intelligence (AI) algorithms, and other pipelines that can be facilitated by open-source frameworks such as [Niffler](https://github.com/Emory-HITI/Niffler) and [CONTROL-CORE](https://github.com/ControlCore-Project/). The goal here is to develop WATER as a unified framework that facilitates workflow allocation towards edge resources, using the research and industry best practices with cutting-edge, cloud, distributed, and decentralized frameworks.
+
+**Current Status:** This project is currently in the research stage.
+
+**Expected Outcomes:** A prototype implementation of the WATER framework and demonstration of decentralized execution with sample workflows. The focus is on building a utility framework and an abstraction that facilitates the edge workflow execution rather than a simple decentralized data storage.
+
+**Required Skills:** Python is proposed as the programming language. However, students can also propose their preferred alternative programming language and frameworks. Prior experience developing on cloud and edge environments is a plus.
+
+**Code Challenge:** Prior experience in Python (or the proposed alternative language) and, preferably, cloud and edge frameworks.
+
+**Source Code:** [https://github.com/healthyinc/WATER](https://github.com/healthyinc/WATER) (New Project).
+
+**Discussion Forum:** [https://github.com/healthyinc/WATER/discussions](https://github.com/healthyinc/WATER/discussions)
+
+**Effort:** 350 hours
+
+**Difficulty Level:** Intermediate
+
+**[13] Creating shareable "albums" from locally stored DICOM images**
+
+**Mentors:** Ananth Reddy (bananthreddy30 -at- gmail.com) and Pradeeban Kathiravelu (pkathiravelu -at- alaska.edu)
+
+**Overview:** DICOM data sets downloaded from PACS environments typically remain in the local environments, such as a research server or a cluster where the DICOM retriever (C-MOVE) is run. To use this data, researchers must identify certain subsets of data. This can be achieved by querying the retrieved data. DICOM images consist of textual metadata. By querying the metadata, subsets of images can be identified. However, currently, creating "albums" from locally stored DICOM images is not seamless.
+
+**Current Status:** This feature does not exist in our open-source frameworks. We share images through other orthogonal approaches (via rclone, for example). This project will implement a stand-alone utility to effectively create albums from locally stored DICOM images.
+
+**Expected Outcomes:** Several approaches to implementing such album features exist. One approach is to use [Kheops](https://docs.kheops.online/) to provide an interface to create and view the albums. [MEDIator](https://github.com/sharmalab/MEDIator) can be extended to create subsets and share the images via a unique URL as well. The proposed feature will make the images accessible to more researchers for their experiments by replacing the current manual data sharing efforts. Moreover, Kheops natively integrates with OHIF Viewer. As such, images retrieved locally can be viewed through OHIF Viewer by creating albums with Kheops. Contributors are encouraged to use Kheops or alternatives rather than reinventing the wheel (unless there is a convincing reason).
+
+**Required Skills:** Python or Java.
+
+**Code Challenge:** Experience working with DICOM images from previous projects or through a sample dummy project will be a plus.
+
+**Source Code:** [https://github.com/KathiraveluLab/Diomede](https://github.com/KathiraveluLab/Diomede)
+
+**Discussion Forum**: [https://github.com/KathiraveluLab/Diomede/discussions](https://github.com/KathiraveluLab/Diomede/discussions)
+
+**Effort:** 90 Hours
+
+**Difficulty Level:** Easy
+
+**[14] Dynamic DICOM Endpoints.**
+
+**Mentors:** Ananth Reddy (bananthreddy30 -at- gmail.com) and Pradeeban Kathiravelu (pkathiravelu -at- alaska.edu)
+
+**Overview:** DICOM (Digital Imaging and Communications in Medicine) is a radiographic imaging standard for how various modalities of scanners, PACS (Picture archiving and communication system), and other imaging systems communicate. As a storage protocol, it defines how images are stored in a standard way. It also functions as a messaging protocol, an extension to TCP. DICOM implementations often have a queue to hold the images sent from the source. Since this is a networking communication, a queue may degrade the performance or introduce data loss. DICOM communications are defined by static source, query, and destination endpoints. Each endpoint is defined by hostname/IP address, port, and AE (Application Entity) Title. A DICOM endpoint, such as a PACS or a scanner, usually has these endpoints statically configured to ensure security and patient privacy.
+
+This project attempts to send data from a source to dynamic destinations based on the queue and the performance. This can be a use case for teleradiology with multiple remote healthcare/radiologist sites present or a potential framework to enable federated learning on radiographic images. [Orthanc](https://www.orthanc-server.com/) can be set up as a DICOM endpoint that mimics a PACS [1](https://github.com/Emory-HITI/Niffler/tree/master/modules/cold-extraction). With multiple Orthanc servers configured, such a federated deployment can be prototyped. Ultimately, this project aims to study the possibilities and opportunities of supporting dynamic DICOM endpoints in practice.
+
+**Current Status:** This project is currently in the research stage.
+
+**Expected Outcomes:** A prototype implementation that supports dynamic DICOM endpoints.
+
+**Required Skills:** Python
+
+**Code Challenge:** Experience working with DICOM images from previous projects or through a sample dummy project will be a plus.
+
+**Source Code:** [https://github.com/KathiraveluLab/Diomede](https://github.com/KathiraveluLab/Diomede)
+
+**Discussion Forum**: [https://github.com/KathiraveluLab/Diomede/discussions](https://github.com/KathiraveluLab/Diomede/discussions)
+
+**Effort:** 175 Hours
+
+**Difficulty Level:** Intermediate
+
+**[15] Usability enhancements to CONTROL-CORE**
+
+**Mentors:** Rahul Jagwani (rahuljagwani1012 -at- gmail.com) and Mayuresh Kothare (mvk2 -at- lehigh.edu)
+
+**Overview:** [CONTROL-CORE](https://github.com/ControlCore-Project/) is a lightweight framework for closed-loop peripheral neuromodulation control systems. It provides multi-language support for program development in various execution environments, such as Linux, Windows, MacOS, and Docker. Due to its research nature and multi-platform and multi-language support, configuring and using CONTROL-CORE has become more challenging for regular users. Through usability enhancements, both in terms of installation and usage, this project aims at reducing the learning curve surrounding the CONTROL-CORE project.
+
+**Current Status:** CONTROL-CORE is a mature research framework. The successful implementation of this project will make it more user-friendly and allow us to expand on the userbase.
+
+**Expected Outcomes:** Usability enhancements in terms of installation and continuous use across the target platforms and execution environments.
+
+**Required Skills:** Since this is somewhat an open-ended problem, contributors are allowed to use technologies that are suitable to implement installers and configurations. Docker experience, working with operating system installers, and Linux is expected. Python and ReactJS experience is a plus, given the CONTROL-CORE backend is largely implemented in Python, and the front-end (concore-editor) is developed in ReactJS.
+
+**Code Challenge:** Demonstration of experience in CONTROL-CORE through prior contributions is a plus.
 
 **Source Code:** [https://github.com/ControlCore-Project/concore](https://github.com/ControlCore-Project/concore)
 

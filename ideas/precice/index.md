@@ -2,7 +2,7 @@
 
 **Parent:** preCICE — Project Ideas
 **Source:** https://precice.org/index.html
-**Scraped:** 2026-02-22T23:28:47.561106
+**Scraped:** 2026-03-10T16:58:40.311429
 
 ---
 
@@ -14,9 +14,7 @@ preCICE is an **open-source coupling library and ecosystem** for general partiti
 
 Partitioned means that **preCICE couples existing programs/solvers** capable of simulating a subpart of the complete physics involved in a simulation. This allows for the high flexibility that is needed to keep a decent time-to-solution for complex coupled problems.
 
-
 The software offers convenient methods for transient equation coupling, communication, time interpolation, and data mapping.
-
 
 ## Prepared for the next generation of multi-physics simulations
 

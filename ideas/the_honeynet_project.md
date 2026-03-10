@@ -1,7 +1,7 @@
 # The Honeynet Project — Project Ideas
 
 **Source:** https://www.honeynet.org/gsoc/gsoc-2026/google-summer-of-code-2026-project-ideas/
-**Scraped:** 2026-02-22T23:28:47.618457
+**Scraped:** 2026-03-10T16:58:40.276010
 
 ---
 
@@ -29,7 +29,7 @@ Please note - even if you aren’t an [eligible GSoC participant](http://develop
 
 Each sponsored GSoC 2026 project will have one or more mentors available to provide a guaranteed contact point to students, plus one or more technical advisors to help applicants with the technical direction and delivery of the project (often the original author of a tool or its current maintainer, and usually someone recognized as an international expert in their particular field). Our Google Summer of Code organizational administrators will also be available to all sponsored GSoC students for general advice and logistical support. We’ll also provide hosting for project infrastructure, if required.
 
-For all questions about the Honeynet Project, the GSoC program or our projects, please contact us on [Discord](https://discord.gg/68B8Ru5fSU) (preferred)** or email us at [[email protected]](https://www.honeynet.org/cdn-cgi/l/email-protection#7404061b1e111700341c1b1a110d1a11005a1b0613). You can also find us in [Slack](https://gsoc-slack.honeynet.org/).
+For all questions about the Honeynet Project, the GSoC program or our projects, please contact us on [Discord](https://discord.gg/68B8Ru5fSU) (preferred)** or email us at [[email protected]](https://www.honeynet.org/cdn-cgi/l/email-protection#bfcfcdd0d5dadccbffd7d0d1dac6d1dacb91d0cdd8). You can also find us in [Slack](https://gsoc-slack.honeynet.org/).
 
 **Application template**
 

@@ -2,7 +2,7 @@
 
 **Parent:** SymPy — Project Ideas
 **Source:** https://github.com/sympy/sympy/wiki/GSoC-2019-Report-Nikhil-Maan:-Creating-a-C-and-Fortran-parser-for-SymPy
-**Scraped:** 2026-02-22T23:28:47.573656
+**Scraped:** 2026-03-10T16:58:40.301852
 
 ---
 

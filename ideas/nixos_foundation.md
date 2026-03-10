@@ -1,13 +1,16 @@
 # NixOS Foundation — Project Ideas
 
 **Source:** https://github.com/NixOS/GSoC/blob/main/ideas/2026.md
-**Scraped:** 2026-02-22T23:28:47.586736
+**Scraped:** 2026-03-10T16:58:40.298043
 
 ---
 
 # Ideas
 
 Welcome to our Google Summer of Code ideas list!
+
+Note that according to the GSoC rules, Project Proposals may, but are not required to, be for Projects on an Organization’s Ideas List.
+Remember to follow the [contributor guide](/ideas/nixos-foundation/contributor-guide).
 
 ## Review Nixpkgs PRs
 
@@ -54,7 +57,20 @@ Prior art:
 Effort: Small (90 hours) to Large (350 hours)
 
 [Modular services](https://nixos.org/manual/nixos/unstable/#modular-services) are a new NixOS feature to reduce evaluation time as more service modules are written, contrasting the historic evaluation time increases as the [central module list](https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/module-list.nix) increased, while also supporting more flexible usage patterns like multiple instances of a service type on the same host.
-This project is to migrate some standard service modules to modular services. Pick a module from the module list, see if it makes sense to migrate it, and make a PR for it. Can be extended to arbitarily many modules.
+
+The workflow:
+- Pick a NixOS service whose maintainers agree to the pilot project
+- Factor the core of the service into a modular services module, keeping the user-facing options of the NixOS module the same
+- Implement a very basic test for the modular service itself that only tests the functionality of the modular service (typically config file and launch), leaving proper integration tests to the NixOS test
+
+The result:
+- Multiple instance support is unblocked
+- The module can be made portable to other process managers and operating systems
+- Config generation can be used and co-maintained by non-NixOS users
+- The NixOS module is smaller, improving NixOS evaluation performance, as the majority of services is not active on any given host and all the details in the modular service are not loaded. Even more performance can be gained with a user-facing migration in the future, pending an RFC.
+
+The expectation is that we will be able to migrate a few NixOS module implementations to use modular services under the hood, and that we can uncover ways to improve modular services and its integration into Nixpkgs and NixOS.
+Note: this is about service *implementations*. User-facing options remain unchanged.
 
 Skills required:
 - NixOS configurations
@@ -63,6 +79,7 @@ Skills required:
 Possible mentors:
 - Robert Hensing
 - Silvan Mosberger
+- Shahar "Dawn" Or
 
 Difficulty: Medium
 
@@ -71,36 +88,43 @@ References:
 - https://github.com/NixOS/nixpkgs/pull/475372
 - https://github.com/NixOS/nixpkgs/pull/476861
 
-## Security Tracker Improvements
+## Nixpkgs Security Tracker Improvements
+
+The security tracker helps solving the [record linkage](https://en.wikipedia.org/wiki/Record_linkage) problem of matching packages in the [CVE database](https://www.cve.org/) with [derivations in Nixpkgs](https://search.nixos.org/packages).
+It is used by the [NixOS security team](https://github.com/orgs/nixos/teams/security) to triage vulnerabilities in software distributed through Nixpkgs, and coordinate mitigation with [maintainers](https://github.com/orgs/nixos/teams/nixpkgs-maintainers).
+
+Conceptually it's a simple mechanism, consisting of a handful of textbook cases in database design and CRUD applications.
+In practice it's a productive system full of tricky real-world problems, with many opportunities for gathering professional experience.
 
 Effort: Small (90 hours) - Large (350 hours)
 
-Improve the Nixpkgs Security Tracker with the following enhancements:
+Improve the Nixpkgs Security Tracker with any of the following enhancements:
 - Improve matching quality with more structured data and heuristics
 - Implement workflow for change proposals by maintainers
-- Enable sharing evaluation data across multiple services
 - Increase data storage efficiency
-- Fix UI problems
 - Dig into data to increase transparency or observability
+- Enable sharing evaluation data across multiple services
+- Implement real-time collaborative editing features (e.g. presence indication, live updates)
 - Introduce new tools or paradigms into the development process
+- Fix UI problems
 
 Skills required:
-- Web development
-- Data analysis
-- User interface design
-- Backend development
+- Data analysis, database administration (Django, PostgreSQL)
+- Backend development (Django)
+- Web development (Django, htmx)
+- User interface design (HTML, CSS)
 
 Possible mentors:
-- (Add yourself here!)
+- Valentin Gagarin [@fricklerhandwerk](https://github.com/fricklerhandwerk)
 
-Difficulty: Easy to Medium, depending on choice
+Difficulty: Medium to hard, depending on choice
 
 References:
 - https://tracker.security.nixos.org/
 - https://github.com/NixOS/nix-security-tracker/issues
 
 Prior efforts:
-- Existing security tracker infrastructure
+- Existing security tracker infrastructure, actively developed
 
 ## Testing Dynamic Derivations
 
@@ -115,7 +139,7 @@ Skills required:
 - Nice to have: C++ for Nix internals if you want to fix a problem with dynamic derivations
 
 Possible mentors:
-- (Add yourself here!)
+- [@RossComputerGuy](https://github.com/RossComputerGuy)
 
 Difficulty: Hard
 
@@ -156,7 +180,7 @@ Skills required:
 - Metadata extraction patterns
 
 Possible mentors:
-- (Add yourself here!)
+- [@RossComputerGuy](https://github.com/RossComputerGuy)
 
 Difficulty: Hard, because it's open ended and requires some research to find a good solution
 
@@ -176,7 +200,7 @@ Skills required:
 - Fetcher implementation experience
 
 Possible mentors:
-- (Add yourself here!)
+- [@RossComputerGuy](https://github.com/RossComputerGuy)
 
 Difficulty: Medium
 
@@ -202,7 +226,7 @@ Skills required:
 - Socket programming and SSH knowledge
 
 Possible mentors:
-- (Add yourself here!)
+- Lisanna Dettwyler [@lisanna-dettwyler](https://github.com/lisanna-dettwyler)
 
 Difficulty: Hard
 
@@ -223,7 +247,7 @@ Skills required:
 - JSON/XML processing
 
 Possible mentors:
-- (Add yourself here!)
+- [@RossComputerGuy](https://github.com/RossComputerGuy)
 
 Difficulty: Medium
 
@@ -293,7 +317,7 @@ Problem: Unclear? How to go about this? What's the benenfit?
 Some packages in nixpkgs are wrappers around existing packages, but this metadata is not consistently tracked. This project would add proper metadata to identify wrapper packages and ensure the `unwrapped` attribute is consistently applied, improving package discoverability and maintenance.
 
 Possible mentors:
-- (Add yourself here!)
+- [@RossComputerGuy](https://github.com/RossComputerGuy)
 
 Skills required:
 - Nixpkgs structure knowledge
@@ -307,3 +331,42 @@ Let's make more use of the Ryan(Tm) update bot!
 - add updateScripts
 - add tests to existing scripts that are failing
 - create a metric to analyze existing script pass/fail/update-time
+
+## NixOS Configuration Drift Detector & Reconciler
+
+Effort: Medium (175 hours) - Large (350 hours)
+
+This idea has been submitted by a **GSoC contributor candidate**, so we will prefer to grant this proposal to them. It is listed here to facilitate finding a mentor.
+Author: @ArkhamKnight25
+
+NixOS guarantees reproducible builds and atomic activation, but it does not continuously verify that runtime state remains aligned with the declared configuration. In practice, systems can diverge from their intended state due to manual interventions, mutable state changes in `/var`, or runtime inconsistencies. While approaches like impermanence address this by wiping root on every boot, there is currently no non-destructive tool that detects and reports drift between the declared NixOS configuration and the live system state.
+
+This project is to build a NixOS module and CLI tool that compares the evaluated NixOS configuration against the running system and produces structured drift reports with severity levels.
+
+Scope includes:
+- Comparing `systemctl list-units` output against declared `systemd.services`
+- Detecting firewall rules (`iptables`/`nftables`) that differ from the configured `networking.firewall` state
+- Checking user accounts and groups against `users.users` and `users.groups`
+- Verifying `/etc` contents against activation script outputs
+- Identifying services running with mismatched derivations or binaries (e.g. a service running an older `/nix/store` path than what the current system profile declares)
+- Generating structured JSON drift reports categorized by severity (informational, warning, critical)
+- A reconciliation mode that can restore safe classes of drift or generate suggested `configuration.nix` patches
+
+Validation would be done using NixOS VM tests that simulate controlled drift scenarios (e.g. manually adding a user, killing a declared service, injecting iptables rules) and verify the tool detects them correctly.
+
+Possible mentors:
+- Almost any [Nixpkgs committer](https://github.com/NixOS/nixpkgs-committers/tree/main/members)
+
+Difficulty: Medium
+
+Skills required:
+- NixOS module system and configuration evaluation
+- Systemd and Linux system administration
+- Python or Rust for the CLI tool
+- NixOS VM test framework
+
+References:
+- https://github.com/NixOS/nixpkgs/issues/7420 (Nix-managed mutable state)
+- https://grahamc.com/blog/erase-your-darlings/ (impermanence as the nuclear alternative)
+- https://nixos.wiki/wiki/Overview_of_the_NixOS_Linux_distribution (drift discussion in NixOS design)
+- https://github.com/NixOS/nixpkgs/blob/master/nixos/tests/mutable-users.nix (existing NixOS test patterns for mutable state)

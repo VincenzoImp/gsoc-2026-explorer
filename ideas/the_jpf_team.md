@@ -1,7 +1,7 @@
 # The JPF team — Project Ideas
 
 **Source:** https://github.com/javapathfinder/jpf-core/wiki/GSoC-2026-Project-Ideas
-**Scraped:** 2026-02-22T23:28:47.593952
+**Scraped:** 2026-03-10T16:58:40.241150
 
 ---
 
@@ -137,6 +137,7 @@ A possible proposal template can be found at the bottom of our GSoC page: [[JPF 
 
  * ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) [Support Floating Point in JR](#fp-path-merging) <Soha>
 
+ * ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) [Support Runtime Exceptions in JR](#exceptions-path-merging) <Soha>
 
 ### Project Description
 
@@ -279,4 +280,18 @@ In this project, we want to allow Java Ranger to summarize regions with floating
 **Difficulty:** Hard  
 **Scope:** 350 hours  
 **Required skills:** Knowledge of Symbolic PathFinder.  
-**Preferred skills:** Knowledge of Java Ranger.
+**Preferred skills:** Knowledge of Java Ranger.  
+
+
+<a name="exceptions-path-merging"></a>
+#### ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Support runtime exception in Java Ranger
+
+**Description:**
+The main goal of this project is to support throwing a runtime exception for some of the summarized functions. This project will extend Java Ranger branch `sv-comp`. Please refer to sv-comp 2026 for benchmarks about Java runtime exceptions.
+
+
+**Difficulty:** Hard 
+**Scope:** 350 hours     
+**Required skills:** Knowledge of Symbolic Pathfinder 
+**Preferred skills:** Knowledge of Java Ranger.  
+**Possible Mentors:** Soha

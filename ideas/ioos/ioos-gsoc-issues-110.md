@@ -2,7 +2,7 @@
 
 **Parent:** IOOS — Project Ideas
 **Source:** https://github.com/ioos/gsoc/issues/110
-**Scraped:** 2026-02-22T23:28:47.602886
+**Scraped:** 2026-03-10T16:58:40.285022
 
 ---
 
@@ -60,7 +60,7 @@ lloyd.izard@gmail.com, leewj@uw.edu, vms16@uw.edu
 
 ### Contributor Evaluation/GSoC GitHub Issue Links
 
-https://github.com/OSOceanAcoustics/echoshader/issues/218
+We invite contributors to take a look at the [echoshader issues](https://github.com/OSOceanAcoustics/echoshader/issues) and try to address one! We also encourage you to introduce yourself by opening a new dedicated issue and selecting "GSoC 2026 discussion". You can use it to communicate with us or to raise any questions or concerns regarding your contribution. Cheers!
 
 ### Additional Project Background/Links
 

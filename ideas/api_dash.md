@@ -1,7 +1,7 @@
 # API Dash — Project Ideas
 
 **Source:** https://github.com/foss42/apidash/discussions/1054
-**Scraped:** 2026-02-22T23:28:47.568641
+**Scraped:** 2026-03-10T16:58:40.285959
 
 ---
 
@@ -71,6 +71,8 @@ In this project, your task is to strengthen the MCP Developer ecosystem by desig
 
 **Length**: 175 hours
 
+Idea discussion thread - [#1225](/ideas/api-dash/1225)
+
 ### 2. Multimodal AI and Agent API Eval Framework
 
 Develop an end-to-end AI and Agent API eval framework which should (list is suggestive, not exhaustive):
@@ -79,11 +81,13 @@ Develop an end-to-end AI and Agent API eval framework which should (list is sugg
 - Provide a UI interface for configuring AI API requests, where users can input test/custom datasets, configure request parameters, send queries to various AI API services and view the eval results.
 - Support evaluation of voice, image, text AI Models and AI Agents (via API interface) across various task benchmarks.
 
-**Skills**: AI, Agents, Evaluations, Python, React, Node, TypeScript
+**Skills**: AI, Agents, Evaluations, Python, React/Node/TypeScript or Dart/ Flutter
 
 **Difficulty**: Medium-High
 
 **Length**: 350 hours
+
+Idea discussion thread - [#1226](/ideas/api-dash/1226)
 
 ### 3. Git Support, UI Workflow Builder & Collection Dashboard
 
@@ -109,6 +113,8 @@ Your task is to design, build, and refine the agentic AI library in API Dash and
 
 **Length**: 175 hours
 
+Idea discussion thread - [#1230](/ideas/api-dash/1230)
+
 ### 5. Open Responses & Generative UI
 
 [Open Responses](https://www.openresponses.org) is an open-source specification and ecosystem for building interoperable, multi-provider LLM interfaces inspired by the OpenAI Responses API. It defines a common, vendor-neutral way to describe AI requests and structured response outputs, enabling portability and consistency across AI platforms. Complementing this, Google's [A2UI](https://github.com/google/A2UI) introduces clear guidelines for building Generative UIs, with first-class support available through Flutter's [GenUI SDK](https://github.com/flutter/genui).
@@ -121,6 +127,8 @@ Your task is to understand these specifications and build rich API response UI v
 
 **Length**: 90 hours
 
+Idea discussion thread - [#1227](/ideas/api-dash/1227)
+
 ### 6. CLI & MCP Support
 
 This project focuses on creating a CLI tool to run API Dash via terminal. Contributors will design and implement command-line interfaces that expose core capabilities of API Dash that help in API testing. Also, your task is to expose API Dash as a MCP Server so that it can be run via any Agent interface (like VS Code, AI Apps, etc.) that supports MCP.
@@ -131,6 +139,8 @@ This project focuses on creating a CLI tool to run API Dash via terminal. Contri
 
 **Length**: 90 hours
 
+Idea discussion thread - [#1228](/ideas/api-dash/1228)
+
 ### 7. WebSocket, MQTT & gRPC
 
 Testing WebSocket and MQTT (Message Queuing Telemetry Transport) protocols is crucial for ensuring the reliability, scalability, and security of real-time communication systems. Whereas, gRPC (Remote Procedure Call) facilitates efficient communication between distributed systems using Protocol Buffers (protobuf) as its interface definition language (IDL) and offers features such as bi-directional streaming, authentication, and built-in support for load balancing and health checking. Each of these API protocols/styles serves different purposes and is utilized in various applications ranging from finance to web applications to IoT (Internet of Things) devices. The objective of this project is to design the architecture of the core library, understand the specs & implement the support for testing, visualization & integration code generation of these APIs in API Dash.
@@ -140,6 +150,8 @@ Testing WebSocket and MQTT (Message Queuing Telemetry Transport) protocols is cr
 **Difficulty**: Medium-High
 
 **Length**: 175 hours
+
+Discussion here - [#772](/ideas/api-dash/foss42-apidash-issues-772)
 
 ### 8. API Explorer
 
@@ -155,11 +167,15 @@ You are required to develop the entire process backend in the form of an automat
 
 Related Issue(s) - [#619](/ideas/api-dash/foss42-apidash-issues-619)
 
+### Want to propose any other new idea?
+
+Please use this discussion forum to propose - [#1229](/ideas/api-dash/1229)
+
 Beta
 Was this translation helpful?
 [Give feedback.](https://github.com)
 
-## Replies: 12 comments 13 replies
+## Replies: 32 comments 33 replies
 
 -
 
@@ -264,6 +280,175 @@ Was this translation helpful?
 
 |
 Hi everyone! I've been going through the GSOC 2026 ideas and have been particularly drawn to both Idea From what I understand, MCP is shaping up to be a foundational layer for AI agent interoperability and strengthening the testing ecosystem around MCP servers/clients feels like an investment in long-term infrastructure reliability. The protocol-level standardization aspect is especially interesting to me. On the other hand, the Multimodal Eval Framework presents a very compelling systems challenge: designing a unified benchmarking interface that can orchestrate evaluations across text, vision, voice, and agent APIs while remaining extensible and developer-friendly. The combination of evaluation harness integration, dataset handling, and UI-driven experiment configuration makes this a fascinating end-to-end architecture problem. Before drafting a detailed proposal, I’d love to better understand the long-term architectural direction for these initiatives: For the Eval Framework, is the intent to build it as a standalone evaluation dashboard/service that could later integrate into API Dash, or is deep integration with the core Flutter client expected from the start? For MCP Testing, is the focus more on protocol validation tooling, developer DX, or on building reusable test harness abstractions? I’m currently exploring the codebase to understand how these components could fit into the broader ecosystem and I want to make sure any 175/350-hour proposal aligns with the project’s long-term roadmap rather than just delivering an isolated feature. Looking forward to contributing and refining the architecture further! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi maintainers 👋 I’m very interested in contributing to the I’ve been reviewing discussions around automated testing ( My background is in AI systems, agent-based architectures, and API-driven applications (Python, TypeScript, full-stack integration). I’m currently studying the existing request execution flow in API Dash to better understand where an agentic testing layer can integrate cleanly. Looking forward to contributing and refining a concrete proposal. |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hello Ankit Mahato and other mentors, AI Expertise: I have experience fine-tuning LLaMA models (using LLaMA-Factory and vLLM) and building Agentic AI systems. Full-Stack & Data: I've built RESTful APIs in Node.js to handle complex scientific data (NASA Kepler Archive) and delivered React/TypeScript applications under tight deadlines. Security Mindset: As a HackerOne Security Researcher, I can ensure that the API request configuration and dataset handling are built securely. My Technical Suggestion: I have opened a I’m ready to start by drafting the TypeScript interfaces for these evaluation results to establish a clear data contract between the frontend and the AI worker. Should I proceed with this draft? I have joined your weekly connect in March 1 and really looking forward to it! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi , I'm Banashankari I'm interested in contributing to the I primarily work with AI/ML, Python, TypeScript, Node.js, and React, and I have hands-on experience building end-to-end systems, agent tooling, and evaluation pipelines. I'm particularly excited about: Strengthening the Model Context Protocol developer ecosystem. Building evaluation tooling for multimodal AI models and agent APIs. I'd love to get started and would appreciate any guidance on initial tasks, setup, or areas where contributors are needed. Looking forward to collaborating! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi everyone 👋 I’m interested in working on Idea Should this be designed as a standalone web interface for API discovery, or primarily as a backend automation service that integrates directly into the existing Flutter app? Since the core involves parsing OpenAPI/HTML files, auto-categorization, and template generation, I want to make sure my design and timeline align with the intended integration strategy. I’m comfortable handling backend automation as well as Flutter-side integration if needed. Thanks! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hello! My name is Wallyson Silva, and I am an Information Systems undergraduate student at UFPE interested in contributing to API Dash in GSoC 2026. I have experience with Python and JavaScript, along with an interest in automation and data organization. I'm interested in the idea The proposal to automate the parsing of OpenAPI/HTML files, endpoint categorization, and template generation aligns with my interest in building solutions that make development workflows more efficient and accessible. I’m excited about the opportunity to contribute to the project! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi everyone! I’ve been exploring the GSoC 2026 project list and I am highly interested in Idea I have a solid background in building cross-platform applications using Flutter and Dart. The concept of parsing AI-structured JSON responses and rendering them into dynamic interfaces using Google's GenUI SDK aligns perfectly with my experience in state management and UI/UX design. To help me draft a precise and realistic architecture for my 90-hour proposal, I’d love to clarify a technical detail: I’ve already started diving into the API Dash codebase and reading up on the Open Responses specification. I will definitely join the upcoming weekly connect call to discuss this further with the mentors! Looking forward to contributing! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hello guys, I'm Gilbert, I am excited to contribute to this open-source project, specifically idea |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hy everyone I'm |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hello Everyone,I am Naveen Kumar |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi everyone 👋 I’m Abdul Wadood, a final-year CS student, and I’m really excited about contributing to API Dash for GSoC 2026. Idea I’ve built AI agents, worked with LLM integrations, and developed RAG pipelines using Python, Node.js, and React. I’m eager to bring that experience to help improve the evaluation framework and MCP tooling. While exploring the repo, I wanted to ask if there are any evaluation or MCP issues that are good starting points for new contributors. I’d love to get hands-on and start contributing effectively. Excited to get involved and looking forward to your guidance! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+I’ve been going through all the proposed ideas for GSoC 2026, and I genuinely love the direction API Dash is heading. The focus on AI tooling, MCP, agentic workflows, evaluation systems, and developer experience feels very thoughtful and long-term oriented. It doesn’t feel like feature additions — it feels like infrastructure building. While exploring the repository and discussions, I’ve been thinking less in terms of individual projects and more about how these ideas could fit together as part of a cohesive architecture over time. Across multiple ideas, I notice a natural pattern forming — heavy execution tasks, orchestration logic, and client-facing interfaces. It made me wonder whether the long-term direction is to gradually evolve API Dash into something more modular and service-oriented, where core logic lives in a structured backend layer and the Flutter app, CLI, or MCP integrations act as different interfaces on top of it. If that’s the vision, I’d be very interested in contributing toward building things in a way that prioritizes extensibility from day one — clear contracts between components, pluggable adapters, observable background tasks, and designs that won’t require refactoring when new protocols or AI capabilities are introduced later. Before drafting my proposal, I just wanted to understand how you see API Dash evolving over the next couple of years. Is the goal to keep it primarily client-centric, or gradually shape it into a broader developer platform with more modular intelligence layers underneath? I’ve started sketching some thoughts locally and will join the weekly connect to align properly before moving forward. Looking forward to contributing seriously and long term. |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi everyone 👋 I'm a 2nd-year student at Hiroshima University, Japan, with a strong interest in software development and developer experience. Idea I have around two years of experience in web development (TypeScript/React) and have been exploring Flutter/Dart as well. I’d love to experiment with improving the response renderer to detect content types and render appropriate UI components. Would it be helpful if I prepared a small prototype or UI mockup before writing a full proposal? Looking forward to contributing! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+hi , I would like to work on idea 8 ,i would like to discuss and further contribute to this idea, |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi, everyone 👋 I’m Cai, a CS student, and I’m excited about contributing to API Dash for GSoC 2026. I’ve built AI agents, LLM integrations, and developed RAG pipelines. I am proficient in React/Node/TypeScript, Flutter/Dart and Python. I’m also eager to help improve the evaluation framework and MCP tooling. I am excited about idea 1-5. Looking forward to collaborating! |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Wow! This org is so well-structured—I’ve spent a lot of time looking for a good one like this. I’m really interested in becoming a part of it. Would starting now reduce my chances? I’m ready to give my best effort, but I just wanted to ask since I know it’s always better to start early |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hi I’ve been exploring the repository and Idea While looking through the codebase, I started thinking about how the ingestion pipeline for public APIs could be structured to remain maintainable as the dataset grows. One approach I’m experimenting with locally is a three-stage pipeline: -
+**Spec Ingestion Layer** Fetch OpenAPI/Swagger/HTML API docs and normalize them into a unified intermediate representation. -
+**Processing & Enrichment Layer**- Extract endpoints, parameters, and auth methods
+- Auto-tag APIs using simple classification rules (or lightweight NLP for categories like AI, Finance, Weather, etc.)
+- Generate request templates compatible with API Dash collections.
+-
+**Template Generation Layer** Output structured templates that can be imported directly into API Dash with preconfigured requests and example payloads.
+I’m planning to prototype a small pipeline that parses a few public OpenAPI specs and generates API Dash-compatible request templates to validate this approach. Before building further, I wanted to ask: Should the API Explorer dataset live entirely inside the repository (similar to a curated catalog), or do you envision a small backend service that periodically refreshes and updates API metadata? I’ll join the weekly connect as well to understand the broader roadmap. Looking forward to contributing. |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hey I'm Tanish 👋 a CS (AI & Data Science) student. Been going through the codebase and ideas list the past few days and wanted to drop an intro before diving in. I really liked Idea One thing I wanted to clarify before drafting a PoC — is the expectation to wrap existing frameworks like lm-harness/lighteval as backends, or build a custom eval runner? Want to make sure I'm going in the right direction architecturally. |
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+|
+Hii , Myself Chaitanya Parab, 3rd year BE student from SSPM'S College of Engineering,Kankavli. Tried to participate in open source but did't got the right path and guidance, hearing Gsoc for the last 2 years want to contribute this year, learn new skills and apply my knowlegde in real world. It will help me to learn new skills and technology with the API Dash team and mentors. Would like to contribute in small project which is "API Explorer", being frank I will be learning and doing the contribution and I have started it from right now. So my thought process is to focus on a "Marketplace" UI where users can search, filter by category and view detailed API cards that show ratings and complexity levels. Shall extend deep into it when connected. Let's connect and making API Dash a successful organization this year! |
 
 Beta
 Was this translation helpful?

@@ -2,7 +2,7 @@
 
 **Parent:** Jitsi — Project Ideas
 **Source:** https://github.com/jitsi/gsoc-ideas/blob/master/2026/external-api-structured-clone.md
-**Scraped:** 2026-02-22T23:28:47.585220
+**Scraped:** 2026-03-10T16:58:40.241782
 
 ---
 

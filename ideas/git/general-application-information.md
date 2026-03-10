@@ -2,7 +2,7 @@
 
 **Parent:** Git — Project Ideas
 **Source:** https://git.github.io/General-Application-Information
-**Scraped:** 2026-02-22T23:28:47.567624
+**Scraped:** 2026-03-10T16:58:40.276445
 
 ---
 
@@ -13,14 +13,15 @@ microproject ideas, or microproject general information.
 Specifically, also read the “AI guidelines” section to know our
 stance regarding the usage of AI tools.*
 
-It is required that applicants who want to apply to the Git
-project for the GSoC or Outreachy complete a tiny, code-related
-“microproject” as part of their application. Please refer to our
+It is required that applicants who want to apply to the Git project for the GSoC or Outreachy complete a tiny, code-related “microproject” as part of their application.
+
+Please thoroughly read and refer to our
 [general guidelines and suggestions for microprojects](https://git.github.io/General-Microproject-Information)
-for more information. Completing a microproject is not only an important
-way for us to get experience with applicants, but it will also help
-applicants become familiar with Git’s development and submission
-process.
+for more information. Especially make sure you have fully read the
+whole “Only ONE quality focused microproject per applicant” section
+in that document.
+
+Completing a microproject is not only an important way for us to get experience with applicants, but it will also help applicants become familiar with Git’s development and submission process.
 
 Also, working in Git project is not only about writing your own patches. Constructively critiquing design and implementation of patches by other people is also an important skill you need to learn in order to effectively collaborate with others. So, if you have time and inclination, it would be beneficial to read and understand other applicants’ patches (or any other patch submitted to the mailing-list), think if you agree that the problem they are trying to solve is worth solving, the approach they are taking is the best way (or if you think of a better way to solve it), etc., and respond to their patches with the result of your thinking as a review.
 
@@ -184,8 +185,10 @@ The process of reviewing microproject patches and applications on the mailing li
 
 The more we can see that you invest in learning and participating in Git’s development, the more we can be confident that you are motivated and will likely stay in the community.
 
-This doesn’t necessarily mean that you have no chance at all of getting accepted if you get involved quite late. It depends on how other applicants are doing and how many available mentors we have or can find. But anyway you start with a significant handicap compared to other applicants who got involved early.
+That said sending your application more than one month before the application deadline is not a good idea either, because discussions or on going work might happen that make us change the project ideas a bit in the meantime, and it would be a waste of effort for you and us to aim at a moving target. The last month should be enough to discuss your application. Before that, please work on other things.
 
-It might therefore be a good idea to find a project idea that is not yet being pursued by an applicant who started getting involved much earlier than you. This means that you might have to find a project idea that we haven’t proposed in our idea list.
+The fact that we like applicants getting involved early doesn’t necessarily mean that you have no chance at all of getting accepted if you get involved quite late. It depends on how other applicants are doing and how many available mentors we have or can find. But anyway you start with a significant handicap compared to other applicants who got involved early.
+
+It might therefore be a good idea to find a project idea that is not yet being pursued by an applicant who started getting involved much earlier than you. If there aren’t, then finding a project idea that we haven’t proposed in our idea list might give you a chance.
 
 The good side of this is that this project idea along with your enthusiasm for it and the skills you show might encourage Git developers to mentor you even if they weren’t planning to mentor in the first place. It could also happen that someone, who was only planning to co-mentor, could agree to fully mentor you alone.

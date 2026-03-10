@@ -1,13 +1,11 @@
 # FreeCAD — Project Ideas
 
 **Source:** https://wiki.freecad.org/Google_Summer_of_Code_2026
-**Scraped:** 2026-02-22T23:28:47.579567
+**Scraped:** 2026-03-10T16:58:40.253374
 
 ---
 
 # Google Summer of Code 2026
-
-[View the most recent revision.](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&oldid=1749330)
 
 FreeCAD started participating to the Google student coding program (GSoC) in 2016. We participated through a combined effort of many CAx projects, under the BRL-CAD umbrella. Since 2023, we are applying as our own organization.
 
@@ -15,19 +13,19 @@ FreeCAD started participating to the Google student coding program (GSoC) in 201
 [https://summerofcode.withgoogle.com/](https://summerofcode.withgoogle.com/) - Timeline:
 [https://developers.google.com/open-source/gsoc/timeline](https://developers.google.com/open-source/gsoc/timeline) - FreeCAD in GSoC 2026: To be announced
 
-## How it works
+## How it works[[edit](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&veaction=edit§ion=1) | [edit source](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&action=edit§ion=1)]
 
 - The student writes a project proposal for FreeCAD, and uploads it the GSoC platform.
 - Students can choose to work on their own idea, or they can pick an idea suggested by the FreeCAD mentors team. There is no difference in how your project is reviewed or accepted, the important part is to work on something you like.
 - Proposals will be reviewed, evaluated, and ranked by FreeCAD mentors.
 - Google allocates a certain number of slots to each participating organization. Slots are allocated following the ranking order given by the project mentors.
-- If you are accepted, You will have two FreeCAD mentors assigned to you. there is a first period allocated to get to know FreeCAD, the community and your mentors, then the real coding period starts. Your work get reviewed at mid-term and at the end.
+- If you are accepted, You will have two FreeCAD mentors assigned to you. There is a first period allocated to get to know FreeCAD, the community and your mentors, then the real coding period starts. Your work gets reviewed at mid-term and at the end.
 
 If you want to get involved, **study well the GSoC Checklist**. Whether you're applying or accepted, we've itemized everything you need to do in this list. We're here to help you become new open source developers, so don't be shy if you have any questions.
 
-## Writing your proposal
+## Writing your proposal[[edit](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&veaction=edit§ion=2) | [edit source](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&action=edit§ion=2)]
 
-We are proposing a number of project ideas here. But you are in no way forced to follow our ideas. You can propose anything you would like to work on, that you thing would be an interesting project. Good places to hunt for ideas are the [list of feature requests](https://github.com/FreeCAD/FreeCAD/issues?q=is%3Aopen+is%3Aissue+label%3AFeature), the [FreeCAD forum](https://forum.freecad.org) or other FreeCAD communities, like [Facebook](https://www.facebook.com/FreeCAD), [Discord](https://discord.com/invite/w2cTKGzccC) or [Reddit](https://www.reddit.com/r/freecad).
+We are proposing a number of project ideas here. But you are in no way forced to follow our ideas. You can propose anything you would like to work on, that you think would be an interesting project. Good places to hunt for ideas are the [list of feature requests](https://github.com/FreeCAD/FreeCAD/issues?q=is%3Aopen+is%3Aissue+label%3AFeature), the [FreeCAD forum](https://forum.freecad.org) or other FreeCAD communities, like [Facebook](https://www.facebook.com/FreeCAD), [Discord](https://discord.com/invite/w2cTKGzccC) or [Reddit](https://www.reddit.com/r/freecad).
 
 You will find many templates and models on the internet, and on the [Google Summer of Code website](https://summerofcode.withgoogle.com/), but it does not need to be very elaborate. Again, what is important is that you choose a subject you like. It's more important to get interested in your idea and do some research about how you would achieve it than writing very long proposals.
 
@@ -35,7 +33,7 @@ What we expect to see in your proposal is what is explained on the [Google Summe
 
 Please note that **proposals written by AI tools will be rejected**.
 
-## The Selection Process
+## The Selection Process[[edit](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&veaction=edit§ion=3) | [edit source](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&action=edit§ion=3)]
 
 GSoC is about getting people involved and contributing to open source over the long-term. As such, we heavily weight our application selection process towards students that are interested in remaining involved in FreeCAD and open source software development after GSoC has ended. GSoC is not a summer job, although it happens during the Northern hemisphere summer months and requires some dedication and commitment, like a job.
 
@@ -47,11 +45,11 @@ Whether or not you are accepted, contributing to open source outside of GSoC is 
 
 And in case your proposal is not accepted but you would still like to work on it, nothing prevents that! Several FreeCAD GSoC students in the past have worked on their project outside the GSoC program.
 
-## Possible Mentors
+## Possible Mentors[[edit](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&veaction=edit§ion=4) | [edit source](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&action=edit§ion=4)]
 
 The pool of mentors will review all the proposals, each member will mark the proposals they want to mentor, and each winning proposal will get the mentors that marked their interest. There is no need for you to choose a mentor yourself before starting. If you would like to get reviewing and mentorship before starting, look for the mentors from previous years in the [GSoC section of the FreeCAD forum](https://forum.freecad.org/viewforum.php?f=46), or simply post something in that section to ask for review.
 
-## Implementation Ideas
+## Implementation Ideas[[edit](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&veaction=edit§ion=5) | [edit source](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&action=edit§ion=5)]
 
 There are several sources for project ideas. The table below lists existing project ideas already picked by the FreeCAD developers. FreeCAD also previously participated in an umbrella organization for GSoC, and there are [FreeCAD project ideas available in their GSoC repo](https://github.com/opencax/GSoC/issues?q=is%3Aissue+is%3Aopen+FreeCAD).
 
@@ -65,10 +63,10 @@ The size column shows the estimated time frame to complete the project, but you 
 
 [Combining FreeCAD Assembly, Multibody Dynamics, and Finite Element Analysis](https://github.com/FreeCAD/FreeCAD/issues/27304)[TechDraw: Make Pan/Zoom available in "Gesture" mode](https://github.com/FreeCAD/FreeCAD/issues/26839)[Core: Collaboration features](https://github.com/FreeCAD/FreeCAD/issues/25681)[PartDesign: Add threading to existing holes](https://github.com/FreeCAD/FreeCAD/issues/23257)[PartDesign: Ability to edit used sketch references during creation & modification operations in UI](https://github.com/FreeCAD/FreeCAD/issues/22219)[Support STEP AP242 ed1/ed2/ed3/ed4](https://github.com/FreeCAD/FreeCAD/issues/19795)[CAM/BIM: Create a 2D nesting tool](https://github.com/FreeCAD/FreeCAD/issues/19576)[3D Constraint-driven sketcher/wireframe workbench](https://github.com/FreeCAD/FreeCAD/issues/14010)[Measurement: Add snapping to measurements](https://github.com/FreeCAD/FreeCAD/issues/13708)[UX/UI - Feature request: Add input hints to Measure](https://github.com/FreeCAD/FreeCAD/issues/26042)[Allow to open backup files directly](https://github.com/FreeCAD/FreeCAD/issues/26833)Note also that any issue open on the [FreeCAD issues tracker](https://github.com/FreeCAD/FreeCAD/issues) could become a good GSoC proposal. Don't hesitate to browse the issues, the list above is formed from the most interesting ones [marked as GSoC issues](https://github.com/FreeCAD/FreeCAD/labels/GSoC). The ones [marked as "Feature"](https://github.com/FreeCAD/FreeCAD/issues?q=is%3Aissue+is%3Aopen+label%3AFeature) are feature requests and might be especially interesting to you. Be sure to browse these links for more ideas. The ones marked as [good first issue](https://github.com/FreeCAD/FreeCAD/labels/Good%20first%20issue) are identified as interesting for new contributors. If any of them picks your brain, feel free to discuss it, either directly on the issue itself, or on the [forum thread](https://forum.freecad.org/viewtopic.php?t=84897).
 
-## Schedule
+## Schedule[[edit](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&veaction=edit§ion=6) | [edit source](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&action=edit§ion=6)]
 
 See [https://developers.google.com/open-source/gsoc/timeline](https://developers.google.com/open-source/gsoc/timeline)
 
-## In case your project is not selected
+## In case your project is not selected[[edit](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&veaction=edit§ion=7) | [edit source](https://wiki.freecad.org/index.php?title=Google_Summer_of_Code_2026&action=edit§ion=7)]
 
 Don't worry too much! The GSoC program has a lot of candidates and few slots. FreeCAD typically receives 2 or 3 slots only. It might not mean your proposal was bad, only there were too few slots. You are more than invited to try to work on your project, even outside the GSoC program. The community will still provide guidance and help you get started. Working with FreeCAD is fun ;)

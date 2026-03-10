@@ -1,7 +1,7 @@
 # The ns-3 Network Simulator Project — Project Ideas
 
 **Source:** https://www.nsnam.org/wiki/GSOC2026Projects
-**Scraped:** 2026-02-22T23:28:47.552705
+**Scraped:** 2026-03-10T16:58:40.231913
 
 ---
 
@@ -164,11 +164,24 @@ The candidate should outline in the proposal the features that are planned to be
 
 *Required Experience:*Fundamentals of IPv6 addressing, C++ programming.*Bonus Experience:*Familiarity with 6LoWPAN and 6LoWPAN-ND*Interests:*IPv6 and IoT networks*Difficulty:*Easy.*Recommended reading:*
 
-### OLLA Link Adaptation and Spec-Compliant TBS Calculation for 5G-LENA
+### OLLA Link Adaptation for 5G-LENA
 
-Mentors: [Sandra Lagen](mailto:slagen@cttc.es), [Tom Henderson](mailto:tomh@tomh.org), [Biljana Bojovic](mailto:bbojovic@cttc.es), [Gabriel Ferreira](mailto:gcarvalho@cttc.es), [Katerina Koutlia](mailto:kkoutlia@cttc.es)
+Mentors: [Biljana Bojovic](mailto:bbojovic@cttc.es), [Tom Henderson](mailto:tomh@tomh.org), [Gabriel Ferreira](mailto:gcarvalho@cttc.es), [Sandra Lagen](mailto:slagen@cttc.es)
 
-This project would focus on improving the realism and correctness of the CTTC 5G-LENA (NR module) by implementing Outer Loop Link Adaptation (OLLA) in the scheduling/link adaptation workflow, and by improving the Transport Block Size (TBS) calculation to be aligned with the 5G NR specification. OLLA is commonly used to track a target BLER by updating an SINR (or CQI) offset based on HARQ ACK/NACK feedback, leading to more stable and realistic link adaptation behavior. In addition, the project would include a performance evaluation comparing the new OLLA-enabled behavior against the current baseline and across multiple existing NR schedulers. The evaluation should consider throughput, latency, achieved BLER, convergence behavior, and fairness.
+This project would focus on improving the realism of the CTTC 5G-LENA by implementing Outer Loop Link Adaptation (OLLA) in the scheduling/link adaptation workflow. In the current baseline, MCS selection is driven by CQI (or SINR-to-CQI mapping) without an outer-loop correction. OLLA is commonly used to track a target BLER by updating an SINR (or CQI) offset based on HARQ ACK/NACK feedback, leading to more stable and realistic link adaptation behavior under varying channel conditions. This project should include this adaptation for the DL and for the UL, integrated in a scheduler-agnostic way so multiple NR schedulers can reuse it with minimal duplication.
+
+In addition, the project would include a performance evaluation:
+
+- comparing the new OLLA-enabled behavior against the current baseline and across multiple representative existing NR schedulers.
+- the evaluation should consider throughput, latency, and achieved BLER, including how closely the achieved BLER tracks the configured target.
+- the evaluation of the responsiveness to channel condition changes (convergence speed, stability/oscillation behavior).
+- the sensitivity to the CQI update frequency and to user data rate / traffic load (how ACK/NACK rate affects convergence).
+
+Additional topics/work items that could be considered if feasible:
+
+- More advanced OLLA algorithms.
+- Calibration guidance and/or comparison against published OLLA configurations (when reference data is available).
+- Extensions beyond MCS selection (e.g., rank adaptation). This should be relatively easy in the uplink, but for the downlink some advanced mechanism could be investigated and potentially, AI-based approach could be considered.
 
 For starters, we would suggest adding the CTTC 5G-LENA (nr module) to ns-3 (as a module in the contrib/ directory), building and running the NR examples, and becoming familiar with the current scheduler, HARQ feedback flow, CQI/MCS selection, and TBS computation. Documentation is available here: [https://5g-lena.cttc.es/](https://5g-lena.cttc.es/). There is an overview tutorial video available here: [https://acmse.net/2021/tutorials-offered/#tut-work03](https://acmse.net/2021/tutorials-offered/#tut-work03). That is the background information.
 

@@ -2,7 +2,7 @@
 
 **Parent:** checkstyle — Project Ideas
 **Source:** https://github.com/checkstyle/checkstyle/issues/18435
-**Scraped:** 2026-02-22T23:28:47.591724
+**Scraped:** 2026-03-10T16:58:40.260086
 
 ---
 
@@ -47,8 +47,7 @@ Please read and looks at images at https://github.com/checkstyle/checkstyle/issu
 
 ## Current Suppression List (check master HEAD version for latest state)
 
-https://github.com/checkstyle/checkstyle/blob/78f9db1cb555aeb2d37531cb6d49be0448d2c624/src/test/java/com/puppycrawl/tools/checkstyle/internal/XdocsExamplesAstConsistencyTest.java#L88-L91
-
+https://github.com/checkstyle/checkstyle/blob/a94bdd41cb3f0873bed87c619d200fe1754627f7/src/test/java/com/puppycrawl/tools/checkstyle/internal/XdocsExamplesAstConsistencyTest.java#L89-L92
 
 ## How to Help
 

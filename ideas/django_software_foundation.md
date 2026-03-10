@@ -1,7 +1,7 @@
 # Django Software Foundation — Project Ideas
 
 **Source:** https://code.djangoproject.com/wiki/SummerOfCode2026
-**Scraped:** 2026-02-22T23:28:47.630604
+**Scraped:** 2026-03-10T16:58:40.251798
 
 ---
 
@@ -183,7 +183,7 @@ Full reference: [https://github.com/django/new-features/issues/13](https://githu
 
 | Difficulty | Hard |
 | Size | 350hr |
-| Mentors | Sage Abdullah, Lily (needs confirmation) |
+| Mentors | Sage Abdullah, Lily, Simon Charettes |
 | Key Skills | django, python, postgres, ORM |
 
 This project aims to extend Django’s ORM with native support for PostgreSQL’s `generate_series`
@@ -191,6 +191,11 @@ This project aims to extend Django’s ORM with native support for PostgreSQL’
 function. Currently developers must use raw SQL to access this powerful function. The work involves designing ORM expressions or query APIs to integrate `generate_series`
 
 in a way that feels natural within Django’s ORM, writing tests, and ensuring compatibility with Django’s PostgreSQL contrib utilities.
+
+There are a few things to make `generate_series`
+
+work, first is generic support for composite fields. Getting generic composite field to work could be a good stepping stone towards `generate_series`
+
 
 References:
 
@@ -218,9 +223,9 @@ Could be scoped as a 175hr or a 350hr project, depending on your idea.
 
 We're open to all good ideas!
 
-[Last modified](https://code.djangoproject.com/wiki/SummerOfCode2026?action=diff&version=6)
+[Last modified](https://code.djangoproject.com/wiki/SummerOfCode2026?action=diff&version=7)
 
-[27 hours ago](/ideas/django-software-foundation-8o/timeline)Last modified on Feb 21, 2026, 1:36:21 PM
+[7 days ago](/ideas/django-software-foundation-8o/timeline)Last modified on Mar 3, 2026, 12:53:21 AM
 
 **Note:**See
 

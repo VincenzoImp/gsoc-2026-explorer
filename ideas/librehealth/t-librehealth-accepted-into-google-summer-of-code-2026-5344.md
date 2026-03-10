@@ -2,7 +2,7 @@
 
 **Parent:** LibreHealth — Project Ideas
 **Source:** https://forums.librehealth.io/t/librehealth-accepted-into-google-summer-of-code-2026/5344
-**Scraped:** 2026-02-22T23:28:47.613875
+**Scraped:** 2026-03-10T16:58:40.231742
 
 ---
 
@@ -33,7 +33,7 @@ Next steps for prospective contributors
 
 [Introduce yourself](https://forums.librehealth.io/t/meet-the-community-introduce-yourself-here/45)to us. Explain your background and what you like to do.- Review the
 [GSoC Student/Contributor Manual](https://developers.google.com/open-source/gsoc/resources/manual)as it covers any questions you may have. - Please keep your discussion and questions within the
-[threads we have set up for each project](https://forums.librehealth.io/tags/c/community/gsoc/gsoc2025-project). If you are proposing another project, please make a new thread; otherwise,create new threads.**DO NOT** - Expect to refine your proposal over time. We are evaluating you based on the proposal. You have a limited amount of time to complete your project, so you need to have a reasonable timeline defined.
+[threads we have set up for each project](https://forums.librehealth.io/tags/c/community/gsoc/gsoc2026-project). If you are proposing another project, please make a new thread; otherwise,create new threads.**DO NOT** - Expect to refine your proposal over time. We are evaluating you based on the proposal. You have a limited amount of time to complete your project, so you need to have a reasonable timeline defined.
 - Start your proposal early; don’t wait until the last minute, as it rarely ends well.
 - You may use this thread for questions not directly related to a specific project.
 

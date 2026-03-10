@@ -2,7 +2,7 @@
 
 **Parent:** DBpedia — Project Ideas
 **Source:** https://forum.dbpedia.org/t/modernizing-multilingualizing-dbpedia-nlp-pipeline-gsoc-2026-mentors-needed/4786
-**Scraped:** 2026-02-22T23:28:47.608270
+**Scraped:** 2026-03-10T16:58:40.250869
 
 ---
 
@@ -68,3 +68,5 @@ Enables easier onboarding of new languages
 Reduces technical debt in a core DBpedia component used downstream by multiple projects
 
 I would be happy to further narrow the scope if there are specific fact-extractor or MARVIN components you recommend focusing on.
+
+@tsoru@tiwarisanju18 i have sent my proposal to sanju tiwari mam as asked but her email id is not working i guess because i am unable to contact her thru email,how can i connect for further queries.Thankyou

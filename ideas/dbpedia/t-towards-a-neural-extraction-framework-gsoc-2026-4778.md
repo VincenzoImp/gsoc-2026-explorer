@@ -2,7 +2,7 @@
 
 **Parent:** DBpedia — Project Ideas
 **Source:** https://forum.dbpedia.org/t/towards-a-neural-extraction-framework-gsoc-2026/4778
-**Scraped:** 2026-02-22T23:28:47.608054
+**Scraped:** 2026-03-10T16:58:40.250997
 
 ---
 

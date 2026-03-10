@@ -2,7 +2,7 @@
 
 **Parent:** The ns-3 Network Simulator Project — Project Ideas
 **Source:** https://www.nsnam.org/wiki/Project_Ideas
-**Scraped:** 2026-02-22T23:28:47.553188
+**Scraped:** 2026-03-10T16:58:40.232289
 
 ---
 

@@ -1,7 +1,7 @@
 # gprMax — Project Ideas
 
 **Source:** https://github.com/gprMax/GSoC/blob/main/project-ideas-2026.md
-**Scraped:** 2026-02-22T23:28:47.581903
+**Scraped:** 2026-03-10T16:58:40.254973
 
 ---
 

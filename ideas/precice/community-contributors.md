@@ -2,7 +2,7 @@
 
 **Parent:** preCICE — Project Ideas
 **Source:** https://precice.org/community-contributors.html
-**Scraped:** 2026-02-22T23:28:47.561179
+**Scraped:** 2026-03-10T16:58:40.311559
 
 ---
 
@@ -24,9 +24,6 @@ University of Stuttgart -
 **Felix Neubauer**
 
 University of Stuttgart -
-**Benjamin Rodenberg**
-
-Technical University of Munich -
 **David Schneider**
 
 University of Stuttgart -
@@ -41,7 +38,11 @@ If you are interested in joining the team of preCICE maintainers, please [contac
 
 ## Previous maintainers
 
+Previous mantainers and their affiliation at the time of their last significant contribution.
+
 ## Further contributors
+
+Previous contributors and their affiliation at the time of their last significant contribution.
 
 -
 **Georg Abrams**
@@ -59,6 +60,9 @@ Technical University of Munich -
 **David Blom**
 
 Delft University of Technology -
+**Philip Cardiff**
+
+University College Dublin -
 **Gilberto Lem Carrillo**
 
 Technical University of Munich -
@@ -98,18 +102,27 @@ University of Stuttgart -
 **Saumitra Vinay Joshi**
 
 Technical University of Munich -
+**Mathis Kelm**
+
+University of Stuttgart -
 **Pavel Kharitenko**
 
 University of Stuttgart -
 **Harald Klimach**
 
 University of Siegen -
+**Robert Klöfkorn**
+
+Lund University -
 **Oguz Ziya Koseomur**
 
 Technical University of Munich -
 **Niklas Kotarsky**
 
 Lund University -
+**Helena Kschidock**
+
+University of Stuttgart -
 **Christopher Lorenz**
 
 CH Lorenz UG Research & Innovation Consulting -
@@ -140,12 +153,18 @@ Austrian Institute of Technology -
 **Erik Scheurer**
 
 University of Stuttgart -
+**Timo Pierre Schrader**
+
+University of Stuttgart -
 **Valentin Seitz**
 
 Technical University of Munich -
 **Alexander Shukaev**
 
 Technical University of Munich -
+**Joseph Signorelli**
+
+University of Illinois Urbana-Champaign -
 **David Sommer**
 
 University of Stuttgart -
@@ -171,6 +190,9 @@ Technical University of Munich -
 
 Technical University of Munich -
 **Peter Vollmer**
+
+University of Stuttgart -
+**Leonard Willeke**
 
 University of Stuttgart -
 **Jiho Yang**

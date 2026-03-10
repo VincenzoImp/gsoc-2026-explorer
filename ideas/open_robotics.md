@@ -1,7 +1,7 @@
 # Open Robotics — Project Ideas
 
 **Source:** https://github.com/osrf/osrf_wiki/wiki/GSoC-2026
-**Scraped:** 2026-02-22T23:28:47.604610
+**Scraped:** 2026-03-10T16:58:40.314185
 
 ---
 
@@ -64,30 +64,64 @@ Expected size: 175 hours
 
 Difficulty: Easy
 
+Mentors: [Arjo Chakravarty](https://github.com/arjo129)
+
 Expected outcome: A comprehensive test suite and audit of all system resets in gazebo
 
 Detailed description: Gazebo ships with a lot of core plugins out of the box. Initially these were implemented with Configure, PreUpdate, Update, and PostUpdate hooks for each time step. However, as reinforcement learning took off, reset was added as a core behavior. Many of these plugins may behave weirdly upon reset as we have not audited their behaviours. The goal is to have a test suite that covers all the core plugins and their reset behaviour so that we can catch oddities and regressions.
 
 
 
-## ROS Control
+## ROS Controls
+
+### Physical AI Inference & Trajectory Upscaling for ros2_control
+
+Prerequisites: Understanding of trajectory generation, jerk limits, and continuity. Basic familiarity with ONNX-based inference pipelines.
+
+Necessary programming skills: C++ & Eigen for real-time math and spline logic. Familiarity with ROS 2 internals including the `ros2_control` lifecycle, real-time threading models, and `ros2_controllers` API.
+
+Potential mentors: [Bence Magyar](https://github.com/bmagyar), [Sai Kishor Kothakota](https://github.com/saikishor)
+
+Expected size: *350 hours*
+
+Difficulty: *High* (due to mathematical complexity)
+
+Expected outcome: A dedicated Inference-to-Control Bridge within `ros2_control` that ingests ONNX-based motion policies and executes them through a real-time-safe upscaler ensuring smooth, continuous, and jerk-limited motion on physical robots.
+
+Detailed description: The rise of Physical AI requires a tight coupling between high-level neural network inference (often running at 20–50Hz) and low-level robot hardware control (requiring 500Hz–2kHz for stability). Currently, ros2_control provides standard trajectory controllers, but they often lack the specialized "upscaling" (interpolation) and "jerk-minimization" needed to smoothly bridge the gap between AI-generated sparse waypoints and high-frequency actuator commands. This project focuses on building a dedicated Inference-to-Control Bridge within ros2_control. The main functionalities and goals are: developing a low-latency interpolator that upscales low-frequency (e.g., 50Hz) AI policy outputs to high-frequency (200Hz–2kHz) joint commands, implementing quintic spline or Minimum Jerk Trajectory (MJT) algorithms to ensure transitions between AI-generated waypoints are smooth and do not trigger hardware resonances, creating a "look-ahead" buffer mechanism to handle the jitter inherent in AI inference so the hardware always has a smooth target even if a specific inference cycle is slightly delayed, adding real-time monitors for acceleration and jerk limits that automatically scale or halt the trajectory if the AI policy produces "unphysical" or dangerous commands, verifying behaviour using simulation and demonstrating results using plots, and updating the team members of the Physical AI Special Interest Group meetings bi-weekly.
+
+### Zephyr Zenoh Integration for ros2_control
+
+Prerequisites: Understanding of Pub/Sub protocols and the Zenoh ecosystem.
+
+Necessary programming skills: Strong C++ and C with low-level memory management and embedded systems experience. Familiarity with [Zephyr RTOS](https://www.zephyrproject.org) (`west`, devicetree, networking stacks). Knowledge of ROS 2 & `ros2_control` hardware interfaces and controller interaction.
+
+Potential mentors: [Bence Magyar](https://github.com/bmagyar), [Sai Kishor Kothakota](https://github.com/saikishor)
+
+Expected size: *350 hours*
+
+Difficulty: *High* (due to working with hardware)
+
+Expected outcome: An agent-less, low-latency communication layer between Zephyr RTOS microcontrollers and `ros2_control` using Zenoh.
+
+Detailed description: The `ros2_control` framework is the standard for real-time control in ROS 2, relying on the `hardware_interface` to communicate with physical devices. While highly performant on Linux, integrating resource-constrained microcontrollers often requires heavyweight middleware, introducing significant overhead, complexity, and agent-based bottlenecks suboptimal for high-frequency control loops. By leveraging `zenoh-pico` within Zephyr RTOS and `zenoh-cpp` on the host side, this project enables an agent-less architecture where embedded hardware communicates directly with `ros2_control` via `rmw_zenoh`. Key deliverables include a specialized `ros2_control` hardware interface template, a Zephyr module exposing sensor data and receiving joint commands in a `ros2_control`-compatible format, a benchmark suite comparing latency and jitter against existing DDS-based solutions, a streamlined serialization format mapping state/command interfaces to Zenoh key-value paths, and real-time optimizations minimizing context switching and memory allocation in the control loop. We recommend using an ESP32 embedded board but are happy to discuss alternatives.
 
 ### Mission Control for ros2_control
 
-The ros2_control framework focuses on direct management of hardware and their controllers to enable real-time capabilities with ROS.
-Although those interfaces are easy to use, they provide only "manual" control over the system's state.
-Therefore, very often in more complex systems our users have to implement an external, state-machine like component that serves as an orchestrator for ros2_control.
-The main purpose of such a component is to serve as conductor of ros2_control by taking care of scenarios and making sure that at the appropriate moment the right controllers and hardware are in expected states.
+Prerequisites: Basic understanding of state machines and orchestration patterns.
 
-This functionality should replace some high-level components currently used, e.g., MoveIt2-"SimpleControllerManager".
+Necessary programming skills: Experience with ROS 2 and the `ros2_control` framework, including `controller_manager`, hardware interfaces, and controller lifecycle. Proficiency in C++ and familiarity with YAML configuration.
 
-The main functionalities for the components and goals of the project are:
+Potential mentors: [Bence Magyar](https://github.com/bmagyar), [Sai Kishor Kothakota](https://github.com/saikishor)
 
-* Defining a scenario in form of a multi-robot and multi-tool configuration and its behavior that serves as a benchmark.
-* Extending controller_manager with status publisher, providing all needed data to a mission-control component.
-* Adding status topics to all standard controllers.
-* Defining format of a YAML file where users can configure controller presets.
-* Implementing the mission-control module/script that sets the controller_manager, i.e., the ros2_control framework, in a specific configuration/state.
+Expected size: *350 hours*
+
+Difficulty: *High* (due to technical breadth)
+
+Expected outcome: A mission-control component that orchestrates `ros2_control` by managing controller and hardware states through configurable presets, replacing external state-machine implementations and high-level components like MoveIt2's "SimpleControllerManager".
+
+Detailed description: The ros2_control framework focuses on direct management of hardware and their controllers to enable real-time capabilities with ROS. Although those interfaces are easy to use, they provide only "manual" control over the system's state. Therefore, very often in more complex systems our users have to implement an external, state-machine like component that serves as an orchestrator for ros2_control. The main purpose of such a component is to serve as conductor of ros2_control by taking care of scenarios and making sure that at the appropriate moment the right controllers and hardware are in expected states. This functionality should replace some high-level components currently used, e.g., MoveIt2-"SimpleControllerManager". The main functionalities and goals of the project are: defining a scenario in form of a multi-robot and multi-tool configuration and its behavior that serves as a benchmark, extending controller_manager with status publisher providing all needed data to a mission-control component, adding status topics to all standard controllers, defining format of a YAML file where users can configure controller presets, and implementing the mission-control module/script that sets the controller_manager in a specific configuration/state.
+
 ## Open-RMF
 
 ### UI/UX improvements to the [Crossflow Diagram Editor](https://open-rmf.github.io/crossflow/?diagram=3VhLb%2BM2EP4rhtCjGZMUKYm%2BF2gPPbVAD4uFwcfQVleWvHokGwT57x1K8isbO%2FJigwY9xSKHo%2Fk%2BznwzylP0S2M3sNXRMtq07a5ZLha1frhb5%2B2mM10Dta3KFsr2zlbbRbWDktRbv7B11TS%2BqB4WNfhmsQHtmsVW5%2BXC5Xpd6%2B3d4PXun6Yqo3l0D3WT469lRO%2FYHcWVFra7QrfQRMun53nUtLpucbvZFXmL29UubETfGKXhb%2Fu4A9wtKwe4abq8cFDjwrYr8LmEb%2BFsMCam8x635hHG7fN1tMTFeeRydKwfV%2B3RMgpv7bbXvGvnDt6f%2BvU2DxhaqLd5icEHHy9cB5e4%2Bk8VLA%2Bu%2B8fgOgSHyD69CBaf9g%2BfD3hGV7h3CwWvMfAaAT3%2Bnu2j8z37DXzt8M5zXexDHWKMPg%2FxHF5yPDouDPuXtwNh0Ng637VDPvxd1V9CIs3ajW5nfQDNrNvhI8w4KbutgXqWl7uunRV5085niLfN0QyaYLPFPZff567TRfE4nwWih435TJduhlc42rXVGvBHfYdQen8r%2BKYxB0MGfnp6EdUfx5cwHs%2FM4wxBo4sZ%2BggrmFOngQiZDDZ7E1xAC7xAzJP1Hk4NDR7BcEY3SZYEXu910QWKPqHfeTj5GVm8EFD%2FjhfR0BfBkEPEe5Ow8mY4BG3OosET4SBGgymJaQNlKOG%2BLA%2FlT8ZyJ%2BDytqrJPQvbG91s0EUMID1VRolEaMdErLkCby3LWEohcXGaAZd9OmP5YzXh0ZDew4XkDl0sV6ux7Fa9QqxWQTrGZO0lYx7tqiYfWEK9iJacy3n0iH9lSHAowLbaFHjA66IBTD%2Fdotjhm%2FQWmp22wVVI2y3opqsB3%2FoUPeSuRQQ8SMcG8vUGi0RSTN7vwzpowWloR4G4GF7ynvElUnGnvCOJ9pII4RwxKfOEm0xYTy3IWB%2BjHSXlRaC9bgYe%2B0BfjSrI9O%2FhfaNCVLt30%2BobCUiNSlNnE%2BJTxC4kZySzxmE%2BC6aN4ZiW%2FC0C9jclJxAQpPot%2FD%2FcTW7EHseUUUk5kWAsEVQLkjkniHE80zR1ACY9Yh870wXsYgL20cMZ%2BB%2FvdzeC5TQzaczxorMsRrBCEk2VIqBibTDTBcv8Wxcdy5sy%2FeZEn96RbwSfMdCSakawtikRFijRoCyRVolMSSGd60et8%2BZ%2B4arZlDQ%2FTGe3DQ23XmqsPGWJIrFIUb58IomhJg0algiwzAsfSul8tLgoYPFEATte0xm8k8nlFgzY6RjHDk9iVFsilPVEKZNgYibeSC54qk%2Fu5hKGfWpOxPBzIIR279anbdipNPZOWmIUQ0nheDUm0SmRLpEyppkAGocMqLq6D%2BrVtj3s%2FoZTWeh2ZVcUCF%2FXOHvckMq9%2FbmPra6%2FQP1r2WMaEeu6rh5sUTWIdH4EesTJKZIxGjvwGichNNwTXHUtDojDl0k%2FK5643ls%2Fn9Shy3SW%2BYxox1GEHNeouMgR94JR62LmetU40DOxPV8lbGqNfEjCLPdpJmIgArTC4LkkigOQJAWBZGEyMHNK2MR2fpWwyzPbh6QIG1dKneckSzKOjQ31SUFCCWZYYuMYsCDtKUUT8%2BEqRVMnh%2Fcg7KBcU%2FgajP%2BEr0PbiZbo1ENrN3%2F1%2B6hhRx32kCr85CDMCky1QKHOVEJSXDUGa5X2nz0HHifq9v%2BUR3aRR1T6VHPriEs8apxC4co0%2FrKGqVQqpTw%2FatZ0Dq7yOHWK%2F5AF7IwzPMDG5oUEZF6RjIMjaazxG5gnKfa1swKeNsleJWzq0PEhCUs0%2Fj%2BEUk2okwYrNcuIiWlCqM2YMSaW8lzxJo4MVwmb%2BqH8HoT1c%2FNQe98xNqraNOJonAonHCaNZBpBYEvVMlYkTaj0MmacUfaziZv63fXfEMeuE4cfJM%2FP%2FwI%3D)
@@ -147,7 +181,7 @@ KD-Trees. The goal would be to implement one of these faster algorithms within t
 # Application template for students
 
  * If you would like to suggest new projects you are free to e-mail your ideas to us at: gsoc@osrfoundation.org. _We recommend you stick to one of the projects listed above unless you have already recruited a mentor._
- * If you have specific questions to discuss about a project, send an email to gsoc@osrfoundation.org. You may also ask your question in the `gsoc-q-and-a` channel [on our Discord server](https://discord.com/servers/open-robotics-1077825543698927656).
+ * If you have specific questions to discuss about a project, send an email to gsoc@osrfoundation.org. You may also ask your question in the `GSoC Q&A` channel [on our Zulip server](https://openrobotics.zulipchat.com/#topics/channel/526060-GSoC-Q.26A).
  * If you meet the general requirements and are interested in working on one of the OSRF projects during Google Summer of Code, **you can apply by submitting your application through the [Google GSoC web site](https://summerofcode.withgoogle.com) once participant** applications open on March 25th, 2025. 
 
 # Completing Your GSoC Application

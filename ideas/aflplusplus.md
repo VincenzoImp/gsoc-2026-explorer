@@ -1,14 +1,14 @@
 # AFLplusplus — Project Ideas
 
 **Source:** https://github.com/AFLplusplus/LibAFL/issues/3706
-**Scraped:** 2026-02-22T23:28:47.605447
+**Scraped:** 2026-03-10T16:58:40.245192
 
 ---
 
 -
 -
 [Notifications](https://github.com/login?return_to=%2FAFLplusplus%2FLibAFL)You must be signed in to change notification settings -
-[Fork 450](https://github.com/login?return_to=%2FAFLplusplus%2FLibAFL)
+[Fork 458](https://github.com/login?return_to=%2FAFLplusplus%2FLibAFL)
 
 [GSoCGoogle Summer of Code](/ideas/aflplusplus/aflplusplus-libafl-issues)Google Summer of Code
 

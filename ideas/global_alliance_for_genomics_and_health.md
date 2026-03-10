@@ -1,7 +1,7 @@
 # Global Alliance for Genomics and Health — Project Ideas
 
 **Source:** https://docs.google.com/document/d/1SeDP5Ny7Gt42g5oY9jdN15Wx6RXtJ9dDcaPeYBvKBcE/edit?tab=t.0#heading=h.qflicizcqlm
-**Scraped:** 2026-02-22T23:28:47.612807
+**Scraped:** 2026-03-10T16:58:40.224448
 
 ---
 
@@ -110,7 +110,7 @@ Project Description | |
 Life science workflows are often written in workflow engines like Snakemake, Nextflow or CWL. The GA4GH Workflow Execution Service (WES) API provides a unified interface for workflow execution in various execution backends. The current API version 1.1.0 supports basic access to raw workflow output, however these logs are unstructured and engine-specific. The community demands richer, structured logging that supports debugging, monitoring and automated analysis of workflow executions. The goal of this project is to extend WES with a unified, structured log representation. As a proof of concept, part of the project is to extend an existing WES implementation to support the extended WES API for at least two widely used workflow engines. This includes the development of engine-aware log parsers that convert raw runtime output and task artifacts into the unified schema. This is a direct contribution to GA4GH WES, used in medical healthcare and computational biology. It will provide a foundation for future work on self-healing workflows, parameter auto-tuning and automated orchestration of workflows. The project is part of the ELIXIR-on-Cloud initiative. For this project, the use of AI is permitted and endorsed for research and exploring the code base. Code generation using AI is not forbidden, but generated code must be fully understood and reviewed thoroughly. GitHub repo: Documentation: ELIXIR-on-Cloud: |
 
 Workstream | Cloud |
-Mentor names/emails | Andrew Gearhart (andrew@nimbusinformatics.com), Javed Habib (javed@pacificanalytics.com), Alexander Medvedev (alex@genxt.network), Pavel Nikonorov (pavel@jandigitrust.org) |
+Mentor names/emails | Andrew Gearhart (andrew@nimbusinformatics.com), Javed Habib (javed@pacificanalytics.com), Alexander Medvedev (aleksandr.medvedev.msc@gmail.com), Pavel Nikonorov (pavel@jandigitrust.org) |
 Difficulty | Hard |
 Requirements | Python, familiarity with ML frameworks (e.g. PyTorch, Flower), and basic DevSecOps practices |
 Workload | 350h |

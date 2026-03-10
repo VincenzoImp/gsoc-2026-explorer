@@ -2,7 +2,7 @@
 
 **Parent:** JdeRobot — Project Ideas
 **Source:** https://jderobot.github.io/RoboticsAcademy/exercises/Drones/power_tower_inspection
-**Scraped:** 2026-02-22T23:28:47.558031
+**Scraped:** 2026-03-10T16:58:40.235235
 
 ---
 
@@ -39,9 +39,9 @@ command in the Editor.
 
 ## Robot API
 
-`from HAL import HAL`
+`import HAL`
 
-- to import the HAL(Hardware Abstraction Layer) library class. This class contains the functions that sends and receives information to and from the Hardware(Gazebo).`from GUI import GUI`
+- to import the HAL(Hardware Abstraction Layer) library class. This class contains the functions that sends and receives information to and from the Hardware(Gazebo).`import WebGUI`
 
 - to import the GUI(Graphical User Interface) library class. This class contains the functions used to view the debugging information, like image widgets.
 

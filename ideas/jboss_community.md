@@ -1,7 +1,7 @@
 # JBoss Community — Project Ideas
 
 **Source:** https://spaces.redhat.com/spaces/GSOC/pages/750884772/Google+Summer+of+Code+2026+Ideas
-**Scraped:** 2026-02-22T23:28:47.564977
+**Scraped:** 2026-03-10T16:58:40.225961
 
 ---
 
@@ -118,11 +118,9 @@ Associated JBoss community project(s): WildFly, WildFly Elytron
 
 **Contact(s) / potential mentor(s)**:
 
-- Giovanni Panice <
+- Chris Cranford <
+[ccranfor@redhat.com](mailto:ccranfor@redhat.com)> - Giovanni Panice <
 [gpanice@ibm.com>](mailto:gpanice@ibm.com)([kmos](https://github.com/kmos))
-
-- Vincenzo Santonastaso <
-[vincenzo.santonastaso@ibm.com>](mailto:vincenzo.santonastaso@ibm.com)([vsantona](https://github.com/vsantona))
 
 Associated JBoss community project(s): [https://debezium.io/](https://debezium.io/)
 
@@ -151,11 +149,9 @@ Associated JBoss community project(s): [https://debezium.io/](https://debezium.i
 
 **Contact(s) / potential mentor(s)**:
 
-- Giovanni Panice <
-[gpanice@ibm.com>](mailto:gpanice@ibm.com)([kmos](https://github.com/kmos))
-
 - Vincenzo Santonastaso <
-[vincenzo.santonastaso@ibm.com>](mailto:vincenzo.santonastaso@ibm.com)([vsantona](https://github.com/vsantona))
+[vincenzo.santonastaso@ibm.com>](mailto:vincenzo.santonastaso@ibm.com)([vsantona](https://github.com/vsantona)) - Giovanni Panice <
+[gpanice@ibm.com>](mailto:gpanice@ibm.com)([kmos](https://github.com/kmos))
 
 Associated JBoss community project(s): [https://debezium.io/](https://debezium.io/)
 
@@ -169,9 +165,7 @@ Associated JBoss community project(s): [https://debezium.io/](https://debezium.i
 **Features**:
 
 - Build & prepare the environment for CDC
-
 - Execute CDC pipeline
-
 - Monitor CDC pipeline
 
 **Knowledge prerequisite**: Java Language, UI, DX
@@ -185,9 +179,7 @@ Associated JBoss community project(s): [https://debezium.io/](https://debezium.i
 **Contact(s) / potential mentor(s)**:
 
 - Giovanni Panice <
-[gpanice@ibm.com>](mailto:gpanice@ibm.com)([kmos](https://github.com/kmos))
-
-- Mario Fiore Vitale
+[gpanice@ibm.com>](mailto:gpanice@ibm.com)([kmos](https://github.com/kmos)) - Mario Fiore Vitale
 [<mvitale@ibm.com]> ([mfvitale](https://github.com/mfvitale))
 
 Associated JBoss community project(s): [https://debezium.io/](https://debezium.io/)
@@ -267,7 +259,8 @@ The project should implement the necessary API/SPIs and provide a bridge between
 **Contact(s) / potential mentor(s)**:
 
 - Jiri Pechanec <
-[jpechane@ibm.com](mailto:jpechane@ibm.com)> ([jpechane](https://github.com/jpechane))
+[jpechane@ibm.com](mailto:jpechane@ibm.com)> ([jpechane](https://github.com/jpechane)) - Vojtech Juranek <
+[vjuranek@redhat.com](mailto:vjuranek@redhat.com)> ([vjuranek](https://github.com/vjuranek))
 
 Associated JBoss community project(s): [https://debezium.io/](https://debezium.io/)
 

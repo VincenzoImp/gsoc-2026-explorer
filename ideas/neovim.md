@@ -1,7 +1,7 @@
 # Neovim — Project Ideas
 
 **Source:** https://github.com/neovim/neovim/wiki/Google-Summer-of-Code
-**Scraped:** 2026-02-22T23:28:47.615798
+**Scraped:** 2026-03-10T16:58:40.272629
 
 ---
 
@@ -100,7 +100,7 @@ Below are some suggested issues. These are starting points. Your proposal should
     - C
     - Lua
 - Code license: Apache 2.0
-- Mentor: TBD
+- Mentor: [@bfredl](http://github.com/bfredl)
 - Tracking issue: https://github.com/neovim/neovim/issues/30463
 
 **Description:**
@@ -119,7 +119,7 @@ todo
     - C
     - javascript/wasm
 - Code license: Apache 2.0
-- Mentor: TBD
+- Mentor: [@bfredl](http://github.com/bfredl)
 - Tracking issue: https://github.com/neovim/neovim/issues/35567
 
 **Description:**

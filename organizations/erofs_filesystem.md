@@ -10,13 +10,7 @@
 
 ## Description
 
-EROFS [1] is a modern, high-performance block-based immutable Linux filesystem with highly-optimized on-disk format and runtime implementation. Since it's landed upstream, it has been widely deployed to billions of devices, and addresses various target scenarios. Nowadays, almost all Linux mainstream distributions support EROFS.
+EROFS is a modern, high-performance block-based immutable Linux filesystem with highly-optimized on-disk format and runtime implementation. Since it's landed upstream, it has been widely deployed to billions of devices, and addresses various target scenarios. Nowadays, almost all Linux mainstream distributions support EROFS.
 
-EROFS has become a recommended filesystem [2] for Android system partitions and has already been adopted by the majority of Android vendors. It has also become popular in the Linux container world. For example, Composefs [3] uses the EROFS format for its metadata tree. Containerd 2.1 [4] also officially includes a built-in EROFS support to boost container launch performance. gVisor now supports EROFS as well [5].
-
-[1] https://erofs.docs.kernel.org
-[2] https://source.android.com/docs/core/architecture/kernel/erofs
-[3] https://github.com/containers/composefs
-[4] https://github.com/containerd/containerd/releases/tag/v2.1.0
-[5] https://github.com/google/gvisor/pull/9486
+EROFS has become an Android recommended filesystem (https://source.android.com/docs/core/architecture/kernel/erofs) for Android system partitions and has already been adopted by the majority of Android vendors. It has also become popular in the Linux container world. For example, Composefs (https://github.com/containers/composefs) uses the EROFS format for its metadata tree. Containerd 2.1+ also officially includes a built-in EROFS support to boost container launch performance. gVisor now supports EROFS as well.
 

@@ -1,7 +1,7 @@
 # CCExtractor Development — Project Ideas
 
 **Source:** https://ccextractor.org/docs/ideas_page_for_summer_of_code_2026/
-**Scraped:** 2026-02-22T23:28:47.611731
+**Scraped:** 2026-03-10T16:58:40.224694
 
 ---
 
@@ -75,15 +75,13 @@ Since we are now feature complete, and the subtitles work have changed a lot (We
 |---|---|---|---|---|---|
 |
 
-[Add complex layouts to sway](/ideas/ccextractor-development/public-gsoc-2026-sway_complex)[Task Server III](/ideas/ccextractor-development/public-gsoc-2026-taskserver)#### New things we're currently interested on
+[Add complex layouts to sway](/ideas/ccextractor-development/public-gsoc-2026-sway_complex)[Task Server III](/ideas/ccextractor-development/public-gsoc-2026-taskserver)[Create an XDG Desktop Portal backend for regolith](/ideas/ccextractor-development/public-gsoc-2026-xdp_regolith)#### New things we're currently interested on
 
 | Name | Description | Tech you need to know | Tech you will learn | Difficulty | Size |
 |---|---|---|---|---|---|
 |
 
-`.desktop`
-
-files are used by app launcher to provide access to additional functionalities, typically via context menus. Ilia is an app launcher that currently doesn't support for Desktop Actions due to its keyboard based approach.#### About us
+#### About us
 
 We are a small org, which means that your contribution will have a large impact. It's not going to mean a 0.5% improvement on a big project --- it's going to be more than 10% on a medium size one. If you like challenges and want a chance to shine this is your place.
 

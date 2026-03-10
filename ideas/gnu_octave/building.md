@@ -2,7 +2,7 @@
 
 **Parent:** GNU Octave — Project Ideas
 **Source:** https://wiki.octave.org/Building
-**Scraped:** 2026-02-22T23:28:47.624138
+**Scraped:** 2026-03-10T16:58:40.279186
 
 ---
 
@@ -32,7 +32,7 @@ hg clone[https://www.octave.org/hg/octave]&& \ cd octave && \ ./bootstrap
 - (B) ... from a release
 
 
-wget[https://ftpmirror.gnu.org/octave/octave-10.3.0.tar.gz]&& \ tar -xzf octave-10.3.0.tar.gz && \ cd octave-10.3.0
+wget[https://ftpmirror.gnu.org/octave/octave-11.1.0.tar.gz]&& \ tar -xzf octave-11.1.0.tar.gz && \ cd octave-11.1.0
 
 - 3. Configure, build, check, and install Octave
 

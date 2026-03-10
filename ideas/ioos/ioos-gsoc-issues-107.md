@@ -2,7 +2,7 @@
 
 **Parent:** IOOS — Project Ideas
 **Source:** https://github.com/ioos/gsoc/issues/107
-**Scraped:** 2026-02-22T23:28:47.602631
+**Scraped:** 2026-03-10T16:58:40.284787
 
 ---
 
@@ -40,7 +40,7 @@ Andrea Havron, Molly Stevens, Nathan Vaughan, Kelli Johnson
 
 ### Mentor Contact Email(s)
 
-kelli.johnson@noaa.gov, andrea.havron@noaa.gov, nathan.vaughan@noaa.gov, molly.stevens@noaa.gov
+kelli.johnson@noaa.gov, andrea.havron@noaa.gov, nathan.vaughan@noaa.gov, molly.stevens@noaa.gov, steve.munch@noaa.gov
 
 ### Contributor Evaluation/GSoC GitHub Issue Links
 

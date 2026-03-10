@@ -2,7 +2,305 @@
 
 **Parent:** FOSSology — Project Ideas
 **Source:** https://github.com/fossology/fossology/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22
-**Scraped:** 2026-02-22T23:28:47.598494
+**Scraped:** 2026-03-10T16:58:40.264509
+
+---
+
+## #3418: Bucket Browser fails when no bucket analysis dataset exists for an upload
+
+## Description
+
+When opening the **Bucket Browser** for an upload where **Bucket Analysis was not selected during upload**, the page does not render correctly.
+
+The Bucket Browser expects a valid bucket analysis dataset (`ars_pk`). If the bucket agent has not been executed yet (for example, when **Bucket Analysis is not checked in the upload analysis options**), the dataset does not exist and the page attempts to query `bucket_ars` using an undefined value.
+
+This can result in an SQL error or an empty page.
+
+As a consequence, users cannot access the Bucket Browser view for uploads that have not yet been analyzed by the bucket agent.
+
+## Steps to Reproduce
+
+1. Upload a file or archive in Fossology
+2. In the **analysis options**, ensure that **Bucket Analysis is NOT selected**
+3. Complete the upload
+4. Navigate to:
+`Browser->Bucket Browser`
+5. Open the uploaded file or directory in the Bucket Browser
+
+---
+
+## Actual Behavior
+
+The Bucket Browser fails to render correctly because no bucket dataset (`ars_pk`) exists for the upload.
+
+Possible outcomes include:
+
+- SQL errors
+- blank page
+- missing bucket results
+
+## Expected Behavior
+
+The Bucket Browser should handle the case where no bucket dataset exists for an upload and provide a clear user experience instead of failing.
+
+---
+
+## Screenshots
+
+**Upload analysis options (Bucket Analysis not selected)**
+
+<img width="1646" height="1074" alt="Image" src="https://github.com/user-attachments/assets/7ab1a4ba-7fa3-4e0d-abc5-ac50cc69d359" />
+
+**Bucket Browser error / blank page**
+
+<img width="1647" height="539" alt="Image" src="https://github.com/user-attachments/assets/1764b31c-e886-4ff2-8dbf-57163fe1456a" />
+<img width="1646" height="562" alt="Image" src="https://github.com/user-attachments/assets/ee993722-12d3-49d9-ae73-9b67e897b9c1" />
+
+---
+
+---
+
+## #3385: Bug(API): POST /api/v2/uploads returns 404 for negative folderId (should be 400)
+
+## Description
+`POST /api/v2/uploads` returns **HTTP 404 Not Found** when `folderId` is a **negative integer** (e.g., `-1`, `-5`).  
+A negative `folderId` is invalid input, so the endpoint should return **HTTP 400 Bad Request** with the validation message `folderId must be a positive integer!`, instead of treating it as “not found”.
+
+This happens because negative numeric values are not rejected by the current validation logic, so the request reaches the folder existence check and fails later with a **404**.
+
+## How to Reproduce
+1. Call `POST /api/v2/uploads` with a valid auth token.
+2. Send a request body with a negative `folderId` (example `-1`).
+3. Observe the response status code and message.
+
+```bash
+curl -X POST 'http://localhost:8081/repo/api/v2/uploads' \
+  -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "folderId": -1,
+    "uploadType": "vcs",
+    "location": { "vcsType": "git", "vcsUrl": "https://github.com/example/repo.git" }
+  }'
+```
+
+## Expected Behavior
+- Returns **HTTP 400 Bad Request**
+- Message indicates `folderId` must be a positive integer (e.g., `folderId must be a positive integer!`)
+
+## Actual Behavior
+- Returns **HTTP 404 Not Found**
+- Message indicates the folder does not exist (e.g., `folderId -1 does not exists!`)
+- Example response:
+
+```json
+{"code":404,"message":"folderId -1 does not exists!","type":"ERROR"}
+```
+## Environment
+- FOSSology `master` branch
+
+---
+
+## #3384: Unsafe Hash Table Lookup Leading to Incorrect Logical Evaluation
+
+## Location
+`src/scheduler/agent/database.c:1157-1158`
+
+## Description
+
+The code performs direct comparisons using values returned from `g_hash_table_lookup()` without verifying whether the keys exist in the hash table:
+
+```c
+if ((g_strcmp0((char *)g_hash_table_lookup(smtpvariables, "SMTPPort"), "25") != 0) 
+    || g_strcmp0((char *)g_hash_table_lookup(smtpvariables, "SMTPStartTls"), "1") == 0)
+```
+
+If either key:
+- "SMTPPort"
+- "SMTPStartTls"
+
+does not exist in the hash table,
+ then g_hash_table_lookup(...)  →  NULL
+And you are effectively doing:
+```
+g_strcmp0(NULL, "25")
+g_strcmp0(NULL, "1")
+```
+Even though g_strcmp0() is designed to handle NULL safely, the problem is:
+
+### Incorrect Logical Evaluation
+Example:
+```
+g_strcmp0(NULL, "25") != 0
+```
+This evaluates to TRUE.
+This means:
+- If "SMTPPort" is missing, the condition behaves as if the port is not 25.
+- The system may enable or alter SMTP/TLS behavior incorrectly.
+
+### Silent Misconfiguration Risk
+
+If both keys are missing:
+
+(TRUE) || (FALSE)
+The condition evaluates to TRUE, potentially:
+
+Enabling TLS unexpectedly
+Forcing non-default SMTP behavior
+Causing incorrect mail configuration handling
+This can lead to runtime issues that are difficult to trace.
+
+---
+
+## #3381: Undefined array key access in JobDao::hasActionPermissionsOnJob() when querying job table
+
+The method `JobDao::hasActionPermissionsOnJob()` queries the `job` table but processes the result as if it contains fields `jq_pk` and `end_bits`, which are not part of the selected result set.
+
+This appears to be a copy-paste artifact from methods that query the `jobqueue` table (e.g., `getAllJobStatus()`), where those fields are valid.
+
+#### Current Behavior
+
+* The query uses:
+
+  ```sql
+  SELECT * FROM job
+  LEFT JOIN group_user_member gm ON gm.user_fk = job_user_fk
+  ```
+* Inside the loop, it accesses:
+
+  ```php
+  $row['jq_pk']
+  $row['end_bits']
+  ```
+* These columns do not exist in the `job` table or the current query result.
+* The method builds and returns an array even though it is used as a boolean permission check in callers (UI/API).
+
+This can lead to:
+
+* Undefined array key warnings (in strict error reporting)
+* Unnecessary iteration and memory usage
+* Misleading return type (array instead of boolean for a permission check)
+
+#### Expected Behavior
+
+* The method should only check whether a matching row exists (permission check).
+* It should not access undefined columns from the result set.
+* It should return a boolean (`true` if permission exists, otherwise `false`).
+
+---
+
+## #3378: UploadTreeProxy: Broken DB View Name instantiation and query parameter reuse
+
+## Description
+There are two distinct logic errors in `UploadTreeProxy.php` which impact DB View name uniqueness and Postgres parameter reuse string mapping.
+
+### Bug 1: View Name overwrites suffixes with a generic string
+When an `UploadTreeProxy` is instantiated without a specific view name, it builds a query string suffix in `createUploadTreeViewQuery()` to guarantee that multiple queries (e.g. `_realParent` vs `_alreadyCleared`) do not collide on the same Postgres view/statement name.
+However, in the constructor, `$dbViewName` is evaluated **before** `createUploadTreeViewQuery()` is invoked, using `isset($this->dbViewName) ?: ''`, which evaluates the boolean return of `isset()` (so `1`). Then, it calls `parent::__construct(..., $dbViewName)`, inadvertently passing the string `'UploadTreeView'` and overriding the uniquely generated suffix created inside `createUploadTreeViewQuery()`.
+
+**Consequence**: If multiple instances omitted the 4th constructor argument (e.g., `ui-clearing-view.php`), they both resolve to the default view name `UploadTreeView`. This can cause Postgres prepared statement collision errors.
+
+### Bug 2: SQL Parameter Reuse Fails
+The proxy attempts to reuse parameters (for performance optimization in parameterized execution) via `addParamAndGetExpr($key, $value)`. The intent is for it to verify if a `$key` exists and reuse the `$n` index:
+```php
+if (array_key_exists($key, $this->params)) {
+   return '$' . (1 + array_search($key, array_keys($this->params)));
+}
+```
+However, the values were pushed using array append `$this->params[] = $value;`, stripping the string key entirely. `array_key_exists` subsequently always fails, duplicating the query parameters inside `$this->params` array instead of reusing existing indexed values.
+
+## Proposed Fix
+* Correct the assignment of `$dbViewName` in `__construct` to use the property after `createUploadTreeViewQuery()` completes.
+* Switch `$this->params[] = $value` to `$this->params[$key] = $value`, so the array index remains preserved for validation. Modify `countMaskedNonArtifactChildren` appropriately so it also binds the associative array index correctly.
+
+---
+
+## #3374: Fix email notification setup docs for modern Debian/Ubuntu compatibility
+
+The [Email notification configuration](https://github.com/fossology/fossology/wiki/Email-notification-configuration) wiki page references `heirloom-mailx` as the mail client used by FOSSology for sending SMTP-based job completion notifications. This package is EOL on modern Debian/Ubuntu systems (include WSL), making the documented setup non-functional out of the box for new installations.
+
+**Suggested Fix:**
+
+- Update the wiki to mention `bsd-mailx` or `mailutils` as an alternatives with corresponding install commands.
+- Audit any installation scripts (e.g. install.sh or CI configs) that may reference `heirloom-mailx` and update accordingly.
+- Note any behavioral difference in SMTP configuration syntax b/w `heirloom-mailx` and the alternatives.
+
+---
+
+## #3358: Bug(API): Debug `echo` statement and wrong parameter in CopyrightController corrupts REST API responses
+
+While working with the copyright REST endpoints, I noticed two problems in CopyrightController.php that affect all DELETE, UPDATE, and RESTORE operations.
+
+Both issues are in:
+
+src/www/ui/api/Controllers/CopyrightController.php
+
+1) Debug echo left in production (breaks JSON responses)
+
+Inside the deleteFileCX() method (around line 937), there is a leftover debug statement:
+echo $uploadTreeId;
+Since this is a REST API endpoint, this echo writes directly to the HTTP response body before the JSON response is returned.
+As a result, every affected DELETE endpoint returns invalid JSON.
+Example actual response:
+12345{"code":200,"message":"Successfully removed copyright.","type":"INFO"}
+
+Expected response:
+{"code":200,"message":"Successfully removed copyright.","type":"INFO"}
+
+Because of the prepended number, any JSON client fails to parse the response.
+This affects all copyright DELETE endpoints (including user-copyright, scancode-copyright, email, url, author, ecc, keyword, ipra, etc.).
+
+Fix:
+Simply remove the debug line:
+// Remove this line
+echo $uploadTreeId;
+
+2) Wrong parameter passed to getUploadTreeTableName()
+In three methods:
+deleteFileCX()
+restoreFileCx()
+updateFileCx()
+getUploadTreeTableName() is called with $uploadTreeId instead of $uploadPk.
+
+Current (incorrect):
+$uploadTreeTableName = $uploadDao->getUploadTreeTableName($uploadTreeId);
+
+However, getUploadTreeTableName() expects the upload primary key, not the upload tree item ID.
+The correct usage is already present in the same file inside getFileCX():
+$uploadTreeTableName = $this->restHelper->getUploadDao()->getuploadTreeTableName($uploadPk);
+
+So the calls in the other methods should be:
+$uploadTreeTableName = $uploadDao->getUploadTreeTableName($uploadPk); or
+$uploadTreeTableName = $this->restHelper->getUploadDao()->getUploadTreeTableName($uploadPk);
+Passing $uploadTreeId may cause the wrong upload tree table to be resolved, which could lead to modifying or deleting the wrong data.
+
+How to reproduce:
+For the debug echo issue
+Upload and scan a package with copyright entries.
+Send a DELETE request:
+DELETE /api/v1/uploads/{uploadId}/item/{itemId}/copyrights/{hash}
+The response body contains the raw uploadTreeId before the JSON.
+JSON parsing fails in any proper client.
+For the wrong parameter issue
+Upload a package and run the copyright agent.
+Try deleting, restoring, or updating a copyright entry via REST.
+Internally, getUploadTreeTableName() receives $uploadTreeId instead of $uploadPk.
+This can resolve to the wrong upload tree table depending on the ID values.
+
+Impact:
+Together, these issues affect all copyright-related:
+DELETE
+UPDATE
+RESTORE
+
+endpoints (including scancode, user-copyright, email, url, author, etc.).
+
+Suggested fixes:
+Remove the debug echo.
+Replace $uploadTreeId with $uploadPk in:
+deleteFileCX()
+restoreFileCx()
+updateFileCx()
 
 ---
 
@@ -195,6 +493,7 @@ Below is the Higher level Task list for completing the task:
 - [ ] We should then update the php version according to least required by the supported OS(Debian & Ubuntu).
 - [ ] Update the `build-test` stage with the updated PHP version testing
 - [ ] Then `easyrdf/easyrdf` package should be updated to -->  `sweetrdf/easyrdf` with the test cases for the new package and required changes in the code (if any)
+- [ ] Upgrade symfony packages linked with the version upgrade.
 
 
 This issue is linked with a close PR and discussion with the contributor. PR: #3279
@@ -1305,277 +1604,5 @@ and search if the bug do not already exists in the issues (https://github.com/fo
 ### Description
 
 The User Documentation will created here: https://github.com/fossology/user-docs
-
----
-
-## #2684: ununpack agent occasionally killed by signal: 8.Floating point exception
-
-<!-- SPDX-FileCopyrightText: © Fossology contributors
-
-     SPDX-License-Identifier: GPL-2.0-only
--->
-
-<!-- Before filling this issue, please read the Wiki (https://github.com/fossology/fossology/wiki)
-and search if the bug do not already exists in the issues (https://github.com/fossology/fossology/issues). -->
-
-### Description
-
-**UPDATE** 2024/05/13: the bug occurs independently of the upload type; I uploaded a lot of files (archives) on another Fossology 4.4.0 instance, and I got the same random floating point errors in unpack tasks, and I had to restart the fossology services multiple times to be able to upload all packages.
-
-While doing a lot of vcs/git uploads via API, occasionally the ununpack agent gets killed and make all next jobs hang, like in this example:
-
-![jobs](https://github.com/fossology/fossology/assets/3025020/d9ff41b7-27db-46ca-b644-cf629b7b67ec)
-
-The error is the following:
-
-![immagine](https://github.com/fossology/fossology/assets/3025020/6ff0d4f2-1c4e-4ba7-a5d8-543553911c8b)
-
-If I try to manually kill all the pending jobs and restart the upload, it fails again in the same way. But if I do:
-
-```bash
-service apache2 stop
-service fossology stop
-service postgresql restart
-service fossology start
-service apache2 start
-```
-
-**EDIT**: it seems that it is enough to simply do:
-
-```
-service fossology stop
-service fossology start
-```
-
-and then restart the upload, everything works fine.
-
-So far it happened only on 4 out of 100 consecutive uploads, with random frequency; but it's annoying, since I have to upload ~450 git repos.
-
-**EDIT** progress update: 6 ununpack failures on 160 consecutive uploads. I'm monitoring CPU and memory, I don't see any strange consumption. All failed uploads are relatively small (a few hundred files each).
-
-I should stress that I'm uploading one git repo at a time, waiting for all the jobs to be completed before uploading the next one.
-
-I should also stress that all failing uploads are small (a few hundred files)
-
-#### How to reproduce
-
-Do a bunch of vcs/git uploads via REST API, scheduling many agents for each upload (see above), and monitor jobs.
-
-#### Screenshots
-
-See above
-
-### Versions
-
-Fossology 4.4.0 (release), built from sources on Debian 11.
-
-### Logs
-
-n/a
-
-#### FOSSology logs
-
-No relevant log entries
-
-#### Apache logs
-
-No relevant log entries
-
-#### Job logs
-
-All I get is:
-
-```
-2024-02-15 17:10:40 ununpack [0] :: JOB[61443].ununpack[195302.localhost]: agent was killed by signal: 8.Floating point exception
-```
-
----
-
-## #2680: postgres docker is always under high process utilization right from deployment
-
-### Description
-
-postgres is always utilizing more cpu even when idle state. is that normal?
-![image](https://github.com/fossology/fossology/assets/4498415/4b8966e7-6141-431a-b935-c7610ab136cf)
-
-we feel whether this docker really safe?
-
-#### How to reproduce
-
-deploy fossology via docker.compose and observe the process utilization via **htop** 
-
-#### Screenshots
-`docker stats --no-stream` command output
-![image](https://github.com/fossology/fossology/assets/4498415/dfb3dab2-3544-429f-ad02-8bd7d880beea)
-
-### Versions
-
-* Last commit id on master: Version: [4.2.1.0], Branch: [HEAD], Commit: [#9a0a6e]
-* Operating System (lsb_release -a): Ubuntu 18.04.5 LTS
-
----
-
-## #2678: could not able to cancel these two jobs monkbulk and decider 
-
-### Description
-
-could not able to cancel these two jobs monkbulk and decider 
-
-#### Screenshots
-![image](https://github.com/fossology/fossology/assets/4498415/73403505-64b4-48a2-9433-02478f5980b8)
-
-so we had to pause the job to stop retriggering 
-![image](https://github.com/fossology/fossology/assets/4498415/27492d10-fd22-433c-9c88-4fe7bad58153)
-
-how to cancel the above jobs without retrigger? we redeployed the server and scheduler picks up where it left. Any help?
-
-#### How to reproduce
-
-we triggered the above job and we observed that the server was slow despit it his 5 mb package. so we though of cancelling the job and each time we cancel it triggers again. 
-
-
-### Versions
-
-* Last commit id on master: Version: [4.2.1.0], Branch: [HEAD], Commit: [#9a0a6e]
-* Operating System (lsb_release -a): Ubuntu 18.04.5 LTS
-
----
-
-## #2677: All scanners haven't captured the Dual License
-
-**Labels:** enhancement, good first issue
-
-https://fossology.siemens-energy.com/repo/?mod=view-license&upload=49170&item=188944498y
-
-in the above given file, though the details are present in the file, none of the scanners have captured the details , ie. the DUAL license.
-Modernizr v2.8.3 IS DUAL LICENSE and the information id present in the github.
-https://gist.github.com/hinok/21130a47b1b1dfe5a7fd280229de6788
-Modernizr v2.8.3 * www.modernizr.com * * Copyright (c) Faruk Ates, Paul Irish, Alex Sexton * Available under the BSD and
-
-MIT licenses: www.modernizr.com/license/
-
-[All scanners haven't captured the Dual License.docx](https://github.com/fossology/fossology/files/14177601/All.scanners.haven.t.captured.the.Dual.License.docx)
-
----
-
-## #2676: Can't upload bigger than 700M?  
-
-<!-- SPDX-FileCopyrightText: © Fossology contributors
-
-     SPDX-License-Identifier: GPL-2.0-only
--->
-
-<!-- Before filling this issue, please read the Wiki (https://github.com/fossology/fossology/wiki)
-and search if the bug do not already exists in the issues (https://github.com/fossology/fossology/issues). -->
-
-### Description
-
-The Issue of [#1470 ](https://github.com/fossology/fossology/issues/1470) is seemed not solved yet. I try to upload a file which size is about 750M. It is failed.
-
-
-I modified /etc/php/7.4/apache2/php.ini：
-```
-upload_max_filesize = 2000M
-post_max_size = 2001M
-```
-And then, I reload apache2 and restart fosslogy service.
-```
-root@f9f6e07fba14:/fossology# service apache2 reload
-Reloading Apache httpd web server: apache2.
-root@f9f6e07fba14:/fossology# /etc/init.d/fossology restart
-Restarting FOSSology job scheduler: Stopping FOSSology job scheduler: fossology killed.
-Starting FOSSology job scheduler: fossology.
-```
-
-
-#### How to reproduce
-
-Upload a file that has a size more than 700M.
-
-#### Screenshots
-
-If applicable, add screenshots to help explain your problem.
-
-### Versions
-
-My docker image is as following :
-fossology/fossology            latest     28b9a3424209   8 months ago    1.97GB
-
-### Logs
-
-But　file still can't be uploaded. 
-```
-Invoke rest_api_cmd = curl -k -s -S -X POST http://127.0.0.1:8083/repo/api/v1/uploads -H "folderId: 1" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MDkxNjQ3OTksIm5iZiI6MTcwNjQ4NjQwMCwianRpIjoiTWk0eiIsInNjb3BlIjoid3JpdGUifQ.MvE8HbAs3f5CbuGyGKo5lAwoNgAxlxoA8N2pksz3U5s" -H 'uploadDescription: created by REST' -H 'public: public' -H 'Content-Type: multipart/form-data' -H 'uploadType: file' -F 'fileInput=@"mozjs-115-115.2.0-r0-patched.tar.gz";type=application/octet-stream' --noproxy 127.0.0.1
-Upload :
-{"code":500,"message":"Invalid 'uploadType'\nuploadType should be any of (vcs,url,server)","type":"ERROR"}
-Upload :
-{"code":500,"message":"Invalid 'uploadType'\nuploadType should be any of (vcs,url,server)","type":"ERROR"}
-
-```
-
-#### FOSSology logs
-
-NULL
-
-#### Apache logs
-
-NULL
-
-#### Job logs
-
-Logs generated under Geeky Scan Details (Job history => click on agent's job id)
-
----
-
-## #2675: License clearing results are not reflecting to all users in the group
-
-**License clearing results are not reflected to all users in the group:**
-
-**Issue Description:**
-Users in Group B cannot see the license-clearing results for uploads from Group A when the upload permission is provided.
-
-
-**How to reproduce the issue**:
- 
-1. Upload source packages from group A.
-2. Clear some licenses and add some main licenses in the uploaded package.
-3. Create another group B with some users.
-4. Navigate to Organize -> Admin -> Upload Permissions.
-5. Select "Apply same permissions to all uploads in this folder".
-6. Add the new group B to the list with the Admin's permission.
-7. Check the license clearing of the uploads of group A in the browse view of group B.
-8. License clearing will not be reflected for group B.
-
-**Expected Behavior:**
-License clearing results should be visible to all users in Group B for uploads from Group A when the upload permission is provided.
-
-**Actual Behavior:**
-License clearing results are not reflected to all users in group B.
-
-**Additional Information:**
-- This issue affects the visibility of license-clearing results across different user groups, impacting collaboration and data consistency.
-- This issue was observed in Fossology Version 4.3.0.
-
----
-
-## #2668: scanoss "row number 0 is out of range 0..-1" error
-
-### Description
-
-scanoss process 0 item whereas when I upload the same code in scanoss workbench then it is able to process the code.
-And the SBOM generated doesn't contain the packages seems like due to scanoss
-
-#### Screenshots
-
-![image](https://github.com/fossology/fossology/assets/100830439/d937ba8e-0404-4887-a308-e442bbb4d448)
-
-
-### Versions
-
-Version: [4.4.0.4], Branch: [master], Commit: [#19fad1] 2024/01/10 14:51 +00:00 built @ 2024/01/10 14:54 +00:00
-
-#### Job logs
-
-[000004.txt](https://github.com/fossology/fossology/files/13910120/000004.txt)
 
 ---

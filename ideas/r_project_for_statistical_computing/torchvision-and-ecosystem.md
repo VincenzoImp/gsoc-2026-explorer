@@ -2,7 +2,7 @@
 
 **Parent:** R project for statistical computing — Project Ideas
 **Source:** https://github.com/rstats-gsoc/gsoc2026/wiki/torchvision-and-ecosystem
-**Scraped:** 2026-02-22T23:28:47.626294
+**Scraped:** 2026-03-10T16:58:40.306161
 
 ---
 
@@ -45,11 +45,10 @@ The impact of those improvements to the mlverse packages will be a increasing ad
 Contributors, please contact mentors below after completing at least one
 of the tests below.
 
-- EVALUATING MENTOR: Toby Hocking <toby.hocking@r-project.org> is an advanced 
-  user of R packages {torchvision}.
-- Christophe Regouby <christophe.regouby@free.fr> is an expert in deep-learning,
+- EVALUATING MENTOR: Christophe Regouby <christophe.regouby@free.fr> is an expert in deep-learning,
   contributor or {torchvision} and maintainer of {tabnet} and has previous GSOC 
   experience with r-project organization in 2025.
+- Toby Hocking <toby.hocking@r-project.org> is an advanced user of R packages torch and {torchvision}.
 
 
 ## Tests
@@ -76,5 +75,7 @@ Contributors, please post a link to your test results here.
 
 Srishti Dutta , https://github.com/srishtiii28 , https://github.com/srishtiii28/torchtest , https://srishtiii28.github.io/torchtest/
 There isn't a GitHub Pages site here.
+
+- Omar GUENOUN, https://github.com/OGuenoun, https://github.com/OGuenoun/torchGSOC_tests.
 
 If you're trying to publish one, [read the full documentation](https://help.github.com/pages/) to learn how to set up GitHub Pages for your repository, organization, or user account

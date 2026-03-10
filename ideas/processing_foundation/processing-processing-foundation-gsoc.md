@@ -2,7 +2,7 @@
 
 **Parent:** Processing Foundation — Project Ideas
 **Source:** https://github.com/processing/Processing-Foundation-GSoC?tab=readme-ov-file
-**Scraped:** 2026-02-22T23:28:47.568099
+**Scraped:** 2026-03-10T16:58:40.319462
 
 ---
 
@@ -12,7 +12,7 @@ This repository is a central hub for all resources, project ideas, and guideline
 
 🌼 We're keeping the [ Frequently Asked Questions (FAQs)](https://github.com/processing/Processing-Foundation-GSoC/wiki/FAQs) resource up-to-date with questions people have been asking, so if the thread is a bit too much to read through, start with the FAQs! 🌼
 
-Until February 3, 2026. we will be applying as an org. First, the org has to be accepted; then, the applications for contributors will open. For now, contributor applications are not open. [Stay tuned on Discourse!](https://discourse.processing.org/t/updates-about-gsoc-2026-org-application-in-progress/47450)
+The [deadlines for GSoC 2026](https://opensource.googleblog.com/2025/12/shape-future-with-google-summer-of-code.html) have been announced, and Processing Foundation has been accepted as a mentor org 🎉 The applications will open on March 15th; for now, contributor applications are **not** open yet, but you can already get started. Here is the [2026 project ideas list](https://github.com/processing/Processing-Foundation-GSoC/wiki/Project-Ideas-List-(GSoC-2026))—the rest of the wiki is also a very useful resource to look through! [Stay tuned on Discourse!](https://discourse.processing.org/t/updates-about-gsoc-2026-org-application-in-progress/47450)
 
 For more information, read the [Google Summer of Code FAQ](https://developers.google.com/open-source/gsoc/faq).
 

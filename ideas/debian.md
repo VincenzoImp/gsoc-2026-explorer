@@ -1,7 +1,7 @@
 # Debian — Project Ideas
 
 **Source:** https://wiki.debian.org/SummerOfCode2026/Projects
-**Scraped:** 2026-02-22T23:28:47.577886
+**Scraped:** 2026-03-10T16:58:40.236033
 
 ---
 
@@ -11,12 +11,16 @@ Contents
 [Approved Projects](https://wiki.debian.org#Approved_Projects)-
 [Attack Of The Clones: Fight Back Using Code Duplication Detection from Security Patches](https://wiki.debian.org#SummerOfCode2026.2FApprovedProjects.2FAttackOfTheClonesFightBack.Attack_Of_The_Clones:_Fight_Back_Using_Code_Duplication_Detection_from_Security_Patches) -
 [DebNet: Visualising the Bus Factor – Graph Analysis of Debian's Infrastructure](https://wiki.debian.org#SummerOfCode2026.2FApprovedProjects.2FDebNet:_Visualising_the_Bus_Factor_.2BIBM_Graph_Analysis_of_Debian.27s_Infrastructure.DebNet:_Visualising_the_Bus_Factor_.2BIBM_Graph_Analysis_of_Debian.27s_Infrastructure) -
+[debian-lsp: improve file format support](https://wiki.debian.org#SummerOfCode2026.2FApprovedProjects.2FDebianLSPBasics.debian-lsp:_improve_file_format_support) -
+[Automated Debian Packaging with debianize](https://wiki.debian.org#SummerOfCode2026.2FApprovedProjects.2FDebianizeProduction.Automated_Debian_Packaging_with_debianize) -
 [Debusine: debuginfod server](https://wiki.debian.org#SummerOfCode2026.2FApprovedProjects.2FDebusineDebuginfodServer.Debusine:_debuginfod_server) -
 [Debusine: git-first development](https://wiki.debian.org#SummerOfCode2026.2FApprovedProjects.2FDebusineGitFirstDevelopment.Debusine:_git-first_development) -
 [Debusine: live log streaming](https://wiki.debian.org#SummerOfCode2026.2FApprovedProjects.2FDebusineLiveLogStreaming.Debusine:_live_log_streaming) -
 [Debusine: replace archive-wide reports in UDD](https://wiki.debian.org#SummerOfCode2026.2FApprovedProjects.2FDebusineReplaceUDDWorkers.Debusine:_replace_archive-wide_reports_in_UDD) -
 [Debusine: usability and papercuts](https://wiki.debian.org#SummerOfCode2026.2FApprovedProjects.2FDebusineUsabilityAndPapercuts.Debusine:_usability_and_papercuts) -
 [Improving Salsa CI](https://wiki.debian.org#SummerOfCode2026.2FApprovedProjects.2FImprovingSalsaCI.Improving_Salsa_CI) -
+[lintian-brush: improve performance by caching parsed ASTs](https://wiki.debian.org#SummerOfCode2026.2FApprovedProjects.2FLintianBrushASTCaching.lintian-brush:_improve_performance_by_caching_parsed_ASTs) -
+[lintian-brush: Split detection from fixers](https://wiki.debian.org#SummerOfCode2026.2FApprovedProjects.2FLintianBrushSplitDetection.lintian-brush:_Split_detection_from_fixers) -
 [Linux Livepatching](https://wiki.debian.org#SummerOfCode2026.2FApprovedProjects.2FLinuxLivePatching.Linux_Livepatching)
 
 -
@@ -35,7 +39,7 @@ The clone attack where identical copies of vulnerable code are embedded across m
 
 The goal of this project is to automate the detection of code duplication in the archive by using security patches, converting these patches into loose regex patterns, and then scanning the archive for security‑related code duplication.
 
-**Confirmed Mentor**: Bastien Roucaries**How to contact the mentor:**[rouca+gsoc2025@debian.org](mailto:rouca+gsoc2025@debian.org)**Confirmed co-mentors:**Arnaud Valence (associate professor ESIA, Laval, France)**Difficulty level**: Medium**Project size:**350 hours (large), but useful progress can be made in 175 hours if needed**Deliverables of the project**: A proof a concept that will write attack of clone report for security team**Desirable skills**: python, git**What the intern will learn:**how to write good documentation, HTTP api, writing automatic report (template), finding bibliography, AI if needed, python programming**Application tasks:**- Extract patch metadata from debian security tracker. May need to standardization of patch annotation and writing a custom parser
+**Confirmed Mentor**: Bastien Roucaries**How to contact the mentor:**rouca AT debian.org**Confirmed co-mentors:**Arnaud Valence (associate professor ESIA, Laval, France)**Difficulty level**: Medium**Project size:**350 hours (large), but useful progress can be made in 175 hours if needed**Deliverables of the project**: A proof a concept that will write attack of clone report for security team**Desirable skills**: python, git**What the intern will learn:**how to write good documentation, HTTP api, writing automatic report (template), finding bibliography, AI if needed, python programming**Application tasks:**- Extract patch metadata from debian security tracker. May need to standardization of patch annotation and writing a custom parser
 - Research way to transform patch to loosely code signature using limited regex (re2) that could be used by codesearch.debian.net
 - Use codesearch.debian.net to find code duplication in the archive
 - write report about attack of clone found
@@ -59,6 +63,68 @@ The goal of this project is to automate the detection of code duplication in the
 [[edit]](https://wiki.debian.org/SummerOfCode2026/ApprovedProjects/DebNet%3A%20Visualising%20the%20Bus%20Factor%20%E2%80%93%20Graph%20Analysis%20of%20Debian%27s%20Infrastructure?action=edit&backto=SummerOfCode2026%2FProjects)
 
 
+## debian-lsp: improve file format support
+
+The [Debian LSP](https://github.com/jelmer/debian-lsp) Language Server currently provides basic features like field completion, diagnostics for parse errors and field casing, and simple quick fixes. This project aims to significantly expand its capabilities by integrating with debian-analyzer to provide real-time linting, automatic fixes, and advanced IDE features.
+
+**Confirmed Mentor**:[JelmerVernooij](/ideas/debian/jelmervernooij)**How to contact the mentor:**mail, IRC/Matrix**Confirmed co-mentors:**[Otto Kekalainen](/ideas/debian/ottokekalainen)**Difficulty level**: Medium to Hard**Project size:**175 hours**Deliverables of the project**:- Hover information showing documentation for fields, common package names, and dependency relationships
+- Document symbols for navigating between source paragraphs and binary package definitions
+- Go-to-definition support for navigating between related packages in multi-file packaging
+- Support for multiple Debian control file formats (debian/control, debian/copyright, debian/changelog, debian/watch)
+- Real-time validation as users type, with configurable severity levels
+
+**Desirable skills**: Knowledge of Debian packaging, Rust programming (particularly traits and ownership patterns), experience with parser design and AST manipulation**What the intern will learn:**- Advanced Rust programming including trait design, lifetime management, and performance optimization
+- Deep understanding of Debian package formats and control files
+- Parser design patterns and AST manipulation techniques
+- How Language Server Protocols (LSP) work and how to design APIs suitable for LSP integration
+
+**Application tasks:**- Write a simple Rust program that parses debian/control using the debian-control crate and prints out all binary package names
+Profile lintian-brush on a sample Debian package and identify how many times the same files are parsed (hint: use
+
+`cargo build --release`and tools like`perf`or`strace`)- Review the existing fixer code in lintian-brush/src/fixers/ and identify 2-3 fixers that operate on the same files
+
+**Related projects:**[?](https://wiki.debian.org/debian-lsp)https://github.com/jelmer/debian-lsp,[debian-analyzer](https://github.com/jelmer/debian-analyzer),[deb822-lossless](https://github.com/jelmer/deb822-rs),[debian-changelog](https://github.com/jelmer/debian-changelog-rs),[debian-copyright](https://github.com/jelmer/debian-copyright-rs)
+
+**AI usage Policy:**AI code assistance is acceptable for exploration and learning, but the intern is expected to make all the code changes.
+
+
+## Automated Debian Packaging with debianize
+
+The [debianize](https://salsa.debian.org/jelmer/lintian-brush) tool aims to automatically create Debian packages from scratch for upstream source trees. While it works for some packages today, it needs significant work to become reliable and production-ready. This project focuses on improving debianize's reliability, coverage, and integration with the broader ecosystem. This addresses issue #9 on the tracker.
+
+**Confirmed Mentor**:[JelmerVernooij](/ideas/debian/jelmervernooij)**How to contact the mentor:**mail, IRC/Matrix**Confirmed co-mentors:**[Otto Kekalainen](/ideas/debian/ottokekalainen)**Difficulty level**: Hard**Project size:**350 hours (Large)**Deliverables of the project**:- Expanded test coverage for debianize across multiple programming language
+
+- ecosystems (Python, Rust, Node.js, Ruby, Go, etc.)
+- Enhanced build system detection and dependency resolution through ognibuild integration
+- Better handling of edge cases: multi-binary packages, complex build requirements, native vs. non-native packages
+
+
+**Desirable skills**: Strong knowledge of Debian packaging workflows and- policy, Rust programming, familiarity with multiple programming language ecosystems (build tools like Cargo, npm, setuptools, bundler, etc.), experience with build systems and dependency resolution
+
+**What the intern will learn:**- Deep understanding of Debian packaging conventions, policy, and best practices
+
+- across different language ecosystems
+- How different programming languages handle dependencies, versioning, and
+
+
+- builds
+- Advanced Rust programming including error handling, integration with external
+
+- Build system detection and abstraction patterns
+- Metadata extraction and heuristics for inferring packaging information
+- How to build reliable automation that handles diverse real-world codebases
+
+
+**Application tasks:**- Write a simple Rust program that parses debian/control using the debian-control crate and prints out all binary package names
+Profile lintian-brush on a sample Debian package and identify how many times the same files are parsed (hint: use
+
+`cargo build --release`and tools like`perf`or`strace`)- Review the existing fixer code in lintian-brush/src/fixers/ and identify 2-3 fixers that operate on the same files
+
+**Related projects:**[?](https://wiki.debian.org/lintian-brush)https://salsa.debian.org/jelmer/lintian-brush,[debian-analyzer](https://github.com/jelmer/debian-analyzer),[ognibuild](https://github.com/jelmer/ognibuild)
+
+**AI usage Policy:**AI code assistance is acceptable for exploration and learning, but the intern is expected to make all the code changes.
+
+
 ## Debusine: debuginfod server
 
 **Description of the project:** Debusine provides Debian developers and maintainers with a way to host package repositories. We would like to [support debug symbol packages](https://salsa.debian.org/freexian-team/debusine/-/issues/957) as well, serving them in a way that’s compatible with debuginfod(8). This would make it easy for users of those packages to provide meaningful backtraces in the event of crashes.
@@ -73,7 +139,7 @@ The goal of this project is to automate the detection of code duplication in the
 
 [Quick fix](https://salsa.debian.org/freexian-team/debusine/-/issues?sort=created_date&state=opened&label_name%5B%5D=Quick%20fix&first_page_size=100)issue from our list and try to fix it, including full test coverage for your changes.Look at
 
-[debuginfod(8)’s web API documentation](https://manpages.debian.org/stable/debuginfod/debuginfod.8.en.html#WEBAPI)and the`elf_classify`function in[debuginfod.cxx](https://sourceware.org/git/?p=elfutils.git;a=blob;f=debuginfod/debuginfod.cxx). Prepare an initial high-level summary of what would need to be extracted from incoming debug symbol packages in order to handle the`/buildid/BUILDID/debuginfo`` endpoint.
+[debuginfod(8)’s web API documentation](https://manpages.debian.org/stable/debuginfod/debuginfod.8.en.html#WEBAPI)and the`elf_classify`function in[debuginfod.cxx](https://sourceware.org/git/?p=elfutils.git;a=blob;f=debuginfod/debuginfod.cxx). Prepare an initial high-level summary of what would need to be extracted from incoming debug symbol packages in order to handle the`/buildid/BUILDID/debuginfo`endpoint.
 
 **AI usage policy:**We will not accept applications written using LLMs, and we expect accepted students to write code themselves, not via an LLM.
 
@@ -160,6 +226,62 @@ We would not expect a student to replace all the uses of external workers in UDD
 [https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/?sort=created_asc&state=opened&first_page_size=20=](https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/?sort=created_asc&state=opened&first_page_size=20=), discuss with the team and aim to fix them. Example of priority issues:[https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/318](https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/318)(to minimise the changes of introducing regressions when doing a MR against the pipeline)[https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/498](https://salsa.debian.org/salsa-ci-team/pipeline/-/issues/498)(to make it possible to have runners different to the instance shared runner) More resources:[https://salsa.debian.org/salsa-ci-team/pipeline/](https://salsa.debian.org/salsa-ci-team/pipeline/)[https://about.gitlab.com/blog/2023/09/19/debian-customizes-ci-tooling-with-gitlab/](https://about.gitlab.com/blog/2023/09/19/debian-customizes-ci-tooling-with-gitlab/)
 
 **AI usage policy:**We will not accept applications written using LLMs, and we expect accepted students to write code themselves, not via an LLM.
+
+
+## lintian-brush: improve performance by caching parsed ASTs
+
+Currently, lintian-brush re-parses Debian control files for each fixer that runs, which is inefficient when multiple fixers need to modify the same files (e.g., debian/control, debian/changelog). This project aims to implement a Workspace trait that provides access to common files with their parsed AST (Abstract Syntax Tree) representations, preserving these between fixers and only serializing to disk when needed. This relates to issues #5 and #8 on the issue tracker.
+
+Some of this work will need to happen in debian-analyzer crate. This work would also allow use of the fixers from the debian-lsp.
+
+**Confirmed Mentor**:[JelmerVernooij](/ideas/debian/jelmervernooij)**How to contact the mentor:**mail, IRC/Matrix**Confirmed co-mentors:**[Otto Kekalainen](/ideas/debian/ottokekalainen)**Difficulty level**: Medium**Project size:**175 hours**Deliverables of the project**:- A Workspace trait in the debian-analyzer crate that provides cached access to parsed Debian control files (debian/control, debian/changelog, debian/copyright, debian/watch, etc.)
+- Integration of the Workspace trait into lintian-brush's fixer framework, allowing fixers to access pre-parsed ASTs
+- Lazy serialization mechanism that only writes files to disk when they've been modified
+- Performance benchmarks demonstrating improvement in multi-fixer scenarios
+- Documentation and examples for fixer authors on how to use the Workspace API
+- Integration tests ensuring correctness when multiple fixers modify the same files
+
+**Desirable skills**: Knowledge of Debian packaging, Rust programming (particularly traits and ownership patterns), experience with parser design and AST manipulation**What the intern will learn:**- Advanced Rust programming including trait design, lifetime management, and performance optimization
+- Deep understanding of Debian package formats and control files
+- Parser design patterns and AST manipulation techniques
+- How Language Server Protocols (LSP) work and how to design APIs suitable for LSP integration
+
+**Application tasks:**- Write a simple Rust program that parses debian/control using the debian-control crate and prints out all binary package names
+Profile lintian-brush on a sample Debian package and identify how many times the same files are parsed (hint: use
+
+`cargo build --release`and tools like`perf`or`strace`)- Review the existing fixer code in lintian-brush/src/fixers/ and identify 2-3 fixers that operate on the same files
+
+**Related projects:**[?](https://wiki.debian.org/lintian-brush)https://salsa.debian.org/jelmer/lintian-brush,[debian-analyzer](https://github.com/jelmer/debian-analyzer),[deb822-lossless](https://github.com/jelmer/deb822-rs),[debian-changelog](https://github.com/jelmer/debian-changelog-rs),[debian-copyright](https://github.com/jelmer/debian-copyright-rs)
+
+**AI usage Policy:**AI code assistance is acceptable for exploration and learning, but the intern is expected to make all the code changes.
+
+
+## lintian-brush: Split detection from fixers
+
+Currently, lintian-brush fixers combine both detection (finding issues) and fixing (resolving them) in a single pass. This project aims to split these concerns: detectors would yield issues, each with zero or more associated actions that can resolve the issue. This architecture is essential for building Language Server Protocol (LSP) support, where issues need to be detected and presented to users with quick-fix actions they can choose from.
+
+**Confirmed Mentor**:[JelmerVernooij](/ideas/debian/jelmervernooij)**How to contact the mentor:**mail, IRC/Matrix**Confirmed co-mentors:**[Otto Kekalainen](/ideas/debian/ottokekalainen)**Difficulty level**: Medium to Hard**Project size:**350 hour (large)**Deliverables of the project**:- A new trait-based architecture separating Detector and Action responsibilities
+- Issue representation structure containing location information, severity, descriptions, and associated quick-fix actions
+- Refactored implementation of 15-20 existing fixers to use the new detection/action architecture
+- LSP-compatible diagnostic output format with associated code actions
+- Command-line interface updates to support both traditional "auto-fix" mode and new "detect-only" mode
+- Integration with debian-analyzer to provide LSP-ready diagnostics for debian-lsp
+- Documentation for writing detectors and actions separately, updating the fixer-writing-guide
+- Test suite ensuring refactored fixers maintain identical behavior to originals
+
+**Desirable skills**: Knowledge of Debian packaging, Rust programming (particularly traits and ownership patterns), experience with parser design and AST manipulation**What the intern will learn:**- Advanced Rust programming including trait design, lifetime management, and performance optimization
+- Deep understanding of Debian package formats and control files
+- Parser design patterns and AST manipulation techniques
+- How Language Server Protocols (LSP) work and how to design APIs suitable for LSP integration
+
+**Application tasks:**- Write a simple Rust program that parses debian/control using the debian-control crate and prints out all binary package names
+Profile lintian-brush on a sample Debian package and identify how many times the same files are parsed (hint: use
+
+`cargo build --release`and tools like`perf`or`strace`)- Review the existing fixer code in lintian-brush/src/fixers/ and identify 2-3 fixers that operate on the same files
+
+**Related projects:**[?](https://wiki.debian.org/lintian-brush)https://salsa.debian.org/jelmer/lintian-brush,[debian-analyzer](https://github.com/jelmer/debian-analyzer),[deb822-lossless](https://github.com/jelmer/deb822-rs),[debian-changelog](https://github.com/jelmer/debian-changelog-rs),[debian-copyright](https://github.com/jelmer/debian-copyright-rs)
+
+**AI usage Policy:**AI code assistance is acceptable for exploration and learning, but the intern is expected to make all the code changes.
 
 
 ## Linux Livepatching

@@ -2,7 +2,7 @@
 
 **Parent:** GNU Mailman — Project Ideas
 **Source:** https://wiki.list.org/HyperKitty
-**Scraped:** 2026-02-22T23:28:47.588087
+**Scraped:** 2026-03-10T16:58:40.268712
 
 ---
 

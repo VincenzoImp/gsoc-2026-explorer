@@ -1,7 +1,7 @@
 # Machine Learning for Science (ML4SCI) — Project Ideas
 
 **Source:** https://ml4sci.org/activities/gsoc2026.html
-**Scraped:** 2026-02-22T23:28:47.568460
+**Scraped:** 2026-03-10T16:58:40.305280
 
 ---
 
@@ -56,8 +56,6 @@ Recent success in the domain of unsupervised and semi-supervised learning has be
 The |
 |
 
-The [University of Alabama](https://www.ua.edu/) is a public research university in Tuscaloosa, Alabama. Established in 1820, the University of Alabama is the oldest and largest of the public universities in Alabama as well as the flagship of the University of Alabama System
-
 The American University of Beirut (AUB) is a private, non-sectarian, and independent university chartered in New York with its campus in Beirut, Lebanon
 
 Birla Institute of Technology and Science, Pilani – Goa Campus is a private deemed university campus located in Goa, India.
@@ -93,6 +91,8 @@ Florida State University is a public institution that was founded in 1851.
 The University of Georgia (UGA or Georgia) is a public land-grant research university with its main campus in Athens, Georgia.
 
 The Goddard Space Flight Center (GSFC) is a major NASA space research laboratory located approximately 6.5 miles (10.5 km) northeast of Washington, D.C. in Greenbelt, Maryland, United States.
+
+The [Indian Institute of Technology, Dhanbad](https://www.iitism.ac.in) is a public technical university located in Dhanbad, India. IIT Dhanbad is an Institute of National Importance, and is ranked among the premier engineering institutions of India.
 
 The Johns Hopkins University Applied Physics Laboratory (APL) has provided critical contributions to critical challenges with systems engineering and integration, technology research and development, and analysis.
 

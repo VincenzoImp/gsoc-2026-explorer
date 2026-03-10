@@ -1,7 +1,7 @@
 # Synfig — Project Ideas
 
 **Source:** https://github.com/synfig/synfig-docs-dev/blob/master/docs/gsoc/2026/ideas.rst
-**Scraped:** 2026-02-22T23:28:47.628577
+**Scraped:** 2026-03-10T16:58:40.242814
 
 ---
 

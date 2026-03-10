@@ -2,7 +2,7 @@
 
 **Parent:** IOOS — Project Ideas
 **Source:** https://github.com/ioos/gsoc/issues/115
-**Scraped:** 2026-02-22T23:28:47.603444
+**Scraped:** 2026-03-10T16:58:40.285491
 
 ---
 
@@ -47,7 +47,7 @@ Bai Li, Elizabeth Perl
 
 ### Mentor Contact Email(s)
 
-bai.li@noaa.gov, elizabeth.gugliotti@noaa.gov
+bai.li@noaa.gov, elizabeth.perl@noaa.gov 
 
 ### Contributor Evaluation/GSoC GitHub Issue Links
 

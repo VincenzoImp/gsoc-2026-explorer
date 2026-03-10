@@ -2,7 +2,7 @@
 
 **Parent:** R project for statistical computing — Project Ideas
 **Source:** https://github.com/rstats-gsoc/gsoc2026/wiki/time-dependent-constraints-in-gfpop
-**Scraped:** 2026-02-22T23:28:47.626094
+**Scraped:** 2026-03-10T16:58:40.305662
 
 ---
 
@@ -12,7 +12,7 @@
 
 # time dependent constraints in gfpop
 
-[18 revisions](https://github.com/rstats-gsoc/gsoc2026/wiki/time-dependent-constraints-in-gfpop/_history)
+[19 revisions](https://github.com/rstats-gsoc/gsoc2026/wiki/time-dependent-constraints-in-gfpop/_history)
 
 There are many R packages for changepoint detection, which is an
 important problem in many application domains (genomics, finance,
@@ -208,6 +208,8 @@ is the same as `Fpop`
 Contributors, please post a link to your test results here.
 
 - EXAMPLE CONTRIBUTOR 1 NAME, LINK TO GITHUB PROFILE, LINK TO TEST RESULTS.
+- William Zhang,
+[GitHub Profile](https://github.com/williamzhang7792),[Tests (Easy, Medium, Hard)](https://github.com/williamzhang7792/gsoc2026-gfpop-william-zhang)
 
 Github : [Link to Github](https://github.com/kunal649)
 Easy task : [Link to Gist](https://gist.github.com/kunal649/5efb0d44a0074dba3cdaf432fb0f85dc)

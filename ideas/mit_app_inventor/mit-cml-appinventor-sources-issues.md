@@ -2,7 +2,76 @@
 
 **Parent:** MIT App Inventor — Project Ideas
 **Source:** https://github.com/mit-cml/appinventor-sources/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
-**Scraped:** 2026-02-22T23:28:47.578376
+**Scraped:** 2026-03-10T16:58:40.290519
+
+---
+
+## #3791: Support coreLibraryDesugaring feature for Java 8+ APIs
+
+**Labels:** status: new, feature request
+
+Hi App Inventor team,
+
+I’d like to suggest adding support for `coreLibraryDesugaring` feature in the build pipeline.
+
+Currently, developers an extension creators are restricted from using modern [Java 8+ APIs](https://developer.android.com/studio/write/java8-support-table) (like `java.time`, `java.util.stream`, `java.util.function`) if they want to maintain compatibility with older Android versions. Using these often leads to crashes on older devices because the APIs aren't available in the system's bootclasspath.
+
+By enabling desugaring via the D8 toolchain and including [desugar_jdk_libs](https://github.com/google/desugar_jdk_libs), we could allow the core components and extensions to use these modern APIs without breaking support for legacy devices.
+
+**Why this would be helpful:**
+
+* Extension developers can use modern Java libraries without manual backporting.
+* Reduces the chance of `NoClassDefFoundError` when someone tries to use a newer Java feature in an extension or component.
+
+Is this something that could be integrated into the current build server?
+
+Looking forward to your thoughts.
+
+---
+
+## #3784: Enhance Accessibility in Blocks Editor for Screen Readers and Keyboard Navigation
+
+**Labels:** status: new, feature request
+
+Description:  
+The Blocks Editor is central to App Inventor’s usability, but it currently poses challenges for users relying on screen readers or keyboard navigation. Drag‑and‑drop interactions are difficult to interpret, and ARIA labels are missing or incomplete. This limits accessibility for visually impaired users and reduces inclusivity in classrooms.
+
+Steps to Reproduce:
+
+Open the Blocks Editor in App Inventor.
+
+Attempt to navigate using only keyboard shortcuts.
+
+Attempt to use a screen reader (e.g., NVDA, JAWS).
+
+Observe missing labels, unclear focus states, and difficulty in block manipulation.
+
+Expected Behavior:  
+Blocks Editor should provide clear ARIA labels, logical tab navigation, and accessible shortcuts so that screen readers and keyboard users can fully interact with the interface.
+
+Actual Behavior:  
+Screen readers fail to announce block names or connections, and keyboard navigation is inconsistent, making the editor inaccessible.
+
+Proposed Solution:
+
+Add ARIA labels for all block elements.
+
+Implement consistent tab order and focus states.
+
+Provide keyboard shortcuts for block selection, movement, and connection.
+
+Document accessibility features in contributor and user guides.
+
+Impact:
+
+Makes App Inventor more inclusive for visually impaired and differently‑abled users.
+
+Aligns with educational accessibility standards.
+
+Expands App Inventor’s reach in schools and communities worldwide.
+
+Additional Context:  
+I am willing to collaborate on drafting accessibility guidelines and testing improvements with screen reader tools.
 
 ---
 
@@ -1257,25 +1326,5 @@ There is a tradeoff between usefulness and ease of explanation when teaching sta
 - The `mode` operation returns a *list* of modes, in case there are more than one 'most common' value.
 
 Also, should factorial, permutation, combination operations be included? Financial operations (TVM, NPV, IRR, amortization, depreciation, yield)? Others (if so, what)?
-
----
-
-## #3442: Pop-Up Instructions for Spreadsheet ID need to be revised
-
-**Labels:** bug, status: new
-
-Users have been getting confused by the instructions say that users need to pull out the spreadsheet ID from the URL. This is no longer true. Users can paste the entire spreadsheet URL in the field. 
-
-![Image](https://github.com/user-attachments/assets/84f8d7b5-c13f-415a-acac-3811effe3dd0)
-
-Can we rewrite to say: "The SpreadsheetID is part of the web address of the Google Sheets spreadsheet you want to use. The web address (URL) starts https://docs.google.com/spreadsheets . . . .  Go to the spreadsheet in your browser and paste its web address here."
-
----
-
-## #3434: Update YAIL generator to use Blockly v11 `forBlock` dictionary
-
-**Labels:** issue: noted for future Work, technical debt, affects: master, priority: high
-
-The generators in Blockly v11 have been refactored. This will prevent our current YAIL generator from working. The generator will have to be updated to follow the new approach required by Blockly core.
 
 ---

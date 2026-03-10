@@ -2,7 +2,106 @@
 
 **Parent:** AFLplusplus — Project Ideas
 **Source:** https://github.com/AFLplusplus/LibAFL/issues?q=state%3Aopen%20label%3A%22GSoC%22
-**Scraped:** 2026-02-22T23:28:47.605554
+**Scraped:** 2026-03-10T16:58:40.245369
+
+---
+
+## #3751: test_builder()  in command executor must be unix only
+
+`test_builder()` test in `commandExecutor` should be unix only as it uses `ls`
+
+---
+
+## #3749: Support 128-bit AVX/SIMD comparison logging and mutation
+
+**Labels:** enhancement
+
+**Is your feature request related to a problem? Please describe.**
+When fuzzing high-performance targets, modern codebases frequently use AVX/SIMD instructions for comparisons. Since libafl and libafl_targets cap comparison logging at 64-bit values, the fuzzer is completely blind to 128-bit, 256-bit, and 512-bit vector comparisons significantly limiting mutation effectiveness on these code paths.
+
+**Describe the solution you'd like**
+To add native 128-bit comparison support to CmpLog and the mutation framework, with room to extend to 256/512-bit later. The main changes would be: adding a U128 variant to CmpValues, widening CmplogBytes, fixing up the CmpMap dictionary extraction to properly reconstruct u128 halves, and hooking it all into havoc_mutations::dict_insert()
+
+**Describe alternatives you've considered**
+CmpValues::Bytes sort of works but loses the semantic aware mutations that make CmpLog actually useful. Manual per-target hooking is another option, but it's messy putting this in the core CmpMap means every CmpLog-enabled target gets the benefit automatically.
+
+**Additional context**
+Without this, achieving deep coverage in cryptographic routines, vectorized string parsers, and multimedia libraries remains substantially harder, as magic bytes and equality conditions hidden behind SIMD optimizations go unresolved.
+
+---
+
+## #3745: elf.entry_point() for no-aslr binary
+
+## Problem
+I'm new to LibAFL and I'm trying to work on a no-aslr binary, it's elf header type is EXEC, not DYN. And here is part of my code
+```rust
+   fn get_elf_entry_point(qemu: Qemu) -> Result<GuestAddr, Error> {
+        let mut elf_buffer = Vec::new();
+        let elf = EasyElf::from_file(qemu.binary_path(), &mut elf_buffer)?;
+        let load_addr = qemu.load_addr();
+        eprintln!("[Harness] ELF Load addr: {load_addr:#x}");
+        let start_pc = elf
+            .entry_point(qemu.load_addr())
+            .expect("Target elf's entry_point should not be None!") as u64;
+
+        // 使用 println! 确保能看到输出
+        eprintln!("[Harness] ELF Entry point calculated: {start_pc:#x}");
+        Ok(start_pc)
+```
+The problem is qemu.load_addr() will return 0x400000 and elf.entry_point(qemu.load_addr()) will return 0x802500(expected to be 0x402500).
+
+The definition of elf.entry_point() is 
+```rust
+    #[must_use]
+    pub fn entry_point(&self, load_addr: GuestAddr) -> Option<GuestAddr> {
+        if self.elf.entry == 0 {
+            None
+        } else {
+            Some(load_addr + self.elf.entry as GuestAddr)
+        }
+    }
+```
+I wonder if this func need to add `if self.if_pic()` check liker other functions (eg. elf.resolve_symbol, elf.get_section) or just I misuse this function.
+
+---
+
+## #3744: Online channel for libafl
+
+To discuss fuzzing in general or libafl specifically, or to seek help - join us at https://fuzz.zulipchat.com/
+
+Note that the "Awesome Fuzzing" Discord channel is deprecated!
+
+---
+
+## #3743: fuzzers/binary_only/qemu_launcher recipe error
+
+**Labels:** bug
+
+**IMPORTANT**
+1. The issue to be present in the current `main` branch.
+
+
+**Describe the bug**
+The 'qemu_launcher' fuzzer emits an recipe error 
+A clear and concise description of what the bug is.
+If you want to present the backtrace, don't forget to run with `errors_backtrace` feature and log from `RUST_LOG`
+In addition, please tell us what is your fuzzer's Cargo.toml
+
+**To Reproduce**
+Steps to reproduce the behavior:
+
+
+```
+$ just test
+
+configure: error: C compiler cannot create executables
+See `config.log' for more details
+make: Entering directory '/home/ubuntu/LibAFL/fuzzers/binary_only/qemu_launcher/target/build-png'
+make: *** No targets specified and no makefile found.  Stop.
+make: Leaving directory '/home/ubuntu/LibAFL/fuzzers/binary_only/qemu_launcher/target/build-png'
+error: Recipe `libpng` failed with exit code 2
+error: Recipe `test` failed on line 76 with exit code 2
+```
 
 ---
 
@@ -1310,171 +1409,5 @@ r1 = 32
 Wasnt't sure if there was a forum to post questions, so I figured I'd ask here. As the title says, I'm trying to write an HTTP fuzzer for practice, but right now I'm kind of stuck at how to link things together. I'm writing an HTTPFeedback that holds a set of HTTP codes, and the idea is that in its `is_interesting` function, it will see if the HTTP status code is in its set, and return a value based on that. The only problem is, how do I communicate the returned HTTP status code to the feedback? Would I do that through the ExitKind or state or something else?
 
 Thanks if you're able to help out, and if this isn't the right place to ask, I'd be more than happy to repost my question somewhere else.
-
----
-
-## #2786: Unify and Fix Pseudo-Coverage in Example Fuzzers
-
-**Labels:** bug
-
-`static_mut_refs` are going to break soon. This needs fixing. See discussion [here](https://github.com/AFLplusplus/LibAFL/pull/2784#discussion_r1893727318) and [here](https://github.com/AFLplusplus/LibAFL/pull/2770#discussion_r1885707774).
-
-Additionally, handling of the pseudo-coverage is different between example fuzzers. The names, the extraction of necessary data from the static array, and the way the data is passed to the observers should be unified.
-
----
-
-## #2765: Document more clearly that EmulatorHooks.post_exec get called at the end of the harness
-
-**Labels:** enhancement, qemu
-
-**Is your feature request related to a problem? Please describe.**
-I just wasted multiple days trying to figure out why my fuzzer, that I based on [qemu_baremetal/low_level](https://github.com/AFLplusplus/LibAFL/blob/main/fuzzers/full_system/qemu_baremetal/src/fuzzer_breakpoint.rs), reported incorrect values for a memory location that I read from my custom module in the `post_exec` step.
-
-This was due to the fact that the snapshot had already been restored and the memory reset to its original value
-https://github.com/AFLplusplus/LibAFL/blob/be21fae4909018c2a7dfdc496d70c33a237f6a54/fuzzers/full_system/qemu_baremetal/src/fuzzer_low_level.rs#L192
-
-
-**Describe the solution you'd like**
-Maybe change the post_exec name to post_harness? Also to differentiate against observers?
-
-**Describe alternatives you've considered**
-Update the comment to state that the hooks run after the harness
-
-**Additional context**
-
-What would be the correct way to read a chunk of memory after this line has returned?
-https://github.com/AFLplusplus/LibAFL/blob/be21fae4909018c2a7dfdc496d70c33a237f6a54/fuzzers/full_system/qemu_baremetal/src/fuzzer_low_level.rs#L160
-
-I can't do it in an observer, because observers need to be serializable, so I can't add a `Qemu` struct to it.
-I'm currently storing the return value of `emulator.qemu().run()` in a local var, reading the memory and then match of the stored value but that feels very hacky.
-
----
-
-## #2758: Derive Named
-
-**Labels:** enhancement
-
-A lot of structs within LibAFL implement `Named`. And all of those are done manually, leading to a lot of code duplication. Would it make sense to create a derive macro that implements it based on the struct name?
-
-Is there a reason this doesn't exist already?
-
----
-
-## #2746: libafl-qemu: multiple consecutive `load_snapshot` calls cause segmentation fault
-
-**Labels:** bug, qemu
-
-Like @langston-barrett in #2628, I'm trying to fuzz an EDKII image while using snapshots. I'm running into an issue where restoring a snapshot twice in a row, without starting/restarting QEMU in between those restorations, will reliably cause a segmentation fault once QEMU restarts. (Also like Langston, I can't share the compiled artifacts used here, but I strongly suspect the issue is independent of them, and should be replicable with another systemmode target.) Consider this example:
-```rs
-// cargo init
-// cargo add --no-default-features --features=systemmode --git https://github.com/AFLplusplus/LibAFL libafl_qemu
-// cargo run
-
-use std::error;
-
-const QEMU_FLAGS: &[&str] = &[
-    "-machine",
-    "q35",
-    "-kernel",
-    "./impl/bzImage",
-    "-append",
-    "'rootwait root=/dev/vda console=tty1 console=ttyS0 keep_bootcon'",
-    "-drive",
-    "file=./impl/rootfs.ext2,if=virtio,format=raw,readonly=on",
-    "-global",
-    "driver=cfi.pflash01,property=secure,value=on",
-    "-drive",
-    "if=pflash,format=raw,unit=1,file=./impl/OVMF_VARS.fd",
-    "-drive",
-    "if=pflash,format=raw,unit=0,readonly=on,file=./impl/OVMF_CODE.fd",
-    "-smp",
-    "2",
-    "-m",
-    "4G",
-    "-bios",
-    "./impl/OVMF.fd",
-    "-snapshot",
-    "-S",
-    "-nodefaults",
-];
-
-const SNAPSHOT_NAME: &'static str = "snapshot";
-const SYNC: bool = true;
-
-fn main() -> Result<(), Box<dyn error::Error>> {
-    let mut args = vec!["qemu".to_owned()];
-    args.extend(QEMU_FLAGS.iter().map(|s| (*s).to_owned()));
-    let qemu = libafl_qemu::Qemu::init(args.as_slice())?;
-
-    let entry = 0x7FFA3C01;
-
-    println!("Saving snapshot...");
-    qemu.save_snapshot(SNAPSHOT_NAME, SYNC);
-
-    println!("Loading snapshot...");
-    qemu.load_snapshot(SNAPSHOT_NAME, SYNC);
-
-    // println!("Loading snapshot again...");
-    // qemu.load_snapshot(SNAPSHOT_NAME, SYNC);
-
-    println!("Running to {entry:#x}...");
-    qemu.entry_break(entry);
-    println!("...finished.");
-
-    Ok(())
-}
-```
-
-Without the second `load_snapshot`, I see this run to completion. With the second `load_snapshot`, I get a segmentation fault when QEMU restarts:
-```
-rom: file kvmvapic.bin        : error Failed to open file “kvmvapic.bin”: No such file or directory
-rom: file linuxboot_dma.bin   : error Failed to open file “linuxboot_dma.bin”: No such file or directory
-Saving snapshot...
-Loading snapshot...
-Loading snapshot again...
-Running to 0x7ffa3c01...
-Segmentation fault (core dumped)
-```
-
-Here's a backtrace:
-```
-Saving snapshot...
-Loading snapshot...
-Loading snapshot again...
-Running to 0x7ffa3c01...
-
-Thread 1 "scratch" received signal SIGSEGV, Segmentation fault.
-0x00005555571c68c0 in ?? ()
-(gdb) bt
-#0  0x00005555571c68c0 in ?? ()
-#1  0x0000555555a6e604 in vm_state_notify (running=running@entry=true, state=state@entry=RUN_STATE_RUNNING) at ../system/runstate.c:399
-#2  0x0000555555a64fca in vm_prepare_start (step_pending=step_pending@entry=false) at
-
-*[truncated]*
-
----
-
-## #2720: Count Executions With Same Observer Value
-
-**Labels:** enhancement
-
-**Is your feature request related to a problem? Please describe.**
-I have a target that is unstable, i.e. for the same input I don't always get the same observation.
-
-**Describe the solution you'd like**
-I would like to have a way to count how often a certain `Observer` observes the same value to get a frequency distribution and figure out how bad things are. This could be implemented in three levels:
-1. A pure count of how often each observed value is measured — this would only really be useful with a single corpus entry and a `NopMutator`, but maybe a good start.
-2. A count of how often each value is measured, along with an example input that triggers this execution
-3. A count of how often each value is measured, along with a list of all inputs that triggered this execution — this would be really inefficient, but maybe useful for debugging.
-
-**Describe alternatives you've considered**
-Right now, in a very hacky way, I just hash the observer value in the executor and append that hash to a file. It also gets put in some metadata in the corpus, so I can correlate them after the fact. This is wildly inefficient. And I'm using the single corpus entry/`NopMutator` strategy.
-
-I've also attempted to implement this as a feedback that updates a count field in some metadata entry on each `is_interesting` call, but I could not get those updated metadata values to be written to disk. It's also a bit hacky, because in `is_interesting`, I only have the input, and not the testcase, so I have to manually extract that from state -> corpus -> testcase. If this were to work, it would basically provide solution 2. But I'm not sure it's possible, I don't know the internals well enough.
-
-Lastly, one could write a feedback that keeps an internal representation of input-outcome values (e.g. `HashMap` with the `Observer` value as the key and a tuple of `(count, example_input)` as the value, to get solution level 2. These values could then be written to disk at a certain interval, similar to `OnDiskTomlMonitor`.
-
-**Additional context**
-I'm just curious if anyone has an opinion on how this could be done in a pretty way.
 
 ---

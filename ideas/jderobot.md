@@ -1,7 +1,7 @@
 # JdeRobot — Project Ideas
 
 **Source:** https://jderobot.github.io/activities/gsoc/2026#ideas-list
-**Scraped:** 2026-02-22T23:28:47.557419
+**Scraped:** 2026-03-10T16:58:40.234661
 
 ---
 
@@ -37,7 +37,7 @@ Moving beyond our current focus on off-road navigation, this project aims to sca
 - Generating comprehensive tutorials and documentation for different use cases, models, and data formats.
 - Improving the robustness of the project through an improved test suite.
 
-**Skills required/preferred**: Python, PyTorch, Deep Learning, Streamlit**Difficulty rating**: Medium**Expected results**: Support for new datasets, GUI extension for image and LiDAR segmentation, and comprehensive technical documentation.**Expected size**: Long (~350h)**Mentors**: David Pascual Hernández (d.pascualhe AT gmail.com), Sakhineti Praveena (sakhinetipraveena AT gmail.com)
+**Skills required/preferred**: Python, PyTorch, Deep Learning, Streamlit**Difficulty rating**: Medium**Expected results**: Support for new datasets, GUI extension for image and LiDAR segmentation, and comprehensive technical documentation.**Expected size**: Long (~350h)**Mentors**: David Pascual-Hernández (d.pascualhe AT gmail.com), Sakhineti Praveena (sakhinetipraveena AT gmail.com)
 
 ## Project #2: Robotics Academy: extend C++ support for more exercises
 
@@ -59,7 +59,7 @@ Currently, exercises can be solved using Python with our Hardware Abstraction La
 - Extend the
 *Simple API*used by deep learning exercises to define a structured way of setting results such as classification logits, bounding boxes for detection, and confidence scores.
 
-**Skills required/preferred**: Python, PyTorch, Deep Learning, ROS2, Gazebo**Difficulty rating**: Medium**Expected results**: New deep learning based power tower inspection exercise with comprehensive docs and learning materials.**Expected size**: Medium (~175h)**Mentors**: David Pascual Hernández (d.pascualhe AT gmail.com), Md. Shariar Kabir (skabircp08 AT gmail.com), Luis Roberto Morales (lrmoralesiglesias AT gmail.com)
+**Skills required/preferred**: Python, PyTorch, Deep Learning, ROS2, Gazebo**Difficulty rating**: Medium**Expected results**: New deep learning based power tower inspection exercise with comprehensive docs and learning materials.**Expected size**: Medium (~175h)**Mentors**: David Pascual-Hernández (d.pascualhe AT gmail.com), Md. Shariar Kabir (skabircp08 AT gmail.com), Luis Roberto Morales (lrmoralesiglesias AT gmail.com)
 
 ## Project #4: RoboticsAcademy: drone-cat-mouse chase exercise, two controlled robots at the same time
 
@@ -90,7 +90,7 @@ You can read further about the tool on the [website](/ideas/jderobot/visualcircu
 
 This project has a twofold objective. First, it aims to identify bottlenecks in the current container build and propose concrete strategies to reduce image size and build time. Potential approaches include layer optimization, dependency pruning, replacing heavy libraries such as OMPL when viable, and providing minimal installation variants for components like Aerostack2. Second, the project will explore alternative container technologies, such as Podman, as a replacement for Docker in the build pipeline. Podman offers a daemonless and rootless execution model while maintaining compatibility with existing container workflows, potentially improving security, portability, and maintainability.
 
-**Skills required/preferred**: Docker, Linux fundamentals, familiarity with common robotic software stack**Difficulty rating**: Medium**Expected results**: An optimized RoboticsBackend and a feasibility study of migration to Podman**Expected size**: 175h**Mentors**: Nikhil Gupta and Miguel Fernández
+**Skills required/preferred**: Docker, Linux fundamentals, familiarity with common robotic software stack**Difficulty rating**: Medium**Expected results**: An optimized RoboticsBackend and a feasibility study of migration to Podman**Expected size**: 175h**Mentors**: David Pascual-Hernández (d.pascualhe AT gmail.com), Nikhil Gupta and Miguel Fernández
 
 ## Project #8: Robotics Academy: palletizing with an industrial robot exercise
 
@@ -106,11 +106,11 @@ If you are interested in applying for GSoC with our organization, we highly enco
 
 First, explore the specific project(s) you are interested in:
 
-Check[RoboticsAcademy](/ideas/jderobot/roboticsacademy):[this GitHub Discussion thread](https://github.com/JdeRobot/RoboticsAcademy/discussions/3381)for initial setup and guidance.Check[PerceptionMetrics](/ideas/jderobot/perceptionmetrics):[this GitHub Discussion thread](https://github.com/JdeRobot/PerceptionMetrics/discussions/124)for initial setup and guidance.Read the[VisualCircuit](/ideas/jderobot/visualcircuit):[official documentation](https://jderobot.github.io/VisualCircuit/docs/), explore the[repository](https://github.com/JdeRobot/VisualCircuit), and reach out to the mentors.
+Check[RoboticsAcademy](/ideas/jderobot/roboticsacademy):[this GitHub Discussion thread](https://github.com/JdeRobot/RoboticsAcademy/discussions/3381)for initial setup and guidance.Check[PerceptionMetrics](/ideas/jderobot/perceptionmetrics):[this GitHub Discussion thread](https://github.com/JdeRobot/PerceptionMetrics/discussions/380)for initial setup and guidance.Read the[VisualCircuit](/ideas/jderobot/visualcircuit):[official documentation](/ideas/jderobot/visualcircuit), explore the[repository](https://github.com/JdeRobot/VisualCircuit), and reach out to the mentors.
 
 ## Communication & Proposals
 
-Once you have a feel for the workflow and have identified your preferred project(s), we recommend reaching out to the project mentors directly. If you decide to apply, **sharing your proposal via Google Docs** with the mentors is highly recommended. This allows us to provide feedback and suggestions before the final submission deadline, significantly improving your chances of success.
+Once you have a feel for the workflow and have identified your preferred project(s), we recommend reaching out to the project mentors directly. If you decide to apply, we suggest first reviewing the [official proposal guidelines](https://google.github.io/gsocguides/student/writing-a-proposal) to ensure your application is structured correctly. Furthermore, **sharing your proposal via Google Docs** with the mentors is highly recommended. This allows us to provide feedback and suggestions before the final submission deadline, significantly improving your chances of success.
 
 ## Technical Demo Challenge
 

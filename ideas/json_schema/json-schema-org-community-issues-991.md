@@ -2,7 +2,7 @@
 
 **Parent:** JSON Schema — Project Ideas
 **Source:** https://github.com/json-schema-org/community/issues/991
-**Scraped:** 2026-02-22T23:28:47.585898
+**Scraped:** 2026-03-10T16:58:40.243805
 
 ---
 

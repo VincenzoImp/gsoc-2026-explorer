@@ -1,7 +1,7 @@
 # Oppia Foundation — Project Ideas
 
 **Source:** https://github.com/oppia/oppia/wiki/Google-Summer-of-Code-2026
-**Scraped:** 2026-02-22T23:28:47.619358
+**Scraped:** 2026-03-10T16:58:40.307205
 
 ---
 
@@ -1165,7 +1165,7 @@ For proper functioning of the Oppia application, it is important to ensure that 
 **Tracking issues**:
 - [#21970](/ideas/oppia-foundation/oppia-oppia-issues-21970)
 - [#21905](/ideas/oppia-foundation/oppia-oppia-issues-21905)
-- [#21869](https://github.com/oppia/oppia/issues/21869)
+- [#21869](/ideas/oppia-foundation/oppia-oppia-issues-21869)
 
 **Not in scope:** Migrating existing datastore data to address the validation issues found in the first milestone.
 

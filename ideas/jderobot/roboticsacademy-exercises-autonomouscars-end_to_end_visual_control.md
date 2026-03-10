@@ -2,7 +2,7 @@
 
 **Parent:** JdeRobot — Project Ideas
 **Source:** https://jderobot.github.io/RoboticsAcademy/exercises/AutonomousCars/end_to_end_visual_control/
-**Scraped:** 2026-02-22T23:28:47.558118
+**Scraped:** 2026-03-10T16:58:40.235354
 
 ---
 

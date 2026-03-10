@@ -1,7 +1,7 @@
 # Swift — Project Ideas
 
 **Source:** https://www.swift.org/gsoc2026/
-**Scraped:** 2026-02-22T23:28:47.609767
+**Scraped:** 2026-03-10T16:58:40.287724
 
 ---
 
@@ -289,6 +289,35 @@ Live preview could be further improved by providing language features such as go
 
 **Potential mentors**
 
+### Support SPM Templates in VS Code [
+](https://www.swift.org#support-spm-templates-in-vs-code)
+
+**Project size:** 200 Hours
+
+**Estimated difficulty:** Intermediate
+
+**Recommended skills**
+
+- Basic proficiency using TypeScript
+- Familiarity with VS Code Extensions
+- Experience with frontend web development
+
+**Description**
+
+Add first-class support for the new Swift Package Manager (SwiftPM) template system in the official Swift VS Code extension. To increase adoption of the feature and provide an intuitive experience for users, the VS Code extension should be updated to interface with the template system without requiring the user to leave the VS Code experience by falling back to the command line.
+
+For more details on how templates work in SPM, please review [the accepted proposal](https://github.com/swiftlang/swift-evolution/blob/main/proposals/0500-package-manager-templates.md) on the Swift forums.
+
+**Expected outcomes/benefits/deliverables**
+
+- Add a GUI webview-based wizard that guides the user through creating a template provided by a package
+- Drive template options by using the JSON output of the
+`--experimental-dump-help`
+
+SPM flag - Showcase your work with a demo of the wizard and examples of how package authors and developers could use the system to improve workflows
+
+**Potential mentors**
+
 ### SwiftPM System Executables for Enhanced Plugin User Experience [
 ](https://www.swift.org#swiftpm-system-executables-for-enhanced-plugin-user-experience)
 
@@ -347,6 +376,97 @@ The approach is to generalize the mechanism by splitting out the Swift core libr
 
 is propagated to the new build products. - Cross-compilation succeeds and tests run successfully on target system.
 - Benefit is to be able to cross-compile to various Linux distros from one host system. It enables generation of Swift SDKs for cross-compilation.
+
+**Potential mentors**
+
+### Improved documentation for command line tools [
+](https://www.swift.org#improved-documentation-for-command-line-tools)
+
+**Project size**: 175 hours (medium)
+
+**Estimated difficulty**: Intermediate
+
+**Recommended skills**
+
+- Basic proficiency in Swift.
+
+**Description**
+
+Swift Argument Parser has a [command plugin](https://github.com/apple/swift-argument-parser/pull/694) that generates documentation markup for a command line tool.
+This plugin could be improved by providing support for generating separate pages for each command and by leveraging additional markdown syntax to organize command line flags into sections and display possible values and default values.
+
+Beyond the markdown output, this plugin could be further improved by generating a [“symbol graph”](https://github.com/swiftlang/swift-docc-symbolkit/tree/main) that describe each command and its flags, options, and subcommands. By describing the commands’ structure, tools like [Swift DocC](https://github.com/swiftlang/swift-docc/tree/main) can further customize the display of command line tool documentation, support links to individual flags, and allow developers to extend or override the documentation for individual flags in ways that isn’t overwritten when regenerating the documentation markup from the plugin. If time allows, prototype some enhancement to command line documentation in Swift DocC that leverage the information from the command symbol graph file.
+
+**Expected outcomes/benefits/deliverables**
+
+- A richer markdown output from the plugin.
+- Support for generating separate pages for each command.
+- Output a supplementary symbol graph file that describe the commands’ structure.
+
+**Potential mentors**
+
+### Documentation coverage [
+](https://www.swift.org#documentation-coverage)
+
+**Project size**: 90 hours (small)
+
+**Estimated difficulty**: Intermediate
+
+**Recommended skills**
+
+- Basic proficiency in Swift.
+
+**Description**
+
+Enhance Swift DocC’s experimental documentation coverage feature to write coverage metrics in a new extensible file format that other tools can read and display. Define a few types of metrics—for example Boolean (has documentation: true/false), Fraction (2/3 parameters are documented), Integer (page has 2 code examples), Percentage, etc.—for this format.
+
+Explore ideas for what documentation coverage information would be useful to have and ideas for how another tool could present that information by prototyping a tool using your technology of choise. Iterativelt refine the documentation coverage file format based on what you learn from consuming and displaying this data in your protype tool.
+
+**Expected outcomes/benefits/deliverables**
+
+- Land the documentation coverage output format changes for the experimental feature in DocC.
+- Submit a pitch to the community and the Documentation Workgroup to suggest formally enabling the updated documentation coverage feature in DocC.
+- Summarize your effort with a demo of the new metrics and examples of how another tool could display that information.
+
+**Potential mentors**
+
+### Globally Scoped Traits for Swift Testing via runtime configuration schema [
+](https://www.swift.org#globally-scoped-traits-for-swift-testing-via-runtime-configuration-schema)
+
+**Project size**: 80 hours
+**Estimated difficulty**: Intermediate
+
+**Recommended skills**
+
+- Basic proficiency in Swift.
+
+**Description**
+
+[Traits are a powerful tool](https://developer.apple.com/documentation/testing/traits) for customising test functions and suites. For example, you can specify timeout and retry on a test case or suite basis. It would be especially useful to apply a trait globally. For example, users may want to run all tests with a specific timeout in CI.
+
+As an initial foray into globally scoped traits, implement a configuration to set global traits at runtime for Swift Testing.
+
+**Expected outcomes/benefits/deliverables**
+
+- Design and implement a schema for configuring globally-scoped traits.
+- Consume the configuration at runtime via
+`swift test`
+
+- Land the changes behind experimental flags, then submit a proposal to the community and the Testing Workgroup to formally enable the feature.
+- Summarise your effort with a demo of the new functionality including screenshots or recordings.
+- Time permitting, extend this project further by implementing globally configurable traits elsewhere:
+- With CLI parameters like
+`--retry-count`
+
+and`--test-timeout`
+
+- As part of the
+`.testTarget()`
+
+in `Package.swift~ - As part of a new test plan file format
+- And of course, figuring how all these different places where traits are specified will interact with each other!
+
+- With CLI parameters like
 
 **Potential mentors**
 

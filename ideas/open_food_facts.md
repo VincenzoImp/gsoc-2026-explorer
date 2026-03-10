@@ -1,7 +1,7 @@
 # Open Food Facts — Project Ideas
 
 **Source:** https://wiki.openfoodfacts.org/GSOC/2026_ideas_list
-**Scraped:** 2026-02-22T23:28:47.587135
+**Scraped:** 2026-03-10T16:58:40.314058
 
 ---
 
@@ -40,11 +40,9 @@ Canada has an active Open Food Facts community. We have some project ideas to ad
 
 We’re considering set of extensions to build upon Open Food Facts and reach our target users on store and recipe websites.
 
-Explore the Canadian project ideas in [NotebookLM](https://notebooklm.google.com/notebook/d0eec9d4-3915-4dc5-b553-dc7e3c001fb5)
+**We welcome new contributors until March 15 !** To provide better support to current contributors, we won’t be able to communicate with new applicants past this date. From March 16 to 31, we will only support current applicants preparing their project proposals.
 
-## Data projects
-
-## User-facing projects
+Explore the Canadian project ideas in [NotebookLM](https://notebooklm.google.com/notebook/b7ce8cf7-40f7-4c42-a007-566ca8527793).
 
 # Your idea
 

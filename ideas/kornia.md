@@ -1,7 +1,7 @@
 # Kornia — Project Ideas
 
 **Source:** https://github.com/kornia/kornia-rs/wiki/%5B2026%5D-Google-Sumer-of-Code-Application
-**Scraped:** 2026-02-22T23:28:47.604353
+**Scraped:** 2026-03-10T16:58:40.313540
 
 ---
 
@@ -111,7 +111,6 @@ Formalize and extend our kornia-SLAM crate within kornia-rs and implement a base
 
 **Resources**
 - SLAM Handbook: https://github.com/SLAM-Handbook-contributors/slam-handbook-public-release
-- ORB SLAM3 repository: https://github.com/UZ-SLAMLab/ORB_SLAM3
 
 **Possible Mentors**: Christie Purackal, Dmytro Mishkin, Edgar Riba
 

@@ -2,7 +2,7 @@
 
 **Parent:** OpenMRS — Project Ideas
 **Source:** https://openmrs.atlassian.net/wiki/spaces/docs/pages/25477628
-**Scraped:** 2026-02-22T23:28:47.607466
+**Scraped:** 2026-03-10T16:58:40.276955
 
 ---
 
@@ -61,9 +61,9 @@ See especially the **OpenMRS Fundamentals Academy course.**
 
 OpenMRS is made up of teams whose work is crucial to routine and long-term community activities, projects, and/or modules. Our teams draw on a wide range of abilities and skills. Read more about our current teams and find your fit!
 
-Find out about various teams here: [OpenMRS Teams and Groups](https://openmrs.atlassian.net/wiki/spaces/docs/pages/260505688)
+Find out about various teams here: [https://openmrs.atlassian.net/wiki/spaces/docs/pages/260505688](https://openmrs.atlassian.net/wiki/spaces/docs/pages/260505688)
 
-The following policies guide participation in the OpenMRS Community: [Community Conventions](https://openmrs.atlassian.net/wiki/spaces/docs/pages/26256973)
+The following policies guide participation in the OpenMRS Community: [https://openmrs.atlassian.net/wiki/spaces/docs/pages/26256973](https://openmrs.atlassian.net/wiki/spaces/docs/pages/26256973)
 
 **Step 3: Learn How You Can Contribute**
 
@@ -92,9 +92,9 @@ As some projects operate differently from others, make sure to thoroughly read o
 
 Get a feel for how the squad or team works together by attending their meetings, joining their Slack channel, and going through past meeting notes, Jira boards, or repos.
 
-This list shows all active (happening now) initiatives in our Open Source Community: [Community Projects](https://openmrs.atlassian.net/wiki/spaces/docs/embed/383844354?atl_f=PAGETREE)
+This list shows all active (happening now) initiatives in our Open Source Community: [https://openmrs.atlassian.net/wiki/spaces/docs/embed/383844354?atl_f=PAGETREE](https://openmrs.atlassian.net/wiki/spaces/docs/embed/383844354?atl_f=PAGETREE)
 
-A comprehensive list of each project and their specific page can be found here: [Development Projects](https://openmrs.atlassian.net/wiki/spaces/projects/pages/26938140)
+A comprehensive list of each project and their specific page can be found here: [https://openmrs.atlassian.net/wiki/spaces/projects/pages/26938140](https://openmrs.atlassian.net/wiki/spaces/projects/pages/26938140)
 
 **Step 5: Bookmark these Community Resources**
 

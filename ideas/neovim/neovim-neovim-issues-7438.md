@@ -2,7 +2,7 @@
 
 **Parent:** Neovim — Project Ideas
 **Source:** https://github.com/neovim/neovim/issues/7438
-**Scraped:** 2026-02-22T23:28:47.616779
+**Scraped:** 2026-03-10T16:58:40.273762
 
 ---
 

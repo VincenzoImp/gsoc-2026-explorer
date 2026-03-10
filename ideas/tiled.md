@@ -1,7 +1,7 @@
 # Tiled — Project Ideas
 
 **Source:** https://github.com/mapeditor/tiled/wiki/GSoC-2026#project-ideas
-**Scraped:** 2026-02-22T23:28:47.582758
+**Scraped:** 2026-03-10T16:58:40.244550
 
 ---
 
@@ -9,8 +9,6 @@
 Tiled has been accepted as mentoring organization in the [Google Summer of Code](https://summerofcode.withgoogle.com/how-it-works) 2026! 
 
 This page contains the list of projects we'd suggest, but we're also open to other proposals! Applications will be open from 16th - 31st of March.
-
-**Please note that Google Summer of Code projects are a full (day-) time job.**
 
 > **Our policy on AI:** In your own best interest we ask you not to use AI to write your code. You will learn much better when you do it yourself and we'd much rather deal with your human mistakes than to point out the mistakes the AI has made for you. Thank you!
 
@@ -21,6 +19,7 @@ This page contains the list of projects we'd suggest, but we're also open to oth
     * [Enhanced World Editing](#enhanced-world-editing)
     * [glTF Export for Maps](#gltf-export-for-maps)
     * [Next-generation Tiled Extensions](#next-generation-tiled-extensions)
+    * [New Cross-platform Style](#new-cross-platform-style)
 * [Application Process](#application-process)
 * [Organization](#organization)
 
@@ -84,6 +83,23 @@ Tiled can be extended by using JavaScript, using either plain .js files or JavaS
 
 [Read more...](/ideas/tiled/next-generation-tiled-extensions)
 
+## New Cross-platform Style
+
+Tiled currently ships with "Tiled Fusion", a cross-platform style introduced in [Tiled 0.17](https://discourse.mapeditor.org/t/tiled-0-17-0-released/1574). While it has served us well, it is showing its age. This project is about creating and polishing a modern replacement style with improved readability, consistent spacing, and better configurability across platforms.
+
+**Expected outcome:** Tiled ships with a modern, polished, and configurable cross-platform style that improves readability and usability on Windows, Linux, and macOS.\
+**Required skills:** Qt, C++ (preferred: Qt Widgets styling, visual design sense)\
+**Possible mentors:** bjorn\
+**Expected size:** 175 hours (or 350 hours, depending on scope and amount of widget coverage)\
+**Difficulty:** Medium
+
+Scope can include completing and refining styling for core controls (buttons, tabs, menus, sliders, combo boxes, checkboxes/radio buttons, dock widgets, line edits, scroll bars), validating behavior in both light and dark themes, and ensuring the style works as intended on all supported platforms. A successful proposal should also include a plan for visual regression checks (screenshots) and iterative UX feedback.
+
+Finally, this project could include a refresh of the icon theme, based for example on open source icons from https://lucide.dev/.
+
+A small start has already been made on a new style in the this pull request: [A new cross-platform style #3597](https://github.com/mapeditor/tiled/pull/3597)
+
+
 # Application Process
 
 If you are interested in any of our projects and looking forward to join us in improving Tiled further, follow the below guidelines to apply.
@@ -95,15 +111,28 @@ If you are interested in any of our projects and looking forward to join us in i
 * Tell us a little bit about yourself. We are interested to hear:
     - Why you would like to work with us.
     - What previous programming experience you have.
-    - What projects you have worked on before.
-    - Which languages and technology you used for them.
+    - What projects you have worked on before (and which languages and technology you used for them).
     - Whether you worked in a team or alone.
     - Whether you have done any contribution to any open source project before.
-    - Whether you have any previous experience working with Git or any versioning software.
     - Whether you have any prior experience with C++ and Qt.
     - What project(s) you have in a public repository that we could can take a look at.
 
-None of the above information is mandatory, but the better our impression is the more confident we will be that you can succeed in your proposal. If you have a personal website or a CV/resume online, feel free to include a link.
+  (_None of the above information is mandatory, but the better our impression is the more confident we will be that you can succeed in your proposal. If you have a personal website or a CV/resume online, feel free to include a link._)
+
+* Try to find at least two small things to improve about Tiled. Feel free to browse the [open issues](/ideas/tiled/mapeditor-tiled-issues) for inspiration. Show us you can set up your development environment and know how to contribute a change. Don't be shy to ask for help!
+
+* **Do not use AI to write your proposal!** Be sure you understand in depth what your project is about and show it off with a thoughtful document that has "done by a human" written all over it.
+
+* Submit your proposal during the application period (March 16-31, but don't wait till the last moment!)
+
+Note that we're not just looking at your skills! What we're looking for are people who:
+
+* are motivated by personal interest rather then money,
+* see value in releasing their work as free software and welcoming others to contribute,
+* will think things through rather than just following instructions,
+* and who are critical of their own work and perfecting it before waiting for feedback.
+
+Please also understand that we are a relatively small team that will only be able to accommodate a few projects.
 
 # Organization
 

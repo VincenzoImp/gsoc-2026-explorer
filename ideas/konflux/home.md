@@ -2,7 +2,7 @@
 
 **Parent:** Konflux — Project Ideas
 **Source:** https://github.com/konflux-ci/community/wiki/Home
-**Scraped:** 2026-02-22T23:28:47.581418
+**Scraped:** 2026-03-10T16:58:40.261033
 
 ---
 
@@ -26,3 +26,9 @@ Once you're familiar with the program rules and guidelines, the next step is sim
 Click on the links below to view project ideas for specific years:
 * [Project Ideas Template](https://github.com/konflux-ci/community/wiki/Projects-Template)
 * [Google Summer of Code & Outreachy Project Ideas -- 2026](https://github.com/konflux-ci/community/wiki/Google-Summer-of-Code-&-Outreachy-Project-Ideas-%E2%80%90-2026)
+
+## Policy on the AI usage in code contributions
+
+When contributing code to any of the projects under our organization (or a "friend" project that is closely related to Konflux, but doesn't necessarily live directly under the umbrella), you **must follow the AI policy of the respective project** you're contributing to. Each project may have its own rules about how and whether AI-assisted tools can be used in code contributions. Look for `CONTRIBUTING.md`, `AI_CONTRIBUTING.md`, or similar policy documents in the project's repository and make sure you understand the rules before submitting patches.
+
+We want to be upfront about why this matters: **AI-generated or low-effort contributions add to the review burden on maintainers.** Every pull request - no matter how small - needs to be reviewed by a real person. When we receive a wave of superficial, AI-generated, or copy-paste changes, it takes time away from reviewing genuine contributions, and working on the project itself. Please be mindful of the reviewers' time. A contribution you understand and can stand behind is always welcome; one you can't explain or defend is not.

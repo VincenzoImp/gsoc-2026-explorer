@@ -2,7 +2,7 @@
 
 **Parent:** GNU Mailman — Project Ideas
 **Source:** https://wiki.list.org/DEV
-**Scraped:** 2026-02-22T23:28:47.588021
+**Scraped:** 2026-03-10T16:58:40.268591
 
 ---
 

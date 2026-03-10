@@ -1,24 +1,24 @@
 # AboutCode — Project Ideas
 
 **Source:** https://github.com/aboutcode-org/aboutcode/wiki/GSOC-2026-project-ideas
-**Scraped:** 2026-02-22T23:28:47.606808
+**Scraped:** 2026-03-10T16:58:40.258825
 
 ---
 
 -
 -
 [Notifications](https://github.com/login?return_to=%2Faboutcode-org%2Faboutcode)You must be signed in to change notification settings -
-[Fork 237](https://github.com/login?return_to=%2Faboutcode-org%2Faboutcode)
+[Fork 244](https://github.com/login?return_to=%2Faboutcode-org%2Faboutcode)
 
 # GSOC 2026 Project Ideas
 
-[1 revision](https://github.com/aboutcode-org/aboutcode/wiki/GSOC-2026-Project-Ideas/_history)
+[3 revisions](https://github.com/aboutcode-org/aboutcode/wiki/GSOC-2026-Project-Ideas/_history)
 
 See our page on applying for GSoC 2026: [https://github.com/aboutcode-org/aboutcode/wiki/GSOC-2026](/ideas/aboutcode/gsoc-2026)
 
-[Project Ideas Index](https://github.com#project-ideas-index)[PURLdb project ideas](https://github.com#purldb-project-ideas)[vulnerablecode project ideas](https://github.com#vulnerablecode-project-ideas)[scancode.io projects ideas](https://github.com#scancodeio-project-ideas)[scancode-toolkit project ideas](https://github.com#scancode-toolkit-project-ideas)[About our Project Ideas List](https://github.com#our-project-ideas)
+[Project Ideas Index](https://github.com#project-ideas-index)[PURLdb project ideas](https://github.com#purldb-project-ideas)[vulnerablecode project ideas](https://github.com#vulnerablecode-project-ideas)[scancode.io projects ideas](https://github.com#scancodeio-project-ideas)[scancode-toolkit project ideas](https://github.com#scancode-toolkit-project-ideas)[About our Project Ideas List](https://github.com#our-project-ideas)[Your project ideas](https://github.com#your-project-ideas)
 
-Here is a list of candidate project ideas for your consideration. Your own ideas are welcomed too! Please chat about them to get early feedback!
+Here is a list of candidate project ideas for your consideration.
 
 [scancode-toolkit](https://github.com/aboutcode-org/scancode-toolkit): [project ideas](https://github.com#scancode-toolkit-project-ideas)
 
@@ -149,23 +149,24 @@ Code Repositories:
 
 Description:
 
-When large packages/containers are scanned in scancode.io it is useful to have a tree-view to explore thorugh the file-tree for that package/container to look into scan data for a particular subset of the file-tree/directory or to research more into detections and detection issues.
+We recently completed a large refactoring in vulnerablecode where
+we moved from a vulnerability first approach to a advisories based
+approach in [v37.0.0](https://github.com/aboutcode-org/vulnerablecode/releases/tag/v37.0.0).
 
-This would be something similar to what we have at scancode-workbench for example:
-[https://scancode-workbench.readthedocs.io/en/develop/ui-reference/directory-tree.html](https://scancode-workbench.readthedocs.io/en/develop/ui-reference/directory-tree.html)
+See the following issues/PRs for reference:
 
-I.e. we need the following features:
+[https://github.com/aboutcode-org/vulnerablecode/pull/1866](https://github.com/aboutcode-org/vulnerablecode/pull/1866)[https://github.com/aboutcode-org/vulnerablecode/issues/1882](https://github.com/aboutcode-org/vulnerablecode/issues/1882)[https://github.com/aboutcode-org/vulnerablecode/pull/1966](https://github.com/aboutcode-org/vulnerablecode/pull/1966)
 
-- To be able to toggle showing the directory contents from the directory icon
-- Show nested directory contents in a tree like structure
-- Have this view ideally in a pane left to the table-view of resources
-- Show only info from the selected directory in the table-view of resources
+We need to implement the following:
 
-Note that we do have a ProjectCodebaseView in the projects page currently in scancode.io but this is fairly limited as it only lets you browse through the codebase one directory at a time (only shows the files/directories in one directory), and lets you navigate to directories in the current directory or the parent directory from there.
+- Refactor the
+[vulnerablecode](https://github.com/aboutcode-org/scancode.io/blob/main/scanpipe/pipes/vulnerablecode.py)pipe functions to fetch the data from the new API at public.vulnerablecode.io - Refactor the data models, processing and storing functions so we use the new advisory model
+- Refactor the find_vulnerbilities pipeline to get data from the new API
+- Implement any UI/other changes if required for the update
 
 Priority: High
 
-Size: Large
+Size: Medium
 
 Difficulty Level: Intermediate
 
@@ -173,15 +174,17 @@ Tags:
 
 - Python
 - Django
-- UI/UX
-- File-system
-- Navigation
+- API
+- Security
+- Vulnerability
+- Advisories
+- Refactoring
 
 Mentors:
 
 - @tdruez
-- @pombredanne
-- @AyanSinhaMahapatra
+- @tg1999
+- @keshav-space
 
 Related Issues:
 
@@ -278,3 +281,23 @@ Please feel free to chime in at [https://github.com/aboutcode-org/aboutcode/disc
 or in our GSoC 2026 chatroom at [https://matrix.to/#/#aboutcode-org_gsoc2026:gitter.im](https://matrix.to/#/#aboutcode-org_gsoc2026:gitter.im)
 if you have any questions related to AboutCode's participation in GSoC
 or anything in this page.
+
+Your own project ideas are welcomed too! Please chat about them to get early feedback!
+
+Note that we might or might not accept these project ideas based on:
+
+- if the project idea makes sense
+- this has some positive impact
+- aligns with the general direction of our projects/roadmap
+- has to be something we are comfortble with maintaining
+- has enough work to be considered a GSoC project
+- is modular and have clear deliverables
+- is not too urgent/critical as GSoC projects take some time
+
+If you have a project idea you want to propose:
+
+- Open a public discussion about this at
+[https://github.com/orgs/aboutcode-org/discussions/categories/gsoc](https://github.com/orgs/aboutcode-org/discussions/categories/gsoc) - Do try to join our community call and discuss the project idea with potential mentors so you get some direct feedback
+- If this is early enough, we might add this project idea to the list for everyone esle too!
+- Add all the details for the project similar to what we have on this list
+- Make sure you share your project proposal draft early so mentors can take a detailed look for feedback.

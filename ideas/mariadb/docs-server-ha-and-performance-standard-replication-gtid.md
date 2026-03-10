@@ -2,17 +2,17 @@
 
 **Parent:** MariaDB — Project Ideas
 **Source:** https://mariadb.com/docs/server/ha-and-performance/standard-replication/gtid
-**Scraped:** 2026-02-22T23:28:47.611497
+**Scraped:** 2026-03-10T16:58:40.304830
 
 ---
 
 # Global Transaction ID
 
-Complete GTID replication reference: CHANGE MASTER master_use_gtid=current_pos|slave_pos, gtid_slave_pos table (InnoDB), START SLAVE UNTIL master_gtid_pos.
+Complete GTID replication reference: CHANGE MASTER master_use_gtid=current_pos|slave_pos, gtid_slave_pos table (InnoDB), START REPLICA UNTIL master_gtid_pos.
 
 The terms *master* and *slave* have historically been used in replication, and MariaDB has begun the process of adding *primary* and *replica* synonyms. The old terms will continue to be used to maintain backward compatibility - see [MDEV-18777](https://jira.mariadb.org/browse/MDEV-18777) to follow progress on this effort.
 
-Note that MariaDB and MySQL have different GTID implementations, and that these are not compatible with each other. MariaDB can be a replica for a MySQL primary but MySQL cannot be a replica for a MariaDB primary.
+MariaDB and MySQL have different GTID implementations, and they are **not compatible** with each other. MariaDB can be a replica for a MySQL primary, but MySQL cannot be a replica for a MariaDB primary.
 
 ## Overview
 
@@ -732,7 +732,7 @@ Similarly, an attempt to manually binlog a GTID with a lower sequence number (by
 ) is rejected with an error.If the replica tries to connect starting at a GTID that is missing in the primary's binlog, this is an error in GTID strict mode even if a GTID exists with a higher sequence number (this indicates a GTID on the replica missing on the primary). Note that this error is controlled by the setting of GTID strict mode on the connecting replica server.
 
 
-GTID mode is off by default; this is needed to preserve backwards compatibility with existing replication setups (older versions of the server did not enforce any strict mode for binlog order). Global transaction ID is designed to work correctly even when strict mode is not enabled. However, with strict mode enforced, the semantics is simpler and thus easier to understand, because binlog order is always identical across servers and sequence numbers are always strictly increasing within each replication domain. This can also make automated scripting of large replication setups easier to implement correctly.
+GTID strict mode is off by default; this is needed to preserve backwards compatibility with existing replication setups (older versions of the server did not enforce any strict mode for binlog order). Global transaction ID is designed to work correctly even when strict mode is not enabled. However, with strict mode enforced, the semantics is simpler and thus easier to understand, because binlog order is always identical across servers and sequence numbers are always strictly increasing within each replication domain. This can also make automated scripting of large replication setups easier to implement correctly.
 
 When GTID strict mode is enabled, the replica will stop with an error when a problem is encountered. This allows the DBA to become aware of the problem and take corrective actions to avoid similar issues in the future. One way to recover from such an error is to temporarily disable GTID strict mode on the offending replica, to be able to replicate past the problem point (perhaps using `START SLAVE UNTIL master_gtid_pos=XXX`
 

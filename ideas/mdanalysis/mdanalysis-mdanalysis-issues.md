@@ -2,26 +2,152 @@
 
 **Parent:** MDAnalysis — Project Ideas
 **Source:** https://github.com/MDAnalysis/mdanalysis/issues
-**Scraped:** 2026-02-22T23:28:47.550490
+**Scraped:** 2026-03-10T16:58:40.303928
 
 ---
 
-## #5236: Test failures in test_xdr.py test_offset_lock_created method
+## #5295: Checklist towards Fixing Cron CI
 
-A lot of tests are currently failing on `develop` with the following two failures:
+**Labels:** installation, Continuous Integration, M1 Mac, dependencies
+
+## Checklist
+[Cron CI](https://github.com/MDAnalysis/mdanalysis/blob/develop/.github/workflows/gh-ci-cron.yaml) has been broken for [more than a year](https://github.com/MDAnalysis/mdanalysis/actions/workflows/gh-ci-cron.yaml?page=6). Here's a checklist for things that need to be done. I did a quick search and wasn't able to find anything related to fixing cron-CI.
+
+Items manually extracted from https://github.com/MDAnalysis/mdanalysis/actions/runs/22748208185
+
+
+- [ ] Release `macOS-arm64` builds for `distopia` https://github.com/conda-forge/distopia-feedstock 
+- [ ] Release `macOS-arm64` builds for `hole2` https://github.com/conda-forge/hol2-feedstock
+- [ ] Fix two problematic tests in `test_topologyattrs.py`
+- [ ] Release 2.11.0 (to fix `filelock` test in releases)
+- [ ] Update `macos-13` to `macos-15-intel`, `macos-14` to `macos-15` or `macos-latest`
+- [ ] (Optional before Oct 2026) drop python 3.10
+
+ 
+## Details
+
+1/2. First two, should be quite straight forward with the following in `conda-forge.yaml`, barring any testing/compiling issues (which, if it does raise problems, will take the longest out of all of these points):
 
 ```
-FAILED testsuite/MDAnalysisTests/coordinates/test_xdr.py::TestXTCReader_offsets::test_offset_lock_created - AssertionError: assert False
-FAILED testsuite/MDAnalysisTests/coordinates/test_xdr.py::TestTRRReader_offsets::test_offset_lock_created - AssertionError: assert False
+build_platform:
+  osx_arm64: osx_64
+test: native_and_emulated
 ```
 
-The reason for these failures is a change in the `filelock` version. I was able to reproduce this on a local setup. `filelock` up until `3.20.3` didn't cause any problem. Anything above, causes these errors - see `filelock` [release history](https://pypi.org/project/filelock/#history). A quick search of the changes after `3.20.3` (see [diff](https://github.com/tox-dev/filelock/compare/3.20.3...3.21.0)), seem to indicate that this could be due to changes in their PR 408 that deletes the lock file on release, but we aren't handling it and still checking for it's presence. Thanks
+Existing PRs/Issues, from 2+ years ago. Probably good to try soon because macOS-x64 support will be [dropped with macOS 27 (~Oct 2026) and macOS 28 (~Oct 2027)](https://arstechnica.com/gadgets/2025/06/apple-details-the-end-of-intel-mac-support-and-a-phaseout-for-rosetta-2/):
+- https://github.com/conda-forge/distopia-feedstock/issues/19
+- https://github.com/conda-forge/hole2-feedstock/pull/3
 
-ps. `filelock` `3.20.4` was released on Feb 12, 2026 and this checks out with when we started having these test failures.
+3. Third one:
+```
+FAILED testsuite/MDAnalysisTests/core/test_topologyattrs.py::TestAttr::test_align_principal_axes_with_self - 
+TypeError: ufunc 'degrees' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+FAILED testsuite/MDAnalysisTests/core/test_topologyattrs.py::TestAttr::test_align_principal_axes_with_x - 
+TypeError: ufunc 'degrees' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+```
+
+4. Release will fix the Issue #5236 / PR #5237 from the conda-forge and PyPI sources.
+
+5. `macos-13` has been retired and is no longer offered. Could be swapped to `macos-15-intel` or `macos-26-intel`. Similarly, `macos-14` can be switched to `macos-latest` (== `macos-15` as of today) or `macos-26`. `macos-26` would be a bigger jump and probably not recommended just yet, considering it hadn't been moved as `macos-latest`.
+https://github.com/actions/runner-images
+
+6. (Optional) Python 3.10 EOL is Oct 2026. https://devguide.python.org/versions/
+
+---
+
+## #5287: Remove RTD labelling action in favour of using the build preview directly from rtd
+
+The labelling action we use it deprecated, we should use this instead: https://docs.readthedocs.com/platform/stable/visual-diff.html#show-build-overview-in-pull-requests
+
+---
+
+## #5281: [Documentation] Error when trying to build PDF documentation file
+
+The documentation of MDAnalyis is utilizing the Sphinx software, consist of ".rst" files, and contains both "conf.py" and "Makefile". It seems that all conditions to create a PDF file containing a user guide are fulfilled. A single PDF file is very useful for printing and when there is a need to work offline.
+
+To create a single PDF file, I performed the following steps:
+
+```
+conda create -n mda-docs python=3.11
+conda activate mda-docs
+git clone https://github.com/MDAnalysis/mdanalysis.git
+cd mdanalysis
+git checkout release-2.10.0
+cd package
+pip install -e .
+pip install sphinx sphinx-sitemap "mdanalysis-sphinx-theme>=1.3.0" sphinxcontrib-bibtex pybtex pybtex-docutils
+cd doc/sphinx
+make SPHINXOPTS="" latexpdf
+```
+Unfortunately, the last command produced a lot of warning messages and finally errors:
+
+```
+Running Sphinx v9.0.4
+loading translations [en]... locale_dir /home/dboczar/mdanalysis/package/doc/sphinx/source/locales/en/LC_MESSAGES does not exist
+locale_dir /home/dboczar/mdanalysis/package/doc/sphinx/source/locales/en/LC_MESSAGES does not exist
+done
+making output directory... done
+Converting `source_suffix = '.rst'` to `source_suffix = {'.rst': 'restructuredtext'}`.
+checking bibtex cache... out of date
+parsing bibtex file /home/dboczar/mdanalysis/package/doc/sphinx/source/references.bib... parsed 69 entries
+locale_dir /home/dboczar/mdanalysis/package/doc/sphinx/source/locales/en/LC_MESSAGES does not exist
+loading intersphinx inventory 'h5py' from https://docs.h5py.org/en/stable/objects.inv ...
+loading intersphinx inventory 'python' from https://docs.python.org/3/objects.inv ...
+loading intersphinx inventory 'scipy' from https://docs.scipy.org/doc/scipy/objects.inv ...
+loading intersphinx inventory 'gsd' from https://gsd.readthedocs.io/en/stable/objects.inv ...
+loading intersphinx inventory 'maplotlib' from https://matplotlib.org/stable/objects.inv ...
+loading intersphinx inventory 'griddataformats' from https://mdanalysis.org/GridDataFormats/objects.inv ...
+loading intersphinx inventory 'pmda' from https://mdanalysis.org/pmda/objects.inv ...
+loading intersphinx inventory 'networkx' from https://networkx.org/documentation/stable/objects.inv ...
+loading intersphinx inventory 'numpy' from https://numpy.org/doc/stable/objects.inv ...
+loading intersphinx inventory 'parmed' from https://parmed.github.io/ParmEd/html/objects.inv ...
+loading intersphinx inventory 'rdkit' from https://rdkit.org/docs/objects.inv ...
+loading intersphinx inventory 'waterdynamics' from https://www.mdanalysis.org/waterdynamics/objects.inv ...
+loading intersphinx inventory 'pathsimanalysis' from https://www.mdanalysis.org/PathSimAnalysis/objects.inv ...
+loading intersphinx inventory 'mdahole2' from https://www.mdanalysis.org/mdahole2/objects.inv ...
+loading intersphinx inventory 'dask' from https://docs.dask.org/en/stable/objects.inv ...
+loading intersphinx inventory 'imdclient' from https://imdclient.readthedocs.io/en/stable/objects.inv ...
+intersphinx inventory has moved: 
+
+*[truncated]*
+
+---
+
+## #5255: Improve Azure CI performance by enabling pip dependency caching
+
+Currently, the Azure pipeline installs all dependencies from scratch on every run across all matrix jobs (Windows/Linux, multiple Python versions, wheel/normal builds). Given the large scientific dependency stack (NumPy, SciPy, matplotlib, rdkit, etc.), this significantly increases CI runtime.
+
+Azure DevOps provides a built-in Cache@2 task that can cache pip’s download directory across runs. Introducing pip caching keyed by OS and Python version could:
+
+- Reduce CI runtime
+- Lower redundant network usage
+- Improve overall CI efficiency
+- Not change build behavior or test logic
+
+A possible approach would be:
+
+- Cache the pip download directory (e.g., ~/.cache/pip on Linux, %LocalAppData%\pip\Cache on Windows)
+- Key the cache on:
+- Agent.OS
+- PYTHON_VERSION
+- Potentially BUILD_TYPE
+
+Example:- 
+- task: Cache@2
+  inputs:
+    key: 'pip | "$(Agent.OS)" | "$(PYTHON_VERSION)"'
+    path: $(PIP_CACHE_DIR)
+
+I would be happy to experiment with implementing pip caching in a safe and minimal way that does not affect build reproducibility.
+
+Vinit Jain 
+GitHub:- @vinitjain2005
 
 ---
 
 ## #5234: Add accelerated backends support for minimize_vectors
+
+**Labels:** performance, Component-lib
 
 ## Is your feature request related to a problem? ##
 <!-- A clear and concise description of what the problem is. For example, I'm always frustrated when [...] -->
@@ -48,102 +174,6 @@ MN added support for displaying a simulation box for trajectories (generic Wigne
 I will create a PR that adds backends support to `minimize_vectors` and enabled for `serial` and  `openmp`. (Created PR #5235 )
 
 I will create a PR in [distopia](https://github.com/MDAnalysis/distopia) that adds `minimize_vectors` support after which we can enable the tests to include `distopia` as well and update the corresponding documentation as a separate MDAnalysis PR. (Created Distopia [PR #188](https://github.com/MDAnalysis/distopia/pull/188))
-
----
-
-## #5224: Analysis classes fail with HOOMD GSD files with a TypeError
-
-**Labels:** defect, Component-Analysis, format-HOOMD
-
-Following discussion https://github.com/MDAnalysis/mdanalysis/discussions/5222 we found that AnalysisBase-derived analysis classes do not currently work with HOOMD GSD trajectories. The issue appears that the new parallelization framework generates lists of frames as a numpy array with datatype np.int64. When such a frame is used to index the GSD trajectory, a TypeError is raised because (apparently) frames need to be normal Python int (see https://github.com/MDAnalysis/mdanalysis/discussions/5222#discussioncomment-15700082 ). 
-
-Normal iteration and indexing such as `u.trajectory[1]` work (as long as one uses normal ints — see below).
-
-## Examples
-### Failure example with Analysis class
-```python
-from MDAnalysis.tests.datafiles import GSD
-from MDAnalysis.analysis import rms
-u = mda.Universe(GSD)
-rr = rms.RMSD(u.atoms)
-rr.run()
-```
-fails with a **TypeError** in gsd
-```
-> ~/miniforge3/envs/mda314/lib/python3.14/site-packages/gsd/hoomd.py(1046)__getitem__()
-   1044             return self._read_frame(key)
-   1045
--> 1046         raise TypeError
-   1047
-   1048     def __iter__(self):
-```
-
-The original error report showed failure with RDF but this seems to be general. A quick %pdb shows that we are working with the custom sliced trajectory in analysis
-```
-> ~/miniforge3/envs/mda314/lib/python3.14/site-packages/MDAnalysis/analysis/base.py(554)_compute()
-    552             return self
-    553
---> 554         for idx, ts in enumerate(
-    555             ProgressBar(
-    556                 self._sliced_trajectory, verbose=verbose, **progressbar_kwargs
-
-ipdb> p self._sliced_trajectory
-<MDAnalysis.coordinates.base.FrameIteratorIndices object at 0x160ad2a50>
-ipdb> p self._sliced_trajectory.frames
-(np.int64(0), np.int64(1))
-```
-and here the frames are **np.int64**. 
-
-### Minimal failure example
-Just index with something integer-like:
-```python
-u.trajectory[np.int64(0)]
-```
-fails with the same TypeError.
-
-
-
-## Discussed in https://github.com/MDAnalysis/mdanalysis/discussions/5222
-
-<div type='discussions-op-text'>
-
-<sup>Originally posted by **Lynn3512138** February  4, 2026</sup>
-Hi All,
-
-I'm using MDAnalysis 2.10.0 and try to get RDFs from a .gsd trajectories. The code is as below:
-
-```
-u=mda.Universe("2_B50_try7.gsd","2_B50_try7.gsd")
-
-c=u.select_atoms("name C")
-a=u.select_atoms("name A")
-
-print(u.trajectory)
-print(len(c))
-print(len(a))
-
-rdf = InterRDF(c,a,range=(0,5))
-rdf.run()
-
-plt.plot(rdf.bins, rdf.rdf)
-```
-
-However it gets the problems:
-
-> <GSDReader 2_B50_try7.gsd with 50 frames of 100 atoms>
-> 50
-> 50
-> ---------------------------------------------------------------------------
-> TypeError                                 Traceback (most recent call last)
-> Cell In[45], line 11
->       8 print(len(c))
->      10 rdf = InterRDF(c,a,range=(0,5))
-> ---> 11 rdf.run()
->      13 plt.plot(rdf.bins, rdf.rdf)
-> 
-> File /opt/homebrew/Caskroom/miniconda/base/envs/hoomdenv/lib/python3.13/site-packages/MDAnalysis/analysis/base.py:898, in AnalysisBase.run(self, st
-
-*[truncated]*
 
 ---
 
@@ -892,35 +922,6 @@ Remove analysis.encore
 
 ---
 
-## #4907: mda.fetch_pdb() to generate Universe from Protein Databank structures
-
-**Labels:** enhancement, Format-PDB, Component-Readers, topology-building
-
-## Is your feature request related to a problem? ##
-<!-- A clear and concise description of what the problem is. For example, I'm always frustrated when [...] -->
-We used to have `mda.fetch_mmtf()` to get a structure from the PDB but with the demise of MMTF, this was removed around release 2.6 or so. 
-
-## Describe the solution you'd like ##
-<!-- A description of what you want to happen. For example, I'd like to be able to do [...] -->
-
-It would be very convenient to have `mda.fetch_pdb(PDB_ID)` to create a Universe from the entry in the Protein Databank with ID `PDB_ID`.
-
-
-## Describe alternatives you've considered ##
-<!-- A description of any alternative solutions or features you've considered or possible solutions that you've seen elsewhere. -->
-VMD ([load molecule](https://www.ks.uiuc.edu/Research/vmd/current/ug/node25.html)), pymol ([fetch](https://pymol.org/dokuwiki/doku.php?id=command:fetch)) and Chimera ([fetch by ID](https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/fetch.html)) can do this.
-
-Alternatively, keep using [this bash script](https://github.com/Becksteinlab/OBscripts/blob/master/scripts/pdb_downloader.sh) or `wget`/`curl`.
-
-
-## Additional context ##
-<!-- Add any other context or screenshots about the feature request here. -->
-We will need the mmcif reader #2367 .
-
-See also #3377 (fetch from alphafold database).
-
----
-
 ## #4906: Bugs for distance calculation functions
 
 **Labels:** Component-lib, PBC
@@ -1497,30 +1498,5 @@ You need to add:
 - appropriate implementation of result aggregation for `AnalysisBase` subclasses in `analysis.align` module
  - a boilerplate fixture(s) to `testsuite/analysis/conftest.py`, analogous with existing ones
  - a `client_<classname>` fixtures to all tests using `<classname>` in `testsuite/MDAnalysisTests/analysis/test_align.py`, and modify the way `run()` method is called
-
----
-
-## #4645: add environment.yml for developer installation
-
-## Is your feature request related to a problem? ##
-We are lacking clear installation instructions for developers on how to install the *develop* branch for hacking and testing, see issue https://github.com/MDAnalysis/UserGuide/issues/368 and discussion https://github.com/MDAnalysis/mdanalysis/discussions/4636
-
-In particular, we want to be able to have a **complete full-feature installation** and that requires **conda-forge** packages. Thus, the `pip`-installation procedure outlined in https://github.com/MDAnalysis/mdanalysis/discussions/4636#discussioncomment-10108984 is not what we would recommend first as it cannot install all packages (rdkit? hole? ...)
-
-
-## Describe the solution you'd like ##
-The growing consensus   is that we (see https://github.com/MDAnalysis/UserGuide/issues/368#issuecomment-2237178295 ) we should include a simple `develop_environment.yaml` file in the source tree (possibly removing/commenting out hole2, distopia, and clustalw (do we really still use clustalw???) — we can add a note for these) and then write our installation instructions with reference to this file.
-
-This file has to be maintained manually for right now but I'd expect that this doesn't happen too often.
-
-
-## Describe alternatives you've considered ##
-See https://github.com/MDAnalysis/UserGuide/issues/368 and discussion https://github.com/MDAnalysis/mdanalysis/discussions/4636
-
-
-## Additional context ##
-Once we have the environment file, we _could_ at a later time add CI that tests that this file corresponds to what we install in CI. 
-
-There exists a file [maintainer/conda/environment.yml](https://github.com/MDAnalysis/mdanalysis/blob/develop/maintainer/conda/environment.yml) but I don't know what its purpose is.
 
 ---

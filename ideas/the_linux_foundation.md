@@ -1,7 +1,7 @@
 # The Linux Foundation — Project Ideas
 
 **Source:** https://github.com/LinuxFoundationGSoC/ProjectIdeas/wiki/Google-Summer-of-Code-2026
-**Scraped:** 2026-02-22T23:28:47.614711
+**Scraped:** 2026-03-10T16:58:40.276641
 
 ---
 
@@ -43,7 +43,6 @@ The Linux Foundation sponsors development in different areas. Each area has a se
 
   * [[OpenPrinting|GSoC-2026-OpenPrinting]]
   * [[Automotive Grade Linux (AGL)|GSoC-2026-AGL]]
-  * [[IIO driver|GSoC-2026-IIO-Driver]]
   * [[Sound Open Firmware (SOF)|GSoC-2026-Sound-Open-Firmware]]
   * [[Device tree bindings conversions|GSoC-2026-Device-Tree-Bindings]]
   * [[Zephyr|GSoC-2026-Zephyr]]

@@ -1,7 +1,7 @@
 # Kotlin Foundation — Project Ideas
 
 **Source:** https://kotlinlang.org/docs/gsoc-2026.html
-**Scraped:** 2026-02-22T23:28:47.628396
+**Scraped:** 2026-03-10T16:58:40.265418
 
 ---
 
@@ -118,26 +118,7 @@ Possible mentor
 
 Marat Akhin, JetBrains
 
-Tasks for applicants
-
-Task #1
-
-
-Describe, at a high level, how you envision the architecture of a Kotlin compiler fuzzer.Task #2
-
-
-Based on the architecture from Task 1, which components are most important for pluggability, and why?Task #3
-
-
-Based on the architecture from Task 1, do you see opportunities to use LLMs or AI? If so, where and how?Task #4
-
-
-How would you test the fuzzer itself? Is back-testing possible? If yes, how?Task #5 (Bonus)
-
-
-Choose one component from the architecture in Task 1 and describe how it could be implemented in more detail.
-
-For example, which tools, libraries, or algorithms could be used?
+This project includes a test task. Please email education@kotlinlang.org to receive the details.
 
 ### Swift-to-Kotlin interop (PoC) [Hard, 350 hrs]
 
@@ -169,15 +150,7 @@ Possible mentor
 
 Artem Olkov, JetBrains
 
-Tasks for applicants
-
-Task #1
-
-
-Fork the[swift-java](https://github.com/swiftlang/swift-java)repository and extend it with a new target that generates Kotlin sources.Task #2 (Optional)
-
-
-Extend the previous task by making the generated Kotlin code callable using the existing JNI or FFM runtime.
+This project includes a test task. Please email education@kotlinlang.org to receive the details.
 
 ### Tail call support in the Kotlin/Wasm backend [Medium, 90 hrs]
 

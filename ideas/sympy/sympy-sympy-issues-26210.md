@@ -2,7 +2,7 @@
 
 **Parent:** SymPy — Project Ideas
 **Source:** https://github.com/sympy/sympy/issues/26210
-**Scraped:** 2026-02-22T23:28:47.571963
+**Scraped:** 2026-03-10T16:58:40.300230
 
 ---
 

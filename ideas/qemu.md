@@ -1,7 +1,7 @@
 # QEMU — Project Ideas
 
 **Source:** https://wiki.qemu.org/Google_Summer_of_Code_2026
-**Scraped:** 2026-02-22T23:28:47.605772
+**Scraped:** 2026-03-10T16:58:40.289876
 
 ---
 
@@ -67,13 +67,13 @@ The [vhost-user protocol](https://gitlab.com/qemu-project/qemu/-/blob/master/doc
 
 You will add a memory isolation mode where QEMU intercepts I/O requests, copies data buffers between guest RAM and a vhost-user isolated memory area, and then forwards the notifications between the guest and the vhost-user device. This will be done without changes to the vhost-user protocol so that existing software remains compatible.
 
-**Internship tasks:**
+**Starting point for coding period tasks (investigate these to draft your project schedule):**
 
 - Add a bool "memory-isolation" qdev property to QEMU's vhost-user devices.
 - Modify hw/virtio/vhost-user.c to intercept and forward the vhost-user callfd and kickfd eventfds when memory isolation is enabled.
 - Manage an area of memory where I/O requests will be copied.
 - Integrate the existing
-[Shadow Virtqueue (SVQ)](https://kvm-forum.qemu.org/2023/vDPA_sw_lm_-_KVM2023_6Ix6R5i.pdf)code into hw/virtio/vhost-user.c so that vhost-user devices see the SVQ instead of the guest's virtqueue. - Extend tests/qtest/vhost-user-test.c to run with memory-isolation=on, proving that the feature works.
+[Shadow Virtqueue (SVQ)](https://gitlab.com/qemu-project/kvm-forum/-/raw/main/_attachments/2023/vDPA_sw_lm_-_KVM2023_6Ix6R5i.pdf)code into hw/virtio/vhost-user.c so that vhost-user devices see the SVQ instead of the guest's virtqueue. - Extend tests/qtest/vhost-user-test.c to run with memory-isolation=on, proving that the feature works.
 
 **Links:**
 
@@ -167,8 +167,10 @@ This will involve writing code to emulate a SCSI TAPE drive and storing the data
 Starters for researching this project idea:
 
 - Linux
-[scsi_debug](https://sg.danny.cz/sg/p/sdebug.html)has tape emulation code in the Linux kernel. - Check existing
-[QEMU SCSI emulation code](https://gitlab.com/qemu-project/qemu/-/blob/master/hw/scsi/scsi-bus.c?ref_type=heads#L1280)to determine what is missing for SCSI TAPE support. - Check whether tape file storage fits into
+[scsi_debug](https://sg.danny.cz/sg/p/sdebug.html)has tape emulation code in the Linux kernel. - Look at the
+[mhvtl virtual Tape & Library system](https://github.com/markh794/mhvtl.git). - Check existing
+[QEMU SCSI emulation code](https://gitlab.com/qemu-project/qemu/-/blob/master/hw/scsi/scsi-bus.c?ref_type=heads#L1280)to determine what is missing for SCSI TAPE support. - Can tape libraries using mtx be supported as well?
+- Check whether tape file storage fits into
 [QEMU's block layer API](https://gitlab.com/qemu-project/qemu/-/blob/master/include/block/block-io.h?ref_type=heads). - Decide how the emulated tape data should be stored on disc. Libraries exist for handling TAPE data, e.g. the
 [tape library](https://simh.trailing-edge.com/docs/simh_magtape.pdf)from the[SIMH project](https://github.com/simh/simtools). - On Linux the
 [mt program](https://linux.die.net/man/1/mt)allows control of magnetic tape drives and can be used to test the driver.

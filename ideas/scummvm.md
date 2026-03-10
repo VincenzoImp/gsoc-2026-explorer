@@ -1,7 +1,7 @@
 # ScummVM — Project Ideas
 
 **Source:** https://www.scummvm.org/gsoc-2026-ideas
-**Scraped:** 2026-02-22T23:28:47.593408
+**Scraped:** 2026-03-10T16:58:40.281361
 
 ---
 
@@ -38,6 +38,18 @@ General contacts: Our Discord server our mailing list, or contact [sev](https://
 The ideas here are meant to be just that - **ideas**. We hope they help inspire your proposals, but you should also consider suggesting your own completely new project ideas. Pick something you really want to see improved/fixed, and come and talk to us about it!
 
 If you're looking for more inspiration for ideas, beware of our [TODO](https://www.scummvm.org/index.php?title=TODO) (and the other TODO lists linked from there) and our [OpenTasks](https://www.scummvm.org/index.php?title=OpenTasks) pages. Many of the tasks listed there might be incomplete or outdated, or too difficult for a new developer. The best thing to do is to come and talk to us!
+
+## General Tasks
+
+### Reworking GUI for Touch Devices
+
+- Technical contacts:
+[sev](https://www.scummvm.org/index.php?title=User:Sev) - Difficulty level: High
+- Size: 350 hours
+
+Our GUI has been created and is being supported as mouse-centric. Yes, we try our best now with mouse emulation etc. Still, on Android and iOS touch screens, it feels alien. This task would require you to do a fresh revisit and reimplement a [GUI Theme](https://www.scummvm.org/index.php?title=GUI_Themes/Specs) which will be more suitable on smaller touch-based screens. We have some work in parallel on possible designs, however, it might not be ready by the time of this project start, thus, you could try your own ideas.
+
+In general, our Icons Grid seems to be a good start, however, the game controls are ugly, so this is where you can have a direct improvement. Also, the scrolling concepts need to be reworked, thus, some GUI controls need to be modified as well.
 
 ## Game Tasks
 
@@ -131,7 +143,7 @@ The [sky](https://www.scummvm.org/index.php?title=Sky) engine is one of the olde
 [sev](https://www.scummvm.org/index.php?title=User:Sev) - Difficulty level: Medium/High
 - Size: 350 hours
 
-Czech game [[Brány Skeldalu](https://store.steampowered.com/app/3533830/Brny_Skeldalu/)] had its sources [[fully published](https://sourceforge.net/projects/skeldal/)] under GPLv3. This project would require porting over the game engine (not the editor) to ScummVM. C++ skills are required.
+Czech game [Brány Skeldalu](https://store.steampowered.com/app/3533830/Brny_Skeldalu/) had its sources [fully published](https://sourceforge.net/projects/skeldal/) under GPLv3. This project would require porting over the game engine (not the editor) to ScummVM. C++ skills are required.
 
 ### Bring your own Adventure or RPG Reimplementation (only existing games)
 
@@ -185,15 +197,3 @@ For each engine, the task varies from straightforward to a mid-complexity:
 ALIS (Actor Language Integrated System) is an engine that was used by [Simlarils](https://en.wikipedia.org/wiki/Silmarils_(company)) for most of their games and about 17 of them are expected to work on this engine. There is an engine that is almost complete, it is pretty small, less than 10k lines of code and is distributed under MIT license. [Engline](https://github.com/maestun/alis) and we also have Ghidra projects for the engine.
 
 The purpose of this task is to port this engine to ScummVM as a separate engine engine.
-
-### YAGA engine
-
-- Technical contacts:
-[sev](https://www.scummvm.org/index.php?title=User:Sev)or[strangerke](https://www.scummvm.org/index.php?title=User:Strangerke) - Difficulty level: Medium.
-- Size: 175 hours
-
-This engine was used for two later [Humongous Entertainment](https://www.scummvm.org/index.php?title=Humongous_Entertainment) games, [Pajama Sam: Life is Rough When You Lose Your Stuff](https://www.scummvm.org/index.php?title=Pajama_Sam:_Life_is_Rough_When_You_Lose_Your_Stuff) and [Putt-Putt: Pep's Birthday Surprise](https://www.scummvm.org/index.php?title=Putt-Putt:_Pep%27s_Birthday_Surprise). The engine is basically an extension of Python 2.2. There exists an almost complete reimplementation by cyx [on GitHub](https://github.com/cyxx/linyaga) (which we have permission to use) that can be used as a base, and we also have the complete source code for the original game.
-
-The task is relatively straightforward, the only difficulty with it is adding Python as an external dependency, but a mentor is there to help. Implementing the missing "Lip Sync" feature will be the main part of this task.
-
-The goal is to bring cyx's code to ScummVM and use the original code as a reference later.

@@ -2,7 +2,7 @@
 
 **Parent:** KDE Community — Project Ideas
 **Source:** https://community.kde.org/GSoC
-**Scraped:** 2026-02-22T23:28:47.569891
+**Scraped:** 2026-03-10T16:58:40.253119
 
 ---
 
@@ -28,7 +28,7 @@ C++ will be accepted for any project. Submissions and ideas for projects in any 
 
 People wishing to participate in Summer of Code must realise this is an important professional opportunity. You will be required to produce code for KDE during the coding period. Your mentors, KDE developers, will dedicate a portion of their time to mentoring you. Therefore, **we seek candidates who are committed to helping KDE long-term and are willing to both do quality work, and be proactive in communicating with your mentor(s)**.
 
-You don't have to be a proven developer -- in fact, this whole program is meant to facilitate joining KDE and other Open Source communities. However, experience in coding and/or experience with KDE/Qt libraries and applications is welcome. The KDE community maintains a separate wiki page with general information about [getting started](https://community.kde.org/Getinvolved/development) with KDE development. **You are required to fix some bugs and link that work on your proposal**. **Proposals with no previous work with the KDE community will not be considered**. **Proposals related to the current KDE goals are warmly welcomed**.
+You don't have to be a proven developer -- in fact, this whole program is meant to facilitate joining KDE and other Open Source communities. However, experience in coding and/or experience with KDE/Qt libraries and applications is welcome. The KDE community maintains a separate wiki page with general information about [getting started](https://develop.kde.org/docs/getting-started/) with KDE development. **You are required to fix some bugs and link that work on your proposal**. **Proposals with no previous work with the KDE community will not be considered**. **Proposals related to the current KDE goals are warmly welcomed**.
 
 You should start learning the components that you plan on working on before the start date. KDE developers are available on mailing lists and on Matrix/IRC for help. The timeline from Google reserves a lot of time for bonding periods; use that time wisely. Good communication is key. You should plan to communicate with your team at least daily, and formally report progress and plans weekly. **Contributors who neglect active communication will be failed**.
 
@@ -59,7 +59,7 @@ Read this note about AI usage provided by Google (these are suggestions based on
 
 KDE stance is the following:
 
-- Do not use AI to generate the proposal, MR description or commit messages. Use your own words.
+- Do not use AI to generate the proposal, code, MR description or commit messages. Use your own words.
 - Even if your English is not proficient, we prefer to talk to a human being instead of someone who just copy/paste their though in their own language and let the computer do the translation. You will never learn if you don't try yourself
 - Do not use generate code and make MR with AI generated code. KDE cares about licensing, ethics and environment, which are three things that AI does not care about.
 
@@ -67,7 +67,7 @@ KDE stance is the following:
 
 A project proposal is what you will be judged upon. Write a clear proposal on what you plan to do, the scope of your project, and why we should choose you to do it. Proposals are the basis of the GSoC projects and therefore one of the most important things to do well. Proposals are ranked by project, so be sure to examine all suggested projects to increase your chances of selection. The proposal is not only the basis of KDE's decision of which student to choose, it has also an effect on Google's decision as to how many student slots are assigned to KDE.
 
-Below is the application template.
+Below is the application template (can also be found in the [template docx](https://collaborate.kde.org/s/fXkm52Ca7pkWcEa)).
 
 **Introduction**
 
@@ -135,7 +135,7 @@ Your idea proposal should be a brief description of what the project is, what th
 
 Any KDE developer can be a mentor if you meet the GSoC eligibility requirements. We will potentially assign a student to you who has never worked on such a large project and will need some help. Make sure you're up for the task. Mentoring takes time, and lots and lots of communication.
 
-Before subscribing yourself as a mentor, please make sure that your application or module maintainer is aware of that. Ask them to send the Summer of Code KDE Administrators an email confirming your involvement in the team. This is just a formality to make sure you are a real person we can trust; the administrators cannot know all active developers by their Google account ID. Then ping us in IRC #kde-soc, Matrix #kde-soc:kde.org or [mail](https://community.kde.org/cdn-cgi/l/email-protection#d4bfb0b1f9a7bbb7f9b9b5bab5b3b1b9b1baa094bfb0b1fabba6b3).
+Before subscribing yourself as a mentor, please make sure that your application or module maintainer is aware of that. Ask them to send the Summer of Code KDE Administrators an email confirming your involvement in the team. This is just a formality to make sure you are a real person we can trust; the administrators cannot know all active developers by their Google account ID. Then ping us in IRC #kde-soc, Matrix #kde-soc:kde.org or [mail](https://community.kde.org/cdn-cgi/l/email-protection#8be0efeea6f8e4e8a6e6eae5eaeceee6eee5ffcbe0efeea5e4f9ec).
 
 Prospective mentors should read the [mentoring guide](http://www.booki.cc/gsoc-mentoring). Also, Federico Mena-Quintero has written some helpful information based on his experiences in previous years. [His HOWTO](https://people.gnome.org/~federico/docs/summer-of-code-mentoring-howto/index.html) has some useful suggestions for anyone planning to mentor this year.
 

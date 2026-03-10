@@ -1,7 +1,7 @@
 # Open Science Labs — Project Ideas
 
 **Source:** https://opensciencelabs.org/opportunities/gsoc/project-ideas
-**Scraped:** 2026-02-22T23:28:47.578897
+**Scraped:** 2026-03-10T16:58:40.302466
 
 ---
 
@@ -25,15 +25,11 @@ touch with them directly if you have any inquiries.*
 
 ### Alpha One Labs[ #](https://opensciencelabs.org#alpha-one-labs)
 
-**Description**: Alpha One Labs is an education platform designed to facilitate both learning and teaching. The platform provides a comprehensive environment where educators can create and manage courses, while students can learn, collaborate, and engage with peers. With features like study groups, peer connections, and discussion forums, we aim to create a collaborative learning environment that goes beyond traditional online education.**Project WEB Page**:[https://www.alphaonelabs.com/](https://www.alphaonelabs.com/)**Repository**:[https://github.com/alphaonelabs/education-website](https://github.com/alphaonelabs/education-website)**Communication channel**:[Slack](https://join.slack.com/t/alphaonelabs/shared_invite/zt-7dvtocfr-1dYWOL0XZwEEPUeWXxrB1A)**Project Ideas**:[link](https://github.com/alphaonelabs/education-website/wiki/GSOC-2025-Ideas-Refined)
+**Description**: Alpha One Labs is an education platform designed to facilitate both learning and teaching. The platform provides a comprehensive environment where educators can create and manage courses, while students can learn, collaborate, and engage with peers. With features like study groups, peer connections, and discussion forums, we aim to create a collaborative learning environment that goes beyond traditional online education.**Project WEB Page**:[https://www.alphaonelabs.com/](https://www.alphaonelabs.com/)**Repository**:[https://github.com/alphaonelabs/education-website](https://github.com/alphaonelabs/education-website)**Communication channel**:[Slack](https://join.slack.com/t/alphaonelabs/shared_invite/zt-7dvtocfr-1dYWOL0XZwEEPUeWXxrB1A)**Project Ideas**:[link](https://github.com/alphaonelabs/alphaonelabs-education-website/wiki/GSOC-2026-Ideas)
 
 ### ArxLang/IRx[ #](https://opensciencelabs.org#arxlangirx)
 
 **Description**: IRx aims to provide a translator to LLVM-IR from ASTx objects. IRx uses llvmlite in order to generate LLVM-IR source and binary generation.**Project WEB Page**:[https://irx.arxlang.org/](https://irx.arxlang.org/)**Repository**:[https://github.com/arxlang/irx](https://github.com/arxlang/irx)**Communication channel**:[Discord](https://arxlang.org/discord)**Project Ideas**:[link](https://github.com/arxlang/irx/wiki/Project-Ideas)
-
-### Extralit[ #](https://opensciencelabs.org#extralit)
-
-**Description**: Extralit is an open-source platform for researchers to extract structured data from scientific literature. It combines advanced document AI with collaborative human validation workflows to create analysis-ready datasets fit-for-purpose to any scientific domain, enabling faster evidence synthesis and meta-analysis.**Project WEB Page**:[https://docs.extralit.ai/](https://docs.extralit.ai/)**Repository**:[https://github.com/extralit/extralit](https://github.com/extralit/extralit)**Communication channel**:[Slack](https://join.slack.com/t/extralit/shared_invite/zt-32blg3602-0m0XewPBXF7776BQ3m7ZlA)**Project Ideas**:[link](https://github.com/extralit/extralit/wiki/GSoC-Project-Ideas-2025)
 
 ### Hiperhealth[ #](https://opensciencelabs.org#hiperhealth)
 
@@ -41,4 +37,4 @@ touch with them directly if you have any inquiries.*
 
 ### Sugar (swarm-external-secrets)[ #](https://opensciencelabs.org#sugar-swarm-external-secrets)
 
-**Description**: swarm-external-secrets is a Docker plugin that bridges external secrets management systems with Docker Swarm's native secrets infrastructure.**Project WEB Page**:[https://sugar-org.github.io/swarm-external-secrets/](https://sugar-org.github.io/swarm-external-secrets/)**Repository**:[https://github.com/sugar-org/swarm-external-secrets](https://github.com/sugar-org/swarm-external-secrets)**Communication channel**:[Discord](/ideas/open-science-labs/discord)**Project Ideas**:[link](https://github.com/sugar-org/swarm-external-secrets/wiki/Project-Ideas)
+**Description**: swarm-external-secrets is a Docker plugin that bridges external secrets management systems with Docker Swarm's native secrets infrastructure.**Project WEB Page**:[https://sugar-org.github.io/swarm-external-secrets/](https://sugar-org.github.io/swarm-external-secrets/)**Repository**:[https://github.com/sugar-org/swarm-external-secrets](https://github.com/sugar-org/swarm-external-secrets)**Communication channel**:[Discord](https://discord.gg/4NYdBu7bZy)**Project Ideas**:[link](https://github.com/sugar-org/swarm-external-secrets/wiki/Project-Ideas)

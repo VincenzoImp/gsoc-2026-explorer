@@ -1,7 +1,7 @@
 # Dart — Project Ideas
 
 **Source:** https://github.com/dart-lang/sdk/blob/main/docs/gsoc/Dart-GSoC-2026-Project-Ideas.md
-**Scraped:** 2026-02-22T23:28:47.564139
+**Scraped:** 2026-03-10T16:58:40.270831
 
 ---
 

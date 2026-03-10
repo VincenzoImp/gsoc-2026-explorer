@@ -1,7 +1,7 @@
 # Free and Open Source Silicon Foundation — Project Ideas
 
 **Source:** https://fossi-foundation.org/gsoc/gsoc26-ideas
-**Scraped:** 2026-02-22T23:28:47.545855
+**Scraped:** 2026-03-10T16:58:40.242467
 
 ---
 
@@ -107,9 +107,9 @@ The OpenRISC Linux kernel support is under constant development but there are ce
 
 This project will have the student developing, testing and sending patches up to the Linux kernel. This includes:
 
-- Use the cacheinfo API for reporting CPU details in OpenRISC Linux.
 - Add
-[tracing facilities](https://docs.kernel.org/trace/index.html)to OpenRISC Linux including: jump_label, ftrace, kprobes, eBPF etc.
+[tracing facilities](https://docs.kernel.org/trace/index.html)to OpenRISC Linux including: ftrace, kprobes, eBPF etc. - Add
+[virtual stacks](https://docs.kernel.org/mm/vmalloced-kernel-stacks.html)support to OpenRISC Linux.
 
 *Skill level:* Advanced
 
@@ -132,6 +132,29 @@ OpenPiton uses different languages like Verilog, Python, Perl, and C. Verilator 
 *Language/Tools:* Verilog, C++, SystemVerilog
 
 *Mentors:* [Guillem López Paradís](mailto:guillem.lopez@bsc.es) and [Jonathan Balkind](mailto:jbalkind@ucsb.edu)
+
+[Enabling OpenROAD-based Power Estimation for OpenPiton Manycore Systems](https://fossi-foundation.org#enabling-openroad-based-power-estimation-for-openpiton-manycore-systems)
+
+This project will develop a fully open-source, activity-driven power estimation flow for OpenPiton using OpenROAD and Verilator. The student will port a representative OpenPiton tile (core, cache slice, and NoC router subset) to the OpenROAD-flow-scripts infrastructure to obtain a synthesized and placed-and-routed design targeting an open PDK. Verilator will be used to generate SAIF activity files from representative workloads, which will be annotated in OpenSTA to report switching, internal, and leakage power.
+
+The resulting flow will enable reproducible, architecture-level power studies of OpenPiton tiles under realistic physical constraints, supporting the evaluation of cache/NoC parameters and accelerator interfaces within a fully open toolchain.
+
+This project can be extended in several directions, for example:
+
+- Automating SAIF generation from simulation workloads (e.g., a Verilator-based regression flow)
+- Integrating power reporting into the OpenPiton evaluation framework
+- Scaling the flow from a single tile to a small mesh or chiplet quadrant
+- Comparing pre- and post-P&R power estimates for architectural design-space exploration
+
+Links: [Openpiton](https://github.com/PrincetonUniversity/openpiton), [SAIF-power-Verilator](https://antmicro.com/blog/2025/07/power-estimation-in-openroad-using-saif-in-verilator)
+
+*Skill Level:* Medium/Advanced
+
+*Duration:* 350 hours
+
+*Language/Tools:* SystemVerilog, TCL, Python, OpenROAD, OpenSTA
+
+*Mentors:* [Guillem López Paradís](mailto:guillem.lopez@bsc.es), [Jonathan Balkind](mailto:jbalkind@ucsb.edu)
 
 [Using AI to Improve Open-Source IP](https://fossi-foundation.org#using-ai-to-improve-open-source-ip)
 

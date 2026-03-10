@@ -2,7 +2,7 @@
 
 **Parent:** R project for statistical computing — Project Ideas
 **Source:** https://github.com/rstats-gsoc/gsoc2026/wiki/data.table
-**Scraped:** 2026-02-22T23:28:47.626170
+**Scraped:** 2026-03-10T16:58:40.305972
 
 ---
 
@@ -12,7 +12,7 @@
 
 # data.table
 
-[13 revisions](https://github.com/rstats-gsoc/gsoc2026/wiki/data.table/_history)
+[19 revisions](https://github.com/rstats-gsoc/gsoc2026/wiki/data.table/_history)
 
 The [data.table](https://github.com/Rdatatable/data.table) package is an invaluable tool for data analysis and manipulation.
 
@@ -50,4 +50,6 @@ If your test results seem to be AI-generated, then you will probably not be sele
 - Contributor Name, link to issue, link to PR
 - Ayush Singh,
 [Issue #5039](https://github.com/Rdatatable/data.table/issues/5039)and[Issue #6512](https://github.com/Rdatatable/data.table/issues/6512),[PR #7554](https://github.com/Rdatatable/data.table/pull/7554)and[PR #7549](https://github.com/Rdatatable/data.table/pull/7549) - Manmita Das, (
-[Issue #2606](https://github.com/Rdatatable/data.table/issues/2606)→[PR #7580](https://github.com/Rdatatable/data.table/pull/7580)), ([Issue #7571](https://github.com/Rdatatable/data.table/issues/7571)→[PR #7572](https://github.com/Rdatatable/data.table/pull/7572)), ([Issue #7407](https://github.com/Rdatatable/data.table/issues/7407)→[PR #7570](https://github.com/Rdatatable/data.table/pull/7570)) and ([Issue #3611](https://github.com/Rdatatable/data.table/issues/3611)→[PR #7567](https://github.com/Rdatatable/data.table/pull/7567))
+[Issue #2606](https://github.com/Rdatatable/data.table/issues/2606)→[PR #7580](https://github.com/Rdatatable/data.table/pull/7580)), ([Issue #7571](https://github.com/Rdatatable/data.table/issues/7571)→[PR #7572](https://github.com/Rdatatable/data.table/pull/7572)), ([Issue #7407](https://github.com/Rdatatable/data.table/issues/7407)→[PR #7570](https://github.com/Rdatatable/data.table/pull/7570)) and ([Issue #3611](https://github.com/Rdatatable/data.table/issues/3611)→[PR #7567](https://github.com/Rdatatable/data.table/pull/7567)) - Tanisha Ojha, [
+[Issue #7354](https://github.com/Rdatatable/data.table/issues/7354)→[PR #7603](https://github.com/Rdatatable/data.table/pull/7603)] - Mahjabin Siddika Oyshi,
+[Issue #7643](https://github.com/Rdatatable/data.table/issues/7643)-> ([PR #7651](https://github.com/Rdatatable/data.table/pull/7651))

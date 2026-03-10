@@ -1,7 +1,7 @@
 # Neutralinojs — Project Ideas
 
 **Source:** https://github.com/neutralinojs/gsoc2026/blob/main/project-ideas.md
-**Scraped:** 2026-02-22T23:28:47.604102
+**Scraped:** 2026-03-10T16:58:40.277607
 
 ---
 
@@ -24,7 +24,7 @@ Difficulty rating: Medium
 
 Project size: ~350h
 
-Mentors: Shalitha Suranga and Athif Shaffy
+Mentors: Shalitha Suranga, Athif Shaffy, and Sajath Ahamed
 
 #### Suggested technical decisions
 
@@ -95,7 +95,7 @@ Difficulty rating: Medium
 
 Project size: ~350h
 
-Mentors: Shalitha Suranga and Athif Shaffy
+Mentors: Shalitha Suranga, Athif Shaffy, and Sajath Ahamed
 
 #### Suggested UI/UX decisions
 
@@ -133,7 +133,7 @@ Difficulty rating: Medium
 
 Project size: ~350h
 
-Mentors: Shalitha Suranga and Athif Shaffy
+Mentors: Shalitha Suranga, Athif Shaffy, and Sajath Ahamed
 
 #### Research ideas
 

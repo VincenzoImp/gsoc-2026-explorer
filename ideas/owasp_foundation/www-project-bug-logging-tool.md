@@ -2,7 +2,7 @@
 
 **Parent:** OWASP Foundation — Project Ideas
 **Source:** https://owasp.org/www-project-bug-logging-tool/
-**Scraped:** 2026-02-22T23:28:47.558553
+**Scraped:** 2026-03-10T16:58:40.315343
 
 ---
 

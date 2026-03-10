@@ -1,7 +1,7 @@
 # MLLAM — Project Ideas
 
 **Source:** https://github.com/mllam/neural-lam/wiki/GSoC-ideas
-**Scraped:** 2026-02-22T23:28:47.631647
+**Scraped:** 2026-03-10T16:58:40.226599
 
 ---
 
@@ -12,28 +12,36 @@ https://raw.githubusercontent.com/joeloskarsson/neural-lam-dev/refs/heads/extra-
 
 ## About neural-lam and the MLLAM community
 
-MLLAM is a collaborative community dedicated to advancing machine learning applications in weather forecasting, specifically for Limited Area Modeling (LAM). The organization hosts several open-source key repositories, including neural-lam, which focuses on neural weather prediction using graph-based models. Members are from various research institutions and national weather services committed to improve weather forecasting at regional, high-resolution scale.
+MLLAM is a collaborative community dedicated to advancing machine learning applications in weather forecasting, specifically for Limited Area Modeling (LAM). The organization hosts several key open-source repositories, including neural-lam, which focuses on neural weather prediction using graph-based models. Members are from various research institutions and national weather services committed to improving weather forecasting at regional, high-resolution scale.
 
 ### Policy on the use of AI tooling
 We generally allow the use of AI tools to write, edit and review source code, but each contributor is fully responsible for their code. This means that everyone must understand all the code they contribute, and be able to argue why the design choices made are suitable (no "vibe-coding").
 
 # Getting started
 If you plan to become a GSoC contributor, we encourage you to
-* contact us early to show your interest in a project idea (join e.g. the `GSoC` slack channel at https://kutt.it/mllam)
-* look through the current list of issues and identify one that you want to solve to get familiar with the project. You likely want to choose one that is marked as good-first-issue
-* comment on the issue and request to be assigned to the issue so that we can make sure only one person is working on each issue. If we do not see any progress within 7 days (e.g. by opening a PR and actively engage in the conversation) we might re-assign the issue again.
-* open a pull request and discuss your contributions with the maintainers
+* Join the `GSoC` slack channel at https://kutt.to/mllam and start engaging with the community. Specifically check out the #gsoc and #gsoc-project1/2/3/4 channels.
+* Look through the current list of PRs and issues and see if there is something you can help out with to get familiar with the project.
+  * Note that this help can take many forms, including joining in discussions, reviewing existing PRs and contributing new solutions.
+  * For selecting GSoC proposals, we do not care about how many PRs you have submitted/merged. There is no hard requirement on having previously contributed code. We are looking for genuine engagement and interest, and quality over quantity.
 
+## Guidelines for code contributions
+* Try to avoid opening duplicate PRs, instead helping out in the existing PR by proposing improvements.
+* If you want to start working on fixing an open issue, make sure to comment on the issue and request to be assigned to it. That way we can make sure only one person is working on each issue. Don't open a PR before there is some agreement in the issue that the change is good and that the proposed solution is suitable.
+* If we do not see any progress within 7 days of being assigned an issue (e.g. by opening a PR and actively engage in the conversation) we might re-assign the issue again. 
+* Make sure to always use our PR template and follow the instructions in there.
 
 # Writing the Proposal
 **Deadline to upload proposal at https://summerofcode.withgoogle.com/ is [March 31 18:00 UTC](https://developers.google.com/open-source/gsoc/timeline#march_31_-_1800_utc)!**
 
-- Select a project idea (see below) and write a detailed proposal (in advance!). You can use [this template](https://github.com/python-gsoc/python-gsoc.github.io/blob/master/ApplicationTemplate.md) as inspiration, as well as the [GSoC guide](https://google.github.io/gsocguides/student/writing-a-proposal).
+- Select a project idea (see below) and write a detailed proposal (in advance!). Please use [this template](/ideas/mllam/gsoc-proposal-template) as a starting point, and check out the [GSoC guide](https://google.github.io/gsocguides/student/writing-a-proposal).
 - Plan your prepwork for the community bonding period (eg. a Proof-Of-Concept)
 - Define milestones for each evaluation phase (i.e. Prototype, Pilot / Final Demo)
-- Plan you weekly work & deliverables (tasking out: high-level goals for each milestone)
+- Plan your weekly work & deliverables (tasking out: high-level goals for each milestone)
 - Describe the acceptance criteria ("Minimum Viable Product" of each phase)
-- Share an early draft and discuss your approach in the group with mentors. We are here to help! Do not forget to submit your application to the [Google system](https://summerofcode.withgoogle.com/) when ready, some days before the deadline (the server can be overloaded at last minute).
+- Share an early draft and discuss your approach with mentors. We are here to help!
+  - For questions about the projects, please use the #gsoc-project1/2/3/4 channels on slack rather than directly messaging mentors.
+  - To get feedback on such a draft, please submit a link to a google doc with comment permissions in [this form](https://docs.google.com/forms/d/e/1FAIpQLSciGrfW9Q-NptrD5d4GREqQdsV___1WOzMBywKj8NCbM901fA/viewform?usp=sharing&ouid=106814839361720537667).
+  - Do not forget to submit your application to the [Google system](https://summerofcode.withgoogle.com/) when ready, some days before the deadline (the server can be overloaded at last minute).
 
 # Project ideas
 
@@ -46,7 +54,7 @@ Neural-LAM supports already a variety of graphs like multi-scale and hierarchica
 - **Skills**: Shell, Python, familiarity with [PyTorch](https://pytorch.org/) is highly beneficial.
 - **Difficulty**: Medium
 - **Project length**: 350 hour
-- **Potential mentors**: Hauke Schulz ([@observingClouds](https://github.com/observingClouds)), Leif Denby ([@leifdenby](https://github.com/leifdenby)), Joel Oskarson ([@joeloskarsson](https://github.com/joeloskarsson))
+- **Potential mentors**: Hauke Schulz ([@observingClouds](https://github.com/observingClouds)), Leif Denby ([@leifdenby](https://github.com/leifdenby)), Joel Oskarsson ([@joeloskarsson](https://github.com/joeloskarsson))
 
 Related issues are: [#164](/ideas/mllam/mllam-neural-lam-issues-164), [weather-model-graphs](https://github.com/mllam/weather-model-graphs/issues)
 
@@ -57,7 +65,7 @@ One of the challenges for users of the neural-lam codebase is that much of the d
 - **Skills**: Shell, Python
 - **Difficulty**: Medium
 - **Project length**: 175 hour
-- **Potential mentors**: Hauke Schulz ([@observingClouds](https://github.com/observingClouds)), Leif Denby ([@leifdenby](https://github.com/leifdenby)), Joel Oskarson ([@joeloskarsson](https://github.com/joeloskarsson))
+- **Potential mentors**: Hauke Schulz ([@observingClouds](https://github.com/observingClouds)), Leif Denby ([@leifdenby](https://github.com/leifdenby)), Joel Oskarsson ([@joeloskarsson](https://github.com/joeloskarsson))
 
 Related issues are: https://github.com/mllam/neural-lam/issues/61 https://github.com/mllam/neural-lam/issues/69
 
@@ -76,9 +84,9 @@ Related issues are: https://github.com/mllam/neural-lam/issues/49 https://github
 
 Neural-lam was mainly designed with regional, limited-area, forecasting in mind, integrating boundary conditions around the region. However, global weather forecasting is really just a special case of this, where the region is the whole earth and there are no boundary conditions. Still, some changes are needed in the codebase in order to make this work frictionless. The major challenge with enabling global forecasting is the need to construct a global graph for the Graph Neural Network models to work on. There are multiple options for this, including writing code for such graph-generation ourselves or building in a connection to suitable third-party libraries.
 
-- **Skills**: Python, PyTorch, PyTorch Geometric and [xarray](/ideas/mllam/xarray-pydata-org) are highly beneficial
+- **Skills**: Python, PyTorch, PyTorch Geometric and [xarray](https://xarray.pydata.org) are highly beneficial
 - **Difficulty**: Medium
 - **Project length**: 175 hour
-- **Potential mentors**: Joel Oskarson ([@joeloskarsson](https://github.com/joeloskarsson)), Hauke Schulz ([@observingClouds](https://github.com/observingClouds)), Leif Denby ([@leifdenby](https://github.com/leifdenby))
+- **Potential mentors**: Joel Oskarsson ([@joeloskarsson](https://github.com/joeloskarsson)), Hauke Schulz ([@observingClouds](https://github.com/observingClouds)), Leif Denby ([@leifdenby](https://github.com/leifdenby))
 
 Related issues are: https://github.com/mllam/neural-lam/issues/63

@@ -1,7 +1,7 @@
 # Gambit: The package for computation in game theory — Project Ideas
 
 **Source:** https://www.gambit-project.org/gsoc_2026/
-**Scraped:** 2026-02-22T23:28:47.544846
+**Scraped:** 2026-03-10T16:58:40.255723
 
 ---
 
@@ -11,7 +11,11 @@ Prospective contributors interested in working with the Gambit team should read 
 Google Summer of Code is a global, online program focused on bringing new contributors into open source software development. GSoC Contributors work with an open source organization on a 12+ week programming project under the guidance of mentors.
 
 
-Please provide a CV and short cover letter. On your CV, include any relevant domain experience in game theory, and technical skills and experience in software engineering. We recommend to read through the Project Ideas below before submitting an application.
+Please use [gambit.game.theory@gmail.com](mailto:gambit.game.theory@gmail.com) to contact us.
+
+We are receiving a very large volume of correspondence at the moment, so please follow this guidance carefully. We request that potential contributors provide a CV and short cover letter in the first instance.
+
+On your CV, include any relevant domain experience in game theory, and technical skills and experience in software engineering. We recommend to read through the Project Ideas below before submitting an application.
 
 In your cover letter please include answers to the following questions:
 
@@ -20,12 +24,18 @@ In your cover letter please include answers to the following questions:
 - Please provide us with details of the times of day and days of the week you intend to work on the project, to help us in scheduling regular catch ups.
 - Is there anything that you’ll be studying or working on whilst working alongside us?
 
+If we think that you might be a good match for Gambit in GSoC 2026, we will then point you to simple issue tailored to your interests so that you can get to know the Gambit codebase and interact with the development team.
+
+We will endeavour to acknowledge all enquiries, but please be patient during this very busy period.
+
+**Like many open-source projects, Gambit has documentation with guidance for contributions. We recommend GSoC students review this in advance of submitting any contributions or comments on GitHub, in particular the recently added New Contributors and Policy on AI-Assisted Contributions sections.**
+
 Prospective contributors should read through the project ideas listed below before submitting an application, following the Contributor Guidance above. Select a project based on your research interests and the technical experience you have, or would like to develop.
 
 For each project we have listed at least two possible mentors, with the first mentioned mentor like
 to be the primary one and the other one able to act as a secondary additional mentor.
-Our core team of mentors for 2026 are: [Ted Turocy](mailto:ted.turocy@gmail.com), [Rahul Savani](mailto:rahul.savani@gmail.com),
-and [Ed Chalstrey](mailto:echalstrey@turing.ac.uk).
+Our core team of mentors for 2026 are: Ted Turocy, Rahul Savani,
+and Ed Chalstrey.
 Bernhard von Stengel can act as an additional mentor for ideas 3 and 6; Bernhard authored the
 `draw_tree`
 
@@ -35,8 +45,8 @@ packages that underpin these two projects, respectively.
 
 The following table summarises our ideas, and includes links to detailed descriptions below.
 
-| Idea/link | Title | Difficulty | Keywords |
-|---|---|---|---|
+| Idea/link | Title | Difficulty | Keywords | Volume of applications being considered (so far) |
+|---|---|---|---|---|
 |
 
 Gambit’s graphical interface is the oldest part of the package. It traces its origins to a MS-DOS based tool written in C++ using the Borland Graphics Interface (BGI) in the early 1990s. It was ported to wxWindows (now wxWidgets) in the mid-1990s, in the early days of that package. Growing emphasis on scriptability and calculation at scale has meant the GUI has received less attention in recent years. Nevertheless, it remains important to the package and the community as it is the point of entry for many users, either through use in teaching or in manually inputting small games for exploratory analysis.
@@ -196,7 +206,7 @@ The idea here is to develop the existing exporters to make them more general, co
 
 Here are pointers to the existing exporters (two for each type of game format):
 
-[EFG exporter in python](https://github.com/google-deepmind/open_spiel/blob/master/open_spiel/python/algorithms/gambit.py)[Independent EFG exporter in C++](https://github.com/google-deepmind/open_spiel/blob/master/open_spiel/game_transforms/efg_writer)[NFG exporter written in C++](https://github.com/google-deepmind/open_spiel/blob/master/open_spiel/algorithms/nfg_writer.cc), exposed to Python and[tested](https://github.com/google-deepmind/open_spiel/blob/master/open_spiel/python/tests/nfg_writer_test.py)
+[EFG exporter in python](https://github.com/google-deepmind/open_spiel/blob/master/open_spiel/python/algorithms/gambit.py)[Independent EFG exporter in C++](https://github.com/google-deepmind/open_spiel/blob/master/open_spiel/game_transforms/efg_writer.cc)[NFG exporter written in C++](https://github.com/google-deepmind/open_spiel/blob/master/open_spiel/algorithms/nfg_writer.cc), exposed to Python and[tested](https://github.com/google-deepmind/open_spiel/blob/master/open_spiel/python/tests/nfg_writer_test.py)
 
 As a stretch goal, a student could work on an .efg importer after finishing the exporter. Again
 there is [one](https://github.com/google-deepmind/open_spiel/tree/master/open_spiel/games/efg_game/games) in OpenSpiel
@@ -212,5 +222,28 @@ It will be helpful if a student already knows what EFGs and NFGs are, which they
 90 hours – that should be enough for both EFG/NFG exporters, and ideally also importers for both, along with documentation and tests.
 
 Easy.
+
+An important use case of Gambit over the years has been to support computations involving statistical or econometric estimation
+in games. This is especially relevant for research in human-participant experiments in game theory.
+In particular, Gambit’s implementation of computation and estimation of
+[quantal response equilibrium](https://gambitproject.readthedocs.io/en/latest/tutorials/advanced_tutorials/quantal_response.html) is the
+de-facto reference implementation.
+
+However, this implementation is not as easily accessible to users, or integrable into reproducible computational workflows, as it could be.
+
+In this project, a student would work on improving our support for econometric estimation. Depending on interests and background, this could take a number of forms:
+
+- Extending our existing simple tutorials, and replicating the estimations of quantal response equilibria in a variety of published papers
+- Developing a test suite for QRE estimation
+- Developing higher-level functions for estimation of payoff/game parameters
+- Extending Gambit with other statistical and econometric methods used in experimental game theory, such as estimation of cognitive hierarchy, level-k, and/or models such as Experience-Weighted Attraction.
+
+Depending on the specific direction chosen, the expected outcome would be the integration of improved tutorials, documentations, and test/benchmarking suites into Gambit as appropriate. This project could also be suitable for writing a technical or scientific paper suitable for submission to a peer-reviewed journal or conference.
+
+This project does require some basic familiarity with the relevant econometric and statistical methods and how they are applied in the analysis of data from experiments in the literature. This will not be a project suitable for someone without at least an initial familiarity with this literature or directly-relevant coursework.
+
+The size of the project would depend on the level of ambition. Simply helping with tutorials and documentation might be a 90-hour project, while more extensive work on testing and developing general estimation code could be 175 or 350 depending on the agreed scope.
+
+Medium/Hard.
 
 On this page

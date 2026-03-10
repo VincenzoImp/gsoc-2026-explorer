@@ -2,7 +2,7 @@
 
 **Parent:** Neutralinojs — Project Ideas
 **Source:** https://github.com/neutralinojs/gsoc2026/blob/main/README.md
-**Scraped:** 2026-02-22T23:28:47.604215
+**Scraped:** 2026-03-10T16:58:40.277810
 
 ---
 
@@ -44,7 +44,7 @@ We really appreciate your code contributions. Please read [this contribution gui
 
 We don't discourage using AI-powered programming tools. If you prefer, you can use AI tools during code contributions, but make sure to carefully review AI-generated code snippets manually before submitting them in pull requests for review. However, we strongly recommend avoiding the following activities with AI:
 
-- Don't automate the whole programming task with AI &mdash; code productivity with AI-powered suggestions instead
+- Don't automate the whole programming task with AI &mdash; code productively with AI-powered suggestions instead
 - Don't generate verbose, artificial pull request descriptions with AI &mdash; write a concise message yourself
 - Don't ask design decisions from AI agents &mdash; study the codebase yourself
 
@@ -64,7 +64,7 @@ Please create your GSoC proposal according to the following outline:
 
 1. Contact details (Name, Country, Email, GitHub username, Discord username, and a small description about yourself)
 2. Neutralinojs experience (Explain your familiarity with Neutralinojs)4
-3. Contributions (Add links to your pull requests, issues, and discussion threads)
+3. Contributions (Add links to your pull requests (include all, even if they aren't merged/reviewed yet), issues, and discussion threads)
 4.  Project description (Describe the project idea)
 5.  Goals (Summary of deliverables)
 6.  Tasks Timeline (Divide your goals into tasks and map them with the GSoC timeline)

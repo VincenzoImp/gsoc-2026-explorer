@@ -1,8 +1,8 @@
-# Building the Amharic DBpedia Language Chapter with Large Language Models (LLMs)
+# Building the Amharic DBpedia Language Chapter with Large Language Models (LLMs) — GSoC 2026
 
 **Parent:** DBpedia — Project Ideas
-**Source:** https://forum.dbpedia.org/t/building-the-amharic-dbpedia-language-chapter-with-large-language-models-llms/4792
-**Scraped:** 2026-02-22T23:28:47.607905
+**Source:** https://forum.dbpedia.org/t/building-the-amharic-dbpedia-language-chapter-with-large-language-models-llms-gsoc-2026/4792
+**Scraped:** 2026-03-10T16:58:40.251301
 
 ---
 

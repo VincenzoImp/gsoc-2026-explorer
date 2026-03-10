@@ -2,7 +2,7 @@
 
 **Parent:** R project for statistical computing — Project Ideas
 **Source:** https://github.com/rstats-gsoc/gsoc2026/wiki/Multivariate-Support-and-Performance-Improvements-in-imputeTestbench
-**Scraped:** 2026-02-22T23:28:47.626358
+**Scraped:** 2026-03-10T16:58:40.306398
 
 ---
 
@@ -113,3 +113,9 @@ Contributors, please post a link to your test results below:
 
 | Contributor Name | GitHub Profile | Test Results |
 | ---------------- | -------------- | ------------ |
+| Kunal | [kunal649](https://github.com/kunal649) | [Link to results](https://github.com/kunal649/imputetestbench---results/blob/main/README.md)
+| Vaasu | [vortex-wq](https://github.com/vortex-wq) | [Easy Task](https://github.com/vortex-wq/Multivariate-Support-and-Performance-Improvements-in-imputeTestbench/tree/main/easy-task), [Medium Task](https://github.com/[vortex-wq/Multivariate-Support-and-Performance-Improvements-in-imputeTestbench](https://github.com/vortex-wq/Multivariate-Support-and-Performance-Improvements-in-imputeTestbench/tree/main/medium-task)/tree/main/medium-task) |
+| Arush | [Arush-Banerjee](https://github.com/Arush-Banerjee) | [Test Results](https://github.com/Arush-Banerjee/imputeTestbench-gsoc-26/blob/main/README.md) |
+
+-Kushal Chhajed- Easy test Result:-
+[Live Report](https://kushjchhajed15-creator.github.io/multivariate_gsoc26/multivariate_EasyT.html) | [GitHub Repository](https://github.com/kushjchhajed15-creator/multivariate_gsoc26)

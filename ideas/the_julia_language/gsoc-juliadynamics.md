@@ -2,7 +2,7 @@
 
 **Parent:** The Julia Language — Project Ideas
 **Source:** https://julialang.org/jsoc/gsoc/juliadynamics/
-**Scraped:** 2026-02-22T23:28:47.595950
+**Scraped:** 2026-03-10T16:58:40.263297
 
 ---
 
@@ -18,14 +18,12 @@ Possible features to implement are:
 
 GPU and/or HPC support in Agents.jl by integrating existing ABM packages (Vanaha.jl or CellBasedModels.jl) into Agents.jl API.
 
-Integrating Agents.jl with ReinforcementLearning.jl
-
 Differentiation / parameter fitting of ABMs in Agents.jl by utilizing StochasticAD.jl or similar frameworks.
 
 
 **Pre-requisite**: Having already contributed to a Julia package either in JuliaDynamics or of sufficient relevance to JuliaDynamics.
 
-**Recommended Skills**: Familiarity with agent based modelling, Agents.jl and Julia's Type System, and achieving high-end computational performance within Julia. Research background in complex systems, sociology, agent based modelling, or nonlinear dynamics is not required but would be advantageous.
+**Recommended Skills**: Familiarity with agent based modelling, Agents.jl and Julia's Type System, and achieving high-end computational performance within Julia. Familiarity with complex systems or nonlinear dynamics is not required but would be a positive.
 
 **Expected Results**: Well-documented, well-tested useful new features for Agents.jl.
 

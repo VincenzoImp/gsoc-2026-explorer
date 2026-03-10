@@ -1,7 +1,7 @@
 # Mixxx — Project Ideas
 
 **Source:** https://github.com/mixxxdj/mixxx/wiki/GSOC-2026-Ideas
-**Scraped:** 2026-02-22T23:28:47.631039
+**Scraped:** 2026-03-10T16:58:40.257380
 
 ---
 
@@ -92,7 +92,6 @@ In this project we want to solve this issue by creating sub-clusters clustering 
   * Add a new sub-clusteringsystem based on the complete Chromaprint-fingerprint in the MusicBrainsDB
   * Expand the current MusicBrainsLookup in Mixxx to retrieve and save the advanced Metadata.
   * Interchange advanced DJ-metadata through the MBDB (BPM, Musical Key...)
-* **Expected Outcome:** A new visual representation of changing keys and BPMs. 
 * **Skills:** Experience C++ and Database Postgres Sqlite 
 * **Possible Mentor:** Evelynne, Daniel 
 * **Difficulty:** Medium

@@ -2,57 +2,434 @@
 
 **Parent:** Neovim — Project Ideas
 **Source:** https://github.com/neovim/neovim/issues
-**Scraped:** 2026-02-22T23:28:47.616301
+**Scraped:** 2026-03-10T16:58:40.273147
 
 ---
 
-## #38021: Bracketed paste under tmux is contaminated with extended keys
+## #38224: build(wasm): LuaJIT fails to compile with Emscripten
+
+**Labels:** build, documentation, platform:web
 
 ### Problem
 
-Bracketed paste into neovim under tmux contains misrepresented ctrl-j (ASCII LF) values. This happens no matter if `set -s extended-keys on` or `off` (as neovim requests extended-keys and tmux honors it regardless), and the representation changes depending on if I use `set -s extended-keys-format xterm` or `csi-u` (`[27;5;106~` and `[106;5u` respectively).
+when attempting to build neovim's bundled deps with emscripten for WebAssembly,
+build fail: LuaJIT does not support the `wasm32` architecture.
 
-This has been reported more than once on the tmux side (et al: https://github.com/tmux/tmux/issues/4663), yet all closed seemingly without resolution.
+`cmake.deps/cmake/BuildLuaJit.cmake` has no condition for Emscripten.
 
-I have not been able to reproduce it outside of tmux.
+Emscripten satisfies CMake's `UNIX` condition, so it enters the
+`elseif(UNIX)` and attempts to build LuaJIT with `emcc`.
+
+LuaJIT's `.deps/build/src/luajit/src/lj_arch.h` only defines 7 architectures: x86, x64, ARM,
+ARM64, PPC, MIPS32, MIPS64.
+
+### Error
+```bash
+221:lj_arch.h:69:2: error: "Architecture not supported (in this version), see: https://luajit.org/status.html#architectures"
+224:lj_arch.h:479:2: error: "No target architecture defined"
+228:Makefile:270: *** Unsupported target architecture.  Stop.
+229:make[3]: *** [Makefile:127: src/luajit] Error 2
+230:make[2]: *** [CMakeFiles/luajit.dir/build.make:106: build/src/luajit-stamp/luajit-install] Error 2
+231:make[1]: *** [CMakeFiles/Makefile2:190: CMakeFiles/luajit.dir/all] Error 2
+232:make: *** [Makefile:91: all] Error 2
+```
 
 ### Steps to reproduce
 
-Use tmux inside of:
-* Alacritty
-* Wezterm
-* Kitty
+```bash
+source /path/to/emsdk/emsdk_env.sh
+emcmake cmake -S cmake.deps -B .deps -DCMAKE_BUILD_TYPE=Release
+emmake make -C .deps
+```
 
-Do not use:
-* Microsoft Terminal (doesn't seem to implement any form of extended keys yet?)
+> note: i also applied pull #37911 (not yet merged) to isolate this as
+> next blocker after libuv is fixed.
 
 ### Expected behavior
 
-Bracketed pastes with newlines having newlines instead of ctrl-j representations.
+build should complete 
+
+### Workaround
+
+passing these flags makes build successfully:
+
+```bash
+emcmake cmake -S cmake.deps -B .deps \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DUSE_BUNDLED_LUAJIT=OFF \
+  -DUSE_BUNDLED_LUA=ON
+```
+
+### Proposed solution
+
+detect Emscripten in `cmake.deps/CMakeLists.txt` and disable LuaJIT, falling back to PUC Lua 5.1:
+
+```cmake
+if(DEFINED EMSCRIPTEN OR CMAKE_C_COMPILER MATCHES "emcc$")
+  set(USE_BUNDLED_LUAJIT OFF CACHE BOOL "" FORCE)
+  set(USE_BUNDLED_LUA    ON  CACHE BOOL "" FORCE)
+endif()
+```
+
+or any other preferred approach for handling this?
 
 ### Nvim version (nvim -v)
 
-0.11.6
+master (61f166ec40)
 
 ### Vim (not Nvim) behaves the same?
 
-vim has different bracketed paste behavior
+n/a
 
 ### Operating system/version
 
-Any/all
+Arch Linux, kernel 6.19.6-arch1-1
 
 ### Terminal name/version
 
-Multiple
+n/a
 
 ### $TERM environment variable
 
-Multiple
+n/a
 
 ### Installation
 
-appimage
+build from repo (master, commit 61f166ec40) using Emscripten 5.0.2
+
+---
+
+## #38211: Public method for tree-sitter based incremental selection
+
+**Labels:** needs:decision, lua, treesitter
+
+### Problem
+
+#36993 created/enhanced default mappings for incremental selection based on tree-sitter. However, they [use private module](https://github.com/neovim/neovim/blob/69419f8b3e76363d44348ac64d6550e34725f6ea/runtime/lua/vim/_core/defaults.lua#L460) for their functionality. This makes it less convenient/robust to:
+- Create custom mappings for this type of functionality.
+- Switch the priority of tree-sitter and LSP: first prefer LSP if there is an attached server that supports the method and fall back to tree-sitter otherwise. This approach is used in other parts of the editor, like semantic token highlighting having higher priority than tree-sitter.
+
+Previously with only LSP based incremental selection it was fairly straightforward to do with the presence of `vim.lsp.buf.selection_range()`.
+
+### Expected behavior
+
+One or more public methods for incremental selection.
+
+Based on [these methods](https://github.com/neovim/neovim/blob/69419f8b3e76363d44348ac64d6550e34725f6ea/runtime/lua/vim/treesitter/_select.lua#L563-L581), maybe something like `vim.treesitter.select` module with `parent()`, `child()`, `next()`, and `prev()` methods?
+
+Another approach can be a `vim.treesitter.select(opts)` function with `opts = { direction = 'parent'|'child'|'next'|'prev', count = integer }`.
+
+---
+
+## #38210: shada: cursor position ('") not restored on file reopen (regression in 0.11)
+
+**Labels:** needs:response, needs:repro, editor-state
+
+After closing and reopening a file, Neovim does not restore the cursor to the last position. `getpos('"')` always returns `[0, 0, 0, 0]` after restarting Neovim, even though the shada file is written correctly and contains the correct file path.
+
+**Steps to reproduce**
+
+```bash
+# Minimal reproduction with clean config
+NVIM_APPNAME=nvim_test nvim /tmp/testfile.txt
+# Navigate to line 5, then :qa
+NVIM_APPNAME=nvim_test nvim /tmp/testfile.txt
+# Expected: cursor on line 5
+# Actual: cursor on line 1
+```
+
+**Expected behavior**
+
+Cursor should be restored to the last position when reopening a file, as it worked in Neovim 0.10.x.
+
+**Actual behavior**
+
+Cursor always starts on line 1. `getpos('"')` returns `[0, 0, 0, 0]` after restart, even after explicit `:rshada!`.
+
+**Investigation findings**
+
+- shada file is written correctly on exit (verified via `xxd`)
+- File path in shada is byte-identical to `expand('%:p')` output
+- `BufLeave` and `VimLeave` autocommands fire correctly
+- `:wshada!` writes the file
+- `:rshada!` reads the file but mark remains `[0, 0, 0, 0]`
+- The `nvim-lastplace` plugin does not fix the issue
+- Problem is reproducible with a completely clean config (`NVIM_APPNAME=nvim_test`)
+- Problem occurs on any file, regardless of filetype or filesystem
+
+**Environment**
+
+```
+NVIM v0.11.6
+Build type: Release
+OS: Arch Linux
+Package: extra/neovim 0.11.6-1
+```
+
+**Additional context**
+
+This worked correctly on Neovim 0.10.x (Linux Mint). The shada directory `~/.local/share/nvim/shada/` did not exist and had to be created manually – it is unclear if this is related.
+
+---
+
+## #38143: Floating window sometimes not cleared when content and size updated
+
+**Labels:** bug-regression, display, has:bisected, floatwin
+
+### Problem
+
+When updating the height + content of floating windows relative to the cursor, sometimes the previous rows won't be cleared from the screen. This issue came to my attention in https://github.com/saghen/blink.cmp/issues/1932.  This issue showed up in neovim 0.12+ and cannot be reproduced on 0.11.
+
+<img width="626" height="274" alt="Image" src="https://github.com/user-attachments/assets/eef99e1e-4628-40ae-8034-b0ac38690488" />
+
+and from the reproduction below
+
+<img width="1492" height="358" alt="Image" src="https://github.com/user-attachments/assets/d0a91ff7-9462-45fa-89d7-12a71c6facba" />
+
+### Steps to reproduce
+
+The following code creates a floating window and moves it by one cell every event iteration, updating the content and height randomly. This seems to reliably produce atleast one uncleared line.
+
+Reproducing in blink.cmp is inconsistent, but can be achieved by getting completions with documentation immediately showing: `require('blink.cmp').setup({ completion = { documentation = { auto_show = true, auto_show_delay_ms = 0 } } })`. 
+
+```
+nvim --clean win-artifacting.lua
+:luafile %
+```
+
+```lua
+local anchor_from_buf = vim.api.nvim_create_buf(false, true)
+local anchor_from_win = vim.api.nvim_open_win(anchor_from_buf, false, {
+  relative = 'cursor',
+  row = 0,
+  col = 1,
+  anchor = 'NW',
+  width = 10,
+  height = 10,
+  style = 'minimal',
+})
+
+local function set_content(buf, line, height)
+  local lines = {}
+  for _ = 1, height do
+    table.insert(lines, line)
+  end
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+end
+
+vim.api.nvim_create_autocmd('CursorMoved', {
+  callback = vim.schedule_wrap(function()
+    local anchor_from_height = math.random(3, 10)
+    set_content(anchor_from_buf, 'cursor', anchor_from_height)
+    vim.api.nvim_win_set_height(anchor_from_win, anchor_from_height)
+    vim.api.nvim_win_set_config(anchor_from_win, { relative = 'cursor', row = 0, col = 1 })
+  end)
+})
+
+vim.api.nvim_win_set_cursor(0, { 19, 10 })
+vim.api.nvim_set_current_win(anchor_from_win)
+-- observe artifacting
+```
+
+### Expected behavior
+
+The floating window should be cleared from the screen
+
+### Nvim version (nvim -v)
+
+v0.12.0-nightly+c4fdd3b
+
+### Vim (not Nvim) behaves the same?
+
+unsure, uses different APIs
+
+### Operating system/version
+
+NixOS 26.05
+
+### Terminal name/version
+
+foot 1.25.0 & kitty 0.45.0
+
+### $TERM environment variable
+
+foot & xterm-kitty
+
+### Installation
+
+https://github.com/nix-community/neovim-nightly-overlay
+
+---
+
+## #38107: :restart works on remote machine
+
+**Labels:** server, ui-extensibility, lifecycle, remote, events
+
+### Problem
+
+https://github.com/neovim/neovim/issues/34367 future-proofs `:restart` so that
+
+1. restart is peformed by the server, before emitting the UI event, and
+2. the event itself provides the new-server address.
+
+## Problem
+
+- *remote* restart: if the UI client is on a different machine, it can't restart the server on the remote machine.
+
+
+
+### Expected behavior
+
+
+Handle `:restart` for various "remote" situations where possible.
+
+---
+
+## #38082: checkhealth vim.lsp: false warnings for filetypes from vim.filetype.add
+
+**Labels:** needs:design, lsp, filetype, checkhealth
+
+## Problem
+
+`checkhealth vim.lsp` warns about "Unknown filetype" for filetypes that Neovim can detect and assign, including built-in ones from `filetype.lua`.
+
+## Steps to reproduce
+
+```console
+nvim --clean --noplugin +'lua vim.filetype.add({extension={mdx="mdx"}}) vim.lsp.config("test",{cmd={"true"},filetypes={"mdx"}}) vim.lsp.enable("test")' +'checkhealth vim.lsp'
+```
+
+Output:
+
+`⚠️ WARNING Unknown filetype 'mdx'`
+
+## Expected behavior
+
+The healthcheck should recognize filetypes from the Lua filetype registry.
+
+Could depend on #38081 (exposing registered filetypes via a public API), which would give the healthcheck the correct data source and extingu9ish the warning.
+
+I'm also happy to open a PR for this if y'all deem this a legitimate issue.
+
+---
+
+## #38039: detect NVIM_LOG_FILE owned by root (was: "nvim.log appearing in CWD")
+
+**Labels:** ux, complexity:low, lifecycle, logging
+
+### Problem
+
+Starting nvim causes a `nvim.log` file to be written to the current working directory. I did a git bisect, and the error first appeared in abfe6c9ef7f4bd41c1306f3c70ead00e4afaa736, which makes sense. However, I read the commit description, and I don't think it was intentional that the log file is always written to the current working directory - `$NVIM_LOG_FILE` is *not* set, and `stdpath('log')` exists. I checked the diff, but my C knowledge is quite limited. If I had to guess, I would say that this change in `src/nvim/log.c`, line 81 is unintentional
+
+```c
+char *defaultpath = stdpaths_user_state_subpath("nvim.log", 0, true);
+```
+
+### Steps to reproduce
+
+```
+nvim --clean +q
+[[ -f nvim.log ]]
+```
+
+### Expected behavior
+
+I would expect the log file to remain in `stdpath('log') .. 'log'`
+
+### Nvim version (nvim -v)
+
+NVIM v0.12.0-dev-2404+gd9d8c660fd Build type: Release LuaJIT 2.1.1771261233
+
+### Vim (not Nvim) behaves the same?
+
+no
+
+### Operating system/version
+
+MacOS 26.3
+
+### Terminal name/version
+
+ghostty/kitty
+
+### $TERM environment variable
+
+xterm-ghostty
+
+### Installation
+
+brew
+
+---
+
+## #38035: ui2 (or similar): no stdout in headless mode
+
+**Labels:** io, lifecycle, ui2
+
+### Problem
+
+Attaching ui2 (or similar `ext_messages` UI) in headless mode probably doesn't make sense, but I believe it should not affect stdout in that case.
+
+The case is when I want to echo a message using a fully featured user instance (or if ui2 becomes default).
+
+Personally I have worked it around starting ui2 only if `0 < #vim.api.nvim_list_uis()`. Maybe something similar should be done instead on the Nvim side? I'm not sure at which level this can be fixed.
+
+### Steps to reproduce
+
+- `nvim --clean --headless --cmd "lua vim.ui_attach(vim.api.nvim_create_namespace('no-ui'), {ext_messages = true, ext_cmdline = true}, function() end)" -c 'echo 1 | quit'`
+- `nvim --clean --headless --cmd "lua require('vim._core.ui2').enable({})" -c 'echo 1 | quit'`
+- `nvim --clean --headless --cmd "lua if 0 < #vim.api.nvim_list_uis() then require('vim._core.ui2').enable({}) end" -c 'echo 1 | quit'`
+
+
+### Expected behavior
+
+`1` is present on stdout like with `nvim --clean --headless -c 'echo 1 | quit'`.
+
+### Nvim version (nvim -v)
+
+v0.12.0-dev-2401+g4d754d2704-dirty
+
+### Vim (not Nvim) behaves the same?
+
+n/a
+
+### Operating system/version
+
+Debian Sid
+
+### Terminal name/version
+
+alacritty
+
+### $TERM environment variable
+
+alacritty
+
+### Installation
+
+from repo
+
+---
+
+## #38034: plugins can check if editor state is "locked" (textlock, etc?)
+
+**Labels:** lua, has:plan, editor
+
+### Problem
+
+There is no way to check if Nvim is currently in some sort of lock state. Like `:h textlock` or `:h :map-expression`.
+
+There is `:h state()`, but it seems to only partially overlap with this "lock" situation.
+
+---
+
+The outline of the use case for this is along the lines of "asynchronously show text regardless of the current state". Like showing LSP progress in the floating window even if there is currently expression mapping executing (which can be not instant if it contains `vim.fn.getcharstr()`).
+
+### Expected behavior
+
+A `vim.in_lock()` (similar to `vim.in_fast_event()`) that returns `true` if the editor is locked (can't change buffer lines, etc.) and `false` otherwise.
+
+Another alternative might be enhancing `vim.fn.state()` to have a new character `l` to indicate "lock".
 
 ---
 
@@ -126,60 +503,6 @@ xterm-kitty
 ### Installation
 
 Arch User Respository (AUR)
-
----
-
-## #38008: ui2: statusline is covered when `laststatus=3`
-
-**Labels:** bug-regression, has:bisected, ui2
-
-### Problem
-
-https://github.com/neovim/neovim/issues/36420 no longer happens.
-
-### Steps to reproduce
-
-- `nvim --clean`
-- `:lua require('vim._core.ui2').enable {}`
-- `:set laststatus=3`
-- `:hi`
-- `g<`
-
-Issue bisected to [16495e686371d45f02eafff5aa3216ca15d5f735](https://github.com/neovim/neovim/commit/16495e686371d45f02eafff5aa3216ca15d5f735) (#37905)
-
----
-
-## #37994: ui2: messages.lua:310: Invalid 'end_col': out of range
-
-**Labels:** ui2
-
-## Problem
-
-Describe the problem (concisely).
-
-## Steps to reproduce
-
-cd `/path/to/neovim`
-```
-nvim --clean --cmd "lua require('vim._core.ui2').enable({})" src/nvim/main.c +'map <space> <Cmd>Inspect<CR>'
-```
-Then type `<space><space>`:
-```
-Error in "msg_show" UI event handler (ns=nvim.ui2):                                                 
-Lua: runtime/lua/vim/_core/ui2/messages.lua:310: Invalid 'end_col': out of range
-```
-
-## Expected behavior
-No error.
-
-## System info
-
-- Nvim version (nvim -v): `v0.12.0-dev-2377 gd79a9dcd42` neovim/neovim@d79a9dcd42
-- Vim (not Nvim) behaves the same?: ?
-- Operating system/version: Linux 6.18.9-zen1-2-zen
-- Terminal name/version: kitty
-- $TERM environment variable: `xterm-kitty`
-- Installation: ?
 
 ---
 
@@ -261,163 +584,6 @@ st-256color
 ### Installation
 
 system package manager (archlinux)  and from github release page
-
----
-
-## #37982: PTY output may still be dropped after process exit on Linux
-
-**Labels:** job-control, terminal, channels-rpc, platform:linux
-
-### Problem
-
-On Linux, the following check in `flush_stream()` isn't sufficient to ensure that all PTY output is received:
-
-https://github.com/neovim/neovim/blob/94c21c22dcf6b1afdb25a250c08bd858d481429b/src/nvim/event/proc.c#L394-L404
-
-It seems that even if `poll()` doesn't return any events after process exit, PTY master can still have more output. This problem is present both with and without #37401.
-
-### Steps to reproduce
-
-Since #37918 this started happening occasionally on Linux CI jobs other than ASAN/TSAN. Example test failure:
-```
-FAILED   test/functional/terminal/tui_spec.lua @ 2552: TUI no assert failure on deadly signal #21896
-test/functional/terminal/tui_spec.lua:2554: Row 1 did not match.
-Expected:
-  |*Nvim: Caught deadly signal 'SIGTERM'              |
-  |*                                                  |
-  |*[Process exited 1]^                                |
-  |                                                  |
-  |                                                  |
-  |                                                  |
-  |{5:-- TERMINAL --}                                    |
-Actual:
-  |*                                                  |
-  |*[Process exited 1]^                                |
-  |*                                                  |
-  |                                                  |
-  |                                                  |
-  |                                                  |
-  |{5:-- TERMINAL --}                                    |
-```
-There are also several other test that may fail due to this.
-
-### Expected behavior
-
-Full PTY output should be received by the terminal buffer.
-
-It seems that the proper way to detect PTY master EOF on Linux is to call `read()` and check if `errno` is `EIO`.
-
-However, then there is another problem that if there is another program running in the PTY, EOF only happens on PTY master when that process exits as well.
-
-It seems that some terminal emulators (e.g. kitty) do wait for all processes in the PTY to exit (e.g. after `:detach` in Nvim, kitty doesn't exit until the server is also stopped), while some other terminal emulators don't. This is also mentioned in tui_spec.lua:
-
-https://github.com/neovim/neovim/blob/94c21c22dcf6b1afdb25a250c08bd858d481429b/test/functional/terminal/tui_spec.lua#L205-L209
-
-Making Nvim's builtin terminal do this can be a bit hard and can potentially break plugins, as it's not clear how this should interact with `on_exit` and `jobwait()` etc..
-
-### Nvim version (nvim -v)
-
-v0.12.0-dev-2374+g94c21c22dc
-
-### Vim (not Nvim) behaves the same?
-
-Cannot verify as issue is hard to reproduce locally
-
-### Operating system/version
-
-GitHub Actions Ubuntu 24.04
-
-### Terminal name/version
-
-N/A
-
-### $TERM environment variable
-
-N/A
-
-### Installation
-
-N/A
-
----
-
-## #37944: :detach, :restart are broken on Windows
-
-**Labels:** platform:windows, channels-rpc, lifecycle, remote
-
-### Problem
-
-We have `chan.detach` internal feature which allows the TUI channel to close without triggering the server to self-close: https://github.com/neovim/neovim/blob/6e1745e96e3d74ee7958904b81a3f8ebfe404184/src/nvim/channel.h#L34-L36
-
-However, this is not working on Windows:
-
-https://github.com/neovim/neovim/blob/6bb6b479332727852052baa6c1ea0801e776895e/test/functional/terminal/tui_spec.lua#L119-L126
-
-This also [affects `:restart`](https://github.com/neovim/neovim/pull/35223#issuecomment-3920230868).
-
-### Expected behavior
-
-make it so
-
----
-
-## #37936: lsp: push and pull diagnostics override each other
-
-**Labels:** bug-regression, lsp, has:bisected
-
-### Problem
-
-Pull diagnostics (from `textDocument/diagnostic`) and push diagnostics (from `textDocument/publishDiagnostics`) use the same namespace, which is a problem when using language servers that publish two different sets of diagnostics on push vs pull, like rust-analyzer (see https://github.com/rust-lang/rust-analyzer/issues/18709#issuecomment-2551394047).
-
-A `git bisect` pointed to https://github.com/neovim/neovim/pull/37221 as the first offending commit.
-
-### Steps to reproduce
-
-- `cargo new --lib repro && cd repro`
-- create this `repro.lua`:
-
-```lua
-vim.lsp.config("rust_analyzer", {
-  cmd = { "rust-analyzer" },
-  root_markers = { "Cargo.toml", ".git" },
-})
-
-vim.lsp.enable("rust_analyzer")
-```
-- `printf 'fn foo() {}\n' > ./src/lib.rs`
-- `nvim -u repro.lua ./src/lib.rs`
-- ‼️ the diagnostic is shown, then immediately removed:
-
-https://github.com/user-attachments/assets/3a4bc8ab-05c1-4df9-8351-aa144620420e
-
-
-### Expected behavior
-
-The diagnostic is not removed.
-
-### Nvim version (nvim -v)
-
-NVIM v0.12.0-nightly+29a46a1
-
-### Vim (not Nvim) behaves the same?
-
-N/A
-
-### Operating system/version
-
-macOS 10.15
-
-### Terminal name/version
-
-N/A
-
-### $TERM environment variable
-
-N/A
-
-### Installation
-
-Nix flake
 
 ---
 
@@ -780,149 +946,13 @@ Homebrew
 
 ---
 
-## #37867: marktree.c:378: unintersect_node: Assertion `seen' failed (Debug build)
-
-**Labels:** has:repro, has:backtrace, bug-crash, marks
-
-### Problem
-
-Already reported as https://github.com/neovim/neovim/issues/27196 but the issue is locked.
-
-nvim aborts with an assertion failure in marktree.c.
-
-I used AFL++ to fuzz nvim and find several repros (or several variations of the same repro).
-
-### Steps to reproduce
-
-Save this as seen-repro.lua:
-
-```
-local namespace_id = vim.api.nvim_create_namespace('extmark-fuzz')
-
-local lines = {}
-for _ = 1, 301 do
-    table.insert(lines, string.rep('o', 48))
-end
-vim.api.nvim_buf_set_lines(0, 48, 48, false, lines)
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 190, 48, {
-    right_gravity = false,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 48, 48, {})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 190, 48, {
-    right_gravity = false,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 166, 48, {
-    right_gravity = false,
-    end_row = 166,
-    end_col = 48,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 48, 48, {
-    end_row = 48,
-    end_col = 48,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 48, 48, {
-    end_row = 48,
-    end_col = 48,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 48, 48, {
-    end_row = 255,
-    end_col = 48,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 131, 48, {
-    right_gravity = false,
-    end_row = 48,
-    end_col = 48,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 131, 48, {
-    right_gravity = false,
-    end_row = 48,
-    end_col = 48,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 48, 48, {
-    end_row = 131,
-    end_col = 48,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 48, 48, {
-    right_gravity = false,
-    end_row = 216,
-    end_col = 48,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 172, 48, {
-    right_gravity = false,
-    end_row = 51,
-    end_col = 48,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 131, 48, {
-    right_gravity = false,
-    end_row = 131,
-    end_col = 48,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 156, 48, {
-    right_gravity = false,
-    end_row = 131,
-    end_col = 48,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 135, 48, {
-    right_gravity = false,
-    end_row = 166,
-    end_col = 48,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 172, 48, {
-    right_gravity = false,
-    end_row = 250,
-    end_col = 48,
-})
-
-vim.api.nvim_buf_set_extmark(0, namespace_id, 48, 48, {
-    right_gravity = false,
-    end_row = 143,
-    end_col = 48,
-})
-
-vim.api.nvim_buf_set_lines(0, 48, 187, false, {})
-
-vim.cmd.qall({ bang = true })
-```
-
-Execute with:
-
-```
-./build/bin/nvim -u NONE -i NONE -n --headless --cmd "source seen-repro.lua"
-```
-
-It works fine with `-S seen-repro.lua` also, I've just been using --cmd because it runs earlier in startup, as I understand it.
-
-Any attempt I've made to simplify by removing an individual `nvim_buf_set_extmark` call has resulted in no repro.
-
-Also, every version of the repro that I've collected follows the same pattern: Add lines to the file, add several extmarks with different parameters, in some cases delete an single extmar
-
-*[truncated]*
-
----
-
 ## #37862: `:nospecial cmd [args...]` invokes cmd with literal args
 
 **Labels:** needs:discussion, cmdline-mode, editor
 
 ## Problem
 
-No way to invoke a command with a "raw", literal arg, without dealing with command-specific escaping. 
+No way to invoke a command with a "raw", literal arg, without dealing with command-specific escaping, bar `|`, quote `|`, etc.
 
 Some things like `fnameescape()` exist to deal with this, but that only works if the command expects a filename. And it depends on escaping rules, which can be fragile.
 
@@ -1480,50 +1510,6 @@ The same behavior as `basename` in the shell or `path.basename` in [Node.Js #pat
 
 ---
 
-## #37696: LSP: `Client:supports_method("callHierarchy/[incom|outgo]ingCalls")` should have same result as "textDocument/prepareCallHierarchy"
-
-**Labels:** lsp
-
-### Problem
-
-The LSP spec says that "callHierarchy/incomingCalls" and "callHierarchy/outgoingCalls" don't have their own capabilities; instead, servers with the "textDocument/prepareCallHierarchy" capability support them.
-
-Thus, `Client:supports_method("callHierarchy/[incom|outgo]ingCalls")` in practice always returns true since no server would advertise capabilities under those names.
-
-Calling something like `vim.lsp.buf_request_sync("callHierarchy/incomingCalls)` will thus always send requests to all servers even if they explicitly do not support it by not advertising "textDocument/prepareCallHierarchy".
-
-### Steps to reproduce using "nvim --clean -u minimal_init.lua"
-
-```lua
----@type vim.lsp.Config
-return {
-	cmd = { 'stylua', '--lsp' },
-	filetypes = { 'lua' },
-}
-```
-
-### Expected behavior
-
-The result of `Client:supports_method("callHierarchy/[incom|outgo]ingCalls")` should have the same result as if called with "textDocument/prepareCallHierarchy"
-
-### Nvim version (nvim -v)
-
-NVIM v0.12.0-dev-2186+gddd1bf757f
-
-### Language server name/version
-
-any that doesn't support prepareCallHierarchy, like stylua
-
-### Operating system/version
-
-macOS 26
-
-### Log file
-
-_No response_
-
----
-
 ## #37691: `textDocument/documentLink` improvements
 
 **Labels:** lsp
@@ -1718,31 +1704,6 @@ _G.my_yank = function(type)
 
 ---
 
-## #37653: ui2: spoof cmdline_block events when cmdline is entered during expanded cmdline?
-
-**Labels:** ui2
-
-## Problem
-
-## Steps to reproduce
-```
-nvim --clean --cmd "lua require('vim._extui').enable{}" --cmd "cnoremap <c-cr> <cmd>lua vim.api.nvim_feedkeys('\r:', 'nt', false)<cr>"
-```
-
-## Expected behavior
-`<c-cr>` should show message then enter cmdline mode again. (maybe for similar reason `gQ`/exmode don't work well with extui) 
-
-## System info
-
-- Nvim version (nvim -v): `v0.12.0-dev-2160 g1355640d6a-dirty` neovim/neovim@1355640d6a
-- Vim (not Nvim) behaves the same?: ?
-- Operating system/version: Linux 6.18.7-zen1-1-zen
-- Terminal name/version: kitty
-- $TERM environment variable: `xterm-kitty`
-- Installation: ?
-
----
-
 ## #37638: failed to get cwd of window-ID in other tabpage
 
 **Labels:** window
@@ -1921,167 +1882,6 @@ emerge / make install
 
 ---
 
-## #37586: Make `:packadd!` not result into 'runtimepath' re-caching when using Lua's `require()`
-
-**Labels:** performance, packages
-
-### Problem
-
-Executing `:packadd!` with 'pack/*/opt' plugins intentionally updates 'runtimepath' value. However, it does so in a way that later prompts for reparsing and recaching of 'runtimepath' value ([here](https://github.com/neovim/neovim/blob/c28113dd9d09b661061d25c147e39efadc6e700b/src/nvim/runtime.c#L656), I believe). Since `:packadd!` already knows how to insert entries into 'runtimepath' value, it might be reasonable for it to also more directly update the parsed/cached value.
-
----
-
-The current behavior has visible performance downsides when using with `vim.pack.add`. Here is how to reproduce them:
-
-1. Create a separate config directory (like '~/.config/nvim-packadd-bench').
-2. Inside of it, add the 'setup-plugins.lua' file that sets up many similar plugins to later be `:packadd!`ed:
-
-    <details><summary>Contents of 'setup-plugins.lua'</summary>
-
-    ```lua
-    local create_plugin = function(name, path)
-      local cmd = name:sub(1, 1):upper() .. name:sub(2)
-
-      -- 'lua/' module
-      local lua_lines = {
-        string.format('local run = function() _G.value = "%s" end', cmd),
-        string.format('local config = function() _G.%s = { "%s" } end', name, cmd),
-        'return { config = config, run = run }',
-      }
-
-      vim.fn.mkdir(vim.fs.joinpath(path, 'lua'), 'p')
-      vim.fn.writefile(lua_lines, vim.fs.joinpath(path, 'lua', name .. '.lua'))
-
-      -- 'plugin/' script
-      local plugin_lines = {
-        -- Define one user command
-        string.format('vim.api.nvim_create_user_command("%s", function() require("%s").run() end, {})', cmd, name),
-        -- Define one `<Plug>` keymap
-        string.format('vim.keymap.set("n", "<Plug>(%s)", function() require("%s").run() end)', cmd, name),
-      }
-
-      vim.fn.mkdir(vim.fs.joinpath(path, 'plugin'), 'p')
-      vim.fn.writefile(plugin_lines, vim.fs.joinpath(path, 'plugin', name .. '.lua'))
-    end
-
-    local pack_path = vim.fs.joinpath(vim.fn.stdpath('config'), 'pack', 'demo', 'opt')
-    vim.fn.mkdir(pack_path, 'p')
-
-    local n_plugins = 10
-    for i = 1, n_plugins do
-      local name = string.format('plugin%02d', i)
-      local path = vim.fs.joinpath(pack_path, name)
-      create_plugin(name, path)
-    end
-    ```
-
-    </details>
-
-3. Run `NVIM_APPNAME=nvim-packadd-bench nvim -l setup-plugins.lua`.
-4. Create an 'init.lua' file for "grouped `:packadd`" config:
-
-    ```lua
-    for i = 1, 10 do
-      vim.cmd('packadd! plugin' .. string.format('%02d', i))
-    end
-
-    for i = 1, 10 do
-      require('plugin' .. string.format('%02d', i)).config()
-    end
-    ```
-5. Run `NVIM_APPNAME=nvim-packadd-bench nvim --startuptime startup-grouped`.
-6. Replace content of 'init.lua' with "separate `:packadd`" config:
-
-    ```lua
-    for i = 1, 10 do
-      vim.cmd('packadd! plugin' .. string.format('%02d', i))
-      require('plugin' .. string.format('%02d', i)).config()
-    end
-    ```
-7. Run `NVIM_APPNAME=nvim-packadd-bench nvim --startuptime startup-separate`.
-8. Observe difference in `require` t
-
-*[truncated]*
-
----
-
-## #37548: Diagnostic virtual_lines persists after diagnostic is fixed/removed
-
-**Labels:** has:plan, diagnostic
-
-### Problem
-
-When using the example from `:h diagnostic-on-jump-example` to show virtual lines when jumping to diagnostics, the diagnostic and virtual lines persist even after the diagnostic has been fixed or removed.
-
-![Image](https://github.com/user-attachments/assets/9eae7d41-320d-40a7-b98a-78e99c2e145c)
-
-As shown in the gif above, the virtual lines persist on the line where the diagnostic was even though trying to jump to it shows 'No more valid diagnostics to move to'.
-
-### Related
-
-This issue was discovered while working on PR #37516.
-
-### Steps to reproduce
-
-`nvim --clean -u minimal.lua` with the following minimal config using any language server (tested with lua_ls, basedpyright and rust-analyzer):
-
-```lua
-vim.lsp.config.basedpyright = {
-  cmd = { "basedpyright-langserver", "--stdio" },
-  filetypes = { "python" },
-}
-
-vim.lsp.enable({ "basedpyright" })
-
-local virt_lines_ns = vim.api.nvim_create_namespace "on_diagnostic_jump"
-
---- @param diagnostic? vim.Diagnostic
---- @param bufnr integer
-local function on_jump(diagnostic, bufnr)
-  if not diagnostic then return end
-
-  vim.diagnostic.show(
-    virt_lines_ns,
-    bufnr,
-    { diagnostic },
-    { virtual_lines = { current_line = true }, virtual_text = false }
-  )
-end
-
-vim.diagnostic.config({ jump = { on_jump = on_jump } })
-```
-Create an error and jump to it with `[d` or `]d`. Then fix/remove the error and move to the line where the diagnostic was.
-
-### Expected behavior
-
-The virtual lines should clear once the diagnostic has been fixed/removed.
-
-### Nvim version (nvim -v)
-
-v0.12.0-dev-2032+gdddc359213
-
-### Vim (not Nvim) behaves the same?
-
-No, Vim 9.1
-
-### Operating system/version
-
-Fedora Linux 43
-
-### Terminal name/version
-
-Ghostty 1.3.0-dev+0000000
-
-### $TERM environment variable
-
-xterm-ghostty
-
-### Installation
-
-Build from repo
-
----
-
 ## #37535: terminal/vterm: character is missing from the display when a single output exceeds 32,768 characters in length
 
 **Labels:** platform:windows, terminal
@@ -2178,37 +1978,6 @@ pressing `)` should take into account the ` ` final dot and use it to differenti
 
 ---
 
-## #37512: treesitter: flicker when scroll in file contain many injection regions
-
-**Labels:** needs:response, treesitter
-
-## Problem
-
-## Steps to reproduce
-
-Flicker on scroll
-```sh
-yes | head -n 100 | sed 's/.*/vim.cmd[[noremap <silent> <buffer> <CR> <C-\\\\><C-N>:call <SID>CR()<CR>]]/' > repro.lua
-VIMRUNTIME=runtime build/bin/nvim --clean repro.lua
-```
-Related: https://github.com/neovim/neovim/issues/32660
-
-https://github.com/user-attachments/assets/0f89d205-772b-4492-a37d-d1b5e1375ca1
-
-## Expected behavior
-No flicker on scroll.
-
-## System info
-
-- Nvim version (nvim -v): `v0.12.0-dev-2086 gc39d18ee93` neovim/neovim@c39d18ee93
-- Vim (not Nvim) behaves the same?: ?
-- Operating system/version: Linux 6.18.5-zen1-1-zen
-- Terminal name/version: kitty
-- $TERM environment variable: `xterm-kitty`
-- Installation: ?
-
----
-
 ## #37447: extmarks: terminal highlight is hidden when insert extmark with `virt_text_pos=inline`
 
 **Labels:** terminal, display, marks
@@ -2245,125 +2014,6 @@ end, 100)
 - Terminal name/version: kitty
 - $TERM environment variable: `xterm-kitty`
 - Installation: ?
-
----
-
-## #37423: `:trust /path/to/file` to trust non-current buffer
-
-**Labels:** security, editor-state, editor
-
-## Problem
-
-When `vim.secure.read()` prompts about an untrusted file (e.g., `.nvim.lua` via `exrc`, or `.lazy.lua` via lazy.nvim), the user must:
-
-1. Choose `(v)iew` to open the file
-2. Ensure they are in the correct buffer
-3. Run `:trust`
-
-The `:trust` command trusts the **current buffer**, not the file that triggered the prompt. This creates UX friction because:
-
-- Users may accidentally trust the wrong file if they switch buffers
-- The workflow is unnecessarily cumbersome
-
-## Current Behavior
-
-```
-exrc: Found untrusted code. To enable it, choose (v)iew then run `:trust`:
-/path/to/.nvim.lua
-(i)gnore, (v)iew, (d)eny:
-```
-
-After choosing `(v)iew`:
-- The file opens in a split
-- User must manually verify they're in the correct buffer
-- `:trust` only works on the current buffer
-
-If the user runs `:trust` in the wrong buffer (e.g., the original file they were editing), they trust the wrong file.
-
-## Expected Behavior
-
-Option A: `:trust` should trust the file that triggered the prompt, regardless of current buffer.
-
-Option B: Allow `:trust /path/to/file` syntax for `allow` action, so users can explicitly specify which file to trust.
-
-Currently, `vim.secure.trust({action="allow", path=...})` throws an error:
-```lua
-assert(not path, '"path" is not valid when action is "allow"')
-```
-
-## Security Considerations
-
-In [Discussion #27627](https://github.com/neovim/neovim/discussions/27627), it was mentioned that trusting non-current files is not allowed for security reasons (e.g., a malicious process may change content while typing the command).
-
-I'd like to offer some thoughts on this:
-
-1. **Hash-based trust already provides protection**: The trust database stores SHA256 hashes. If a file is modified after trusting, the hash won't match on next load, and Neovim will prompt again.
-
-2. **Allowing path specification could be equally safe**: The hash would still be computed at the moment of trust, providing the same protection as the current buffer-based approach.
-
-3. **Current UX risk**: Users may accidentally trust the wrong file by running `:trust` in the wrong buffer, which could be a greater practical risk.
-
-4. **API consistency**: `vim.secure.trust({action="deny", path=...})` allows specifying a path. Allowing the same for `allow` would make the API more consistent.
-
-## Steps to Reproduce
-
-1. Enable `exrc` or use lazy.nvim with `local_spec = true`
-2. Create a `.nvim.lua` or `.lazy.lua` file in a project directory
-3. Open Neovim in that directory
-4. When prompted, choose `(v)iew`
-5. Switch to a different buffer (e.g., `:b#`)
-6. Run `:trust`
-7. **Result**: The wrong file is trusted
-
-## Proposed Solution
-
-Modify `vim/secure.lua` to:
-
-1. Remove the restriction on `path` parameter for `allow` action
-2. Or, store the "pending trust" file path when the prompt is shown, and have `:trust` (without arguments) trust that file
-
-```lua
--- Current:
-if action == 'allow' then
-    assert(not path, '"path" is not valid when action is "allow"')
-end
-
--- Proposed:
--- Remove th
-
-*[truncated]*
-
----
-
-## #37388: difftool: closing the quickfix window resets the current quickfix list
-
-**Labels:** plugin, complexity:low, diff
-
-### Problem
-
-My first instinct when using this tool on my small laptop display is to find a
-file i want to look at in the quickfix window, hit enter on it to diff it and close the qf
-window so I have more display real estate to view the diff windows vertically.  That use
-pattern is not currently supported. What happens is:
-
-When closing the quickfix window opened by the plugin, the autocmds created by the plugin
-are deleted and an empty list is added to the quickfix history (`:h :chistory`). Despite
-the original quickfix list generated still technically being available (via `:colder`),
-this effectively ends the usefulness of that list because the `BufWinEnter` autocmd was
-what triggered the file diffing when navigating the list.  After that it just becomes an
-ordinary quickfix list, i.e. `:cnext` just shows the file.
-
-This is intentional.  However does it need to be?  Perhaps it is for the sake of cleanup?
-
-If you drop the `WinClosed` autocmd that is on the quickfix window (it was calling the
-`cleanup_layout` function and also closing the left diff window) and remove all code
-referencing `layout.qf_win` inside `cleanup_layout`, then that quickfix list remains functional
-when closing and reopening the qf window--at least until one of the diff windows is closed
-(which also does the cleanup).  Maybe there is a use case where this would cause a problem?
-
-### Expected behavior
-
-Closing the quickfix window has no effect on the functioning of the difftool.
 
 ---
 
@@ -2592,5 +2242,279 @@ When I call function `utf8_normalize()`, it will give error `cannot resolve symb
 ### Expected behavior
 
 FFI calls to utf8proc to work on Windows, like on MacOS and Linux
+
+---
+
+## #37288: lsp: add API to toggle inline completion virtual text rendering
+
+**Labels:** api, needs:design, lsp, completion
+
+### Problem
+
+vim.lsp.inline_completion.enable(false) disables the entire inline completion capability,
+including its lifecycle, internal state, autocmds, and pending requests.
+
+This is too coarse for UI integration scenarios where users only want to temporarily hide
+the inline completion virtual text (“ghost text”) while keeping the capability active.
+
+A common setup is using Copilot both as a completion source (e.g. via cmp/Blink)
+and as an LSP inline completion provider. In this case, both systems may render
+virtual text simultaneously, resulting in duplicated suggestions
+(popup menu + inline ghost text), which is visually distracting and redundant.
+
+Currently, there is no way to hide only the inline completion rendering without
+disabling the entire capability.
+
+### Expected behavior
+
+Provide an API to toggle rendering of inline completion virtual text independently
+from the inline completion capability itself.
+
+For example, an API that allows users to temporarily hide and re-enable inline
+completion ghost text without affecting requests, state, or accept/select behavior.
+
+This would allow inline completion to integrate cleanly with completion menus:
+
+When a completion menu opens, inline completion virtual text can be hidden
+
+When the menu closes, inline completion virtual text can be shown again
+
+Such an API would address a UI-only concern without requiring heavy capability
+enable/disable cycles, making inline completion easier and safer to integrate
+with other completion UIs.
+
+For example, an API usage could look like:
+
+```lua
+-- Hide inline completion virtual text (rendering only)
+vim.lsp.inline_completion.display(false)
+
+-- Re-enable inline completion virtual text
+vim.lsp.inline_completion.display(true)
+```
+
+---
+
+## #37274: provide a mechanism to override terminfo features in configuration
+
+**Labels:** tui
+
+### Problem
+
+Several early issues were opened against Neovim relating to the removal of Vim's `t_xx` commands, which allowed users to override unwanted UI behavior, in particular the "alternate screen" usage that makes on-screen information vanish into the ether on quit or suspend: #3432 #4381 It seems that the advice on those tickets was that it wasn't the job of Neovim to provide a mechanism to disable this functionality because if people wanted to turn off "alternate screen" then they could just compile a personalized terminfo with `smcup` and `rmcup` capabilities disabled.
+
+Unfortunately this workaround does not work on Windows, because as per #26221, unibilium has a bug in that it opens compiled terminfo files without the `O_BINARY` flag, which means they cannot be parsed and then the Neovim TUI falls back on built-in definitions anyway. Although there is a change proposed for unibilium which would fix this bug, the ticket was closed as WONTFIX because unibilium is apparently being deprecated.
+
+This means there is no way for Windows users to get classic vi behavior where quitting the application leaves the text on-screen unless they switch their TERM to `linux` or `ansi`, which they would only know to do if they read through `terminfo_builtin.h`. Once unibilium is removed from build altogether, then this issue will start to affect users on WSL, Linux and other platforms too.
+
+### Expected behavior
+
+If the end goal is to move away from externally-provided terminfo and just use a controlled set of built-ins, then I think perhaps the idea of providing some alternative to the `t_xx` settings should be revisited. At least I think it would be useful to consider adding functionality to disable "alternate screen". This is particularly relevant for usage as EDITOR/VISUAL in a command-line workflow where it can be helpful to scroll back up to see previously-edited files, or when suspending the editor with ^Z to do something while referencing the text you were just editing (unfortunately also not working on Windows, but that's a separate issue: #6660).
+
+---
+
+## #37246: API for getting and updating the `cwd` of a terminal buffer
+
+**Labels:** api, terminal, has:plan
+
+### Problem
+
+Hello,
+
+When saving terminals inside sessions, they get restored with their "original" working directory. There's no way to "update" the directory once a term is created. To be clear, I'm not referring to `cd` - it changes the directory within the shell, but vim "can't see it" (to the extent of updating that buffer's `cwd`), and that's exactly the point of this issue.
+
+Additionally, an API for getting the working directory would also be useful. Currently, one has to parse the buffer's URI. My concern with this solution is mostly cross compatibility across Unix and windows (though might not be a big deal in practice...)
+
+Related issues:
+- https://github.com/neovim/neovim/issues/3294
+- https://github.com/neovim/neovim/issues/3278
+
+To be 100% clear with the scenario I'm talking about:
+1. `nvim --clean`
+2. `:terminal`
+3. `:mksession`
+4. `cd foo/bar` inside terminal
+5. `mksession!` - Oh no, the terminal does not get saved with `foo/bar` as its directory!
+
+### Expected behavior
+
+- `cwd` (?) could be a buffer local variable for terminals
+- Assigning it to a value would somehow update the buffer's `cwd` (and its URI (?), so it can be restored)
+- Would allow creating an autocmd to update the `cwd` with `TermRequest` + `OSC 7`
+
+Alternatively, an API function could be exposed (creating functions just for that sounds awkward, but I'm not familiar with the terminal internals to make a competent proposal)
+
+---
+
+## #37243: Lua Type Incompatible Annotations - `nvim_get_hl` and `nvim_set_hl`
+
+**Labels:** documentation, api
+
+### Problem
+
+As far as I can tell this block of code is safe to run, but you wouldn't know it if you call lua-language-server or llscheck
+
+```lua
+local name = "Normal"
+local highlight = vim.api.nvim_get_hl(0, { name = name, link = false })
+vim.api.nvim_set_hl(0, name, highlight)
+```
+
+It errors with:
+
+```
+Diagnostics:
+Cannot assign `vim.api.keyset.get_hl_info` to parameter `vim.api.keyset.highlight`.
+- `vim.api.keyset.get_hl_info` cannot match `vim.api.keyset.highlight`
+- Type `vim.api.keyset.get_hl_info` cannot match `vim.api.keyset.highlight`
+- Type `vim.api.keyset.hl_info.base` cannot match `vim.api.keyset.highlight` [param-type-mismatch
+```
+
+`vim.api.nvim_set_hl` takes a `vim.api.keyset.highlight` but not a `vim.api.keyset.get_hl_info`, hence the error
+
+### Steps to reproduce
+
+Load Neovim with lua-language-server enabled and/or run llscheck with Neovim's lua library in the runtime. And then this block will error:
+
+```lua
+local name = "Normal"
+local highlight = vim.api.nvim_get_hl(0, { name = name, link = false })
+vim.api.nvim_set_hl(0, name, highlight)
+```
+
+### Expected behavior
+
+`nvim_set_hl` should be able to accept the input of `nvim_get_hl`. As for how to go about it, we could make `vim.api.keyset.highlight` inherit from `vim.api.keyset.get_hl_info` or change `vim.api.nvim_set_hl` to accept either argument
+
+### Nvim version (nvim -v)
+
+NVIM v0.12.0-dev-1929+gf4f60f6a19
+
+### Vim (not Nvim) behaves the same?
+
+n/a
+
+### Operating system/version
+
+WSL, Ubuntu
+
+### Terminal name/version
+
+bash
+
+### $TERM environment variable
+
+screen-256color
+
+### Installation
+
+Compiled
+
+---
+
+## #37220: doc: numbered list items are incorrect in HTML documentation
+
+**Labels:** documentation, has:bisected
+
+### Problem
+
+In the generated HTML documentation, many list item numbers are incorrect. For example, in `starting.html` (https://neovim.io/doc/user/starting.html#_initialization):
+
+<img width="787" height="456" alt="Image" src="https://github.com/user-attachments/assets/e31a4a1e-3a04-43fd-8625-059cd5fdf0f4" />
+
+<br/>
+<br/>
+
+This issue appeared due to d5cfca5b768c800721db7174a9af94cc75bea71f
+
+Here is a script that detects suspicious list items in the generated HTML:
+
+<details>
+  <summary>Python script</summary>
+
+```python
+import sys
+from bs4 import BeautifulSoup
+
+
+def main():
+    total = 0
+
+    for arg in sys.argv[1:]:
+        with open(arg, "r", encoding="utf-8") as f:
+            soup = BeautifulSoup(f, "html.parser")
+
+        res = find_lone_li_num(soup)
+        if res:
+            print_result(arg, res)
+        total += len(res)
+
+    print("=" * 80)
+    print(f"Total lone num list elements found: {total}")
+
+
+def find_lone_li_num(soup):
+    res = []
+    for d in soup.select(".help-li-num"):
+        sibs = d.parent.select(".help-li-num")
+        if len(sibs) == 1:
+            res.append(d.get_text())
+    return res
+
+
+def print_result(path, res):
+    print("=" * 80)
+    print(f"file {path} has {len(res)} lone num list elements:")
+    for item in res:
+        print("-" * 80)
+        print(item)
+
+
+if __name__ == "__main__":
+    main()
+```
+</details>
+
+Which highlights many potential instances of this issue:
+
+```bash
+> python detek.py doc/build/doc/user/*.html
+[...]
+================================================================================
+Total lone num list elements found: 108
+```
+
+<details>
+  <summary>(Full output)</summary>
+
+```
+================================================================================
+file doc/build/doc/user/filetype.html has 18 lone num list elements:
+--------------------------------------------------------------------------------
+ Create your user runtime directory.  You would normally use the first
+      item of the 'runtimepath' option.  Then create the directory "ftdetect"
+      inside it.  Example for Unix::!mkdir -p ~/.config/nvim/ftdetect
+
+--------------------------------------------------------------------------------
+ Create a file that contains an autocommand to detect the file type.
+      Example:au BufRead,BufNewFile *.mine		set filetype=mine
+
+--------------------------------------------------------------------------------
+ To use the new filetype detection you must restart Vim.
+
+--------------------------------------------------------------------------------
+ Create your user runtime directory.  You would normally use the first
+      item of the 'runtimepath' option.  Example for Unix::!mkdir -p ~/.config/nvim
+
+--------------------------------------------------------------------------------
+ Create a file that contains autocommands to detect the file type.
+      Example:" my filetype file
+if exists("did_load_filetypes")
+  finish
+endif
+augroup filetypedetect
+  au! BufRead,BufNewFile *.mine		setfiletype m
+
+*[truncated]*
 
 ---

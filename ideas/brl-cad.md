@@ -1,11 +1,66 @@
 # BRL-CAD — Project Ideas
 
 **Source:** https://github.com/opencax/GSoC/issues?q=is%3Aissue+is%3Aopen+label%3A%22GSoC+2026%22
-**Scraped:** 2026-02-22T23:28:47.616972
+**Scraped:** 2026-03-10T16:58:40.316047
+
+---
+
+## #117: OpenSCAD to JS with ManifoldCAD
+
+**Labels:** Difficulty: Medium, Difficulty: Hard, Lang: Javascript, Size: Medium (175h), Size: Long (350h), Project: Manifold, GSoC 2026, Lang: TypeScript
+
+## Outline
+
+Write a compiler that compiles OpenSCAD to js, and uses ManifoldCAD's APIs for geometry.
+
+## Details
+
+We want to allow the use of OpenSCAD's libraries within ManifoldCAD. To do this, we need a compiler that compiles OpenSCAD code to js, and that should use ManifoldCAD's APIs for computing the geometries.
+
+This is related to the openscad to jscad design translator in https://github.com/jscad/OpenJSCAD.org/tree/master/packages/io/scad-deserializer, which seems to work with older version of openscad's syntax but not the latest version, especially not the one in the current nightly. The new compiler can be built on top of that or from scratch.
+
+Here are the goals of the compiler:
+
+- Support all language constructs from openscad, including nightly features such as `object`. Some built-ins can be left optional for now, e.g., `surface` and `text`. `import` only needs to work with stl and obj, so to avoid too many dependencies.
+- Calling OpenSCAD user-defined functions should return values, and calling OpenSCAD user-defined modules (which can take parameters, and a special parameter called children at the end for child modules) should return geometries.
+- For [special variables (`$variable`s)](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language#Special_variables_2), we need to implement the behavior in the latest nightly. See https://github.com/openscad/openscad/issues/3881 for discussion. We may implement file-level toggle if possible, so some libraries are not broken, but not sure if that is possible or makes sense in terms of the semantics.
+- Optionally, track value dependencies (especially for $variables) and use cached results to avoid repeated computation.
+- It should also provide a source mapping for the output.
+
+The compiler does not need to generate very optimized code. We can let the js JIT to work on that.
+
+## Expected Outcome
+
+A compiler satisfying the above requirements.
+
+## Future Possibilities <!-- optional -->
+
+## Project Properties
+
+### Skills
+
+- Parser
+- TypeScript/JavaScript.
+
+### Difficulty <!-- easy, medium, hard -->
+
+- Medium/Hard
+
+### Size <!-- medium (175h), long (350h) -->
+
+- Medium/Long
+
+### Additional Information
+
+* Potential mentor(s): @pca006132 @elalish 
+* Organization website: https://github.com/elalish/manifold
+* Communication channels: https://github.com/elalish/manifold/discussions
 
 ---
 
 ## #115: Improving ManifoldCAD
+
+**Labels:** Difficulty: Easy, Difficulty: Medium, Lang: Javascript, Size: Medium (175h), Size: Long (350h), Project: Manifold, GSoC 2026, Lang: TypeScript
 
 ## Outline
 

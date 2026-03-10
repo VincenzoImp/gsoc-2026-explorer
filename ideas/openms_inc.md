@@ -1,7 +1,7 @@
 # OpenMS Inc — Project Ideas
 
 **Source:** https://openms.de/news/gsoc2026/
-**Scraped:** 2026-02-22T23:28:47.594695
+**Scraped:** 2026-03-10T16:58:40.309054
 
 ---
 
@@ -174,10 +174,34 @@ The goal of this project is to unify dependency management using the vcpkg packa
 
 Top-down proteomics enables the direct analysis of intact proteoforms, providing unparalleled insight into proteoforms, distinct molecular forms of a protein arising from a single gene, including protein isoforms, truncations, and post-translational modifications. However, interpreting individual spectra and connecting observed masses to biologically meaningful proteoforms remains a major bottleneck. This project aims to develop an interactive, proteoform-centric visualization and manual analysis tool, inspired by ProSight Lite, to enable rapid interpretation of top-down mass spectrometry data at the single-spectrum level. By integrating advanced visualization with fast targeted searches, the tool will allow researchers to quickly assess truncations, modifications, and mass discrepancies for a given protein of interest. Moreover, it will include feature-level visualization of proteoform ions over m/z-retention time dimension that will allow for quick and accurate validation of proteoform quantification results. By lowering the barrier between raw spectra and biological interpretation, this project will directly support exploratory proteomics, method development, and hypothesis testing in challenging top-down datasets.
 
-Project Goals The student will design and implement an interactive analysis module that enables: Sequence-centric visualization of proteoforms, inspired by ProSight Lite, supporting user-defined mass inputs.
+Project Goals The student will design and implement an interactive analysis module that enables:
 
-Mirror plots comparing user-supplied masses or m/z values against expected theoretical masses, enabling rapid validation and interpretation.
+- Sequence-centric visualization of proteoforms, inspired by ProSight Lite, supporting user-defined mass inputs.
+- Mirror plots comparing user-supplied masses or m/z values against expected theoretical masses, enabling rapid validation and interpretation.
+- On-demand targeted searches, where a single spectrum triggers FLASHTnT via Python bindings to identify truncations and modifications for a specified target protein.
+- One-spectrum, one-protein analysis workflows, optimized for fast hypothesis testing rather than large-scale database searches.
+- Intuitive feature (m/z and mass) visualization for quantitative analysis validation, to support exact and quick comparison between theoretical feature traces of quantified proteoforms and the observed ones .
 
-On-demand targeted searches, where a single spectrum triggers FLASHTnT via Python bindings to identify truncations and modifications for a specified target protein.
+## Theme D) Machine learning engineering
 
-One-spectrum, one-protein analysis workflows, optimized for fast hypothesis testing rather than large-scale database searches. Intuitive feature (m/z and mass) visualization for quantitative analysis validation, to support exact and quick comparison between theoretical feature traces of quantified proteoforms and the observed ones .
+### Optimizing Casanovo for Real-Time De Novo Peptide Sequencing
+
+**Proposed Mentors:** William Stafford Noble, Wout Bittremieux
+
+**Skills:** Python, PyTorch, Deep learning, Profiling
+
+**Estimated Project Length:** 350 hours | **Difficulty:** Advanced
+
+*De novo* peptide sequencing is a powerful approach for molecular discovery that deciphers peptides directly from tandem mass spectrometry (MS/MS) data. Casanovo is a state-of-the-art AI tool that treats *de novo* sequencing like a language translation problem—converting sequences of peaks in an MS/MS spectrum into amino acid sequences, just like translating one language into another. Powered by a transformer deep neural network, Casanovo has already revolutionized peptide sequencing, but its inference speed remains a bottleneck.
+
+In this project, we aim to optimize Casanovo to enable **real-time sequencing** of spectra as they are produced on the mass spectrometer at a rate of approximately **20–100 Hz**. In this setting, we need to achieve both **high throughput** and **low latency**.
+
+A version of Casanovo capable of real-time sequencing will enable the mass spectrometer to make decisions in real time about which types of peptide dissociation techniques to employ or whether to subject a given collection of ions to additional rounds of fragmentation. In so doing, we can use real-time Casanovo to unlock new biological insights at an unprecedented scale. Whether it’s identifying unknown proteins, uncovering disease biomarkers, or advancing drug discovery, your contributions will have a real-world impact on science and healthcare. If you love machine learning, performance optimization, and AI-driven discovery, then this project is your chance to make a difference in computational biology.
+
+Project Goals:
+
+This project aims to produce the world’s first real-time de novo sequencer, enabling researchers to make new discoveries and push the boundaries of proteomics research. You will:
+
+- Profile performance bottlenecks in Casanovo’s new, non-autoregressive inference pipeline to pinpoint slowdowns.
+- Optimize key computations to improve runtime efficiency and minimize latency.
+- Experiment with model distillation techniques to produce a lightweight version of the Casanovo model.

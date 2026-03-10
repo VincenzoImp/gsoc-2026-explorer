@@ -1,15 +1,13 @@
 # ArduPilot — Project Ideas
 
 **Source:** https://ardupilot.org/dev/docs/gsoc-ideas-list.html
-**Scraped:** 2026-02-22T23:28:47.606306
+**Scraped:** 2026-03-10T16:58:40.251473
 
 ---
 
 # List of Suggested Projects for GSoC 2026[Â¶](https://ardupilot.org#list-of-suggested-projects-for-gsoc-2026)
 
 This is a list of projects suggested by ArduPilot developers for [GSoC 2026](https://summerofcode.withgoogle.com/). These are only suggestions so if you have your own ideas then please discuss them on the [ArduPilot Discord Chat](https://ardupilot.org/discord) or on the [discuss server here](https://discuss.ardupilot.org/c/google-summer-of-code)
-
-Fleet Management Webtool
 
 SITL Model Generation from Flight Data
 
@@ -40,32 +38,6 @@ Experience contributing to ArduPilot or other open source projects
 
 Understanding of Git and/or GitHub
 
-
-### Fleet Management WebTool[Â¶](https://ardupilot.org#fleet-management-webtool)
-
-Skills required: Javascript, Python
-
-Mentors: Ryan Friedman, Randy Mackay
-
-Expected Size: 175h
-
-Level of Difficulty: Medium
-
-Expected Outcome: Webtool to ease the management of a fleet of ArduPilot vehicles
-
-
-The goal of this project is create a fleet management web tool that helps companies and individuals manage the data collected by multiple ArduPilot vehicles
-
-Should extend the capabilities of the existing
-
-[LogFinder Webtool](https://firmware.ardupilot.org/Tools/WebTools/LogFinder/)Accept onboard logs, tlogs, photos and videos uploaded by the GCS or from the vehicleâs companion computer (possibly running BlueOS or APSync)
-
-Allow users to search and download data based on vehicle ID, recording date, location
-
-Support both table views and map views of the uploaded data
-
-
-Funding will be provided for hardware and cloud server as required.
 
 ### SITL Model Generation from Flight Data[Â¶](https://ardupilot.org#sitl-model-generation-from-flight-data)
 

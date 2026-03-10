@@ -1,7 +1,7 @@
 # FOSSology — Project Ideas
 
 **Source:** https://github.com/fossology/fossology/discussions/3267
-**Scraped:** 2026-02-22T23:28:47.598212
+**Scraped:** 2026-03-10T16:58:40.264200
 
 ---
 
@@ -43,7 +43,7 @@ Beta
 Was this translation helpful?
 [Give feedback.](https://github.com)
 
-## Replies: 13 comments 18 replies
+## Replies: 14 comments 31 replies
 
 -
 
@@ -331,6 +331,43 @@ Was this translation helpful?
 - Agent creates a schema file of that one years records (Upload, decision and file information) and Its related files from file system.
 - Agent Creates a downloadable Zip file with all the data.
 - If the user wants to reimport. The zip file shall be used as a source to do the reimport again to FOSSology.
+|
+
+Beta
+Was this translation helpful?
+[Give feedback.](https://github.com)
+
+-
+
+## Idea!## Title: Kubernetes-Native Deployment with Scalable Agent Architecture
+## Background and Prior AttemptsDeploying FOSSology on Kubernetes has been attempted twice before, but neither effort reached a mergeable state.
+The
+`fossology.conf` and `Db.conf` ), replaced SSH-based agent dispatch with `kubectl exec` , and created individual Dockerfiles per agent with raw Kubernetes manifests. The PR remains in draft - it was never merged.
+This project aimed to finish PR
+**ETCD for configuration**introduced a new infrastructure dependency where Kubernetes already provides ConfigMaps and Secrets. It also required rewriting core functions (`scheduler_agent_config` ,`scheduler_foss_config` ,`fo_dbconnect` ) - invasive changes that made the codebase Kubernetes-specific rather than Kubernetes-compatible.replaced the well-tested SSH mechanism with a Kubernetes API call, tightly coupling the scheduler to the cluster control plane. It also requires granting the scheduler pod elevated RBAC permissions to exec into arbitrary pods - a security concern in production.`kubectl exec` for agent dispatch**Individual Dockerfiles per agent**created a maintenance burden. Agents share libraries and build dependencies; per-agent images are fragile to build system changes and multiply the CI matrix.**Raw Kubernetes manifests**offered no parameterization, no multi-environment support, and no upgrade path.
+The fundamental lesson: working ## A Different ApproachFOSSology's architecture has a natural scaling seam that the previous attempts overlooked. The scheduler ( However, the current scheduler treats all hosts as ## Scope
+- Translate the existing
+`docker-compose.yml` (web, scheduler, db) into a parameterized Helm chart - PostgreSQL as a StatefulSet with PVC, Web UI as a scalable Deployment behind an Ingress, Scheduler as a single-replica Deployment
+- Shared repository storage (
+`/srv/fossology/repository/` ) via ReadWriteMany PVC - Database migration (
+`fo-postinstall` ) as a Helm lifecycle hook - Health checks, resource limits, and ConfigMap/Secret management for
+`fossology.conf` and`Db.conf` - ArgoCD Application definition for GitOps-based deployment
+- Agent worker StatefulSet with SSH server and all agent binaries, reachable from the scheduler via headless Service DNS
+- A sidecar or controller that watches worker pod count and dynamically updates the
+`[HOSTS]` section in`fossology.conf` , then signals the scheduler to reload via`fo_cli` - Auto-scaling using
+[KEDA](https://keda.sh/)with a PostgreSQL trigger querying the`jobqueue` table for pending jobs
+- Extend the
+`host_t` struct and`[HOSTS]` config format to support an agent capability list per host (e.g.,`agents=nomos,monk,ojo` ) - Modify
+`get_host()` in`src/scheduler/agent/host.c` to filter candidate hosts by requested agent type - Skip agent validation on hosts that don't advertise support for that agent
+- This enables dedicated worker pools per agent group (scanners, reporters, etc.) with independent KEDA scaling triggers per agent type
+## Prior Work and References[GSoC 2021 Microservice Proposal](/ideas/fossology/fossology-fossology-wiki-google-summer-of-code-proposals-2021)- original problem statement, still largely relevant[PR #2086](https://github.com/fossology/fossology/pull/2086)- GSoC 2021 implementation (draft, never merged). Study for lessons learned, not as a base to build on.[GSoC 2025 Microservices Infrastructure](https://fossology.github.io/gsoc/docs/2025/microservices-infrastructure/)- second attempt to complete PR[feat(core): Microservices Architecture #2086](https://github.com/fossology/fossology/pull/2086), did not reach production readiness
+## Acceptance CriteriaGiven the history of this idea not reaching completion, a proof of concept is - A working FOSSology deployment on a local Kubernetes cluster (kind, k3s, or minikube) using basic manifests or a draft Helm chart - web UI accessible, scheduler running, scans completing against the database.
+- At least one agent worker pod running separately from the scheduler, with the scheduler successfully dispatching an agent to it via SSH over the Kubernetes pod network.
+This does not need to be polished or complete - it is a proof that the applicant understands both FOSSology's scheduler internals and Kubernetes networking well enough to execute the project. Share the PoC as a public repository or branch with reproduction steps. If you have a different/better idea please share that as well. We welcome new ideas in our community. ## Expected Deliverables- A Helm chart that deploys FOSSology to any Kubernetes cluster with a single
+`helm install` - Agent worker StatefulSet with SSH-based scheduling from
+`fo_scheduler` , auto-discovered by the scheduler - Scheduler patch enabling per-agent-type host affinity in the
+`[HOSTS]` configuration - ArgoCD Application manifests and multi-environment values files (dev, staging, production)
+- Documentation and test instructions for deploying on a local cluster (kind/k3s)
 |
 
 Beta

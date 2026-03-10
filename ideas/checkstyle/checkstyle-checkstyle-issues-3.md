@@ -2,52 +2,467 @@
 
 **Parent:** checkstyle — Project Ideas
 **Source:** https://github.com/checkstyle/checkstyle/issues?labels=javadoc&page=1&state=open
-**Scraped:** 2026-02-22T23:28:47.591999
+**Scraped:** 2026-03-10T16:58:40.260429
 
 ---
 
-## #18993: Metadata/Xdoc generators do not handle {@literal} and incorrectly handle {@code} with XML special characters
+## #19162: LeftCurly: False Negative  when multiple blocks start on a single line
+
+I have read check documentation: https://checkstyle.org/checks/blocks/leftcurly.html
+I have downloaded the latest checkstyle from: https://checkstyle.org/cmdline.html#Download_and_Run
+I have executed the cli and showed it below, as cli describes the problem better than 1,000 words
+
+```bash
+/var/tmp $ javac LeftCurlyTest.java
+# [[SUCCESSFULLY COMPILED]]
+
+/var/tmp $ cat config.xml
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN" "https://checkstyle.org/dtds/configuration_1_3.dtd">
+<module name="Checker">
+  <module name="TreeWalker">
+    <module name="LeftCurly">
+      <property name="option" value="eol"/>
+    </module>
+  </module>
+</module>
+
+/var/tmp $ cat LeftCurlyTest.java
+/** Javadoc */
+public class LeftCurlyTest {
+    // FN Case: CLASS_DEF curly should be at the end of the line, but it's followed by CTOR_DEF.
+    // Checkstyle stays silent because the line ends with another '{' from CTOR_DEF.
+    public class FNCase { public FNCase() {
+        System.out.println("No violation reported for the first brace.");
+    } }
+
+    // TP Case: Reported correctly as the line does not end with a brace.
+    public void tpMethod() { int x = 0;
+        System.out.println(x);
+    }
+}
+
+/var/tmp $ RUN_LOCALE="-Duser.language=en -Duser.country=US"
+/var/tmp $ java $RUN_LOCALE -jar checkstyle-13.3.0-all.jar -c config.xml LeftCurlyTest.java
+Starting audit...
+[WARN] LeftCurlyTest.java:13:28: '{' at column 28 should have line break after. [LeftCurly]
+Audit done.
+```
+
+**Describe what you expect in detail.**
+Checkstyle should report a LeftCurly violation for the brace at column 25 (the CLASS_DEF brace) on line 6.
+
+---
+
+**Actual Behavior:**
+On line 6: public class FNCase { public FNCase() {, there are two LCURLY tokens. The first one belongs to CLASS_DEF, and the second belongs to CTOR_DEF. The first brace is clearly NOT at the end of the line. However, Checkstyle fails to report a violation for the first brace.
+
+---
+
+## #19156: VariableDeclarationUsageDistance: no violation on variable used in inner class
+
+**Labels:** approved
+
+from https://github.com/checkstyle/checkstyle/issues/13011#issuecomment-3996360057
+```
+$ cat config.xml 
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+          "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+          "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name = "Checker">
+    <module name="TreeWalker">
+        <module name="VariableDeclarationUsageDistance">
+          <property name="validateBetweenScopes" value="true"/>
+          <property name="allowedDistance" value="1"/>
+          <property name="ignoreFinal" value="false"/>
+        </module> 
+    </module>
+</module>
+
+$ cat Test.java 
+package com.puppycrawl.tools.checkstyle.checks.coding.variabledeclarationusagedistance;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test {
+
+    void nothing() {
+    }
+
+    class Parent {
+        void mm() {
+        }
+        <T> void xx(List<T> m){}
+    }
+
+    public void method7() {
+        // until this issue, not violation, the below distance is 3
+        Integer t = 5;
+        nothing();
+        System.out.println();
+        class BClass extends Parent {
+            @Override
+            void mm() {
+                System.out.println(t);
+            }
+        }
+    }
+}
+
+$ java -jar checkstyle-13.3.0-all.jar -c config.xml Test.java 
+Starting audit...
+Audit done.
+
+```
+
+
+Expected: violation on `t` as distance is 3, allowed distance is 1.
+
+---
+
+## #19154: JavadocStyle format property to control allowed Javadoc formats: traditional, markdown 
+
+**Labels:** blocked
+
+Dependent on https://github.com/checkstyle/checkstyle/issues/16100
+
+Add a "format" property to the [JavadocStyle check](https://checkstyle.sourceforge.io/checks/javadoc/javadocstyle.html) to control allowed Javadoc formats
+
+- any (default)
+- traditional
+- markdown
+
+```xml
+<module name="Checker">
+  <module name="TreeWalker">
+    <module name="JavadocStyle">
+      <property name="format" value="markdown"/>
+    </module>
+  </module>
+</module>
+```
+
+---
+
+## #19150: update WriteTagCheck to use AST of javadoc
+
+**Labels:** approved, good fifth issue
+
+we introduced new javadoc AST in scope of https://github.com/checkstyle/checkstyle/issues/17514
+
+Now it is time to migrate [WriteTagCheck](https://github.com/checkstyle/checkstyle/blob/master/src/main/java/com/puppycrawl/tools/checkstyle/checks/javadoc/WriteTagCheck.java) Check to use AST, rather than regexp for parsing of javadoc.
+
+Whole design should stay as is, same properties.
+But check should extend ` extends AbstractJavadocCheck` and do all logic based on AST nodes.
+There are already bunch of Checks that doing this, so look around for examples.
+
+remove suppresion that is mentioned at https://github.com/checkstyle/checkstyle/issues/11166
+
+---
+
+## #19149: update MissingJavadocTypeCheck to use AST of javadoc
+
+**Labels:** approved, good fifth issue
+
+we introduced new javadoc AST in scope of https://github.com/checkstyle/checkstyle/issues/17514
+
+Now it is time to migrate [MissingJavadocTypeCheck](https://github.com/checkstyle/checkstyle/blob/master/src/main/java/com/puppycrawl/tools/checkstyle/checks/javadoc/MissingJavadocTypeCheck.java) Check to use AST, rather than regexp for parsing of javadoc.
+
+Whole design should stay as is, same properties.
+But check should extend ` extends AbstractJavadocCheck` and do all logic based on AST nodes.
+There are already bunch of Checks that doing this, so look around for examples.
+
+remove suppresion that is mentioned at https://github.com/checkstyle/checkstyle/issues/11166
+
+---
+
+## #19148: update MissingJavadocMethodCheck to use AST of javadoc
+
+**Labels:** approved, good fifth issue
+
+we introduced new javadoc AST in scope of https://github.com/checkstyle/checkstyle/issues/17514
+
+Now it is time to migrate [MissingJavadocMethodCheck](https://github.com/checkstyle/checkstyle/blob/master/src/main/java/com/puppycrawl/tools/checkstyle/checks/javadoc/MissingJavadocMethodCheck.java) Check to use AST, rather than regexp for parsing of javadoc.
+
+Whole design should stay as is, same properties.
+But check should extend ` extends AbstractJavadocCheck` and do all logic based on AST nodes.
+There are already bunch of Checks that doing this, so look around for examples.
+
+remove suppresion that is mentioned at https://github.com/checkstyle/checkstyle/issues/11166
+
+---
+
+## #19147: update JavadocVariableCheck to use AST of javadoc
+
+**Labels:** approved, good fifth issue
+
+we introduced new javadoc AST in scope of https://github.com/checkstyle/checkstyle/issues/17514
+
+Now it is time to migrate [JavadocVariableCheck](https://github.com/checkstyle/checkstyle/blob/master/src/main/java/com/puppycrawl/tools/checkstyle/checks/javadoc/JavadocVariableCheck.java) Check to use AST, rather than regexp for parsing of javadoc.
+
+Whole design should stay as is, same properties.
+But check should extend ` extends AbstractJavadocCheck` and do all logic based on AST nodes.
+There are already bunch of Checks that doing this, so look around for examples.
+
+remove suppresion that is mentioned at https://github.com/checkstyle/checkstyle/issues/11166
+
+---
+
+## #19146: update JavadocTypeCheck to use AST of javadoc
+
+**Labels:** approved, good fifth issue
+
+we introduced new javadoc AST in scope of https://github.com/checkstyle/checkstyle/issues/17514
+
+Now it is time to migrate [JavadocTypeCheck](https://github.com/checkstyle/checkstyle/blob/master/src/main/java/com/puppycrawl/tools/checkstyle/checks/javadoc/JavadocTypeCheck.java) Check to use AST, rather than regexp for parsing of javadoc.
+
+Whole design should stay as is, same properties.
+But check should extend ` extends AbstractJavadocCheck` and do all logic based on AST nodes.
+There are already bunch of Checks that doing this, so look around for examples.
+
+remove suppresion that is mentioned at https://github.com/checkstyle/checkstyle/issues/11166
+
+---
+
+## #19145: update JavadocStyleCheck to use AST of javadoc
+
+**Labels:** approved, good fifth issue
+
+we introduced new javadoc AST in scope of https://github.com/checkstyle/checkstyle/issues/17514
+
+Now it is time to migrate [JavadocStyleCheck](https://github.com/checkstyle/checkstyle/blob/master/src/main/java/com/puppycrawl/tools/checkstyle/checks/javadoc/JavadocStyleCheck.java) Check to use AST, rather than regexp for parsing of javadoc.
+
+Whole design should stay as is, same properties.
+But check should extend ` extends AbstractJavadocCheck` and do all logic based on AST nodes.
+There are already bunch of Checks that doing this, so look around for examples.
+
+remove suppresion that is mentioned at https://github.com/checkstyle/checkstyle/issues/11166
+
+---
+
+## #19144: update JavadocMethod to use AST of javadoc
+
+**Labels:** approved, good fifth issue
+
+we introduced new javadoc AST in scope of https://github.com/checkstyle/checkstyle/issues/17514
+
+Now it is time to migrate [JavadocMethod](https://github.com/checkstyle/checkstyle/blob/master/src/main/java/com/puppycrawl/tools/checkstyle/checks/javadoc/JavadocMethodCheck.java) Check to use AST, rather than regexp for parsing of javadoc.
+
+Whole design should stay as is, same properties.
+But check should extend ` extends AbstractJavadocCheck` and do all logic based on AST nodes.
+There are already bunch of Checks that doing this, so look around for examples.
+
+remove suppresion that is mentioned at https://github.com/checkstyle/checkstyle/issues/11166
+
+---
+
+## #19087: Add instruction to exclude resources files for IntelliJ Idea
+
+**Labels:** approved
+
+Currently the [IntelliJ Setup Guide](https://checkstyle.org/idea.html) does not describe the step to exclude resource files from compilation, which is an unavoidable step if we wish to debug via IntelliJ's interface, as described by this [comment](https://github.com/checkstyle/checkstyle/issues/18939#issuecomment-3905316544). 
+
+During onboarding, I tried to run tests via IntelliJ Idea's interface (clicking the green triangle) but received build errors stemming from input files. After wasting hours I realized I should exclude these input files as they should not be compiled at all. Below are my Excludes settings:
+
+<img width="1476" height="1306" alt="Image" src="https://github.com/user-attachments/assets/517afaf6-4cbd-4989-a928-cb7cdbf77714" />
+
+I believe many newcomers like me start off running tests via Intellij's GUI (which is also demonstrated in this [tutorial video](https://www.youtube.com/watch?v=VnenZbbh1WU&list=PLHM9s_lN4X0hzOQ0sUmGdroxW0HfREAqj&index=12)), therefore I propose to provide detailed instructions for smoother onboarding experience.
+
+---
+
+## #19064: XpathRegressionXxxxxxXxxxxxTest should have 3 test methods
+
+**Labels:** approved, miscellaneous, good fourth issue
+
+we have rule to have 3 tests in XpathRegressionXxxxxxXxxxxxxTest
+But as it is not automated we always loose time on this.
+
+examples of missed: 
+https://github.com/checkstyle/checkstyle/pull/18657#discussion_r2859017125
+https://github.com/checkstyle/checkstyle/pull/18312#issuecomment-3967872333
+
+Find a way to make junit test or Checkstyle Xpath test to make sure that all  
+under https://github.com/checkstyle/checkstyle/tree/master/src/it/java/org/checkstyle/suppressionxpathfilter
+should 3 methods with `@Test`  and in error message we should mention that we need 3 test that generates xpath different by nodes (structure).
+
+Demand for 3 tests were added at https://github.com/checkstyle/checkstyle/pull/19074
+
+Goal of this issue is to remove suppressions at 
+https://github.com/checkstyle/checkstyle/blob/4fdd0fc8ecaf50644660575248e73438b32ad771/config/checkstyle-non-main-files-suppressions.xml#L413
+
+Each file should be removed in separate PR
+
+---
+
+## #19063: Trailing comment alignment test fails with tab-based indentation in test input files
+
+I have read check documentation: https://checkstyle.org/checks/xxxxxx/nameofaffectedcheck.html
+I have downloaded the latest checkstyle from: https://checkstyle.org/cmdline.html#Download_and_Run
 
 ### Description
 
-Javadoc inline tags {@literal} and {@code} with XML special characters (`<`, `>`) not handled correctly in metadata and xdoc generation .
+When adding a tab-based regression test file for `IndentationCheck`,
+the JUnit test `IndentationTrailingCommentsVerticalAlignmentTest` fails due to trailing comment alignment mismatch.
 
-There are two bugs:
+The regression input file intentionally contains tab characters to verify tab-based indentation handling.
 
-1. `{@literal}` is not handled - `JavadocMetadataScraperUtil.constructSubTreeText()` and `SiteUtil.getDescriptionFromJavadocForXdoc()` have no logic for `LITERAL_INLINE_TAG` nodes. The child nodes (including syntax tokens `{`,`@literal`, `}`) are written to the output as plain text instead of being processed. This becomes a breaking issue when the content contains XML special characters like `<` or `>`, as they are not escaped.
+However, `IndentationTrailingCommentsVerticalAlignmentTest` enforces that all trailing comments (`//indent:... exp:...`) must align at the same expanded column across the file.
 
-2. **`{@code}` does not escape `<` and `>`**  - `adjustCodeInlineTagChildToHtml()` only escapes `&` -> `&amp;`, but not `<` -> `&lt;` or `>` -> `&gt;`. This means `{@code <p>}` produces `<code><p></code>` (broken XML) instead of the correct `<code>&lt;p&gt;</code>`.
+This causes failures for files that intentionally use tabs.
 
 ### How to Reproduce
 
-Add `{@literal <}` or `{@code <p>}` to any module's class-level Javadoc and run `mvn clean verify`. The build will fail because the generated meta XML and/or xdoc XML files contain invalid XML.
+Add a regression input file containing tabs in:
+`
+src/test/resources/com/puppycrawl/tools/checkstyle/checks/indentation/indentation/
+`
 
-For example, changing a module's Javadoc from:
+**ATTENTION** : should be tabs and not spaces(IDE'sare tend to convert tabs to spaces)
 
-` Each paragraph but the first has &lt;p&gt; immediately`
+Run:
+`
+mvn -Dtest=IndentationTrailingCommentsVerticalAlignmentTest test
+`
+### Input
+```
+public class InputIndentationTryCtorParamsTabsWrong {                        //indent:0 exp:0
 
-to the preferred inline tag form:
+	private InputIndentationTryCtorParamsTabsWrong client;                   //indent:4 exp:4
 
-` Each paragraph but the first has {@code <p>} immediately`
+	private InputIndentationTryCtorParamsTabsWrong(String string) {          //indent:4 exp:4
+	}                                                                        //indent:4 exp:4
 
-causes the meta XML generator to produce `<code><p></code>` instead of `<code>&lt;p&gt;</code>`, resulting in malformed XML because the `<p>` is not escaped and gets interpreted as an actual HTML tag.
+	private void test() {                                                    //indent:4 exp:4
+		try {                                                                //indent:8 exp:8
+			client =                                                         //indent:12 exp:12
+            new InputIndentationTryCtorParamsTabsWrong(null);                //indent:8 exp:16
+		}                                                                    //indent:8 exp:8
+		catch (Exception e) {                                                //indent:8 exp:8
+		}                                                                    //indent:8 exp:8
+	}                                                                        //indent:4 exp:4
+}
+```
+(Initialized gaps are tabs and not spaces to trigger a particular error for test)
+
+### Failing Output
+```
+Trailing comment alignment mismatch in file:
+InputIndentationTryCtorParamsTabsWrong.java on line 23
+expected: 77
+but was : 71
+```
+### Expected Behavior
+
+Tab-based regression test files should not fail due to global trailing comment alignment enforcement.
 
 ### Actual Behavior
 
-Currently, the generators produce broken output:
+Trailing comment alignment validation fails even though the file is intentionally tab-indented for indentation testing.
 
-- `{@literal <}` -> `{@literal <}` (raw structural tokens leak into the output as plain text)
-- `{@literal >}` -> `{@literal >}` (same issue)
-- `{@code <p>}` -> `<code><p></code>` (the `<p>` is not escaped, producing invalid XML)
-- `{@code &}` -> `<code>&amp;</code>` (only `&` escaping works correctly)
+### Suggested Direction
 
-### Expected Behavior
+Allow a hardcoded list of tab-based test files where vertical alignment enforcement is skipped in `IndentationTrailingCommentsVerticalAlignmentTest`
 
-After the fix, the generators should produce correct XML output:
+---
 
-- `{@literal <}` -> `&lt;` in both meta XML and xdoc output
-- `{@literal >}` -> `&gt;` in both meta XML and xdoc output
-- `{@code <p>}` -> `<code>&lt;p&gt;</code>` in both meta XML and xdoc output
+## #19036: Improve onboarding flow for first-time contributors with a minimal step-by-step path
+
+While trying to start as a first-time contributor, I found it difficult to identify a clear minimal end-to-end path for the first successful contribution.
+
+All required information exists in the documentation, but it is distributed across multiple pages and assumes prior open-source experience.
+
+From a beginner’s perspective, the main difficulties are:
+
+1. Understanding the first practical step after forking the repository
+2. Knowing how to select a safe first issue for documentation contribution
+3. Understanding when discussion/approval is required before implementation
+4. What a minimal successful first contribution looks like
+
+I propose adding a short “First Contribution Walkthrough” section that:
+
+- provides a minimal ordered path for new contributors
+- focuses on documentation-type contributions
+- clearly explains the issue → approval → implementation workflow
+
+This can reduce the entry barrier for new contributors.
+
+I would like to work on this improvement if the idea is approved.
+
+---
+
+## #19004: Add xdocs tests for TextBlockGoogleStyleFormatting
+
+**Description:**
+
+Add xdocs  corresponding test for TextBlockGoogleStyleFormatting check to ensure documentation examples are validated by regression tests.
+
+This improves consistency between documentation and check behavior.
+
+**Explanation:**
+
+Add test and name will be  `TextBlockGoogleStyleFormattingCheckExamplesTest` For Xdocs Example.
+
+Ensure examples are covered by verifyWithInlineConfigParser.
+
+**Example:**
+`    @Test
+    public void testExample1() throws Exception {
+        final String[] expected = CommonUtil.EMPTY_STRING_ARRAY;
+
+        verifyWithInlineConfigParser(getPath("Example1.java"), expected);
+    }`
+create a new class in: `xdocs-examples/java/com/puppycrawl/tools/checkstyle/checks/coding`
+Class name will be: `TextBlockGoogleStyleFormattingCheckExamplesTest` 
+And  add test for All the  xdocs Examples of  `textblockgooglestyleformatting`
+
+---
+
+## #19001: JavadocCommentsParser: quoted format specifier in {@value} tag is not parsed
+
+**Labels:** approved, antlr-javadoc
+
+https://www.javaspecialists.eu/archive/Issue308-Formatting-Inlined-value-in-Javadocs.html described this javadoc new syntax
+
+## Checkstyle version
+13.3.0-SNAPSHOT
+
+## Description
+Since Java 20, the `{@value}` inline tag supports a quoted format string to control 
+how a constant value is displayed. For example, from `java.lang.reflect.AccessFlag`:
+
+```java
+/**
+ * The access flag {@code ACC_MANDATED} with a mask value of
+ * <code>{@value "0x%04x" Modifier#MANDATED}</code>.
+ */
+public static final int MANDATED = 0x8000;
+```
+
+Running Checkstyle's Javadoc AST printer on this input throws a parse error:
+
+```
+java -jar checkstyle-13.3.0-SNAPSHOT-all.jar -j src/Test.java
+
+Exception in thread "main" java.lang.IllegalArgumentException:
+[ERROR:4] Javadoc comment at column 55 has parse error. Details:
+mismatched input '%04x' expecting JAVADOC_INLINE_TAG_END while parsing INLINE_TAG
+```
+
+The current lexer rule in `JavadocCommentsLexer.g4` only supports bare unquoted format specifiers:
+
+```
+FORMAT_SPECIFIER
+    : '%' [#+\- 0,(]* [0-9]* ('.' [0-9]+)? [a-zA-Z]
+    ;
+```
+
+The grammar needs to be updated to support the quoted form (`"0x%04x"`) introduced in Java 20.
+
+## Related
+Part of #17882
 
 ---
 
@@ -58,13 +473,6 @@ Describe the problem in detail:
 Exception messages should not include ex.getMessage() when the exception is
 already passed as a cause, as this leads to duplicate information in stack
 traces and logs.
-
-/var/tmp $ cat config.xml
-<module name="Checker">
-  <module name="TreeWalker">
-    <module name="NoGetMessageInThrow"/>
-  </module>
-</module>
 
 /var/tmp $ cat Test.java
 ```
@@ -91,6 +499,8 @@ public class Test {
   }
 ```
 
+should method3 considered a violation or not for our new check?
+
 ```
   void method3() {
     try {
@@ -104,7 +514,7 @@ public class Test {
 }
 ```
 
-/var/tmp $ java -jar checkstyle-X.XX-all.jar -c config.xml Test.java
+
 Test.java:8: warning: [NoGetMessageInThrow] Avoid using '.getMessage()'
 in throw statement.
 
@@ -162,33 +572,6 @@ public class Config {
 
 **Technical Implementation**
 The check will target `TokenTypes.ARRAY_INIT` and count the `EXPR` child tokens. If the count exceeds the threshold, it will log a violation using a message key for internationalization.
-
----
-
-## #18926: Re-enable inspections that were temporarily suppressed for Qodana
-
-**Labels:** approved
-
-We recently migrated to Qodana for code inspections. During the migration, some inspections were temporarily suppressed to allow the transition to complete without blocking development.
-
-These suppressions are still in place, and the underlying code violations need to be resolved and suppressions should be removed.
-
-Inspections to Re-enable
-  - [ ] ClassCanBeRecord
-  - [ ] ClassEscapesItsScope
-  - [ ] EmptyClass
-  - [ ] EqualsWithItself
-  - [ ] ExtractMethodRecommender
-  -  [ ] FieldMayBeStatic
-  - [ ] Java9ReflectionClassVisibility
-  - [ ] MappingBeforeCount
-  - [ ] RedundantSuppression
-  - [ ]  SystemGetProperty
-  - [ ]  UnnecessarilyQualifiedStaticUsage
-  - [ ]  PropertiesAsHashtable
-  - [ ] WhileCanBeDoWhile
-
-Target 1 inspection per pr.
 
 ---
 
@@ -748,6 +1131,68 @@ End of text block formatting shouldn't cause violation of indentation rules.
 
 ---
 
+## #18614: False positive: indentation inside of constructor parameters inside try block
+
+**Labels:** approved, indentation, miscellaneous
+
+I have read check documentation: https://checkstyle.sourceforge.io/checks/misc/indentation.html
+I have downloaded the latest checkstyle from: https://checkstyle.org/cmdline.html#Download_and_Run
+I have executed the cli and showed it below, as cli describes the problem better than 1,000 words
+
+
+Attention: file contains TABs
+
+```cmd
+E:\temp\CheckstyleReport>type config.xml
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+          "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+          "https://checkstyle.org/dtds/configuration_1_3.dtd">
+<module name="Checker">
+  <property name="tabWidth" value="4"/>
+
+  <module name="TreeWalker">
+    <module name="Indentation" />
+  </module>
+</module>
+
+E:\temp\CheckstyleReport>type Test.java
+public class Test {
+        private Test client;
+
+        private Test(String string) {
+        }
+
+        private void test() {
+                try {
+                        client = new Test(
+                                null // unexpected violation about indentation
+                        );
+                } catch (Exception e) {
+                }
+        }
+}
+E:\temp\CheckstyleReport>set RUN_LOCALE="-Duser.language=en -Duser.country=US"
+
+E:\temp\CheckstyleReport>java %RUN_LOCALE% -jar checkstyle-13.0.0-all.jar -c config.xml Test.java
+Starting audit...
+[ERROR] E:\temp\CheckstyleReport\Test.java:10:17: 'new' child has incorrect indentation level 16, expected level should be 20. [Indentation]
+Audit done.
+Checkstyle ends with 1 errors.
+```
+
+---
+
+**Describe what you expect in detail.**
+The violation shouldn't be reported: the parameter passed to the constructor is already indented correctly.
+
+NOTE: if we remove the try/catch block the violation disappears.
+NOTE2: the file is formatted by tabs
+
+---
+
+---
+
 ## #18590: False Negative in EmptyStatement Check
 
 **Labels:** approved
@@ -1077,71 +1522,6 @@ Caused by: org.apache.maven.plugin.MojoExecutionException: The following files h
 
 ---
 
-## #18494: New Check: GoogleNonConstantFieldNameCheck to enforce Google Java Style Guide member naming
-
-**Labels:** approved
-
-split from https://github.com/checkstyle/checkstyle/issues/17842 , we split creation of module and activation of it in google style config to separate issues, to simplify integration.
-
-
-Create a new check GoogleNonConstantFieldNameCheck to enforce non-constant field naming conventions per the [Google Java Style Guide §5.2.5](https://google.github.io/styleguide/javaguide.html#s5.2.5-non-constant-field-names).
-
-## Background (Reason for new check)
-
-The current MemberName check with regex configuration cannot fully enforce Google Style non-constant field naming rules because it cannot:
-
-1. Correctly enforce Google-specific underscore placement rules
-2. Support multipart numeric version suffixes (for example guava33_4_5)
-3. Reject special-prefix (Hungarian-style) names such as mValue
-
-## Proposed Rules (Non-constant fields only)
-
-- Field names must follow lowerCamelCase
-- Single-character field names are not allowed
-- Special prefix names (for example mValue, sCount, kSize) are not allowed, per [Google Java Style Guide §5.1](https://google.github.io/styleguide/javaguide.html#s5-naming)
-- Underscores are allowed only between adjacent digits (multipart version or numbering suffix)
-- Leading, trailing or double underscores are not allowed
-
-## Scope
-
-This check applies only to non-constant fields:
-
-- Instance fields
-
-## Explicitly out of scope
-
-- Constant fields (static final)
-- Local variables
-- static fields that are not static final
-
-## Examples
-
-### Valid:
-
-```
-userName
-timeoutMs
-foo123
-guava33_4_5
-kotlinVersion1_9_24
-```
-### Invalid:
-
-```
-f                                    // violation, single character
-mValue                         // violation,special prefix not allowed
-sCount                         // violation, special prefix not allowed 
-foo_bar                        // violation, underscore between letters
-gradle_9_5_1               // violation, underscore between letter-digit
-kotlin_version1_9_24  // violation, underscore between letters
-guava_33_4_5             // violation, underscore between letter-digit
-guava33__4_5             // violation, consecutive underscores
-guava33_4_5_             // violation, trailing underscore
-_foo                               // violation, leading underscore
-```
-
----
-
 ## #18462: Null-pointers in multiple checks when dealing with compact source files
 
 In PR
@@ -1365,6 +1745,96 @@ public class Test {                                                          // 
                                                                              // 20
                                                                              // 21
                                                                   
+
+*[truncated]*
+
+---
+
+## #18435: Fix xdocs Examples AST Consistency Test (Reduce suppressions list)
+
+**Labels:** approved, miscellaneous, good second issue
+
+## Overview
+
+The `XdocsExamplesAstConsistencyTest` validates that xdocs example files maintain consistent code structure (differing only in comments and configuration). Currently, we have **228 examples** in the suppression list that need to be reviewed and fixed.
+
+## Goal
+
+Reduce or eliminate entries from the `SUPPRESSED_EXAMPLES` list by fixing the underlying AST issues in example files.
+
+## What Needs to Be Done
+
+Each suppressed example needs investigation to determine:
+
+1. **Is the code actually different?** → Fix the code to match other examples
+2. **Should the code be different?** → Mark it as independent (different use case)
+
+Please read and looks at images at https://github.com/checkstyle/checkstyle/issues/13345 that shows what is allowed difference between ExampleX classes. 
+
+## Example: suppresswarningsholder (Already Fixed )
+
+**Before:**
+- `SUPPRESSED_EXAMPLES` contained: `Example2`, `Example3`, `Example4`
+- These examples were failing validation
+
+**Investigation revealed:**
+- Example1 = showcase broad suppression (different/Specific use case)
+- Example2, 3, 4 = showcase aliasList variations (should match)
+
+**Fix applied:**
+1. Marked Example1 as independent (it has different code intent)
+2. Fixed Example2's code to match Example3 and Example4
+3. Removed all 3 examples from suppression list kept Example1 as it has specific usecase
+
+**Result:**  Test now passes.
+
+## Current Suppression List (check master HEAD version for latest state)
+
+https://github.com/checkstyle/checkstyle/blob/a94bdd41cb3f0873bed87c619d200fe1754627f7/src/test/java/com/puppycrawl/tools/checkstyle/internal/XdocsExamplesAstConsistencyTest.java#L89-L92
+
+## How to Help
+
+### Pick a check from the list above
+
+Example: `checks/annotation/annotationonsameline`
+
+### Investigate the examples
+
+1. Navigate to: `src/xdocs-examples/resources/com/puppycrawl/tools/checkstyle/checks/annotation/annotationonsameline/`
+2. Look at all `Example*.java` files
+3. Read the comments to understand what each example demonstrates
+4. Compare the code between examples
+
+### Determine the issue
+
+**Question**: Should these examples have the same code structure or different code structures?
+
+- **Same structure** = They demonstrate the same check with different configuration
+- **Different structure** = They demonstrate different use cases of the check
+
+### Apply the fix
+
+**If examples should have the same code:**
+- Fix the code so all examples match structurally
+- Only comments and configuration values should differ
+
+**If an example legitimately has different code:**
+- No code change needed
+- The test framework will handle it appropriately, just add in the suppression list.
+
+### Run the test
+
+```bash
+mvn clean test -Dtest=XdocsExamplesAstConsistencyTest
+```
+
+Verify that your changes resolve the suppression.
+
+### Submit your PR
+
+ **Each check can be fixed independently! Pick one and create one PR, for a single check at a time.**
+
+Example can be found here: https://github.com/checkstyle/checkstyle/commit/0
 
 *[truncated]*
 
@@ -1910,891 +2380,5 @@ Valid cases:
             indentation is same as the quotes, ok
             """;
 ```
-
----
-
-## #18200: Maven try to download artifact that supposed to be taken from local m2 local repostory
-
-**Labels:** approved, CI
-
-example https://dev.azure.com/romanivanovjr/romanivanovjr/_build/results?buildId=33925&view=logs&jobId=c902ebb4-c9f8-5f09-4e17-ff78fbbc842e&j=c902ebb4-c9f8-5f09-4e17-ff78fbbc842e&t=9ca98c81-ff64-58f0-9d03-a23ac1c4a111
-
-but this becomes annoying problems across multiple CIs.
-For some reason maven cache is not working or does not have some artifacts and maven tries to download them and fails on network operation.
-
-Expected: maven should not download anything and use local cache. Only in PRs where we add new dependency, we expect download from web by maven.  
-
-```
-cmd: ./.ci/validation.sh test
-openjdk 21.0.9 2025-10-21 LTS
-OpenJDK Runtime Environment Temurin-21.0.9+10 (build 21.0.9+10-LTS)
-OpenJDK 64-Bit Server VM Temurin-21.0.9+10 (build 21.0.9+10-LTS, mixed mode, sharing)
-    at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts (DefaultArtifactResolver.java:261)
-    at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveDependencies (DefaultRepositorySystem.java:353)
-    at org.apache.maven.project.DefaultProjectDependenciesResolver.resolve (DefaultProjectDependenciesResolver.java:182)
-    at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.getDependencies (LifecycleDependencyResolver.java:224)
-    at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.resolveProjectDependencies (LifecycleDependencyResolver.java:136)
-    at org.apache.maven.lifecycle.internal.MojoExecutor.ensureDependenciesAreResolved (MojoExecutor.java:355)
-    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:313)
-    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
-    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
-    at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
-    at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
-    at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
-    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
-    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
-    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
-    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
-    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
-    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
-    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
-    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
-    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:906)
-    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:283)
-    at org.apache.maven.cli.MavenCli.main (MavenCli.java:206)
- 
-
-*[truncated]*
-
----
-
-## #18197: Indentation check fails to check line-wrapped expressions as part of a return statement
-
-**Labels:** approved, indentation
-
-I have read check documentation: https://checkstyle.org/checks/misc/indentation.html
-I have downloaded the latest checkstyle from: https://checkstyle.org/cmdline.html#Download_and_Run
-I have executed the cli and showed it below, as cli describes the problem better than 1,000 words
-
-```bash
-/var/tmp $ javac IndentationIssueDemo.java
-
-/var/tmp $ cat checkstyle.xml
-<?xml version="1.0"?>
-<!DOCTYPE module PUBLIC
-        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
-        "https://checkstyle.org/dtds/configuration_1_3.dtd">
-
-<module name="Checker">
-    <property name="charset" value="UTF-8"/>
-    <property name="severity" value="error"/>
-    <property name="fileExtensions" value="java, properties, xml"/>
-
-    <module name="TreeWalker">
-        <module name="Indentation">
-            <property name="basicOffset" value="4"/>
-            <property name="braceAdjustment" value="0"/>
-            <property name="caseIndent" value="4"/>
-            <property name="throwsIndent" value="8"/>
-            <property name="lineWrappingIndentation" value="8"/>
-            <property name="arrayInitIndent" value="4"/>
-            <property name="forceStrictCondition" value="true"/>
-        </module>
-    </module>
-</module>
-
-
-/var/tmp $ cat IndentationIssueDemo.java
-package com.example;
-
-import java.util.stream.IntStream;
-
-public class IndentationIssueDemo {
-
-    public static int workingIndentationCheck() {
-        var intermediate = 1
-                + 1
-    + 1 // Violation (indent should be 16)
-                        + 1 // Violation (indent should be 16)
-                    + 1; // Violation (indent should be 16)
-        return intermediate;
-    }
-
-    public static int failingIndentationCheck() {
-        return 1
-                + 1
-    + 1 // incorrect violation ("'method def' child has incorrect indentation level 4, expected level should be 16")
-                        + 1 // missing violation (indent should be 16)
-                    + 1; // missing violation (indent should be 16)
-    }
-
-    public static int workingIndentationCheckWithMethodChain() {
-        var intermediate = IntStream.range(0, 10)
-                        .filter(i -> i % 2 == 0) // Violation (indent should be 16)
-            .map(i -> i * 2) // Violation (indent should be 16)
-                .sum();
-        return intermediate;
-    }
-
-    public static int failingIndentationCheckWithMethodChain() {
-        return IntStream.range(0, 10)
-                        .filter(i -> i % 2 == 0) // missing violation (indent should be 16)
-            .map(i -> i * 2) // missing violation (indent should be 16)
-                .sum();
-    }
-}
-
-/var/tmp $ RUN_LOCALE="-Duser.language=en -Duser.country=US"
-/var/tmp $ java $RUN_LOCALE -jar checkstyle-12.1.2-all.jar -c checkstyle.xml IndentationIssueDemo.java
-Starting audit...
-[ERROR] /var/tmp/IndentationIssueDemo.java:10:5: '+' has incorrect indentation level 4, expected level should be 16. [Indentation]
-[ERROR] /var/tmp/IndentationIssueDemo.java:1
-
-*[truncated]*
-
----
-
-## #18146: Clean up grammar for discontinued preview feature (pattern matching for switch)
-
-**Labels:** approved, antlr, breaking compatibility
-
-Follow-up from issue
-- https://github.com/checkstyle/checkstyle/issues/18104
-
----
-
-[JEP 406](https://openjdk.org/jeps/406) introduced a new preview feature in Java 17 called `Pattern Matching for switch`. Checkstyle added support for this in Issue #10848 and PR #11100. Since then, however, the feature got refined multiple times in:
-
-- [JEP 420: Pattern Matching for switch (Second Preview)](https://openjdk.org/jeps/420)
-- [JEP 427: Pattern Matching for switch (Third Preview)](https://openjdk.org/jeps/427)
-- [JEP 433: Pattern Matching for switch (Fourth Preview)](https://openjdk.org/jeps/427)
-
-In those refinements, some syntax was dropped and it is no longer compilable with Java 21. Checkstyle still supports this outdated grammar.
-
-The goal of this issue is to remove ANTLR grammar for `Pattern Matching for switch`. The grammar was added in PR
-- #11100
-
----
-
-## #18127: Update imports checks to support module imports
-
-**Labels:** approved
-
-In
-
-- Issue #17919 
-- and PR #18079
-
-we added support for Java 25's `import module` syntax. What is next is to follow the [New Language Feature Check Integration Process](https://github.com/checkstyle/checkstyle/blob/master/docs/NEW_LANGUAGE_FEATURE_INTEGRATION_PROCESS.md) and update [imports checks](https://checkstyle.org/checks/imports/index.html).
-
-Checks that need an update are:
-- [ ] [`CustomImportOrder`](https://checkstyle.org/checks/imports/customimportorder.html#CustomImportOrder)
-    - The check currently supports 5 groups of imports (`STATIC`, `SAME_PACKAGE`...). We could add a 6th group called `MODULE`.
-- [x] [`UnusedImports`](https://checkstyle.org/checks/imports/unusedimports.html#UnusedImports)
-    - We could update the documentation and mention that we cannot check module imports and that it's a limitation. Checkstyle is not a compiler, so there is no way for us to know which classes/packages are imported from that module. 
-    - Resolved in
-        - PR https://github.com/checkstyle/checkstyle/pull/18216
-- [x] [`IllegalImport`](https://checkstyle.org/checks/imports/illegalimport.html#IllegalImport)
-    - The check has 2 properties called `illegalClasses` and `illegalPkgs`. We could add an additional property called `illegalModules`.
-    - Resolved in
-        - Issue https://github.com/checkstyle/checkstyle/issues/18207
-        - PR https://github.com/checkstyle/checkstyle/pull/18220
-- [ ] [`ImportControl`](https://checkstyle.org/checks/imports/importcontrol.html#ImportControl)
-    - Similar to `IllegalImport`, this check could allow & disallow modules. It currently only does that for classes and packages.
-- [ ] [`ImportOrder`](https://checkstyle.org/checks/imports/importorder.html#ImportOrder)
-    - The check currently deals (sorting, grouping, separating, etc..) with type and static imports. We could enhance it to also deal with module imports.
-- [x] [`RedundantImport`](https://checkstyle.org/checks/imports/redundantimport.html#RedundantImport)
-    - The check is only aware of normal imports (`IMPORT`) and static imports (`STATIC_IMPORT`). We could add the new `MODULE_IMPORT` token to be recognized too.
-    - Resolved in
-        - Issue https://github.com/checkstyle/checkstyle/issues/18171
-        - PR https://github.com/checkstyle/checkstyle/pull/18195
-
-> [!IMPORTANT]  
-> Each check should be updated in separate PR, and separate issue that clearly claims malfunction by CLI.
-
-Checks that _do not need_ an update are:
-- [`AvoidStarImport`](https://checkstyle.org/checks/imports/avoidstarimport.html#AvoidStarImport)
-    - Reason is that `import module` does not support star import `.*`
-- [`AvoidStaticImport`](https://checkstyle.org/checks/imports/avoidstaticimport.html#AvoidStaticImport)
-    - Reason is that `import module` has nothing to do with `import static`
-
----
-
-## #18065: Forbit Emoj in code
-
-**Labels:** approved, new module
-
-AI generates unicode emoj in code comments
-[example](https://github.com/checkstyle/checkstyle/pull/18008/files#diff-e8685d13c843aea432b0c89f0ef7f09fddfd9f00bf2c332e7e7d1a47e776354dR60): 
-
-> // ✅ Enhancement 1: Basic validation
-
-this also raised by other users to address this at https://github.com/checkstyle/checkstyle/discussions/17983#discussioncomment-14888080
-
-Potential soluton: 
-```
-    <module name="RegexpSingleline">
-        <property name="format" value="\u2705" />
-        <property name="message" value="Unicode emoj symbols should not be used." />
-    </module>
-```
-
-use https://www.mauvecloud.net/charsets/CharCodeFinder.html in mode "Hexadecimal Character Codes" to get code.
-
-To make it easier to search and collaborate to extend to all other Unicode pictures, we can put this as example https://checkstyle.org/checks/regexp/regexpsingleline.html#Examples so it will part of git files and user can contribute to make list to cover most
-
-Website sources are part of main repository https://github.com/checkstyle/checkstyle/blob/master/src/site/xdoc/checks/regexp/regexpsingleline.xml.template
-
-We need to put in https://github.com/checkstyle/checkstyle/blob/master/config/checkstyle-checks.xml config  that violates majority of unicode emoj symbols, try to find in web or AI list of them.
-
----
-
-## #18064: New check: ArrayBracketWhitespace
-
-**Labels:** approved, new module
-
-**Related**:
-- https://github.com/checkstyle/checkstyle/issues/17728
-- https://github.com/checkstyle/checkstyle/pull/18048
-
----
-
-**Proposal:**
-  New whitespace check `ArrayBracketWhitespace`, _inspired by [GenericWhitespace](https://checkstyle.org/checks/whitespace/genericwhitespace.html#GenericWhitespace)_
-
-**Rationale:**  
-The idea started from  
-- #17728 
-
-where the user wants to be able to enforce whitespace between type and variable:  
-```java
-int[]numbers;    // violation, no whitespace after ]
-```
-
-We tried adding [`RBRACK`](https://github.com/checkstyle/checkstyle/issues/17728#issuecomment-3476328399) and [`TYPE`](https://github.com/checkstyle/checkstyle/pull/18048) to WhitespaceAfter's tokens, but there are many cases to cover. Therefore, it's better to create a new check.  
-  
-**Description**  
-Checks that the whitespace around square-bracket tokens `[` and `]` follows the typical Java convention for array declarations, array creation, and array indexing.   
-  
-Left square bracket `[`:  
-- must not be preceded by whitespace when preceded by a `TYPE` or `IDENT` in array declarations or array access
-  ```java
-  int[] arr         // ok
-  int []arr         // violation
-  arr[i]            // ok
-  arr [i]           // violation
-  new int[10]       // ok
-  char letters[]    // ok
-  ```
-- must not be followed by whitespace
-  ```java
-  arr[i]      // ok
-  arr[ i]     //violation
-  ```
-  
-Right square bracket `]`:  
-- must not be preceded by whitespace
-  ```java
-  arr[i]     // ok
-  arr[i ]    // violation
-  ```
-- must be followed by whitespaces in all cases, except when followed by:
-	- another bracket:
-        ```java
-        int[][] matrix     // ok
-        int[] [] matrix    // violation
-        ```
-	- a dot for member access:
-        ```java
-        arr[i].length     // ok
-        arr[i] .length    // violation
-        ```
-	- a comma or semicolon `arr[i],` | `arr[i];`:
-        ```java
-        arr[i],     // ok
-        arr[i] ,    // violation
-        arr[i];     // ok
-        arr[i] ;    // violation
-        ```
-	- postfix operators `arr[i]++` | `arr[i]--`
-        ```java
-        arr[i]++     // ok
-        arr[i] ++    // violation
-        arr[i] += 1 // ok
-        arr[i]+= 1  // violation
-        ```
-	- a right parenthesis or another closing construct `(arr[i])` | `[arr[i]]`
-        ```java
-        method(arr[i])     // ok
-        method(arr[i] )    // violation
-        x[arr[i]]          // ok
-        x[arr[i] ]         // violation
-        ```
-
-**Parameters:**
-None
-
----
-
-## #18031: Resolve Pitest Suppressions - java-ast-visitor
-
-**Labels:** approved, miscellaneous, good fifth issue
-
-As a part of this issue, we have to kill the mutation listed below and remove the suppression from [pitest xxxx suppression.xml](https://github.com/checkstyle/checkstyle/blob/master/config/pitest-suppressions/)
-
-To understanding how to kill the mutation 
-Visit [Wiki page](https://github.com/checkstyle/checkstyle/wiki/How-to-Generate-and-Analyze-Pitest-Reports), [Pitest-docs](https://pitest.org/) and expected actions and workflow at https://github.com/checkstyle/checkstyle/issues/12341.
-
-Target is to remove all `<mutation` from [Pitest-java-ast-visitor](https://github.com/checkstyle/checkstyle/blob/master/config/pitest-suppressions/pitest-java-ast-visitor-suppressions.xml)
-
-Attention!!!!
-No pure unit testing, all should be covered by execution of whole Check or Filter. In other words xxxxCheckTest should be extended with usage of verifyxxxx methods. If that is not possible, please share reasoning and we can allow pure unit test with bit comment above method to cover mutation.
-
----
-
-## #17933: Resolving spotbugs violations
-
-**Labels:** approved, miscellaneous, blocked
-
-Blocked by https://github.com/spotbugs/spotbugs/issues/1338
-
-As [#1338](https://github.com/spotbugs/spotbugs/issues/1338) was closed expected spotbugs violations where none.
-But found:
-```
-[ERROR] Medium: Redundant nullcheck of stream, which is known to be non-null in
- com.puppycrawl.tools.checkstyle.Main.loadProperties(File) [com.puppycrawl.tools.checkstyle.Main,
- com.puppycrawl.tools.checkstyle.Main] Redundant null check at Main.java:[line 451]
-Another occurrence at Main.java:[line 453] RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE
-
-[ERROR] Medium: Redundant nullcheck of inStream, which is known to be non-null in com.puppycrawl.tools.checkstyle.PropertyCacheFile.load() [com.puppycrawl.tools.checkstyle.PropertyCacheFile, com.puppycrawl.tools.checkstyle.PropertyCacheFile] Redundant null check at PropertyCacheFile.java:[line 124]Another occurrence at PropertyCacheFile.java:[line 131] RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE
-[ERROR] Medium: Redundant nullcheck of out, which is known to be non-null in com.puppycrawl.tools.checkstyle.PropertyCacheFile.persist() [com.puppycrawl.tools.checkstyle.PropertyCacheFile, com.puppycrawl.tools.checkstyle.PropertyCacheFile] Redundant null check at PropertyCacheFile.java:[line 151]Another occurrence at PropertyCacheFile.java:[line 153] RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE
-[ERROR] Medium: Redundant nullcheck of inStream, which is known to be non-null in com.puppycrawl.tools.checkstyle.ant.CheckstyleAntTask.createOverridingProperties() [com.puppycrawl.tools.checkstyle.ant.CheckstyleAntTask, com.puppycrawl.tools.checkstyle.ant.CheckstyleAntTask] Redundant null check at CheckstyleAntTask.java:[line 425]Another occurrence at CheckstyleAntTask.java:[line 427] RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE
-[ERROR] Medium: Redundant nullcheck of inputStream, which is known to be non-null in com.puppycrawl.tools.checkstyle.checks.OrderedPropertiesCheck.processFiltered(File, FileText) [com.puppycrawl.tools.checkstyle.checks.OrderedPropertiesCheck, com.puppycrawl.tools.checkstyle.checks.OrderedPropertiesCheck] Redundant null check at OrderedPropertiesCheck.java:[line 108]Another occurrence at OrderedPropertiesCheck.java:[line 110] RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE
-[ERROR] Medium: Redundant nullcheck of inStream, which is known to be non-null in com.puppycrawl.tools.checkstyle.checks.TranslationCheck.getTranslationKeys(File) [com.puppycrawl.tools.checkstyle.checks.TranslationCheck, com.puppycrawl.tools.checkstyle.checks.TranslationCheck] Redundant null check at TranslationCheck.java:[line 507]Another occurrence at TranslationCheck.java:[line 511] RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE
-[ERROR] Medium: Redundant nullcheck of inputStream, which is known to be non-null in com.puppycrawl.tools.checkstyle.checks.UniquePropertiesCheck.processFiltered(File, FileText) [com.puppycrawl.tools.checkstyle.checks.UniquePropertiesCheck, com.puppycrawl.tools.checkstyle.checks.UniquePropertiesCheck] Redundant null check at UniquePropertiesC
-
-*[truncated]*
-
----
-
-## #17882: Update `JavadocCommentsTokenTypes.java` to new format of AST print
-
-**Labels:** approved, miscellaneous, good first issue
-
-Continuation of https://github.com/checkstyle/checkstyle/issues/14631
-
-We need to update the Javadoc of each token in [`JavadocCommentsTokenTypes.java`](https://github.com/checkstyle/checkstyle/blob/master/src/main/java/com/puppycrawl/tools/checkstyle/api/JavadocCommentsTokenTypes.java) to include an example of the **new AST print format** generated by the latest Checkstyle snapshot.
-
-Each update should document how the token appears in the Javadoc AST, providing both an example input and its corresponding tree structure.
-
----
-
-### **Example Task: `PARAM_BLOCK_TAG`**
-
-#### **Steps to fix**
-
-1. **Build the snapshot version of Checkstyle**
-
-   Generate the latest snapshot JAR by following the steps in
-   [How to generate all binaries and `-all.jar` too](https://github.com/checkstyle/checkstyle/wiki/How-to-run-certain-phases-and-validations#how-to-generate-all-binaries-and--alljar--too).
-
-2. **Generate the AST for the example**
-
-   Example input (`src/Test.java`):
-
-   ```java
-   * @param value The parameter of method.
-   ```
-
-   Command to generate the Javadoc AST:
-
-   **Windows (PowerShell):**
-
-   ```powershell
-   java -jar checkstyle-12.0.0-SNAPSHOT-all.jar -j src/Test.java | ForEach-Object { $_ -replace '\[[0-9]+:[0-9]+\]', '' }
-   ```
-
-   **Linux/macOS:**
-
-   ```bash
-   java -jar checkstyle-12.0.0-SNAPSHOT-all.jar -j src/Test.java | sed "s/\[[0-9]\+:[0-9]\+\]//g"
-   ```
-
-   **Output:**
-
-   ```
-   JAVADOC_CONTENT -> JAVADOC_CONTENT 
-   |--LEADING_ASTERISK -> * 
-   |--TEXT ->   
-   `--JAVADOC_BLOCK_TAG -> JAVADOC_BLOCK_TAG 
-       `--PARAM_BLOCK_TAG -> PARAM_BLOCK_TAG 
-           |--AT_SIGN -> @ 
-           |--TAG_NAME -> param 
-           |--TEXT ->   
-           |--PARAMETER_NAME -> value 
-           `--DESCRIPTION -> DESCRIPTION 
-               `--TEXT ->  The parameter of method
-   ```
-
-3. **Update Javadoc for `PARAM_BLOCK_TAG`**
-
-   Example update:
-
-   ```java
-   /**
-    * {@code @param} Javadoc block tag.
-    *
-    * <p>Such Javadoc tag can have two children:</p>
-    * <ol>
-    *   <li>{@link #PARAMETER_NAME}</li>
-    *   <li>{@link #DESCRIPTION}</li>
-    * </ol>
-    *
-    * <p><b>Example:</b></p>
-    * <pre>{@code * @param value The parameter of method.}</pre>
-    *
-    * <b>Tree:</b>
-    * <pre>{@code
-    * JAVADOC_CONTENT -> JAVADOC_CONTENT 
-    * |--LEADING_ASTERISK -> * 
-    * |--TEXT ->   
-    * `--JAVADOC_BLOCK_TAG -> JAVADOC_BLOCK_TAG 
-    *     `--PARAM_BLOCK_TAG -> PARAM_BLOCK_TAG 
-    *         |--AT_SIGN -> @ 
-    *         |--TAG_NAME -> param 
-    *         |--TEXT ->   
-    *         |--PARAMETER_NAME -> value 
-    *         `--DESCRIPTION -> DESCRIPTION 
-    *             `--TEXT ->  The parameter of method
-    * }</pre>
-    *
-    * @see #JAVADOC_BLOCK_TAG
-    */
-   public static final int PARAM_BLOCK_TAG = JavadocCommentsLexer.PARAM_BLOCK_TAG;
-   ```
-
----
-
-### **Notes**
-
-* Each token’s update should be submitted in **its own pull request**.
-* Include the **full CLI output** (AST print) for the example in the **PR description
-
-*[truncated]*
-
----
-
-## #17878: False-Negative: NoTrailingWhitespace misses spaces after * in multi-line comments (Google Style)
-
-**Labels:** approved, google style, false negative
-
-I have read check documentation: https://checkstyle.org/checks/whitespace/index.html
-I have downloaded the latest checkstyle from: https://checkstyle.org/cmdline.html#Download_and_Run
-I have executed the cli and showed it below, as cli describes the problem better than 1,000 words
-
-From: https://google.github.io/styleguide/javaguide.html#s2.3.1-whitespace-characters
-
-> Aside from the line terminator sequence, the ASCII horizontal space character (0x20) is the only whitespace character that appears anywhere in a source file.
-
-Code:
-```
-/*
- * Copyright 2025
- */
-
-/**
- * Test.
- */
-public class Test {
-
-  /**
-   * Line one.
-   *    // <--- This line has a single space or tab after the asterisk (should violate)
-   * Line three.
-   */
-  public void exampleMethod() {
-  }
-}
-
-```
-
-Cli:
-```
-$ java -jar checkstyle-11.1.0-all.jar -c google_checks.xml Test.java
-Starting audit...
-Audit done.
-```
-Formatter:
-```
-java -jar google-java-format-1.28.0-all-deps.jar Test.java
-/*
- * Copyright 2025
- */
-
-/** Test. */
-public class Test {
-
-  /**
-   * Line one. // <--- This line has a single space or tab after the asterisk (should violate) Line
-   * three.
-   */
-  public void exampleMethod() {}
-}
-```
-I've found a false negative related to the enforcement of the Google Java Style Guide, Section 2.3.1 (Whitespace), which prohibits trailing whitespace. The current configuration appears to miss trailing spaces on lines that contain only the asterisk (*) within a Javadoc block.
-
-The issue is that the NoTrailingWhitespaceCheck does not report a violation when one or more space characters exist between the final asterisk and the newline character.
-
-I am ready to submit a Pull Request for this if the team agrees it is a valid missed check. Thank you.
-
----
-
-## #17842: False-negative: Member names with underscores
-
-**Labels:** approved, new module, google style
-
-From: https://google.github.io/styleguide/javaguide.html#s5.3-camel-case
-> In very rare circumstances (for example, multipart version numbers), you may need to use underscores to separate adjacent numbers, since numbers do not have upper and lower case variants.
-
-Google style is not exact. On one hand it says `_` can be used in test methods to combine sentences and on another hand in general CamelCase explanation, `_` is allowed for numbering suffix in all names(except package and generic names).
-
-Valid uses of underscore :
-```
-1. guava33_4_5
-2. guavaVersion33_4_5 
-3. guavaversion33_4_5 (same as 1.)
-```
-
-Invalid uses of underscore:
-```
-1. guava_33_4_5_ (underscore at the end)
-2. guava_33_4_5   (underscore between digit and letter)
-3. guava_version33_4_5 (underscore between lowercase character sequences)
-```
-
-Some false-negatives in member names left to address from #17708  
-
-```java
-$ cat NamesWithUnderscores.java
-/** some javadoc. */
-public class NamesWithUnderscores {
-  int gradle9_5_1 = 0;
-
-  int gradle9_5_1_ = 0; // ok
-
-  int gradle_9_5_1 = 0; // Expected violation, _ between digit and letter
-
-  int jdk_9_0_392 = 0; // Expected violation, _ between digit and letter
-
-  int testing_01231 = 0; // Expected violation, _ between digit and letter
-}
-```
-
-```
-$ java -jar checkstyle-11.1.0-all.jar -c google_checks.xml NamesWithUnderscores.java 
-Starting audit...
-[WARN] /mnt/5D92528E6B945467/test/testing/NamesWithUnderscores.java:5:7: Member name 'gradle9_5_1_' must match pattern '^(?![a-z]$)(?![a-z][A-Z])[a-z][a-zA-Z0-9]*(?:_[0-9]+)*$'. [MemberName]
-Audit done.
-```
-
-we probably need a better approach than Regex as current regex has already grown very complex.
-
-https://github.com/checkstyle/checkstyle/blob/5d52248c85b0fc37ddd786ddb5354e332f8a54b8/src/main/resources/google_checks.xml#L254-L256
-
-if special check is needed, it should first determine the type of name - regular or name with numbering and then it should validate the name against the appropriate regex format, which will differ for each type of naming
-
----
-
-## #17841: False-negative: Method names with underscores
-
-**Labels:** approved, new module, google style
-
-From: https://google.github.io/styleguide/javaguide.html#s5.3-camel-case
-> In very rare circumstances (for example, multipart version numbers), you may need to use underscores to separate adjacent numbers, since numbers do not have upper and lower case variants.
-
-Google style is not exact. On one hand it says `_` can be used in test methods to combine sentences and on another hand in general CamelCase explanation, `_` is allowed for numbering suffix in all names(except package and generic names).
-
-Valid uses of underscore :
-```
-1. guava33_4_5
-2. guavaVersion33_4_5 
-3. guavaversion33_4_5 (same as 1.)
-```
-
-Invalid uses of underscore:
-```
-1. guava_33_4_5_ (underscore at the end)
-2. guava_33_4_5   (underscore between digit and letter)
-3. guava_version33_4_5 (underscore between lowercase character sequences)
-```
-
-**Note**: Underscores are not allowed in normal method names. Name has to have the numbering format part at the end. Following are all invalid
-
-```
-guava_version
-guava_Version
-Set_guavaVersion3345
-```
-
-Some false-negatives left to address from #17708  
-
-```java
-$ cat NamesWithUnderscores.java
-/** some javadoc. */
-public class NamesWithUnderscores {
-  void gradle9_5_1_() {} // Expected violation, _ at the end
-
-  void gradle_9_5_1() {} // Expected violation, _ between digit and letter
-
-  void jdk_9_0_392() {} // Expected violation, _ between digit and letter
-
-  void testing_01231(String str) {} // Expected violation, _ between digit and letter
-}
-```
-
-```
-$ java -jar checkstyle-11.1.0-all.jar -c google_checks.xml NamesWithUnderscores.java 
-Starting audit...
-[WARN] /mnt/5D92528E6B945467/test/testing/NamesWithUnderscores.java:4:8: Method name 'gradle9_5_1_' must match pattern '^(?![a-z]$)(?![a-z][A-Z])[a-z][a-z0-9]*(?:[A-Z][a-z0-9]*)*(?:_[0-9]+)*$'. [MethodName]
-Audit done.
-```
-
-We probably need a better approach than Regex. Current regex has already grown very complex.
- 
-https://github.com/checkstyle/checkstyle/blob/5d52248c85b0fc37ddd786ddb5354e332f8a54b8/src/main/resources/google_checks.xml#L436-L438
-
-if special check is needed, it should first determine the type of name - regular or name with numbering and then it should validate the name against the appropriate regex format, which will differ for each type of naming
-
-Keep in mind: unless it's a non-regular name i.e name that has number formating suffix at the end or method with `@Test` annotation,  underscores are not allowed.
-
----
-
-## #17839: False-negative: Method and Member names with underscores
-
-**Labels:** new module, google style, false negative
-
-From: https://google.github.io/styleguide/javaguide.html#s5.3-camel-case
-> In very rare circumstances (for example, multipart version numbers), you may need to use underscores to separate adjacent numbers, since numbers do not have upper and lower case variants.
-
-Google style is not exact. On one hand it says `_` can be used in test methods to combine sentences and on another hand in general CamelCase explanation, `_` is allowed for numbering suffix in all names(except package and generic names).
-
-Valid uses of underscore :
-```
-1. guava33_4_5
-2. guavaVersion33_4_5 
-3. guavaversion33_4_5 (same as 1.)
-```
-
-Invalid uses of underscore:
-```
-1. guava_33_4_5_ (underscore at the end)
-2. guava_33_4_5   (underscore between digit and letter)
-3. guava_version33_4_5 (underscore between lowercase character sequences)
-```
-
-**Note**: Underscores are not allowed in normal method names. Name has to have the numbering format part at the end. Following are all invalid
-
-```
-guava_version
-guava_Version
-Set_guavaVersion3345
-```
-
-Some false-negatives left to address from #17708  
-
-```java
-/** some javadoc. */
-public class NamesWithUnderscores {
- 
-  void gradle_9_5_1() {} // Expected violation, _ between digit and letter
-
-  void jdk_9_0_392() {} // Expected violation, _ between digit and letter
-
-  void testing_01231(String str) {} // Expected violation, _ between digit and letter
-
-  int jdk_8_90; // Expected violation, _ between digit and letter
-
-  int guava_33_4_7; // Expected violation, _ between digit and letter
-}
-```
-
-```
-$ java -jar checkstyle-11.0.0-all.jar -c google_checks.xml NamesWithUnderscores.java 
-Starting audit...
-Audit done.
-```
-
-we probably need a better approach than Regex. Regex has already grown very complex.
- 
-https://github.com/checkstyle/checkstyle/blob/5d52248c85b0fc37ddd786ddb5354e332f8a54b8/src/main/resources/google_checks.xml#L436-L438
-
-https://github.com/checkstyle/checkstyle/blob/5d52248c85b0fc37ddd786ddb5354e332f8a54b8/src/main/resources/google_checks.xml#L254-L256
-
-if special check is needed, it should first determine the type of name - regular or name with numbering and then it should validate the name against the appropriate regex format, which will differ for each type of naming
-
-Keep in mind: unless it's a non-regular name i.e name that has number formating suffix at the end or method with `@Test` annotation,  underscores are not allowed.
-
----
-
-## #17832: New check: JavadocBlockStyle
-
-**Labels:** google style
-
-From:  [7.1.1 General Form](https://google.github.io/styleguide/javaguide.html#s7.1.1-javadoc-multi-line) and https://github.com/google/google-java-format/issues/1279#issuecomment-3320778635
-
-
-7.1.1 General form
-The basic formatting of Javadoc blocks is as seen in this example:
-```
-/**
- * Multiple lines of Javadoc text are written here,
- * wrapped normally...
- */
-public int method(String p1) { ... }
-```
-... or in this single-line example:
-`/** An especially short bit of Javadoc. */`
-The basic form is always acceptable. The single-line form may be substituted when the entirety of the Javadoc block (including comment markers) can fit on a single line
-
-
-
-
-<hr>
-JavadocBlockStyleCheck ensures: 
-
-1. Leading asterisk is always present.
-2. Preferred style is to put /** and */ on their own lines (unless the entire javadoc comment fits on a single line)
-
-Expected config:
-```xml
-<?xml version="1.0"?>
-<!DOCTYPE module PUBLIC
-        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
-        "https://checkstyle.org/dtds/configuration_1_3.dtd">
-
-<module name="Checker">
-    <module name="TreeWalker">
-        <module name="JavadocBlockStyle"/>
-    </module>
-</module>
-```
-
-Some other examples showing how the `JavadocBlockStyle` should work:
-
-1. Missing leading asterisk
-
-```java
-public class JavadocAsteriskFormat {
-
-    /**
-     * Leading Asterisk is missing in next line.
-        it should not be allowed   // violation
-     */
-    void testMethod() {}
-
-    /*
-     * Some Method.
-     * 
-       @param num some-number.
-       @param path some-path.   // violation
-     */
-    void testMethod2(int num, String path) {}
-
-    /**
-     * Some method.
-     *
-      @return randomString.   // violation
-     */
-    String testMethod3() {
-        return "method";
-    }
-}
-```
-
-Expected Output:
-```
-$ java -jar checkstyle-11.0.0-all.jar -c config.xml JavadocAsteriskFormat.java 
-Starting audit...
-[WARN] /mnt/5D92528E6B945467/test/testing/JavadocAsteriskFormat.java:5: Leading asterisk is missing. [JavadocBlockStyle]
-[WARN] /mnt/5D92528E6B945467/test/testing/JavadocAsteriskFormat.java:12: Leading asterisk is missing. [JavadocBlockStyle]
-[WARN] /mnt/5D92528E6B945467/test/testing/JavadocAsteriskFormat.java:13: Leading asterisk is missing. [JavadocBlockStyle]
-[WARN] /mnt/5D92528E6B945467/test/testing/JavadocAsteriskFormat.java:20: Leading asterisk is missing. [JavadocBlockStyle]
-Audit done.
-```
-
-2. `/**` and `*/` not on their own lines
-
-```java
-public class JavadocAsteriskFormat {
-
-    /**
-     * Javadoc closing asterisk not on it's own line. */  // violation
-    private void testMethod1() {}
-
-    /** Javadoc opening asterisk not on it's own line. so this    // violation
-     * is a invalid code.
-     */
-    private void testMethod2() {}
-
-    /**
-     * Returns a random number.
-     * 
-     * @return random number */   // violation
-    private int testMethod3() {
-        return 1;
-    }
-}
-```
-
-Expected output:
-```
-$ java -jar checkstyle-11.0.0-all.jar -c config.xml JavadocAsteriskFo
-
-*[truncated]*
-
----
-
-## #17810: JDK 25, JEP 512: Compact Source Files and Instance Main Methods not supported
-
-**Labels:** approved, antlr
-
-I have read check documentation: https://checkstyle.org/checks/xxxxxx/nameofaffectedcheck.html
-I have downloaded the latest cli from: https://checkstyle.org/cmdline.html#Download_and_Run
-I have executed the cli and showed it below, as cli describes the problem better than 1,000 words
-
-**How it works Now:**
-
-```bash
-% java -version
-java version "25" 2025-09-16 LTS
-Java(TM) SE Runtime Environment (build 25+37-LTS-3491)
-Java HotSpot(TM) 64-Bit Server VM (build 25+37-LTS-3491, mixed mode, sharing)
-% cat Hello.java
-void main() {
-    System.out.println("Hello World!");
-}
-% java Hello.java
-Hello World!
-% java -jar checkstyle-11.0.1-all.jar -c /google_checks.xml Hello.java
-Starting audit...
-com.puppycrawl.tools.checkstyle.api.CheckstyleException: Exception was thrown while processing Hello.java
-        at com.puppycrawl.tools.checkstyle.Checker.processFiles(Checker.java:313)
-        at com.puppycrawl.tools.checkstyle.Checker.process(Checker.java:227)
-        at com.puppycrawl.tools.checkstyle.Main.runCheckstyle(Main.java:429)
-        at com.puppycrawl.tools.checkstyle.Main.runCli(Main.java:347)
-        at com.puppycrawl.tools.checkstyle.Main.execute(Main.java:206)
-        at com.puppycrawl.tools.checkstyle.Main.main(Main.java:130)
-Caused by: com.puppycrawl.tools.checkstyle.api.CheckstyleException: IllegalStateException occurred while parsing file /home/markus/Dokument/git/lehre/progra-ws25/uebungsblaetter/aufgaben/ballistic/task/Hello.java.
-        at com.puppycrawl.tools.checkstyle.JavaParser.parse(JavaParser.java:104)
-        at com.puppycrawl.tools.checkstyle.TreeWalker.processFiltered(TreeWalker.java:192)
-        at com.puppycrawl.tools.checkstyle.api.AbstractFileSetCheck.process(AbstractFileSetCheck.java:101)
-        at com.puppycrawl.tools.checkstyle.Checker.processFile(Checker.java:341)
-        at com.puppycrawl.tools.checkstyle.Checker.processFiles(Checker.java:300)
-        ... 5 more
-Caused by: java.lang.IllegalStateException: 1:0: no viable alternative at input 'void'
-        at com.puppycrawl.tools.checkstyle.JavaParser$CheckstyleErrorListener.syntaxError(JavaParser.java:254)
-        at org.antlr.v4.runtime.ProxyErrorListener.syntaxError(ProxyErrorListener.java:41)
-        at org.antlr.v4.runtime.Parser.notifyErrorListeners(Parser.java:544)
-        at org.antlr.v4.runtime.DefaultErrorStrategy.reportNoViableAlternative(DefaultErrorStrategy.java:310)
-        at org.antlr.v4.runtime.DefaultErrorStrategy.reportError(DefaultErrorStrategy.java:136)
-        at com.puppycrawl.tools.checkstyle.grammar.java.JavaLanguageParser.compilationUnit(JavaLanguageParser.java:432)
-        at com.puppycrawl.tools.checkstyle.JavaParser.parse(JavaParser.java:98)
-        ... 9 more
-Caused by: org.antlr.v4.runtime.NoViableAltException
-        at org.antlr.v4.runtime.atn.ParserATNSimulator.noViableAlt(ParserATNSimulator.java:2014)
-        at org.antlr.v4.runtime.atn.ParserATNSimulator.execATN(ParserATNSimulator.java:445)
-        at org.antlr.v4.runtime.atn.ParserATNSimu
-
-*[truncated]*
 
 ---

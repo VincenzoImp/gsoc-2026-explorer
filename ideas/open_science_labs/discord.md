@@ -2,11 +2,11 @@
 
 **Parent:** Open Science Labs — Project Ideas
 **Source:** https://opensciencelabs.org/discord
-**Scraped:** 2026-02-22T23:28:47.579049
+**Scraped:** 2026-03-10T16:58:40.302654
 
 ---
 
-Last update: 2026-02-18
+Last update: 2026-02-27
 
 -
 [Blog](https://opensciencelabs.org/blog/) -
@@ -39,4 +39,4 @@ OSS Research Seed Internship
 
 Google Summer of Code
 
-Last update: 2026-02-18
+Last update: 2026-02-27

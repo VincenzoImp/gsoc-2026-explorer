@@ -1,7 +1,7 @@
 # LibreOffice — Project Ideas
 
 **Source:** https://wiki.documentfoundation.org/Development/GSoC/Ideas
-**Scraped:** 2026-02-22T23:28:47.552214
+**Scraped:** 2026-03-10T16:58:40.290167
 
 ---
 
@@ -39,28 +39,6 @@ Please move successfully completed projects to [Development/GSoC/Successfully Im
 ## User Experience
 
 The design team collected a number of ideas in in the pad [http://pad.documentfoundation.org/p/UX-GSoC_Ideas](http://pad.documentfoundation.org/p/UX-GSoC_Ideas). Not for all ideas mentors have committed so far. If you are interested in a task that has no mentor you would need to find someone. If the topic needs further refinement feel free to contact the UX team in order to prioritize the usability engineering. Some examples for full-featured topics:
-
-### Improve snapping and object selection
-
-Snapping in LibreOffice is a bit awkward, and doesn't work as expected in some cases. There is also no advanced snapping supported (taking into account multiple object positions and distances), which would make object position and sizing much easier for the user. This idea involves investigating the existing implementation for snapping in the svx module and work on it.
-
-Goal:
-
-Make snapping and object selection pleasant to use.
-
-Extended goal for this idea is to look into object selection and handles rendering, consistency and UX. In some cases the selection and selection handles aren't properly rotated with the object, sometimes an outline of the selection isn't rendered or rendering could be improved.
-
-- Required skills / knowledge
-- (C++, Reading other's code)?
-
-- Size
-- 350 hours
-
-- Difficulty
-- Hard
-
-- Potential mentors
-*Tomaž Vajngerl*, IRC: quikee, mail: quikeegmail.com
 
 ### Re-design Notebookbar using Native Toolkit Widgets
 
@@ -156,33 +134,13 @@ Better code completion for LibreOffice BASIC IDE editor
 
 ## Impress
 
-### Attach animations to styles
-
-Currently, Impress styles control most of the visual shape appearance, but not the slideshow animation effect. Which is a pity, as the styles concept is pretty powerful inside LibreOffice, and provides a nice way to change animation settings and type for a great number of objects simultaneously. For a slightly different view onto the same problem, see [this](https://bz.apache.org/ooo/show_bug.cgi?id=73090) bug report, and [this one](https://bugs.documentfoundation.org/show_bug.cgi?id=41572) from the LibreOffice side.
-
-Original patch from GSoC 2010: [https://cgit.freedesktop.org/libreoffice/build/tree/patches/dev300/sd_effects_styles.diff?h=master-backup](https://cgit.freedesktop.org/libreoffice/build/tree/patches/dev300/sd_effects_styles.diff?h=master-backup)
-
-Goal:
-
-Make styles animatable.
-
-- Required skills / knowledge
-- C++, Reading other's code
-
-- Size
-- 350 hours
-
-- Difficulty
-- Hard
-
-- Potential mentors
-*Thorsten Behrens*, IRC: thorsten, mail: thorsten.behrensallotropia.de*Katarina Behrens*, IRC: bubli, mail: bublibubli.org
-
 ## LibreOfficeKit
 
 ### LibreOfficeKit Qt
 
 LibreOfficeKit is a way of embedding LibreOffice functionality in other applications. It can do document conversion with its stable API, and tile-based rendering makes it possible to edit the documents using its unstable API.
+
+[LibreOffice for Android](https://docs.libreoffice.org/android.html)(Based on LibreOfficeKit)
 
 The task here is to create a custom Qt widget that uses LibreOfficeKit unstable tile rendering API to do display and edit LibreOffice documents, and also a Qt application that uses the custom Qt widget.
 
@@ -207,46 +165,6 @@ To get started faster, a basic LibreOfficeKit Qt widget and application will be 
 ## Calc
 
 ## Common
-
-### Accessibility checker for Impress and Calc
-
-We have an accessibility checker sidebar in Writer, but not in Impress and Calc. The accessibility checker triggers a check of the document for accessibility issues and displays those in the sidebar, with helpful hints how to resolve those issues. Accessibility issues include checks of the document metadata (name, description), document structure, objects in the document, as well as check of contrast (font color vs. background color). A lot of issues apply for Impress and Calc too, but some are Writer specific and there as some that are unique to Impress and Calc.
-
-Goal:
-
-Add accessibility sidebar to impress (move code from writer to common code into svx or sfx2), implement a trigger to re-run a check when an object changes, go through the accessibility checks for writer and investigate which check also applies to Impress, add the accessibility check to common code and adapt if necessary (for example to work in editeng and not writer model). If there is still time, repeat the same for Calc.
-
-- Required skills / knowledge
-- C++, Reading other's code, Debugging,
-
-- Size
-- 350 hours
-
-- Difficulty
-- Medium to Hard
-
-- Potential mentors
-*Tomaž Vajngerl*, IRC: quikee, mail: quikeegmail.com
-
-### Extend support for document theme colors
-
-Support for theme colors is already implemented for Writer, Impress/Draw and Calc, however some colors weren't extended to support theme colors properly. Also when we define gradients we don't support theme colors there so support for theme color gradients would need to be added.
-
-Goal:
-
-Search for properties or parts of properties where we use colors, but we don't support to set a ComplexColor (used for theme colors). Implement a property that works with a ComplexColor for that property, add support to change the color in ThemeColorChanger, write a round-trip test and adapt the import/export filters (for ODF and OOXML) to support saving the theme color for the property. Repeat.
-
-- Required skills / knowledge
-- C++, Reading other's code, Debugging
-
-- Size
-- 350 hours
-
-- Difficulty
-- Hard
-
-- Potential mentors
-*Tomaž Vajngerl*, IRC: quikee, mail: quikeegmail.com
 
 ## Filters
 

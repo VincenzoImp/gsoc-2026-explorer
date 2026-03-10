@@ -2,7 +2,7 @@
 
 **Parent:** Kubeflow — Project Ideas
 **Source:** https://www.kubeflow.org/docs/started/installing-kubeflow/
-**Scraped:** 2026-02-22T23:28:47.580831
+**Scraped:** 2026-03-10T16:58:40.314945
 
 ---
 
@@ -65,14 +65,11 @@ The following table lists distributions which are *maintained* by their respecti
 
 | Maintainer Distribution Name | Kubeflow Version | Target Platform | Link |
 |---|---|---|---|
-| Aranui Solutions deployKF |
-| Multiple
-|
+| Canonical Charmed Kubeflow |
+| Multiple |
 |
 
-Charmed Kubeflow
-
-[[release notes]](https://charmed-kubeflow.io/docs/release-notes)[Website](https://charmed-kubeflow.io/)[[release notes]](https://github.com/Azure/kubeflow-aks/releases)[Website](https://azure.github.io/kubeflow-aks/main)[Website](https://nutanix.github.io/kubeflow-manifests)[[release notes]](https://docs.qbo.io/news/2025/05/09/api-1-5-14-released/)[Website](https://docs.qbo.io/demos/kubeflow)Open Data Hub
+[[release notes]](https://github.com/Azure/kubeflow-aks/releases)[Website](https://azure.github.io/kubeflow-aks/main)[Website](https://nutanix.github.io/kubeflow-manifests)[[release notes]](https://docs.qbo.io/news/2025/05/09/api-1-5-14-released/)[Website](https://docs.qbo.io/demos/kubeflow)Open Data Hub
 
 [Website](https://github.com/opendatahub-io/manifests)### Kubeflow Manifests
 
@@ -104,4 +101,4 @@ Thank you for your feedback!
 We're sorry this page wasn't helpful.
 If you have a moment, please [share your feedback](https://github.com/kubeflow/website/issues/new?title=[Feedback]+docs/started/installing-kubeflow/index.md) so we can improve.
 
-[website: kubeflow 1.11 (#4263) (66c831b1)](https://github.com/kubeflow/website/commit/66c831b17d459dcb70d2b8889b149295fca51aa4)
+[Remove Aranui Solutions from installation index (#4329) (c6d6891d)](https://github.com/kubeflow/website/commit/c6d6891dd9c82133278585672b35dd739a4c0709)

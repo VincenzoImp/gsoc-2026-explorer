@@ -1,7 +1,7 @@
 # LibreHealth — Project Ideas
 
 **Source:** https://forums.librehealth.io/ideas
-**Scraped:** 2026-02-22T23:28:47.613771
+**Scraped:** 2026-03-10T16:58:40.231614
 
 ---
 

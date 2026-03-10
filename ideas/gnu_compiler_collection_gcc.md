@@ -1,13 +1,13 @@
 # GNU Compiler Collection (GCC) — Project Ideas
 
 **Source:** https://gcc.gnu.org/wiki/SummerOfCode
-**Scraped:** 2026-02-22T23:28:47.608468
+**Scraped:** 2026-03-10T16:58:40.281573
 
 ---
 
 # Google Summer Of Code
 
-GCC has applied to be a GSoC mentoring organization in 2026. If successful, the primary org-admin is going to be [Martin Jambor](mailto:mjambor@suse.cz). However, it is always better to contact the whole community by emailing [mailing list](/ideas/gnu-compiler-collection-gcc/mailman-listinfo-gcc) [gcc@gcc.gnu.org](mailto:gcc@gcc.gnu.org) if you have any questions or requests - please put "GSoC" somewhere to the subject. If you are interested in gcc-rust topics, you can also reach out to the gcc-rust community via [Zulip](https://gcc-rust.zulipchat.com/).
+Thank you for your interest in the [GNU Compiler Collection](http://gcc.gnu.org) as your mentoring organization in [Google's Summer of Code](http://g.co/gsoc) (GSoC). GCC has been accepted as a GSoC mentoring organization in 2026. The primary org-admin is [Martin Jambor](mailto:mjambor@suse.cz). However, it is always better to contact the whole community by emailing [mailing list](/ideas/gnu-compiler-collection-gcc/mailman-listinfo-gcc) [gcc@gcc.gnu.org](mailto:gcc@gcc.gnu.org) if you have any questions or requests - please put "GSoC" somewhere to the subject. If you are interested in gcc-rust topics, you can also reach out to the gcc-rust community via [Zulip](https://gcc-rust.zulipchat.com/).
 
 If you would like to be a GSoC contributor with GCC, first make sure you read the [Before you apply](https://gcc.gnu.org/wiki/SummerOfCode#Before_you_apply) and [Application](https://gcc.gnu.org/wiki/SummerOfCode#Application) sections on this page and then pick a project, possibly from the list below. After you made your selection or have a project idea of your own, please discuss it as soon as possible (way before the application) via the [gcc@gcc.gnu.org mailing list](/ideas/gnu-compiler-collection-gcc/mailman-listinfo-gcc) (put "GSoC" somewhere to the subject too) and feel free to raise it on [IRC](https://gcc.gnu.org/wiki/GCConIRC). Again, gcc-rust projects should be discussed via their [Zulip](https://gcc-rust.zulipchat.com/).
 
@@ -39,7 +39,7 @@ Extending the analyzer's support for C++. See
 
 [https://gcc.gnu.org/bugzilla/showdependencytree.cgi?id=97110](https://gcc.gnu.org/bugzilla/showdependencytree.cgi?id=97110).Extend the plugin to add checking for usage of the CPython API (e.g. reference-counting); see
 
-[https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107646](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107646)
+[StaticAnalyzer/CPython](https://gcc.gnu.org/wiki/StaticAnalyzer/CPython)and[https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107646](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107646)
 
 This project would be mentored by David Malcolm. Required skills include C/C++ and finding a way through a large code-base. Applicants should familiarize themselves with GCC's GIMPLE representation, and the
 
@@ -68,32 +68,34 @@ The size and difficulty of the project depends on its agreed scope, i.e. it
 
 **libgomp Optimizations for Scheduler Guided OpenMP Execution in Cloud VMs**
 
-- While HPC deployments traditionally avoid oversubscription, there is continued interest in optimizing OpenMP execution under oversubscribed conditions. OpenMP execution in cloud VMs is commonplace, and oversubscription is a popular cost-cutting practice in cloud deployments.
-This project aims to implement a solution that was recently proposed in the
+- OpenMP execution in cloud VMs is commonplace, and oversubscription is a popular cost-cutting practice in cloud deployments. While HPC deployments traditionally avoid oversubscription, there is continued interest in optimizing OpenMP execution under oversubscribed conditions. OpenMP performance inside an oversubscribed cloud VM heavily depends on barrier synchronization within the guest and on task-scheduling decisions made by the host OS.
 
-*GCC (GNU Toolchain)*devroom at FOSDEM 2026:[https://fosdem.org/2026/schedule/event/3QDZQ8-scheduler-guided-openmp-execution-in-cloud-vms/](https://fosdem.org/2026/schedule/event/3QDZQ8-scheduler-guided-openmp-execution-in-cloud-vms/).
-
-OpenMP performance inside an oversubscribed cloud VM heavily depends on barrier synchronization within the guest and on task-scheduling decisions made by the host OS. The proposed solution leverages para-virtualized task-scheduling insights to optimize the following OpenMP runtime decisions:- Degree of Parallelism (DoP) per parallel region.
+This project aims to implement the optimizations recently proposed in the*GCC (GNU Toolchain)*devroom at FOSDEM 2026:[https://fosdem.org/2026/schedule/event/3QDZQ8-scheduler-guided-openmp-execution-in-cloud-vms/](https://fosdem.org/2026/schedule/event/3QDZQ8-scheduler-guided-openmp-execution-in-cloud-vms/), that target this usecase. The proposal leverages para-virtualized task-scheduling insights to guide the following OpenMP runtime decisions:- Degree of Parallelism (DoP) per parallel region.
 - Barrier synchronization mechanism per barrier.
 
-Implementation of a new environment variable,
 
-`GOMP_DYNAMIC_POLICY`, which, when set to`pvsched`, adapts the DoP of each new parallel region inside the guest based on runtime conditions on the host.Addition of support for a new value,
+Accordingly, the project has the following four deliverables:- An implementation of the existing Phantom Tracker algorithm, which keeps track of vCPU state transitions. This needs to be done in C code, such that it can be compiled to eBPF using GCC's eBPF back end (and/or LLVM). It replaces the current in-kernel (Linux) implementation, which is ~500 lines of C code.
+- Revisiting the design choice for achieving shared memory between the host and guest schedulers, selecting an approach more suitable for the eBPF implementation.
+- A libgomp implementation of two new environment variables:
+`GOMP_DYNAMIC_POLICY`: Extends the OpenMP ICV`OMP_DYNAMIC`and, when set to`pvsched`, adapts the DoP of each new parallel region inside the guest based on runtime conditions on the host.`GOMP_WAIT_POLICY`: Extends the OpenMP ICV`OMP_WAIT_POLICY`and, when set to`pvsched`, enables the use of a para-virtualized, scheduling-guided barrier synchronization mechanism.Draft patch for the env var handling:
 
-`pvsched`, to libgomp’s implementation of the OpenMP ICV`OMP_WAIT_POLICY`, enabling the use of a para-virtualized scheduling guided barrier synchronization mechanism.- Comprehensive testsuite coverage for the newly added features.
+[[PATCH] libgomp: make OMP_WAIT_POLICY accept pvsched](https://gcc.gnu.org/pipermail/gcc-patches/2026-February/709346.html)
 
 
-Project Difficulty: medium
+- Comprehensive testsuite coverage and documentation for the new environment variables.
 
-Expected Time Commitment: 350 hrs (large)
 
-Prerequisite: A basic understanding OpenMP, Operating Systems, and Virtualization
+Project Difficulty: Hard
 
-Required skills: C Programming, Git
+Expected Time Commitment: 350 hrs (Large)
 
-Mentors: Himadri CS, Tobias Burnus, Thomas Schwinge
+Required skills: solid C programming, a basic understanding of OpenMP, operating systems, virtualization, and concepts of eBPF (as used by the Linux kernel)
 
-- While HPC deployments traditionally avoid oversubscription, there is continued interest in optimizing OpenMP execution under oversubscribed conditions. OpenMP execution in cloud VMs is commonplace, and oversubscription is a popular cost-cutting practice in cloud deployments.
+Project IRC Channel: #omp-pvsched on libera.chat
+
+Mentors: Himadri CS <[himadrics@protonmail.com](mailto:himadrics@protonmail.com)>, Andrea Righi <[righi.andrea@gmail.com](mailto:righi.andrea@gmail.com)>, Tobias Burnus <[tburnus@baylibre.com](mailto:tburnus@baylibre.com)>, Thomas Schwinge <[tschwinge@baylibre.com](mailto:tschwinge@baylibre.com)>
+
+- OpenMP execution in cloud VMs is commonplace, and oversubscription is a popular cost-cutting practice in cloud deployments. While HPC deployments traditionally avoid oversubscription, there is continued interest in optimizing OpenMP execution under oversubscribed conditions. OpenMP performance inside an oversubscribed cloud VM heavily depends on barrier synchronization within the guest and on task-scheduling decisions made by the host OS.
 **Enhance OpenMP support.**OpenMP supports thread-based paralleliaztion and GPU offloading for C, C++, and Fortran.- There are several projects possible / project would be (mainly) mentored by Tobias Burnus.
 In particular, adding support for some more OpenMP 6.x features. See
 

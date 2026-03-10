@@ -1,29 +1,102 @@
 # United Nations Office of Information Communication Technology — Project Ideas
 
 **Source:** https://opensource.unicc.org/un/unoict/mentorship-programme/google-summer-of-code/-/blob/main/README.md
-**Scraped:** 2026-02-22T23:28:47.627557
+**Scraped:** 2026-03-10T16:58:40.223942
 
 ---
 
 -
-[Update README.md](https://opensource.unicc.org/un/unoict/mentorship-programme/google-summer-of-code/-/commit/9ba60468cd8e9acdfbd51191b4290323a7d0b6d0)[Mithusa KAJENDRAN](https://opensource.unicc.org/mithusa.kajendran)authored9ba60468
+[Merge branch 'pinar.varol-main-patch-48642' into 'main'](https://opensource.unicc.org/un/unoict/mentorship-programme/google-summer-of-code/-/commit/a208e73b15b7990aa015d9eec281197cf34e4e82)[Mithusa KAJENDRAN](https://opensource.unicc.org/mithusa.kajendran)authoredAdd UN OICT GSoC 2026 announcement and timeline, fix typos. See merge request
+
+[!1](/ideas/united-nations-office-of-information-communication-technology/un-unoict-mentorship-programme-google-summer-of-code-merge_requests-1)a208e73b
 
 [Learn more.](https://opensource.unicc.org/help/user/project/codeowners/index.md)
 
-[On This Page](https://opensource.unicc.org#user-content-on-this-page)[About UN’s OICT](https://opensource.unicc.org#user-content-about-uns-oict)[Why Participate With Us?](https://opensource.unicc.org#user-content-why-participate-with-us)[Key Information for Applicants](https://opensource.unicc.org#user-content-key-information-for-applicants)[Time commitment](https://opensource.unicc.org#user-content-time-commitment)[Application process](https://opensource.unicc.org#user-content-application-process)[Tips for Getting Selected](https://opensource.unicc.org#user-content-tips-for-getting-selected)[Choosing the Best GSoC Project for You](https://opensource.unicc.org#user-content-choosing-the-best-gsoc-project-for-you)[2026 Project Ideas & Source Code](https://opensource.unicc.org#user-content-2026-project-ideas--source-code)[FireForm: An Open Source “Report Once, File Everywhere” System for First Responders](https://opensource.unicc.org#user-content-fireform-an-open-source-report-once-file-everywhere-system-for-first-responders)[Expected Outcomes](https://opensource.unicc.org#user-content-expected-outcomes)[Contributor Skills](https://opensource.unicc.org#user-content-contributor-skills)[Estimated Effort](https://opensource.unicc.org#user-content-estimated-effort)[Mentors](https://opensource.unicc.org#user-content-mentors)[License](https://opensource.unicc.org#user-content-license)[OG–CLEWS: Integrating Open-Source Economic and Environmental Models for Sustainable Development](https://opensource.unicc.org#user-content-ogclews-integrating-open-source-economic-and-environmental-models-for-sustainable-development)[Expected Outcomes](https://opensource.unicc.org#user-content-expected-outcomes-1)[Contributor Skills](https://opensource.unicc.org#user-content-contributor-skills-1)[Estimated Effort](https://opensource.unicc.org#user-content-estimated-effort-1)[Mentors](https://opensource.unicc.org#user-content-mentors-1)[License](https://opensource.unicc.org#user-content-license-1)[Additional Contact Information](https://opensource.unicc.org#user-content-additional-contact-information)
+[UN OICT Accepted into Google Summer of Code 2026](https://opensource.unicc.org#user-content-un-oict-accepted-into-google-summer-of-code-2026)[Official GSoC 2026 Timeline](https://opensource.unicc.org#user-content-official-gsoc-2026-timeline)[Mentor Timeline Milestones (48 hours before official deadlines)](https://opensource.unicc.org#user-content-mentor-timeline-milestones-48-hours-before-official-deadlines)[Next Steps for Mentors](https://opensource.unicc.org#user-content-next-steps-for-mentors)[Next Steps for Prospective Contributors](https://opensource.unicc.org#user-content-next-steps-for-prospective-contributors)[GSoC Admin Team — UN OICT](https://opensource.unicc.org#user-content-gsoc-admin-team--un-oict)[On This Page](https://opensource.unicc.org#user-content-on-this-page)[About UN’s OICT](https://opensource.unicc.org#user-content-about-uns-oict)[Why Participate With Us?](https://opensource.unicc.org#user-content-why-participate-with-us)[Key Information for Participants](https://opensource.unicc.org#user-content-key-information-for-participants)[Time commitment](https://opensource.unicc.org#user-content-time-commitment)[Application process](https://opensource.unicc.org#user-content-application-process)[Tips for Getting Selected](https://opensource.unicc.org#user-content-tips-for-getting-selected)[Choosing the Best GSoC Project for You](https://opensource.unicc.org#user-content-choosing-the-best-gsoc-project-for-you)[2026 Project Ideas & Source Code](https://opensource.unicc.org#user-content-2026-project-ideas--source-code)[FireForm: An Open Source “Report Once, File Everywhere” System for First Responders](https://opensource.unicc.org#user-content-fireform-an-open-source-report-once-file-everywhere-system-for-first-responders)[Expected Outcomes](https://opensource.unicc.org#user-content-expected-outcomes)[Contributor Skills](https://opensource.unicc.org#user-content-contributor-skills)[Estimated Effort](https://opensource.unicc.org#user-content-estimated-effort)[Mentors](https://opensource.unicc.org#user-content-mentors)[License](https://opensource.unicc.org#user-content-license)[OG–CLEWS: Integrating Open-Source Economic and Environmental Models for Sustainable Development](https://opensource.unicc.org#user-content-ogclews-integrating-open-source-economic-and-environmental-models-for-sustainable-development)[Expected Outcomes](https://opensource.unicc.org#user-content-expected-outcomes-1)[Contributor Skills](https://opensource.unicc.org#user-content-contributor-skills-1)[Estimated Effort](https://opensource.unicc.org#user-content-estimated-effort-1)[Mentors](https://opensource.unicc.org#user-content-mentors-1)[License](https://opensource.unicc.org#user-content-license-1)[Additional Contact Information](https://opensource.unicc.org#user-content-additional-contact-information)
 
-**README.md**29.15 KiB
+**README.md**35.34 KiB
+
+##
+UN OICT Accepted into Google Summer of Code 2026
+
+We are excited to announce that **UN OICT** has been accepted as a mentoring organization for **Google Summer of Code 2026 (GSoC)**!
+
+###
+Official GSoC 2026 Timeline
+
+The timeline below is set by Google.
+
+-
+**February 19, 2026 1:00 PM**— Google announces the list of accepted mentoring organizations. -
+**March 16, 2026 2:00 PM → March 31, 2026 2:00 PM**— Applicants register and submit applications; no exceptions are made. -
+**April 30, 2026 2:00 PM**— Accepted projects are announced; participants and mentors begin planning projects. -
+**May 24, 2026 8:00 PM**— Participants begin work on their GSoC projects. -
+**July 6, 2026 2:00 PM → July 10, 2026 2:00 PM**— Mid-term evaluations submitted to Google. -
+**August 16, 2026 8:00 PM → August 24, 2026 2:00 PM**— Final evaluations submitted by participants to Google. -
+**August 24, 2026 2:00 PM → August 31, 2026 2:00 PM**— Final evaluations submitted by mentors to Google. -
+**August 23, 2026 8:00 PM → November 2, 2026 1:00 PM**— Contributors with extended timelines continue coding. -
+**November 2, 2026 1:00 PM**— Final deadline for all contributors to submit their work. -
+**November 9, 2026 1:00 PM**— Final deadline for mentors to submit evaluations for extended projects.
+
+
+UN OICT encourages contributors to plan their work slightly ahead of these dates to ensure all milestones are met.
+
+###
+Mentor Timeline Milestones (48 hours before official deadlines)
+
+-
+**April 19, 2026 2:00 PM**— Project selections due by mentors. -
+**July 8, 2026 2:00 PM**— Mentors’ mid-term evaluations due. -
+**August 29, 2026 2:00 PM**— Mentors’ final evaluations due.
+
+##
+Next Steps for Mentors
+
+**Mentors for GSoC 2026:**
+
+-
+**Mr. Vincent Harkins**([vharkins@ucsc.edu](mailto:vharkins@ucsc.edu)) -
+**Mr. Marc Verges**([mvergess@ucsc.edu](mailto:mvergess@ucsc.edu)) -
+**Mr. Marcelo LaFleur**([lafleurm@un.org](mailto:lafleurm@un.org)) -
+**Mr. Alfonso Acosta Gonçalves**([acostagoncalves@un.org](mailto:acostagoncalves@un.org))
+
+Please review the GSoC Mentor’s Manual and respond promptly to contributor questions. All project communication should be public unless absolutely necessary.
+
+##
+Next Steps for Prospective Contributors
+
+- Introduce yourself and describe your background.
+- Review the GSoC Student/Contributor Manual.
+- Engage early with mentors on project threads.
+- Refine your proposal with mentor feedback.
+- Submit your final application by
+**March 31, 2026 2:00 PM**via the official GSoC portal.
+
+##
+GSoC Admin Team — UN OICT
+
+-
+**Mithusa Kajendran**— OICT Organizational Admin -
+**Michael Downey**— OICT Organizational Admin
+
+Contact:
+
+[mithusa.kajendran@un.org](mailto:mithusa.kajendran@un.org)
+
+[mdowney@humanitech.group](mailto:mdowney@humanitech.group)
 
 ##
 On This Page
 
-[About UN's OICT](https://opensource.unicc.org#about-uns-oict)[Key Information for Applicants](https://opensource.unicc.org#key-information-for-applicants)[Choosing the Best GSoC Project for You](https://opensource.unicc.org#choosing-the-best-gsoc-project-for-you)-
+[About UN's OICT](https://opensource.unicc.org#about-uns-oict)[Key Information for Participants](https://opensource.unicc.org#key-information-for-participants)[Choosing the Best GSoC Project for You](https://opensource.unicc.org#choosing-the-best-gsoc-project-for-you)-
 [2026 Project Ideas & Source Code](https://opensource.unicc.org#2026-project-ideas--source-code) [Additional Contact Information](https://opensource.unicc.org#additional-contact-information)
 
 ##
 About UN’s OICT
 
 The Open Source Team at the United Nations, based within the UN Office of Information and Communications Technology (UNOICT), supports the development and adoption of open source technologies across the UN system and in collaboration with external partners. The team works to advance digital public goods that address global challenges such as climate resilience, sustainable food systems, and inclusive digital participation. Through initiatives including “Reboot the Earth” and other open source collaborations, our team enables early-stage ideas to mature into scalable, production-ready solutions. Our work emphasizes open collaboration, responsible use of emerging technologies such as AI, focusing on deployment in real-world, resource-constrained environments. The Open Source Team also provides technical guidance, mentorship, and governance support to ensure projects not only align with UN values but also prioritize long-term sustainability.
+
+**We are excited to announce that UN OICT has been accepted as a mentoring organization for Google Summer of Code 2026 (GSoC).**
 
 **Disclaimer:** All Summer of Code work is conducted independently. Contributors are not considered United Nations employees or official representatives.
 
@@ -37,14 +110,77 @@ As a GSoC contributor, you will work on production-oriented systems designed for
 Our projects reflect the shared values of open source and the United Nations: transparency, collaboration, responsible use of technology, and long-term sustainability. You will be mentored by experienced maintainers, gain hands-on experience in distributed open source teams, and contribute code that remains in active use beyond the program.
 
 ##
-Key Information for Applicants
+Key Information for Participants
 
 Google Summer of Code is best thought of as an “open source apprenticeship”: contributors will be paid by Google to work under the guidance of mentors from an existing open source community. It's a really great opportunity to build new skills, make connections in your community, get experience working with a larger and often distributed team, learn, and, of course, get paid.
+
+**Official GSoC 2026 Timeline**
+
+The timeline below is set by Google. All times listed are in the UTC time zone.
+
+**February 19, 2026 1:00 PM** – Google announces the list of accepted mentoring organizations.
+
+**March 16, 2026 2:00 PM to March 31, 2026 2:00 PM** – Applicants register and submit applications. No exceptions are made. Be sure to submit early with plenty of time in case of trouble.
+
+**April 30, 2026 2:00 PM** – Accepted projects are announced. Participants and mentors begin planning projects.
+
+**May 24, 2026 8:00 PM** – Participants begin work on their GSoC projects.
+
+**July 6, 2026 2:00 PM to July 10, 2026 2:00 PM** – Mid term evaluations submitted to Google.
+
+**August 16, 2026 8:00 PM to August 24, 2026 2:00 PM** – Final evaluations submitted by participants to Google.
+
+**August 24, 2026 2:00 PM to August 31, 2026 2:00 PM** – Final evaluations submitted by mentors to Google.
+
+**August 23, 2026 8:00 PM to November 2, 2026 1:00 PM** – Contributors with extended timelines continue coding.
+
+**November 2, 2026 1:00 PM** – Final deadline for all contributors to submit their work.
+
+**November 9, 2026 1:00 PM** – Final deadline for mentors to submit evaluations for extended projects.
+
+UN OICT encourages contributors to plan their work slightly ahead of these dates to ensure all milestones are met.
+
+**Next Steps for Prospective Contributors**
+
+- Introduce yourself to your project of interest and describe your background.
+- Review the GSoC
+[Student and Contributor Manual](https://google.github.io/gsocguides/student/). - Engage early with mentors on project threads, discussions, etc.
+- Refine your proposal with mentor feedback as much as they are comfortable.
+- Submit your final application by March 31, 2026 2:00 PM (UTC) via the official GSoC portal.
 
 ###
 Time commitment
 
 Contributors are expected to work either 350 hours (full-time equivalent) or 175 hours (part-time equivalent) over the course of the program. The default schedule runs over 3 months and can potentially be spread over a longer period. You should not plan to take on another full-time internship, job, or schooling during the GSoC period; however, a few weeks of overlap is often fine. Discuss any concerns with the potential mentor for your project of interest.
+
+**Next Steps for Mentors**
+
+Mentor should ensure they are registered in the GSoC web app. Consult the OICT org admins if you need assistance or if things don’t look right. Then, familiarize yourself with the above timeline AND the additional deadlines below.
+
+Finally, be sure to regularly check for communication from potential contributors during the upcoming weeks leading up to application submission, and respond to them as soon as appropriate. Also continue to keep an eye in your email inbox for messages from Google program admins or the OICT org admins.
+
+**Mentor Timeline Milestones (48 hours before official deadlines)**
+
+**April 19, 2026 2:00 PM** – Project selections due by mentors to OICT org admins.
+
+**July 8, 2026 2:00 PM** – Mentors mid term evaluations due for final review by OICT org admins.
+
+**August 29, 2026 2:00 PM** – Mentors final evaluations due for final review by OICT org admins
+
+**Mentors for GSoC 2026:**
+
+Mr. Vincent Harkins [vharkins@ucsc.edu](mailto:vharkins@ucsc.edu)
+
+Mr. Marc Verges
+[mvergess@ucsc.edu](mailto:mvergess@ucsc.edu)
+
+Mr. Marcelo LaFleur
+[lafleurm@un.org](mailto:lafleurm@un.org)
+
+Mr. Alfonso Acosta Gonçalves
+[acostagoncalves@un.org](mailto:acostagoncalves@un.org)
+
+Finally, please review the [GSoC Mentor’s Manual](https://google.github.io/gsocguides/mentor/) and once again remember to respond promptly to contributor questions. All project communication should be public unless absolutely necessary. Consider setting up an issue tracker, discussion area, or other space if your inquiry volume is high.
 
 ###
 Application process
@@ -89,9 +225,7 @@ Choosing a project is a pretty personal choice. Many organizations participate i
 #
 2026 Project Ideas & Source Code
 
-[!tip] Congratulations, you're early!
-
-GSoC 2026 pages will be finalized at the beginning of February 2026, pending our possible acceptance for participation in the program.Applicants should review all information on this page for details about working with OICT’s projects. The projects below are the current candidates for participation in Google Summer of Code 2026. If OICT is selected to participate, the number of contributors we can accept will be based on the allocation provided by Google, which may influence how many projects will participate under the OICT “umbrella” this year. Watch this page for updates in the coming days.
+The ideas for our sub-projects below are listed for your inspiration. You should work with the project teams & mentors to develop your ideas further before submission. If you believe you discover an alternative project idea that works with the sub-orgs below, do not submit them without having discussed those alternative ideas with the mentors listed here. They will be able to advise you on the viability of your project proposal.
 
 ##
 FireForm: An Open Source “Report Once, File Everywhere” System for First Responders
@@ -170,7 +304,7 @@ The country-adapted [OG-CORE](https://pslmodels.github.io/OG-Core/content/intro/
 
 The OG–CLEWS framework expands both models into a single integrated assessment tool by linking their data structures, execution workflows, and analytical outputs. While both models are mature and widely used, they currently operate as separate tools. This project will create a standardized, automated interface between them and a shared execution and visualization layer, enabling integrated analyses that are not currently possible with existing tools. It will provide policymakers with an easy-to-use, accessible tool to check their plans and strategies and back them with an evidence-based, transparent assessment tool. They will gain a more holistic view of their policies, encompassing natural resources management, the energy sector, and their macroeconomic and fiscal implications, in a novel approach that is not currently available to them.
 
-The enhancements developed through this project will be implemented in more than 10 target countries under an ongoing USD 2 million [Peace and Development Trust Fund programme](https://www.un.org/en/unpdf), through the through the[ United Nations Regular Programme for Technical Cooperation](https://unstats.un.org/capacity-development/activities/rptc.cshtml), as well as through the [Development Account](https://unstats.un.org/capacity-development/activities/devaccount/index.cshtml) 19th Tranche , ensuring that the results of this work will have real-world impact beyond the GSoC through 2030, helping more countries worldwide achieve their Sustainable Development Goals.
+The enhancements developed through this project will be implemented in more than 10 target countries under an ongoing USD 2 million [Peace and Development Trust Fund programme](https://www.un.org/en/unpdf), through the [ United Nations Regular Programme for Technical Cooperation](https://unstats.un.org/capacity-development/activities/rptc.cshtml), as well as through the [Development Account](https://unstats.un.org/capacity-development/activities/devaccount/index.cshtml) 19th Tranche , ensuring that the results of this work will have real-world impact beyond the GSoC through 2030, helping more countries worldwide achieve their Sustainable Development Goals.
 
 ###
 Expected Outcomes
@@ -300,3 +434,15 @@ If you have specific questions or want to get started learning more about one of
 If you are stuck and have not received any responses from the mentors listed above, or if you have general questions about participating in GSoC with UN OICT, please contact or OICT Organizational Admins, Mithusa Kajendran ([mithusa.kajendran@un.org](mailto:mithusa.kajendran@un.org)) or Michael Downey ([mdowney@humanitech.group](mailto:mdowney@humanitech.group)).
 
 **Credits:** Some content on this page was adapted from "Python Summer of Code" by Python Software Foundation, licensed under CC BY 4.0.
+
+**GSoC Admin Team – UN OICT**
+
+Your first point of contact with questions should be the mentor(s) for the project in which you are interested. (See above project ideas list.) If you are having trouble making contact, or if you have more general questions or concerns, contact one of the OICT org admin team:
+
+-
+Mithusa Kajendran OICT Organizational Admin
+
+[mithusa.kajendran@un.org](mailto:mithusa.kajendran@un.org) -
+Michael Downey OICT Organizational Admin
+
+[mdowney@humanitech.group](mailto:mdowney@humanitech.group)

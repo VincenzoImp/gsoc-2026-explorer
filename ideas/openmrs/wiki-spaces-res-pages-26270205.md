@@ -2,7 +2,7 @@
 
 **Parent:** OpenMRS — Project Ideas
 **Source:** https://openmrs.atlassian.net/wiki/spaces/RES/pages/26270205
-**Scraped:** 2026-02-22T23:28:47.607539
+**Scraped:** 2026-03-10T16:58:40.277082
 
 ---
 

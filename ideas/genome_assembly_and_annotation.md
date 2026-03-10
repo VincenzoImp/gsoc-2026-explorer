@@ -1,7 +1,7 @@
 # Genome Assembly and Annotation — Project Ideas
 
 **Source:** https://www.ebi.ac.uk/about/events/events/public-event/2025/2026-google-summer-of-code/
-**Scraped:** 2026-02-22T23:28:47.629579
+**Scraped:** 2026-03-10T16:58:40.267562
 
 ---
 

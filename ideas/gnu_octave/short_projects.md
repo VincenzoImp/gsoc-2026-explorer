@@ -2,7 +2,7 @@
 
 **Parent:** GNU Octave — Project Ideas
 **Source:** https://wiki.octave.org/Short_projects
-**Scraped:** 2026-02-22T23:28:47.624017
+**Scraped:** 2026-03-10T16:58:40.278942
 
 ---
 
@@ -85,7 +85,7 @@ Notes:
 |---|---|---|
 |
 
-[#40357](https://savannah.gnu.org/bugs/?40357)[#48088](https://savannah.gnu.org/bugs/?48088)[#49886](https://savannah.gnu.org/bugs/?49886)[#42691](https://savannah.gnu.org/bugs/?42691)was first solved. That bug was closed as fixed in August 2021, so supposedly this one should now be easier manageable. nrjank marked as Needs Info to determine if desired output is just adding a warning, or also matching matlab output.[#49360](https://savannah.gnu.org/bugs/?49360)[#53214](https://savannah.gnu.org/bugs/?53214)[#54437](https://savannah.gnu.org/bugs/?54437)[#55065](https://savannah.gnu.org/bugs/?55065)[#56208](https://savannah.gnu.org/bugs/?56208)[#57352](https://savannah.gnu.org/bugs/?57352)[#58530](https://savannah.gnu.org/bugs/?58530)The equivalent suggestions for patches.
+[#40357](https://savannah.gnu.org/bugs/?40357)[#48088](https://savannah.gnu.org/bugs/?48088)[#49886](https://savannah.gnu.org/bugs/?49886)[#42691](https://savannah.gnu.org/bugs/?42691)was first solved. That bug was closed as fixed in August 2021, so supposedly this one should now be easier manageable. nrjank marked as Needs Info to determine if desired output is just adding a warning, or also matching matlab output.[#49360](https://savannah.gnu.org/bugs/?49360)[#53214](https://savannah.gnu.org/bugs/?53214)[#54437](https://savannah.gnu.org/bugs/?54437)[#55065](https://savannah.gnu.org/bugs/?55065)[#56208](https://savannah.gnu.org/bugs/?56208)[#57352](https://savannah.gnu.org/bugs/?57352)The equivalent suggestions for patches.
 
 | patch | patch title | status |
 |---|

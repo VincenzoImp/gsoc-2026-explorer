@@ -1,7 +1,7 @@
 # CircuitVerse.org — Project Ideas
 
 **Source:** https://github.com/CircuitVerse/CircuitVerse/wiki/GSoC'26-Project-List
-**Scraped:** 2026-02-22T23:28:47.617600
+**Scraped:** 2026-03-10T16:58:40.317097
 
 ---
 
@@ -64,7 +64,7 @@ This project focuses on strengthening CircuitVerse's classroom and assignment in
 
 The project also includes enhancing assignments with pre-built circuit templates, integrated test cases, and auto-verification from practice sessions. Improvements to Canvas LMS integration and Learning Tools Interoperability (LTI) support will further enhance CircuitVerse's adoption in academic environments.
 
-**Key Deliverables:**
+**Key Deliverables**
 
 * Multi-level classroom and subgroup support
 * Group and individual assignment workflows
@@ -82,41 +82,7 @@ The project also includes enhancing assignments with pre-built circuit templates
 
 ---
 
-## Project 3: Simulator Real-Time Collaboration
-
-**Duration:** 175 – 350 hours  
-**Difficulty:** Hard  
-**Technologies:** JavaScript, Canvas API, Ruby on Rails
-
-This project introduces real-time collaborative editing in the CircuitVerse simulator, allowing multiple users to work on the same circuit simultaneously. The goal is to enable seamless collaboration similar to shared document editors, making it easier for teams, classrooms, and study groups to design and debug circuits together.
-
-The collaboration layer must handle concurrent edits safely and efficiently, ensuring consistency across clients even under conflicting updates.
-
-**Key Deliverables:**
-
-* Real-time multi-user circuit editing
-* Session-based collaboration system
-* User presence indicators (avatars and names)
-* Permission-based access control
-
-**Follow-up Features:**
-
-* Session creation and invite links
-* Read-only vs edit permissions
-* CRDT-based conflict resolution (e.g., Yjs or similar graph-friendly CRDTs)
-
-**Learning Path:**
-
-* CircuitVerse simulator architecture
-* Real-time systems and WebSockets
-* Conflict-Free Replicated Data Types (CRDTs)
-* Existing CRDT research and implementations ([https://crdt.tech/](https://crdt.tech))
-
-**Possible Mentors:** [Vaibhav Upreti](https://github.com/VaibhavUpreti), [Aman Asrani](https://github.com/Asrani-Aman), [Harsh Rao](https://github.com/ThatDeparted2061)
-
----
-
-## Project 4: FSM to Circuit Synthesizer
+## Project 3: FSM to Circuit Synthesizer
 
 **Duration:** 175 hours  
 **Difficulty:** Medium  
@@ -141,36 +107,30 @@ The project will support Moore and Mealy machines and can be extended to demonst
 
 ---
 
-## Project 5: Interactive Circuit Debugging Suite
+## Project 4: CircuitVerse Simulator integration
 
 **Duration:** 175 – 350 hours  
 **Difficulty:** Hard  
 **Technologies:** HTML5, CSS, JavaScript, Canvas API
 
-CircuitVerse currently provides limited control over simulation execution, making it difficult for users to precisely identify when and where logical errors occur. This project aims to build a comprehensive, interactive debugging suite that allows users to inspect, pause, rewind, and analyze circuit behavior over time.
+Circuitverse.org currently uses the legacy simulator written using Jquery UI. We need to replace it with the Vuejs version and make it live on circuitverse.org
 
-The debugging tools will significantly improve learning outcomes by making circuit execution transparent and explorable.
+**Key Deliverables**
 
-**Key Features:**
-
-* **Bidirectional Time-Stepping:** Step forward and backward through simulation states using a state history buffer.
-* **Timeline Scrubbing:** Visual timeline slider for navigating simulation history.
-* **Logic-Triggered Breakpoints:** Automatically pause simulation when specific wires or components reach defined states.
-* **Live Probes & Hover Inspection:** Inspect wire values and bus data via tooltips or a watch panel.
-* **State Snapshots:** Save and restore complete circuit states instantly.
-* **Visual Signal Propagation:** Optional slow-motion mode highlighting active signal paths.
+* Separate simulator-<version>.js and simulator-embed-<version>.js as separate output files.
+* Integrate simulator session with rails session
+* Implement authentication mechanism for desktop version using Tauri
+* Improve circuit debugging experience
 
 **Learning Path:**
 
 * CircuitVerse simulator internals
-* State replay and time-travel debugging concepts
-* Existing circuit replay and visualization
 
-**Possible Mentors:** [Nihal Rajpal](https://github.com/Nihal4777), [Arnabdaz](https://github.com/Arnabdaz), [Niladri Adhikary](https://github.com/niladrix719)
+**Possible Mentors:** [Nihal Rajpal](https://github.com/Nihal4777), [Arnabdaz](https://github.com/Arnabdaz), [Niladri Adhikary](https://github.com/niladrix719), [Harsh Rao](https://github.com/ThatDeparted2061)
 
 ---
 
-## Project 6: CircuitVerse Mobile App: Feature Parity with Web Platform and Deployment Readiness
+## Project 5: CircuitVerse Mobile App: Feature Parity with Web Platform and Deployment Readiness
 
 **Duration:** 175 hours  
 **Difficulty:** Medium  
@@ -209,7 +169,7 @@ Participants will gain hands-on experience in:
 
 ---
 
-## Project 7: Enterprise & Institutional Organization Features
+## Project 6: Enterprise & Institutional Organization Features
 
 **Duration:** 350 hours  
 **Difficulty:** Medium – Hard  
@@ -221,9 +181,9 @@ This will involve architecting a multi-tenant-like structure where "Org Admins" 
 
 **Key Deliverables:**
 
-* **Hierarchical Org Structure:** Ability to create an Organization and nest multiple "Groups" or "Departments" within it.
+* **Hierarchical Org Structure:** Ability to create an Organization and nest multiple "Groups" within it.
 * **SSO Support:** OpenID Connect (OIDC) to allow students to log in using institutional credentials (e.g., Google Workspace, Microsoft Azure AD).
-* **Role-Based Access Control (RBAC):** Distinct permissions for Org Admins, Department Leads, and Instructors.
+* **Role-Based Access Control (RBAC):** Distinct permissions for Org Admins, Group Leads, and Instructors.
 * **Custom Branding (Optional):** Basic support for custom subdomains (e.g., university.circuitverse.org) and logo placement for institutional identity.
 
 **Learning Path:**
@@ -233,35 +193,38 @@ This will involve architecting a multi-tenant-like structure where "Org Admins" 
 * Advanced PostgreSQL indexing for organizational queries
 * Security best practices for enterprise software
 
-**Possible Mentors:** TBD
+**Possible Mentors:**
+
+Vedant Jain , Yashika Jotwani, Pratham
 
 ---
 
-## Project 8: Client-Side Verilog Synthesis via Yosys-Wasm
+## Project 7: Client-Side Verilog Synthesis
 
 **Duration:** 350 hours  
 **Difficulty:** Hard  
-**Technologies:** C++, WebAssembly (Emscripten), JavaScript, Yosys
+**Technologies:** Vue.js, JavaScript/TypeScript, WebAssembly (YoWASP/YosysJS), Tauri, Rust
 
-CircuitVerse currently supports Verilog, but synthesis often happens server-side or via complex bridges. This project aims to bring the power of Yosys (Open Synthesis Suite) directly to the browser using WebAssembly (Wasm). By migrating the synthesis engine to the client side, we can offer instantaneous Verilog-to-Circuit conversion without taxing server resources or requiring an internet connection for synthesis.
+### Objective
+This project aims to modernize the CircuitVerse synthesis pipeline. The primary goal is to **eliminate all network calls** for Verilog synthesis, enabling the **CircuitVerse Desktop version** to function entirely offline. By porting synthesis logic to the browser and moving toward a Tauri-based desktop architecture, we ensure a faster, more privacy-respecting, and robust experience for all users.
 
-This is a highly technical project that involves cross-compiling a large C++ codebase (Yosys) and creating a high-performance JavaScript wrapper to interface with the CircuitVerse simulator.
 
-**Key Deliverables:**
+### Key Deliverables
 
-* **Yosys-Wasm Port:** A stable, optimized build of Yosys compiled to WebAssembly.
-* **Local Synthesis Pipeline:** An integrated workflow where users type Verilog code and see it transformed into a CircuitVerse netlist locally.
-* **Virtual Filesystem Integration:** Mapping browser-based Verilog files to the Wasm environment for multi-file module support.
-* **Performance Benchmarking:** Comparative analysis of client-side vs. server-side synthesis times.
+* **Wasm Synthesis Engine (The Rewrite):** Develop a client-side layer to replace `yosys2digitaljs-server`. This involves:
+    * Integrating **YoWASP** (Yosys via WebAssembly) via Web Workers.
+    * Replace yosys interface from running cli program to invoking web assembly build .
+* **Offline Readiness:** Ensure the entire synthesis pipeline is self-contained within the Tauri/Desktop environment without any external API or backend dependencies.
 
-**Learning Path:**
+### Learning Path
+* **Vue.js & State Management:** Debugging and optimizing complex reactive components.
+* **WebAssembly & Tauri:** Running heavy C++ logic in a sandboxed environment and interfacing it with a Rust-based desktop framework.
+* **RTL Synthesis:** Understanding the translation from HDL to gate-level netlists.
+* **Graph Theory:** Applying automated layout engines to prevent "spaghetti" wiring in synthesized circuits.
 
-* Compiling C/C++ to WebAssembly using Emscripten
-* Understanding RTL (Register Transfer Level) synthesis and Netlists
-* Yosys internals and the RTLIL (RTL Intermediate Language)
-* Browser-side performance optimization and Web Workers
+### Possible Mentors
 
-**Possible Mentors:** TBD
+[Vivek Kumar](https://github.com/092vk), [Harsh Rao](https://github.com/ThatDeparted2061)
 
 ---
 

@@ -1,7 +1,7 @@
 # dora-rs — Project Ideas
 
 **Source:** https://github.com/dora-rs/dora/wiki/GSoC_2026
-**Scraped:** 2026-02-22T23:28:47.577607
+**Scraped:** 2026-03-10T16:58:40.277405
 
 ---
 
@@ -150,3 +150,55 @@ Currently within dora-rs, we implemented some experimental features that is not 
 **Difficulty rating**.   Medium
 
 **Expected size:**  100h
+
+
+# Project #6: Development of SLAM and Re-localization Package
+SLAM (Simultaneous Localization and Mapping) and re-localization shall be developed as independent modules to provide accurate environmental maps and initial localization for the core navigation system. The detailed requirements are as follows:
+- **1. Development of LiDAR SLAM Operator**
+> - Realize real-time localization and point cloud map construction of the robot in unknown environments. Select and integrate a mature LiDAR SLAM algorithm (e.g., NDT_mapping or LIO-SAM) for secondary development and in-depth adaptation to ensure stable operation under the DORA data flow.
+> - Input: LiDAR data, robot odometry data
+> - Output: Real-time pose estimation
+- **2. IMU/LiDAR Fusion Localization Operator**
+> - Implement NDT/AMCL localization algorithms, and perform particle filter localization using LiDAR scan data and static maps.
+> - Input: LiDAR data, prior map (from the map server), configurable initial pose
+> - Output: High-precision real-time pose estimation of the robot in the map, which provides localization data for the navigation system.
+- **3. Development of Map Server Operator**
+> - Manage map loading, saving, and service provision.
+> - Map Loading: Load saved grid map files (PGM+YAML) and publish them as unified OccupancyGrid map messages for use by the localization and navigation modules.
+> - Map Saving: Receive real-time map data from the SLAM mapping operator, support saving the final map to the disk on command, and support output in point cloud map format and standard image format (e.g., PGM) + description file (YAML).
+> - Service Interface: Provide map request-response services, allowing other operators (e.g., localization, planning) to obtain static map data.
+
+**Resources**. <br>
+https://github.com/dora-rs/dora <br>
+ 
+**Skills required/preferred**. C/C++, SLAM, DORA
+
+**Difficulty rating**.   hard
+
+**Expected size:**  400h
+
+# Project #7: Development of DORA Navigation Stack 
+
+Design and develop a high-performance, modular, and extensible autonomous robot navigation stack. This framework can draw on the mature design concepts of ROS2 Nav2 and needs to include classic global planning, local planning, trajectory tracking algorithms, and test scripts. The specific requirements are as follows:
+
+- **1.Global Planning:** Develop A* and D* Lite algorithms in the DORA environment, which support receiving target points and cost maps and output global paths.
+
+- **2.Local Planning:** Develop the TEB (Timed Elastic Band) algorithm in the DORA environment for dynamic obstacle avoidance and local trajectory optimization.
+
+- **3.Cost Map:** Develop a cost map system operator in DORA to realize the construction, update, and multi-layer fusion functions of 2D cost maps, and provide query interfaces for planners.
+
+- **4.Trajectory Tracking Control:** Implement Pure Pursuit and Stanley controllers to generate control commands suitable for differential and Ackermann chassis, respectively.
+
+- **5.Integration and Testing:** Integrate the above operators into a complete navigation application, provide configuration files and examples, and realize the robot's navigation from point A to point B.
+
+- **6.Documentation Requirements:** Write independent unit tests for each core operator (A*, D* Lite, TEB, etc.).
+
+**Resources**. <br>
+https://github.com/dora-rs/dora <br>
+https://docs.nav2.org/ <br>
+
+**Skills required/preferred**. C/C++, SLAM, DORA
+
+**Difficulty rating**.   hard
+
+**Expected size:**  400h

@@ -1,7 +1,7 @@
 # Joomla! — Project Ideas
 
 **Source:** https://community.joomla.org/gsoc/projects-2026.html
-**Scraped:** 2026-02-22T23:28:47.618177
+**Scraped:** 2026-03-10T16:58:40.248696
 
 ---
 
@@ -38,7 +38,7 @@ Enhance the list filter function to support searching/filtering by custom fields
 
 **Difficulty:** Hard | **Project Hours:** 350 Hrs
 
-**Mentors: ** Shivam
+**Mentors: ** Shivam Rajput
 
 **Project II: Automated Workflow**
 
@@ -82,7 +82,7 @@ Joomla! currently lacks the ability to assign a single item to multiple categori
 
 **Difficulty:** Medium | **Project Hours:** 175 Hrs
 
-**Mentors: **Christiane Maier-Stadtherr, Viviana
+**Mentors: **Christiane Maier-Stadtherr, Viviana Menzel
 
 **Project IV: Reinforcement Learning from Translators Feedback**
 
@@ -105,4 +105,4 @@ We are going to use automatic translations for documentation. Every language has
 
 **Difficulty:** Hard | **Project Hours:** 350 Hrs
 
-**Mentors: **Herman, Charvi
+**Mentors: **Herman Peeren, Charvi Mehra

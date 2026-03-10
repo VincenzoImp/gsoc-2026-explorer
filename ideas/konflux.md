@@ -1,7 +1,7 @@
 # Konflux — Project Ideas
 
 **Source:** https://github.com/konflux-ci/community/wiki/Google-Summer-of-Code-&-Outreachy-Project-Ideas-%E2%80%90-2026
-**Scraped:** 2026-02-22T23:28:47.581266
+**Scraped:** 2026-03-10T16:58:40.260912
 
 ---
 
@@ -9,11 +9,41 @@
 
 Below you will find a list of proposed projects. Each idea includes essential information to help you understand the scope, required skills, and who to contact for more details.
 
-## Important Notes for Applicants
+# Important Notes for Applicants
 
 * **Project Scope:** Some projects might be adaptable in scope to fit _GSoC_'s 175-hour or 350-hour options, or _Outreachy_'s 40-hour/week commitment. Discuss this with your mentor.
 * **Skill Requirements:** While specific programming languages and technologies are listed, enthusiasm and a willingness to learn are often just as important. Don't be discouraged if you don't know every single technology listed.
 * **Community Engagement:** We highly recommend engaging with our community before applying. This could involve contributing to our repositories, participating in discussions, or attending our meetings (if any).
+* **Finding initial work:** A great way to get started during the community engagement phase is to browse the project's repository for issues labeled as good first issues (or similar tags) - these are specifically picked as approachable entry points for new contributors. If you can't find any, or if none of them feel like the right fit, don't hesitate to reach out to the project idea mentor on our community channels. They'll be happy to help you find something suitable to work on.
+
+## Guidelines for Contributions and Proposals
+
+### 1. On AI proposals...
+**We will not accept AI-generated proposals and we will reject them. Be yourself!** Your GSoC or Outreachy proposal must be your own original work. We want to hear *your* understanding of the problem, *your* ideas for solving it, and *your* voice. AI-generated proposals (or proposals that are clearly polished beyond recognition by AI tools) will be rejected. Make sure to follow up on the respective project's AI policy as well.
+
+This is not about being perfect, it's about being genuine. A rough but thoughtful proposal that shows you've engaged with the project will always beat a polished one that could have been written about any project by anyone (or anything).
+
+### 2. Quality over quantity
+
+During the community engagement phase, focus on making **meaningful contributions** rather than trying to impress with volume. A single well-thought-out bug fix or a genuine question that shows you've studied the codebase is worth far more than a dozen trivial PRs (fixing typos, reformatting code, or adding comments that don't add value). We notice the difference, and it matters.
+
+### 3. Show legitimate interest
+
+Pick a project idea that genuinely interests you and invest time in understanding it. Read the relevant code, try to build and run the project locally, explore the issue tracker. When you reach out to mentors, demonstrate that you've done your homework. Something like *"I read through the X module and I'm not sure how Y interacts with Z, could you point me in the right direction?"* goes a long way compared to *"Can you explain the project to me?"*.
+
+### 4. One thoughtful application beats many generic ones
+
+If you're applying to multiple organizations (which is fine!), make sure each proposal is tailored to the specific project. Mentors can immediately tell when a proposal is a generic template submitted across many orgs. Take the time to engage with *this* community and *this* codebase specifically.
+
+### 5. The power of draft proposals
+
+Before officially submitting your proposal, discuss it with the project mentor first. Share your draft, ask for feedback, and iterate on it together. This helps you put together a much stronger proposal and shows us that you're serious about the project. Submitting a proposal without any prior interaction with the mentoring team is a missed opportunity and will most likely get rejected.
+
+### 6. It's about the experience, not just the stipend
+
+We understand that the GSoC stipend is appealing and let us be clear - there's nothing wrong with that. But we'd encourage you to think about what you're really getting out of this. The chance to work on a real open-source project, with experienced mentors, on problems that matter to actual users. That's an experience that will shape your skills and career in ways that far outlast any one-time payment.
+
+AI tools might make it tempting to take shortcuts - quickly generate a proposal, churn out a few PRs, and move on. But if that's the approach, you're really just cheating yourself out of the learning opportunity and wasting everyone's time in the process. The whole point of GSoC is to *learn by doing*, to struggle with a problem, ask for help, and come out the other side a stronger developer. That doesn't happen when a tool does the thinking for you. We want contributors who are here because they're genuinely curious about the technology and excited to grow, the stipend is a nice bonus, not the goal.
 
 ---
 
@@ -69,7 +99,7 @@ Container images are normally stored and distributed with gzip compression. zstd
 * **Assessment level**: intermediate
 * **Programming Languages:** Python
 * **Technologies:** Docker
-* **Project scope**: 12 weeks
+* **Project scope**: medium (10-12 weeks)
 * **Mentors:**
     * Erik Skultety <skultety.erik@gmail.com>
     * Alexey Ovchinnikov <alexaovchinn@gmail.com>
@@ -96,13 +126,14 @@ Hermeto currently only supports prefetching packages for Python projects for the
 * integrate the new backend's functionality with Hermeto's SBOM artifact generating machinery to record all fetched dependencies for the `uv` ecosystem
 * address quality aspects of the solution via unit & integration tests
 * document the functionality in form of a user facing docs page
+* **NOTE: Further stretch goals TBD**
 
 ## prefetch: Adding support for the Debian/Ubuntu package ecosystem [DEB] to the Hermeto project
 
  * **Assessment level:** advanced
  * **Programming Languages:** Python
  * **Technologies:** Debian packaging format and tools (dpkg, apt), Docker
- * **Project scope:** 12 weeks
+ * **Project scope:** large (16-18 weeks)
  * **Mentors:**
     - Erik Skultety <skultety.erik@gmail.com>
 
@@ -138,5 +169,6 @@ Additionally to the above, a prototype manifest generator tool will need to be d
   - Develop a prototype manifest generator tool that resolves dependencies and outputs valid manifest files based on the schema
   - Provide user documentation following the style of existing Hermeto package manager guides
   - Create integration tests validating the complete fetch → inject → offline-install workflow
+  - **NOTE: Completing this project does NOT require a successful integration with Konflux, the work happens only on Hermeto's side**
 
 **Return to [Home Page](/ideas/konflux/home)**

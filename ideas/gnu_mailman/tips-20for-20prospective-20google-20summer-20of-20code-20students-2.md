@@ -2,7 +2,7 @@
 
 **Parent:** GNU Mailman — Project Ideas
 **Source:** http://wiki.list.org/DEV/Tips%20for%20Prospective%20Google%20Summer%20of%20Code%20Students
-**Scraped:** 2026-02-22T23:28:47.587956
+**Scraped:** 2026-03-10T16:58:40.268470
 
 ---
 

@@ -2,7 +2,7 @@
 
 **Parent:** Dart — Project Ideas
 **Source:** https://github.com/dart-lang/sdk/blob/main/runtime/vm/service/service.md
-**Scraped:** 2026-02-22T23:28:47.564489
+**Scraped:** 2026-03-10T16:58:40.271056
 
 ---
 

@@ -1,7 +1,7 @@
 # rocket.chat — Project Ideas
 
 **Source:** https://github.com/RocketChat/google-summer-of-code/blob/main/google-summer-of-code-2026.md#-project-ideas
-**Scraped:** 2026-02-22T23:28:47.587259
+**Scraped:** 2026-03-10T16:58:40.314325
 
 ---
 
@@ -92,7 +92,7 @@ Medium
 
 ### 💡 AI Rocket.Chat Apps Generator 
 
-👥 **Mentor(s):**   Dnouv    
+👥 **Mentor(s):**   Dnouv, Gabriel Casals    
 📢 **Communication Channel:**   [team channel](https://open.rocket.chat/channel/idea-AI-Rocket-Chat-Apps-Generator)
 
 💬 **Description:**  
@@ -114,10 +114,10 @@ The tool should also be able to generate and maintain tests for the created App.
 A very easy to use and understand CLI tool that anyone can use to create, test, and deploy their own custom Rocket.Chat apps. 
 
 ⏳ **Project Duration:**  
-175 hours  
+90 hours  
 
 📈 **Difficulty:**  
-Medium  
+Easy  
 
 ---
 
@@ -498,32 +498,6 @@ Medium
 
 ---
 
-### 💡 Required Role per Channel for Membership Control
-
-👥 **Mentor(s):** Gabriel Casals  
-📢 **Communication Channel:** [team channel](https://open.rocket.chat/channel/idea-Required-Role-per-Channel-for-Membership-Control) 
-
-💬 **Description:**  
-Introduce channel level RBAC by allowing admins or channel leads to define a required role for channel membership. Users without the role cannot be added and receive a clear error message.
-
-💪 **Desired Skills:**  
-- Node.js  
-- MongoDB  
-- Authorization and RBAC concepts  
-
-🎯 **Goals/Deliverables:**  
-- Channel level required role configuration  
-- Enforcement on membership flows  
-- Audit logs and admin UI  
-
-⏳ **Project Duration:**  
-90 hours  
-
-📈 **Difficulty:**  
-Medium  
-
----
-
 ### 💡 Personal Calendar
 
 👥 **Mentor(s):** Pierre Lehnen  
@@ -590,6 +564,36 @@ Introduce a test framework for Rocket.Chat Apps Engine to simplify unit and inte
 - Improved testing experience for app developers  
 - Standardized testing utilities  
 - Support for integration tests  
+
+⏳ **Project Duration:**  
+175 hours  
+
+📈 **Difficulty:**  
+Medium  
+
+---
+
+### 💡 Warning and Reporting for Login Attempts from Inactive or Deactivated Users
+
+👥 **Mentor(s):** Abhinav Kumar  
+📢 **Communication Channel:** [Team Channel](https://open.rocket.chat/channel/idea-Warning-and-Reporting-for-Login-Attempts-from-Inactive-or-Deactivated-Users) 
+
+💬 **Description:**  
+Detect and report authentication attempts from inactive (180+ days) or deactivated user accounts. Generate real-time alerts and periodic risk reports for administrators, including notifications for failed login attempts.
+
+💪 **Desired Skills:**  
+- Node.js/TypeScript
+- Authentication & authorization systems
+- Security & audit logging
+- MongoDB & React  
+
+🎯 **Goals/Deliverables:**  
+- Suspicious Login Detection: Monitor logins from inactive/deactivated accounts
+- Real-time Alerts: DM and email notifications to admins
+- Admin Dashboard: Visual metrics, attempt history, quick actions
+- Audit Logging: Comprehensive security logs for compliance
+- Periodic Reports: Automated weekly/monthly risk reports
+- Failed Attempt Tracking (Bonus): Log failed logins, detect brute force patterns
 
 ⏳ **Project Duration:**  
 175 hours  
@@ -668,32 +672,6 @@ Allow users to create custom, collapsible folders or sections in the sidebar to 
 - Better workspace navigation  
 - Reduced information overload  
 - User controlled prioritization  
-
-⏳ **Project Duration:**  
-175 hours  
-
-📈 **Difficulty:**  
-Medium  
-
----
-
-### 💡 Warning and Reporting for Login Attempts from Inactive or Deactivated Users
-
-👥 **Mentor(s):** TBD  
-📢 **Communication Channel:** Rocket.Chat Contributors Workspace  
-
-💬 **Description:**  
-Detect and report authentication attempts from inactive (180+ days) or deactivated user accounts, generating real time alerts and periodic risk reports for administrators.
-
-💪 **Desired Skills:**  
-- Node.js  
-- Authentication and authorization systems  
-- Security and audit logging  
-
-🎯 **Goals/Deliverables:**  
-- Detection of suspicious login attempts  
-- Admin alerts and risk reports  
-- Audit and compliance support  
 
 ⏳ **Project Duration:**  
 175 hours  

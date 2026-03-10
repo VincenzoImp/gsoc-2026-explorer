@@ -1,11 +1,15 @@
 # Pharo Consortium — Project Ideas
 
 **Source:** https://gsoc.pharo.org/ideas
-**Scraped:** 2026-02-22T23:28:47.601864
+**Scraped:** 2026-03-10T16:58:40.275141
 
 ---
 
 Below is the list of project ideas that were proposed by the Pharo community. You can apply to any of those projects by sending an email to one of its mentors. Do not hesitate to propose your own idea but make sure that there is at least one mentor in the community who would agree to supervise you.
+
+A libPanel-like Layout for Bloc/TOPLO
+
+LibPanel is a nice library to place windows in GTK. It is based on several places: two columns on th (...)
 
 A generic AST for Moose
 
@@ -62,7 +66,3 @@ Slang is a framework for writing Virtual Machines in Smalltalk and compiling the
 Eliminate Object Pointers in JIT-Compiled Code for Better GC Performance
 
 In the Pharo VM, JIT compilation embeds object pointers directly into compiled machine code. These p (...)
-
-Better support for web elements in Foliage/Microdown
-
-Improve the web support of Foliage and Microdown [Foliage](https://github.com/Ducasse/Foliage) / [M (...)

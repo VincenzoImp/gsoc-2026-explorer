@@ -2,7 +2,7 @@
 
 **Parent:** OpenVINO Toolkit — Project Ideas
 **Source:** https://github.com/openvinotoolkit/openvino/blob/master/CONTRIBUTING.md
-**Scraped:** 2026-02-22T23:28:47.632678
+**Scraped:** 2026-03-10T16:58:40.312440
 
 ---
 
@@ -64,7 +64,7 @@ discussions, or PR communication), read and follow this policy.
      Since the market of computing devices is constantly evolving, OpenVINO is always open to extending
      its support for new hardware. If you want to run inference on a device that is currently not supported,
      you can see how to develop a new plugin for it in the
-     [Plugin Developer Guide](https://docs.openvino.ai/2025/documentation/openvino-extensibility/openvino-plugin-library.html).
+     [Plugin Developer Guide](https://docs.openvino.ai/2026/documentation/openvino-extensibility/openvino-plugin-library.html).
 
 
 ### Improve documentation

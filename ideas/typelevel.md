@@ -1,13 +1,13 @@
 # Typelevel — Project Ideas
 
 **Source:** https://typelevel.org/gsoc/ideas.html
-**Scraped:** 2026-02-22T23:28:47.582290
+**Scraped:** 2026-03-10T16:58:40.305054
 
 ---
 
 # Google Summer of Code
 
-Our community has identified project ideas that we believe will significantly enhance the Typelevel ecosystem. Nothing is set in stone: we may be able to adjust a project’s length and difficulty to make it the right fit for you. So if you see something here that interests you or have an idea of your own, please [get in touch](https://typelevel.org/cdn-cgi/l/email-protection#6e091d010d2e1a171e0b020b180b0240011c09)!
+Our community has identified project ideas that we believe will significantly enhance the Typelevel ecosystem. Nothing is set in stone: we may be able to adjust a project’s length and difficulty to make it the right fit for you. So if you see something here that interests you or have an idea of your own, please [get in touch](https://typelevel.org/cdn-cgi/l/email-protection#395e4a565a794d40495c555c4f5c5517564b5e)!
 
 Serverless integrations for Feral
 
@@ -275,4 +275,4 @@ Medium (~ 175 hours)
 
 Are you interested in working on a GSoC project with mentorship from Typelevel maintainers?
 
-[Submit Proposal](https://typelevel.org/cdn-cgi/l/email-protection#9ff8ecf0fcdfebe6effaf3fae9faf3b1f0edf8)
+[Submit Proposal](https://typelevel.org/cdn-cgi/l/email-protection#6b0c1804082b1f121b0e070e1d0e074504190c)
