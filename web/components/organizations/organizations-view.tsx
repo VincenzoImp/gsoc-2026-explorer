@@ -112,6 +112,8 @@ export function OrganizationsView({
     t.tag.toLowerCase().includes(topicSearch.toLowerCase())
   );
 
+  const TAG_LIMIT = 50;
+
   const filterSidebar = (
     <div className="flex flex-col gap-4">
       <div>
@@ -124,7 +126,7 @@ export function OrganizationsView({
         />
         <ScrollArea className="h-48">
           <div className="flex flex-col gap-1 pr-3">
-            {filteredTechTags.slice(0, 50).map(({ tag, count }) => (
+            {filteredTechTags.slice(0, TAG_LIMIT).map(({ tag, count }) => (
               <label
                 key={tag}
                 className="flex cursor-pointer items-center gap-2 rounded px-1 py-0.5 text-sm hover:bg-accent"
@@ -138,6 +140,11 @@ export function OrganizationsView({
                 <span className="text-xs text-muted-foreground">{count}</span>
               </label>
             ))}
+            {filteredTechTags.length > TAG_LIMIT && (
+              <p className="px-1 py-1 text-xs text-muted-foreground">
+                and {filteredTechTags.length - TAG_LIMIT} more — use the filter above
+              </p>
+            )}
           </div>
         </ScrollArea>
       </div>
@@ -154,7 +161,7 @@ export function OrganizationsView({
         />
         <ScrollArea className="h-48">
           <div className="flex flex-col gap-1 pr-3">
-            {filteredTopicTags.slice(0, 50).map(({ tag, count }) => (
+            {filteredTopicTags.slice(0, TAG_LIMIT).map(({ tag, count }) => (
               <label
                 key={tag}
                 className="flex cursor-pointer items-center gap-2 rounded px-1 py-0.5 text-sm hover:bg-accent"
@@ -168,6 +175,11 @@ export function OrganizationsView({
                 <span className="text-xs text-muted-foreground">{count}</span>
               </label>
             ))}
+            {filteredTopicTags.length > TAG_LIMIT && (
+              <p className="px-1 py-1 text-xs text-muted-foreground">
+                and {filteredTopicTags.length - TAG_LIMIT} more — use the filter above
+              </p>
+            )}
           </div>
         </ScrollArea>
       </div>

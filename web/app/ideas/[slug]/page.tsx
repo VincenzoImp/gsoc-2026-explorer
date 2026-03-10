@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ExternalLink, FileText } from "lucide-react";
+import { ArrowLeft, ExternalLink, FileText, List } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { IdeasRenderer } from "@/components/ideas/ideas-renderer";
 import { IdeasToc } from "@/components/ideas/ideas-toc";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { getOrganizationWithIdeas, getIdeasSlugs } from "@/lib/data";
 
 interface PageProps {
@@ -58,6 +63,21 @@ export default async function IdeasPage({ params }: PageProps) {
       )}
 
       <Separator className="my-6" />
+
+      {/* Mobile TOC */}
+      <div className="mb-6 xl:hidden">
+        <Collapsible>
+          <CollapsibleTrigger asChild>
+            <Button variant="outline" size="sm" className="gap-1.5">
+              <List className="h-4 w-4" />
+              Table of Contents
+            </Button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className="mt-3">
+            <IdeasToc content={org.ideas_content} />
+          </CollapsibleContent>
+        </Collapsible>
+      </div>
 
       {/* Content with TOC */}
       <div className="flex gap-8">

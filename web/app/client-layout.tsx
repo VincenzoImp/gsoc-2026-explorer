@@ -6,6 +6,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CommandSearch } from "@/components/search/command-search";
+import { BackToTop } from "@/components/shared/back-to-top";
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -19,6 +20,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
           <Footer />
         </div>
         <CommandSearch open={searchOpen} onOpenChange={setSearchOpen} />
+        <BackToTop />
       </NuqsAdapter>
     </ThemeProvider>
   );
