@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getOrganizations } from "@/lib/data";
+import { getOrganizations, getTagStats } from "@/lib/data";
 import { IdeasList } from "./ideas-list";
 
 export const metadata: Metadata = {
@@ -13,6 +13,9 @@ export default function IdeasIndexPage() {
     .filter((o) => o.has_ideas)
     .sort((a, b) => a.name.localeCompare(b.name));
 
+  const techTags = getTagStats("tech");
+  const topicTags = getTagStats("topic");
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
       <div className="mb-6">
@@ -23,7 +26,7 @@ export default function IdeasIndexPage() {
         </p>
       </div>
 
-      <IdeasList orgs={orgs} />
+      <IdeasList orgs={orgs} techTags={techTags} topicTags={topicTags} />
     </div>
   );
 }
