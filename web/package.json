@@ -47,6 +47,6 @@
     "postcss": ">=8.5.12",
     "sharp": ">=0.35.0",
     "@hono/node-server": ">=2.0.5",
-    "brace-expansion": "^1.1.16"
+    "brace-expansion": "^1.1.21"
   }
 }
